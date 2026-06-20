@@ -13,8 +13,10 @@ This project uses sibling checkouts as upstream or compiler references. Keep thi
 - `../wordpress-develop` - vanilla WordPress checkout.
   - Current observed ref: `26b68024931348d267b70e2a29910e1320d0094f`, tree `f3ad96f2357d2309f64a8d42a5808be502639c70`, lightweight tag `7.0.0`.
   - Official distribution: `https://wordpress.org/wordpress-7.0.zip`, MD5 `8460cf21c321ed5ededf0f943027558e`, SHA-256 `b2b6827eb7b2b51f4610893e1a6ad02466e76fe0a307bd40ca2a8ba821c40d0b`.
+  - Embedded Gutenberg build pin from `package.json`: commit `a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd`, GHCR layer digest `sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764`.
   - Test presence: `phpunit.xml.dist`, 1091 PHPUnit test files, 17 E2E files, 34 QUnit files.
   - Manifest: `manifests/upstream/wordpress-7.0-baseline.v1.json`.
+  - Embedded Gutenberg manifest: `manifests/upstream/wordpress-7.0-gutenberg-baseline.v1.json`.
   - Role: WordPress 7.0 distribution and PHP/browser behavior oracle.
   - Local note: detached HEAD with repomix artifacts untracked.
 - `../gutenberg` - Gutenberg checkout.

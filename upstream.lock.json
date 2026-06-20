@@ -23,6 +23,14 @@
         "sha256": "b2b6827eb7b2b51f4610893e1a6ad02466e76fe0a307bd40ca2a8ba821c40d0b",
         "contentLength": 31549246
       },
+      "embeddedGutenberg": {
+        "manifest": "manifests/upstream/wordpress-7.0-gutenberg-baseline.v1.json",
+        "commit": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+        "tree": "8bd91d6b490d79ef991d388409705b5cd06fdc94",
+        "ghcrRepo": "WordPress/gutenberg/gutenberg-wp-develop-build",
+        "artifactDigest": "sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764",
+        "artifactSize": 32562473
+      },
       "tests": {
         "phpunitConfig": "phpunit.xml.dist",
         "phpunitTestFiles": 1091,

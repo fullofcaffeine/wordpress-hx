@@ -1,0 +1,73 @@
+{
+  "schema": "wphx.upstream-baseline.v1",
+  "id": "upstream:wordpress-7.0-gutenberg-build",
+  "baseline": {
+    "kind": "wordpress-core-embedded-gutenberg-build",
+    "name": "WordPress 7.0 embedded Gutenberg build",
+    "wordpress_baseline": "upstream:wordpress-7.0.0",
+    "role": "Gutenberg build artifact consumed by WordPress 7.0 source/build tooling"
+  },
+  "wordpress_metadata": {
+    "source_repo": "../wordpress-develop",
+    "package_json_path": "../wordpress-develop/package.json",
+    "gutenberg_sha": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "ghcr_repo": "WordPress/gutenberg/gutenberg-wp-develop-build",
+    "verify_script": "../wordpress-develop/tools/gutenberg/utils.js",
+    "download_script": "../wordpress-develop/tools/gutenberg/download.js",
+    "copy_script": "../wordpress-develop/tools/gutenberg/copy.js"
+  },
+  "gutenberg_source": {
+    "repo": "../gutenberg",
+    "commit": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "tree": "8bd91d6b490d79ef991d388409705b5cd06fdc94",
+    "commit_date": "2026-05-19T12:34:11+00:00",
+    "subject": "Script Loader: Defer single-page admin init until DOMContentLoaded (Trac #65103) (#78136)",
+    "containing_branch": "origin/wp/7.0",
+    "exact_tag": null,
+    "relative_to_forward_23_4_0": {
+      "forward_commit": "98a796c8780c480ef7bcfe03c42302d9564d785c",
+      "commits_from_core_pin_to_forward": 1729,
+      "commits_from_forward_to_core_pin": 349
+    }
+  },
+  "ghcr_artifact": {
+    "manifest_media_type": "application/vnd.oci.image.manifest.v1+json",
+    "artifact_type": "application/vnd.unknown.artifact.v1",
+    "revision_annotation": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "source_annotation": "https://github.com/WordPress/gutenberg",
+    "created_annotation": "2026-05-19T12:37:16Z",
+    "description_annotation": "Gutenberg plugin build for commit a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "layer_title": "gutenberg.tar.gz",
+    "layer_media_type": "application/gzip",
+    "layer_digest": "sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764",
+    "layer_size": 32562473,
+    "download_cache_path": "/tmp/wordpresshx-upstream/gutenberg-core-a2a354cf35e5.tar.gz",
+    "cache_committed": false
+  },
+  "artifact_inspection": {
+    "tar_entry_count": 2409,
+    "gutenberg_hash_file": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "build_markers": [
+      "./build/scripts.php",
+      "./build/modules.php",
+      "./build/modules/",
+      "./build/block-library/",
+      "./build/styles/"
+    ]
+  },
+  "verification": {
+    "recorded_at": "2026-06-20T02:07:30Z",
+    "commands": [
+      "jq '.gutenberg' ../wordpress-develop/package.json",
+      "sed -n '1,180p' ../wordpress-develop/tools/gutenberg/utils.js",
+      "sed -n '1,180p' ../wordpress-develop/tools/gutenberg/download.js",
+      "git -C ../gutenberg cat-file -t a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+      "git -C ../gutenberg show -s --format='%H%n%ct%n%cI%n%s' a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+      "git -C ../gutenberg branch -a --contains a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+      "fetch GHCR token and OCI manifest for package.json gutenberg.sha",
+      "download GHCR blob to /tmp and compare SHA-256 with OCI layer digest",
+      "tar -tzf /tmp/wordpresshx-upstream/gutenberg-core-a2a354cf35e5.tar.gz",
+      "tar -xOf /tmp/wordpresshx-upstream/gutenberg-core-a2a354cf35e5.tar.gz .gutenberg-hash"
+    ]
+  }
+}

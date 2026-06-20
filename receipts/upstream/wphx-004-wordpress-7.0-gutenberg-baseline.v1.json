@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-004-wordpress-7.0-gutenberg-baseline",
+  "issue": {
+    "id": "wordpresshx-w91.8",
+    "external_ref": "WPHX-004",
+    "title": "Resolve and lock WordPress 7.0 Gutenberg commit/artifact"
+  },
+  "recorded_at": "2026-06-20T02:07:30Z",
+  "artifacts": [
+    {
+      "path": "manifests/upstream/wordpress-7.0-gutenberg-baseline.v1.json",
+      "role": "WordPress 7.0 embedded Gutenberg source/artifact lock"
+    },
+    {
+      "path": "upstream.lock.json",
+      "role": "starter checkout map with embedded Gutenberg pin"
+    },
+    {
+      "path": "docs/operations/repositories.md",
+      "role": "human-readable repository map"
+    }
+  ],
+  "observed": {
+    "wordpress_package_json_gutenberg_sha": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "wordpress_package_json_ghcr_repo": "WordPress/gutenberg/gutenberg-wp-develop-build",
+    "gutenberg_commit": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "gutenberg_tree": "8bd91d6b490d79ef991d388409705b5cd06fdc94",
+    "ghcr_layer_digest": "sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764",
+    "downloaded_layer_sha256": "sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764",
+    "artifact_hash_file": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+    "distinct_from_forward_gutenberg_23_4": true
+  },
+  "verification_commands": [
+    "jq empty manifests/upstream/wordpress-7.0-gutenberg-baseline.v1.json",
+    "jq empty receipts/upstream/wphx-004-wordpress-7.0-gutenberg-baseline.v1.json",
+    "jq -e '.wordpress_metadata.gutenberg_sha == .gutenberg_source.commit and .wordpress_metadata.gutenberg_sha == .artifact_inspection.gutenberg_hash_file and .ghcr_artifact.layer_digest == \"sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764\"' manifests/upstream/wordpress-7.0-gutenberg-baseline.v1.json",
+    "npm run format:haxe:check",
+    "npm run security:gitleaks",
+    "git diff --check"
+  ]
+}
