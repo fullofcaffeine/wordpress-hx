@@ -83,6 +83,8 @@
     "wp:core:wphx-303-kses:check": "node tools/wp-core/run-kses-fixture.mjs --check",
     "wp:core:wphx-303-pure-formatting": "node tools/wp-core/run-pure-formatting-candidate.mjs",
     "wp:core:wphx-303-pure-formatting:check": "node tools/wp-core/run-pure-formatting-candidate.mjs --check",
+    "wp:core:wphx-304-surface": "node tools/wp-core/run-options-cache-surface.mjs",
+    "wp:core:wphx-304-surface:check": "node tools/wp-core/run-options-cache-surface.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",

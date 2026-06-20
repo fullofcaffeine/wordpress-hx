@@ -1,0 +1,39 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-304-01-options-cache-surface",
+  "issue": {
+    "id": "wordpresshx-l76.8.1",
+    "external_ref": "WPHX-304.01",
+    "title": "Inventory options/transients/object-cache surface"
+  },
+  "recorded_at": "2026-06-20T23:08:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-304-01-options-cache-surface.v1.json",
+      "role": "WPHX-304.01 generated domain surface manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-304-01-options-cache-surface.v1.json",
+      "role": "external-oracle ownership manifest for this first domain surface"
+    },
+    {
+      "path": "tools/wp-core/run-options-cache-surface.mjs",
+      "role": "deterministic generator and drift check"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-304-surface",
+    "npm run wp:core:wphx-304-surface:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_units": 8,
+    "deferred_cross_domain_behaviors": 3,
+    "domains": 7,
+    "public_symbols": 128,
+    "upstream_tests": 31,
+    "ownership_state": "external_oracle"
+  }
+}

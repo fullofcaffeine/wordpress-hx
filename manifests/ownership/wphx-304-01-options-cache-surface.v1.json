@@ -1,0 +1,53 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/options-cache-surface",
+  "issue": {
+    "id": "wordpresshx-l76.8.1",
+    "external_ref": "WPHX-304.01"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "options/transients/object-cache surface",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 option, transient, site/network option, object-cache, drop-in compatibility, serialization, and cache invalidation PHP ABI remain oracle-owned until per-slice Haxe parity candidates replace them."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/option.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/cache-compat.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/class-wp-feed-cache-transient.php",
+      "src/wp-includes/class-wp-feed-cache.php"
+    ],
+    "digest": "sha256:c203cc8a146082683521580433b02a4333c9fa206f325fc1f1a624b4a5286928"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-options-cache-surface.mjs",
+    "manifests/wp-core/wphx-304-01-options-cache-surface.v1.json",
+    "receipts/wp-core/wphx-304-01-options-cache-surface.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-304-01-options-cache-surface.v1.json",
+    "manifests/ownership/wphx-304-01-options-cache-surface.v1.json",
+    "receipts/wp-core/wphx-304-01-options-cache-surface.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-304-surface",
+      "npm run wp:core:wphx-304-surface:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-304-01-options-cache-surface"
+    ],
+    "manifest_digest": "sha256:c1961be1d7111f3a9aad11705a26d953838db20bc9b2ea166b566ff3de46836c"
+  },
+  "notes": "This first WPHX-304 slice inventories the oracle surface and fixture entry points only. Runtime storage/cache logic remains external_oracle until later WPHX-304.x slices create Haxe parity candidates and replacement gates."
+}
