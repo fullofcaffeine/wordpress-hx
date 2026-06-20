@@ -55,6 +55,8 @@
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
     "wp:macro:bindings:check": "node tools/wp-macro/run-binding-validator.mjs --check",
+    "wp:public-types": "node tools/wp-public-types/run-public-type-emitter.mjs",
+    "wp:public-types:check": "node tools/wp-public-types/run-public-type-emitter.mjs --check",
     "operations:multi-agent:check": "node tools/operations/check-multi-agent-drill.mjs",
     "task-pack": "node tools/task-packs/generate-task-pack.mjs",
     "task-pack:check": "node tools/task-packs/check-task-pack.mjs",

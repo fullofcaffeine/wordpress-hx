@@ -1,0 +1,15 @@
+{
+  "schema": "wphx.wp-public-type-emitter-receipt.v1",
+  "id": "receipt:wphx-206-public-types",
+  "issue": "WPHX-206",
+  "recorded_at": "2026-06-20T19:20:00.000Z",
+  "command": "npm run wp:public-types",
+  "status": "passed",
+  "manifest": "manifests/wp-public-types/wphx-206-public-types.v1.json",
+  "manifest_sha256": "sha256:e170c14c590b19a6880ac298bc6c37f590c97ccbc422f95c7c66224e89216a1f",
+  "generated_public_files": [
+    "wp-includes/class-wphx-public-types.php"
+  ],
+  "comparison_count": 3,
+  "runtime_run_count": 6
+}

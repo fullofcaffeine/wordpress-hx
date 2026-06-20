@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 36,
+  "scanned_file_count": 38,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -34,6 +34,8 @@
     "fixtures/wp-macro/src/wphx/fixtures/wp/macro/InvalidStaticGlobal.hx",
     "fixtures/wp-macro/src/wphx/fixtures/wp/macro/MacroTypes.hx",
     "fixtures/wp-macro/src/wphx/fixtures/wp/macro/ValidBindings.hx",
+    "fixtures/wp-public-types/src/wphx/fixtures/wp/publictypes/PublicTypeEntry.hx",
+    "fixtures/wp-public-types/src/wphx/fixtures/wp/publictypes/PublicTypeKernel.hx",
     "src/wphx/wp/boundary/CallableValue.hx",
     "src/wphx/wp/boundary/Globals.hx",
     "src/wphx/wp/boundary/NativeArray.hx",

@@ -1,0 +1,23 @@
+{
+  "schema": "wphx.wp-public-types.fixture.v1",
+  "issue": "WPHX-206",
+  "description": "Fixture for WordPress-shaped public class, interface, and trait shells that preserve PHP reflection while delegating method payloads to Haxe.",
+  "output": "wp-includes/class-wphx-public-types.php",
+  "global_symbols": {
+    "interface": "WPHX_Public_Contract",
+    "trait": "WPHX_Public_Trait",
+    "base_class": "WPHX_Public_Base",
+    "class": "WPHX_Public_Class"
+  },
+  "namespaced_symbols": {
+    "namespace": "WordPress\\WPHX\\Fixture",
+    "interface": "NamespacedContract",
+    "trait": "NamespacedTrait",
+    "class": "NamespacedImplementation"
+  },
+  "reference_abi_symbols": [
+    "WP_Ability",
+    "WordPress\\AiClient\\Common\\Contracts\\AiClientExceptionInterface",
+    "WordPress\\AiClient\\Common\\Traits\\WithDataCachingTrait"
+  ]
+}

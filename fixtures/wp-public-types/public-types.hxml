@@ -1,0 +1,4 @@
+-cp src
+-cp fixtures/wp-public-types/src
+-main wphx.fixtures.wp.publictypes.PublicTypeEntry
+-php build/wp-public-types/haxe
