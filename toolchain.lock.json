@@ -1,28 +1,44 @@
 {
-  "schema": 1,
-  "recorded_at": "2026-06-19",
-  "scope": "bootstrap-observed-local-toolchain",
-  "notes": [
-    "This starter lock records the tools required for root Beads and repository hygiene.",
-    "WPHX-002 will extend this with full Haxe, genes-ts, PHP backend, Node/npm, PHP image pins, and build receipts."
-  ],
+  "schema": 2,
+  "recorded_at": "2026-06-19T20:22:00-06:00",
+  "scope": "wordpresshx-bootstrap-toolchain",
+  "owner_issue": "WPHX-002",
+  "policy": {
+    "intent": "Pin the executable bootstrap tools and source references used before translated WordPress code exists.",
+    "dirty_worktrees": "Dirty sibling worktrees are recorded as observations only. Pins use committed revisions, tags, versions, and container digests.",
+    "deeper_build_gates": [
+      "WPHX-101 will add the stock Haxe PHP matrix smoke project.",
+      "WPHX-401 will pin and exercise the full genes-ts/classic Genes build behavior."
+    ]
+  },
   "tools": {
     "beads": {
       "command": "bd --version",
       "version": "0.49.0",
       "revision": "b5178e18",
-      "pin_source": ".beads/.local_version"
+      "pin_source": ".beads/.local_version",
+      "upgrade_follow_up": "WPHX-016"
     },
     "haxe": {
       "command": "haxe --version",
-      "version": "4.3.7"
+      "version": "4.3.7",
+      "executable": "/Users/fullofcaffeine/.nvm/versions/node/v20.19.3/bin/haxe",
+      "source": {
+        "repo": "../haxe.compilerdev.reference/haxe",
+        "commit": "e0b355c6be312c1b17382603f018cf52522ec651",
+        "describe": "4.3.7",
+        "commit_date": "2025-05-09T16:35:29+02:00",
+        "commit_subject": "4.3.7",
+        "worktree_status": "detached with untracked generated/test artifacts; no tracked dirty files observed for this pin"
+      }
     },
     "haxelib": {
       "command": "haxelib version",
-      "version": "4.1.1"
+      "version": "4.1.1",
+      "repository": "/Users/fullofcaffeine/haxe/haxelib/"
     },
     "haxe_formatter": {
-      "command": "haxelib run formatter --help",
+      "command": "haxelib list formatter",
       "version": "1.18.0"
     },
     "node": {
@@ -36,7 +52,15 @@
     "php_cli": {
       "command": "php --version",
       "version": "8.4.7",
-      "distribution": "Homebrew"
+      "distribution": "Homebrew",
+      "executable": "/opt/homebrew/bin/php",
+      "engine": "Zend Engine v4.4.7",
+      "opcache": "Zend OPcache v8.4.7"
+    },
+    "docker": {
+      "command": "docker --version",
+      "version": "28.3.2",
+      "build": "578ccf6"
     },
     "git": {
       "command": "git --version",
@@ -49,6 +73,57 @@
     "gitleaks": {
       "command": "gitleaks version",
       "version": "8.30.0"
+    }
+  },
+  "libraries": {
+    "genes_ts": {
+      "repo": "../genes",
+      "haxelib_name": "genes-ts",
+      "declared_version": "1.11.0",
+      "commit": "8acd1061fb633ea99a2c78c0267cbec436bef6ff",
+      "describe": "v1.11.0-50-g8acd106-dirty",
+      "commit_date": "2026-06-19T18:06:22-06:00",
+      "commit_subject": "fix(ts): avoid inline local name collisions",
+      "package_manager": "yarn@1.22.22",
+      "typescript": "5.5.4",
+      "observed_dirty_files": [
+        "src/genes/ts/TsModuleEmitter.hx",
+        "tests/genes-ts/snapshot/basic/intended/foo/BoundaryTypes.ts",
+        "tests/genes-ts/snapshot/basic/src/foo/BoundaryTypes.hx",
+        "genes-ts.xml",
+        "repomix-output-genes-ts.xml.zip"
+      ],
+      "pin_note": "The lock pins the committed revision only; local dirty files are not part of WPHX-002."
+    }
+  },
+  "compiler_sources": {
+    "haxe_php_backend": {
+      "repo": "../haxe.compilerdev.reference/haxe",
+      "commit": "e0b355c6be312c1b17382603f018cf52522ec651",
+      "tag": "4.3.7",
+      "generator": "src/generators/genphp7.ml",
+      "standard_library": "std/php",
+      "smoke_receipt": "receipts/toolchain/wphx-002-toolchain-lock.v1.json"
+    }
+  },
+  "container_images": {
+    "php_8_4_cli": {
+      "registry": "registry-1.docker.io",
+      "repository": "library/php",
+      "tag": "8.4-cli",
+      "index_digest": "sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "media_type": "application/vnd.oci.image.index.v1+json",
+      "linux_amd64_digest": "sha256:7d8473102d6197e0f660989595cfa8283b0a239ad2d225048d64f5ac85de48af",
+      "linux_arm64_digest": "sha256:087d4397db96b14e9b9df7bb49970e80b0e3a306d4ea3f606f6a998fd3b0340a"
+    },
+    "php_8_5_cli": {
+      "registry": "registry-1.docker.io",
+      "repository": "library/php",
+      "tag": "8.5-cli",
+      "index_digest": "sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "media_type": "application/vnd.oci.image.index.v1+json",
+      "linux_amd64_digest": "sha256:4cdb896d14c1a5d3d585f9725007eb265b483d4e9f1cd5df4f89669acd6c8244",
+      "linux_arm64_digest": "sha256:ee6842444379a71fb8a3dfdb397e04b4f6c4182dbef6257faf2cde71fbb49aae"
     }
   }
 }

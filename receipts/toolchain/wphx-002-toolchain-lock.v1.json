@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "issue": "WPHX-002",
+  "recorded_at": "2026-06-19T20:22:00-06:00",
+  "summary": "Locked bootstrap Haxe, genes-ts, Haxe PHP backend source, Node/npm, PHP CLI, and PHP 8.4/8.5 container image digests.",
+  "inputs": {
+    "toolchain_lock": "toolchain.lock.json",
+    "haxe_source_repo": "../haxe.compilerdev.reference/haxe",
+    "genes_ts_repo": "../genes"
+  },
+  "checks": [
+    {
+      "name": "haxe_version",
+      "command": "haxe --version",
+      "status": "passed",
+      "stdout": "4.3.7"
+    },
+    {
+      "name": "haxelib_version",
+      "command": "haxelib version",
+      "status": "passed",
+      "stdout": "4.1.1"
+    },
+    {
+      "name": "node_version",
+      "command": "node --version",
+      "status": "passed",
+      "stdout": "v20.19.3"
+    },
+    {
+      "name": "npm_version",
+      "command": "npm --version",
+      "status": "passed",
+      "stdout": "10.8.2"
+    },
+    {
+      "name": "php_cli_version",
+      "command": "php --version",
+      "status": "passed",
+      "stdout_first_line": "PHP 8.4.7 (cli) (built: May  6 2025 12:31:58) (NTS)"
+    },
+    {
+      "name": "docker_version",
+      "command": "docker --version",
+      "status": "passed",
+      "stdout": "Docker version 28.3.2, build 578ccf6"
+    },
+    {
+      "name": "php_image_digest_lock",
+      "command": "Docker Registry HTTP API v2 manifest lookup for library/php:8.4-cli and library/php:8.5-cli",
+      "status": "passed",
+      "artifacts": [
+        "toolchain.lock.json#/container_images/php_8_4_cli",
+        "toolchain.lock.json#/container_images/php_8_5_cli"
+      ]
+    },
+    {
+      "name": "haxe_to_php_smoke_build",
+      "command": "haxe -cp /tmp/wordpresshx-toolchain-smoke/src -main Main -php /tmp/wordpresshx-toolchain-smoke/php",
+      "status": "passed",
+      "output_directory": "/tmp/wordpresshx-toolchain-smoke/php"
+    },
+    {
+      "name": "haxe_to_php_smoke_run",
+      "command": "php /tmp/wordpresshx-toolchain-smoke/php/index.php",
+      "status": "passed",
+      "stdout": "Main.hx:3: wordpresshx-toolchain-smoke"
+    }
+  ],
+  "observations": [
+    "The genes-ts sibling repo was dirty during observation; the lock pins commit 8acd1061fb633ea99a2c78c0267cbec436bef6ff only.",
+    "The Haxe compiler reference repo was detached at tag 4.3.7 and had untracked generated/test artifacts; no tracked dirty files were used for this pin.",
+    "Generated smoke output remained under /tmp and was not committed."
+  ]
+}
