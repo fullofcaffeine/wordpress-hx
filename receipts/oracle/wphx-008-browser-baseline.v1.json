@@ -1,0 +1,20 @@
+{
+  "schema": "wphx.oracle-receipt.v1",
+  "id": "receipt:wphx-008-browser-baseline",
+  "issue": "WPHX-008",
+  "recorded_at": "2026-06-20T02:34:00Z",
+  "upstream": {
+    "wordpress_repo": "../wordpress-develop",
+    "wordpress_commit": "26b68024931348d267b70e2a29910e1320d0094f"
+  },
+  "baseline": "browser",
+  "status": "passed",
+  "result": {
+    "engine": "chromium",
+    "channel": "chrome",
+    "browser_version": "149.0.7827.115",
+    "title": "WordPressHX Oracle",
+    "text": "ready",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/149.0.0.0 Safari/537.36"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "wphx.oracle-receipt.v1",
+  "id": "receipt:wphx-008-db-baseline",
+  "issue": "WPHX-008",
+  "recorded_at": "2026-06-20T02:34:00Z",
+  "upstream": {
+    "wordpress_repo": "../wordpress-develop",
+    "wordpress_commit": "26b68024931348d267b70e2a29910e1320d0094f"
+  },
+  "baseline": "db",
+  "status": "passed",
+  "result": {
+    "image": {
+      "image": "mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+      "id": "sha256:36fc05616f8ea53e509c0a3831c4a6ec1e624ae24a2aa93d8d8f08f8c5ff848e",
+      "repo_digests": [
+        "mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2"
+      ],
+      "architecture": "arm64",
+      "os": "linux",
+      "created": "2026-06-16T23:46:27.398798324Z"
+    },
+    "query": {
+      "version": "8.4.10",
+      "comment": "MySQL Community Server - GPL",
+      "db_name": "wordpresshx"
+    },
+    "connection": {
+      "client": "php mysqli",
+      "database": "wordpresshx",
+      "host": "127.0.0.1",
+      "port": "ephemeral"
+    }
+  }
+}

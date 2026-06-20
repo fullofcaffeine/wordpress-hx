@@ -14,10 +14,17 @@
     "inventory": "node tools/inventory/wphx-inventory.mjs",
     "inventory:validate": "node tools/inventory/validate-inventory.mjs",
     "inventory:check": "node tools/inventory/check-determinism.mjs && npm run inventory:validate",
+    "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
     "precommit": "npm run format:haxe:check && npm run security:gitleaks"
+  },
+  "devDependencies": {
+    "playwright": "1.61.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/fullofcaffeine/wordpress-hx.git"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.0"
   }
 }

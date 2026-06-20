@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.oracle-baseline.v1",
+  "issue": "WPHX-008",
+  "recorded_at": "2026-06-20T02:34:00Z",
+  "upstream": {
+    "wordpress_repo": "../wordpress-develop",
+    "wordpress_commit": "26b68024931348d267b70e2a29910e1320d0094f"
+  },
+  "receipts": [
+    "receipts/oracle/wphx-008-php-baseline.v1.json",
+    "receipts/oracle/wphx-008-db-baseline.v1.json",
+    "receipts/oracle/wphx-008-browser-baseline.v1.json"
+  ],
+  "baselines": {
+    "php": {
+      "wp_version": "7.0-src",
+      "wp_db_version": 61833,
+      "required_php_version": "7.4",
+      "required_mysql_version": "5.5.5",
+      "php_version": "8.4.7",
+      "sapi": "cli",
+      "extensions": {
+        "mysqli": true,
+        "pdo_mysql": true,
+        "json": true,
+        "mbstring": true,
+        "intl": true
+      }
+    },
+    "db": {
+      "version": "8.4.10",
+      "comment": "MySQL Community Server - GPL",
+      "db_name": "wordpresshx"
+    },
+    "browser": {
+      "engine": "chromium",
+      "channel": "chrome",
+      "browser_version": "149.0.7827.115"
+    }
+  },
+  "status": "passed"
+}
