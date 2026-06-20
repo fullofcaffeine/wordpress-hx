@@ -11,6 +11,7 @@
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "hooks:install": "bash scripts/hooks/install.sh",
+    "inventory": "node tools/inventory/wphx-inventory.mjs",
     "precommit": "npm run format:haxe:check && npm run security:gitleaks"
   },
   "repository": {
@@ -18,4 +19,3 @@
     "url": "https://github.com/fullofcaffeine/wordpress-hx.git"
   }
 }
-

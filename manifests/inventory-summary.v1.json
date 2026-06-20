@@ -1,0 +1,100 @@
+{
+  "schema": "wphx.inventory-summary.v1alpha",
+  "issue": "WPHX-006",
+  "generated_at": "2026-06-20T02:16:00.000Z",
+  "generator": "tools/inventory/wphx-inventory.mjs",
+  "inputs": {
+    "sources": [
+      {
+        "baseline": "wordpress-7.0.0",
+        "repo": "../wordpress-develop",
+        "commit": "26b68024931348d267b70e2a29910e1320d0094f",
+        "tree": "f3ad96f2357d2309f64a8d42a5808be502639c70"
+      },
+      {
+        "baseline": "wordpress-7.0-gutenberg-source",
+        "repo": "../gutenberg",
+        "commit": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+        "tree": "8bd91d6b490d79ef991d388409705b5cd06fdc94"
+      },
+      {
+        "baseline": "gutenberg-forward-23.4.0",
+        "repo": "../gutenberg",
+        "commit": "98a796c8780c480ef7bcfe03c42302d9564d785c",
+        "tree": "ca453617695fda86c57c4a731475f4ae1c5aad9f"
+      }
+    ],
+    "artifacts": [
+      {
+        "baseline": "wordpress-7.0.0-distribution",
+        "kind": "zip",
+        "path": "/tmp/wordpresshx-upstream/wordpress-7.0.zip",
+        "digest": "sha256:b2b6827eb7b2b51f4610893e1a6ad02466e76fe0a307bd40ca2a8ba821c40d0b",
+        "stripPrefix": "wordpress/"
+      },
+      {
+        "baseline": "wordpress-7.0-gutenberg-build",
+        "kind": "tar.gz",
+        "path": "/tmp/wordpresshx-upstream/gutenberg-core-a2a354cf35e5.tar.gz",
+        "digest": "sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764",
+        "stripPrefix": "./"
+      }
+    ]
+  },
+  "outputs": {
+    "source_inventory": "manifests/source-inventory.jsonl",
+    "artifact_provenance": "manifests/artifact-provenance.jsonl",
+    "test_inventory": "manifests/test-inventory.jsonl"
+  },
+  "counts": {
+    "executable_source_units": 17732,
+    "shipped_executable_artifacts": 2721,
+    "test_units": 4106,
+    "source_by_baseline": {
+      "gutenberg-forward-23.4.0": 7109,
+      "wordpress-7.0-gutenberg-source": 7033,
+      "wordpress-7.0.0": 3590
+    },
+    "source_by_language": {
+      "javascript": 8263,
+      "shell": 15,
+      "php": 4097,
+      "typescript": 2955,
+      "tsx": 2304,
+      "jsx": 93,
+      "phpunit-config": 5
+    },
+    "source_by_kind": {
+      "build_tooling_source": 269,
+      "runtime_source": 12936,
+      "test_source": 4106,
+      "vendor_source": 421
+    },
+    "artifact_by_baseline": {
+      "wordpress-7.0-gutenberg-build": 600,
+      "wordpress-7.0.0-distribution": 2121
+    },
+    "artifact_by_language": {
+      "php": 1852,
+      "javascript": 869
+    },
+    "tests_by_baseline": {
+      "gutenberg-forward-23.4.0": 1429,
+      "wordpress-7.0-gutenberg-source": 1397,
+      "wordpress-7.0.0": 1280
+    },
+    "tests_by_framework": {
+      "jest": 223,
+      "js-test": 1777,
+      "php-test": 24,
+      "phpunit": 1448,
+      "playwright": 625,
+      "qunit": 9
+    }
+  },
+  "closure": {
+    "unclassified_executable_source_units": 0,
+    "unclassified_shipped_executable_artifacts": 0,
+    "unclassified_test_units": 0
+  }
+}

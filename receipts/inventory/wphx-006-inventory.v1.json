@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "issue": "WPHX-006",
+  "recorded_at": "2026-06-20T02:16:00.000Z",
+  "command": "npm run inventory",
+  "outputs": {
+    "source_inventory": "manifests/source-inventory.jsonl",
+    "artifact_provenance": "manifests/artifact-provenance.jsonl",
+    "test_inventory": "manifests/test-inventory.jsonl"
+  },
+  "counts": {
+    "executable_source_units": 17732,
+    "shipped_executable_artifacts": 2721,
+    "test_units": 4106,
+    "source_by_baseline": {
+      "gutenberg-forward-23.4.0": 7109,
+      "wordpress-7.0-gutenberg-source": 7033,
+      "wordpress-7.0.0": 3590
+    },
+    "source_by_language": {
+      "javascript": 8263,
+      "shell": 15,
+      "php": 4097,
+      "typescript": 2955,
+      "tsx": 2304,
+      "jsx": 93,
+      "phpunit-config": 5
+    },
+    "source_by_kind": {
+      "build_tooling_source": 269,
+      "runtime_source": 12936,
+      "test_source": 4106,
+      "vendor_source": 421
+    },
+    "artifact_by_baseline": {
+      "wordpress-7.0-gutenberg-build": 600,
+      "wordpress-7.0.0-distribution": 2121
+    },
+    "artifact_by_language": {
+      "php": 1852,
+      "javascript": 869
+    },
+    "tests_by_baseline": {
+      "gutenberg-forward-23.4.0": 1429,
+      "wordpress-7.0-gutenberg-source": 1397,
+      "wordpress-7.0.0": 1280
+    },
+    "tests_by_framework": {
+      "jest": 223,
+      "js-test": 1777,
+      "php-test": 24,
+      "phpunit": 1448,
+      "playwright": 625,
+      "qunit": 9
+    }
+  },
+  "closure": {
+    "unclassified_executable_source_units": 0,
+    "unclassified_shipped_executable_artifacts": 0,
+    "unclassified_test_units": 0
+  },
+  "status": "passed"
+}
