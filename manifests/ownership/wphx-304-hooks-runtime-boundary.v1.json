@@ -46,8 +46,8 @@
     ]
   },
   "removal_gate": {
-    "condition": "Move the remaining plugin.php/class-wp-hook.php public shell emission out of the JavaScript PHP template into Haxe-owned source, a macro/emitter, a generic Haxe PHP backend improvement, or ADR-approved Reflaxe/custom PHP target.",
-    "owner_issue": "WPHX-305",
+    "condition": "Promote the hook/plugin API workset to verified_haxe_owned after distribution provenance, source maps, and any remaining public ABI bridges are reviewed and approved as stable rather than temporary.",
+    "owner_issue": "WPHX-306",
     "target_state": "verified_haxe_owned"
   },
   "verification": {
@@ -63,7 +63,7 @@
       "receipt:wphx-303-hook-parity-candidate",
       "receipt:wphx-304-hook-runtime-boundary"
     ],
-    "manifest_digest": "sha256:91ca47e078eb8942f79e5a584fb3458e94fd5e3eed26f2a502f193f1c2e1d114"
+    "manifest_digest": "sha256:b6a511337f648559ea91eaf0ed7867fcc32bf3634bd3a3502b640c5cedd933c2"
   },
   "notes": "WPHX-304 replaces bounded hook shell decisions with typed Haxe runtime calls without using broad php.Syntax.code. The public shell remains PHP-native where WordPress plugin compatibility depends on callables, references, globals, and reflection."
 }

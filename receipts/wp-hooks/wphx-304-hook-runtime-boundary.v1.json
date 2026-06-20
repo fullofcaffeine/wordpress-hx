@@ -6,9 +6,9 @@
   "command": "npm run wp:hooks:runtime-boundary",
   "status": "passed",
   "manifest": "manifests/wp-hooks/wphx-304-hook-runtime-boundary.v1.json",
-  "manifest_sha256": "sha256:91ca47e078eb8942f79e5a584fb3458e94fd5e3eed26f2a502f193f1c2e1d114",
+  "manifest_sha256": "sha256:b6a511337f648559ea91eaf0ed7867fcc32bf3634bd3a3502b640c5cedd933c2",
   "ownership_manifest": "manifests/ownership/wphx-304-hooks-runtime-boundary.v1.json",
-  "ownership_manifest_sha256": "sha256:c63041d860bb8e0f2277b8662a39d0ee9996716a13d517bf858b820d11611934",
+  "ownership_manifest_sha256": "sha256:00f6a4f08007b08c9b95c805b9157a52c49a15cc514eb0471e4a8cc0a37bab67",
   "boundary_call_count": 15,
   "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
 }

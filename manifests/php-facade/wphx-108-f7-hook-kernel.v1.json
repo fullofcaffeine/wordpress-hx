@@ -190,13 +190,13 @@
     "generated_files": [
       {
         "path": "wp-includes/class-wp-hook.php",
-        "bytes": 8002,
-        "sha256": "d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
+        "bytes": 17490,
+        "sha256": "6fec8bc84ebd668be2b09f7254f693f6d79e598d2db4e1fcabdee2e8f6099dcd"
       },
       {
         "path": "wp-includes/plugin.php",
-        "bytes": 10015,
-        "sha256": "4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
+        "bytes": 36774,
+        "sha256": "af2a7cd8b6104a8a06a73e569d890ef619b2e9f059ce420c98669319611b3369"
       }
     ],
     "probe": {

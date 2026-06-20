@@ -84,3 +84,28 @@ Evidence is recorded in:
 - `manifests/wp-hooks/wphx-304-hook-runtime-boundary.v1.json`
 - `manifests/ownership/wphx-304-hooks-runtime-boundary.v1.json`
 - `receipts/wp-hooks/wphx-304-hook-runtime-boundary.v1.json`
+
+## WPHX-305 Shell Emitter
+
+WPHX-305 removes the broad JavaScript-authored public shell templates from the F7
+generator. The generator now reads the locked WordPress 7.0 `plugin.php` and
+`class-wp-hook.php` oracle files and applies counted source transforms that insert the
+typed Haxe runtime boundary. This keeps the generated public PHP shell idiomatic and close
+to upstream while preventing runtime behavior from being hand-pasted into JavaScript
+templates.
+
+WPHX-306 owns the final verified distribution-surface promotion, including provenance,
+source maps, and review of any remaining PHP-native public ABI bridges.
+
+Run:
+
+```bash
+npm run wp:hooks:shell-emitter
+npm run wp:hooks:shell-emitter:check
+```
+
+Evidence is recorded in:
+
+- `manifests/wp-hooks/wphx-305-hook-shell-emitter.v1.json`
+- `manifests/ownership/wphx-305-hooks-shell-emitter.v1.json`
+- `receipts/wp-hooks/wphx-305-hook-shell-emitter.v1.json`

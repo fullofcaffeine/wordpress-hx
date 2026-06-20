@@ -444,7 +444,7 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       manifest_digest: manifestSha
     },
     notes:
-      "WPHX-303 promotes the Haxe-authored hook decision model to parity candidate without claiming the public plugin.php/class-wp-hook.php shell is Haxe-owned. WPHX-304 installs the typed runtime boundary; WPHX-305 owns the remaining compiler/emitter work for public shell emission."
+      "WPHX-303 promotes the Haxe-authored hook decision model to parity candidate without claiming the public plugin.php/class-wp-hook.php shell is fully verified. WPHX-304 installs the typed runtime boundary, WPHX-305 replaces the broad JS shell template with a source-transform emitter, and WPHX-306 owns verified distribution-surface promotion."
   };
 }
 
@@ -527,7 +527,7 @@ const manifest = {
     comparison_count: comparisons.length,
     oracle_behavior_matches_haxe_candidate: true,
     broad_haxe_php_string_port: false,
-    public_shell_replacement_owner_issue: "WPHX-305"
+    verified_distribution_owner_issue: "WPHX-306"
   }
 };
 

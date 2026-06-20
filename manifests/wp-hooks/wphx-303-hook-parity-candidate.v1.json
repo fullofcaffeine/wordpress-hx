@@ -1047,6 +1047,6 @@
     "comparison_count": 3,
     "oracle_behavior_matches_haxe_candidate": true,
     "broad_haxe_php_string_port": false,
-    "public_shell_replacement_owner_issue": "WPHX-305"
+    "verified_distribution_owner_issue": "WPHX-306"
   }
 }

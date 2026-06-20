@@ -15,11 +15,11 @@
       "sha256": "sha256:eecb1f46d3ec647fd40c460afcbb9851099b9d7f5ccbf335464700c056d1b9c3"
     },
     "f7_manifest": "manifests/php-facade/wphx-108-f7-hook-kernel.v1.json",
-    "f7_manifest_sha256": "sha256:3b28e75c3dc235ff62acda4c5c426c91f4553a81588f4636bddf6dc5984b406b",
+    "f7_manifest_sha256": "sha256:95be0ef416fa40315924e73795b6b98a1d2ba435cca4347287bc6b50445600bf",
     "hook_surface_manifest": "manifests/wp-hooks/wphx-302-hook-surface.v1.json",
-    "hook_surface_manifest_sha256": "sha256:87456e13fd049ac5116fd40cf4e23bbf82ba5a7edd36ec5821c493be596045a6",
+    "hook_surface_manifest_sha256": "sha256:05daa2fdca2693c7157911333b0d2a4f9030d6c2986e6c7c36f780ce4b881842",
     "hook_candidate_manifest": "manifests/wp-hooks/wphx-303-hook-parity-candidate.v1.json",
-    "hook_candidate_manifest_sha256": "sha256:5c082ced0d1ea091f99d3edcf82142c454f31288579957e1c71b801208a9de1e",
+    "hook_candidate_manifest_sha256": "sha256:7416d012d2326cdf8babf9fc6a710c2e20ea7a4b12d4a0c83b308205011ec7d0",
     "source_units": [
       {
         "unit": "src/wp-includes/plugin.php",
@@ -44,11 +44,11 @@
   "generated": {
     "plugin": {
       "path": "build/php-hook-kernel/generated/wp-includes/plugin.php",
-      "sha256": "sha256:4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
+      "sha256": "sha256:af2a7cd8b6104a8a06a73e569d890ef619b2e9f059ce420c98669319611b3369"
     },
     "hook_class": {
       "path": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
-      "sha256": "sha256:d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
+      "sha256": "sha256:6fec8bc84ebd668be2b09f7254f693f6d79e598d2db4e1fcabdee2e8f6099dcd"
     },
     "haxe_runtime": {
       "path": "build/php-hook-kernel/haxe/lib/wphx/wp/hooks/HookRuntime.php",
@@ -57,13 +57,13 @@
     "generated_files": [
       {
         "path": "wp-includes/class-wp-hook.php",
-        "bytes": 8002,
-        "sha256": "d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
+        "bytes": 17490,
+        "sha256": "6fec8bc84ebd668be2b09f7254f693f6d79e598d2db4e1fcabdee2e8f6099dcd"
       },
       {
         "path": "wp-includes/plugin.php",
-        "bytes": 10015,
-        "sha256": "4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
+        "bytes": 36774,
+        "sha256": "af2a7cd8b6104a8a06a73e569d890ef619b2e9f059ce420c98669319611b3369"
       }
     ]
   },

@@ -157,8 +157,8 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       ]
     },
     removal_gate: {
-      condition: "Move the remaining plugin.php/class-wp-hook.php public shell emission out of the JavaScript PHP template into Haxe-owned source, a macro/emitter, a generic Haxe PHP backend improvement, or ADR-approved Reflaxe/custom PHP target.",
-      owner_issue: "WPHX-305",
+      condition: "Promote the hook/plugin API workset to verified_haxe_owned after distribution provenance, source maps, and any remaining public ABI bridges are reviewed and approved as stable rather than temporary.",
+      owner_issue: "WPHX-306",
       target_state: "verified_haxe_owned"
     },
     verification: {

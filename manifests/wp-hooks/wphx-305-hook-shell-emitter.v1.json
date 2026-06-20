@@ -1,0 +1,140 @@
+{
+  "schema": "wphx.wp-hook-shell-emitter.v1",
+  "issue": "WPHX-305",
+  "generated_at": "2026-06-20T23:30:00.000Z",
+  "generator": "tools/wp-hooks/run-hook-shell-emitter.mjs",
+  "inputs": {
+    "f7_tool": {
+      "path": "tools/php-facade/run-f7-hook-kernel.mjs",
+      "bytes": 19705,
+      "sha256": "sha256:93d3cc2ffc3ea1e7f088a32728b96bfc67aff8fd207820beff52e24161404b6e"
+    },
+    "runtime_boundary_tool": {
+      "path": "tools/wp-hooks/run-hook-runtime-boundary.mjs",
+      "bytes": 11450,
+      "sha256": "sha256:599ef8d51b60ff5e9b0ad81d18b2d498b48794ba4ec41742ba7423fcd3fe5997"
+    },
+    "runtime_boundary_manifest": "manifests/wp-hooks/wphx-304-hook-runtime-boundary.v1.json",
+    "runtime_boundary_manifest_sha256": "sha256:b6a511337f648559ea91eaf0ed7867fcc32bf3634bd3a3502b640c5cedd933c2",
+    "source_units": [
+      {
+        "unit": "src/wp-includes/plugin.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/plugin.php",
+        "bytes": 36501,
+        "sha256": "sha256:2e06902ae7d65d7dad37cbafd8e8feff83e4aeeff3a7839885ce7fe4f0c94d68"
+      },
+      {
+        "unit": "src/wp-includes/class-wp-hook.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-hook.php",
+        "bytes": 16636,
+        "sha256": "sha256:a66fe7372af72876fc702e50943f9a2a8dff4ed7394163e07491b80a06e27f1d"
+      }
+    ],
+    "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+  },
+  "shell_emitter": {
+    "strategy": "source_transform_emitter",
+    "source_files": [
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-hook.php"
+    ],
+    "public_shell_template_in_js": false,
+    "transform_markers": [
+      {
+        "marker": "function transformHookClass(source)",
+        "present": true
+      },
+      {
+        "marker": "function transformPlugin(source)",
+        "present": true
+      },
+      {
+        "marker": "transformHookClass(readFileSync(UPSTREAM_HOOK_CLASS",
+        "present": true
+      },
+      {
+        "marker": "transformPlugin(readFileSync(UPSTREAM_PLUGIN",
+        "present": true
+      },
+      {
+        "marker": "replaceExact(",
+        "present": true
+      }
+    ],
+    "forbidden_template_markers": [
+      {
+        "marker": "`<?php\\n\\nif ( ! defined( 'WPHX_F7_HOOK_BOOTSTRAPPED' )",
+        "present": false
+      },
+      {
+        "marker": "final class WP_Hook implements Iterator, ArrayAccess {\\n\\tpublic $callbacks",
+        "present": false
+      },
+      {
+        "marker": "function add_filter( $hook_name, $callback, $priority = 10, $accepted_args = 1 ) {\\n\\tglobal $wp_filter;",
+        "present": false
+      },
+      {
+        "marker": "function plugin_basename( $file ) {\\n\\tglobal $wp_plugin_paths;",
+        "present": false
+      }
+    ],
+    "generated_expectations": [
+      {
+        "id": "class:source-docblock",
+        "file": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+        "needle": "Plugin API: WP_Hook class",
+        "present": true
+      },
+      {
+        "id": "class:runtime-boundary",
+        "file": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+        "needle": "\\wphx\\fixtures\\php\\facade\\HookKernel::dispatchArgCount",
+        "present": true
+      },
+      {
+        "id": "plugin:source-docblock",
+        "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+        "needle": "The plugin API is located in this file",
+        "present": true
+      },
+      {
+        "id": "plugin:runtime-boundary",
+        "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+        "needle": "\\wphx\\fixtures\\php\\facade\\HookKernel::pluginBasenameAfterMappings",
+        "present": true
+      }
+    ]
+  },
+  "generated": {
+    "plugin": {
+      "path": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "sha256": "sha256:af2a7cd8b6104a8a06a73e569d890ef619b2e9f059ce420c98669319611b3369"
+    },
+    "hook_class": {
+      "path": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+      "sha256": "sha256:6fec8bc84ebd668be2b09f7254f693f6d79e598d2db4e1fcabdee2e8f6099dcd"
+    },
+    "files": [
+      {
+        "path": "wp-includes/class-wp-hook.php",
+        "bytes": 17490,
+        "sha256": "6fec8bc84ebd668be2b09f7254f693f6d79e598d2db4e1fcabdee2e8f6099dcd"
+      },
+      {
+        "path": "wp-includes/plugin.php",
+        "bytes": 36774,
+        "sha256": "af2a7cd8b6104a8a06a73e569d890ef619b2e9f059ce420c98669319611b3369"
+      }
+    ]
+  },
+  "ownership_manifest": "manifests/ownership/wphx-305-hooks-shell-emitter.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "broad_js_public_shell_template_removed": true,
+    "upstream_source_transform_emitter": true,
+    "generated_php_keeps_upstream_docblocks": true,
+    "haxe_runtime_boundary_preserved": true,
+    "verification_owner_issue": "WPHX-306"
+  }
+}

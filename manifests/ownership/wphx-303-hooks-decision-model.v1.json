@@ -42,7 +42,7 @@
       "receipt:wphx-303-hook-parity-candidate",
       "receipt:wphx-302-hook-surface"
     ],
-    "manifest_digest": "sha256:5c082ced0d1ea091f99d3edcf82142c454f31288579957e1c71b801208a9de1e"
+    "manifest_digest": "sha256:7416d012d2326cdf8babf9fc6a710c2e20ea7a4b12d4a0c83b308205011ec7d0"
   },
-  "notes": "WPHX-303 promotes the Haxe-authored hook decision model to parity candidate without claiming the public plugin.php/class-wp-hook.php shell is Haxe-owned. WPHX-304 installs the typed runtime boundary; WPHX-305 owns the remaining compiler/emitter work for public shell emission."
+  "notes": "WPHX-303 promotes the Haxe-authored hook decision model to parity candidate without claiming the public plugin.php/class-wp-hook.php shell is fully verified. WPHX-304 installs the typed runtime boundary, WPHX-305 replaces the broad JS shell template with a source-transform emitter, and WPHX-306 owns verified distribution-surface promotion."
 }
