@@ -29,6 +29,10 @@ This project uses sibling checkouts as upstream or compiler references. Keep thi
   - Current observed ref: `e0b355c6b`, tag `4.3.7`, branch reference `origin/4.3_bugfix`.
   - Role: Haxe 4.3.7 compiler and PHP generator reference.
   - Local note: nested repo inside `../haxe.compilerdev.reference`, with generated/test artifacts untracked.
+- `../haxe.compilerdev.reference` - broader Haxe ecosystem reference collection.
+  - Role: local source references for tink, coconut, genes, reflaxe, and related libraries.
+  - Notable for this project: `tink_hxx` as the base HXX/HHX markup parser/macro reference.
+  - Local note: this directory is a collection of nested repositories, not a single Git repository.
 
 ## Precedent Repositories
 
@@ -43,4 +47,3 @@ This project uses sibling checkouts as upstream or compiler references. Keep thi
 ## Working Rule
 
 Do not vendor or submodule these repositories during bootstrap. Lock exact refs and checksums, then read them as immutable evidence unless a task explicitly authorizes cross-repo changes.
-

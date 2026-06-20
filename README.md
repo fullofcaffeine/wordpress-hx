@@ -10,6 +10,9 @@ This repository is the program control plane. Upstream WordPress, Gutenberg, gen
 
 Important sibling checkouts are recorded in [docs/operations/repositories.md](docs/operations/repositories.md) and `upstream.lock.json`. The current vanilla WordPress oracle is `../wordpress-develop`.
 
+Dependent-library split policy, including the future `gutenberghx` repo trigger, is recorded in [docs/operations/dependent-libraries.md](docs/operations/dependent-libraries.md).
+HHX/template authoring policy is recorded in [docs/operations/hhx-template-policy.md](docs/operations/hhx-template-policy.md).
+
 Initial work follows the PRD sequence:
 
 1. Bootstrap repository structure and Beads/Codex integration.

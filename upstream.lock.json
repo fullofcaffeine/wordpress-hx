@@ -59,6 +59,28 @@
       "observedDirtyState": "Generated and repomix/test artifacts are untracked"
     },
     {
+      "id": "haxe-ecosystem-reference",
+      "name": "Haxe compilerdev ecosystem reference collection",
+      "relativePath": "../haxe.compilerdev.reference",
+      "role": "tink-coconut-genes-reflaxe-source-reference",
+      "authority": "Local nested-repository source references for tink libraries, coconut libraries, genes, reflaxe, and related Haxe ecosystem code",
+      "notablePaths": [
+        "tink_hxx",
+        "tink_core",
+        "tink_macro",
+        "tink_parse",
+        "tink_template",
+        "tink_html",
+        "tink_domspec",
+        "coconut.vdom",
+        "coconut.react-dom",
+        "coconut.ui",
+        "genes"
+      ],
+      "git": null,
+      "observedDirtyState": "Directory is a collection of nested repositories, not a single Git repository"
+    },
+    {
       "id": "opencodehx",
       "name": "OpenCodeHX",
       "relativePath": "../opencodehx",
@@ -88,4 +110,3 @@
     }
   ]
 }
-

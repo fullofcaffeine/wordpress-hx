@@ -7,10 +7,12 @@ The product and architecture authority is `docs/prd/wordpress-haxe-port.md`. Do 
 ## Work Surface
 
 - This repository is the program control plane and future Haxe implementation home.
+- A future `../gutenberghx` sibling repo may hold Gutenberg package implementation work after the browser feasibility gates justify parallelization. Until an ADR says otherwise, this repo's Beads database remains the task authority for that work.
 - `../wordpress-develop` is the vanilla WordPress 7.0 oracle checkout. Treat it as read-only unless a task explicitly says otherwise.
 - `../gutenberg` is the forward Gutenberg 23.4 oracle checkout. Do not mix this baseline into the WordPress 7.0 distribution track without an ADR.
 - `../genes` is the active genes-ts compiler checkout. Compiler fixes discovered here must be generic genes-ts work, not WordPress-specific special cases.
 - `../haxe.compilerdev.reference/haxe` is the Haxe 4.3.7 compiler source reference, including the PHP generator. Treat the wider `../haxe.compilerdev.reference` tree as reference material with nested repos.
+- `../haxe.compilerdev.reference` also contains local source references for tink/coconut/genes-style libraries. Use `../haxe.compilerdev.reference/tink_hxx` when designing HHX/markup parsing and typed template authoring.
 - `../opencodehx` and `../codex-hxrust` are precedent/reference repos for porting workflow, Beads practice, compiler-pressure handling, and generated-target quality. Do not copy their rules blindly; adapt only what fits this PRD.
 
 Record checkout paths, commits, dirty state, and intended authority in `upstream.lock.json` or later lock manifests before using a repo as evidence.
@@ -47,7 +49,7 @@ Generated target readability is a product surface. If good Haxe source emits wea
 
 ## Documentation
 
-Keep `README.md`, `docs/operations/repositories.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
+Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-libraries.md`, `docs/operations/hhx-template-policy.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
 
 ## Local Hooks and Checks
 
