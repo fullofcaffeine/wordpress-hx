@@ -88,3 +88,23 @@ The fixture compares an oracle PHP shell with a generated Haxe-backed shell for:
 The generated original-path shell owns the public PHP class ABI and delegates selected method logic to Haxe `ClassKernel`. This keeps plugin-visible reflection and instantiation behavior PHP-native while proving that class methods can cross into Haxe-owned implementation code.
 
 The committed snapshot is `manifests/php-facade/wphx-105-f4-public-class.v1.json`.
+
+## F5 Include and Load
+
+WPHX-106 owns the include/load fixture:
+
+```bash
+npm run php:facade:f5
+npm run php:facade:f5:check
+```
+
+The fixture compares an oracle original-path tree with a generated Haxe-backed original-path tree across four isolated scenarios:
+
+- `entry-default`, which loads `wp-settings.php` twice and proves `require_once` files run once while `include`/`require` files run on each entry load;
+- `entry-pluggable-override`, which predeclares a pluggable function and proves the generated shell respects the existing plugin-provided declaration;
+- `direct-guard`, which requires `wp-includes/load.php` without `ABSPATH` and proves the direct-load guard returns before public declarations or side effects;
+- `scope-include`, which includes a shell inside a PHP function and proves caller-scope local mutation and include return values.
+
+The generated shells own original paths, include timing, top-level side effects, conditional declarations, and PHP return values. Haxe `LoadKernel` owns selected payload helpers behind that boundary.
+
+The committed snapshot is `manifests/php-facade/wphx-106-f5-include-load.v1.json`.

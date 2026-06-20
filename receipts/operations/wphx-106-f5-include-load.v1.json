@@ -1,0 +1,63 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-106-f5-include-load",
+  "issue": {
+    "id": "wordpresshx-w91.1.6",
+    "external_ref": "WPHX-106",
+    "title": "WPHX-106 - F5 include/load fixture suite"
+  },
+  "recorded_at": "2026-06-20T06:55:00Z",
+  "artifacts": [
+    {
+      "path": "fixtures/php-facade/f5-include-load.hxml",
+      "role": "Haxe PHP include/load fixture compile file"
+    },
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/LoadEntry.hx",
+      "role": "Haxe entry point preserving include/load implementation emission"
+    },
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/LoadKernel.hx",
+      "role": "Haxe-owned include/load payload helpers"
+    },
+    {
+      "path": "fixtures/php-facade/oracle/include-load",
+      "role": "PHP oracle original-path tree for include/load contracts"
+    },
+    {
+      "path": "tools/php-facade/run-f5-include-load.mjs",
+      "role": "deterministic F5 include/load generator and checker"
+    },
+    {
+      "path": "manifests/php-facade/wphx-106-f5-include-load.v1.json",
+      "role": "F5 generated-output and include/load comparison snapshot"
+    },
+    {
+      "path": "docs/operations/php-facade.md",
+      "role": "PHP facade fixture runbook"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:facade:f5",
+    "npm run php:facade:f5:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "haxe_version": "4.3.7",
+    "include_once": true,
+    "repeated_include": true,
+    "conditional_pluggable_declaration": true,
+    "include_time_side_effects": true,
+    "include_return_values": true,
+    "normalized_original_paths": true,
+    "abspath_guard": true,
+    "function_scope_include": true,
+    "comparison_count": 12,
+    "runtime_matrix": [
+      "local-php-cli",
+      "docker-php-8.4-cli",
+      "docker-php-8.5-cli"
+    ],
+    "include_load_strategy": "Original-path PHP shells preserve include order, load timing, conditional declarations, return values, guards, and caller-scope behavior while delegating selected payload helpers to Haxe-owned implementation code."
+  }
+}
