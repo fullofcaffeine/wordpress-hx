@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 60,
+  "closed_task_count": 61,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -535,6 +535,16 @@
           "path": "receipts/wp-core/wphx-304-03-transient-fixture.v1.json",
           "sha256": "344c1fc23ff85e2cafabdb73a65c5f65e4b2a85343a5e98c188aaaf83c117e69",
           "id": "receipt:wphx-304-03-transient-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-304.04",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-304-04-object-cache-fixture.v1.json",
+          "sha256": "a3997e98e8b3ae24efc99f08febf3ed3509e1c56ff7a7e4da5782c1fae919d74",
+          "id": "receipt:wphx-304-04-object-cache-fixture"
         }
       ]
     },

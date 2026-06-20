@@ -1,0 +1,56 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/object-cache-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.8.4",
+    "external_ref": "WPHX-304.04"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "object cache runtime/drop-in differential fixture harness",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 default WP_Object_Cache runtime APIs, found-reference behavior, group/blog-prefix semantics, reset behavior, and cache-compat drop-in shims stay observable while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/cache-compat.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/option.php",
+      "src/wp-includes/functions.php"
+    ],
+    "digest": "sha256:812b30c3652269e2d9fd8e410fe29fbdf69b93a40567d44bf3d1a75db463b5b5"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-object-cache-fixture.mjs",
+    "manifests/wp-core/wphx-304-04-object-cache-fixture.v1.json",
+    "receipts/wp-core/wphx-304-04-object-cache-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-304-04-object-cache-fixture.v1.json",
+    "manifests/ownership/wphx-304-04-object-cache-fixture.v1.json",
+    "receipts/wp-core/wphx-304-04-object-cache-fixture.v1.json",
+    "build/wp-core/wphx-304-04"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-304-object-cache",
+      "npm run wp:core:wphx-304-object-cache:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-304-04-object-cache-fixture"
+    ],
+    "manifest_digest": "sha256:c3f3c38f84b36c5f927df735a2709da36fc84f3318a7b5a349f938e5356f6e8b"
+  },
+  "notes": "The candidate fixture root is an oracle source mirror for WPHX-304.04. The drop-in probe intentionally supplies a tiny legacy object-cache.php implementation so WordPress's cache-compat.php installs the missing APIs under real bootstrap order."
+}

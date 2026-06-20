@@ -1,0 +1,40 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-304-04-object-cache-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.8.4",
+    "external_ref": "WPHX-304.04",
+    "title": "Build object cache runtime/drop-in fixture harness"
+  },
+  "recorded_at": "2026-06-21T03:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-304-04-object-cache-fixture.v1.json",
+      "role": "object cache runtime/drop-in differential fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-304-04-object-cache-fixture.v1.json",
+      "role": "external-oracle ownership manifest for the fixture harness"
+    },
+    {
+      "path": "tools/wp-core/run-object-cache-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-304-object-cache",
+    "npm run wp:core:wphx-304-object-cache:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 49,
+    "fixture_cases": 14,
+    "runtime_cases": 9,
+    "dropin_cases": 5,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}

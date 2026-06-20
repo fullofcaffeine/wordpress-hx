@@ -89,6 +89,8 @@
     "wp:core:wphx-304-option-storage:check": "node tools/wp-core/run-option-storage-fixture.mjs --check",
     "wp:core:wphx-304-transients": "node tools/wp-core/run-transient-fixture.mjs",
     "wp:core:wphx-304-transients:check": "node tools/wp-core/run-transient-fixture.mjs --check",
+    "wp:core:wphx-304-object-cache": "node tools/wp-core/run-object-cache-fixture.mjs",
+    "wp:core:wphx-304-object-cache:check": "node tools/wp-core/run-object-cache-fixture.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
