@@ -1,0 +1,3604 @@
+{
+  "schema": "wphx.wp-boundary-types.v1",
+  "issue": "WPHX-203",
+  "generated_at": "2026-06-20T06:20:00.000Z",
+  "generator": "tools/wp-boundary/run-boundary-types.mjs",
+  "fixture": {
+    "hxml": "fixtures/wp-boundary/boundary-types.hxml",
+    "haxe_sources": [
+      "src/wphx/wp/boundary/CallableValue.hx",
+      "src/wphx/wp/boundary/Globals.hx",
+      "src/wphx/wp/boundary/NativeArray.hx",
+      "src/wphx/wp/boundary/ReferenceBoundary.hx",
+      "src/wphx/wp/boundary/WpErrorValue.hx",
+      "fixtures/wp-boundary/src/wphx/fixtures/wp/boundary/BoundaryEntry.hx",
+      "fixtures/wp-boundary/src/wphx/fixtures/wp/boundary/BoundaryKernel.hx"
+    ],
+    "oracle_shell": "fixtures/wp-boundary/oracle/boundary-types.php",
+    "generated_shell": "build/wp-boundary/generated/wp-includes/boundary-types.php",
+    "probe": "build/wp-boundary/probe.php"
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_version": "8.4.7",
+    "docker_server_version": "28.3.2"
+  },
+  "build": {
+    "command": "haxe fixtures/wp-boundary/boundary-types.hxml",
+    "haxe_output_dir": "build/wp-boundary/haxe",
+    "generated_file_count": 32,
+    "generated_files": [
+      {
+        "path": "index.php",
+        "bytes": 338,
+        "sha256": "70958c16be38270484871903d2e7a5ded4b76979d666274c7a73f57fceffc2b2"
+      },
+      {
+        "path": "lib/Array_hx.php",
+        "bytes": 25987,
+        "sha256": "85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+      },
+      {
+        "path": "lib/Date.php",
+        "bytes": 2139,
+        "sha256": "f479e2e3943b84aa65982825b6d58a06dc4b649886094993fb0c65b7d1160ae3"
+      },
+      {
+        "path": "lib/haxe/ds/StringMap.php",
+        "bytes": 606,
+        "sha256": "dca52ff131a315f9c0bc0c4f25fac0a89e18bbe21c760de4209d5e7233c6dffb"
+      },
+      {
+        "path": "lib/haxe/Exception.php",
+        "bytes": 3913,
+        "sha256": "9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+      },
+      {
+        "path": "lib/haxe/format/JsonPrinter.php",
+        "bytes": 16447,
+        "sha256": "aa845f9b09e4b7234cad1a3a28665138c47405bf295acf20f53f51658fb1949a"
+      },
+      {
+        "path": "lib/haxe/IMap.php",
+        "bytes": 142,
+        "sha256": "c3b8295ed5c31c5f8a9a252f829691e5772a250328540157b8a4be20741a497e"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1248,
+        "sha256": "9fe08304f6fc267231424a61fd632408d7b4207d52f470fbdc28d9e6fecfe75a"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 508,
+        "sha256": "3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+      },
+      {
+        "path": "lib/haxe/Json.php",
+        "bytes": 3422,
+        "sha256": "1cb458db8bd898681534389b54e5a94c2bf857af36e2256b21732bcee9f698fc"
+      },
+      {
+        "path": "lib/haxe/ValueException.php",
+        "bytes": 1062,
+        "sha256": "647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+      },
+      {
+        "path": "lib/php/_Boot/HxAnon.php",
+        "bytes": 1398,
+        "sha256": "c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+      },
+      {
+        "path": "lib/php/_Boot/HxClass.php",
+        "bytes": 3266,
+        "sha256": "1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+      },
+      {
+        "path": "lib/php/_Boot/HxClosure.php",
+        "bytes": 3162,
+        "sha256": "a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+      },
+      {
+        "path": "lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 4438,
+        "sha256": "c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+      },
+      {
+        "path": "lib/php/_Boot/HxEnum.php",
+        "bytes": 1316,
+        "sha256": "f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+      },
+      {
+        "path": "lib/php/_Boot/HxString.php",
+        "bytes": 9912,
+        "sha256": "1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+      },
+      {
+        "path": "lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "lib/php/Boot.php",
+        "bytes": 42682,
+        "sha256": "9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+      },
+      {
+        "path": "lib/Reflect.php",
+        "bytes": 4645,
+        "sha256": "8f37a66ac58630cf2461ab117a5b1055b66f9000dcebab3950c28a6d3cff7a15"
+      },
+      {
+        "path": "lib/Std.php",
+        "bytes": 1131,
+        "sha256": "2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+      },
+      {
+        "path": "lib/StringBuf.php",
+        "bytes": 1898,
+        "sha256": "b8fd5d3285b6bf20e78274506fd346e31bd551248b21839ad1986116d3178ce5"
+      },
+      {
+        "path": "lib/StringTools.php",
+        "bytes": 3629,
+        "sha256": "9ed5d02bfa2ea61300077f5a8ec4eda45563067a69254014ab1c70fd1e40f43d"
+      },
+      {
+        "path": "lib/Type.php",
+        "bytes": 8442,
+        "sha256": "b76c9fa6821b5db231d2b5104dd51f51c9e0e290cf4fd2a5c98caa3d4449c43f"
+      },
+      {
+        "path": "lib/ValueType.php",
+        "bytes": 2245,
+        "sha256": "2303bab20d20c49f92b0b2a9171a4f8df47247ad749ce2b43c4b3787ab1b9335"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/boundary/BoundaryEntry.php",
+        "bytes": 391,
+        "sha256": "08bb30f45fad7e80d40042b06253ef78e9ee841baeaec2aa6bdc50b81f38554a"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/boundary/BoundaryKernel.php",
+        "bytes": 3686,
+        "sha256": "9f61cb582122ac7548a113a49d426a28439ae66cb30c4ebc64e3bf3ad94a5221"
+      },
+      {
+        "path": "lib/wphx/wp/boundary/CallableValue.php",
+        "bytes": 967,
+        "sha256": "d5e776119257dcf7e56bb5d95f669a4b0f673a9c111d9987dda37146b0a9af34"
+      },
+      {
+        "path": "lib/wphx/wp/boundary/Globals.php",
+        "bytes": 1392,
+        "sha256": "fbdb12cd50f421380f3ebf7e6615a4d0a04ae87d87f57ab5ba2321c31c0effe6"
+      },
+      {
+        "path": "lib/wphx/wp/boundary/NativeArray.php",
+        "bytes": 2039,
+        "sha256": "f4d5fc089185f1fac120beb98393b190ddfd015b8036d5be04f910359ffd051a"
+      },
+      {
+        "path": "lib/wphx/wp/boundary/ReferenceBoundary.php",
+        "bytes": 633,
+        "sha256": "e42dcb23165a44655b464fb2da81a337dca8b7040eefe642fc52495e3a246805"
+      },
+      {
+        "path": "lib/wphx/wp/boundary/WpErrorValue.php",
+        "bytes": 1611,
+        "sha256": "71b56fb0b86ab6e85eb0657ae9193074d9d0a150bbeaf840ecf8d683e2c54326"
+      }
+    ],
+    "shell": {
+      "path": "build/wp-boundary/generated/wp-includes/boundary-types.php",
+      "sha256": "0b035339e2d19fac2fface08216da35b7a52cf9728f88320db52e136e19bbcee"
+    },
+    "probe": {
+      "path": "build/wp-boundary/probe.php",
+      "sha256": "4ebbb16b2ced978f4648ab88edcec009a9d1c44a92979e386093f4a4feec94ba"
+    }
+  },
+  "runtime_runs": [
+    {
+      "id": "local-php-cli:oracle",
+      "command": "php build/wp-boundary/probe.php oracle fixtures/wp-boundary/oracle/boundary-types.php",
+      "result": {
+        "mode": "oracle",
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "local-php-cli:generated",
+      "command": "php build/wp-boundary/probe.php generated build/wp-boundary/generated/wp-includes/boundary-types.php",
+      "result": {
+        "mode": "generated",
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.4-cli:oracle",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-boundary/probe.php oracle fixtures/wp-boundary/oracle/boundary-types.php",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "result": {
+        "mode": "oracle",
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.4-cli:generated",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-boundary/probe.php generated build/wp-boundary/generated/wp-includes/boundary-types.php",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "result": {
+        "mode": "generated",
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.5-cli:oracle",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-boundary/probe.php oracle fixtures/wp-boundary/oracle/boundary-types.php",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "result": {
+        "mode": "oracle",
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.5-cli:generated",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-boundary/probe.php generated build/wp-boundary/generated/wp-includes/boundary-types.php",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "result": {
+        "mode": "generated",
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "local-php-cli",
+      "matches": true,
+      "oracle": {
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      },
+      "generated": {
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.4-cli",
+      "matches": true,
+      "oracle": {
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      },
+      "generated": {
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.5-cli",
+      "matches": true,
+      "oracle": {
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      },
+      "generated": {
+        "before": {
+          "wphx_boundary_get": false,
+          "wphx_boundary_set_global": false,
+          "wphx_boundary_callback": false,
+          "wphx_boundary_reference_param": false,
+          "wphx_boundary_reference_return": false,
+          "wphx_boundary_reference_callback": false,
+          "wphx_boundary_error_snapshot": false,
+          "WP_Error": false
+        },
+        "afterSecondRequire": {
+          "wphx_boundary_get": true,
+          "wphx_boundary_set_global": true,
+          "wphx_boundary_callback": true,
+          "wphx_boundary_reference_param": true,
+          "wphx_boundary_reference_return": true,
+          "wphx_boundary_reference_callback": true,
+          "wphx_boundary_error_snapshot": true,
+          "WP_Error": true
+        },
+        "globals": {
+          "hasOptions": true,
+          "optionsType": "array",
+          "optionKeys": [
+            "siteurl",
+            "blog_public",
+            "empty_string",
+            "zero_string",
+            "false_bool",
+            "null_value",
+            "list",
+            "assoc",
+            "numeric_keys",
+            "nested",
+            "dynamic"
+          ]
+        },
+        "arrayCases": {
+          "missingDefault": "fallback",
+          "nullValue": null,
+          "nullArrayKeyExists": true,
+          "nullIsset": false,
+          "falseValue": false,
+          "zeroString": "0",
+          "emptyString": "",
+          "listCount": 2,
+          "listValues": [
+            "first",
+            "second"
+          ],
+          "assocKeys": [
+            "alpha",
+            "beta"
+          ],
+          "assocValues": [
+            1,
+            2
+          ],
+          "numericKeys": [
+            0,
+            2,
+            10
+          ],
+          "numericValues": [
+            "zero",
+            "two",
+            "ten"
+          ],
+          "nestedThemeName": "twentytwentyseven",
+          "dynamicSetReturn": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "dynamicStored": {
+            "nested": {
+              "value": 7
+            }
+          },
+          "normalizedKey": "site_url"
+        },
+        "callableCase": {
+          "return": "CORE-CALLBACK"
+        },
+        "referenceCases": {
+          "paramReturn": 9,
+          "paramValueAfterCall": "CORE-tail",
+          "storeBefore": "seed",
+          "referenceValueAfterAssignment": "changed-through-reference",
+          "storeAfter": "changed-through-reference",
+          "callbackReturn": "callback-mutated",
+          "callbackValueAfterCall": "callback-mutated"
+        },
+        "errorCase": {
+          "isWpError": true,
+          "hasErrors": true,
+          "code": "wphx_boundary",
+          "message": "Boundary failed",
+          "data": {
+            "status": 500
+          }
+        },
+        "reflection": {
+          "get": {
+            "name": "wphx_boundary_get",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "default",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": false,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "set": {
+            "name": "wphx_boundary_set_global",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "key",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "callback": {
+            "name": "wphx_boundary_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceParam": {
+            "name": "wphx_boundary_reference_param",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "value",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              },
+              {
+                "name": "suffix",
+                "position": 1,
+                "isOptional": true,
+                "hasDefault": true,
+                "default": "-ref",
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          },
+          "referenceReturn": {
+            "name": "wphx_boundary_reference_return",
+            "numberOfParameters": 0,
+            "numberOfRequiredParameters": 0,
+            "returnsReference": true,
+            "hasReturnType": false,
+            "parameters": []
+          },
+          "referenceCallback": {
+            "name": "wphx_boundary_reference_callback",
+            "numberOfParameters": 2,
+            "numberOfRequiredParameters": 2,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "callback",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              },
+              {
+                "name": "value",
+                "position": 1,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": true,
+                "isVariadic": false
+              }
+            ]
+          },
+          "error": {
+            "name": "wphx_boundary_error_snapshot",
+            "numberOfParameters": 1,
+            "numberOfRequiredParameters": 1,
+            "returnsReference": false,
+            "hasReturnType": false,
+            "parameters": [
+              {
+                "name": "error",
+                "position": 0,
+                "isOptional": false,
+                "hasDefault": false,
+                "default": null,
+                "hasType": false,
+                "isPassedByReference": false,
+                "isVariadic": false
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "boundary_strategy": {
+    "haxe_owns_native_value_helpers": true,
+    "php_shell_owns_original_public_reference_abi": true,
+    "wp_error_is_native_php_object": true,
+    "next_generator_contract": "WPHX-204 should call these helpers from generated original-name facades instead of inventing per-function native value handling."
+  },
+  "validation_result": {
+    "status": "passed",
+    "runtime_run_count": 6,
+    "comparison_count": 3,
+    "arrays": true,
+    "globals": true,
+    "callables": true,
+    "references": true,
+    "wp_error_values": true
+  }
+}

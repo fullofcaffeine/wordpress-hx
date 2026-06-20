@@ -45,6 +45,8 @@
     "php:smoke:check": "node tools/php-smoke/run-smoke.mjs --check",
     "receipts:build": "node tools/receipts/build-evidence-links.mjs",
     "receipts:validate": "node tools/receipts/validate-receipts.mjs",
+    "wp:boundary": "node tools/wp-boundary/run-boundary-types.mjs",
+    "wp:boundary:check": "node tools/wp-boundary/run-boundary-types.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
     "wp:macro:bindings:check": "node tools/wp-macro/run-binding-validator.mjs --check",
     "operations:multi-agent:check": "node tools/operations/check-multi-agent-drill.mjs",

@@ -1,0 +1,26 @@
+{
+  "schema": "wphx.wp-boundary-types-receipt.v1",
+  "id": "receipt:wphx-203-boundary-types",
+  "issue": "WPHX-203",
+  "recorded_at": "2026-06-20T06:20:00.000Z",
+  "command": "npm run wp:boundary",
+  "status": "passed",
+  "manifest": "manifests/wp-boundary/wphx-203-boundary-types.v1.json",
+  "manifest_sha256": "sha256:6487f2d4c96de76b9b81849bf2a8445d87f5d5b5ffc5a8ef9e180f3a3739e5d0",
+  "boundary_sources": [
+    "src/wphx/wp/boundary/CallableValue.hx",
+    "src/wphx/wp/boundary/Globals.hx",
+    "src/wphx/wp/boundary/NativeArray.hx",
+    "src/wphx/wp/boundary/ReferenceBoundary.hx",
+    "src/wphx/wp/boundary/WpErrorValue.hx"
+  ],
+  "runtime_run_count": 6,
+  "comparison_count": 3,
+  "coverage": [
+    "arrays",
+    "globals",
+    "callables",
+    "references",
+    "wp_error_values"
+  ]
+}
