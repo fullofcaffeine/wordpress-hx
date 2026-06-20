@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-303-04-deprecation-error-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.7.4",
+    "external_ref": "WPHX-303.04",
+    "title": "Build deprecation and native error signaling fixture harness"
+  },
+  "recorded_at": "2026-06-21T00:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-303-04-deprecation-error-fixture.v1.json",
+      "role": "deprecation and native error signaling fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-303-04-deprecation-error-fixture.v1.json",
+      "role": "external-oracle ownership manifest for native PHP signaling boundaries"
+    },
+    {
+      "path": "tools/wp-core/run-deprecation-error-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-303-deprecation",
+    "npm run wp:core:wphx-303-deprecation:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 10,
+    "fixture_cases": 17,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}

@@ -1,0 +1,486 @@
+{
+  "schema": "wphx.wp-core-deprecation-error-fixture.v1",
+  "issue": "WPHX-303.04",
+  "generated_at": "2026-06-21T00:45:00.000Z",
+  "generator": "tools/wp-core/run-deprecation-error-fixture.mjs",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-303-01-error-format-surface.v1.json",
+      "bytes": 181304,
+      "sha256": "sha256:f7fd390715855d82219862bf8f6666e9ea3ca463a6dde6e7bcab0dd00bce4e11"
+    },
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 4825,
+      "sha256": "sha256:ca33f8ebd455f400c52cac5402c012aa43a7096e6b5cdd433e375674cbe4c78e"
+    },
+    "source_units": [
+      {
+        "path": "src/wp-includes/class-wp-hook.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-hook.php",
+        "bytes": 16636,
+        "sha256": "sha256:a66fe7372af72876fc702e50943f9a2a8dff4ed7394163e07491b80a06e27f1d"
+      },
+      {
+        "path": "src/wp-includes/compat.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/compat.php",
+        "bytes": 16063,
+        "sha256": "sha256:3b87e422b612fdf23d26e600552aa1f0444c8db49b2d079538a9e460db0a4025"
+      },
+      {
+        "path": "src/wp-includes/utf8.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/utf8.php",
+        "bytes": 7260,
+        "sha256": "sha256:f06764a8f214a4e3d71cbac4ea5af4d9edeaf07701cfe09436c251a4042db0d7"
+      },
+      {
+        "path": "src/wp-includes/load.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/load.php",
+        "bytes": 56475,
+        "sha256": "sha256:3efd0934bd8a454a8d7076fbbd21504ea097a753125a48e64b8a1dad380d357a"
+      },
+      {
+        "path": "src/wp-includes/plugin.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/plugin.php",
+        "bytes": 36501,
+        "sha256": "sha256:2e06902ae7d65d7dad37cbafd8e8feff83e4aeeff3a7839885ce7fe4f0c94d68"
+      },
+      {
+        "path": "src/wp-includes/cache.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/cache.php",
+        "bytes": 13486,
+        "sha256": "sha256:a219c2b57cc9990b560c6b497c877db443b7e29239645a6a79b2d76839c46e19"
+      },
+      {
+        "path": "src/wp-includes/class-wp-object-cache.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-object-cache.php",
+        "bytes": 17524,
+        "sha256": "sha256:1857b774bd9cfbafbd50a1b1424f7df637d202cf3f2253cda9798d4ad56f3cf0"
+      },
+      {
+        "path": "src/wp-includes/option.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/option.php",
+        "bytes": 105079,
+        "sha256": "sha256:d1daad9a1d19ee438eb6e3b6698b42a3682f6f7ab9626be02f2157a238ea3e2f"
+      },
+      {
+        "path": "src/wp-includes/class-wp-error.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-error.php",
+        "bytes": 7502,
+        "sha256": "sha256:fe0e54bcb095f3ebb6493cbd558f927234e1bff3f643b2ca00f7e2d74309400c"
+      },
+      {
+        "path": "src/wp-includes/class-wp-exception.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-exception.php",
+        "bytes": 253,
+        "sha256": "sha256:dc952b0d42f31798c84d0bd37b68beff7e8e66c3d88ee94d5d5d206a342fa6ef"
+      },
+      {
+        "path": "src/wp-includes/functions.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/functions.php",
+        "bytes": 290326,
+        "sha256": "sha256:1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+      },
+      {
+        "path": "src/wp-includes/http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/http.php",
+        "bytes": 27255,
+        "sha256": "sha256:7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+      },
+      {
+        "path": "src/wp-includes/kses.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/kses.php",
+        "bytes": 82580,
+        "sha256": "sha256:4220320e7e4c3cc0fb82d76d0bfaeb1ccf49766ee2fea10d9ad0bf93ae2b090d"
+      },
+      {
+        "path": "src/wp-includes/formatting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/formatting.php",
+        "bytes": 354690,
+        "sha256": "sha256:922d8ce082d25d3375dae336feec1b13288df46e15c9c2dcac013c8cc2c44648"
+      }
+    ],
+    "upstream_digest": "sha256:6cd33dc6507277df743f0aecec6160a1f86c6edf45d7d5815518e8f182c49ec7"
+  },
+  "fixture": {
+    "candidate_kind": "oracle_source_mirror",
+    "source_domain": "wp_die, deprecation helpers, and native error signaling",
+    "covered_symbols": [
+      "wp_trigger_error",
+      "_deprecated_function",
+      "_deprecated_argument",
+      "_doing_it_wrong",
+      "wp_die",
+      "_wp_die_process_input",
+      "_default_wp_die_handler",
+      "_ajax_wp_die_handler",
+      "_json_wp_die_handler",
+      "_scalar_wp_die_handler"
+    ],
+    "oracle_root": "build/wp-core/wphx-303-04/oracle",
+    "candidate_root": "build/wp-core/wphx-303-04/candidate",
+    "probe": {
+      "path": "build/wp-core/wphx-303-04/probe.php",
+      "sha256": "sha256:08f4f60860e69a8a8d8e0caf22f4290a5ce47691f21935ebf6efb345560fc7da"
+    },
+    "cases": [
+      {
+        "id": "wp-trigger-error:warning-sanitized",
+        "symbol": "wp_trigger_error",
+        "focus": "E_USER_WARNING message formatting, KSES stripping, always/debug hooks"
+      },
+      {
+        "id": "wp-trigger-error:notice-default",
+        "symbol": "wp_trigger_error",
+        "focus": "default E_USER_NOTICE and empty function-name formatting"
+      },
+      {
+        "id": "wp-trigger-error:deprecated",
+        "symbol": "wp_trigger_error",
+        "focus": "E_USER_DEPRECATED capture without losing native level"
+      },
+      {
+        "id": "wp-trigger-error:user-error-exception",
+        "symbol": "wp_trigger_error",
+        "focus": "E_USER_ERROR throws WP_Exception instead of trigger_error()"
+      },
+      {
+        "id": "wp-trigger-error:filter-suppressed",
+        "symbol": "wp_trigger_error",
+        "focus": "wp_trigger_error_trigger_error=false prevents debug hook and native error"
+      },
+      {
+        "id": "deprecated-function:replacement",
+        "symbol": "_deprecated_function",
+        "focus": "deprecated_function_run hook and E_USER_DEPRECATED replacement message"
+      },
+      {
+        "id": "deprecated-function:suppressed",
+        "symbol": "_deprecated_function",
+        "focus": "deprecated_function_trigger_error=false keeps hook while suppressing native deprecation"
+      },
+      {
+        "id": "deprecated-argument:message",
+        "symbol": "_deprecated_argument",
+        "focus": "deprecated_argument_run hook and custom message"
+      },
+      {
+        "id": "deprecated-argument:no-message",
+        "symbol": "_deprecated_argument",
+        "focus": "no-alternative deprecated argument message"
+      },
+      {
+        "id": "doing-it-wrong:notice-and-filter",
+        "symbol": "_doing_it_wrong",
+        "focus": "doing_it_wrong_run hook, filter arguments, and E_USER_NOTICE message"
+      },
+      {
+        "id": "wp-die:process-input-wp-error",
+        "symbol": "_wp_die_process_input",
+        "focus": "WP_Error message, title, status, code, error_data, and additional_errors"
+      },
+      {
+        "id": "wp-die:handler-selection-default",
+        "symbol": "wp_die",
+        "focus": "default wp_die_handler filter and processed scalar args"
+      },
+      {
+        "id": "wp-die:handler-selection-ajax",
+        "symbol": "wp_die",
+        "focus": "wp_doing_ajax branch selects wp_die_ajax_handler"
+      },
+      {
+        "id": "wp-die:handler-selection-json",
+        "symbol": "wp_die",
+        "focus": "JSON Accept branch selects wp_die_json_handler"
+      },
+      {
+        "id": "wp-die:default-handler-output",
+        "symbol": "_default_wp_die_handler",
+        "focus": "HTML output, additional errors, response handling, and exit=false"
+      },
+      {
+        "id": "wp-die:json-handler-output",
+        "symbol": "_json_wp_die_handler",
+        "focus": "JSON handler encoded payload and exit=false"
+      },
+      {
+        "id": "wp-die:ajax-and-scalar-output",
+        "symbol": "_ajax_wp_die_handler/_scalar_wp_die_handler",
+        "focus": "Ajax and scalar text output without exiting"
+      }
+    ],
+    "native_boundaries": [
+      {
+        "id": "php-user-error-engine",
+        "reason": "E_USER_WARNING, E_USER_NOTICE, and E_USER_DEPRECATED are PHP engine-level trigger_error() events; fixtures record type and message through a native error handler."
+      },
+      {
+        "id": "wp-exception-user-error",
+        "reason": "WordPress maps E_USER_ERROR in wp_trigger_error() to the native WP_Exception class."
+      },
+      {
+        "id": "wp-die-output-headers-exit",
+        "reason": "wp_die handlers combine PHP output buffering, header/status calls, and optional die()/exit behavior."
+      },
+      {
+        "id": "plugin-hooks-and-filters",
+        "reason": "Deprecation, _doing_it_wrong(), wp_trigger_error(), and wp_die handler selection all expose native PHP callback hooks and filters."
+      }
+    ]
+  },
+  "runtimes": {
+    "local": {
+      "id": "local-php-cli",
+      "php_version": "8.4.7",
+      "executable": "/opt/homebrew/bin/php"
+    },
+    "docker": [
+      {
+        "id": "docker-php-8.4-cli",
+        "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d"
+      },
+      {
+        "id": "docker-php-8.5-cli",
+        "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e"
+      }
+    ],
+    "skipped": []
+  },
+  "runs": [
+    {
+      "id": "local-php-cli:oracle",
+      "runtime": "local-php-cli",
+      "mode": "oracle",
+      "command": "php build/wp-core/wphx-303-04/probe.php oracle build/wp-core/wphx-303-04/oracle",
+      "php_version": "8.4.7",
+      "wp_debug": true,
+      "wp_debug_display": true,
+      "covered_function_count": 10,
+      "case_count": 17,
+      "case_ids": [
+        "wp-trigger-error:warning-sanitized",
+        "wp-trigger-error:notice-default",
+        "wp-trigger-error:deprecated",
+        "wp-trigger-error:user-error-exception",
+        "wp-trigger-error:filter-suppressed",
+        "deprecated-function:replacement",
+        "deprecated-function:suppressed",
+        "deprecated-argument:message",
+        "deprecated-argument:no-message",
+        "doing-it-wrong:notice-and-filter",
+        "wp-die:process-input-wp-error",
+        "wp-die:handler-selection-default",
+        "wp-die:handler-selection-ajax",
+        "wp-die:handler-selection-json",
+        "wp-die:default-handler-output",
+        "wp-die:json-handler-output",
+        "wp-die:ajax-and-scalar-output"
+      ],
+      "normalized_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0"
+    },
+    {
+      "id": "local-php-cli:candidate",
+      "runtime": "local-php-cli",
+      "mode": "candidate",
+      "command": "php build/wp-core/wphx-303-04/probe.php candidate build/wp-core/wphx-303-04/candidate",
+      "php_version": "8.4.7",
+      "wp_debug": true,
+      "wp_debug_display": true,
+      "covered_function_count": 10,
+      "case_count": 17,
+      "case_ids": [
+        "wp-trigger-error:warning-sanitized",
+        "wp-trigger-error:notice-default",
+        "wp-trigger-error:deprecated",
+        "wp-trigger-error:user-error-exception",
+        "wp-trigger-error:filter-suppressed",
+        "deprecated-function:replacement",
+        "deprecated-function:suppressed",
+        "deprecated-argument:message",
+        "deprecated-argument:no-message",
+        "doing-it-wrong:notice-and-filter",
+        "wp-die:process-input-wp-error",
+        "wp-die:handler-selection-default",
+        "wp-die:handler-selection-ajax",
+        "wp-die:handler-selection-json",
+        "wp-die:default-handler-output",
+        "wp-die:json-handler-output",
+        "wp-die:ajax-and-scalar-output"
+      ],
+      "normalized_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0"
+    },
+    {
+      "id": "docker-php-8.4-cli:oracle",
+      "runtime": "docker-php-8.4-cli",
+      "mode": "oracle",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-303-04/probe.php oracle /work/build/wp-core/wphx-303-04/oracle",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "php_version": "8.4.22",
+      "wp_debug": true,
+      "wp_debug_display": true,
+      "covered_function_count": 10,
+      "case_count": 17,
+      "case_ids": [
+        "wp-trigger-error:warning-sanitized",
+        "wp-trigger-error:notice-default",
+        "wp-trigger-error:deprecated",
+        "wp-trigger-error:user-error-exception",
+        "wp-trigger-error:filter-suppressed",
+        "deprecated-function:replacement",
+        "deprecated-function:suppressed",
+        "deprecated-argument:message",
+        "deprecated-argument:no-message",
+        "doing-it-wrong:notice-and-filter",
+        "wp-die:process-input-wp-error",
+        "wp-die:handler-selection-default",
+        "wp-die:handler-selection-ajax",
+        "wp-die:handler-selection-json",
+        "wp-die:default-handler-output",
+        "wp-die:json-handler-output",
+        "wp-die:ajax-and-scalar-output"
+      ],
+      "normalized_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0"
+    },
+    {
+      "id": "docker-php-8.4-cli:candidate",
+      "runtime": "docker-php-8.4-cli",
+      "mode": "candidate",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-303-04/probe.php candidate /work/build/wp-core/wphx-303-04/candidate",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "php_version": "8.4.22",
+      "wp_debug": true,
+      "wp_debug_display": true,
+      "covered_function_count": 10,
+      "case_count": 17,
+      "case_ids": [
+        "wp-trigger-error:warning-sanitized",
+        "wp-trigger-error:notice-default",
+        "wp-trigger-error:deprecated",
+        "wp-trigger-error:user-error-exception",
+        "wp-trigger-error:filter-suppressed",
+        "deprecated-function:replacement",
+        "deprecated-function:suppressed",
+        "deprecated-argument:message",
+        "deprecated-argument:no-message",
+        "doing-it-wrong:notice-and-filter",
+        "wp-die:process-input-wp-error",
+        "wp-die:handler-selection-default",
+        "wp-die:handler-selection-ajax",
+        "wp-die:handler-selection-json",
+        "wp-die:default-handler-output",
+        "wp-die:json-handler-output",
+        "wp-die:ajax-and-scalar-output"
+      ],
+      "normalized_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0"
+    },
+    {
+      "id": "docker-php-8.5-cli:oracle",
+      "runtime": "docker-php-8.5-cli",
+      "mode": "oracle",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-303-04/probe.php oracle /work/build/wp-core/wphx-303-04/oracle",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "php_version": "8.5.7",
+      "wp_debug": true,
+      "wp_debug_display": true,
+      "covered_function_count": 10,
+      "case_count": 17,
+      "case_ids": [
+        "wp-trigger-error:warning-sanitized",
+        "wp-trigger-error:notice-default",
+        "wp-trigger-error:deprecated",
+        "wp-trigger-error:user-error-exception",
+        "wp-trigger-error:filter-suppressed",
+        "deprecated-function:replacement",
+        "deprecated-function:suppressed",
+        "deprecated-argument:message",
+        "deprecated-argument:no-message",
+        "doing-it-wrong:notice-and-filter",
+        "wp-die:process-input-wp-error",
+        "wp-die:handler-selection-default",
+        "wp-die:handler-selection-ajax",
+        "wp-die:handler-selection-json",
+        "wp-die:default-handler-output",
+        "wp-die:json-handler-output",
+        "wp-die:ajax-and-scalar-output"
+      ],
+      "normalized_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0"
+    },
+    {
+      "id": "docker-php-8.5-cli:candidate",
+      "runtime": "docker-php-8.5-cli",
+      "mode": "candidate",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-303-04/probe.php candidate /work/build/wp-core/wphx-303-04/candidate",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "php_version": "8.5.7",
+      "wp_debug": true,
+      "wp_debug_display": true,
+      "covered_function_count": 10,
+      "case_count": 17,
+      "case_ids": [
+        "wp-trigger-error:warning-sanitized",
+        "wp-trigger-error:notice-default",
+        "wp-trigger-error:deprecated",
+        "wp-trigger-error:user-error-exception",
+        "wp-trigger-error:filter-suppressed",
+        "deprecated-function:replacement",
+        "deprecated-function:suppressed",
+        "deprecated-argument:message",
+        "deprecated-argument:no-message",
+        "doing-it-wrong:notice-and-filter",
+        "wp-die:process-input-wp-error",
+        "wp-die:handler-selection-default",
+        "wp-die:handler-selection-ajax",
+        "wp-die:handler-selection-json",
+        "wp-die:default-handler-output",
+        "wp-die:json-handler-output",
+        "wp-die:ajax-and-scalar-output"
+      ],
+      "normalized_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "local-php-cli",
+      "matches": true,
+      "oracle_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0",
+      "candidate_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0",
+      "case_count": 17
+    },
+    {
+      "id": "docker-php-8.4-cli",
+      "matches": true,
+      "oracle_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0",
+      "candidate_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0",
+      "case_count": 17
+    },
+    {
+      "id": "docker-php-8.5-cli",
+      "matches": true,
+      "oracle_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0",
+      "candidate_sha256": "sha256:129dff2a7f0df952b9cdb2f07ce116710106b318ad705a9883fa075d3e8692b0",
+      "case_count": 17
+    }
+  ],
+  "remaining_gaps": [
+    {
+      "id": "haxe-candidate-not-yet-installed",
+      "owner": "WPHX-303",
+      "detail": "The candidate side is a copied WordPress oracle source tree. A later Haxe candidate can own pure message/branch decisions while preserving PHP-native trigger_error(), WP_Exception, hooks, headers, and exit semantics."
+    },
+    {
+      "id": "full-wp-die-context-matrix",
+      "owner": "WPHX-303/WPHX-301",
+      "detail": "This fixture covers default, Ajax, JSON, direct default/json/ajax/scalar handlers, and WP_Error input processing. XML-RPC, XML feed, REST JSONP, admin-head, and real HTTP header assertions remain broader bootstrap/context coverage."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-303-04-deprecation-error-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 10,
+    "fixture_cases": 17,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}

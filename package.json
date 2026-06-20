@@ -73,6 +73,8 @@
     "wp:core:wphx-303-surface:check": "node tools/wp-core/run-error-format-surface.mjs --check",
     "wp:core:wphx-303-wp-error": "node tools/wp-core/run-wp-error-candidate.mjs",
     "wp:core:wphx-303-wp-error:check": "node tools/wp-core/run-wp-error-candidate.mjs --check",
+    "wp:core:wphx-303-deprecation": "node tools/wp-core/run-deprecation-error-fixture.mjs",
+    "wp:core:wphx-303-deprecation:check": "node tools/wp-core/run-deprecation-error-fixture.mjs --check",
     "wp:core:wphx-303-escaping": "node tools/wp-core/run-escaping-sanitization-fixture.mjs",
     "wp:core:wphx-303-escaping:check": "node tools/wp-core/run-escaping-sanitization-fixture.mjs --check",
     "wp:core:wphx-303-pure-formatting": "node tools/wp-core/run-pure-formatting-candidate.mjs",

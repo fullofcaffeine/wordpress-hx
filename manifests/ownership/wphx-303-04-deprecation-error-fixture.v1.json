@@ -1,0 +1,79 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/deprecation-error-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.7.4",
+    "external_ref": "WPHX-303.04"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "deprecation and native error signaling fixture harness",
+    "area": "wp-includes/functions.php",
+    "public_contract": "WordPress 7.0 deprecation helpers, wp_trigger_error(), wp_die(), and selected wp_die handlers keep native PHP warning, deprecation, exception, output, and hook behavior while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/option.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wp-exception.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/http.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/formatting.php"
+    ],
+    "digest": "sha256:6cd33dc6507277df743f0aecec6160a1f86c6edf45d7d5815518e8f182c49ec7"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-deprecation-error-fixture.mjs",
+    "manifests/wp-core/wphx-303-04-deprecation-error-fixture.v1.json",
+    "receipts/wp-core/wphx-303-04-deprecation-error-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-303-04",
+    "manifests/wp-core/wphx-303-04-deprecation-error-fixture.v1.json",
+    "manifests/ownership/wphx-303-04-deprecation-error-fixture.v1.json",
+    "receipts/wp-core/wphx-303-04-deprecation-error-fixture.v1.json"
+  ],
+  "native_boundaries": [
+    {
+      "id": "php-user-error-engine",
+      "reason": "E_USER_WARNING, E_USER_NOTICE, and E_USER_DEPRECATED are PHP engine-level trigger_error() events; fixtures record type and message through a native error handler."
+    },
+    {
+      "id": "wp-exception-user-error",
+      "reason": "WordPress maps E_USER_ERROR in wp_trigger_error() to the native WP_Exception class."
+    },
+    {
+      "id": "wp-die-output-headers-exit",
+      "reason": "wp_die handlers combine PHP output buffering, header/status calls, and optional die()/exit behavior."
+    },
+    {
+      "id": "plugin-hooks-and-filters",
+      "reason": "Deprecation, _doing_it_wrong(), wp_trigger_error(), and wp_die handler selection all expose native PHP callback hooks and filters."
+    }
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-303-deprecation",
+      "npm run wp:core:wphx-303-deprecation:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-303-04-deprecation-error-fixture",
+      "receipt:wphx-303-01-error-format-surface"
+    ],
+    "manifest_digest": "sha256:2882efde87ef4abfbfd6d23ee5e7d69afda6a3dc0aee5070c2996c21c90fefbd"
+  },
+  "notes": "This slice intentionally records an external-oracle fixture before promoting any error/deprecation implementation to Haxe. A later candidate should isolate message construction and branch decisions while keeping PHP-native signaling, headers, and die/exit behavior behind explicit boundaries."
+}
