@@ -18,6 +18,8 @@ Create it when these are true:
 
 Recommended trigger: after `WPHX-403` and `WPHX-404` pass, or earlier only if an ADR explicitly accepts the coordination cost.
 
+Do not bootstrap `gutenberghx` yet just to make the repository tree look tidy. Before those gates, Gutenberg package work remains in `wordpress-hx` as inventory, feasibility fixtures, and task packets against `../gutenberg`.
+
 ## Relationship Between Repos
 
 When created, `gutenberghx` should be a sibling implementation repo, not a vendored subtree:
@@ -32,6 +34,32 @@ genes/             # compiler checkout
 `wordpress-hx` should reference `gutenberghx` through lock manifests, package artifact manifests, receipts, and integration build inputs. `gutenberghx` should reference `wordpress-hx` as the program authority and distribution consumer.
 
 Until an ADR changes this, `wordpress-hx/.beads` remains the active task authority. Work in `gutenberghx` should use a wrapper or Beads redirect back to the root program database rather than creating an independent issue store.
+
+## Parallel Workflow
+
+When `gutenberghx` is created, parallel work should follow this shape:
+
+- `wordpress-hx` owns the PRD, root Beads database, release claims, WordPress distro integration, and final receipts.
+- `gutenberghx` owns Haxe source for Gutenberg packages, package-level fixtures, package build outputs, and package parity receipts.
+- A GutenbergHX task must still have a root Beads issue or generated task packet with a `WPHX-*` external ref.
+- Every cross-repo receipt must name both commits: the `wordpress-hx` program commit and the `gutenberghx` implementation commit.
+- `wordpress-hx` consumes `gutenberghx` through a lock manifest entry, never through an unpinned sibling checkout.
+- Generated package artifacts from `gutenberghx` are inputs to WordPress distro integration, not proof that the WordPress 7.0 release profile has changed.
+
+Suggested future manifest fields for a `gutenberghx` lock entry:
+
+```json
+{
+  "id": "gutenberghx",
+  "relativePath": "../gutenberghx",
+  "profile": "gutenberg-forward-23.4",
+  "commit": "<40-hex>",
+  "artifactManifest": "manifests/gutenberg/packages.v1.json",
+  "receiptRefs": ["receipt:..."]
+}
+```
+
+If a package is needed by the WordPress 7.0 distribution, integration remains blocked until `wordpress-hx` records a receipt proving that the package artifact maps back to the embedded Gutenberg baseline or an ADR-approved exception.
 
 ## What Belongs in GutenbergHX
 

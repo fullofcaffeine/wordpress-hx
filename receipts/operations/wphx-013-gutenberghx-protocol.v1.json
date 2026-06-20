@@ -1,0 +1,31 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-013-gutenberghx-protocol",
+  "issue": {
+    "id": "wordpresshx-w91.17",
+    "external_ref": "WPHX-013",
+    "title": "Decide and bootstrap GutenbergHX sibling repository protocol"
+  },
+  "recorded_at": "2026-06-20T02:43:00Z",
+  "decision": {
+    "bootstrap_gutenberghx_now": false,
+    "recommended_trigger": "after WPHX-403 and WPHX-404 pass, or earlier by ADR",
+    "task_authority": "wordpress-hx/.beads remains authoritative until superseded by ADR",
+    "parallel_work_allowed_after_trigger": true
+  },
+  "artifacts": [
+    {
+      "path": "docs/operations/dependent-libraries.md",
+      "role": "GutenbergHX trigger, repo relationship, Beads authority, cross-repo receipt flow, and smaller-library split policy"
+    },
+    {
+      "path": "docs/adr/ADR-002-dual-upstream-baseline-policy.md",
+      "role": "baseline separation policy used by GutenbergHX protocol"
+    }
+  ],
+  "verification_commands": [
+    "jq empty receipts/operations/wphx-013-gutenberghx-protocol.v1.json",
+    "npm run baseline:validate",
+    "npm run precommit"
+  ]
+}
