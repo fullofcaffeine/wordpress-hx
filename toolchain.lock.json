@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "recorded_at": "2026-06-19",
+  "scope": "bootstrap-observed-local-toolchain",
+  "notes": [
+    "This starter lock records the tools required for root Beads and repository hygiene.",
+    "WPHX-002 will extend this with full Haxe, genes-ts, PHP backend, Node/npm, PHP image pins, and build receipts."
+  ],
+  "tools": {
+    "beads": {
+      "command": "bd --version",
+      "version": "0.49.0",
+      "revision": "b5178e18",
+      "pin_source": ".beads/.local_version"
+    },
+    "haxe": {
+      "command": "haxe --version",
+      "version": "4.3.7"
+    },
+    "haxelib": {
+      "command": "haxelib version",
+      "version": "4.1.1"
+    },
+    "haxe_formatter": {
+      "command": "haxelib run formatter --help",
+      "version": "1.18.0"
+    },
+    "node": {
+      "command": "node --version",
+      "version": "20.19.3"
+    },
+    "npm": {
+      "command": "npm --version",
+      "version": "10.8.2"
+    },
+    "php_cli": {
+      "command": "php --version",
+      "version": "8.4.7",
+      "distribution": "Homebrew"
+    },
+    "git": {
+      "command": "git --version",
+      "version": "2.40.1"
+    },
+    "github_cli": {
+      "command": "gh --version",
+      "version": "2.86.0"
+    },
+    "gitleaks": {
+      "command": "gitleaks version",
+      "version": "8.30.0"
+    }
+  }
+}

@@ -51,7 +51,13 @@ Generated target readability is a product surface. If good Haxe source emits wea
 
 ## Documentation
 
-Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-libraries.md`, `docs/operations/hhx-template-policy.md`, `docs/operations/port-philosophy.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
+Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-libraries.md`, `docs/operations/hhx-template-policy.md`, `docs/operations/port-philosophy.md`, `docs/operations/beads.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
+
+## Beads Authority
+
+- Required local Beads version is pinned in `.beads/.local_version` and mirrored in `toolchain.lock.json`.
+- The root `.beads` store is authoritative for this program. Sibling repo `.beads` stores are reference context unless the current task explicitly enters that repository and follows its own `AGENTS.md`.
+- Beads sync branch setup is intentionally deferred to WPHX-807; until then, `bd doctor` may warn about missing sync-branch configuration but must not report data corruption or untracked JSONL.
 
 ## Local Hooks and Checks
 

@@ -14,6 +14,7 @@ Important sibling checkouts are recorded in [docs/operations/repositories.md](do
 
 Dependent-library split policy, including the future `gutenberghx` repo trigger, is recorded in [docs/operations/dependent-libraries.md](docs/operations/dependent-libraries.md).
 HHX/template authoring policy is recorded in [docs/operations/hhx-template-policy.md](docs/operations/hhx-template-policy.md).
+Beads operating rules and the pinned bootstrap tool versions are recorded in [docs/operations/beads.md](docs/operations/beads.md) and [toolchain.lock.json](toolchain.lock.json).
 
 Initial work follows the PRD sequence:
 
