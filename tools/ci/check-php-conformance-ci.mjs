@@ -13,6 +13,7 @@ const REQUIRED_PATHS = [
   ".github/workflows/php-conformance.yml",
   "src/**",
   "fixtures/**",
+  "profiles/**",
   "tools/**",
   "scripts/**",
   "manifests/**",
@@ -26,6 +27,7 @@ const REQUIRED_PATHS = [
 const REQUIRED_COMMANDS = [
   "npm run format:haxe:check",
   "npm run haxe:escape-hatches:check",
+  "npm run build:profiles:check",
   "npm run baseline:validate",
   "npm run ci:php-conformance:check",
   "npm run php:smoke:check",

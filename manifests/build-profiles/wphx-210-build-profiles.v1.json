@@ -1,0 +1,205 @@
+{
+  "config": {
+    "path": "profiles/wp70-build-profiles.v1.json",
+    "sha256": "sha256:dfd373c3094f216759f29af159ea61a082b6a339d67054a93aeed23b936ca47b"
+  },
+  "generated_at": "2026-06-20T20:10:00.000Z",
+  "generator": "tools/build-profiles/run-build-profiles.mjs",
+  "intentional_differences": [
+    {
+      "fields": [
+        "haxe.flags",
+        "purpose"
+      ],
+      "from": "wp70-debug",
+      "reason": "Debug keeps compiler debug metadata for local diagnosis; parity keeps source-map evidence but removes debug-only compiler mode.",
+      "to": "wp70-parity"
+    },
+    {
+      "fields": [
+        "haxe.defines",
+        "haxe.source_maps",
+        "haxe.dead_code_elimination",
+        "linker.segment_map",
+        "linker.include_runtime_probe",
+        "artifact_policy"
+      ],
+      "from": "wp70-parity",
+      "reason": "Release removes debug maps, runtime probes, and oracle traces while keeping original-path shells and ABI/public-type gates.",
+      "to": "wp70-release"
+    },
+    {
+      "fields": [
+        "haxe.flags",
+        "haxe.defines",
+        "validation.commands",
+        "validation.php_runtimes",
+        "artifact_policy"
+      ],
+      "from": "wp70-debug",
+      "reason": "Debug optimizes for source diagnosis; release optimizes for reproducible distribution review.",
+      "to": "wp70-release"
+    }
+  ],
+  "issue": "WPHX-210",
+  "profiles": [
+    {
+      "artifact_policy": {
+        "keeps_debug_maps": true,
+        "keeps_oracle_traces": true,
+        "keeps_runtime_probes": true,
+        "release_candidate": false,
+        "tracked_distribution": false
+      },
+      "build_root": "build/wp70/debug",
+      "deterministic": true,
+      "haxe": {
+        "dead_code_elimination": "std",
+        "defines": [
+          "wphx-profile=debug"
+        ],
+        "flags": [
+          "-debug"
+        ],
+        "hxml": "fixtures/wp-debug/debug-trace.hxml",
+        "output_dir": "build/wp70/debug/haxe",
+        "source_maps": true
+      },
+      "id": "wp70-debug",
+      "linker": {
+        "generated_root": "build/wp70/debug/generated",
+        "include_runtime_probe": true,
+        "mode": "original-path-shell",
+        "preserve_original_paths": true,
+        "segment_map": true
+      },
+      "output": {
+        "bytes": 3995,
+        "path": "build/wp70/debug/effective-profile.json",
+        "sha256": "sha256:2035be9d716f255c389eff2040d2f811ac4427ce5f855701fdbb3a0ebfe73130"
+      },
+      "purpose": "Developer debugging with Haxe and original WordPress source locations preserved.",
+      "role": "debug",
+      "validation_commands": [
+        "npm run wp:debug:sourcemap:check",
+        "npm run wp:linker:check"
+      ]
+    },
+    {
+      "artifact_policy": {
+        "keeps_debug_maps": true,
+        "keeps_oracle_traces": true,
+        "keeps_runtime_probes": true,
+        "release_candidate": false,
+        "tracked_distribution": false
+      },
+      "build_root": "build/wp70/parity",
+      "deterministic": true,
+      "haxe": {
+        "dead_code_elimination": "std",
+        "defines": [
+          "wphx-profile=parity"
+        ],
+        "flags": [],
+        "hxml": "fixtures/wp-linker/original-path-linker.hxml",
+        "output_dir": "build/wp70/parity/haxe",
+        "source_maps": true
+      },
+      "id": "wp70-parity",
+      "linker": {
+        "generated_root": "build/wp70/parity/generated",
+        "include_runtime_probe": true,
+        "mode": "original-path-shell",
+        "preserve_original_paths": true,
+        "segment_map": true
+      },
+      "output": {
+        "bytes": 4788,
+        "path": "build/wp70/parity/effective-profile.json",
+        "sha256": "sha256:e485abd376e24e37d879f1083e82ab0a22752ef07ae37a84cfe9185e988d3642"
+      },
+      "purpose": "Behavioral parity validation against the WordPress 7.0 oracle.",
+      "role": "parity",
+      "validation_commands": [
+        "npm run ci:php-conformance:check",
+        "npm run php:abi:check",
+        "npm run wp:public-types:check",
+        "npm run wp:debug:sourcemap:check"
+      ]
+    },
+    {
+      "artifact_policy": {
+        "keeps_debug_maps": false,
+        "keeps_oracle_traces": false,
+        "keeps_runtime_probes": false,
+        "release_candidate": true,
+        "tracked_distribution": false
+      },
+      "build_root": "build/wp70/release",
+      "deterministic": true,
+      "haxe": {
+        "dead_code_elimination": "full",
+        "defines": [
+          "wphx-profile=release",
+          "no-traces",
+          "analyzer-optimize"
+        ],
+        "flags": [],
+        "hxml": "fixtures/wp-linker/original-path-linker.hxml",
+        "output_dir": "build/wp70/release/haxe",
+        "source_maps": false
+      },
+      "id": "wp70-release",
+      "linker": {
+        "generated_root": "build/wp70/release/generated",
+        "include_runtime_probe": false,
+        "mode": "original-path-shell",
+        "preserve_original_paths": true,
+        "segment_map": false
+      },
+      "output": {
+        "bytes": 5008,
+        "path": "build/wp70/release/effective-profile.json",
+        "sha256": "sha256:3aec01aa6f66d64969d2a0fbb3b3506c604d76a30f625ef91ac183fac32896b2"
+      },
+      "purpose": "Distribution artifact generation with debug-only probes and traces removed.",
+      "role": "release",
+      "validation_commands": [
+        "npm run wp:linker:check",
+        "npm run wp:public-types:check",
+        "npm run haxe:escape-hatches:check",
+        "npm run security:gitleaks"
+      ]
+    }
+  ],
+  "required_profiles": [
+    "wp70-debug",
+    "wp70-parity",
+    "wp70-release"
+  ],
+  "schema": "wphx.build-profiles.v1",
+  "toolchain": {
+    "docker_images": [
+      {
+        "id": "php_8_4_cli",
+        "reference": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d"
+      },
+      {
+        "id": "php_8_5_cli",
+        "reference": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e"
+      }
+    ],
+    "haxe_formatter_version": "1.18.0",
+    "haxe_version": "4.3.7",
+    "node_version": "20.19.3",
+    "php_cli_version": "8.4.7"
+  },
+  "validation_result": {
+    "deterministic_profile_outputs": true,
+    "intentional_differences_recorded": true,
+    "original_path_policy_preserved": true,
+    "required_profiles_present": true,
+    "status": "passed",
+    "validation_commands_resolve_to_package_scripts": true
+  }
+}

@@ -13,6 +13,8 @@
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "hooks:install": "bash scripts/hooks/install.sh",
+    "build:profiles": "node tools/build-profiles/run-build-profiles.mjs",
+    "build:profiles:check": "node tools/build-profiles/run-build-profiles.mjs --check",
     "ci:php-conformance": "node tools/ci/check-php-conformance-ci.mjs",
     "ci:php-conformance:check": "node tools/ci/check-php-conformance-ci.mjs --check",
     "baseline:validate": "node tools/baseline/validate-policy.mjs",

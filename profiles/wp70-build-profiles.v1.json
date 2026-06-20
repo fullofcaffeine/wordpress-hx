@@ -1,0 +1,223 @@
+{
+  "schema": "wphx.wp70-build-profiles.config.v1",
+  "issue": "WPHX-210",
+  "baseline": {
+    "wordpress": {
+      "profile": "wp70-release",
+      "repo": "../wordpress-develop",
+      "tag": "7.0.0",
+      "commit": "26b68024931348d267b70e2a29910e1320d0094f"
+    },
+    "gutenberg": {
+      "profile": "wordpress-7.0-embedded",
+      "repo": "../wordpress-develop",
+      "package": "@wordpress/block-editor"
+    }
+  },
+  "common": {
+    "target": "php",
+    "haxe_version": "4.3.7",
+    "php_runtime_floor": "8.4",
+    "emission": "haxe-authored-implementations-with-original-path-shells",
+    "path_policy": "preserve-wordpress-distribution-paths",
+    "generated_output_roots": [
+      "build/wp70/debug",
+      "build/wp70/parity",
+      "build/wp70/release"
+    ]
+  },
+  "profiles": [
+    {
+      "id": "wp70-debug",
+      "role": "debug",
+      "purpose": "Developer debugging with Haxe and original WordPress source locations preserved.",
+      "build_root": "build/wp70/debug",
+      "haxe": {
+        "hxml": "fixtures/wp-debug/debug-trace.hxml",
+        "output_dir": "build/wp70/debug/haxe",
+        "flags": [
+          "-debug"
+        ],
+        "defines": [
+          "wphx-profile=debug"
+        ],
+        "source_maps": true,
+        "dead_code_elimination": "std"
+      },
+      "linker": {
+        "mode": "original-path-shell",
+        "generated_root": "build/wp70/debug/generated",
+        "preserve_original_paths": true,
+        "segment_map": true,
+        "include_runtime_probe": true
+      },
+      "source_inputs": [
+        "fixtures/wp-debug/debug-trace.hxml",
+        "fixtures/wp-debug/src/wphx/fixtures/wp/debug/DebugEntry.hx",
+        "fixtures/wp-debug/src/wphx/fixtures/wp/debug/DebugKernel.hx",
+        "tools/wp-debug/run-source-map-traces.mjs",
+        "tools/wp-linker/original-path-linker.mjs"
+      ],
+      "validation": {
+        "commands": [
+          "npm run wp:debug:sourcemap:check",
+          "npm run wp:linker:check"
+        ],
+        "php_runtimes": [
+          "local",
+          "docker:php_8_4_cli",
+          "docker:php_8_5_cli"
+        ]
+      },
+      "artifact_policy": {
+        "release_candidate": false,
+        "tracked_distribution": false,
+        "keeps_debug_maps": true,
+        "keeps_runtime_probes": true,
+        "keeps_oracle_traces": true
+      }
+    },
+    {
+      "id": "wp70-parity",
+      "role": "parity",
+      "purpose": "Behavioral parity validation against the WordPress 7.0 oracle.",
+      "build_root": "build/wp70/parity",
+      "haxe": {
+        "hxml": "fixtures/wp-linker/original-path-linker.hxml",
+        "output_dir": "build/wp70/parity/haxe",
+        "flags": [],
+        "defines": [
+          "wphx-profile=parity"
+        ],
+        "source_maps": true,
+        "dead_code_elimination": "std"
+      },
+      "linker": {
+        "mode": "original-path-shell",
+        "generated_root": "build/wp70/parity/generated",
+        "preserve_original_paths": true,
+        "segment_map": true,
+        "include_runtime_probe": true
+      },
+      "source_inputs": [
+        "fixtures/wp-linker/original-path-linker.hxml",
+        "fixtures/wp-linker/src/wphx/fixtures/wp/linker/LinkerEntry.hx",
+        "fixtures/php-facade/src/wphx/fixtures/php/facade/LoadKernel.hx",
+        "fixtures/php-facade/src/wphx/fixtures/php/facade/TemplateKernel.hx",
+        "tools/wp-linker/run-original-path-linker.mjs",
+        "tools/wp-linker/original-path-linker.mjs",
+        "manifests/php-abi/wordpress-7.0-core-abi.v1.json"
+      ],
+      "validation": {
+        "commands": [
+          "npm run ci:php-conformance:check",
+          "npm run php:abi:check",
+          "npm run wp:public-types:check",
+          "npm run wp:debug:sourcemap:check"
+        ],
+        "php_runtimes": [
+          "local",
+          "docker:php_8_4_cli",
+          "docker:php_8_5_cli"
+        ]
+      },
+      "artifact_policy": {
+        "release_candidate": false,
+        "tracked_distribution": false,
+        "keeps_debug_maps": true,
+        "keeps_runtime_probes": true,
+        "keeps_oracle_traces": true
+      }
+    },
+    {
+      "id": "wp70-release",
+      "role": "release",
+      "purpose": "Distribution artifact generation with debug-only probes and traces removed.",
+      "build_root": "build/wp70/release",
+      "haxe": {
+        "hxml": "fixtures/wp-linker/original-path-linker.hxml",
+        "output_dir": "build/wp70/release/haxe",
+        "flags": [],
+        "defines": [
+          "wphx-profile=release",
+          "no-traces",
+          "analyzer-optimize"
+        ],
+        "source_maps": false,
+        "dead_code_elimination": "full"
+      },
+      "linker": {
+        "mode": "original-path-shell",
+        "generated_root": "build/wp70/release/generated",
+        "preserve_original_paths": true,
+        "segment_map": false,
+        "include_runtime_probe": false
+      },
+      "source_inputs": [
+        "fixtures/wp-linker/original-path-linker.hxml",
+        "fixtures/wp-linker/src/wphx/fixtures/wp/linker/LinkerEntry.hx",
+        "fixtures/php-facade/src/wphx/fixtures/php/facade/LoadKernel.hx",
+        "fixtures/php-facade/src/wphx/fixtures/php/facade/TemplateKernel.hx",
+        "tools/wp-linker/run-original-path-linker.mjs",
+        "tools/wp-linker/original-path-linker.mjs",
+        "tools/license/audit-provenance.mjs",
+        "manifests/php-abi/wordpress-7.0-core-abi.v1.json"
+      ],
+      "validation": {
+        "commands": [
+          "npm run wp:linker:check",
+          "npm run wp:public-types:check",
+          "npm run haxe:escape-hatches:check",
+          "npm run security:gitleaks"
+        ],
+        "php_runtimes": [
+          "docker:php_8_4_cli",
+          "docker:php_8_5_cli"
+        ]
+      },
+      "artifact_policy": {
+        "release_candidate": true,
+        "tracked_distribution": false,
+        "keeps_debug_maps": false,
+        "keeps_runtime_probes": false,
+        "keeps_oracle_traces": false
+      }
+    }
+  ],
+  "intentional_differences": [
+    {
+      "from": "wp70-debug",
+      "to": "wp70-parity",
+      "fields": [
+        "haxe.flags",
+        "purpose"
+      ],
+      "reason": "Debug keeps compiler debug metadata for local diagnosis; parity keeps source-map evidence but removes debug-only compiler mode."
+    },
+    {
+      "from": "wp70-parity",
+      "to": "wp70-release",
+      "fields": [
+        "haxe.defines",
+        "haxe.source_maps",
+        "haxe.dead_code_elimination",
+        "linker.segment_map",
+        "linker.include_runtime_probe",
+        "artifact_policy"
+      ],
+      "reason": "Release removes debug maps, runtime probes, and oracle traces while keeping original-path shells and ABI/public-type gates."
+    },
+    {
+      "from": "wp70-debug",
+      "to": "wp70-release",
+      "fields": [
+        "haxe.flags",
+        "haxe.defines",
+        "validation.commands",
+        "validation.php_runtimes",
+        "artifact_policy"
+      ],
+      "reason": "Debug optimizes for source diagnosis; release optimizes for reproducible distribution review."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "command": "npm run build:profiles",
+  "config": "profiles/wp70-build-profiles.v1.json",
+  "config_sha256": "sha256:dfd373c3094f216759f29af159ea61a082b6a339d67054a93aeed23b936ca47b",
+  "id": "receipt:wphx-210-build-profiles",
+  "issue": "WPHX-210",
+  "manifest": "manifests/build-profiles/wphx-210-build-profiles.v1.json",
+  "manifest_sha256": "sha256:20c98341c640725204548c1e3c4b4d41ac44809aabd804a3b338b4432ef306b9",
+  "profile_count": 3,
+  "profile_output_sha256": "sha256:355c58cca2699036df62dae2a39e89b73ea764ae42fbe585c59edb062935da3e",
+  "recorded_at": "2026-06-20T20:10:00.000Z",
+  "schema": "wphx.build-profiles-receipt.v1",
+  "status": "passed"
+}

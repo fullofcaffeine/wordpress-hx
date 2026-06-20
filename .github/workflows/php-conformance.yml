@@ -6,6 +6,7 @@ on:
       - ".github/workflows/php-conformance.yml"
       - "src/**"
       - "fixtures/**"
+      - "profiles/**"
       - "tools/**"
       - "scripts/**"
       - "manifests/**"
@@ -21,6 +22,7 @@ on:
       - ".github/workflows/php-conformance.yml"
       - "src/**"
       - "fixtures/**"
+      - "profiles/**"
       - "tools/**"
       - "scripts/**"
       - "manifests/**"
@@ -47,6 +49,7 @@ jobs:
             command: |
               npm run format:haxe:check
               npm run haxe:escape-hatches:check
+              npm run build:profiles:check
               npm run baseline:validate
               npm run ci:php-conformance:check
           - suite: php-feasibility
