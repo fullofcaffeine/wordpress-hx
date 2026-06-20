@@ -6,6 +6,7 @@ Run:
 
 ```bash
 npm run inventory
+npm run inventory:check
 ```
 
 The generator reads pinned baselines from local sibling repositories and cached upstream artifacts:
@@ -25,3 +26,5 @@ Outputs:
 - `receipts/inventory/wphx-006-inventory.v1.json`
 
 The first pass is intentionally broad. It classifies executable paths by language, source kind, area, baseline, and upstream origin. WPHX-007 owns formal schemas and validators; later domain work will refine owners, public APIs, dependencies, risk tags, and generated artifact mappings.
+
+`npm run inventory:check` regenerates the inventory, verifies that output hashes do not change, and validates JSONL structure, sorted unique IDs, source/test references, summary counts, receipt counts, and zero-unclassified closure.

@@ -87,6 +87,12 @@ function run(command, args, options = {}) {
   });
 }
 
+function compareText(a, b) {
+  if (a < b) return -1;
+  if (a > b) return 1;
+  return 0;
+}
+
 function gitLsTree(repo, commit) {
   const raw = run("git", ["-C", repo, "ls-tree", "-rz", "--full-tree", commit]);
   return raw
@@ -103,7 +109,7 @@ function gitLsTree(repo, commit) {
       };
     })
     .filter((entry) => entry.type === "blob")
-    .sort((a, b) => a.path.localeCompare(b.path));
+    .sort((a, b) => compareText(a.path, b.path));
 }
 
 function normalizeArtifactPath(path, stripPrefix) {
@@ -313,7 +319,7 @@ function inventoryArtifactEntries() {
       });
     }
   }
-  return entries.sort((a, b) => `${a.baseline}:${a.path}`.localeCompare(`${b.baseline}:${b.path}`));
+  return entries.sort((a, b) => compareText(`${a.baseline}:${a.path}`, `${b.baseline}:${b.path}`));
 }
 
 function countBy(entries, key) {
@@ -333,8 +339,8 @@ mkdirSync(OUT, { recursive: true });
 const { sourceEntries, testEntries } = inventorySourceEntries();
 const artifactEntries = inventoryArtifactEntries();
 
-sourceEntries.sort((a, b) => `${a.baseline}:${a.path}`.localeCompare(`${b.baseline}:${b.path}`));
-testEntries.sort((a, b) => `${a.baseline}:${a.path}`.localeCompare(`${b.baseline}:${b.path}`));
+sourceEntries.sort((a, b) => compareText(`${a.baseline}:${a.path}`, `${b.baseline}:${b.path}`));
+testEntries.sort((a, b) => compareText(`${a.baseline}:${a.path}`, `${b.baseline}:${b.path}`));
 
 writeJsonl(join(OUT, "source-inventory.jsonl"), sourceEntries);
 writeJsonl(join(OUT, "artifact-provenance.jsonl"), artifactEntries);

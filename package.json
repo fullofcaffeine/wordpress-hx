@@ -12,6 +12,8 @@
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "hooks:install": "bash scripts/hooks/install.sh",
     "inventory": "node tools/inventory/wphx-inventory.mjs",
+    "inventory:validate": "node tools/inventory/validate-inventory.mjs",
+    "inventory:check": "node tools/inventory/check-determinism.mjs && npm run inventory:validate",
     "precommit": "npm run format:haxe:check && npm run security:gitleaks"
   },
   "repository": {

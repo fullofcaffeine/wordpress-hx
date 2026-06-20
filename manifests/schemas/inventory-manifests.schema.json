@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/fullofcaffeine/wordpress-hx/manifests/schemas/inventory-manifests.schema.json",
+  "title": "WordPressHX Inventory Manifests",
+  "type": "object",
+  "$defs": {
+    "sourceUnit": {
+      "type": "object",
+      "required": [
+        "schema",
+        "id",
+        "baseline",
+        "repo",
+        "commit",
+        "tree",
+        "path",
+        "language",
+        "area",
+        "kind",
+        "gitObject",
+        "mode",
+        "status",
+        "haxeOwners",
+        "generatedArtifacts",
+        "taskExternalRef",
+        "classified",
+        "exceptions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "const": "wphx.source-unit.v1alpha" },
+        "id": { "type": "string", "pattern": "^source:[^:]+:.+$" },
+        "baseline": {
+          "enum": ["wordpress-7.0.0", "wordpress-7.0-gutenberg-source", "gutenberg-forward-23.4.0"]
+        },
+        "repo": { "type": "string" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "tree": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "path": { "type": "string", "minLength": 1 },
+        "language": { "$ref": "#/$defs/language" },
+        "area": { "type": "string", "minLength": 1 },
+        "kind": {
+          "enum": ["runtime_source", "build_tooling_source", "test_source", "vendor_source"]
+        },
+        "gitObject": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "mode": { "type": "string", "pattern": "^[0-9]{6}$" },
+        "status": { "const": "upstream_oracle_unported" },
+        "haxeOwners": { "type": "array", "items": { "type": "string" } },
+        "generatedArtifacts": { "type": "array", "items": { "type": "string" } },
+        "taskExternalRef": { "type": ["string", "null"], "pattern": "^WPHX-[0-9]+$" },
+        "classified": { "const": true },
+        "exceptions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "artifactProvenance": {
+      "type": "object",
+      "required": [
+        "schema",
+        "id",
+        "baseline",
+        "artifact",
+        "artifactKind",
+        "artifactDigest",
+        "rawPath",
+        "path",
+        "language",
+        "area",
+        "kind",
+        "origin",
+        "migrationStatus",
+        "classified",
+        "exceptions"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "const": "wphx.artifact-provenance.v1alpha" },
+        "id": { "type": "string", "pattern": "^artifact:[^:]+:.+$" },
+        "baseline": {
+          "enum": ["wordpress-7.0.0-distribution", "wordpress-7.0-gutenberg-build"]
+        },
+        "artifact": { "type": "string", "minLength": 1 },
+        "artifactKind": { "enum": ["zip", "tar.gz"] },
+        "artifactDigest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "rawPath": { "type": "string", "minLength": 1 },
+        "path": { "type": "string", "minLength": 1 },
+        "language": { "$ref": "#/$defs/language" },
+        "area": { "type": "string", "minLength": 1 },
+        "kind": { "const": "shipped_executable_artifact" },
+        "origin": { "const": "upstream_oracle" },
+        "migrationStatus": { "const": "pending_haxe_generation_or_approved_exception" },
+        "classified": { "const": true },
+        "exceptions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "testUnit": {
+      "type": "object",
+      "required": [
+        "schema",
+        "id",
+        "baseline",
+        "repo",
+        "commit",
+        "path",
+        "language",
+        "framework",
+        "sourceUnit",
+        "classified"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "const": "wphx.test-unit.v1alpha" },
+        "id": { "type": "string", "pattern": "^test:[^:]+:.+$" },
+        "baseline": {
+          "enum": ["wordpress-7.0.0", "wordpress-7.0-gutenberg-source", "gutenberg-forward-23.4.0"]
+        },
+        "repo": { "type": "string" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "path": { "type": "string", "minLength": 1 },
+        "language": { "$ref": "#/$defs/language" },
+        "framework": {
+          "enum": ["phpunit", "playwright", "qunit", "jest", "php-test", "js-test", "test"]
+        },
+        "sourceUnit": { "type": "string", "pattern": "^source:[^:]+:.+$" },
+        "classified": { "const": true }
+      }
+    },
+    "inventorySummary": {
+      "type": "object",
+      "required": ["schema", "issue", "generated_at", "generator", "inputs", "outputs", "counts", "closure"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": { "const": "wphx.inventory-summary.v1alpha" },
+        "issue": { "const": "WPHX-006" },
+        "generated_at": { "type": "string", "format": "date-time" },
+        "generator": { "const": "tools/inventory/wphx-inventory.mjs" },
+        "inputs": { "type": "object" },
+        "outputs": {
+          "type": "object",
+          "required": ["source_inventory", "artifact_provenance", "test_inventory"],
+          "additionalProperties": false,
+          "properties": {
+            "source_inventory": { "const": "manifests/source-inventory.jsonl" },
+            "artifact_provenance": { "const": "manifests/artifact-provenance.jsonl" },
+            "test_inventory": { "const": "manifests/test-inventory.jsonl" }
+          }
+        },
+        "counts": { "type": "object" },
+        "closure": {
+          "type": "object",
+          "required": [
+            "unclassified_executable_source_units",
+            "unclassified_shipped_executable_artifacts",
+            "unclassified_test_units"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "unclassified_executable_source_units": { "const": 0 },
+            "unclassified_shipped_executable_artifacts": { "const": 0 },
+            "unclassified_test_units": { "const": 0 }
+          }
+        }
+      }
+    },
+    "language": {
+      "enum": [
+        "php",
+        "phpunit-config",
+        "javascript",
+        "typescript",
+        "tsx",
+        "jsx",
+        "shell",
+        "powershell",
+        "wasm",
+        "make",
+        "unknown"
+      ]
+    }
+  }
+}

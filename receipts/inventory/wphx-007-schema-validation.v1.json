@@ -1,0 +1,37 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-007-schema-validation",
+  "issue": {
+    "id": "wordpresshx-w91.11",
+    "external_ref": "WPHX-007",
+    "title": "Define manifest schemas and validators"
+  },
+  "recorded_at": "2026-06-20T02:24:00Z",
+  "artifacts": [
+    {
+      "path": "manifests/schemas/inventory-manifests.schema.json",
+      "role": "draft 2020-12 JSON Schema definitions for inventory records"
+    },
+    {
+      "path": "tools/inventory/validate-inventory.mjs",
+      "role": "dependency-free structural validator for inventory manifests and receipts"
+    },
+    {
+      "path": "tools/inventory/check-determinism.mjs",
+      "role": "deterministic regeneration guard for generated inventory outputs"
+    }
+  ],
+  "verification_commands": [
+    "npm run inventory",
+    "npm run inventory:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_units": 17732,
+    "shipped_executable_artifacts": 2721,
+    "test_units": 4106,
+    "unclassified_executable_source_units": 0,
+    "unclassified_shipped_executable_artifacts": 0,
+    "unclassified_test_units": 0
+  }
+}
