@@ -1,0 +1,60 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-807-backup-restore",
+  "issue": {
+    "id": "wordpresshx-w91.4.7",
+    "external_ref": "WPHX-807",
+    "title": "Configure Dolt sync plus bd backup and perform restore drill"
+  },
+  "recorded_at": "2026-06-20T04:25:00Z",
+  "artifacts": [
+    {
+      "path": ".beads/config.yaml",
+      "role": "Dolt sync remote configuration"
+    },
+    {
+      "path": "docs/operations/beads-backup-restore.md",
+      "role": "sync and restore runbook"
+    },
+    {
+      "path": "manifests/beads/backup-restore-drill.v1.json",
+      "role": "machine-readable restore drill result"
+    },
+    {
+      "path": ".beads/.gitignore",
+      "role": "local Dolt and backup runtime ignore rules"
+    }
+  ],
+  "verification_commands": [
+    "bd dolt remote add origin git+https://github.com/fullofcaffeine/wordpress-hx.git",
+    "bd dolt push",
+    "bd backup init ../wordpresshx-beads-backup",
+    "bd backup sync",
+    "git clone https://github.com/fullofcaffeine/wordpress-hx.git /tmp/wordpresshx-wphx807-restore-20260619222425",
+    "bd bootstrap --yes --json",
+    "bd backup restore --force ../wordpresshx-beads-backup",
+    "bd list --all --json --limit 0",
+    "bd ready --json",
+    "bd memories --json"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "issue_count": 28,
+    "closed_count": 21,
+    "in_progress_count": 1,
+    "dependency_edges": 73,
+    "memory_records": 0,
+    "ready_refs": [
+      "WPHX-000",
+      "WPHX-011",
+      "WPHX-100",
+      "WPHX-400",
+      "WPHX-700",
+      "WPHX-800"
+    ],
+    "dolt_remote_push": "passed",
+    "fresh_clone_bootstrap_match": true,
+    "backup_sync": "passed",
+    "backup_restore_match": true
+  }
+}

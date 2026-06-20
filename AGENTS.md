@@ -60,7 +60,8 @@ Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-
 - From sibling checkouts, nested repos, or task worktrees, use `tools/bd-wphx` from the program root so Beads commands resolve to this repository's root database.
 - Parallel write-capable agents must follow `docs/operations/multi-agent.md`: one claimed Beads issue, one branch, one worktree, non-overlapping owned paths, and a handoff that records discoveries.
 - Beads is on embedded Dolt storage as of WPHX-016. `bd doctor` is not supported in this embedded mode; use `bd info`, `bd dolt status --json`, and `bd backup status --json` until a later Beads release changes that.
-- Beads sync branch and backup setup are intentionally deferred to WPHX-807; until then, missing sync/backup configuration must remain visible in the WPHX-807 task and receipts.
+- Beads sync uses the configured Dolt remote in `.beads/config.yaml`; use `bd dolt push` / `bd dolt pull` for task database sync. `bd export -o .beads/issues.jsonl` refreshes the tracked interchange export but is not the durable sync channel.
+- Beads backup and restore are documented in `docs/operations/beads-backup-restore.md`.
 
 ## Local Hooks and Checks
 
@@ -77,6 +78,7 @@ bd show <id>          # View issue details
 bd update <id> --claim  # Atomically claim work
 bd close <id>         # Complete work
 bd export -o .beads/issues.jsonl  # Refresh tracked JSONL export
+bd dolt push          # Sync Beads Dolt state
 ```
 
 ## Landing the Plane (Session Completion)
@@ -92,6 +94,7 @@ bd export -o .beads/issues.jsonl  # Refresh tracked JSONL export
    ```bash
    git pull --rebase
    bd export -o .beads/issues.jsonl
+   bd dolt push
    git push
    git status  # MUST show "up to date with origin"
    ```

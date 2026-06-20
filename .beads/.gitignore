@@ -25,6 +25,8 @@ embeddeddolt/
 dolt/
 backup/
 export-state.json
+dolt-backup.json
+dolt-backup-state.json
 
 # Worktree redirect file (contains relative path to main repo's .beads/)
 # Must not be committed as paths would be wrong in other clones

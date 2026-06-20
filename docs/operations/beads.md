@@ -25,7 +25,7 @@ Sibling repositories may have their own `.beads` directories. Treat them as loca
 
 ## Sync Discipline
 
-For this bootstrap phase, Beads writes directly to the current branch and no sync branch is configured. That is acceptable while this repo is single-operator, but WPHX-807 must decide and prove the Dolt/sync-branch backup model.
+WPHX-807 configured a Dolt remote at `git+https://github.com/fullofcaffeine/wordpress-hx.git`. Beads state syncs through Dolt refs; `.beads/issues.jsonl` remains a tracked export for review and interchange.
 
 In `1.0.4`, cross-machine sync should use Dolt remotes:
 
@@ -44,6 +44,7 @@ bd backup restore <backup-destination>
 ```
 
 WPHX-807 owns selecting the durable destination, configuring the remote, and proving restore from a fresh checkout.
+The WPHX-807 runbook is `docs/operations/beads-backup-restore.md`.
 
 Before pushing:
 

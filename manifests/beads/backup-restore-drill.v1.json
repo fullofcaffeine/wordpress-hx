@@ -1,0 +1,64 @@
+{
+  "schema": "wphx.beads-backup-restore-drill.v1",
+  "issue": {
+    "id": "wordpresshx-w91.4.7",
+    "external_ref": "WPHX-807"
+  },
+  "recorded_at": "2026-06-20T04:25:00Z",
+  "source": {
+    "issue_count": 28,
+    "closed_count": 21,
+    "in_progress_count": 1,
+    "dependency_edges": 73,
+    "memory": {
+      "schema_version": 1,
+      "records": 0
+    },
+    "ready_refs": [
+      "WPHX-000",
+      "WPHX-011",
+      "WPHX-100",
+      "WPHX-400",
+      "WPHX-700",
+      "WPHX-800"
+    ]
+  },
+  "dolt_sync": {
+    "remote_name": "origin",
+    "remote_url": "git+https://github.com/fullofcaffeine/wordpress-hx.git",
+    "push_result": "passed",
+    "fresh_clone": "/tmp/wordpresshx-wphx807-restore-20260619222425",
+    "bootstrap_action": "sync",
+    "bootstrap_reason": "Found Dolt data on git origin (refs/dolt/data)",
+    "restored_match": true
+  },
+  "backup": {
+    "destination": "file://../wordpresshx-beads-backup",
+    "sync_result": "passed",
+    "restore_command": "bd backup restore --force ../wordpresshx-beads-backup",
+    "restore_result": "passed",
+    "restored_match": true
+  },
+  "restored": {
+    "issue_count": 28,
+    "closed_count": 21,
+    "in_progress_count": 1,
+    "dependency_edges": 73,
+    "memory": {
+      "schema_version": 1,
+      "records": 0
+    },
+    "ready_refs": [
+      "WPHX-000",
+      "WPHX-011",
+      "WPHX-100",
+      "WPHX-400",
+      "WPHX-700",
+      "WPHX-800"
+    ]
+  },
+  "warnings": [
+    "Fresh clone .beads permissions were 0755; Beads recommends chmod 700.",
+    "Fresh clone did not have local git config beads.role; source repo has local beads.role=maintainer."
+  ]
+}
