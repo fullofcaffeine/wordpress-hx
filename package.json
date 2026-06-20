@@ -28,6 +28,8 @@
     "php:facade:f1:check": "node tools/php-facade/run-f1-global-function.mjs --check",
     "php:facade:f2": "node tools/php-facade/run-f2-references.mjs",
     "php:facade:f2:check": "node tools/php-facade/run-f2-references.mjs --check",
+    "php:facade:f3": "node tools/php-facade/run-f3-native-values.mjs",
+    "php:facade:f3:check": "node tools/php-facade/run-f3-native-values.mjs --check",
     "php:smoke": "node tools/php-smoke/run-smoke.mjs",
     "php:smoke:check": "node tools/php-smoke/run-smoke.mjs --check",
     "receipts:build": "node tools/receipts/build-evidence-links.mjs",

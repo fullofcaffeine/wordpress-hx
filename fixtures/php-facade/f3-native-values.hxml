@@ -1,0 +1,3 @@
+-cp fixtures/php-facade/src
+-main wphx.fixtures.php.facade.NativeEntry
+-php build/php-native-values/haxe

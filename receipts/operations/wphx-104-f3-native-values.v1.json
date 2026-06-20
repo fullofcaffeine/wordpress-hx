@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-104-f3-native-values",
+  "issue": {
+    "id": "wordpresshx-w91.1.4",
+    "external_ref": "WPHX-104",
+    "title": "WPHX-104 — F3 native values/global fixture suite"
+  },
+  "recorded_at": "2026-06-20T06:16:00Z",
+  "artifacts": [
+    {
+      "path": "fixtures/php-facade/f3-native-values.hxml",
+      "role": "Haxe PHP native/global fixture compile file"
+    },
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/NativeEntry.hx",
+      "role": "Haxe entry point preserving native/global implementation emission"
+    },
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/NativeKernel.hx",
+      "role": "Haxe-owned seed and normalization logic"
+    },
+    {
+      "path": "fixtures/php-facade/oracle/native-values.php",
+      "role": "PHP oracle shell for native values and globals"
+    },
+    {
+      "path": "tools/php-facade/run-f3-native-values.mjs",
+      "role": "deterministic F3 native/global generator and checker"
+    },
+    {
+      "path": "manifests/php-facade/wphx-104-f3-native-values.v1.json",
+      "role": "F3 generated-output and native/global comparison snapshot"
+    },
+    {
+      "path": "docs/operations/php-facade.md",
+      "role": "PHP facade fixture runbook"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:facade:f3",
+    "npm run php:facade:f3:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "haxe_version": "4.3.7",
+    "globals": true,
+    "superglobal_shaped_state": true,
+    "array_key_exists_vs_isset_null": true,
+    "false_zero_empty_distinctions": true,
+    "native_array_order": true,
+    "callback_value": true,
+    "comparison_count": 3,
+    "runtime_matrix": [
+      "local-php-cli",
+      "docker-php-8.4-cli",
+      "docker-php-8.5-cli"
+    ],
+    "native_strategy": "Original-path PHP shells keep WordPress-facing globals and arrays native; Haxe owns seed JSON and scalar normalization behind the shell boundary."
+  }
+}

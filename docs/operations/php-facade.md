@@ -44,3 +44,25 @@ The fixture compares an oracle PHP shell with a generated Haxe-backed shell for:
 The generated shell still owns the exact procedural PHP reference ABI. Haxe owns the value transformation behind that boundary. This is the current intended shape for WordPress APIs that require PHP references: preserve exact PHP signatures in original-path shells, then cross into Haxe-owned implementation code where the values are no longer references.
 
 The committed snapshot is `manifests/php-facade/wphx-103-f2-references.v1.json`.
+
+## F3 Native Values and Globals
+
+WPHX-104 owns the native values/global fixture:
+
+```bash
+npm run php:facade:f3
+npm run php:facade:f3:check
+```
+
+The fixture compares an oracle PHP shell with a generated Haxe-backed shell for:
+
+- `$GLOBALS` option storage;
+- `$_SERVER`-shaped superglobal state;
+- `array_key_exists` versus `isset` behavior for `null`;
+- `false`, `"0"`, and empty-string distinctions;
+- native PHP list/associative arrays and key order;
+- callback value flow.
+
+The generated shell decodes Haxe-provided seed JSON into native PHP arrays before exposing values through globals. That keeps WordPress-facing state PHP-native while allowing Haxe to own canonical seed/normalization logic behind the boundary.
+
+The committed snapshot is `manifests/php-facade/wphx-104-f3-native-values.v1.json`.
