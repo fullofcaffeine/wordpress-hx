@@ -24,18 +24,16 @@
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
     "receipts:build": "node tools/receipts/build-evidence-links.mjs",
     "receipts:validate": "node tools/receipts/validate-receipts.mjs",
+    "operations:multi-agent:check": "node tools/operations/check-multi-agent-drill.mjs",
     "task-pack": "node tools/task-packs/generate-task-pack.mjs",
     "task-pack:check": "node tools/task-packs/check-task-pack.mjs",
     "precommit": "npm run format:haxe:check && npm run baseline:validate && npm run beads:seed && npm run receipts:validate && npm run security:gitleaks"
   },
   "devDependencies": {
-    "playwright": "1.61.0"
+    "playwright": "^1.61.0"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/fullofcaffeine/wordpress-hx.git"
-  },
-  "devDependencies": {
-    "playwright": "^1.61.0"
   }
 }

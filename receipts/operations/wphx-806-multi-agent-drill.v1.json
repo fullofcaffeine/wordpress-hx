@@ -1,0 +1,65 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-806-multi-agent-drill",
+  "issue": {
+    "id": "wordpresshx-w91.4.6",
+    "external_ref": "WPHX-806",
+    "title": "Prove multi-agent claim/worktree/handoff protocol"
+  },
+  "recorded_at": "2026-06-20T04:10:00Z",
+  "artifacts": [
+    {
+      "path": "manifests/operations/multi-agent-drill.v1.json",
+      "role": "two-agent claim/worktree/handoff drill manifest"
+    },
+    {
+      "path": "tools/operations/check-multi-agent-drill.mjs",
+      "role": "drill invariant validator"
+    },
+    {
+      "path": "tools/bd-wphx",
+      "role": "root Beads wrapper for nested repositories and worktrees"
+    },
+    {
+      "path": "docs/operations/multi-agent.md",
+      "role": "operator documentation"
+    }
+  ],
+  "verification_commands": [
+    "npm run operations:multi-agent:check",
+    "node tools/operations/check-multi-agent-drill.mjs --live-ready",
+    "npm run task-pack -- WPHX-011 --out build/task-packs/drill/WPHX-011.json",
+    "npm run task-pack -- WPHX-016 --out build/task-packs/drill/WPHX-016.json",
+    "tools/bd-wphx ready --json",
+    "(cd ../wordpress-develop && ../wordpresshx/tools/bd-wphx ready --json)"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "agent_count": 2,
+    "issue_refs": [
+      "WPHX-011",
+      "WPHX-016"
+    ],
+    "unique_claims": 2,
+    "live_ready_checked": true,
+    "worktree_count": 2,
+    "owned_path_count": 14,
+    "shared_output_count": 2,
+    "resolved_discovery_count": 2,
+    "task_packs": [
+      {
+        "issue": "WPHX-011",
+        "output": "build/task-packs/drill/WPHX-011.json",
+        "sha256": "6322f6a513af141bc367dc96d4c4d6318fb00311e3876a7a8a6e5b0e517ba851",
+        "bytes": 3853
+      },
+      {
+        "issue": "WPHX-016",
+        "output": "build/task-packs/drill/WPHX-016.json",
+        "sha256": "bfdbcbcd202d65fd041e009a3502bb6c555e564403567bba10d85229346dc8f2",
+        "bytes": 3079
+      }
+    ],
+    "nested_wrapper_check": "passed from ../wordpress-develop"
+  }
+}

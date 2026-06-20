@@ -1,0 +1,159 @@
+{
+  "schema": "wphx.multi-agent-drill.v1",
+  "recorded_at": "2026-06-20T04:10:00Z",
+  "purpose": "Prove that two write-capable agents can be assigned independent work without duplicate Beads claims, path collisions, or lost discoveries.",
+  "coordinator": {
+    "program_root": ".",
+    "beads_authority": ".beads/beads.db",
+    "wrapper": "tools/bd-wphx",
+    "selection_command": "tools/bd-wphx ready --json",
+    "integration_rule": "The coordinator reviews both worktrees, rebuilds deterministic shared manifests, writes receipts, closes Beads issues, syncs, and pushes."
+  },
+  "agents": [
+    {
+      "name": "agent-license-provenance",
+      "issue": {
+        "id": "wordpresshx-w91.15",
+        "external_ref": "WPHX-011",
+        "title": "WPHX-011 \u2014 License/provenance audit",
+        "observed_ready": true
+      },
+      "claim": {
+        "mode": "atomic",
+        "command": "tools/bd-wphx update wordpresshx-w91.15 --claim"
+      },
+      "branch": "wphx/wordpresshx-w91.15-WPHX-011-license-provenance",
+      "worktree": "../wordpresshx-worktrees/wordpresshx-w91.15-WPHX-011-license-provenance",
+      "task_pack": "build/task-packs/drill/WPHX-011.json",
+      "owned_paths": [
+        "docs/operations/license-provenance.md",
+        "manifests/license-provenance.v1.json",
+        "tools/license/audit-provenance.mjs",
+        "receipts/operations/wphx-011-license-provenance.v1.json"
+      ],
+      "generated_paths": [
+        "build/task-packs/drill/WPHX-011.json"
+      ],
+      "read_only_paths": [
+        "docs/prd/wordpress-haxe-port.md",
+        "docs/operations/repositories.md",
+        "manifests/artifact-provenance.jsonl",
+        "manifests/source-inventory.jsonl"
+      ],
+      "handoff": {
+        "required_fields": [
+          "issue",
+          "external_ref",
+          "commit",
+          "branch",
+          "worktree",
+          "owned_paths",
+          "commands_run",
+          "receipt_paths",
+          "remaining_acceptance",
+          "discoveries"
+        ],
+        "discoveries": [
+          {
+            "id": "disc-license-sbom-scope",
+            "summary": "License audit should decide whether WPHX-712 SBOM owns release-package license rollup or only generated distribution output.",
+            "action": "create_or_relate_issue",
+            "command": "tools/bd-wphx create \"WPHX-DISC — Decide release SBOM license rollup ownership\" --type task --priority 3 --deps discovered-from:wordpresshx-w91.15"
+          }
+        ]
+      }
+    },
+    {
+      "name": "agent-beads-upgrade-eval",
+      "issue": {
+        "id": "wordpresshx-ccb",
+        "external_ref": "WPHX-016",
+        "title": "WPHX-016 \u2014 Evaluate Beads CLI upgrade from 0.49.0",
+        "observed_ready": true
+      },
+      "claim": {
+        "mode": "atomic",
+        "command": "tools/bd-wphx update wordpresshx-ccb --claim"
+      },
+      "branch": "wphx/wordpresshx-ccb-WPHX-016-beads-upgrade-eval",
+      "worktree": "../wordpresshx-worktrees/wordpresshx-ccb-WPHX-016-beads-upgrade-eval",
+      "task_pack": "build/task-packs/drill/WPHX-016.json",
+      "owned_paths": [
+        "docs/operations/beads-upgrade-evaluation.md",
+        "manifests/beads/upgrade-evaluation.v1.json",
+        "receipts/operations/wphx-016-beads-upgrade-eval.v1.json"
+      ],
+      "generated_paths": [
+        "build/task-packs/drill/WPHX-016.json"
+      ],
+      "conditional_paths": [
+        ".beads/.local_version",
+        "toolchain.lock.json",
+        "docs/operations/beads.md",
+        "scripts/hooks/pre-commit",
+        "scripts/hooks/pre-push"
+      ],
+      "read_only_paths": [
+        "AGENTS.md",
+        "docs/operations/beads.md",
+        "docs/operations/receipts.md",
+        "scripts/hooks/install.sh"
+      ],
+      "handoff": {
+        "required_fields": [
+          "issue",
+          "external_ref",
+          "commit",
+          "branch",
+          "worktree",
+          "owned_paths",
+          "commands_run",
+          "receipt_paths",
+          "remaining_acceptance",
+          "discoveries"
+        ],
+        "discoveries": [
+          {
+            "id": "disc-upgrade-restore-coupling",
+            "summary": "Any Beads CLI upgrade decision that touches storage behavior must update the WPHX-807 backup/restore drill inputs.",
+            "action": "record_dependency_note",
+            "command": "tools/bd-wphx update wordpresshx-w91.4.7 --notes \"Check discovery from wordpresshx-ccb before restore drill: WPHX-016 Beads CLI decision may change storage behavior.\""
+          }
+        ]
+      }
+    }
+  ],
+  "shared_outputs": [
+    {
+      "path": "manifests/receipts/evidence-links.v1.json",
+      "owner": "coordinator",
+      "mode": "deterministic_after_close",
+      "command": "npm run receipts:build"
+    },
+    {
+      "path": ".beads/issues.jsonl",
+      "owner": "coordinator",
+      "mode": "bd_sync_only",
+      "command": "bd sync"
+    }
+  ],
+  "discovery_resolution": [
+    {
+      "discovery_id": "disc-license-sbom-scope",
+      "resolution": "Must be either filed or explicitly related during WPHX-011 handoff review before WPHX-011 closes."
+    },
+    {
+      "discovery_id": "disc-upgrade-restore-coupling",
+      "resolution": "Must be copied into WPHX-807 notes or a blocking dependency before WPHX-016 closes if upgrade behavior changed."
+    }
+  ],
+  "acceptance_checks": [
+    "exactly two write-capable agents",
+    "unique issue ids and external refs",
+    "atomic claim commands target each issue once",
+    "unique branches and worktrees",
+    "no owned/generated path prefix collisions",
+    "shared outputs have a coordinator-owned deterministic merge rule",
+    "every handoff discovery has a coordinator resolution"
+  ]
+}

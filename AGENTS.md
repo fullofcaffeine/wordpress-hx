@@ -57,6 +57,8 @@ Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-
 
 - Required local Beads version is pinned in `.beads/.local_version` and mirrored in `toolchain.lock.json`.
 - The root `.beads` store is authoritative for this program. Sibling repo `.beads` stores are reference context unless the current task explicitly enters that repository and follows its own `AGENTS.md`.
+- From sibling checkouts, nested repos, or task worktrees, use `tools/bd-wphx` from the program root so Beads commands resolve to this repository's root database.
+- Parallel write-capable agents must follow `docs/operations/multi-agent.md`: one claimed Beads issue, one branch, one worktree, non-overlapping owned paths, and a handoff that records discoveries.
 - Beads sync branch setup is intentionally deferred to WPHX-807; until then, `bd doctor` may warn about missing sync-branch configuration but must not report data corruption or untracked JSONL.
 
 ## Local Hooks and Checks
@@ -71,7 +73,7 @@ Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-
 ```bash
 bd ready              # Find available work
 bd show <id>          # View issue details
-bd update <id> --status in_progress  # Claim work
+bd update <id> --claim  # Atomically claim work
 bd close <id>         # Complete work
 bd sync               # Sync with git
 ```
