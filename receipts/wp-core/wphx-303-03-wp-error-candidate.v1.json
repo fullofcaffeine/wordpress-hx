@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-303-03-wp-error-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.7.3",
+    "external_ref": "WPHX-303.03",
+    "title": "Build WP_Error parity fixture and typed source candidate"
+  },
+  "recorded_at": "2026-06-21T00:10:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-303-03-wp-error-candidate.v1.json",
+      "role": "WP_Error Haxe candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-303-03-wp-error-candidate.v1.json",
+      "role": "Haxe parity candidate ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-wp-error-candidate.mjs",
+      "role": "candidate generator and oracle comparator"
+    },
+    {
+      "path": "src/wphx/wp/error/WpErrorRuntime.hx",
+      "role": "typed Haxe WP_Error runtime decision helper"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-303-wp-error",
+    "npm run wp:core:wphx-303-wp-error:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_generated_wp_error_shell",
+    "covered_symbols": 16,
+    "fixture_cases": 13,
+    "comparisons": 3,
+    "skipped_runtimes": 0,
+    "oracle_behavior_matches_haxe_candidate": true
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 52,
+  "closed_task_count": 53,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -373,7 +373,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "f89cc60e53b1c4973fc0ab3a979fe17ef5827ea3bfc9ec193a0f1ddc6dd3e762",
+          "sha256": "7a2a9d9d55c36850bf1d501d4ae340779ca3eb48af841990bba4b5b6bf8cf7a9",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -455,6 +455,16 @@
           "path": "receipts/wp-core/wphx-303-02-escaping-sanitization-fixture.v1.json",
           "sha256": "1e0f18be960251487c8b14dad6f4cfe9fae2db93be83668c77e2ffc847eab726",
           "id": "receipt:wphx-303-02-escaping-sanitization-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-303.03",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-303-03-wp-error-candidate.v1.json",
+          "sha256": "8630b270948208f2e93b7cea3868c57c9bcdcaf2acecb030745e92fe64187c4c",
+          "id": "receipt:wphx-303-03-wp-error-candidate"
         }
       ]
     },

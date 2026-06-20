@@ -1,0 +1,4 @@
+-cp src
+-cp fixtures/wp-core/src
+-main wphx.fixtures.wp.core.WpErrorCandidateEntry
+-php build/wp-core/wphx-303-03/haxe

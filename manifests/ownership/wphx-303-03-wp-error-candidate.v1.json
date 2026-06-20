@@ -1,0 +1,82 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-error-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.7.3",
+    "external_ref": "WPHX-303.03"
+  },
+  "unit": {
+    "kind": "class",
+    "name": "WP_Error Haxe parity candidate",
+    "area": "wp-includes/class-wp-error.php",
+    "public_contract": "WP_Error remains a reflection-visible PHP class with public errors/error_data arrays and protected additional_data while selected behavior decisions delegate to typed Haxe runtime helpers."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/class-wp-error.php"
+    ],
+    "digest": "sha256:2350a39d8c68275a06cfa6a4b14d21df9202b5fbdebff6738660c58a5b1997ea"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/wp-error-candidate.hxml",
+    "src/wphx/wp/error/WpErrorRuntime.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpErrorCandidateEntry.hx",
+    "tools/wp-core/run-wp-error-candidate.mjs",
+    "manifests/wp-core/wphx-303-03-wp-error-candidate.v1.json",
+    "receipts/wp-core/wphx-303-03-wp-error-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-303-03",
+    "manifests/wp-core/wphx-303-03-wp-error-candidate.v1.json",
+    "manifests/ownership/wphx-303-03-wp-error-candidate.v1.json",
+    "receipts/wp-core/wphx-303-03-wp-error-candidate.v1.json"
+  ],
+  "bridge": {
+    "kind": "generated_shell",
+    "reason": "WordPress plugins inspect and mutate WP_Error public properties and rely on instanceof/reflection; the candidate keeps the PHP object shell while Haxe owns bounded runtime decisions.",
+    "bounded_by": [
+      "generated candidate wp-includes/class-wp-error.php shell",
+      "WPHX-303.03 oracle comparison receipt",
+      "reflection:object-shape fixture",
+      "public-properties:manual-mutation fixture"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Promote to verified owned distribution only after class emission proves PHP object shape, protected property visibility, native action timing, source maps, and plugin compatibility at distribution surface.",
+    "owner_issue": "WPHX-303",
+    "target_state": "verified_haxe_owned"
+  },
+  "smell_fixes": [
+    {
+      "description": "Isolated WP_Error state-transition decisions into named typed Haxe helpers instead of duplicating ad hoc empty/count checks across generated methods.",
+      "compatibility_evidence": [
+        "constructor:empty",
+        "add:ordering-and-messages",
+        "data:history-and-public-mutation",
+        "remove:clears-code-data-history",
+        "reflection:object-shape"
+      ],
+      "behavior_policy": "no_observable_change"
+    }
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-303-wp-error",
+      "npm run wp:core:wphx-303-wp-error:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-303-03-wp-error-candidate",
+      "receipt:wphx-303-01-error-format-surface"
+    ],
+    "manifest_digest": "sha256:913f4fe96a8f97afc934cad7e499c14a09088b75e89da729b36f7b4048b62734"
+  },
+  "notes": "is_wp_error() remains a native PHP boundary in load.php for instanceof semantics and the is_wp_error_instance action. The WP_Error class shell also keeps native PHP arrays because public property mutation is part of the compatibility surface."
+}
