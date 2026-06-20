@@ -63,6 +63,8 @@
     "wp:hooks:surface:check": "node tools/wp-hooks/run-hook-surface.mjs --check",
     "wp:hooks:parity-candidate": "node tools/wp-hooks/run-hook-parity-candidate.mjs",
     "wp:hooks:parity-candidate:check": "node tools/wp-hooks/run-hook-parity-candidate.mjs --check",
+    "wp:hooks:runtime-boundary": "node tools/wp-hooks/run-hook-runtime-boundary.mjs",
+    "wp:hooks:runtime-boundary:check": "node tools/wp-hooks/run-hook-runtime-boundary.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",

@@ -57,3 +57,30 @@ Evidence is recorded in:
 - `manifests/wp-hooks/wphx-303-hook-parity-candidate.v1.json`
 - `manifests/ownership/wphx-303-hooks-decision-model.v1.json`
 - `receipts/wp-hooks/wphx-303-hook-parity-candidate.v1.json`
+
+## WPHX-304 Runtime Boundary
+
+WPHX-304 moves bounded hook shell decisions into shared typed Haxe runtime code in
+`src/wphx/wp/hooks/HookRuntime.hx`. The generated public PHP shell delegates priority
+normalization, counter increments, dispatch arity decisions, filter/action value-write
+decisions, default action args, plugin basename trimming, lifecycle hook names, and
+plugin realpath registration decisions through the typed facade.
+
+The shell intentionally keeps PHP-native callbacks, by-reference arrays, globals,
+reflection-visible declarations, and include timing at the public boundary. WPHX-305 owns
+moving the remaining broad PHP shell emission out of the JavaScript template and into
+Haxe-owned source, a macro/emitter, a generic Haxe PHP backend improvement, or an
+ADR-approved Reflaxe/custom PHP target.
+
+Run:
+
+```bash
+npm run wp:hooks:runtime-boundary
+npm run wp:hooks:runtime-boundary:check
+```
+
+Evidence is recorded in:
+
+- `manifests/wp-hooks/wphx-304-hook-runtime-boundary.v1.json`
+- `manifests/ownership/wphx-304-hooks-runtime-boundary.v1.json`
+- `receipts/wp-hooks/wphx-304-hook-runtime-boundary.v1.json`

@@ -1,0 +1,69 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp/hooks-runtime-boundary",
+  "issue": {
+    "id": "wordpresshx-l76.4",
+    "external_ref": "WPHX-304"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "hooks/plugin-api runtime boundary",
+    "area": "wp-includes",
+    "public_contract": "plugin.php and class-wp-hook.php public hook API shell with Haxe-owned runtime decisions and PHP-native callback/reference/global boundary"
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-hook.php"
+    ],
+    "digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+  },
+  "owned_paths": [
+    "src/wphx/wp/hooks/HookRuntime.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/HookKernel.hx",
+    "fixtures/php-facade/f7-hook-kernel.hxml",
+    "fixtures/wp-hooks/hooks-parity-candidate.hxml",
+    "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateKernel.hx",
+    "tools/php-facade/run-f7-hook-kernel.mjs",
+    "tools/wp-hooks/run-hook-runtime-boundary.mjs"
+  ],
+  "generated_paths": [
+    "build/php-hook-kernel",
+    "build/wp-hooks",
+    "build/wp-hooks-candidate"
+  ],
+  "bridge": {
+    "kind": "runtime_delegate",
+    "reason": "PHP callables, by-reference arrays, globals, reflection-visible declarations, and include timing remain PHP-native at the public shell. The Haxe boundary owns scalar/string hook decisions while WPHX-305 moves remaining shell emission into Haxe/compiler-owned output.",
+    "bounded_by": [
+      "npm run php:facade:f7:check",
+      "npm run wp:hooks:surface:check",
+      "npm run wp:hooks:parity-candidate:check",
+      "npm run wp:hooks:runtime-boundary:check"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Move the remaining plugin.php/class-wp-hook.php public shell emission out of the JavaScript PHP template into Haxe-owned source, a macro/emitter, a generic Haxe PHP backend improvement, or ADR-approved Reflaxe/custom PHP target.",
+    "owner_issue": "WPHX-305",
+    "target_state": "verified_haxe_owned"
+  },
+  "verification": {
+    "oracle_commands": [
+      "npm run php:facade:f7",
+      "npm run wp:hooks:surface",
+      "npm run wp:hooks:parity-candidate",
+      "npm run wp:hooks:runtime-boundary",
+      "npm run wp:hooks:runtime-boundary:check"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-302-hook-surface",
+      "receipt:wphx-303-hook-parity-candidate",
+      "receipt:wphx-304-hook-runtime-boundary"
+    ],
+    "manifest_digest": "sha256:91ca47e078eb8942f79e5a584fb3458e94fd5e3eed26f2a502f193f1c2e1d114"
+  },
+  "notes": "WPHX-304 replaces bounded hook shell decisions with typed Haxe runtime calls without using broad php.Syntax.code. The public shell remains PHP-native where WordPress plugin compatibility depends on callables, references, globals, and reflection."
+}

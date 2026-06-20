@@ -1,0 +1,14 @@
+{
+  "schema": "wphx.wp-hook-runtime-boundary-receipt.v1",
+  "id": "receipt:wphx-304-hook-runtime-boundary",
+  "issue": "WPHX-304",
+  "recorded_at": "2026-06-20T23:05:00.000Z",
+  "command": "npm run wp:hooks:runtime-boundary",
+  "status": "passed",
+  "manifest": "manifests/wp-hooks/wphx-304-hook-runtime-boundary.v1.json",
+  "manifest_sha256": "sha256:91ca47e078eb8942f79e5a584fb3458e94fd5e3eed26f2a502f193f1c2e1d114",
+  "ownership_manifest": "manifests/ownership/wphx-304-hooks-runtime-boundary.v1.json",
+  "ownership_manifest_sha256": "sha256:c63041d860bb8e0f2277b8662a39d0ee9996716a13d517bf858b820d11611934",
+  "boundary_call_count": 15,
+  "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+}

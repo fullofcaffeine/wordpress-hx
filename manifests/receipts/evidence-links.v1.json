@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 45,
+  "closed_task_count": 46,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -343,7 +343,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "7f3975b982ed8354baa106e9121849663ab4e4b85464d5684d0ee3fbac54b587",
+          "sha256": "f22e8fd4b830c9e55f0876d3b36955b4e21c344d80c3dba02762fd453fbf4345",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -363,7 +363,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "0a252b09abf0d2b147154ccac19b8371a34ae3e9902c3d606b3fcca68e0154e5",
+          "sha256": "21e6140058b76607b2c49ee78290811df9552953bcff465df6370c9113b478dc",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -383,7 +383,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-302-hook-surface.v1.json",
-          "sha256": "c0063ee805271f50d0231ebb1e729f5809109995082c0f3b79f46fe1c25534db",
+          "sha256": "41b9fc9c1927fd80faa47da486372db558d785f24e2ecb2977b94a831c8eb5bc",
           "id": "receipt:wphx-302-hook-surface"
         }
       ]
@@ -393,8 +393,18 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-303-hook-parity-candidate.v1.json",
-          "sha256": "ff8fc5d716df3d223c031d033c2512b57959205159857a323ba7c691e4567ec8",
+          "sha256": "54e74415d953eb585b4342bfff951e835f820907b46d89f20d725e1f3ba413d5",
           "id": "receipt:wphx-303-hook-parity-candidate"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-304",
+      "receipts": [
+        {
+          "path": "receipts/wp-hooks/wphx-304-hook-runtime-boundary.v1.json",
+          "sha256": "316afd7dd0ca3a95e1d37b88735e1b0374d3d8918eed4c0fb626a5959263aaff",
+          "id": "receipt:wphx-304-hook-runtime-boundary"
         }
       ]
     },

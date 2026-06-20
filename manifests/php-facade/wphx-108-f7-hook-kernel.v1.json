@@ -27,7 +27,7 @@
   "build": {
     "command": "haxe fixtures/php-facade/f7-hook-kernel.hxml",
     "haxe_output_dir": "build/php-hook-kernel/haxe",
-    "generated_haxe_file_count": 27,
+    "generated_haxe_file_count": 29,
     "generated_haxe_files": [
       {
         "path": "index.php",
@@ -43,6 +43,11 @@
         "path": "lib/Date.php",
         "bytes": 2139,
         "sha256": "f479e2e3943b84aa65982825b6d58a06dc4b649886094993fb0c65b7d1160ae3"
+      },
+      {
+        "path": "lib/haxe/ds/ArraySort.php",
+        "bytes": 12196,
+        "sha256": "8f8d40b3b45aa3082403502eed26c1949ec82f64eb93b27ef424c9aedde44878"
       },
       {
         "path": "lib/haxe/ds/StringMap.php",
@@ -141,8 +146,8 @@
       },
       {
         "path": "lib/StringTools.php",
-        "bytes": 3629,
-        "sha256": "9ed5d02bfa2ea61300077f5a8ec4eda45563067a69254014ab1c70fd1e40f43d"
+        "bytes": 5227,
+        "sha256": "a53ab218a60f94a28a9ca113d07a2b01a939962ea3332076b9cac912d7c3852b"
       },
       {
         "path": "lib/Type.php",
@@ -161,8 +166,13 @@
       },
       {
         "path": "lib/wphx/fixtures/php/facade/HookKernel.php",
-        "bytes": 874,
-        "sha256": "29592971c07403ac96e2941e0eda9cc3dde583f21a2019e7043649ba72debd39"
+        "bytes": 3950,
+        "sha256": "c06654f8363bce0a777fbbda78ddc3f12859bccfdc6300cfe7f5be7bd3e05967"
+      },
+      {
+        "path": "lib/wphx/wp/hooks/HookRuntime.php",
+        "bytes": 16594,
+        "sha256": "58cf7a755c116a9c480bffddb030351bb3ecf5b18c53890e63c4f30cde0edefb"
       }
     ],
     "oracle_files": [
@@ -180,13 +190,13 @@
     "generated_files": [
       {
         "path": "wp-includes/class-wp-hook.php",
-        "bytes": 7332,
-        "sha256": "8071dc277b2b91ef0c71c5d7d0c59ea4bafbd15fcf294c9ae5cb62665732dfd7"
+        "bytes": 8002,
+        "sha256": "d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
       },
       {
         "path": "wp-includes/plugin.php",
-        "bytes": 9650,
-        "sha256": "804db0a48b1f527d504707b346f2ef01698b048b006745139c5c2d19158c48f4"
+        "bytes": 10015,
+        "sha256": "4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
       }
     ],
     "probe": {

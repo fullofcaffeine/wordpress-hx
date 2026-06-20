@@ -1,0 +1,172 @@
+{
+  "schema": "wphx.wp-hook-runtime-boundary.v1",
+  "issue": "WPHX-304",
+  "generated_at": "2026-06-20T23:05:00.000Z",
+  "generator": "tools/wp-hooks/run-hook-runtime-boundary.mjs",
+  "inputs": {
+    "haxe_runtime": {
+      "path": "src/wphx/wp/hooks/HookRuntime.hx",
+      "bytes": 6239,
+      "sha256": "sha256:9be481277cfc13f4b270c95f646216d601e6084c4e7f3b987ef7cb1754fc8ea7"
+    },
+    "facade_kernel": {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/HookKernel.hx",
+      "bytes": 1918,
+      "sha256": "sha256:eecb1f46d3ec647fd40c460afcbb9851099b9d7f5ccbf335464700c056d1b9c3"
+    },
+    "f7_manifest": "manifests/php-facade/wphx-108-f7-hook-kernel.v1.json",
+    "f7_manifest_sha256": "sha256:3b28e75c3dc235ff62acda4c5c426c91f4553a81588f4636bddf6dc5984b406b",
+    "hook_surface_manifest": "manifests/wp-hooks/wphx-302-hook-surface.v1.json",
+    "hook_surface_manifest_sha256": "sha256:87456e13fd049ac5116fd40cf4e23bbf82ba5a7edd36ec5821c493be596045a6",
+    "hook_candidate_manifest": "manifests/wp-hooks/wphx-303-hook-parity-candidate.v1.json",
+    "hook_candidate_manifest_sha256": "sha256:5c082ced0d1ea091f99d3edcf82142c454f31288579957e1c71b801208a9de1e",
+    "source_units": [
+      {
+        "unit": "src/wp-includes/plugin.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/plugin.php",
+        "bytes": 36501,
+        "sha256": "sha256:2e06902ae7d65d7dad37cbafd8e8feff83e4aeeff3a7839885ce7fe4f0c94d68"
+      },
+      {
+        "unit": "src/wp-includes/class-wp-hook.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-hook.php",
+        "bytes": 16636,
+        "sha256": "sha256:a66fe7372af72876fc702e50943f9a2a8dff4ed7394163e07491b80a06e27f1d"
+      }
+    ],
+    "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_version": "8.4.7"
+  },
+  "generated": {
+    "plugin": {
+      "path": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "sha256": "sha256:4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
+    },
+    "hook_class": {
+      "path": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+      "sha256": "sha256:d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
+    },
+    "haxe_runtime": {
+      "path": "build/php-hook-kernel/haxe/lib/wphx/wp/hooks/HookRuntime.php",
+      "sha256": "sha256:58cf7a755c116a9c480bffddb030351bb3ecf5b18c53890e63c4f30cde0edefb"
+    },
+    "generated_files": [
+      {
+        "path": "wp-includes/class-wp-hook.php",
+        "bytes": 8002,
+        "sha256": "d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
+      },
+      {
+        "path": "wp-includes/plugin.php",
+        "bytes": 10015,
+        "sha256": "4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
+      }
+    ]
+  },
+  "boundary_calls": [
+    {
+      "id": "class:priority-normalization",
+      "file": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+      "method": "normalizeKernelPriority",
+      "min_count": 2,
+      "needle": "HookKernel::normalizeKernelPriority",
+      "count": 2,
+      "present": true
+    },
+    {
+      "id": "class:filter-value-write",
+      "file": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+      "method": "shouldWriteFilteredValue",
+      "min_count": 1,
+      "needle": "HookKernel::shouldWriteFilteredValue",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "class:dispatch-arity",
+      "file": "build/php-hook-kernel/generated/wp-includes/class-wp-hook.php",
+      "method": "dispatchArgCount",
+      "min_count": 1,
+      "needle": "HookKernel::dispatchArgCount",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "plugin:counters",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "incrementCount",
+      "min_count": 4,
+      "needle": "HookKernel::incrementCount",
+      "count": 4,
+      "present": true
+    },
+    {
+      "id": "plugin:default-action-arg",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "shouldUseDefaultActionArg",
+      "min_count": 1,
+      "needle": "HookKernel::shouldUseDefaultActionArg",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "plugin:default-action-value",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "defaultActionArg",
+      "min_count": 1,
+      "needle": "HookKernel::defaultActionArg",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "plugin:basename-trim",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "pluginBasenameAfterMappings",
+      "min_count": 1,
+      "needle": "HookKernel::pluginBasenameAfterMappings",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "plugin:realpath-registration",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "shouldRegisterPluginRealpath",
+      "min_count": 1,
+      "needle": "HookKernel::shouldRegisterPluginRealpath",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "plugin:realpath-mapping",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "shouldStorePluginRealpathMapping",
+      "min_count": 1,
+      "needle": "HookKernel::shouldStorePluginRealpathMapping",
+      "count": 1,
+      "present": true
+    },
+    {
+      "id": "plugin:lifecycle-hook-names",
+      "file": "build/php-hook-kernel/generated/wp-includes/plugin.php",
+      "method": "lifecycleHookName",
+      "min_count": 2,
+      "needle": "HookKernel::lifecycleHookName",
+      "count": 2,
+      "present": true
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-304-hooks-runtime-boundary.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "typed_runtime_boundary_calls_present": true,
+    "public_php_callbacks_remain_native": true,
+    "public_php_references_remain_native": true,
+    "public_php_globals_remain_native": true,
+    "broad_haxe_php_string_port": false,
+    "remaining_shell_emission_owner_issue": "WPHX-305"
+  }
+}

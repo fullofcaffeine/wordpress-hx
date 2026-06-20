@@ -42,8 +42,8 @@
     ]
   },
   "removal_gate": {
-    "condition": "Promote hooks/plugin-api to haxe_parity_candidate after the WP_Hook kernel and plugin lifecycle helpers pass the same ABI and behavior probes without generated PHP shell bodies owning business logic.",
-    "owner_issue": "WPHX-304",
+    "condition": "Promote hooks/plugin-api beyond the temporary bridge after the remaining plugin.php/class-wp-hook.php public shell emission moves out of the JavaScript PHP template into Haxe-owned source, a macro/emitter, a generic Haxe PHP backend improvement, or an ADR-approved Reflaxe/custom PHP target.",
+    "owner_issue": "WPHX-305",
     "target_state": "haxe_parity_candidate"
   },
   "verification": {
@@ -55,7 +55,7 @@
     "receipt_refs": [
       "receipt:wphx-302-hook-surface"
     ],
-    "manifest_digest": "sha256:6803bbdc1e0e2c14f2afda9a2b3b57a2fc21b313de566c4043b851bebb90d0a9"
+    "manifest_digest": "sha256:87456e13fd049ac5116fd40cf4e23bbf82ba5a7edd36ec5821c493be596045a6"
   },
   "notes": "WPHX-302 records complete API surface coverage and fixture plugin parity for the hook workset, while explicitly keeping the generated PHP shell as a temporary bridge rather than declaring the hook kernel fully Haxe-owned."
 }

@@ -81,6 +81,21 @@ function writeGeneratedClass() {
     GENERATED_HOOK_CLASS,
     `<?php
 
+if ( ! defined( 'WPHX_F7_HOOK_BOOTSTRAPPED' ) ) {
+\tdefine( 'WPHX_F7_HOOK_BOOTSTRAPPED', true );
+\t$wphx_f7_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
+\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_f7_lib );
+\tspl_autoload_register(
+\t\tfunction ( $class ) {
+\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
+\t\t\tif ( $file ) {
+\t\t\t\tinclude_once $file;
+\t\t\t}
+\t\t}
+\t);
+\t\\php\\Boot::__hx__init();
+}
+
 #[AllowDynamicProperties]
 final class WP_Hook implements Iterator, ArrayAccess {
 \tpublic $callbacks = array();
@@ -91,9 +106,7 @@ final class WP_Hook implements Iterator, ArrayAccess {
 \tprivate $doing_action = false;
 
 \tpublic function add_filter( $hook_name, $callback, $priority, $accepted_args ) {
-\t\tif ( null === $priority ) {
-\t\t\t$priority = 0;
-\t\t}
+\t\t$priority = \\wphx\\fixtures\\php\\facade\\HookKernel::normalizeKernelPriority( $priority );
 
 \t\t$idx = _wp_filter_build_unique_id( $hook_name, $callback, $priority );
 \t\t$priority_existed = isset( $this->callbacks[ $priority ] );
@@ -165,9 +178,7 @@ final class WP_Hook implements Iterator, ArrayAccess {
 \t}
 
 \tpublic function remove_filter( $hook_name, $callback, $priority ) {
-\t\tif ( null === $priority ) {
-\t\t\t$priority = 0;
-\t\t}
+\t\t$priority = \\wphx\\fixtures\\php\\facade\\HookKernel::normalizeKernelPriority( $priority );
 
 \t\t$function_key = _wp_filter_build_unique_id( $hook_name, $callback, $priority );
 \t\t$exists = isset( $function_key, $this->callbacks[ $priority ][ $function_key ] );
@@ -249,16 +260,17 @@ final class WP_Hook implements Iterator, ArrayAccess {
 \t\t\t$priority = $this->current_priority[ $nesting_level ];
 
 \t\t\tforeach ( $this->callbacks[ $priority ] as $the_ ) {
-\t\t\t\tif ( ! $this->doing_action ) {
+\t\t\t\tif ( \\wphx\\fixtures\\php\\facade\\HookKernel::shouldWriteFilteredValue( $this->doing_action ) ) {
 \t\t\t\t\t$args[0] = $value;
 \t\t\t\t}
 
-\t\t\t\tif ( 0 === $the_['accepted_args'] ) {
+\t\t\t\t$accepted_args = \\wphx\\fixtures\\php\\facade\\HookKernel::dispatchArgCount( $num_args, $the_['accepted_args'] );
+\t\t\t\tif ( 0 === $accepted_args ) {
 \t\t\t\t\t$value = call_user_func( $the_['function'] );
-\t\t\t\t} elseif ( $the_['accepted_args'] >= $num_args ) {
+\t\t\t\t} elseif ( $accepted_args === $num_args ) {
 \t\t\t\t\t$value = call_user_func_array( $the_['function'], $args );
 \t\t\t\t} else {
-\t\t\t\t\t$value = call_user_func_array( $the_['function'], array_slice( $args, 0, $the_['accepted_args'] ) );
+\t\t\t\t\t$value = call_user_func_array( $the_['function'], array_slice( $args, 0, $accepted_args ) );
 \t\t\t\t}
 \t\t\t}
 \t\t} while ( false !== next( $this->iterations[ $nesting_level ] ) );
@@ -402,7 +414,7 @@ function add_action( $hook_name, $callback, $priority = 10, $accepted_args = 1 )
 
 function apply_filters( $hook_name, $value, ...$args ) {
 \tglobal $wp_filter, $wp_filters, $wp_current_filter;
-\t$wp_filters[ $hook_name ] = isset( $wp_filters[ $hook_name ] ) ? $wp_filters[ $hook_name ] + 1 : 1;
+\t$wp_filters[ $hook_name ] = \\wphx\\fixtures\\php\\facade\\HookKernel::incrementCount( $wp_filters[ $hook_name ] ?? 0 );
 \tif ( isset( $wp_filter['all'] ) ) {
 \t\t$wp_current_filter[] = $hook_name;
 \t\t$all_args = func_get_args();
@@ -425,7 +437,7 @@ function apply_filters( $hook_name, $value, ...$args ) {
 
 function apply_filters_ref_array( $hook_name, $args ) {
 \tglobal $wp_filter, $wp_filters, $wp_current_filter;
-\t$wp_filters[ $hook_name ] = isset( $wp_filters[ $hook_name ] ) ? $wp_filters[ $hook_name ] + 1 : 1;
+\t$wp_filters[ $hook_name ] = \\wphx\\fixtures\\php\\facade\\HookKernel::incrementCount( $wp_filters[ $hook_name ] ?? 0 );
 \tif ( isset( $wp_filter['all'] ) ) {
 \t\t$wp_current_filter[] = $hook_name;
 \t\t$all_args = func_get_args();
@@ -447,7 +459,7 @@ function apply_filters_ref_array( $hook_name, $args ) {
 
 function do_action( $hook_name, ...$arg ) {
 \tglobal $wp_filter, $wp_actions, $wp_current_filter;
-\t$wp_actions[ $hook_name ] = isset( $wp_actions[ $hook_name ] ) ? $wp_actions[ $hook_name ] + 1 : 1;
+\t$wp_actions[ $hook_name ] = \\wphx\\fixtures\\php\\facade\\HookKernel::incrementCount( $wp_actions[ $hook_name ] ?? 0 );
 \tif ( isset( $wp_filter['all'] ) ) {
 \t\t$wp_current_filter[] = $hook_name;
 \t\t$all_args = func_get_args();
@@ -462,8 +474,8 @@ function do_action( $hook_name, ...$arg ) {
 \tif ( ! isset( $wp_filter['all'] ) ) {
 \t\t$wp_current_filter[] = $hook_name;
 \t}
-\tif ( empty( $arg ) ) {
-\t\t$arg[] = '';
+\tif ( \\wphx\\fixtures\\php\\facade\\HookKernel::shouldUseDefaultActionArg( count( $arg ) ) ) {
+\t\t$arg[] = \\wphx\\fixtures\\php\\facade\\HookKernel::defaultActionArg();
 \t} elseif ( is_array( $arg[0] ) && 1 === count( $arg[0] ) && isset( $arg[0][0] ) && is_object( $arg[0][0] ) ) {
 \t\t$arg[0] = $arg[0][0];
 \t}
@@ -473,7 +485,7 @@ function do_action( $hook_name, ...$arg ) {
 
 function do_action_ref_array( $hook_name, $args ) {
 \tglobal $wp_filter, $wp_actions, $wp_current_filter;
-\t$wp_actions[ $hook_name ] = isset( $wp_actions[ $hook_name ] ) ? $wp_actions[ $hook_name ] + 1 : 1;
+\t$wp_actions[ $hook_name ] = \\wphx\\fixtures\\php\\facade\\HookKernel::incrementCount( $wp_actions[ $hook_name ] ?? 0 );
 \tif ( isset( $wp_filter['all'] ) ) {
 \t\t$wp_current_filter[] = $hook_name;
 \t\t$all_args = func_get_args();
@@ -593,9 +605,7 @@ function plugin_basename( $file ) {
 \t}
 \t$plugin_dir = wp_normalize_path( WP_PLUGIN_DIR );
 \t$mu_plugin_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
-\t$file = preg_replace( '#^' . preg_quote( $plugin_dir, '#' ) . '/|^' . preg_quote( $mu_plugin_dir, '#' ) . '/#', '', $file );
-\t$file = trim( $file, '/' );
-\treturn $file;
+\treturn \\wphx\\fixtures\\php\\facade\\HookKernel::pluginBasenameAfterMappings( $file, $plugin_dir, $mu_plugin_dir );
 }
 
 function wp_register_plugin_realpath( $file ) {
@@ -608,10 +618,10 @@ function wp_register_plugin_realpath( $file ) {
 \t$plugin_path = wp_normalize_path( dirname( $file ) );
 \t$realpath = realpath( $file );
 \t$plugin_realpath = wp_normalize_path( dirname( false === $realpath ? $file : $realpath ) );
-\tif ( $plugin_path === $wp_plugin_path || $plugin_path === $wpmu_plugin_path ) {
+\tif ( ! \\wphx\\fixtures\\php\\facade\\HookKernel::shouldRegisterPluginRealpath( $plugin_path, $wp_plugin_path, $wpmu_plugin_path ) ) {
 \t\treturn false;
 \t}
-\tif ( $plugin_path !== $plugin_realpath ) {
+\tif ( \\wphx\\fixtures\\php\\facade\\HookKernel::shouldStorePluginRealpathMapping( $plugin_path, $plugin_realpath ) ) {
 \t\t$wp_plugin_paths[ $plugin_path ] = $plugin_realpath;
 \t}
 \treturn true;
@@ -627,12 +637,12 @@ function plugin_dir_url( $file ) {
 
 function register_activation_hook( $file, $callback ) {
 \t$file = plugin_basename( $file );
-\tadd_action( 'activate_' . $file, $callback );
+\tadd_action( \\wphx\\fixtures\\php\\facade\\HookKernel::lifecycleHookName( 'activate_', $file ), $callback );
 }
 
 function register_deactivation_hook( $file, $callback ) {
 \t$file = plugin_basename( $file );
-\tadd_action( 'deactivate_' . $file, $callback );
+\tadd_action( \\wphx\\fixtures\\php\\facade\\HookKernel::lifecycleHookName( 'deactivate_', $file ), $callback );
 }
 
 function register_uninstall_hook( $file, $callback ) {

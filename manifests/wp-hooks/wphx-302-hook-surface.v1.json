@@ -7,7 +7,7 @@
     "abi_manifest": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
     "abi_manifest_sha256": "sha256:e77b6138e9781b04fe3ce8a0982743475179c74d4d790562ab43cb59b82ffc6b",
     "f7_manifest": "manifests/php-facade/wphx-108-f7-hook-kernel.v1.json",
-    "f7_manifest_sha256": "sha256:a78dfb65e759b5cf21b2703993842f6f9bd62464bd52cee69264e883149dfcc2",
+    "f7_manifest_sha256": "sha256:3b28e75c3dc235ff62acda4c5c426c91f4553a81588f4636bddf6dc5984b406b",
     "source_units": [
       {
         "unit": "src/wp-includes/plugin.php",
@@ -1906,13 +1906,13 @@
     "generated_hook_files": [
       {
         "path": "wp-includes/class-wp-hook.php",
-        "bytes": 7332,
-        "sha256": "8071dc277b2b91ef0c71c5d7d0c59ea4bafbd15fcf294c9ae5cb62665732dfd7"
+        "bytes": 8002,
+        "sha256": "d07bc78b9f89112b9b0b1fa201361f9341e7ccf7d42af30c43385308d8246f5c"
       },
       {
         "path": "wp-includes/plugin.php",
-        "bytes": 9650,
-        "sha256": "804db0a48b1f527d504707b346f2ef01698b048b006745139c5c2d19158c48f4"
+        "bytes": 10015,
+        "sha256": "4372405d16dd18ad45297aa6b2a06c123260a74c256b007db63aa193348eeb1e"
       }
     ],
     "oracle_hook_files": [

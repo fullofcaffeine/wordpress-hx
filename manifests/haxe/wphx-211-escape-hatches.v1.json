@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 44,
+  "scanned_file_count": 45,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -48,6 +48,7 @@
     "src/wphx/wp/boundary/NativeValue.hx",
     "src/wphx/wp/boundary/ReferenceBoundary.hx",
     "src/wphx/wp/boundary/WpErrorValue.hx",
+    "src/wphx/wp/hooks/HookRuntime.hx",
     "src/wphx/wp/macros/BindingValidator.hx"
   ],
   "lookback_lines": 6,

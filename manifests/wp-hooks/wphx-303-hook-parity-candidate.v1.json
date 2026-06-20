@@ -8,8 +8,8 @@
     "haxe_sources": [
       {
         "path": "fixtures/wp-hooks/hooks-parity-candidate.hxml",
-        "bytes": 109,
-        "sha256": "sha256:231757134acebf303ba5c8505c8d341719f7e2efeda3b66f7c6b677c6beb8b9d"
+        "bytes": 117,
+        "sha256": "sha256:2d055a99dab4fa4d2b6dbc8e44440b4b1d53b71e2692d36dcba3f195b0246b6e"
       },
       {
         "path": "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateEntry.hx",
@@ -18,8 +18,8 @@
       },
       {
         "path": "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateKernel.hx",
-        "bytes": 8522,
-        "sha256": "sha256:2f662590f23e2bcf6451068c05d7f0c81b5ebd37c45b209271e42e23809c6ca6"
+        "bytes": 4031,
+        "sha256": "sha256:445327f9e7e628eab48c376108e463d7193961e11793f9feb3c7d455de52301f"
       }
     ],
     "source_units": [
@@ -195,8 +195,13 @@
       },
       {
         "path": "lib/wphx/fixtures/wp/hooks/HookCandidateKernel.php",
-        "bytes": 25311,
-        "sha256": "1f7a0bc50819774197449839c7b4aa8c0ceb595e7a79f351f7435c8fdff21fce"
+        "bytes": 7215,
+        "sha256": "ed1ccce36c13c6e14e8b9d3d09a423d151c7d5c6cecb3c9015c44cff7bb87e08"
+      },
+      {
+        "path": "lib/wphx/wp/hooks/HookRuntime.php",
+        "bytes": 16594,
+        "sha256": "58cf7a755c116a9c480bffddb030351bb3ecf5b18c53890e63c4f30cde0edefb"
       }
     ],
     "wp_hooks_candidate_files": [
@@ -342,8 +347,13 @@
       },
       {
         "path": "haxe/lib/wphx/fixtures/wp/hooks/HookCandidateKernel.php",
-        "bytes": 25311,
-        "sha256": "1f7a0bc50819774197449839c7b4aa8c0ceb595e7a79f351f7435c8fdff21fce"
+        "bytes": 7215,
+        "sha256": "ed1ccce36c13c6e14e8b9d3d09a423d151c7d5c6cecb3c9015c44cff7bb87e08"
+      },
+      {
+        "path": "haxe/lib/wphx/wp/hooks/HookRuntime.php",
+        "bytes": 16594,
+        "sha256": "58cf7a755c116a9c480bffddb030351bb3ecf5b18c53890e63c4f30cde0edefb"
       },
       {
         "path": "oracle-probe.php",
@@ -1037,6 +1047,6 @@
     "comparison_count": 3,
     "oracle_behavior_matches_haxe_candidate": true,
     "broad_haxe_php_string_port": false,
-    "public_shell_replacement_owner_issue": "WPHX-304"
+    "public_shell_replacement_owner_issue": "WPHX-305"
   }
 }
