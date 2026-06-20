@@ -56,4 +56,4 @@ Do not treat a cleaner design as acceptance evidence. Acceptance evidence must c
 - Smell fixes cite compatibility evidence.
 - Generated artifacts are reproducible or explicitly deferred.
 - Beads issue links receipt paths.
-- `bd sync`, quality gates, commit, and push are complete.
+- `bd export -o .beads/issues.jsonl`, quality gates, commit, and push are complete.

@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 
 echo "[pre-push] Flushing Beads state..."
-bd sync --flush-only >/dev/null
+bd export -o "$ROOT_DIR/.beads/issues.jsonl" >/dev/null
 
 if ! git -C "$ROOT_DIR" diff --quiet -- .beads/issues.jsonl .beads/interactions.jsonl; then
   echo "[pre-push] ERROR: Beads JSONL changed during pre-push." >&2
@@ -19,4 +19,3 @@ echo "[pre-push] Running full secret scan..."
 bash "$ROOT_DIR/scripts/security/run-gitleaks.sh"
 
 echo "[pre-push] OK"
-

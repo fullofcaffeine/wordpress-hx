@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 
 echo "[pre-commit] Flushing Beads state..."
-bd sync --flush-only >/dev/null
+bd export -o "$ROOT_DIR/.beads/issues.jsonl" >/dev/null
 git add "$ROOT_DIR/.beads/issues.jsonl" "$ROOT_DIR/.beads/interactions.jsonl" 2>/dev/null || true
 
 echo "[pre-commit] Running staged secret scan..."

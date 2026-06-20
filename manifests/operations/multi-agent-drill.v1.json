@@ -4,7 +4,7 @@
   "purpose": "Prove that two write-capable agents can be assigned independent work without duplicate Beads claims, path collisions, or lost discoveries.",
   "coordinator": {
     "program_root": ".",
-    "beads_authority": ".beads/beads.db",
+    "beads_authority": ".beads/embeddeddolt with tracked .beads/issues.jsonl export",
     "wrapper": "tools/bd-wphx",
     "selection_command": "tools/bd-wphx ready --json",
     "integration_rule": "The coordinator reviews both worktrees, rebuilds deterministic shared manifests, writes receipts, closes Beads issues, syncs, and pushes."
@@ -133,8 +133,8 @@
     {
       "path": ".beads/issues.jsonl",
       "owner": "coordinator",
-      "mode": "bd_sync_only",
-      "command": "bd sync"
+      "mode": "jsonl_export_only",
+      "command": "bd export -o .beads/issues.jsonl"
     }
   ],
   "discovery_resolution": [

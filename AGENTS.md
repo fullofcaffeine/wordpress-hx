@@ -59,7 +59,8 @@ Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-
 - The root `.beads` store is authoritative for this program. Sibling repo `.beads` stores are reference context unless the current task explicitly enters that repository and follows its own `AGENTS.md`.
 - From sibling checkouts, nested repos, or task worktrees, use `tools/bd-wphx` from the program root so Beads commands resolve to this repository's root database.
 - Parallel write-capable agents must follow `docs/operations/multi-agent.md`: one claimed Beads issue, one branch, one worktree, non-overlapping owned paths, and a handoff that records discoveries.
-- Beads sync branch setup is intentionally deferred to WPHX-807; until then, `bd doctor` may warn about missing sync-branch configuration but must not report data corruption or untracked JSONL.
+- Beads is on embedded Dolt storage as of WPHX-016. `bd doctor` is not supported in this embedded mode; use `bd info`, `bd dolt status --json`, and `bd backup status --json` until a later Beads release changes that.
+- Beads sync branch and backup setup are intentionally deferred to WPHX-807; until then, missing sync/backup configuration must remain visible in the WPHX-807 task and receipts.
 
 ## Local Hooks and Checks
 
@@ -75,7 +76,7 @@ bd ready              # Find available work
 bd show <id>          # View issue details
 bd update <id> --claim  # Atomically claim work
 bd close <id>         # Complete work
-bd sync               # Sync with git
+bd export -o .beads/issues.jsonl  # Refresh tracked JSONL export
 ```
 
 ## Landing the Plane (Session Completion)
@@ -90,7 +91,7 @@ bd sync               # Sync with git
 4. **PUSH TO REMOTE** - This is MANDATORY:
    ```bash
    git pull --rebase
-   bd sync
+   bd export -o .beads/issues.jsonl
    git push
    git status  # MUST show "up to date with origin"
    ```

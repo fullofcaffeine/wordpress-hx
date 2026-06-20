@@ -1,0 +1,59 @@
+{
+  "schema": "wphx.beads-upgrade-evaluation.v1",
+  "issue": {
+    "id": "wordpresshx-ccb",
+    "external_ref": "WPHX-016"
+  },
+  "recorded_at": "2026-06-20T04:18:00Z",
+  "previous": {
+    "version": "0.49.0",
+    "revision": "b5178e18",
+    "storage": "SQLite",
+    "bd_backup_available": false,
+    "bd_dolt_available": false
+  },
+  "selected": {
+    "version": "1.0.4",
+    "revision": "ce242a879",
+    "release": "v1.0.4",
+    "storage": "embedded Dolt",
+    "bd_backup_available": true,
+    "bd_dolt_available": true
+  },
+  "rejected": [
+    {
+      "version": "1.0.5",
+      "reason": "Upstream release is prerelease/gated; do not upgrade under WPHX-016."
+    }
+  ],
+  "migration": {
+    "source": ".beads/issues.jsonl",
+    "command": "bd bootstrap --yes --json",
+    "imported_issues": 28,
+    "counts": {
+      "open": 7,
+      "in_progress": 1,
+      "closed": 20
+    }
+  },
+  "checks": {
+    "bd_version": "bd version 1.0.4 (ce242a879)",
+    "bd_doctor": "Doctor command exits successfully but reports embedded-mode doctor is not yet supported.",
+    "bd_dolt_status": {
+      "mode": "embedded",
+      "schema_version": 1,
+      "data_dir_exists": true,
+      "server_running": false
+    },
+    "bd_backup_status": {
+      "configured": false,
+      "owner": "WPHX-807",
+      "last_dolt_commit": "8tdgm2nkmkn69kgbnob83bdtgvud2b28"
+    },
+    "hook_migration": "bd migrate hooks --dry-run reported no required migration for project custom hooks."
+  },
+  "follow_up": [
+    "WPHX-807 configures sync/backup destinations and performs restore drill.",
+    "A future Beads/toolchain issue must re-evaluate any upgrade beyond 1.0.4."
+  ]
+}

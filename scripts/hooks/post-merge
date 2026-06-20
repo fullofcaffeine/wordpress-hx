@@ -4,8 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(git rev-parse --show-toplevel)"
 
 if [ -f "$ROOT_DIR/.beads/issues.jsonl" ]; then
-  echo "[post-merge] Importing Beads JSONL..."
-  bd import --input "$ROOT_DIR/.beads/issues.jsonl" >/dev/null
-  bd sync --flush-only >/dev/null
+  echo "[post-merge] Importing Beads JSONL fallback..."
+  bd import -i "$ROOT_DIR/.beads/issues.jsonl" >/dev/null
+  bd export -o "$ROOT_DIR/.beads/issues.jsonl" >/dev/null
 fi
-

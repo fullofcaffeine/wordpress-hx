@@ -1,0 +1,76 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-016-beads-upgrade-eval",
+  "issue": {
+    "id": "wordpresshx-ccb",
+    "external_ref": "WPHX-016",
+    "title": "Evaluate Beads CLI upgrade from 0.49.0"
+  },
+  "recorded_at": "2026-06-20T04:18:00Z",
+  "decision": "Upgrade accepted and applied to stable Beads 1.0.4; 1.0.5 rejected because upstream marks it prerelease/gated.",
+  "artifacts": [
+    {
+      "path": ".beads/.local_version",
+      "role": "local Beads version pin"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "committed toolchain pin"
+    },
+    {
+      "path": "docs/operations/beads.md",
+      "role": "updated Beads operations runbook"
+    },
+    {
+      "path": "docs/operations/beads-upgrade-evaluation.md",
+      "role": "upgrade decision record"
+    },
+    {
+      "path": "manifests/beads/upgrade-evaluation.v1.json",
+      "role": "machine-readable upgrade evaluation"
+    },
+    {
+      "path": "scripts/hooks/pre-commit",
+      "role": "Beads export hook updated for 1.0.4"
+    },
+    {
+      "path": "scripts/hooks/pre-push",
+      "role": "Beads export hook updated for 1.0.4"
+    },
+    {
+      "path": "scripts/hooks/post-merge",
+      "role": "JSONL import/export fallback until WPHX-807 configures Dolt remote"
+    },
+    {
+      "path": "tools/bd-wphx",
+      "role": "root Beads wrapper updated for embedded Dolt workspace resolution"
+    }
+  ],
+  "verification_commands": [
+    "bd --version",
+    "bd bootstrap --dry-run --json",
+    "bd bootstrap --yes --json",
+    "bd list --all --json --limit 0",
+    "bd dolt status --json",
+    "bd backup status --json",
+    "bd migrate hooks --dry-run",
+    "bd doctor"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "bd_version": "1.0.4",
+    "bd_revision": "ce242a879",
+    "issue_count": 28,
+    "open": 7,
+    "in_progress": 1,
+    "closed": 20,
+    "storage": "embedded Dolt",
+    "bd_backup_available": true,
+    "bd_dolt_available": true,
+    "backup_configured": false,
+    "backup_configuration_owner": "WPHX-807",
+    "backup_last_dolt_commit": "8tdgm2nkmkn69kgbnob83bdtgvud2b28",
+    "doctor_result": "bd doctor exits 0 but reports embedded-mode doctor is not yet supported in 1.0.4",
+    "hook_migration_required": false
+  }
+}

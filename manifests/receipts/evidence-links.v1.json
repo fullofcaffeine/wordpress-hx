@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 20,
+  "closed_task_count": 21,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -155,6 +155,16 @@
           "path": "receipts/operations/wphx-015-ownership-state-model.v1.json",
           "sha256": "83383419423e5f61f093e6762d697a7b42fba441ab82d596fb78919cbcdd1f39",
           "id": "receipt:wphx-015-ownership-state-model"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-016",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-016-beads-upgrade-eval.v1.json",
+          "sha256": "c1b3bbd738070f9f4be21bf022875e78e9238028cb58241c890886d64ba77600",
+          "id": "receipt:wphx-016-beads-upgrade-eval"
         }
       ]
     },

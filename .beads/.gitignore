@@ -20,6 +20,12 @@ last-touched
 db.sqlite
 bd.db
 
+# Dolt-backed runtime storage and backups (local; sync through bd dolt/backup)
+embeddeddolt/
+dolt/
+backup/
+export-state.json
+
 # Worktree redirect file (contains relative path to main repo's .beads/)
 # Must not be committed as paths would be wrong in other clones
 redirect

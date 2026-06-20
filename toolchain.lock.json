@@ -14,10 +14,12 @@
   "tools": {
     "beads": {
       "command": "bd --version",
-      "version": "0.49.0",
-      "revision": "b5178e18",
+      "version": "1.0.4",
+      "revision": "ce242a879",
       "pin_source": ".beads/.local_version",
-      "upgrade_follow_up": "WPHX-016"
+      "storage": "embedded Dolt at .beads/embeddeddolt with tracked JSONL export",
+      "upgrade_issue": "WPHX-016",
+      "upgrade_decision": "Accepted stable 1.0.4 because 0.49.0 lacks bd backup and bd dolt required by WPHX-807; avoided gated 1.0.5 prerelease."
     },
     "haxe": {
       "command": "haxe --version",

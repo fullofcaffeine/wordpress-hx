@@ -4,4 +4,4 @@ set -euo pipefail
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 root="$(cd -- "${script_dir}/.." && pwd)"
 
-exec bd --db "${root}/.beads/beads.db" "$@"
+exec bd -C "${root}" "$@"

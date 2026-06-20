@@ -36,7 +36,7 @@ export WPHX_ROOT=/absolute/path/to/wordpresshx
 "$WPHX_ROOT/tools/bd-wphx" ready --json
 ```
 
-The wrapper calls the root `.beads/beads.db`; it does not create a second task database.
+The wrapper changes directory to the program root before invoking `bd`; it does not create a second task database.
 
 Each write-capable worker receives:
 

@@ -4,12 +4,13 @@
 
 ## Version Pin
 
-- Required local Beads version: `0.49.0`.
+- Required local Beads version: `1.0.4`.
 - The version is pinned in `.beads/.local_version` and mirrored in `toolchain.lock.json`.
-- Current database storage: SQLite with tracked JSONL export at `.beads/issues.jsonl`.
-- Current repo fingerprint observed by `bd doctor`: `3536cce9`.
+- Current database storage: embedded Dolt at `.beads/embeddeddolt/` with tracked JSONL export at `.beads/issues.jsonl`.
+- WPHX-016 upgraded from `0.49.0` because the old CLI did not provide `bd backup` or `bd dolt`, both of which are required before WPHX-807 can prove sync and restore.
+- Do not upgrade to `1.0.5`; upstream marks that prerelease as gated. Re-evaluate only through a new Beads/toolchain issue.
 
-`bd doctor` may warn that a newer Beads CLI exists. Do not upgrade casually. File or claim a Beads/toolchain issue before changing the pinned version, then update `toolchain.lock.json`, this note, and any affected hooks in the same change.
+`bd doctor` in `1.0.4` reports that doctor is not yet supported in embedded mode. Use `bd info`, `bd dolt status --json`, `bd backup status --json`, `bd list --all --json`, and the receipt for WPHX-016 until a later Beads release restores an embedded-mode doctor.
 
 ## Root Authority
 
@@ -24,12 +25,30 @@ Sibling repositories may have their own `.beads` directories. Treat them as loca
 
 ## Sync Discipline
 
-For this bootstrap phase, Beads writes directly to the current branch and no sync branch is configured. That is acceptable while this repo is single-operator, but the warning must stay visible in `bd doctor` until WPHX-807 decides the Dolt/sync-branch backup model.
+For this bootstrap phase, Beads writes directly to the current branch and no sync branch is configured. That is acceptable while this repo is single-operator, but WPHX-807 must decide and prove the Dolt/sync-branch backup model.
+
+In `1.0.4`, cross-machine sync should use Dolt remotes:
+
+```bash
+bd dolt remote add origin <dolt-compatible-remote>
+bd dolt push
+bd dolt pull
+```
+
+Backup and restore should use:
+
+```bash
+bd backup init <backup-destination>
+bd backup sync
+bd backup restore <backup-destination>
+```
+
+WPHX-807 owns selecting the durable destination, configuring the remote, and proving restore from a fresh checkout.
 
 Before pushing:
 
 ```bash
-bd sync
+bd export -o .beads/issues.jsonl
 git pull --rebase
 git push
 git status --short --branch
@@ -42,7 +61,9 @@ The working tree is healthy only when Beads JSONL is committed and the branch is
 Use:
 
 ```bash
-bd doctor
+bd info
+bd dolt status --json
+bd backup status --json
 bd ready
 ```
 
@@ -50,8 +71,9 @@ Expected bootstrap status:
 
 - `.beads/` exists at repository root.
 - `issues.jsonl` is tracked by git.
+- `.beads/embeddeddolt/`, `.beads/backup/`, and `.beads/export-state.json` are local runtime state and ignored by git.
 - The Beads merge driver is configured as `bd merge %A %O %A %B`.
 - Git hooks are installed from `scripts/hooks`.
 - No nested active store is used for this program.
 
-Warnings for CLI updates and missing sync branch are acceptable only while tracked by open Beads work.
+Warnings for missing sync or backup configuration are acceptable only while tracked by WPHX-807.
