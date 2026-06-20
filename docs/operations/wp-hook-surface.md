@@ -33,3 +33,27 @@ Evidence is recorded in:
 - `manifests/wp-hooks/wphx-302-hook-surface.v1.json`
 - `manifests/ownership/wphx-302-hooks-workset.v1.json`
 - `receipts/wp-hooks/wphx-302-hook-surface.v1.json`
+
+## WPHX-303 Candidate Model
+
+WPHX-303 adds a typed Haxe parity-candidate model for hook decisions that can be
+tested without copying the generated PHP shell into `php.Syntax.code` strings. The
+candidate covers priority ordering/removal, current hook stack checks, filter/action
+counters, callback arity decisions, and plugin basename/lifecycle hook names.
+
+The public `plugin.php` and `class-wp-hook.php` shell remains a bounded bridge until
+WPHX-304 can replace PHP-observable callback/reference/global behavior with typed Haxe
+runtime boundaries while keeping generated PHP idiomatic for existing plugins.
+
+Run:
+
+```bash
+npm run wp:hooks:parity-candidate
+npm run wp:hooks:parity-candidate:check
+```
+
+Evidence is recorded in:
+
+- `manifests/wp-hooks/wphx-303-hook-parity-candidate.v1.json`
+- `manifests/ownership/wphx-303-hooks-decision-model.v1.json`
+- `receipts/wp-hooks/wphx-303-hook-parity-candidate.v1.json`

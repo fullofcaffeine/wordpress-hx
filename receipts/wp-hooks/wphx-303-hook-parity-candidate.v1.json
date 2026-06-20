@@ -1,0 +1,15 @@
+{
+  "schema": "wphx.wp-hook-parity-candidate-receipt.v1",
+  "id": "receipt:wphx-303-hook-parity-candidate",
+  "issue": "WPHX-303",
+  "recorded_at": "2026-06-20T22:05:00.000Z",
+  "command": "npm run wp:hooks:parity-candidate",
+  "status": "passed",
+  "manifest": "manifests/wp-hooks/wphx-303-hook-parity-candidate.v1.json",
+  "manifest_sha256": "sha256:130a0c185e54039024af15afdbae7f46259e91e631c118c4ff419b0fedf84af4",
+  "ownership_manifest": "manifests/ownership/wphx-303-hooks-decision-model.v1.json",
+  "ownership_manifest_sha256": "sha256:6d1daed11fbbebc8f0a7ec3a6fc493b1d71c639d72794cf1c261573328798ba8",
+  "runtime_run_count": 6,
+  "comparison_count": 3,
+  "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+}

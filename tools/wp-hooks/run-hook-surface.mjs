@@ -538,7 +538,7 @@ function ownershipManifest(manifestSha, upstreamDigest) {
     },
     removal_gate: {
       condition: "Promote hooks/plugin-api to haxe_parity_candidate after the WP_Hook kernel and plugin lifecycle helpers pass the same ABI and behavior probes without generated PHP shell bodies owning business logic.",
-      owner_issue: "WPHX-302",
+      owner_issue: "WPHX-304",
       target_state: "haxe_parity_candidate"
     },
     verification: {

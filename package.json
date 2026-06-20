@@ -61,6 +61,8 @@
     "wp:facade:globals:check": "node tools/wp-facade/run-global-facade-generator.mjs --check",
     "wp:hooks:surface": "node tools/wp-hooks/run-hook-surface.mjs",
     "wp:hooks:surface:check": "node tools/wp-hooks/run-hook-surface.mjs --check",
+    "wp:hooks:parity-candidate": "node tools/wp-hooks/run-hook-parity-candidate.mjs",
+    "wp:hooks:parity-candidate:check": "node tools/wp-hooks/run-hook-parity-candidate.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",

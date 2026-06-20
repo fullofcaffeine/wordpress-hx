@@ -1,0 +1,1042 @@
+{
+  "schema": "wphx.wp-hook-parity-candidate.v1",
+  "issue": "WPHX-303",
+  "generated_at": "2026-06-20T22:05:00.000Z",
+  "generator": "tools/wp-hooks/run-hook-parity-candidate.mjs",
+  "inputs": {
+    "hxml": "fixtures/wp-hooks/hooks-parity-candidate.hxml",
+    "haxe_sources": [
+      {
+        "path": "fixtures/wp-hooks/hooks-parity-candidate.hxml",
+        "bytes": 109,
+        "sha256": "sha256:231757134acebf303ba5c8505c8d341719f7e2efeda3b66f7c6b677c6beb8b9d"
+      },
+      {
+        "path": "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateEntry.hx",
+        "bytes": 135,
+        "sha256": "sha256:6a971e068be5d3c9ed405d6e03670cc253195bdf4f7301194c2dfd8e4a3d6d65"
+      },
+      {
+        "path": "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateKernel.hx",
+        "bytes": 8522,
+        "sha256": "sha256:2f662590f23e2bcf6451068c05d7f0c81b5ebd37c45b209271e42e23809c6ca6"
+      }
+    ],
+    "source_units": [
+      {
+        "unit": "src/wp-includes/plugin.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/plugin.php",
+        "bytes": 36501,
+        "sha256": "sha256:2e06902ae7d65d7dad37cbafd8e8feff83e4aeeff3a7839885ce7fe4f0c94d68"
+      },
+      {
+        "unit": "src/wp-includes/class-wp-hook.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-hook.php",
+        "bytes": 16636,
+        "sha256": "sha256:a66fe7372af72876fc702e50943f9a2a8dff4ed7394163e07491b80a06e27f1d"
+      }
+    ],
+    "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+  },
+  "fixture": {
+    "hxml": "fixtures/wp-hooks/hooks-parity-candidate.hxml",
+    "haxe_probe": {
+      "path": "build/wp-hooks-candidate/haxe-probe.php",
+      "sha256": "sha256:8f2878994c2d3595a2d6feded6e56bc8091c24c5b6c029f8303350babbb85974"
+    },
+    "oracle_probe": {
+      "path": "build/wp-hooks-candidate/oracle-probe.php",
+      "sha256": "sha256:85906f1a1277bf855326e16329cac578183d5a79a69758a16d7f9061d2239c43"
+    },
+    "oracle_plugin": "build/wp-hooks-candidate/oracle/wp-includes/plugin.php"
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_version": "8.4.7",
+    "docker_server_version": "28.3.2"
+  },
+  "build": {
+    "generated_haxe_files": [
+      {
+        "path": "index.php",
+        "bytes": 345,
+        "sha256": "27f5da08a08bb8e3335924a6b1a7aebe1db55ee267ee6a7a7af4851895076dfd"
+      },
+      {
+        "path": "lib/Array_hx.php",
+        "bytes": 25987,
+        "sha256": "85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+      },
+      {
+        "path": "lib/Date.php",
+        "bytes": 2139,
+        "sha256": "f479e2e3943b84aa65982825b6d58a06dc4b649886094993fb0c65b7d1160ae3"
+      },
+      {
+        "path": "lib/haxe/ds/ArraySort.php",
+        "bytes": 12196,
+        "sha256": "8f8d40b3b45aa3082403502eed26c1949ec82f64eb93b27ef424c9aedde44878"
+      },
+      {
+        "path": "lib/haxe/ds/StringMap.php",
+        "bytes": 606,
+        "sha256": "dca52ff131a315f9c0bc0c4f25fac0a89e18bbe21c760de4209d5e7233c6dffb"
+      },
+      {
+        "path": "lib/haxe/Exception.php",
+        "bytes": 3913,
+        "sha256": "9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+      },
+      {
+        "path": "lib/haxe/format/JsonPrinter.php",
+        "bytes": 16447,
+        "sha256": "aa845f9b09e4b7234cad1a3a28665138c47405bf295acf20f53f51658fb1949a"
+      },
+      {
+        "path": "lib/haxe/IMap.php",
+        "bytes": 142,
+        "sha256": "c3b8295ed5c31c5f8a9a252f829691e5772a250328540157b8a4be20741a497e"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1248,
+        "sha256": "9fe08304f6fc267231424a61fd632408d7b4207d52f470fbdc28d9e6fecfe75a"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 508,
+        "sha256": "3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+      },
+      {
+        "path": "lib/haxe/Json.php",
+        "bytes": 3422,
+        "sha256": "1cb458db8bd898681534389b54e5a94c2bf857af36e2256b21732bcee9f698fc"
+      },
+      {
+        "path": "lib/haxe/ValueException.php",
+        "bytes": 1062,
+        "sha256": "647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+      },
+      {
+        "path": "lib/php/_Boot/HxAnon.php",
+        "bytes": 1398,
+        "sha256": "c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+      },
+      {
+        "path": "lib/php/_Boot/HxClass.php",
+        "bytes": 3266,
+        "sha256": "1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+      },
+      {
+        "path": "lib/php/_Boot/HxClosure.php",
+        "bytes": 3162,
+        "sha256": "a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+      },
+      {
+        "path": "lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 4438,
+        "sha256": "c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+      },
+      {
+        "path": "lib/php/_Boot/HxEnum.php",
+        "bytes": 1316,
+        "sha256": "f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+      },
+      {
+        "path": "lib/php/_Boot/HxString.php",
+        "bytes": 9912,
+        "sha256": "1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+      },
+      {
+        "path": "lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "lib/php/Boot.php",
+        "bytes": 42682,
+        "sha256": "9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+      },
+      {
+        "path": "lib/Reflect.php",
+        "bytes": 4645,
+        "sha256": "8f37a66ac58630cf2461ab117a5b1055b66f9000dcebab3950c28a6d3cff7a15"
+      },
+      {
+        "path": "lib/Std.php",
+        "bytes": 1131,
+        "sha256": "2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+      },
+      {
+        "path": "lib/StringBuf.php",
+        "bytes": 1898,
+        "sha256": "b8fd5d3285b6bf20e78274506fd346e31bd551248b21839ad1986116d3178ce5"
+      },
+      {
+        "path": "lib/StringTools.php",
+        "bytes": 5227,
+        "sha256": "a53ab218a60f94a28a9ca113d07a2b01a939962ea3332076b9cac912d7c3852b"
+      },
+      {
+        "path": "lib/Type.php",
+        "bytes": 8442,
+        "sha256": "b76c9fa6821b5db231d2b5104dd51f51c9e0e290cf4fd2a5c98caa3d4449c43f"
+      },
+      {
+        "path": "lib/ValueType.php",
+        "bytes": 2245,
+        "sha256": "2303bab20d20c49f92b0b2a9171a4f8df47247ad749ce2b43c4b3787ab1b9335"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/hooks/HookCandidateEntry.php",
+        "bytes": 408,
+        "sha256": "490064d744d7f05fab87af1e0632457039b80c175c9b0a493d664aff766a0784"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/hooks/HookCandidateKernel.php",
+        "bytes": 25311,
+        "sha256": "1f7a0bc50819774197449839c7b4aa8c0ceb595e7a79f351f7435c8fdff21fce"
+      }
+    ],
+    "wp_hooks_candidate_files": [
+      {
+        "path": "haxe-probe.php",
+        "bytes": 390,
+        "sha256": "8f2878994c2d3595a2d6feded6e56bc8091c24c5b6c029f8303350babbb85974"
+      },
+      {
+        "path": "haxe/index.php",
+        "bytes": 345,
+        "sha256": "27f5da08a08bb8e3335924a6b1a7aebe1db55ee267ee6a7a7af4851895076dfd"
+      },
+      {
+        "path": "haxe/lib/Array_hx.php",
+        "bytes": 25987,
+        "sha256": "85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+      },
+      {
+        "path": "haxe/lib/Date.php",
+        "bytes": 2139,
+        "sha256": "f479e2e3943b84aa65982825b6d58a06dc4b649886094993fb0c65b7d1160ae3"
+      },
+      {
+        "path": "haxe/lib/haxe/ds/ArraySort.php",
+        "bytes": 12196,
+        "sha256": "8f8d40b3b45aa3082403502eed26c1949ec82f64eb93b27ef424c9aedde44878"
+      },
+      {
+        "path": "haxe/lib/haxe/ds/StringMap.php",
+        "bytes": 606,
+        "sha256": "dca52ff131a315f9c0bc0c4f25fac0a89e18bbe21c760de4209d5e7233c6dffb"
+      },
+      {
+        "path": "haxe/lib/haxe/Exception.php",
+        "bytes": 3913,
+        "sha256": "9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+      },
+      {
+        "path": "haxe/lib/haxe/format/JsonPrinter.php",
+        "bytes": 16447,
+        "sha256": "aa845f9b09e4b7234cad1a3a28665138c47405bf295acf20f53f51658fb1949a"
+      },
+      {
+        "path": "haxe/lib/haxe/IMap.php",
+        "bytes": 142,
+        "sha256": "c3b8295ed5c31c5f8a9a252f829691e5772a250328540157b8a4be20741a497e"
+      },
+      {
+        "path": "haxe/lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1248,
+        "sha256": "9fe08304f6fc267231424a61fd632408d7b4207d52f470fbdc28d9e6fecfe75a"
+      },
+      {
+        "path": "haxe/lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 508,
+        "sha256": "3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+      },
+      {
+        "path": "haxe/lib/haxe/Json.php",
+        "bytes": 3422,
+        "sha256": "1cb458db8bd898681534389b54e5a94c2bf857af36e2256b21732bcee9f698fc"
+      },
+      {
+        "path": "haxe/lib/haxe/ValueException.php",
+        "bytes": 1062,
+        "sha256": "647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+      },
+      {
+        "path": "haxe/lib/php/_Boot/HxAnon.php",
+        "bytes": 1398,
+        "sha256": "c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+      },
+      {
+        "path": "haxe/lib/php/_Boot/HxClass.php",
+        "bytes": 3266,
+        "sha256": "1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+      },
+      {
+        "path": "haxe/lib/php/_Boot/HxClosure.php",
+        "bytes": 3162,
+        "sha256": "a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+      },
+      {
+        "path": "haxe/lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 4438,
+        "sha256": "c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+      },
+      {
+        "path": "haxe/lib/php/_Boot/HxEnum.php",
+        "bytes": 1316,
+        "sha256": "f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+      },
+      {
+        "path": "haxe/lib/php/_Boot/HxString.php",
+        "bytes": 9912,
+        "sha256": "1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+      },
+      {
+        "path": "haxe/lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "haxe/lib/php/Boot.php",
+        "bytes": 42682,
+        "sha256": "9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+      },
+      {
+        "path": "haxe/lib/Reflect.php",
+        "bytes": 4645,
+        "sha256": "8f37a66ac58630cf2461ab117a5b1055b66f9000dcebab3950c28a6d3cff7a15"
+      },
+      {
+        "path": "haxe/lib/Std.php",
+        "bytes": 1131,
+        "sha256": "2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+      },
+      {
+        "path": "haxe/lib/StringBuf.php",
+        "bytes": 1898,
+        "sha256": "b8fd5d3285b6bf20e78274506fd346e31bd551248b21839ad1986116d3178ce5"
+      },
+      {
+        "path": "haxe/lib/StringTools.php",
+        "bytes": 5227,
+        "sha256": "a53ab218a60f94a28a9ca113d07a2b01a939962ea3332076b9cac912d7c3852b"
+      },
+      {
+        "path": "haxe/lib/Type.php",
+        "bytes": 8442,
+        "sha256": "b76c9fa6821b5db231d2b5104dd51f51c9e0e290cf4fd2a5c98caa3d4449c43f"
+      },
+      {
+        "path": "haxe/lib/ValueType.php",
+        "bytes": 2245,
+        "sha256": "2303bab20d20c49f92b0b2a9171a4f8df47247ad749ce2b43c4b3787ab1b9335"
+      },
+      {
+        "path": "haxe/lib/wphx/fixtures/wp/hooks/HookCandidateEntry.php",
+        "bytes": 408,
+        "sha256": "490064d744d7f05fab87af1e0632457039b80c175c9b0a493d664aff766a0784"
+      },
+      {
+        "path": "haxe/lib/wphx/fixtures/wp/hooks/HookCandidateKernel.php",
+        "bytes": 25311,
+        "sha256": "1f7a0bc50819774197449839c7b4aa8c0ceb595e7a79f351f7435c8fdff21fce"
+      },
+      {
+        "path": "oracle-probe.php",
+        "bytes": 7584,
+        "sha256": "85906f1a1277bf855326e16329cac578183d5a79a69758a16d7f9061d2239c43"
+      },
+      {
+        "path": "oracle/wp-includes/class-wp-hook.php",
+        "bytes": 16636,
+        "sha256": "a66fe7372af72876fc702e50943f9a2a8dff4ed7394163e07491b80a06e27f1d"
+      },
+      {
+        "path": "oracle/wp-includes/plugin.php",
+        "bytes": 36501,
+        "sha256": "2e06902ae7d65d7dad37cbafd8e8feff83e4aeeff3a7839885ce7fe4f0c94d68"
+      }
+    ]
+  },
+  "runtime_runs": [
+    {
+      "id": "local-php-cli",
+      "runtime": "local-php-cli",
+      "command": "php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
+      "mode": "wordpress-oracle",
+      "result": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "actionCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "local-php-cli",
+      "runtime": "local-php-cli",
+      "command": "php build/wp-hooks-candidate/haxe-probe.php",
+      "mode": "haxe-candidate",
+      "result": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2,
+          "actionCountAfterFirst": 1
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.4-cli",
+      "runtime": "docker-php-8.4-cli",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
+      "mode": "wordpress-oracle",
+      "result": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "actionCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.4-cli",
+      "runtime": "docker-php-8.4-cli",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-hooks-candidate/haxe-probe.php",
+      "mode": "haxe-candidate",
+      "result": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2,
+          "actionCountAfterFirst": 1
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.5-cli",
+      "runtime": "docker-php-8.5-cli",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
+      "mode": "wordpress-oracle",
+      "result": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "actionCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.5-cli",
+      "runtime": "docker-php-8.5-cli",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-hooks-candidate/haxe-probe.php",
+      "mode": "haxe-candidate",
+      "result": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2,
+          "actionCountAfterFirst": 1
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "local-php-cli",
+      "matches": true,
+      "oracle": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "actionCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      },
+      "candidate": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2,
+          "actionCountAfterFirst": 1
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.4-cli",
+      "matches": true,
+      "oracle": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "actionCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      },
+      "candidate": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2,
+          "actionCountAfterFirst": 1
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    },
+    {
+      "id": "docker-php-8.5-cli",
+      "matches": true,
+      "oracle": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "actionCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      },
+      "candidate": {
+        "priorities": {
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ]
+        },
+        "stack": {
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingOuter": true,
+          "doingMissing": false,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2,
+          "actionCountAfterFirst": 1
+        },
+        "dispatch": {
+          "noArgsAccepted": 0,
+          "limitedArgsAccepted": 2,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "actionWritesValue": false,
+          "actionDefaultArgs": [
+            ""
+          ]
+        },
+        "pluginPaths": {
+          "basename": "sample/sample.php",
+          "muBasename": "loader.php",
+          "mappedBasename": "mapped/mapped.php",
+          "activationHook": "activate_sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php"
+        }
+      }
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-303-hooks-decision-model.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "runtime_run_count": 6,
+    "comparison_count": 3,
+    "oracle_behavior_matches_haxe_candidate": true,
+    "broad_haxe_php_string_port": false,
+    "public_shell_replacement_owner_issue": "WPHX-304"
+  }
+}

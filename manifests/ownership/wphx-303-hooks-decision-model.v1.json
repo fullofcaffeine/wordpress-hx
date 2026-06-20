@@ -1,0 +1,48 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp/hooks-decision-model",
+  "issue": {
+    "id": "wordpresshx-l76.3",
+    "external_ref": "WPHX-303"
+  },
+  "unit": {
+    "kind": "module",
+    "name": "hooks/plugin-api decision model",
+    "area": "wp-includes",
+    "public_contract": "Typed Haxe candidate decisions for WP_Hook priority ordering, stack counters, callback arity, and plugin lifecycle hook names"
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-hook.php"
+    ],
+    "digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+  },
+  "owned_paths": [
+    "fixtures/wp-hooks/hooks-parity-candidate.hxml",
+    "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateEntry.hx",
+    "fixtures/wp-hooks/src/wphx/fixtures/wp/hooks/HookCandidateKernel.hx",
+    "tools/wp-hooks/run-hook-parity-candidate.mjs"
+  ],
+  "generated_paths": [
+    "build/wp-hooks-candidate",
+    "build/wp-hooks-candidate/haxe-probe.php",
+    "build/wp-hooks-candidate/oracle-probe.php"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:hooks:parity-candidate",
+      "npm run wp:hooks:parity-candidate:check",
+      "npm run wp:hooks:surface:check"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-303-hook-parity-candidate",
+      "receipt:wphx-302-hook-surface"
+    ],
+    "manifest_digest": "sha256:130a0c185e54039024af15afdbae7f46259e91e631c118c4ff419b0fedf84af4"
+  },
+  "notes": "WPHX-303 promotes the Haxe-authored hook decision model to parity candidate without claiming the public plugin.php/class-wp-hook.php shell is Haxe-owned. Native callback dispatch, reference semantics, globals, and reflection-visible PHP shell replacement remain owned by WPHX-304."
+}

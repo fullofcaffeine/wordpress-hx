@@ -1,0 +1,3 @@
+-cp fixtures/wp-hooks/src
+-main wphx.fixtures.wp.hooks.HookCandidateEntry
+-php build/wp-hooks-candidate/haxe
