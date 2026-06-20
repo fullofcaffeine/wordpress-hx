@@ -1,0 +1,30 @@
+{
+  "schema": "wphx.wp-global-facade-bindings.v1",
+  "abi_manifest": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
+  "hxml": "fixtures/wp-facade/global-facades.hxml",
+  "bootstrap_constant": "WPHX_204_GLOBAL_FACADES_BOOTSTRAPPED",
+  "bindings": [
+    {
+      "name": "add_filter",
+      "path": "src/wp-includes/plugin.php",
+      "haxe_class": "\\wphx\\fixtures\\wp\\facade\\GlobalBindings",
+      "haxe_method": "addFilter"
+    },
+    {
+      "name": "apply_filters",
+      "path": "src/wp-includes/plugin.php",
+      "haxe_class": "\\wphx\\fixtures\\wp\\facade\\GlobalBindings",
+      "haxe_method": "applyFilters"
+    },
+    {
+      "name": "_wp_array_set",
+      "path": "src/wp-includes/functions.php",
+      "haxe_class": "\\wphx\\fixtures\\wp\\facade\\GlobalBindings",
+      "haxe_method": "wpArraySet",
+      "reference_result": {
+        "assign_to": "input_array",
+        "return": "null"
+      }
+    }
+  ]
+}

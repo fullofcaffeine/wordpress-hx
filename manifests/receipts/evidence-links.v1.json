@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 35,
+  "closed_task_count": 36,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -295,6 +295,16 @@
           "path": "receipts/wp-boundary/wphx-203-boundary-types.v1.json",
           "sha256": "7b57590ba31302a635567843da3b25ee207c02d50d64db566faebc61b0f0d49b",
           "id": "receipt:wphx-203-boundary-types"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-204",
+      "receipts": [
+        {
+          "path": "receipts/wp-facade/wphx-204-global-facades.v1.json",
+          "sha256": "20ed8aec33e80af5a0435184b54f0bc3530e0d073a7f37049eb2835984692d31",
+          "id": "receipt:wphx-204-global-facades"
         }
       ]
     },

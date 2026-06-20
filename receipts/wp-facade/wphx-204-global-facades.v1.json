@@ -1,0 +1,17 @@
+{
+  "schema": "wphx.wp-global-facades-receipt.v1",
+  "id": "receipt:wphx-204-global-facades",
+  "issue": "WPHX-204",
+  "recorded_at": "2026-06-20T06:35:00.000Z",
+  "command": "npm run wp:facade:globals",
+  "status": "passed",
+  "manifest": "manifests/wp-facade/wphx-204-global-facades.v1.json",
+  "manifest_sha256": "sha256:a191b02bd87338594e3f63b4c0e24309a7569ce09784d5cb193d193a11a8fe41",
+  "binding_count": 3,
+  "facade_file_count": 2,
+  "runtime_run_count": 3,
+  "generated_distribution_paths": [
+    "wp-includes/functions.php",
+    "wp-includes/plugin.php"
+  ]
+}

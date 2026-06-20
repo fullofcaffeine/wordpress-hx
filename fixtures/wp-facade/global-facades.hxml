@@ -1,0 +1,5 @@
+-cp src
+-cp fixtures/wp-facade/src
+-D wphx.wp.abi=manifests/php-abi/wordpress-7.0-core-abi.v1.json
+-main wphx.fixtures.wp.facade.GlobalFacadeEntry
+-php build/wp-global-facades/haxe
