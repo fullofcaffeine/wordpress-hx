@@ -1,0 +1,60 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-105-f4-public-class",
+  "issue": {
+    "id": "wordpresshx-w91.1.5",
+    "external_ref": "WPHX-105",
+    "title": "WPHX-105 - F4 public class fixture suite"
+  },
+  "recorded_at": "2026-06-20T06:35:00Z",
+  "artifacts": [
+    {
+      "path": "fixtures/php-facade/f4-public-class.hxml",
+      "role": "Haxe PHP public class fixture compile file"
+    },
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
+      "role": "Haxe entry point preserving public class implementation emission"
+    },
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
+      "role": "Haxe-owned method logic for generated PHP class shell"
+    },
+    {
+      "path": "fixtures/php-facade/oracle/public-class.php",
+      "role": "PHP oracle shell for public class and interface contracts"
+    },
+    {
+      "path": "tools/php-facade/run-f4-public-class.mjs",
+      "role": "deterministic F4 public class generator and checker"
+    },
+    {
+      "path": "manifests/php-facade/wphx-105-f4-public-class.v1.json",
+      "role": "F4 generated-output and public class comparison snapshot"
+    },
+    {
+      "path": "docs/operations/php-facade.md",
+      "role": "PHP facade fixture runbook"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:facade:f4",
+    "npm run php:facade:f4:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "haxe_version": "4.3.7",
+    "global_class_identity": true,
+    "reflection_contract": true,
+    "inheritance": true,
+    "interface_contract": true,
+    "static_factory_and_property": true,
+    "comparison_count": 3,
+    "runtime_matrix": [
+      "local-php-cli",
+      "docker-php-8.4-cli",
+      "docker-php-8.5-cli"
+    ],
+    "class_strategy": "Original-path PHP shells preserve plugin-visible class and interface ABI while delegating selected method behavior to Haxe-owned implementation code."
+  }
+}

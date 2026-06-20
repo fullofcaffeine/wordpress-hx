@@ -66,3 +66,25 @@ The fixture compares an oracle PHP shell with a generated Haxe-backed shell for:
 The generated shell decodes Haxe-provided seed JSON into native PHP arrays before exposing values through globals. That keeps WordPress-facing state PHP-native while allowing Haxe to own canonical seed/normalization logic behind the boundary.
 
 The committed snapshot is `manifests/php-facade/wphx-104-f3-native-values.v1.json`.
+
+## F4 Public Classes
+
+WPHX-105 owns the public class/interface fixture:
+
+```bash
+npm run php:facade:f4
+npm run php:facade:f4:check
+```
+
+The fixture compares an oracle PHP shell with a generated Haxe-backed shell for:
+
+- exact global interface and class names;
+- conditional class/interface declaration for repeated shell loads;
+- inheritance and `instanceof` behavior;
+- public constants, static properties, public properties, and protected properties;
+- constructor defaults, static factory methods, inherited methods, and instance methods;
+- reflection evidence for method parameters, declaring classes, property visibility, constants, parent class, and interfaces.
+
+The generated original-path shell owns the public PHP class ABI and delegates selected method logic to Haxe `ClassKernel`. This keeps plugin-visible reflection and instantiation behavior PHP-native while proving that class methods can cross into Haxe-owned implementation code.
+
+The committed snapshot is `manifests/php-facade/wphx-105-f4-public-class.v1.json`.

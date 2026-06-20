@@ -1,0 +1,3 @@
+-cp fixtures/php-facade/src
+-main wphx.fixtures.php.facade.ClassEntry
+-php build/php-public-class/haxe
