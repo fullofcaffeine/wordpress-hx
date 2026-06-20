@@ -188,7 +188,7 @@ function buildPackageIndex(sourceEntries, testEntries) {
 function buildGateIndex(tasks) {
   const gateTasks = {
     G0: ["WPHX-001", "WPHX-002", "WPHX-003", "WPHX-004", "WPHX-005", "WPHX-006", "WPHX-007", "WPHX-008", "WPHX-010", "WPHX-012", "WPHX-013"],
-    "php-feasibility": ["WPHX-100"],
+    "php-feasibility": ["WPHX-100", "WPHX-101", "WPHX-102", "WPHX-103", "WPHX-104", "WPHX-105", "WPHX-106", "WPHX-107", "WPHX-108", "WPHX-109"],
     "genes-ts-browser": ["WPHX-400"],
     operations: ["WPHX-800", "WPHX-803", "WPHX-804", "WPHX-805", "WPHX-806", "WPHX-807"],
     parity: ["WPHX-700", "WPHX-009", "WPHX-011"]

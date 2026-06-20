@@ -24,6 +24,8 @@
     "license:provenance": "node tools/license/audit-provenance.mjs",
     "license:provenance:check": "node tools/license/audit-provenance.mjs --check",
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
+    "php:smoke": "node tools/php-smoke/run-smoke.mjs",
+    "php:smoke:check": "node tools/php-smoke/run-smoke.mjs --check",
     "receipts:build": "node tools/receipts/build-evidence-links.mjs",
     "receipts:validate": "node tools/receipts/validate-receipts.mjs",
     "operations:multi-agent:check": "node tools/operations/check-multi-agent-drill.mjs",

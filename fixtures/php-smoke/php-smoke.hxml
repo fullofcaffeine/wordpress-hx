@@ -1,0 +1,3 @@
+-cp fixtures/php-smoke/src
+-main wphx.fixtures.php.SmokeMain
+-php build/php-smoke

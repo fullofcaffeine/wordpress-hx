@@ -221,6 +221,127 @@
       "acceptance_criteria": null
     },
     {
+      "external_ref": "WPHX-101",
+      "title": "WPHX-101 — Stock Haxe PHP smoke project and generated-output snapshot",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-002"
+      ],
+      "description": "Create a reusable stock Haxe PHP smoke fixture, compile it with the locked Haxe toolchain, run the generated PHP on the local PHP runtime, and record a generated-output snapshot for later PHP target regressions.",
+      "acceptance_criteria": "Haxe 4.3.7 compiles and runs the smoke fixture on the PHP matrix, and the generated output snapshot is recorded with a receipt."
+    },
+    {
+      "external_ref": "WPHX-102",
+      "title": "WPHX-102 — F1 global function facade fixture",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-101"
+      ],
+      "description": "Build the first global-function facade fixture for WordPress-style conditional API availability.",
+      "acceptance_criteria": "The fixture proves exact ABI and conditional availability or records a minimized blocker."
+    },
+    {
+      "external_ref": "WPHX-103",
+      "title": "WPHX-103 — F2 reference fixture suite",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-101"
+      ],
+      "description": "Exercise PHP reference boundaries required by WordPress APIs and hooks.",
+      "acceptance_criteria": "Required reference cases pass or a minimized compiler/backend blocker is recorded."
+    },
+    {
+      "external_ref": "WPHX-104",
+      "title": "WPHX-104 — F3 native values/global fixture suite",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-101"
+      ],
+      "description": "Exercise PHP native values, arrays, globals, and superglobal-shaped boundaries.",
+      "acceptance_criteria": "Native semantics match the oracle or a minimized blocker is recorded."
+    },
+    {
+      "external_ref": "WPHX-105",
+      "title": "WPHX-105 — F4 public class fixture suite",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-101"
+      ],
+      "description": "Exercise public class/interface contracts that WordPress plugins can reflect or instantiate.",
+      "acceptance_criteria": "Class contracts pass or backend customization need is proven."
+    },
+    {
+      "external_ref": "WPHX-106",
+      "title": "WPHX-106 — F5 include/load fixture suite",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-102",
+        "WPHX-103",
+        "WPHX-104",
+        "WPHX-105"
+      ],
+      "description": "Validate ordered original-path shell loading and include-time side effects.",
+      "acceptance_criteria": "The ordered shell model is validated or blocked with minimized evidence."
+    },
+    {
+      "external_ref": "WPHX-107",
+      "title": "WPHX-107 — F6 template/caller-scope fixture suite",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-106"
+      ],
+      "description": "Validate WordPress-style PHP/HTML template shells and caller-scope variable behavior.",
+      "acceptance_criteria": "Two real-style template fixtures pass or a minimized linker/template blocker is recorded."
+    },
+    {
+      "external_ref": "WPHX-108",
+      "title": "WPHX-108 — F7 hook kernel fixture",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-102",
+        "WPHX-103",
+        "WPHX-104",
+        "WPHX-105",
+        "WPHX-106"
+      ],
+      "description": "Validate the first WordPress hook kernel fixture against upstream hook traces.",
+      "acceptance_criteria": "Hook traces match the oracle or a minimized blocker is recorded."
+    },
+    {
+      "external_ref": "WPHX-109",
+      "title": "WPHX-109 — ADR: macros/linker/backend boundary",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-100",
+      "blocks": [
+        "WPHX-102",
+        "WPHX-103",
+        "WPHX-104",
+        "WPHX-105",
+        "WPHX-106",
+        "WPHX-107",
+        "WPHX-108"
+      ],
+      "description": "Use F1-F7 evidence to decide what belongs in ordinary Haxe, macros, the deterministic linker, or a minimal PHP backend fork.",
+      "acceptance_criteria": "An ADR records the accepted architecture and whether a backend fork is required."
+    },
+    {
       "external_ref": "WPHX-400",
       "title": "WPHX-400 — genes-ts/browser platform",
       "issue_type": "epic",

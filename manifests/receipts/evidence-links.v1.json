@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 23,
+  "closed_task_count": 24,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -175,6 +175,16 @@
           "path": "receipts/operations/wphx-016-beads-upgrade-eval.v1.json",
           "sha256": "c1b3bbd738070f9f4be21bf022875e78e9238028cb58241c890886d64ba77600",
           "id": "receipt:wphx-016-beads-upgrade-eval"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-101",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-101-stock-php-smoke.v1.json",
+          "sha256": "6514f13dc31d53fff14b9b4bd6c4b5c82f1f00d3c4c586b4f3a48852ad355b7c",
+          "id": "receipt:wphx-101-stock-php-smoke"
         }
       ]
     },

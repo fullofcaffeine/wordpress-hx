@@ -1,0 +1,57 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-101-stock-php-smoke",
+  "issue": {
+    "id": "wordpresshx-w91.1.1",
+    "external_ref": "WPHX-101",
+    "title": "WPHX-101 — Stock Haxe PHP smoke project and generated-output snapshot"
+  },
+  "recorded_at": "2026-06-20T05:12:00Z",
+  "artifacts": [
+    {
+      "path": "fixtures/php-smoke/php-smoke.hxml",
+      "role": "Haxe PHP smoke compile file"
+    },
+    {
+      "path": "fixtures/php-smoke/src/wphx/fixtures/php/SmokeMain.hx",
+      "role": "stock Haxe PHP smoke source"
+    },
+    {
+      "path": "tools/php-smoke/run-smoke.mjs",
+      "role": "deterministic smoke build, runtime matrix, and snapshot checker"
+    },
+    {
+      "path": "manifests/php-smoke/wphx-101-stock-php-smoke.v1.json",
+      "role": "generated-output digest and runtime snapshot"
+    },
+    {
+      "path": "docs/operations/php-smoke.md",
+      "role": "WPHX-101 smoke runbook"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:smoke",
+    "npm run php:smoke:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "haxe_version": "4.3.7",
+    "generated_file_count": 17,
+    "php_run_count": 3,
+    "runtime_matrix": [
+      {
+        "id": "local-php-cli",
+        "version": "8.4.7"
+      },
+      {
+        "id": "docker-php-8.4-cli",
+        "version": "8.4.22"
+      },
+      {
+        "id": "docker-php-8.5-cli",
+        "version": "8.5.7"
+      }
+    ],
+    "expected_output": "wphx-php-smoke:stock-haxe-php:3:alpha|beta|gamma:alpha=5,gamma=5:enabled"
+  }
+}
