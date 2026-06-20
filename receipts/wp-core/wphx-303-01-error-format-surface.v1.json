@@ -1,0 +1,39 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-303-01-error-format-surface",
+  "issue": {
+    "id": "wordpresshx-l76.7.1",
+    "external_ref": "WPHX-303.01",
+    "title": "Inventory error/formatting/escaping/KSES surface"
+  },
+  "recorded_at": "2026-06-20T22:10:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-303-01-error-format-surface.v1.json",
+      "role": "WPHX-303.01 generated domain surface manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-303-01-error-format-surface.v1.json",
+      "role": "external-oracle ownership manifest for this first domain surface"
+    },
+    {
+      "path": "tools/wp-core/run-error-format-surface.mjs",
+      "role": "deterministic generator and drift check"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-303-surface",
+    "npm run wp:core:wphx-303-surface:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_units": 6,
+    "deferred_related_source_units": 5,
+    "domains": 4,
+    "public_symbols": 200,
+    "upstream_tests": 75,
+    "ownership_state": "external_oracle"
+  }
+}

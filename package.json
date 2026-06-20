@@ -69,6 +69,8 @@
     "wp:hooks:shell-emitter:check": "node tools/wp-hooks/run-hook-shell-emitter.mjs --check",
     "wp:hooks:distribution-surface": "node tools/wp-hooks/run-hook-distribution-surface.mjs",
     "wp:hooks:distribution-surface:check": "node tools/wp-hooks/run-hook-distribution-surface.mjs --check",
+    "wp:core:wphx-303-surface": "node tools/wp-core/run-error-format-surface.mjs",
+    "wp:core:wphx-303-surface:check": "node tools/wp-core/run-error-format-surface.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",

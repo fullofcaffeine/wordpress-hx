@@ -1,0 +1,51 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/error-format-surface",
+  "issue": {
+    "id": "wordpresshx-l76.7.1",
+    "external_ref": "WPHX-303.01"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "error/deprecation/formatting/escaping/KSES surface",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 WP_Error, wp_die/deprecation helpers, formatting/escaping/sanitization helpers, and KSES public PHP ABI remain oracle-owned until per-slice Haxe parity candidates replace them."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/class-wp-simplepie-sanitize-kses.php"
+    ],
+    "digest": "sha256:1371fd55853fc42c97517dc22f1c23e6ca505b5f34e51f6659e3d4efa5ccaab2"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-error-format-surface.mjs",
+    "manifests/wp-core/wphx-303-01-error-format-surface.v1.json",
+    "receipts/wp-core/wphx-303-01-error-format-surface.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-303-01-error-format-surface.v1.json",
+    "manifests/ownership/wphx-303-01-error-format-surface.v1.json",
+    "receipts/wp-core/wphx-303-01-error-format-surface.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-303-surface",
+      "npm run wp:core:wphx-303-surface:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-303-01-error-format-surface"
+    ],
+    "manifest_digest": "sha256:f7fd390715855d82219862bf8f6666e9ea3ca463a6dde6e7bcab0dd00bce4e11"
+  },
+  "notes": "This first WPHX-303 slice inventories the oracle surface and fixture entry points only. Runtime logic remains external_oracle until later WPHX-303.x slices create Haxe parity candidates and replacement gates."
+}
