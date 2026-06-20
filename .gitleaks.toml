@@ -1,0 +1,12 @@
+title = "wordpress-hx gitleaks config"
+
+[allowlist]
+description = "Allow generated and dependency output that should not be scanned as source."
+paths = [
+  '''^build/''',
+  '''^dist/''',
+  '''^src-gen/''',
+  '''^node_modules/''',
+  '''^vendor/'''
+]
+

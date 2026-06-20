@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+echo "[pre-push] Flushing Beads state..."
+bd sync --flush-only >/dev/null
+
+if ! git -C "$ROOT_DIR" diff --quiet -- .beads/issues.jsonl .beads/interactions.jsonl; then
+  echo "[pre-push] ERROR: Beads JSONL changed during pre-push." >&2
+  echo "[pre-push] Commit the updated .beads JSONL files before pushing." >&2
+  exit 1
+fi
+
+echo "[pre-push] Running Haxe format check..."
+bash "$ROOT_DIR/scripts/lint/haxe-format.sh"
+
+echo "[pre-push] Running full secret scan..."
+bash "$ROOT_DIR/scripts/security/run-gitleaks.sh"
+
+echo "[pre-push] OK"
+

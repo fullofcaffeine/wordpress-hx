@@ -1,0 +1,21 @@
+{
+  "name": "wordpress-hx",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Experimental WordPress 7.0 and Gutenberg migration program using Haxe, Codex, and Beads.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "format:haxe": "bash scripts/lint/haxe-format.sh --write",
+    "format:haxe:check": "bash scripts/lint/haxe-format.sh",
+    "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
+    "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
+    "hooks:install": "bash scripts/hooks/install.sh",
+    "precommit": "npm run format:haxe:check && npm run security:gitleaks"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fullofcaffeine/wordpress-hx.git"
+  }
+}
+

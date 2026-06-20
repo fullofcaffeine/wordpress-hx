@@ -16,3 +16,14 @@ Initial work follows the PRD sequence:
 2. Lock source and toolchain baselines.
 3. Generate inventories and oracle environments.
 4. Run feasibility gates before any broad source translation.
+
+## Local Hooks
+
+Install repository hooks after cloning:
+
+```bash
+npm run hooks:install
+```
+
+The pre-commit hook scans staged changes with gitleaks and formats staged Haxe files with `haxelib run formatter`.
+The pre-push hook runs full-history/current-tree gitleaks plus a tracked Haxe formatting check.

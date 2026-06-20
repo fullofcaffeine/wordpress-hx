@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(git rev-parse --show-toplevel)"
+
+echo "[pre-commit] Flushing Beads state..."
+bd sync --flush-only >/dev/null
+git add "$ROOT_DIR/.beads/issues.jsonl" "$ROOT_DIR/.beads/interactions.jsonl" 2>/dev/null || true
+
+echo "[pre-commit] Running staged secret scan..."
+bash "$ROOT_DIR/scripts/security/run-gitleaks.sh" --staged
+
+STAGED_HX_FILES=()
+while IFS= read -r staged_file; do
+  if [ -n "$staged_file" ]; then
+    STAGED_HX_FILES+=("$staged_file")
+  fi
+done < <(
+  git diff --cached --name-only --diff-filter=ACMR \
+    | grep -E '\.hx$' \
+    || true
+)
+
+if [ "${#STAGED_HX_FILES[@]}" -gt 0 ]; then
+  if ! haxelib run formatter --help >/dev/null 2>&1; then
+    echo "[pre-commit] ERROR: haxelib formatter is required for staged Haxe files." >&2
+    echo "[pre-commit] Install: haxelib install formatter" >&2
+    exit 1
+  fi
+
+  FORMAT_ARGS=()
+  FORMATTED_HX_FILES=()
+  for hx_file in "${STAGED_HX_FILES[@]}"; do
+    if [ ! -f "$ROOT_DIR/$hx_file" ]; then
+      continue
+    fi
+
+    case "$hx_file" in
+      build/*|dist/*|src-gen/*|vendor/*)
+        echo "[pre-commit] Skipping generated/vendor Haxe file: $hx_file"
+        continue
+        ;;
+    esac
+
+    FORMAT_ARGS+=("-s" "$ROOT_DIR/$hx_file")
+    FORMATTED_HX_FILES+=("$hx_file")
+  done
+
+  if [ "${#FORMAT_ARGS[@]}" -gt 0 ]; then
+    echo "[pre-commit] Formatting staged Haxe files..."
+    haxelib run formatter "${FORMAT_ARGS[@]}"
+    git add -- "${FORMATTED_HX_FILES[@]}"
+  fi
+else
+  echo "[pre-commit] No staged Haxe files to format."
+fi
+
+echo "[pre-commit] OK"

@@ -49,6 +49,13 @@ Generated target readability is a product surface. If good Haxe source emits wea
 
 Keep `README.md`, `docs/operations/repositories.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
 
+## Local Hooks and Checks
+
+- Install hooks with `npm run hooks:install` after cloning or when hook scripts change.
+- The pre-commit hook must run a staged gitleaks scan and format staged `.hx` files with `haxelib run formatter`.
+- Use `npm run security:gitleaks` for full-history secret scanning.
+- Use `npm run format:haxe:check` for tracked Haxe formatting checks. It is valid for this to report no tracked Haxe files during bootstrap.
+
 ## Quick Reference
 
 ```bash
