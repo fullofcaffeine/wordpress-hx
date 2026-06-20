@@ -1,0 +1,57 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp/hooks-distribution-surface",
+  "issue": {
+    "id": "wordpresshx-l76.6",
+    "external_ref": "WPHX-306"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "hooks/plugin-api distribution surface",
+    "area": "wp-includes",
+    "public_contract": "distribution-ready plugin.php and class-wp-hook.php shells backed by Haxe-owned hook decisions and approved PHP public ABI boundaries"
+  },
+  "ownership_state": "verified_haxe_owned",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-hook.php"
+    ],
+    "digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
+  },
+  "owned_paths": [
+    "src/wphx/wp/hooks/HookRuntime.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/HookKernel.hx",
+    "tools/php-facade/run-f7-hook-kernel.mjs",
+    "tools/wp-hooks/run-hook-surface.mjs",
+    "tools/wp-hooks/run-hook-parity-candidate.mjs",
+    "tools/wp-hooks/run-hook-runtime-boundary.mjs",
+    "tools/wp-hooks/run-hook-shell-emitter.mjs",
+    "tools/wp-hooks/run-hook-distribution-surface.mjs"
+  ],
+  "generated_paths": [
+    "build/php-hook-kernel",
+    "build/wp-hooks",
+    "build/wp-hooks-candidate"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:hooks:surface:check",
+      "npm run wp:hooks:parity-candidate:check",
+      "npm run wp:hooks:runtime-boundary:check",
+      "npm run wp:hooks:shell-emitter:check",
+      "npm run wp:hooks:distribution-surface:check"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-302-hook-surface",
+      "receipt:wphx-303-hook-parity-candidate",
+      "receipt:wphx-304-hook-runtime-boundary",
+      "receipt:wphx-305-hook-shell-emitter",
+      "receipt:wphx-306-hook-distribution-surface"
+    ],
+    "manifest_digest": "sha256:ebec02f6236262deeac4894415975a1b9196f50dbbdf95686a47e87b6a0359e4"
+  },
+  "notes": "WPHX-306 closes the hook/plugin API bridge removal gate. Upstream plugin.php and class-wp-hook.php are now source/provenance oracles for generated distribution shells; executable hook decisions are owned by Haxe HookRuntime/HookKernel, and remaining PHP-native callables, references, globals, reflection-visible declarations, and include timing are approved public ABI boundaries."
+}

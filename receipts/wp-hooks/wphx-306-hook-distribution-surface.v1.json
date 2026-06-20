@@ -1,0 +1,14 @@
+{
+  "schema": "wphx.wp-hook-distribution-surface-receipt.v1",
+  "id": "receipt:wphx-306-hook-distribution-surface",
+  "issue": "WPHX-306",
+  "recorded_at": "2026-06-21T00:05:00.000Z",
+  "command": "npm run wp:hooks:distribution-surface",
+  "status": "passed",
+  "manifest": "manifests/wp-hooks/wphx-306-hook-distribution-surface.v1.json",
+  "manifest_sha256": "sha256:ebec02f6236262deeac4894415975a1b9196f50dbbdf95686a47e87b6a0359e4",
+  "ownership_manifest": "manifests/ownership/wphx-306-hooks-distribution-surface.v1.json",
+  "ownership_manifest_sha256": "sha256:2a5926458ab63b9ae10e88bf400f7558de639e9f6242bce6b53d15e05e43b4d8",
+  "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358",
+  "approved_public_abi_boundary_count": 5
+}

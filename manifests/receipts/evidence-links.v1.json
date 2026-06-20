@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 47,
+  "closed_task_count": 48,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -343,7 +343,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "32d90013028a8264648b0b42391c4e0df4743ceeb1a2abed1fb91033ea0fcd02",
+          "sha256": "edbdf684210dced564de2ecd86275d7995dedf08aa3cfb3befb54aaf1e0453a9",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -383,7 +383,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-302-hook-surface.v1.json",
-          "sha256": "1d9454660244de8b61e53affaeeeb37f48d9c2690734b1d53af1ac7a9adcff92",
+          "sha256": "0c45fedb15ced305c5b7546f10bcb2bacb76f8755d41eeca38f69d3eca0f8472",
           "id": "receipt:wphx-302-hook-surface"
         }
       ]
@@ -393,7 +393,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-303-hook-parity-candidate.v1.json",
-          "sha256": "cd12c33a91a56d0ccf9f3ec2f0a922b90ae405e37706c4a9126e2a7a7f913f1b",
+          "sha256": "5163a679cd30e30ebee29f09250feb52e5cd390141dc50a6041ad00919bc8aa3",
           "id": "receipt:wphx-303-hook-parity-candidate"
         }
       ]
@@ -403,7 +403,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-304-hook-runtime-boundary.v1.json",
-          "sha256": "e465d059a52c59baca838138e31aa6b9ec66a3bb8339e8275dd1175d7ed6bb2b",
+          "sha256": "8acd8e3f62ded371bea499758470d449e7f4d60df3ec6419cc339f153e35a247",
           "id": "receipt:wphx-304-hook-runtime-boundary"
         }
       ]
@@ -413,8 +413,18 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-305-hook-shell-emitter.v1.json",
-          "sha256": "dff1afb14ffb3168e0282612e9f6661b03a2803724823cfbfcff5c3f551c536c",
+          "sha256": "2eae2b069fbf4ae3247eac8427cbd377b2e67e895b2c7d6ca7924f5cc8588e13",
           "id": "receipt:wphx-305-hook-shell-emitter"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-306",
+      "receipts": [
+        {
+          "path": "receipts/wp-hooks/wphx-306-hook-distribution-surface.v1.json",
+          "sha256": "5aa28e87a414f6d9af4d8476339f953b2d2c5eb1499bbc46ba6d4360567be8ae",
+          "id": "receipt:wphx-306-hook-distribution-surface"
         }
       ]
     },

@@ -11,11 +11,11 @@
     },
     "runtime_boundary_tool": {
       "path": "tools/wp-hooks/run-hook-runtime-boundary.mjs",
-      "bytes": 11450,
-      "sha256": "sha256:599ef8d51b60ff5e9b0ad81d18b2d498b48794ba4ec41742ba7423fcd3fe5997"
+      "bytes": 10704,
+      "sha256": "sha256:18ed3f28383d3356526bf9b0411e69d8029bc6b524498f59c45e890f69579725"
     },
     "runtime_boundary_manifest": "manifests/wp-hooks/wphx-304-hook-runtime-boundary.v1.json",
-    "runtime_boundary_manifest_sha256": "sha256:b6a511337f648559ea91eaf0ed7867fcc32bf3634bd3a3502b640c5cedd933c2",
+    "runtime_boundary_manifest_sha256": "sha256:2efb07465017919f57d8b895dc80454e1ca1c99ab781720d10e0fd1a2ba254ad",
     "source_units": [
       {
         "unit": "src/wp-includes/plugin.php",
@@ -135,6 +135,6 @@
     "upstream_source_transform_emitter": true,
     "generated_php_keeps_upstream_docblocks": true,
     "haxe_runtime_boundary_preserved": true,
-    "verification_owner_issue": "WPHX-306"
+    "verified_distribution_surface": true
   }
 }

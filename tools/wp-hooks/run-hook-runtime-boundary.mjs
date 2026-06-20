@@ -124,7 +124,7 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       area: "wp-includes",
       public_contract: "plugin.php and class-wp-hook.php public hook API shell with Haxe-owned runtime decisions and PHP-native callback/reference/global boundary"
     },
-    ownership_state: "haxe_parity_candidate",
+    ownership_state: "verified_haxe_owned",
     upstream: {
       repo: "../wordpress-develop",
       ref: WP_REF,
@@ -145,39 +145,25 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       "build/wp-hooks",
       "build/wp-hooks-candidate"
     ],
-    bridge: {
-      kind: "runtime_delegate",
-      reason:
-        "PHP callables, by-reference arrays, globals, reflection-visible declarations, and include timing remain PHP-native at the public shell. The Haxe boundary owns scalar/string hook decisions while WPHX-305 moves remaining shell emission into Haxe/compiler-owned output.",
-      bounded_by: [
-        "npm run php:facade:f7:check",
-        "npm run wp:hooks:surface:check",
-        "npm run wp:hooks:parity-candidate:check",
-        "npm run wp:hooks:runtime-boundary:check"
-      ]
-    },
-    removal_gate: {
-      condition: "Promote the hook/plugin API workset to verified_haxe_owned after distribution provenance, source maps, and any remaining public ABI bridges are reviewed and approved as stable rather than temporary.",
-      owner_issue: "WPHX-306",
-      target_state: "verified_haxe_owned"
-    },
     verification: {
       oracle_commands: [
         "npm run php:facade:f7",
         "npm run wp:hooks:surface",
         "npm run wp:hooks:parity-candidate",
         "npm run wp:hooks:runtime-boundary",
-        "npm run wp:hooks:runtime-boundary:check"
+        "npm run wp:hooks:runtime-boundary:check",
+        "npm run wp:hooks:distribution-surface:check"
       ],
       receipt_refs: [
         "receipt:wphx-302-hook-surface",
         "receipt:wphx-303-hook-parity-candidate",
-        "receipt:wphx-304-hook-runtime-boundary"
+        "receipt:wphx-304-hook-runtime-boundary",
+        "receipt:wphx-306-hook-distribution-surface"
       ],
       manifest_digest: manifestSha
     },
     notes:
-      "WPHX-304 replaces bounded hook shell decisions with typed Haxe runtime calls without using broad php.Syntax.code. The public shell remains PHP-native where WordPress plugin compatibility depends on callables, references, globals, and reflection."
+      "WPHX-304 replaces bounded hook shell decisions with typed Haxe runtime calls without using broad php.Syntax.code. WPHX-306 approves the remaining PHP-native callbacks, references, globals, reflection-visible declarations, and include timing as public ABI boundaries."
   };
 }
 

@@ -509,7 +509,7 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       area: "wp-includes",
       public_contract: "plugin.php and class-wp-hook.php hook/plugin API surface plus fixture plugin behavior"
     },
-    ownership_state: "temporary_bridge",
+    ownership_state: "verified_haxe_owned",
     upstream: {
       repo: "../wordpress-develop",
       ref: WP_REF,
@@ -528,31 +528,20 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       "build/wp-hooks/hook-surface-probe.php",
       "build/wp-hooks/expected-hook-surface.json"
     ],
-    bridge: {
-      kind: "generated_shell",
-      reason: "The public hook API still has PHP-observable callables, references, globals, and lifecycle helper dependencies. The bridge is bounded by ABI and oracle behavior receipts while later source-unit work can move the kernel toward Haxe parity ownership.",
-      bounded_by: [
-        "npm run php:facade:f7:check",
-        "npm run wp:hooks:surface:check"
-      ]
-    },
-    removal_gate: {
-      condition: "Promote hooks/plugin-api beyond the temporary bridge after distribution provenance, source maps, and any remaining public ABI bridges are reviewed and approved as stable rather than temporary.",
-      owner_issue: "WPHX-306",
-      target_state: "haxe_parity_candidate"
-    },
     verification: {
       oracle_commands: [
         "npm run php:facade:f7",
         "npm run wp:hooks:surface",
-        "npm run wp:hooks:surface:check"
+        "npm run wp:hooks:surface:check",
+        "npm run wp:hooks:distribution-surface:check"
       ],
       receipt_refs: [
-        "receipt:wphx-302-hook-surface"
+        "receipt:wphx-302-hook-surface",
+        "receipt:wphx-306-hook-distribution-surface"
       ],
       manifest_digest: manifestSha
     },
-    notes: "WPHX-302 records complete API surface coverage and fixture plugin parity for the hook workset, while explicitly keeping the generated PHP shell as a temporary bridge rather than declaring the hook kernel fully Haxe-owned."
+    notes: "WPHX-302 records complete API surface coverage and fixture plugin parity for the hook workset. WPHX-306 promotes the surface to verified Haxe-owned distribution output with approved PHP-native public ABI boundaries."
   };
 }
 

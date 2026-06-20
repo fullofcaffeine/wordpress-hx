@@ -109,3 +109,30 @@ Evidence is recorded in:
 - `manifests/wp-hooks/wphx-305-hook-shell-emitter.v1.json`
 - `manifests/ownership/wphx-305-hooks-shell-emitter.v1.json`
 - `receipts/wp-hooks/wphx-305-hook-shell-emitter.v1.json`
+
+## WPHX-306 Distribution Surface
+
+WPHX-306 promotes the hook/plugin API workset to `verified_haxe_owned`. The
+remaining PHP-native pieces are no longer treated as temporary bridges: callbacks,
+by-reference argument arrays, public globals, reflection-visible declarations, and include
+timing are approved public ABI boundaries because existing plugins observe those details.
+
+The distribution-surface gate verifies WPHX-302 through WPHX-305, checks that the earlier
+hook ownership manifests no longer contain temporary `bridge` or `removal_gate` blocks, and
+records generated-shell provenance plus line-range source maps for `plugin.php` and
+`class-wp-hook.php`. Upstream WordPress files remain locked source/provenance oracles; Haxe
+`HookRuntime`/`HookKernel` owns the hook decisions inserted into the generated distribution
+shells.
+
+Run:
+
+```bash
+npm run wp:hooks:distribution-surface
+npm run wp:hooks:distribution-surface:check
+```
+
+Evidence is recorded in:
+
+- `manifests/wp-hooks/wphx-306-hook-distribution-surface.v1.json`
+- `manifests/ownership/wphx-306-hooks-distribution-surface.v1.json`
+- `receipts/wp-hooks/wphx-306-hook-distribution-surface.v1.json`

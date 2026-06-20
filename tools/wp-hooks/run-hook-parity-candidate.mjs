@@ -425,7 +425,7 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       area: "wp-includes",
       public_contract: "Typed Haxe candidate decisions for WP_Hook priority ordering, stack counters, callback arity, and plugin lifecycle hook names"
     },
-    ownership_state: "haxe_parity_candidate",
+    ownership_state: "verified_haxe_owned",
     upstream: {
       repo: "../wordpress-develop",
       ref: WP_REF,
@@ -438,13 +438,18 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       oracle_commands: [
         "npm run wp:hooks:parity-candidate",
         "npm run wp:hooks:parity-candidate:check",
-        "npm run wp:hooks:surface:check"
+        "npm run wp:hooks:surface:check",
+        "npm run wp:hooks:distribution-surface:check"
       ],
-      receipt_refs: ["receipt:wphx-303-hook-parity-candidate", "receipt:wphx-302-hook-surface"],
+      receipt_refs: [
+        "receipt:wphx-303-hook-parity-candidate",
+        "receipt:wphx-302-hook-surface",
+        "receipt:wphx-306-hook-distribution-surface"
+      ],
       manifest_digest: manifestSha
     },
     notes:
-      "WPHX-303 promotes the Haxe-authored hook decision model to parity candidate without claiming the public plugin.php/class-wp-hook.php shell is fully verified. WPHX-304 installs the typed runtime boundary, WPHX-305 replaces the broad JS shell template with a source-transform emitter, and WPHX-306 owns verified distribution-surface promotion."
+      "WPHX-303 promotes the Haxe-authored hook decision model; WPHX-306 verifies it as part of the distribution surface with plugin.php/class-wp-hook.php provenance and approved public ABI boundaries."
   };
 }
 
@@ -527,7 +532,7 @@ const manifest = {
     comparison_count: comparisons.length,
     oracle_behavior_matches_haxe_candidate: true,
     broad_haxe_php_string_port: false,
-    verified_distribution_owner_issue: "WPHX-306"
+    verified_distribution_surface: true
   }
 };
 

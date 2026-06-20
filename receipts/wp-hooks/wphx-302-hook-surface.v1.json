@@ -8,7 +8,7 @@
   "manifest": "manifests/wp-hooks/wphx-302-hook-surface.v1.json",
   "manifest_sha256": "sha256:05daa2fdca2693c7157911333b0d2a4f9030d6c2986e6c7c36f780ce4b881842",
   "ownership_manifest": "manifests/ownership/wphx-302-hooks-workset.v1.json",
-  "ownership_manifest_sha256": "sha256:ea486ef235eb33b9cc8fb202bd9bd16d3da9da992040bd415de73c0ec89ac3a4",
+  "ownership_manifest_sha256": "sha256:d3595e507ddcaa4e78f2f56464733f21638bb4540c3c4cfba993aa69d48df04b",
   "expected_symbol_count": 56,
   "covered_symbol_count": 56,
   "runtime_run_count": 6,

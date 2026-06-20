@@ -5,7 +5,7 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:699b7d2ecdbaf140ea61fea9692c2e5f5b5388b9146f6360048429d4ad1a34a0",
+    "sha256": "sha256:a5fdbd8365248bf405ddab9d93e44271856a5000e3e25a5cff588aecdfb38198",
     "triggers": [
       "pull_request",
       "push:main",
@@ -54,6 +54,7 @@
       "npm run wp:hooks:parity-candidate:check",
       "npm run wp:hooks:runtime-boundary:check",
       "npm run wp:hooks:shell-emitter:check",
+      "npm run wp:hooks:distribution-surface:check",
       "npm run wp:linker:check",
       "npm run wp:public-types:check",
       "npm run wp:debug:sourcemap:check"

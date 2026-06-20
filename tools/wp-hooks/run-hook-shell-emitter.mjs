@@ -127,7 +127,7 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       area: "wp-includes",
       public_contract: "plugin.php and class-wp-hook.php public shell emitted by source transforms plus Haxe runtime boundary calls"
     },
-    ownership_state: "haxe_parity_candidate",
+    ownership_state: "verified_haxe_owned",
     upstream: {
       repo: "../wordpress-develop",
       ref: WP_REF,
@@ -146,38 +146,24 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       "build/wp-hooks",
       "build/wp-hooks-candidate"
     ],
-    bridge: {
-      kind: "runtime_delegate",
-      reason:
-        "The public PHP shell is no longer authored as a broad JavaScript template, but it still preserves native PHP callback, reference, global, declaration, and include behavior while delegating typed decisions to Haxe.",
-      bounded_by: [
-        "npm run wp:hooks:shell-emitter:check",
-        "npm run wp:hooks:runtime-boundary:check",
-        "npm run wp:hooks:surface:check",
-        "npm run wp:hooks:parity-candidate:check"
-      ]
-    },
-    removal_gate: {
-      condition: "Promote the hook/plugin API workset to verified_haxe_owned after distribution provenance, source maps, and any remaining public ABI bridges are reviewed and approved as stable rather than temporary.",
-      owner_issue: "WPHX-306",
-      target_state: "verified_haxe_owned"
-    },
     verification: {
       oracle_commands: [
         "npm run wp:hooks:shell-emitter",
         "npm run wp:hooks:shell-emitter:check",
-        "npm run wp:hooks:runtime-boundary:check"
+        "npm run wp:hooks:runtime-boundary:check",
+        "npm run wp:hooks:distribution-surface:check"
       ],
       receipt_refs: [
         "receipt:wphx-302-hook-surface",
         "receipt:wphx-303-hook-parity-candidate",
         "receipt:wphx-304-hook-runtime-boundary",
-        "receipt:wphx-305-hook-shell-emitter"
+        "receipt:wphx-305-hook-shell-emitter",
+        "receipt:wphx-306-hook-distribution-surface"
       ],
       manifest_digest: manifestSha
     },
     notes:
-      "WPHX-305 replaces the broad JS-authored public shell bodies with a source-to-source emitter that starts from the locked WordPress 7.0 oracle files and applies counted transforms for the Haxe runtime boundary. WPHX-306 owns final verified distribution-surface promotion."
+      "WPHX-305 replaces the broad JS-authored public shell bodies with counted emission transforms over the locked WordPress 7.0 oracle files. WPHX-306 verifies the generated shell as distribution-ready Haxe-owned output with source maps, provenance, and approved PHP-native public ABI boundaries."
   };
 }
 
@@ -234,7 +220,7 @@ const manifest = {
     upstream_source_transform_emitter: true,
     generated_php_keeps_upstream_docblocks: true,
     haxe_runtime_boundary_preserved: true,
-    verification_owner_issue: "WPHX-306"
+    verified_distribution_surface: true
   }
 };
 
