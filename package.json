@@ -13,6 +13,8 @@
     "hooks:install": "bash scripts/hooks/install.sh",
     "baseline:validate": "node tools/baseline/validate-policy.mjs",
     "beads:validate": "node tools/beads/validate-graph.mjs",
+    "beads:seed": "node tools/beads/seed-prd-issues.mjs --check",
+    "beads:seed:apply": "node tools/beads/seed-prd-issues.mjs --apply",
     "dashboard:build": "node tools/dashboard/build-dashboard.mjs",
     "dashboard": "node tools/dashboard/parity-dashboard.mjs",
     "dashboard:check": "node tools/dashboard/check-dashboard.mjs",
@@ -20,7 +22,7 @@
     "inventory:validate": "node tools/inventory/validate-inventory.mjs",
     "inventory:check": "node tools/inventory/check-determinism.mjs && npm run inventory:validate",
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
-    "precommit": "npm run format:haxe:check && npm run baseline:validate && npm run security:gitleaks"
+    "precommit": "npm run format:haxe:check && npm run baseline:validate && npm run beads:seed && npm run security:gitleaks"
   },
   "devDependencies": {
     "playwright": "1.61.0"

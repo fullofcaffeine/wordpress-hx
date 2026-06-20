@@ -1,0 +1,356 @@
+{
+  "schema": "wphx.beads-prd-seed.v1",
+  "generated_at": "2026-06-20T03:08:00Z",
+  "source": "Current Beads graph after WPHX-013 baseline/bootstrap decisions",
+  "key": "external_ref",
+  "issues": [
+    {
+      "external_ref": "WPHX-000",
+      "title": "WPHX-000 — Program governance and baseline",
+      "issue_type": "epic",
+      "priority": 1,
+      "parent": null,
+      "blocks": [],
+      "description": null,
+      "acceptance_criteria": null
+    },
+    {
+      "external_ref": "WPHX-001",
+      "title": "WPHX-001 — Initialize repository, licenses, contribution rules, generated-file policy",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [],
+      "description": null,
+      "acceptance_criteria": "Clean bootstrap and agent instructions are committed and pushed."
+    },
+    {
+      "external_ref": "WPHX-002",
+      "title": "WPHX-002 — Lock Haxe 4.3.7, genes-ts, PHP backend source, Node/npm, PHP images",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-001"
+      ],
+      "description": null,
+      "acceptance_criteria": "toolchain.lock.json exists and a clean build receipt is recorded."
+    },
+    {
+      "external_ref": "WPHX-003",
+      "title": "WPHX-003 — Obtain full WordPress 7.0.0 checkout and official distribution",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-001"
+      ],
+      "description": null,
+      "acceptance_criteria": "WordPress commit/tag, ZIP checksum, and test presence are recorded."
+    },
+    {
+      "external_ref": "WPHX-004",
+      "title": "WPHX-004 — Resolve and lock WordPress 7.0 Gutenberg commit/artifact",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-003"
+      ],
+      "description": null,
+      "acceptance_criteria": "Core Gutenberg pin is verified against WordPress metadata/build."
+    },
+    {
+      "external_ref": "WPHX-005",
+      "title": "WPHX-005 — Lock attached Gutenberg 23.4.0 forward ref",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-001"
+      ],
+      "description": null,
+      "acceptance_criteria": "Git commit matches the package version and snapshot baseline."
+    },
+    {
+      "external_ref": "WPHX-006",
+      "title": "WPHX-006 — Generate complete source/artifact/test inventory",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-003",
+        "WPHX-004",
+        "WPHX-005"
+      ],
+      "description": null,
+      "acceptance_criteria": "No executable source or shipped executable artifact is unclassified."
+    },
+    {
+      "external_ref": "WPHX-007",
+      "title": "WPHX-007 — Define manifest schemas and validators",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-006"
+      ],
+      "description": null,
+      "acceptance_criteria": "Schema tests pass and output is deterministic."
+    },
+    {
+      "external_ref": "WPHX-008",
+      "title": "WPHX-008 — Build vanilla oracle environments",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-003",
+        "WPHX-004",
+        "WPHX-005"
+      ],
+      "description": null,
+      "acceptance_criteria": "PHP, DB, and browser baselines produce receipts."
+    },
+    {
+      "external_ref": "WPHX-009",
+      "title": "WPHX-009 — Create initial parity dashboard",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-007",
+        "WPHX-008"
+      ],
+      "description": null,
+      "acceptance_criteria": "Dashboard can query by file, API, package, task, and gate."
+    },
+    {
+      "external_ref": "WPHX-010",
+      "title": "WPHX-010 — Seed Beads epics, issues, external refs, and dependencies",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-001",
+        "WPHX-007"
+      ],
+      "description": null,
+      "acceptance_criteria": "bd ready --json yields only valid ready work."
+    },
+    {
+      "external_ref": "WPHX-011",
+      "title": "WPHX-011 — License/provenance audit",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-003",
+        "WPHX-004",
+        "WPHX-005",
+        "WPHX-006"
+      ],
+      "description": null,
+      "acceptance_criteria": "Licenses, notices, and vendor origins are recorded."
+    },
+    {
+      "external_ref": "WPHX-012",
+      "title": "WPHX-012 — Decide release and forward baseline branch policy",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-003",
+        "WPHX-004",
+        "WPHX-005"
+      ],
+      "description": null,
+      "acceptance_criteria": "ADR accepted and baseline mixing is prevented."
+    },
+    {
+      "external_ref": "WPHX-013",
+      "title": "WPHX-013 — Decide and bootstrap GutenbergHX sibling repository protocol",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [
+        "WPHX-005",
+        "WPHX-012"
+      ],
+      "description": "Record when and how to create a sibling gutenberghx repo that cross-references wordpress-hx without fragmenting task authority. Include smaller dependent-library policy and cross-repo manifest/Beads conventions.",
+      "acceptance_criteria": "ADR or operations doc defines trigger criteria, repo relationship, Beads authority, cross-repo references, and small-library split policy before any gutenberghx bootstrap."
+    },
+    {
+      "external_ref": "WPHX-014",
+      "title": "WPHX-014 — Define HHX/template authoring strategy for WordPress templates",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [],
+      "description": "Use haxe.elixir.codex, haxe.ruby/RailsHx, and tink_hxx references to decide when WordPress PHP/HTML templates, block markup, admin screens, and Gutenberg TSX-like surfaces should use HHX-style typed inline markup versus external/original template shells.",
+      "acceptance_criteria": "Documented policy names source references, allowed HHX use cases, escape hatches, fixture gates, and cases that must stay original-path PHP/template shells until linker/template feasibility is proven."
+    },
+    {
+      "external_ref": "WPHX-015",
+      "title": "WPHX-015 — Define wrapper-to-Haxe ownership state model",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-000",
+      "blocks": [],
+      "description": "Define manifest states for external oracle, temporary bridge/wrapper, scaffolded, Haxe-owned parity candidate, and verified Haxe-owned implementation. Include removal gates so typed compatibility layers do not become the destination.",
+      "acceptance_criteria": "Manifest schema/docs encode ownership states, temporary wrappers require removal conditions, and smell-fix/refactor policy is reflected in task templates."
+    },
+    {
+      "external_ref": "WPHX-016",
+      "title": "WPHX-016 — Evaluate Beads CLI upgrade from 0.49.0",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-800",
+      "blocks": [],
+      "description": "bd doctor reports 1.0.4 available while this repo is pinned to 0.49.0. Evaluate upgrade impact on hooks, JSONL sync, merge driver, and AGENTS workflow before changing the pin.",
+      "acceptance_criteria": "Decision recorded; if upgraded, .beads/.local_version, toolchain.lock.json, docs/operations/beads.md, hooks, and a clean bd doctor receipt are updated together."
+    },
+    {
+      "external_ref": "WPHX-100",
+      "title": "WPHX-100 — PHP target feasibility",
+      "issue_type": "epic",
+      "priority": 1,
+      "parent": null,
+      "blocks": [],
+      "description": null,
+      "acceptance_criteria": null
+    },
+    {
+      "external_ref": "WPHX-400",
+      "title": "WPHX-400 — genes-ts/browser platform",
+      "issue_type": "epic",
+      "priority": 1,
+      "parent": null,
+      "blocks": [],
+      "description": null,
+      "acceptance_criteria": null
+    },
+    {
+      "external_ref": "WPHX-700",
+      "title": "WPHX-700 — Parity, security, performance, and distribution",
+      "issue_type": "epic",
+      "priority": 2,
+      "parent": "WPHX-000",
+      "blocks": [],
+      "description": null,
+      "acceptance_criteria": null
+    },
+    {
+      "external_ref": "WPHX-800",
+      "title": "WPHX-800 — Codex + Beads program operations",
+      "issue_type": "epic",
+      "priority": 1,
+      "parent": null,
+      "blocks": [],
+      "description": null,
+      "acceptance_criteria": null
+    },
+    {
+      "external_ref": "WPHX-801",
+      "title": "WPHX-801 — Pin Beads version and initialize the root database",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-001"
+      ],
+      "description": null,
+      "acceptance_criteria": "bd --version is locked; root .beads works; no nested active store."
+    },
+    {
+      "external_ref": "WPHX-802",
+      "title": "WPHX-802 — Install/review Codex integration and author AGENTS hierarchy",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-801"
+      ],
+      "description": null,
+      "acceptance_criteria": "Codex reports expected instruction sources and root guidance remains concise."
+    },
+    {
+      "external_ref": "WPHX-803",
+      "title": "WPHX-803 — Implement deterministic PRD-key to Beads-issue seeding",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-007",
+        "WPHX-010",
+        "WPHX-801"
+      ],
+      "description": null,
+      "acceptance_criteria": "Stable WPHX external refs import/update idempotently."
+    },
+    {
+      "external_ref": "WPHX-804",
+      "title": "WPHX-804 — Generate bounded task packets from Beads and manifests",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-006",
+        "WPHX-007",
+        "WPHX-008",
+        "WPHX-009",
+        "WPHX-010",
+        "WPHX-803"
+      ],
+      "description": null,
+      "acceptance_criteria": "One command emits reproducible context for a selected issue."
+    },
+    {
+      "external_ref": "WPHX-805",
+      "title": "WPHX-805 — Link verification receipts and manifest digests to Beads issues",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-008",
+        "WPHX-009",
+        "WPHX-010",
+        "WPHX-804"
+      ],
+      "description": null,
+      "acceptance_criteria": "Close validation rejects missing or stale evidence."
+    },
+    {
+      "external_ref": "WPHX-806",
+      "title": "WPHX-806 — Prove multi-agent claim/worktree/handoff protocol",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-802",
+        "WPHX-803",
+        "WPHX-804",
+        "WPHX-805"
+      ],
+      "description": null,
+      "acceptance_criteria": "Two-agent drill has no duplicate claims, path collisions, or lost discoveries."
+    },
+    {
+      "external_ref": "WPHX-807",
+      "title": "WPHX-807 — Configure Dolt sync plus bd backup and perform restore drill",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-800",
+      "blocks": [
+        "WPHX-801",
+        "WPHX-802",
+        "WPHX-803",
+        "WPHX-804",
+        "WPHX-805",
+        "WPHX-806"
+      ],
+      "description": null,
+      "acceptance_criteria": "Fresh clone/restore reproduces tasks, dependencies, memory, and ready queue."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-803-prd-seed",
+  "issue": {
+    "id": "wordpresshx-w91.4.3",
+    "external_ref": "WPHX-803",
+    "title": "Implement deterministic PRD-key to Beads-issue seeding"
+  },
+  "recorded_at": "2026-06-20T03:08:00Z",
+  "artifacts": [
+    {
+      "path": "manifests/beads/prd-seed.v1.json",
+      "role": "stable WPHX external-ref seed manifest"
+    },
+    {
+      "path": "tools/beads/seed-prd-issues.mjs",
+      "role": "idempotent seed checker/apply tool"
+    },
+    {
+      "path": "tools/beads/export-seed-manifest.mjs",
+      "role": "seed manifest exporter for accepted graph changes"
+    }
+  ],
+  "verification_commands": [
+    "node tools/beads/export-seed-manifest.mjs",
+    "npm run beads:seed",
+    "npm run beads:seed:apply",
+    "npm run beads:seed"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "seed_issues": 28,
+    "check_before_apply": {
+      "changes": [],
+      "errors": []
+    },
+    "apply": {
+      "changes": [],
+      "errors": []
+    },
+    "check_after_apply": {
+      "changes": [],
+      "errors": []
+    }
+  }
+}

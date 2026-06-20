@@ -22,8 +22,8 @@ for (const issue of all) {
 }
 
 for (const issue of ready) {
-  if (issue.status !== "open") {
-    errors.push(`ready issue ${issue.id} has status ${issue.status}`);
+  if (!["open", "in_progress"].includes(issue.status)) {
+    errors.push(`ready issue ${issue.id} has non-ready status ${issue.status}`);
   }
   if (issue.blocked_by_count || issue.blocked_by?.length) {
     errors.push(`ready issue ${issue.id} is blocked`);
