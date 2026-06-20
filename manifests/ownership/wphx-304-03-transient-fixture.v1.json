@@ -1,0 +1,58 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/transient-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.8.3",
+    "external_ref": "WPHX-304.03"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "transient/site-transient/feed-cache differential fixture harness",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 transient, site transient, expiration, delete cleanup, external object-cache, and feed-cache transient behavior stay observable while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-includes/class-wp-feed-cache-transient.php",
+      "src/wp-includes/class-wp-feed-cache.php"
+    ],
+    "digest": "sha256:acf324432a337138e28aca9c206a06909ab254ef533368f54d68c803150661da"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-transient-fixture.mjs",
+    "manifests/wp-core/wphx-304-03-transient-fixture.v1.json",
+    "receipts/wp-core/wphx-304-03-transient-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-304-03-transient-fixture.v1.json",
+    "manifests/ownership/wphx-304-03-transient-fixture.v1.json",
+    "receipts/wp-core/wphx-304-03-transient-fixture.v1.json",
+    "build/wp-core/wphx-304-03"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-304-transients",
+      "npm run wp:core:wphx-304-transients:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-304-03-transient-fixture"
+    ],
+    "manifest_digest": "sha256:d72b42f7f8f0cec06f91eb6183192fc0e588f00a8d4afdcb0fdd646d0c2b874a"
+  },
+  "notes": "The candidate fixture root is an oracle source mirror for WPHX-304.03. The probe uses constrained option-table behavior for transient storage and SimplePie stubs for the feed-cache bridge; real wpdb SQL/storage parity remains WPHX-305 and broader persistent object-cache drop-in coverage remains WPHX-304.04."
+}

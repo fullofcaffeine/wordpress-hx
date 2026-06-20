@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-304-03-transient-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.8.3",
+    "external_ref": "WPHX-304.03",
+    "title": "Build transient and site-transient expiration fixture harness"
+  },
+  "recorded_at": "2026-06-21T02:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-304-03-transient-fixture.v1.json",
+      "role": "transient/site-transient/feed-cache differential fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-304-03-transient-fixture.v1.json",
+      "role": "external-oracle ownership manifest for the fixture harness"
+    },
+    {
+      "path": "tools/wp-core/run-transient-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-304-transients",
+    "npm run wp:core:wphx-304-transients:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 15,
+    "fixture_cases": 12,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}
