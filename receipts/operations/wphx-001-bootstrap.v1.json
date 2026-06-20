@@ -1,0 +1,32 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-001-bootstrap",
+  "issue": {
+    "id": "wordpresshx-w91.5",
+    "external_ref": "WPHX-001",
+    "title": "Initialize repository, licenses, contribution rules, generated-file policy"
+  },
+  "recorded_at": "2026-06-20T03:22:00Z",
+  "artifacts": [
+    {
+      "path": "README.md",
+      "role": "bootstrap project overview"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "role": "contribution policy"
+    },
+    {
+      "path": "docs/operations/generated-files.md",
+      "role": "generated-file policy"
+    },
+    {
+      "path": "docs/operations/repositories.md",
+      "role": "sibling repository map"
+    }
+  ],
+  "verification_commands": [
+    "git status --short --branch",
+    "npm run precommit"
+  ]
+}

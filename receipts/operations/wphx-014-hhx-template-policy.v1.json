@@ -1,0 +1,24 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-014-hhx-template-policy",
+  "issue": {
+    "id": "wordpresshx-w91.18",
+    "external_ref": "WPHX-014",
+    "title": "Define HHX/template authoring strategy for WordPress templates"
+  },
+  "recorded_at": "2026-06-20T03:22:00Z",
+  "artifacts": [
+    {
+      "path": "docs/operations/hhx-template-policy.md",
+      "role": "HHX/template authoring policy"
+    },
+    {
+      "path": "docs/operations/repositories.md",
+      "role": "records haxe.elixir.codex, haxe.ruby, and tink_hxx reference locations"
+    }
+  ],
+  "verification_commands": [
+    "jq empty receipts/operations/wphx-014-hhx-template-policy.v1.json",
+    "npm run baseline:validate"
+  ]
+}

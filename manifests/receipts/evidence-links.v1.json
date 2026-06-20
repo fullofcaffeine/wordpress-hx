@@ -1,0 +1,212 @@
+{
+  "schema": "wphx.evidence-links.v1",
+  "generated_at": "2026-06-20T03:22:00Z",
+  "closed_task_count": 19,
+  "entries": [
+    {
+      "external_ref": "WPHX-001",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-001-bootstrap.v1.json",
+          "sha256": "df248fd7fa294a51efa160c26b0d0f3a7ab42e1c5b3b88fbcc3606c4b2183176",
+          "id": "receipt:wphx-001-bootstrap"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-002",
+      "receipts": [
+        {
+          "path": "receipts/toolchain/wphx-002-toolchain-lock.v1.json",
+          "sha256": "f5b04e47cd655dcfe1e08dd43c24f241d08711deeb5cb9cb321a0f9de5f3de08",
+          "id": null
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-003",
+      "receipts": [
+        {
+          "path": "receipts/upstream/wphx-003-wordpress-7.0-baseline.v1.json",
+          "sha256": "ce5bcb40a314d267b8f632286deb15b28bfcf6a3bc9eca63388ab543958a7a8f",
+          "id": "receipt:wphx-003-wordpress-7.0-baseline"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-004",
+      "receipts": [
+        {
+          "path": "receipts/upstream/wphx-004-wordpress-7.0-gutenberg-baseline.v1.json",
+          "sha256": "b97b50294528a3e8bbb912746d36012a07298e79f80e45935c7d357caceeaffa",
+          "id": "receipt:wphx-004-wordpress-7.0-gutenberg-baseline"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-005",
+      "receipts": [
+        {
+          "path": "receipts/upstream/wphx-005-gutenberg-forward-baseline.v1.json",
+          "sha256": "33f85c6e2fc315af0c8adb5526b627844b4bf1159b3ab243b475190fe46fca8f",
+          "id": "receipt:wphx-005-gutenberg-forward-baseline"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-006",
+      "receipts": [
+        {
+          "path": "receipts/inventory/wphx-006-inventory.v1.json",
+          "sha256": "7e5a7e85c6a7678fff461b483ecd4ee4cc9be31f0dc9dababad5ef64e34b035d",
+          "id": null
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-007",
+      "receipts": [
+        {
+          "path": "receipts/inventory/wphx-007-schema-validation.v1.json",
+          "sha256": "70653f01b3780041740afa5c393aa18f6cc21e4707817d576059a00aed0801c0",
+          "id": "receipt:wphx-007-schema-validation"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-008",
+      "receipts": [
+        {
+          "path": "receipts/oracle/wphx-008-browser-baseline.v1.json",
+          "sha256": "dcc913b05b5ca64d1e05fe666833221e521f485be1d4d54a5c1c43f1df1d92ca",
+          "id": "receipt:wphx-008-browser-baseline"
+        },
+        {
+          "path": "receipts/oracle/wphx-008-db-baseline.v1.json",
+          "sha256": "58a3bd7420af76f334c24660db81d2f84c508a64dbc5547e88303f9b0fb52f38",
+          "id": "receipt:wphx-008-db-baseline"
+        },
+        {
+          "path": "receipts/oracle/wphx-008-php-baseline.v1.json",
+          "sha256": "fd65a84f8b4fd7720634dd282889f730b38577a4b41f5ab078170a5d0c4472eb",
+          "id": "receipt:wphx-008-php-baseline"
+        },
+        {
+          "path": "receipts/oracle/wphx-008-vanilla-oracle-summary.v1.json",
+          "sha256": "86bb86b9e9713450b930b554fe9d8c361d70cee3ff991173a5a2436d607a7cf8",
+          "id": null
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-009",
+      "receipts": [
+        {
+          "path": "receipts/dashboard/wphx-009-parity-dashboard.v1.json",
+          "sha256": "e6f903e8f6ef19b9ed13bcc41006e3e763efd17f658c14c9d4bd0882404a45df",
+          "id": "receipt:wphx-009-parity-dashboard"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-010",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-010-beads-graph.v1.json",
+          "sha256": "a5fbdc8a7515656485e71e27994765e08e49d97f82e572f036c0605114b79ff6",
+          "id": "receipt:wphx-010-beads-graph"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-012",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-012-baseline-policy.v1.json",
+          "sha256": "3cc366c98f7b044c71ab200c9edd0c93621c976219aaf6b55bc66c2a4276afe0",
+          "id": "receipt:wphx-012-baseline-policy"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-013",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-013-gutenberghx-protocol.v1.json",
+          "sha256": "d075349f4dd4b1380a0fc8325964d54709b1f1f1d9314f94eabecb5dee4b4791",
+          "id": "receipt:wphx-013-gutenberghx-protocol"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-014",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-014-hhx-template-policy.v1.json",
+          "sha256": "bc72f28de7e936d5b485f3f3eb104808b5327190aae1e29149543829a1a93a60",
+          "id": "receipt:wphx-014-hhx-template-policy"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-015",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-015-ownership-state-model.v1.json",
+          "sha256": "83383419423e5f61f093e6762d697a7b42fba441ab82d596fb78919cbcdd1f39",
+          "id": "receipt:wphx-015-ownership-state-model"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-801",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-801-beads-bootstrap.v1.json",
+          "sha256": "e3cf9fc0cff1d1d874460397e4e842c0ff202895c577671dee126e92c592a01d",
+          "id": "receipt:wphx-801-beads-bootstrap"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-802",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-802-agent-instructions.v1.json",
+          "sha256": "ce81a59b221531a75940e95185385d751d25662f38fb3af1f03c8d76d117d608",
+          "id": "receipt:wphx-802-agent-instructions"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-803",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-803-prd-seed.v1.json",
+          "sha256": "513f40c3f5d3fe245fd0f05872b7e51ee3ba9d1d5c7f5d82eca3d164f22e522b",
+          "id": "receipt:wphx-803-prd-seed"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-804",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-804-task-pack.v1.json",
+          "sha256": "59c0137a04e56cf1764f9bdf6899cb5a477b650f6d47fbc07c94eca99d9266b8",
+          "id": "receipt:wphx-804-task-pack"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-805",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-805-receipt-links.v1.json",
+          "sha256": "abd4202de9a49f9394abb2927bde68c183357d021b4641d6c5e0eb11219f1e99",
+          "id": "receipt:wphx-805-receipt-links"
+        }
+      ]
+    }
+  ]
+}

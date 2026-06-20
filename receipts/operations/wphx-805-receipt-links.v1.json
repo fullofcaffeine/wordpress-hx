@@ -1,0 +1,33 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-805-receipt-links",
+  "issue": {
+    "id": "wordpresshx-w91.4.5",
+    "external_ref": "WPHX-805",
+    "title": "Link verification receipts and manifest digests to Beads issues"
+  },
+  "recorded_at": "2026-06-20T03:22:00Z",
+  "artifacts": [
+    {
+      "path": "manifests/receipts/evidence-links.v1.json",
+      "role": "closed-task to receipt digest manifest"
+    },
+    {
+      "path": "tools/receipts/validate-receipts.mjs",
+      "role": "receipt digest and issue-link validator"
+    },
+    {
+      "path": "docs/operations/receipts.md",
+      "role": "operator documentation"
+    }
+  ],
+  "verification_commands": [
+    "npm run receipts:build",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "closed_task_count": 19,
+    "linked_task_count": 19
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-801-beads-bootstrap",
+  "issue": {
+    "id": "wordpresshx-w91.4.1",
+    "external_ref": "WPHX-801",
+    "title": "Pin Beads version and initialize the root database"
+  },
+  "recorded_at": "2026-06-20T03:22:00Z",
+  "artifacts": [
+    {
+      "path": ".beads/.local_version",
+      "role": "Beads version pin"
+    },
+    {
+      "path": "docs/operations/beads.md",
+      "role": "root Beads authority and operating notes"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "toolchain lock including Beads version"
+    }
+  ],
+  "verification_commands": [
+    "bd --version",
+    "bd ready --json",
+    "npm run beads:validate"
+  ]
+}
