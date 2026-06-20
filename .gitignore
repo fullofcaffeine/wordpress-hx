@@ -1,0 +1,38 @@
+.DS_Store
+
+# Local/editor state
+.idea/
+.vscode/
+.codex/cache/
+.codex/tmp/
+
+# Dependencies and build outputs
+node_modules/
+vendor/
+.haxelib/
+.lix/
+build/
+dist/
+src-gen/
+coverage/
+
+# Runtime/cache output
+.cache/
+.tmp/
+tmp/
+logs/
+*.log
+
+# Upstream checkouts are locked by manifest, not committed here.
+upstream/*
+!upstream/.gitkeep
+
+# Generated manifests/receipts are committed only when produced intentionally.
+manifests/*.tmp
+receipts/*.tmp
+
+# Repomix and large planning artifacts
+repomix-output*.xml
+repomix-output*.xml.zip
+*.repomix.xml
+*.repomix.xml.zip

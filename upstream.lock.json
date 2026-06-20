@@ -1,0 +1,91 @@
+{
+  "schema": "wphx.upstream-lock.v1",
+  "description": "Starter local checkout map. Later gates replace or extend this with checksums, official release artifacts, and full source inventories.",
+  "repositories": [
+    {
+      "id": "wordpress-vanilla",
+      "name": "WordPress vanilla",
+      "relativePath": "../wordpress-develop",
+      "role": "wordpress-7.0-oracle",
+      "authority": "WordPress 7.0 distribution and behavior oracle",
+      "git": {
+        "commit": "26b6802493",
+        "tag": "7.0.0",
+        "branch": null,
+        "detached": true
+      },
+      "observedDirtyState": "Untracked repomix-output.wordpress.xml and repomix-output.wordpress.xml.zip"
+    },
+    {
+      "id": "gutenberg-forward",
+      "name": "Gutenberg forward baseline",
+      "relativePath": "../gutenberg",
+      "role": "gutenberg-23.4-forward-oracle",
+      "authority": "Forward Gutenberg package baseline, separate from WordPress 7.0 pinned Gutenberg build",
+      "git": {
+        "commit": "98a796c8780",
+        "tag": "v23.4.0",
+        "branch": null,
+        "detached": true
+      },
+      "observedDirtyState": "Untracked repomix-output.gutenberg.xml.zip and repomix-output.xml"
+    },
+    {
+      "id": "genes-ts",
+      "name": "genes-ts",
+      "relativePath": "../genes",
+      "role": "browser-target-compiler",
+      "authority": "Active genes-ts compiler checkout for generic TS/TSX/JS target fixes",
+      "git": {
+        "commit": "8acd106",
+        "tag": null,
+        "branch": "main",
+        "detached": false
+      },
+      "observedDirtyState": "Untracked genes-ts.xml and repomix-output-genes-ts.xml.zip"
+    },
+    {
+      "id": "haxe-compiler",
+      "name": "Haxe compiler",
+      "relativePath": "../haxe.compilerdev.reference/haxe",
+      "role": "haxe-4.3.7-php-target-reference",
+      "authority": "Haxe compiler source and PHP generator reference",
+      "git": {
+        "commit": "e0b355c6b",
+        "tag": "4.3.7",
+        "branch": "origin/4.3_bugfix",
+        "detached": true
+      },
+      "observedDirtyState": "Generated and repomix/test artifacts are untracked"
+    },
+    {
+      "id": "opencodehx",
+      "name": "OpenCodeHX",
+      "relativePath": "../opencodehx",
+      "role": "large-port-precedent",
+      "authority": "Reference for genes-ts workflow, Beads practice, generated TypeScript quality, and compiler-pressure handling",
+      "git": {
+        "commit": "e2d74c1",
+        "tag": null,
+        "branch": "main",
+        "detached": false
+      },
+      "observedDirtyState": "Clean at observation time"
+    },
+    {
+      "id": "codex-hxrust",
+      "name": "codex-hxrust",
+      "relativePath": "../codex-hxrust",
+      "role": "large-port-precedent",
+      "authority": "Reference for compiler-backend workflow, generated target quality, and landing discipline",
+      "git": {
+        "commit": "814ea60",
+        "tag": null,
+        "branch": "main",
+        "detached": false
+      },
+      "observedDirtyState": "Dirty with Beads and resume picker files; reference only"
+    }
+  ]
+}
+
