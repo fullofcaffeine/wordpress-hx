@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 38,
+  "scanned_file_count": 40,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -22,6 +22,8 @@
     "fixtures/php-smoke/src/wphx/fixtures/php/SmokeMain.hx",
     "fixtures/wp-boundary/src/wphx/fixtures/wp/boundary/BoundaryEntry.hx",
     "fixtures/wp-boundary/src/wphx/fixtures/wp/boundary/BoundaryKernel.hx",
+    "fixtures/wp-debug/src/wphx/fixtures/wp/debug/DebugEntry.hx",
+    "fixtures/wp-debug/src/wphx/fixtures/wp/debug/DebugKernel.hx",
     "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalBindings.hx",
     "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalFacadeEntry.hx",
     "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalKernel.hx",

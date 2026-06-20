@@ -49,6 +49,8 @@
     "receipts:validate": "node tools/receipts/validate-receipts.mjs",
     "wp:boundary": "node tools/wp-boundary/run-boundary-types.mjs",
     "wp:boundary:check": "node tools/wp-boundary/run-boundary-types.mjs --check",
+    "wp:debug:sourcemap": "node tools/wp-debug/run-source-map-traces.mjs",
+    "wp:debug:sourcemap:check": "node tools/wp-debug/run-source-map-traces.mjs --check",
     "wp:facade:globals": "node tools/wp-facade/run-global-facade-generator.mjs",
     "wp:facade:globals:check": "node tools/wp-facade/run-global-facade-generator.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
