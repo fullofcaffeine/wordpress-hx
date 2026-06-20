@@ -21,6 +21,8 @@
     "inventory": "node tools/inventory/wphx-inventory.mjs",
     "inventory:validate": "node tools/inventory/validate-inventory.mjs",
     "inventory:check": "node tools/inventory/check-determinism.mjs && npm run inventory:validate",
+    "license:provenance": "node tools/license/audit-provenance.mjs",
+    "license:provenance:check": "node tools/license/audit-provenance.mjs --check",
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
     "receipts:build": "node tools/receipts/build-evidence-links.mjs",
     "receipts:validate": "node tools/receipts/validate-receipts.mjs",

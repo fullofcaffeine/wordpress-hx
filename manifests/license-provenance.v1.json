@@ -1,0 +1,208 @@
+{
+  "schema": "wphx.license-provenance.v1",
+  "issue": "WPHX-011",
+  "generated_at": "2026-06-20T04:45:00Z",
+  "generator": "tools/license/audit-provenance.mjs",
+  "upstreams": [
+    {
+      "id": "upstream:wordpress-7.0.0",
+      "role": "WordPress 7.0 source and official distribution oracle",
+      "repo": "../wordpress-develop",
+      "commit": "26b68024931348d267b70e2a29910e1320d0094f",
+      "tag": "7.0.0",
+      "package_name": "WordPress",
+      "package_version": "7.0.0",
+      "package_license": "GPL-2.0-or-later",
+      "composer_license": "GPL-2.0-or-later",
+      "project_license_file": {
+        "path": "src/license.txt",
+        "sha256": "dec703cdb49042ca367f71c3982dee4552ffef395225f1fe9f14d29a4a0cb0ff"
+      },
+      "notice_origins": [
+        "WordPress contributors",
+        "b2/cafelog lineage retained in src/license.txt"
+      ],
+      "bundled_notice_files": [
+        {
+          "path": "src/wp-includes/ID3/license.txt",
+          "sha256": "f45a8e3db72f9de7d596b43b0c71eca219857d732387c7781505c181e97bdec1"
+        },
+        {
+          "path": "src/wp-includes/ID3/readme.txt",
+          "sha256": "13ff52823440b0df2cc53b2746729a3f7148529ca2fef4c9ce0f3b937996dec5"
+        },
+        {
+          "path": "src/wp-includes/images/crystal/license.txt",
+          "sha256": "665c0494c1fca1c4b6d7421042a9dc51c0aa1e703403df6237070fe5ae58eb75"
+        },
+        {
+          "path": "src/wp-includes/sodium_compat/LICENSE",
+          "sha256": "1f74dfe6e7621f71daf7928dcd522a86dedd1118307fe48256e726d38effc8f7"
+        }
+      ]
+    },
+    {
+      "id": "upstream:wordpress-7.0-gutenberg-build",
+      "role": "Gutenberg build artifact consumed by WordPress 7.0",
+      "source_repo": "../gutenberg",
+      "source_commit": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+      "artifact_origin": "GHCR OCI artifact",
+      "artifact_source_annotation": "https://github.com/WordPress/gutenberg",
+      "artifact_revision_annotation": "a2a354cf35e5b69c3330d6c1cfd42d8dc2efb9fd",
+      "artifact_digest": "sha256:4670ed1cdc0f2a1b799ce41815b16f37bd60314e22af293fb4981a321c530764",
+      "package_name": "gutenberg",
+      "package_version": "22.6.0-rc.1",
+      "package_license": "GPL-2.0-or-later",
+      "project_license_file": {
+        "path": "LICENSE.md",
+        "sha256": "ab2b32b2c482d181f7ea0a1806e22636b346f4daeed820595b118b2bff2b2888"
+      },
+      "contribution_license_note": "Gutenberg records GPL-2.0-or-later project licensing, with post-2021 contributions also available under MPL-2.0.",
+      "notice_origins": [
+        "WordPress contributors",
+        "b2/cafelog lineage retained in LICENSE.md"
+      ]
+    },
+    {
+      "id": "upstream:gutenberg-forward-23.4.0",
+      "role": "Forward Gutenberg package oracle",
+      "repo": "../gutenberg",
+      "commit": "98a796c8780c480ef7bcfe03c42302d9564d785c",
+      "tag": "v23.4.0",
+      "package_name": "gutenberg",
+      "package_version": "23.4.0",
+      "package_license": "GPL-2.0-or-later",
+      "project_license_file": {
+        "path": "LICENSE.md",
+        "sha256": "ab2b32b2c482d181f7ea0a1806e22636b346f4daeed820595b118b2bff2b2888"
+      },
+      "contribution_license_note": "Gutenberg records GPL-2.0-or-later project licensing, with post-2021 contributions also available under MPL-2.0.",
+      "package_license_summary": {
+        "total_package_json": 172,
+        "license_counts": {
+          "GPL-2.0-or-later": 135,
+          "missing": 36,
+          "MIT": 1
+        },
+        "non_gpl_package_licenses": [
+          {
+            "path": "packages/stylelint-config/package.json",
+            "name": "@wordpress/stylelint-config",
+            "license": "MIT",
+            "notice_file": "packages/stylelint-config/LICENSE"
+          }
+        ],
+        "missing_license_field_paths": [
+          "routes/connectors-home/package.json",
+          "routes/content-types/package.json",
+          "routes/dashboard/package.json",
+          "routes/experiments-home/package.json",
+          "routes/font-list/package.json",
+          "routes/fonts-home/package.json",
+          "routes/guidelines/package.json",
+          "routes/home/package.json",
+          "routes/media-editor/package.json",
+          "routes/navigation-edit/package.json",
+          "routes/navigation-list/package.json",
+          "routes/navigation/package.json",
+          "routes/pattern-list/package.json",
+          "routes/pattern/package.json",
+          "routes/post-edit/package.json",
+          "routes/post-list/package.json",
+          "routes/post-new/package.json",
+          "routes/post-type-edit/package.json",
+          "routes/post-types-list/package.json",
+          "routes/post/package.json",
+          "routes/styles/package.json",
+          "routes/taxonomies-list/package.json",
+          "routes/taxonomy-edit/package.json",
+          "routes/template-list/package.json",
+          "routes/template-part-list/package.json",
+          "routes/template-part/package.json",
+          "routes/template/package.json",
+          "widgets/activity/package.json",
+          "widgets/events/package.json",
+          "widgets/hello-dolly/package.json",
+          "widgets/hello-world/package.json",
+          "widgets/news/package.json",
+          "widgets/quick-draft/package.json",
+          "widgets/site-health/package.json",
+          "widgets/site-preview/package.json",
+          "widgets/welcome/package.json"
+        ]
+      }
+    }
+  ],
+  "inventory_coverage": {
+    "executable_source_units": 17732,
+    "shipped_executable_artifacts": 2721,
+    "test_units": 4106,
+    "source_by_baseline": {
+      "gutenberg-forward-23.4.0": 7109,
+      "wordpress-7.0-gutenberg-source": 7033,
+      "wordpress-7.0.0": 3590
+    },
+    "artifact_by_baseline": {
+      "wordpress-7.0-gutenberg-build": 600,
+      "wordpress-7.0.0-distribution": 2121
+    },
+    "artifact_by_origin": {
+      "upstream_oracle": 2721
+    },
+    "unclassified_executable_source_units": 0,
+    "unclassified_shipped_executable_artifacts": 0,
+    "unclassified_test_units": 0
+  },
+  "notice_requirements": [
+    "Preserve WordPress src/license.txt or equivalent notice text in distributions derived from WordPress 7.0.",
+    "Preserve Gutenberg LICENSE.md or equivalent notice text in distributions derived from Gutenberg source or build artifacts.",
+    "Preserve package-specific license files for non-GPL package-level exceptions, including packages/stylelint-config/LICENSE.",
+    "Preserve bundled third-party notice files recorded under upstreams[].bundled_notice_files.",
+    "Record generated Haxe outputs with source provenance before treating them as distributable replacements."
+  ],
+  "audit_warnings": [
+    {
+      "code": "gutenberg-package-json-missing-license",
+      "severity": "needs-review-before-package-port",
+      "detail": "Some route/widget package.json files omit a package-level license field; inherit the repository license unless package-specific evidence is added.",
+      "paths": [
+        "routes/connectors-home/package.json",
+        "routes/content-types/package.json",
+        "routes/dashboard/package.json",
+        "routes/experiments-home/package.json",
+        "routes/font-list/package.json",
+        "routes/fonts-home/package.json",
+        "routes/guidelines/package.json",
+        "routes/home/package.json",
+        "routes/media-editor/package.json",
+        "routes/navigation-edit/package.json",
+        "routes/navigation-list/package.json",
+        "routes/navigation/package.json",
+        "routes/pattern-list/package.json",
+        "routes/pattern/package.json",
+        "routes/post-edit/package.json",
+        "routes/post-list/package.json",
+        "routes/post-new/package.json",
+        "routes/post-type-edit/package.json",
+        "routes/post-types-list/package.json",
+        "routes/post/package.json",
+        "routes/styles/package.json",
+        "routes/taxonomies-list/package.json",
+        "routes/taxonomy-edit/package.json",
+        "routes/template-list/package.json",
+        "routes/template-part-list/package.json",
+        "routes/template-part/package.json",
+        "routes/template/package.json",
+        "widgets/activity/package.json",
+        "widgets/events/package.json",
+        "widgets/hello-dolly/package.json",
+        "widgets/hello-world/package.json",
+        "widgets/news/package.json",
+        "widgets/quick-draft/package.json",
+        "widgets/site-health/package.json",
+        "widgets/site-preview/package.json",
+        "widgets/welcome/package.json"
+      ]
+    }
+  ]
+}

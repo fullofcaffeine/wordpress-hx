@@ -1,0 +1,51 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-011-license-provenance",
+  "issue": {
+    "id": "wordpresshx-w91.15",
+    "external_ref": "WPHX-011",
+    "title": "WPHX-011 — License/provenance audit"
+  },
+  "recorded_at": "2026-06-20T04:55:00Z",
+  "artifacts": [
+    {
+      "path": "docs/operations/license-provenance.md",
+      "role": "license and provenance runbook"
+    },
+    {
+      "path": "manifests/license-provenance.v1.json",
+      "role": "machine-readable license and vendor-origin audit"
+    },
+    {
+      "path": "tools/license/audit-provenance.mjs",
+      "role": "deterministic audit generator and checker"
+    },
+    {
+      "path": "package.json",
+      "role": "license audit npm scripts"
+    }
+  ],
+  "verification_commands": [
+    "npm run license:provenance",
+    "npm run license:provenance:check",
+    "git -C ../gutenberg grep -n '\"license\"' 98a796c8780c480ef7bcfe03c42302d9564d785c -- '*package.json'"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "upstream_count": 3,
+    "wordpress_project_license": "GPL-2.0-or-later",
+    "embedded_gutenberg_project_license": "GPL-2.0-or-later",
+    "forward_gutenberg_project_license": "GPL-2.0-or-later",
+    "forward_gutenberg_package_json_count": 172,
+    "forward_gutenberg_gpl_package_json_count": 135,
+    "forward_gutenberg_mit_package_json_count": 1,
+    "forward_gutenberg_missing_package_license_count": 36,
+    "non_gpl_package_exceptions": [
+      "packages/stylelint-config/package.json"
+    ],
+    "executable_source_units": 17732,
+    "shipped_executable_artifacts": 2721,
+    "unclassified_executable_source_units": 0,
+    "unclassified_shipped_executable_artifacts": 0
+  }
+}
