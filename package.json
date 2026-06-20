@@ -22,6 +22,8 @@
     "inventory:validate": "node tools/inventory/validate-inventory.mjs",
     "inventory:check": "node tools/inventory/check-determinism.mjs && npm run inventory:validate",
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
+    "task-pack": "node tools/task-packs/generate-task-pack.mjs",
+    "task-pack:check": "node tools/task-packs/check-task-pack.mjs",
     "precommit": "npm run format:haxe:check && npm run baseline:validate && npm run beads:seed && npm run security:gitleaks"
   },
   "devDependencies": {

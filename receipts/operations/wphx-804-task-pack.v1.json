@@ -1,0 +1,35 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-804-task-pack",
+  "issue": {
+    "id": "wordpresshx-w91.4.4",
+    "external_ref": "WPHX-804",
+    "title": "Generate bounded task packets from Beads and manifests"
+  },
+  "recorded_at": "2026-06-20T03:16:00Z",
+  "artifacts": [
+    {
+      "path": "tools/task-packs/generate-task-pack.mjs",
+      "role": "deterministic task packet generator"
+    },
+    {
+      "path": "tools/task-packs/check-task-pack.mjs",
+      "role": "sample task packet acceptance check"
+    },
+    {
+      "path": "docs/operations/task-packs.md",
+      "role": "operator documentation"
+    }
+  ],
+  "verification_commands": [
+    "npm run task-pack -- WPHX-009 --out build/task-packs/WPHX-009.json",
+    "npm run task-pack:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "sample_issue": "WPHX-009",
+    "output": "build/task-packs/WPHX-009.json",
+    "sha256": "875946ddce65d0613c0e64d4e30592acd224074867438b47a54f193174557b12",
+    "bytes": 5906
+  }
+}
