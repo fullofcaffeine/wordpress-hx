@@ -1,0 +1,397 @@
+{
+  "schema": "wphx.haxe-escape-hatch-audit.v1",
+  "issue": "WPHX-211",
+  "generated_at": "2026-06-20T19:05:00.000Z",
+  "generator": "tools/haxe/check-escape-hatches.mjs",
+  "scanned_file_count": 36,
+  "scanned_files": [
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeKernel.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/HookEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/HookKernel.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/LoadEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/LoadKernel.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/NativeEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/NativeKernel.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/ReferenceEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/ReferenceKernel.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/TemplateEntry.hx",
+    "fixtures/php-facade/src/wphx/fixtures/php/facade/TemplateKernel.hx",
+    "fixtures/php-smoke/src/wphx/fixtures/php/SmokeMain.hx",
+    "fixtures/wp-boundary/src/wphx/fixtures/wp/boundary/BoundaryEntry.hx",
+    "fixtures/wp-boundary/src/wphx/fixtures/wp/boundary/BoundaryKernel.hx",
+    "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalBindings.hx",
+    "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalFacadeEntry.hx",
+    "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalKernel.hx",
+    "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalTypes.hx",
+    "fixtures/wp-linker/src/wphx/fixtures/wp/linker/LinkerEntry.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/InvalidAmbiguousGlobal.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/InvalidArity.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/InvalidKind.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/InvalidMissing.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/InvalidStaticGlobal.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/MacroTypes.hx",
+    "fixtures/wp-macro/src/wphx/fixtures/wp/macro/ValidBindings.hx",
+    "src/wphx/wp/boundary/CallableValue.hx",
+    "src/wphx/wp/boundary/Globals.hx",
+    "src/wphx/wp/boundary/NativeArray.hx",
+    "src/wphx/wp/boundary/NativeValue.hx",
+    "src/wphx/wp/boundary/ReferenceBoundary.hx",
+    "src/wphx/wp/boundary/WpErrorValue.hx",
+    "src/wphx/wp/macros/BindingValidator.hx"
+  ],
+  "lookback_lines": 6,
+  "occurrence_count": 34,
+  "occurrences": [
+    {
+      "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeKernel.hx",
+      "line": 17,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "typedef FacadeCallback = Dynamic;",
+      "source_sha256": "sha256:79b91268241b2bf991c2dee459ca0d2fa0464373e95fdca9bc7907c15734d628",
+      "justification": "WPHX-211: This fixture models WordPress PHP callables, which can be closure,"
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalFacadeEntry.hx",
+      "line": 9,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "GlobalBindings.applyFilters(\"compile_check\", \"value\", php.Syntax.code(\"array()\"));",
+      "source_sha256": "sha256:89ae17c6d7293ca4ca90ec680fde854c09c25c9b8326adb8ca016d5534a31e62",
+      "justification": "WPHX-211: Native PHP arrays are required to exercise variadic facade forwarding."
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalFacadeEntry.hx",
+      "line": 11,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "GlobalBindings.wpArraySet(php.Syntax.code(\"array()\"), php.Syntax.code(\"array('compile_check')\"), true);",
+      "source_sha256": "sha256:a6f8bb6d3e9f23382897450a401630c73ad86242dcb9bdad03b9fc47e12cd49e",
+      "justification": "WPHX-211: Native PHP arrays are required to exercise by-reference array wrappers."
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalKernel.hx",
+      "line": 13,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"$GLOBALS['wphx_204_registrations'][] = array('hookName' => {0}, 'priority' => {2}, 'acceptedArgs' => {3}, 'callbackKind' => is_callable({1}) ? 'callable' : gettype({1}))\",",
+      "source_sha256": "sha256:f6400674d490c5f2556521f4c3517dca1409b2498419893832d8ce894611f2fc",
+      "justification": "WPHX-211: Raw PHP records native callable shape without converting it to Haxe Function."
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalKernel.hx",
+      "line": 21,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"$GLOBALS['wphx_204_applications'][] = array('hookName' => {0}, 'argCount' => is_array({2}) ? count({2}) : 0)\", hookName, value, args);",
+      "source_sha256": "sha256:558b3c77e9e0a4d38ca4a0316d04ea1eb54873812940a54c760ccd7bd21f785c",
+      "justification": "WPHX-211: Raw PHP observes variadic native args while preserving the filtered value."
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalKernel.hx",
+      "line": 29,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"(function ($input, $path, $value) { $target =& $input; foreach ($path as $segment) { if (!is_array($target)) { $target = array(); } if (!array_key_exists($segment, $target) || !is_array($target[$segment])) { $target[$segment] = array(); } $target =& $target[$segment]; } $target = $value; return $input; })({0}, {1}, {2})\",",
+      "source_sha256": "sha256:6f6f36cfcb6cb04a53d800f4fdc21edb6461b9c54b5344c8cb5832a029e9dbfe",
+      "justification": "WPHX-211: Raw PHP performs by-reference-style nested array mutation on native arrays."
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalKernel.hx",
+      "line": 36,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "final snapshot:php.NativeArray = php.Syntax.code(\"array('registrations' => $GLOBALS['wphx_204_registrations'] ?? array(), 'applications' => $GLOBALS['wphx_204_applications'] ?? array())\");",
+      "source_sha256": "sha256:c9898eecbf7e1f72b723d81bf6a166241f39969bdec2f40530d7be2f8261cc8d",
+      "justification": "WPHX-211: Snapshot is a native PHP array for JSON parity with the PHP oracle."
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalTypes.hx",
+      "line": 9,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "typedef NativeWpValue = Dynamic;",
+      "source_sha256": "sha256:6425dcb4db472b5851233940a8c7934dba1b4b3d9f7fc476fc937aa08544966f",
+      "justification": "WPHX-211:"
+    },
+    {
+      "path": "fixtures/wp-facade/src/wphx/fixtures/wp/facade/GlobalTypes.hx",
+      "line": 17,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "typedef NativeWpCallable = Dynamic;",
+      "source_sha256": "sha256:55b0016c6de0f9e87a7ba76e0fbc00d19cf47bf13d7a616e99decbf861fe48e9",
+      "justification": "WPHX-211:"
+    },
+    {
+      "path": "fixtures/wp-macro/src/wphx/fixtures/wp/macro/MacroTypes.hx",
+      "line": 7,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "typedef WpCallback = Dynamic;",
+      "source_sha256": "sha256:d7336ec6c47b3067035d9d9dfd5b1cb03e44d0684bd60dcd1b8687b28284bbb0",
+      "justification": "WPHX-211: Macro fixtures model WordPress callback ABI shape without invoking"
+    },
+    {
+      "path": "src/wphx/wp/boundary/CallableValue.hx",
+      "line": 12,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"call_user_func_array({0}, {1})\", callable, args);",
+      "source_sha256": "sha256:29e5022b2ef7f7a4adbd7e7dd931fe00ddff4592abde3307d144c6ec0b18f537",
+      "justification": "WPHX-211: Raw PHP dispatch preserves every callable shape accepted by WordPress."
+    },
+    {
+      "path": "src/wphx/wp/boundary/CallableValue.hx",
+      "line": 18,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"call_user_func({0}, {1})\", callable, value);",
+      "source_sha256": "sha256:9a0d91df25f823cb1f178de7462b18c16eb4a8fa078916404b273e2f7d4bc789",
+      "justification": "WPHX-211: Raw PHP dispatch keeps callback invocation native at the ABI edge."
+    },
+    {
+      "path": "src/wphx/wp/boundary/CallableValue.hx",
+      "line": 24,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"call_user_func({0}, {1}, {2})\", callable, first, second);",
+      "source_sha256": "sha256:89154ca78c721746519529dc81deea72708d65537dab643a4aa5454439efeca0",
+      "justification": "WPHX-211: Raw PHP dispatch keeps callback invocation native at the ABI edge."
+    },
+    {
+      "path": "src/wphx/wp/boundary/Globals.hx",
+      "line": 11,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"array_key_exists({0}, $GLOBALS)\", name);",
+      "source_sha256": "sha256:5563e4b8f3c8f51a8e4d1c7de98c836961abd6931b510089d09b09e804c4257d",
+      "justification": "WPHX-211: $GLOBALS must remain PHP-native for WordPress include/load semantics."
+    },
+    {
+      "path": "src/wphx/wp/boundary/Globals.hx",
+      "line": 17,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"isset($GLOBALS[{0}])\", name);",
+      "source_sha256": "sha256:40ec332df8f8380b3264055546ea79040119d6f8b3df15877cea4e2a4da70b73",
+      "justification": "WPHX-211: isset on $GLOBALS has PHP-specific null behavior."
+    },
+    {
+      "path": "src/wphx/wp/boundary/Globals.hx",
+      "line": 25,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"$GLOBALS[{0}]\", name);",
+      "source_sha256": "sha256:47af3fc31383531685d5c4b5af8fdb87deb8e36ef53b0931a2ed0aa8d1f978c1",
+      "justification": "WPHX-211: Global values are arbitrary PHP-native values at this boundary."
+    },
+    {
+      "path": "src/wphx/wp/boundary/Globals.hx",
+      "line": 34,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"$GLOBALS[{0}] = {1}\", name, value);",
+      "source_sha256": "sha256:d66b2b3606e5e13967b5d75b37378d65219fe372b2eeab7d79efa13a860d4aab",
+      "justification": "WPHX-211: Assign through $GLOBALS directly to preserve PHP global state."
+    },
+    {
+      "path": "src/wphx/wp/boundary/Globals.hx",
+      "line": 42,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"array_keys($GLOBALS)\");",
+      "source_sha256": "sha256:e1484325d8aae269f57faa26388f4d4efea3756854568f5a248e5cce5bf32ee6",
+      "justification": "WPHX-211: $GLOBALS keys are produced by PHP, not a Haxe map."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 12,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"json_decode({0}, true)\", json);",
+      "source_sha256": "sha256:ca26bd5ac7bcc4001f57aab22b54e08211330c434babad902c7bb7cda35f7227",
+      "justification": "WPHX-211: json_decode(..., true) must stay a native PHP array, not a Haxe Array."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 18,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"is_array({0})\", value);",
+      "source_sha256": "sha256:a5b1edf7415015e8779ab27edaac74ee5fed9214a0bc051b6796e7ea4aa24f00",
+      "justification": "WPHX-211: PHP array detection is target-native and includes associative arrays."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 24,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"array_key_exists({0}, {1})\", key, array);",
+      "source_sha256": "sha256:6d399bfaec8e91dbdbead4fc6d8c01b190044035b9f18a5521e4a6a9f5ada417",
+      "justification": "WPHX-211: array_key_exists and isset differ for null values; keep PHP semantics."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 30,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"isset({0}[{1}])\", array, key);",
+      "source_sha256": "sha256:032e98a8e9db462911f6778ea9e7c58fdf7c3c582bd668fc2dfe5bfd3ab6fe93",
+      "justification": "WPHX-211: isset has PHP-specific null behavior required by WordPress globals."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 38,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"{0}[{1}]\", array, key);",
+      "source_sha256": "sha256:cd1957d3a832499967ebec6505e7bcddca2d0109717243f0d8a2297d82a5847a",
+      "justification": "WPHX-211: Native PHP array indexing preserves associative key coercion."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 47,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"array_keys({0})\", array);",
+      "source_sha256": "sha256:cad9afea82716c0003817745ef890954acf48fa9fc28c726f70d9a86dcff0454",
+      "justification": "WPHX-211: array_keys returns PHP-native int/string keys."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 53,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"array_values({0})\", array);",
+      "source_sha256": "sha256:0fddb147f1adc3e774c941bcfd0e7a728104059a02b8cb20cdab93c831487e07",
+      "justification": "WPHX-211: array_values returns a PHP-native indexed array."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeArray.hx",
+      "line": 59,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"count({0})\", array);",
+      "source_sha256": "sha256:1011bad784311f194f110f63b2d7449a70e42ce2bfdfdaa4a2e67b495ec93fa5",
+      "justification": "WPHX-211: PHP count operates on native arrays at the shell boundary."
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeValue.hx",
+      "line": 10,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "typedef NativeValue = Dynamic;",
+      "source_sha256": "sha256:676bb73d187513f1f6bb63f97e2183dd645975fa31fe92d69131cda0968e324a",
+      "justification": "WPHX-211: WordPress PHP values can be scalars, arrays, objects, resources,"
+    },
+    {
+      "path": "src/wphx/wp/boundary/NativeValue.hx",
+      "line": 17,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "typedef NativeCallable = Dynamic;",
+      "source_sha256": "sha256:4291defd520d1ac7cfa3ac106b0be4701a2c9f513643ff6a6151765713e73f6f",
+      "justification": "WPHX-211: PHP callables may be closures, function-name strings, static"
+    },
+    {
+      "path": "src/wphx/wp/boundary/WpErrorValue.hx",
+      "line": 12,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"is_object({0}) && method_exists({0}, 'get_error_code') && method_exists({0}, 'get_error_message')\", value);",
+      "source_sha256": "sha256:42b5c134d0c294daecdf922c5a1f496a4e466db2d791207d576aa6832aa4eb76",
+      "justification": "WPHX-211: WP_Error may be a native PHP object before a typed extern exists."
+    },
+    {
+      "path": "src/wphx/wp/boundary/WpErrorValue.hx",
+      "line": 18,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"{0}->get_error_code()\", error);",
+      "source_sha256": "sha256:4c57ca2d0e80b2d2afac977912cd81f58294824ca1f33f90d836245424e120ff",
+      "justification": "WPHX-211: Native WP_Error method dispatch preserves plugin-provided objects."
+    },
+    {
+      "path": "src/wphx/wp/boundary/WpErrorValue.hx",
+      "line": 24,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"{0}->get_error_message()\", error);",
+      "source_sha256": "sha256:c07afe2ee16fdf3bb7e15ebc005f404ba4220538ce60d4b99b380a85ff1abfad",
+      "justification": "WPHX-211: Native WP_Error method dispatch preserves plugin-provided objects."
+    },
+    {
+      "path": "src/wphx/wp/boundary/WpErrorValue.hx",
+      "line": 30,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"method_exists({0}, 'get_error_data') ? {0}->get_error_data() : null\", error);",
+      "source_sha256": "sha256:86a7bb6a7effb9bbd8efe3786991dca535ee2269181657749a85e509a92811b0",
+      "justification": "WPHX-211: Error data can be any PHP-native value."
+    },
+    {
+      "path": "src/wphx/wp/boundary/WpErrorValue.hx",
+      "line": 37,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"array('isWpError' => is_object({0}) && method_exists({0}, 'get_error_code'), 'hasErrors' => method_exists({0}, 'has_errors') ? {0}->has_errors() : false, 'code' => {0}->get_error_code(), 'message' => {0}->get_error_message(), 'data' => method_exists({0}, 'get_error_data') ? {0}->get_error_data() : null)\",",
+      "source_sha256": "sha256:e3d1352205f7f0743cb01fd86416c142494ff3573635a4dff5bed880c6ca8705",
+      "justification": "WPHX-211: Snapshot shape is a PHP-native array for oracle comparison."
+    },
+    {
+      "path": "src/wphx/wp/macros/BindingValidator.hx",
+      "line": 291,
+      "kinds": [
+        "Dynamic"
+      ],
+      "source": "private typedef RawAbiJson = Dynamic;",
+      "source_sha256": "sha256:f401dd2e8273c888a401fed1857ab6456f8b6e46b483ca7f4a396409a122ae52",
+      "justification": "WPHX-211: ABI manifests enter macros as untyped JSON objects from haxe.Json."
+    }
+  ],
+  "by_kind": {
+    "Dynamic": 7,
+    "php.Syntax.code": 27
+  },
+  "validation_result": {
+    "status": "passed",
+    "all_escape_hatches_have_wphx_211_justification": true
+  }
+}

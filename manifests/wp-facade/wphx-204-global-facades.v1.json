@@ -158,13 +158,13 @@
       },
       {
         "path": "lib/wphx/fixtures/wp/facade/GlobalFacadeEntry.php",
-        "bytes": 868,
-        "sha256": "8c581089f4951671ac1d95e5943ccfb159f28b06c3fe7392bf23273b754f8fb2"
+        "bytes": 869,
+        "sha256": "2e11a8f12daf4435ba822f7173308c4dac217f6357b3db65bc01cc5ecc7babe2"
       },
       {
         "path": "lib/wphx/fixtures/wp/facade/GlobalKernel.php",
         "bytes": 2387,
-        "sha256": "95c4bf7e50e242d7896dac56542dc1ab376fb2435ec71e37670576bd3bc0c8d6"
+        "sha256": "16e1fa89137000fd96264717c5b3f352ff6c230a0acc46c0f210f7681adbac3e"
       }
     ],
     "facade_files": [

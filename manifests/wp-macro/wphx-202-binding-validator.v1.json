@@ -33,7 +33,7 @@
       "status": 1,
       "passed": true,
       "stdout_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stderr_sha256": "sha256:6ffc9f0d62198e4237fb1150bafdf8480fe3653d887720146385bd40cb0e053b"
+      "stderr_sha256": "sha256:10bfee5ceb1938dfaab720530d1a3e66bb24727937fb2cdf1b09efe6f761e4cc"
     },
     {
       "id": "invalid-arity",
@@ -73,7 +73,7 @@
       "status": 1,
       "passed": true,
       "stdout_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "stderr_sha256": "sha256:20e30bf5a3e3000d7458dafe4260d8206bf9600a133a431e9b0bf0024a659bf9"
+      "stderr_sha256": "sha256:5a9815bd20272549faa12d18d53c743d14f21a9e364ae247a4bbb8607e67a038"
     }
   ],
   "validation_result": {

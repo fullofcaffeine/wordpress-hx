@@ -6,7 +6,7 @@
   "command": "npm run wp:macro:bindings",
   "status": "passed",
   "manifest": "manifests/wp-macro/wphx-202-binding-validator.v1.json",
-  "manifest_sha256": "sha256:c97bfda0467085c2e605502d1aa694c301bd7aac75b9cb236326d8d6a3ca6ed7",
+  "manifest_sha256": "sha256:809e20e68ea5d95a5179f07549d669cbbab210676f22e6023fd1f55b8e85a0ca",
   "validator": "src/wphx/wp/macros/BindingValidator.hx",
   "abi_manifest": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
   "haxe_version": "4.3.7",

@@ -202,7 +202,7 @@ class BindingValidator
 		{
 			fail('missing -D wphx.wp.abi=<manifest path>', Context.currentPos());
 		}
-		final manifest:Dynamic = Json.parse(File.getContent(path));
+		final manifest:RawAbiJson = Json.parse(File.getContent(path));
 		if (Reflect.field(manifest, "schema") != "wphx.php-abi-manifest.v1")
 		{
 			fail('unexpected ABI manifest schema in ${path}', Context.currentPos());
@@ -210,7 +210,7 @@ class BindingValidator
 
 		final byKindName = new Map<String, Array<AbiEntry>>();
 		final kindsByName = new Map<String, Array<String>>();
-		final entries:Array<Dynamic> = Reflect.field(manifest, "entries");
+		final entries:Array<RawAbiJson> = Reflect.field(manifest, "entries");
 		for (raw in entries)
 		{
 			final entry:AbiEntry = {
@@ -246,10 +246,10 @@ class BindingValidator
 		return abi;
 	}
 
-	static function fail(message:String, pos:Position):Dynamic
+	static function fail<T>(message:String, pos:Position):T
 	{
 		Context.error('${diagnostic}: ${message}', pos);
-		return null;
+		throw message;
 	}
 	#end
 }
@@ -275,7 +275,7 @@ private typedef AbiEntry =
 	final name:String;
 	final path:String;
 	final parameters:Null<Array<AbiParameter>>;
-	final flags:Dynamic;
+	final flags:RawAbiJson;
 };
 
 private typedef AbiParameter =
@@ -283,4 +283,10 @@ private typedef AbiParameter =
 	final default_source:Null<String>;
 	final variadic:Bool;
 };
+
+/**
+	WPHX-211: ABI manifests enter macros as untyped JSON objects from haxe.Json.
+	Reflect-based field reads are isolated to this typedef before indexing.
+**/
+private typedef RawAbiJson = Dynamic;
 #end

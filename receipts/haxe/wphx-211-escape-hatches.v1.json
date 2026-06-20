@@ -1,0 +1,16 @@
+{
+  "schema": "wphx.haxe-escape-hatch-audit-receipt.v1",
+  "id": "receipt:wphx-211-escape-hatches",
+  "issue": "WPHX-211",
+  "recorded_at": "2026-06-20T19:05:00.000Z",
+  "command": "npm run haxe:escape-hatches",
+  "status": "passed",
+  "manifest": "manifests/haxe/wphx-211-escape-hatches.v1.json",
+  "manifest_sha256": "sha256:d2c6d4b6dc89d8c9f54a56f76975909d55512d0ff22fdfc0adbe8b4d831f4251",
+  "scanned_file_count": 36,
+  "occurrence_count": 34,
+  "by_kind": {
+    "Dynamic": 7,
+    "php.Syntax.code": 27
+  }
+}

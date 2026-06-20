@@ -166,18 +166,18 @@
       },
       {
         "path": "lib/wphx/wp/boundary/CallableValue.php",
-        "bytes": 967,
-        "sha256": "d5e776119257dcf7e56bb5d95f669a4b0f673a9c111d9987dda37146b0a9af34"
+        "bytes": 968,
+        "sha256": "ac3848467d60e6af5d4ec46d164a8fee8df1703879c72f394cf57a12998cc84d"
       },
       {
         "path": "lib/wphx/wp/boundary/Globals.php",
-        "bytes": 1392,
-        "sha256": "fbdb12cd50f421380f3ebf7e6615a4d0a04ae87d87f57ab5ba2321c31c0effe6"
+        "bytes": 1396,
+        "sha256": "6f818be0cb9e4d73f88187c999db762aedd8b3af3ccd4553745f65581119bf2c"
       },
       {
         "path": "lib/wphx/wp/boundary/NativeArray.php",
-        "bytes": 2039,
-        "sha256": "f4d5fc089185f1fac120beb98393b190ddfd015b8036d5be04f910359ffd051a"
+        "bytes": 2044,
+        "sha256": "bc99ac88e70dd7afd438e644d579df7e650aaa56ebbae3044f60efe7165c6732"
       },
       {
         "path": "lib/wphx/wp/boundary/ReferenceBoundary.php",
@@ -186,8 +186,8 @@
       },
       {
         "path": "lib/wphx/wp/boundary/WpErrorValue.php",
-        "bytes": 1611,
-        "sha256": "71b56fb0b86ab6e85eb0657ae9193074d9d0a150bbeaf840ecf8d683e2c54326"
+        "bytes": 1613,
+        "sha256": "11228f57c01cab47ebe943c265214451f46850f2e8cd4198e65e8d94171fc011"
       }
     ],
     "shell": {

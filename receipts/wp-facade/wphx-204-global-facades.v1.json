@@ -6,7 +6,7 @@
   "command": "npm run wp:facade:globals",
   "status": "passed",
   "manifest": "manifests/wp-facade/wphx-204-global-facades.v1.json",
-  "manifest_sha256": "sha256:48dcca049324726d856a33a2e5d9af1bf44a66009ed49741fa3f143d8a0f2fbb",
+  "manifest_sha256": "sha256:c2d1aaef0c10404b1f856d0271b0fa932e03cf44bbec9bb49f7cf8d5b8687022",
   "binding_count": 3,
   "facade_file_count": 2,
   "runtime_run_count": 3,

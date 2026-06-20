@@ -10,12 +10,18 @@ typedef FilterRegistration =
 	final callbackKind:String;
 };
 
+/**
+	WPHX-211: This fixture models WordPress PHP callables, which can be closure,
+	string, or method-array shapes. Dynamic is isolated to the callable boundary.
+**/
+typedef FacadeCallback = Dynamic;
+
 @:keep
 class FacadeKernel
 {
 	static final registrations:Array<FilterRegistration> = [];
 
-	public static function addFilter(hookName:String, callback:Dynamic, priority:Int = 10, acceptedArgs:Int = 1):Bool
+	public static function addFilter(hookName:String, callback:FacadeCallback, priority:Int = 10, acceptedArgs:Int = 1):Bool
 	{
 		registrations.push({
 			hookName: hookName,

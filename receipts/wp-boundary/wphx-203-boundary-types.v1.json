@@ -6,7 +6,7 @@
   "command": "npm run wp:boundary",
   "status": "passed",
   "manifest": "manifests/wp-boundary/wphx-203-boundary-types.v1.json",
-  "manifest_sha256": "sha256:6487f2d4c96de76b9b81849bf2a8445d87f5d5b5ffc5a8ef9e180f3a3739e5d0",
+  "manifest_sha256": "sha256:32cc553d17a54f3f521b245cce3ee0e6d18154d9b3f6fd39d9a7795664259364",
   "boundary_sources": [
     "src/wphx/wp/boundary/CallableValue.hx",
     "src/wphx/wp/boundary/Globals.hx",
