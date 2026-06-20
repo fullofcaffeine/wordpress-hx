@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.php-abi-extractor-receipt.v1",
+  "id": "receipt:wphx-201-php-abi-extractor",
+  "issue": "WPHX-201",
+  "recorded_at": "2026-06-20T05:42:00.000Z",
+  "command": "npm run php:abi",
+  "status": "passed",
+  "generator": "tools/php-abi/extract-wordpress-abi.mjs",
+  "parser": {
+    "package": "php-parser",
+    "version": "3.7.0"
+  },
+  "inputs": {
+    "source_inventory": "manifests/source-inventory.jsonl",
+    "baseline": "wordpress-7.0.0",
+    "repo": "../wordpress-develop",
+    "source_file_count": 1855
+  },
+  "outputs": {
+    "abi_manifest": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
+    "receipt": "receipts/php-abi/wphx-201-php-abi-extractor.v1.json"
+  },
+  "counts": {
+    "source_files": 1855,
+    "abi_entries": 17182,
+    "by_kind": {
+      "class": 777,
+      "class_constant": 726,
+      "constant": 767,
+      "function": 4771,
+      "interface": 62,
+      "method": 7503,
+      "property": 2569,
+      "trait": 7
+    },
+    "conditional_or_segmented_entries": 549,
+    "nested_functions": 15,
+    "by_reference_parameters": 285,
+    "by_reference_returns": 10,
+    "parse_errors": 0,
+    "parser_recoveries": 3
+  },
+  "manifest_sha256": "sha256:e77b6138e9781b04fe3ce8a0982743475179c74d4d790562ab43cb59b82ffc6b"
+}

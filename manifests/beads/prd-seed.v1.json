@@ -342,6 +342,150 @@
       "acceptance_criteria": "An ADR records the accepted architecture and whether a backend fork is required."
     },
     {
+      "external_ref": "WPHX-200",
+      "title": "WPHX-200 — PHP ABI, runtime, and linker",
+      "issue_type": "epic",
+      "priority": 1,
+      "parent": null,
+      "blocks": [
+        "WPHX-100"
+      ],
+      "description": "Turn the PHP feasibility evidence into the typed ABI, native boundary, generated facade, original-path linker, and conformance machinery needed before WordPress core source-unit porting.",
+      "acceptance_criteria": "WPHX-201 through WPHX-208 and WPHX-210 are complete, with WPHX-209 opened only if a future ADR/compiler blocker requires a PHP backend fork."
+    },
+    {
+      "external_ref": "WPHX-201",
+      "title": "WPHX-201 — PHP ABI extractor from upstream AST",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-007",
+        "WPHX-109"
+      ],
+      "description": "Extract a deterministic PHP ABI manifest from the locked WordPress upstream source using structured parsing rather than ad hoc text matching.",
+      "acceptance_criteria": "A full Core ABI manifest with stable hashes is generated and validated."
+    },
+    {
+      "external_ref": "WPHX-202",
+      "title": "WPHX-202 — @:wp.* macro contract and compile-time validator",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-201"
+      ],
+      "description": "Define the typed Haxe annotations and macro validation contract that binds Haxe declarations to WordPress ABI manifest entries.",
+      "acceptance_criteria": "Invalid bindings fail compilation with deterministic diagnostics."
+    },
+    {
+      "external_ref": "WPHX-203",
+      "title": "WPHX-203 — Native WordPress PHP boundary types",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-103",
+        "WPHX-104",
+        "WPHX-202"
+      ],
+      "description": "Codify native PHP boundary types for WordPress arrays, globals, callables, references, and WP_Error-style values.",
+      "acceptance_criteria": "Conformance tests cover arrays, globals, callables, references, and errors."
+    },
+    {
+      "external_ref": "WPHX-204",
+      "title": "WPHX-204 — Deterministic global facade generator",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-102",
+        "WPHX-201",
+        "WPHX-202",
+        "WPHX-203"
+      ],
+      "description": "Generate original-name PHP global function facades from the ABI manifest and typed Haxe bindings.",
+      "acceptance_criteria": "Generated wrappers reproduce the ABI manifest deterministically."
+    },
+    {
+      "external_ref": "WPHX-205",
+      "title": "WPHX-205 — Original-path shell and file-segment linker",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-106",
+        "WPHX-107",
+        "WPHX-201",
+        "WPHX-202",
+        "WPHX-203",
+        "WPHX-204"
+      ],
+      "description": "Build the deterministic file linker that emits original-path PHP shells and maps generated Haxe segments into the WordPress distribution layout.",
+      "acceptance_criteria": "Load and template fixtures pass from the generated distribution layout."
+    },
+    {
+      "external_ref": "WPHX-206",
+      "title": "WPHX-206 — Public class/interface/trait emission",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-105",
+        "WPHX-202",
+        "WPHX-205"
+      ],
+      "description": "Emit public WordPress class, interface, and trait shells with native names and reflection-compatible contracts.",
+      "acceptance_criteria": "The exact public class/interface/trait fixture suite is green."
+    },
+    {
+      "external_ref": "WPHX-207",
+      "title": "WPHX-207 — Debug/source-map/error-path support",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-101",
+        "WPHX-205"
+      ],
+      "description": "Preserve useful traces across generated PHP, Haxe source, and original WordPress source units.",
+      "acceptance_criteria": "Traces map to Haxe and original source units."
+    },
+    {
+      "external_ref": "WPHX-208",
+      "title": "WPHX-208 — PHP compiler conformance CI",
+      "issue_type": "task",
+      "priority": 1,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-101",
+        "WPHX-201",
+        "WPHX-202",
+        "WPHX-203",
+        "WPHX-204",
+        "WPHX-205",
+        "WPHX-206",
+        "WPHX-207"
+      ],
+      "description": "Turn the PHP target fixtures and ABI/linker conformance checks into a required CI matrix for compiler/runtime-sensitive changes.",
+      "acceptance_criteria": "The matrix runs on every target/runtime change."
+    },
+    {
+      "external_ref": "WPHX-210",
+      "title": "WPHX-210 — Build profiles: debug, parity, release",
+      "issue_type": "task",
+      "priority": 2,
+      "parent": "WPHX-200",
+      "blocks": [
+        "WPHX-205",
+        "WPHX-206",
+        "WPHX-207",
+        "WPHX-208"
+      ],
+      "description": "Define deterministic build profiles for developer debugging, parity validation, and release artifact generation.",
+      "acceptance_criteria": "Profile outputs are deterministic and documented, with intentional differences recorded."
+    },
+    {
       "external_ref": "WPHX-400",
       "title": "WPHX-400 — genes-ts/browser platform",
       "issue_type": "epic",

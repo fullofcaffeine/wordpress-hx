@@ -38,6 +38,9 @@
     "php:facade:f6:check": "node tools/php-facade/run-f6-template-scope.mjs --check",
     "php:facade:f7": "node tools/php-facade/run-f7-hook-kernel.mjs",
     "php:facade:f7:check": "node tools/php-facade/run-f7-hook-kernel.mjs --check",
+    "php:abi": "node tools/php-abi/extract-wordpress-abi.mjs",
+    "php:abi:validate": "node tools/php-abi/validate-wordpress-abi.mjs",
+    "php:abi:check": "node tools/php-abi/check-determinism.mjs && npm run php:abi:validate",
     "php:smoke": "node tools/php-smoke/run-smoke.mjs",
     "php:smoke:check": "node tools/php-smoke/run-smoke.mjs --check",
     "receipts:build": "node tools/receipts/build-evidence-links.mjs",
@@ -48,6 +51,7 @@
     "precommit": "npm run format:haxe:check && npm run baseline:validate && npm run beads:seed && npm run receipts:validate && npm run security:gitleaks"
   },
   "devDependencies": {
+    "php-parser": "^3.7.0",
     "playwright": "^1.61.0"
   },
   "repository": {

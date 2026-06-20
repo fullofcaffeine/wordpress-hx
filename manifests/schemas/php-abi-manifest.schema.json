@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wordpress-hx.local/schemas/php-abi-manifest.schema.json",
+  "title": "WordPressHX PHP ABI Manifest",
+  "type": "object",
+  "required": ["schema", "issue", "generator", "parser", "inputs", "outputs", "counts", "parse_errors", "parser_recoveries", "entries"],
+  "properties": {
+    "schema": { "const": "wphx.php-abi-manifest.v1" },
+    "issue": { "const": "WPHX-201" },
+    "generator": { "const": "tools/php-abi/extract-wordpress-abi.mjs" },
+    "parser": {
+      "type": "object",
+      "required": ["package", "version"],
+      "properties": {
+        "package": { "const": "php-parser" },
+        "version": { "type": "string" }
+      }
+    },
+    "inputs": { "type": "object" },
+    "outputs": { "type": "object" },
+    "counts": { "type": "object" },
+    "parse_errors": { "type": "array" },
+    "parser_recoveries": { "type": "array" },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/phpAbiEntry" }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "location": {
+      "type": "object",
+      "required": ["start_line", "start_column", "start_offset", "end_line", "end_column", "end_offset"],
+      "properties": {
+        "start_line": { "type": "integer", "minimum": 1 },
+        "start_column": { "type": "integer", "minimum": 0 },
+        "start_offset": { "type": "integer", "minimum": 0 },
+        "end_line": { "type": "integer", "minimum": 1 },
+        "end_column": { "type": "integer", "minimum": 0 },
+        "end_offset": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "parameter": {
+      "type": "object",
+      "required": ["name", "position", "source", "type", "default_source", "by_reference", "variadic"],
+      "properties": {
+        "name": { "type": "string" },
+        "position": { "type": "integer", "minimum": 0 },
+        "source": { "type": ["string", "null"] },
+        "type": { "type": ["string", "null"] },
+        "default_source": { "type": ["string", "null"] },
+        "by_reference": { "type": "boolean" },
+        "variadic": { "type": "boolean" }
+      }
+    },
+    "loadSegment": {
+      "type": "object",
+      "required": ["kind", "location", "source_hash"],
+      "properties": {
+        "kind": { "type": "string" },
+        "location": { "$ref": "#/$defs/location" },
+        "source_hash": { "$ref": "#/$defs/sha256" },
+        "test_source": { "type": ["string", "null"] }
+      }
+    },
+    "phpAbiEntry": {
+      "type": "object",
+      "required": [
+        "schema",
+        "id",
+        "baseline",
+        "kind",
+        "name",
+        "source_unit",
+        "repo",
+        "commit",
+        "path",
+        "distribution_path",
+        "location",
+        "declaration_timing",
+        "load_segments",
+        "source_hash",
+        "signature_hash"
+      ],
+      "properties": {
+        "schema": { "const": "wphx.php-abi-entry.v1" },
+        "id": { "type": "string" },
+        "baseline": { "const": "wordpress-7.0.0" },
+        "kind": {
+          "enum": ["function", "class", "interface", "trait", "method", "class_constant", "property", "constant"]
+        },
+        "name": { "type": "string" },
+        "namespace": { "type": ["string", "null"] },
+        "source_unit": { "type": "string" },
+        "repo": { "type": "string" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "path": { "type": "string" },
+        "distribution_path": { "type": "string" },
+        "location": { "$ref": "#/$defs/location" },
+        "declaration_timing": {
+          "enum": ["top_level", "conditional_or_segmented", "nested_function", "class_member"]
+        },
+        "load_segments": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/loadSegment" }
+        },
+        "source_hash": { "$ref": "#/$defs/sha256" },
+        "signature_hash": { "$ref": "#/$defs/sha256" },
+        "parameters": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/parameter" }
+        }
+      }
+    }
+  }
+}
