@@ -1,0 +1,33 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-010-beads-graph",
+  "issue": {
+    "id": "wordpresshx-w91.14",
+    "external_ref": "WPHX-010",
+    "title": "Seed Beads epics, issues, external refs, and dependencies"
+  },
+  "recorded_at": "2026-06-20T02:37:00Z",
+  "artifacts": [
+    {
+      "path": "tools/beads/validate-graph.mjs",
+      "role": "repeatable Beads graph validation"
+    },
+    {
+      "path": ".beads/issues.jsonl",
+      "role": "synced review/export projection of Beads issue state"
+    }
+  ],
+  "verification_commands": [
+    "bd ready --json",
+    "bd blocked --json",
+    "bd list --all --json --limit 0",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "issue_count": 28,
+    "ready_count": 10,
+    "blocked_count": 6,
+    "unique_external_refs": 28
+  }
+}

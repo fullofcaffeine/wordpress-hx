@@ -11,6 +11,7 @@
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "hooks:install": "bash scripts/hooks/install.sh",
+    "beads:validate": "node tools/beads/validate-graph.mjs",
     "inventory": "node tools/inventory/wphx-inventory.mjs",
     "inventory:validate": "node tools/inventory/validate-inventory.mjs",
     "inventory:check": "node tools/inventory/check-determinism.mjs && npm run inventory:validate",
