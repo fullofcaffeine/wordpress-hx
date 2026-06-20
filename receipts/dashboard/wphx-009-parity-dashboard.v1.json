@@ -1,0 +1,55 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-009-parity-dashboard",
+  "issue": {
+    "id": "wordpresshx-w91.13",
+    "external_ref": "WPHX-009",
+    "title": "Create initial parity dashboard"
+  },
+  "recorded_at": "2026-06-20T03:00:00Z",
+  "artifacts": [
+    {
+      "path": "tools/dashboard/build-dashboard.mjs",
+      "role": "dashboard manifest and index generator"
+    },
+    {
+      "path": "tools/dashboard/parity-dashboard.mjs",
+      "role": "query CLI for file, API, package, task, and gate"
+    },
+    {
+      "path": "tools/dashboard/check-dashboard.mjs",
+      "role": "dashboard acceptance query check"
+    }
+  ],
+  "verification_commands": [
+    "npm run dashboard:build",
+    "npm run dashboard:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "queries": {
+      "summary": {
+        "source_units": 17732,
+        "artifacts": 2721,
+        "tests": 4106,
+        "tasks": 28,
+        "php_api_symbols": 7300,
+        "js_package_api_symbols": 3405,
+        "packages": 133,
+        "gates": 5
+      },
+      "file wp-includes/plugin.php": {
+        "source": 1,
+        "artifact": 1,
+        "test": 0
+      },
+      "api add_filter": {
+        "php": 2,
+        "javascript_packages": 0
+      },
+      "package block-editor": 1,
+      "task WPHX-009": 1,
+      "gate G0": 1
+    }
+  }
+}

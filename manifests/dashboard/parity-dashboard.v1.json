@@ -1,0 +1,78 @@
+{
+  "schema": "wphx.parity-dashboard.v1",
+  "issue": "WPHX-009",
+  "generated_at": "2026-06-20T03:00:00Z",
+  "inputs": {
+    "source": "manifests/source-inventory.jsonl",
+    "artifact": "manifests/artifact-provenance.jsonl",
+    "test": "manifests/test-inventory.jsonl",
+    "inventorySummary": "manifests/inventory-summary.v1.json",
+    "oracle": "manifests/oracle/vanilla-oracle-baseline.v1.json",
+    "baselinePolicy": "manifests/baseline-policy.v1.json"
+  },
+  "capabilities": [
+    "summary",
+    "file",
+    "api",
+    "package",
+    "task",
+    "gate"
+  ],
+  "counts": {
+    "source_units": 17732,
+    "artifacts": 2721,
+    "tests": 4106,
+    "tasks": 28,
+    "php_api_symbols": 7300,
+    "js_package_api_symbols": 3405,
+    "packages": 133,
+    "gates": 5
+  },
+  "baselines": {
+    "source": {
+      "gutenberg-forward-23.4.0": 7109,
+      "wordpress-7.0-gutenberg-source": 7033,
+      "wordpress-7.0.0": 3590
+    },
+    "artifacts": {
+      "wordpress-7.0-gutenberg-build": 600,
+      "wordpress-7.0.0-distribution": 2121
+    },
+    "oracle": {
+      "php": {
+        "wp_version": "7.0-src",
+        "wp_db_version": 61833,
+        "required_php_version": "7.4",
+        "required_mysql_version": "5.5.5",
+        "php_version": "8.4.7",
+        "sapi": "cli",
+        "extensions": {
+          "mysqli": true,
+          "pdo_mysql": true,
+          "json": true,
+          "mbstring": true,
+          "intl": true
+        }
+      },
+      "db": {
+        "version": "8.4.10",
+        "comment": "MySQL Community Server - GPL",
+        "db_name": "wordpresshx"
+      },
+      "browser": {
+        "engine": "chromium",
+        "channel": "chrome",
+        "browser_version": "149.0.7827.115"
+      }
+    },
+    "profiles": [
+      "wp70-release",
+      "gutenberg-forward-23.4"
+    ]
+  },
+  "indexes": {
+    "api": "manifests/dashboard/api-index.v1.json",
+    "packages": "manifests/dashboard/package-index.v1.json",
+    "gates": "manifests/dashboard/gate-index.v1.json"
+  }
+}
