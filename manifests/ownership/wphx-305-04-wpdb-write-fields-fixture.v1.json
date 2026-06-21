@@ -1,0 +1,50 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-write-fields-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.9.4",
+    "external_ref": "WPHX-305.04"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "wpdb write/process-field differential fixture harness",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 wpdb write methods, field-format coercion, null SQL construction, charset/length metadata checks, and write-state mutation boundaries stay observable while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wpdb.php"
+    ],
+    "digest": "sha256:f8491189407706227085a6ee354770ac314940a4ab53c453e0d196e18a84bb8c"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wpdb-write-fields-fixture.mjs",
+    "manifests/wp-core/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+    "receipts/wp-core/wphx-305-04-wpdb-write-fields-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+    "manifests/ownership/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+    "receipts/wp-core/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+    "build/wp-core/wphx-305-04"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-write-fields",
+      "npm run wp:core:wphx-305-write-fields:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-04-wpdb-write-fields-fixture"
+    ],
+    "manifest_digest": "sha256:65638cf7ab9780cd5fa1585fff784abd7e6e4fc3120a110da289545ed2c00344"
+  },
+  "notes": "The candidate fixture root is an oracle source mirror for WPHX-305.04. The probe runs WordPress write and process-field logic directly and isolates only live DB query execution plus charset/length metadata lookup behind deterministic test doubles."
+}

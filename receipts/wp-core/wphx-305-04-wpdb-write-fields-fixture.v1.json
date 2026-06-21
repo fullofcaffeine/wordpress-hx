@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-04-wpdb-write-fields-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.9.4",
+    "external_ref": "WPHX-305.04",
+    "title": "Build write/process-field fixture harness"
+  },
+  "recorded_at": "2026-06-21T01:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+      "role": "wpdb write/process-field differential fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+      "role": "external-oracle ownership manifest for the fixture harness"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-write-fields-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-write-fields",
+    "npm run wp:core:wphx-305-write-fields:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 12,
+    "fixture_cases": 12,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}
