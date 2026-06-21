@@ -10,6 +10,8 @@
     "format:haxe:check": "bash scripts/lint/haxe-format.sh",
     "haxe:escape-hatches": "node tools/haxe/check-escape-hatches.mjs",
     "haxe:escape-hatches:check": "node tools/haxe/check-escape-hatches.mjs --check",
+    "generated-php:lowering-snapshots": "node tools/generated-php/run-lowering-snapshots.mjs",
+    "generated-php:lowering-snapshots:check": "node tools/generated-php/run-lowering-snapshots.mjs --check",
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "security:kses-corpus": "node tools/security/run-kses-security-corpus.mjs",

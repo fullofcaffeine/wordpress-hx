@@ -1,0 +1,51 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-700-02-generated-php-lowering-snapshots",
+  "issue": {
+    "id": "wordpresshx-w91.3.2",
+    "external_ref": "WPHX-700.02",
+    "title": "WPHX-700.02 — Add generated-PHP lowering snapshot lane"
+  },
+  "recorded_at": "2026-06-21T19:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/generated-php/wphx-700-02-lowering-snapshots.v1.json",
+      "role": "generated-PHP lowering snapshot manifest"
+    },
+    {
+      "path": "receipts/generated-php/wphx-700-02-lowering-snapshots.v1.json",
+      "role": "generated-PHP lowering snapshot verification receipt"
+    },
+    {
+      "path": "tools/generated-php/run-lowering-snapshots.mjs",
+      "role": "reusable generated-PHP snapshot runner"
+    },
+    {
+      "path": "tests/lowering/php/mysqli-global-call/expected/WpdbMysqliGlobalLoweringProofEntry.php",
+      "role": "exact generated-PHP golden for mysqli global-call lowering"
+    },
+    {
+      "path": "tests/lowering/php/mysqli-global-call/expected/contract.ast.json",
+      "role": "stable AST-normalized contract for mysqli global-call lowering"
+    }
+  ],
+  "verification_commands": [
+    "npm run generated-php:lowering-snapshots",
+    "npm run generated-php:lowering-snapshots:check",
+    "npm run wp:core:wphx-305-mysqli-global-lowering-proof:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "evidence_class": "generated_shape",
+  "artifact_scope": "minimized_fixture",
+  "validation_result": {
+    "status": "passed",
+    "case_count": 1,
+    "generated_shape_cases": 1,
+    "artifact_scope": "minimized_fixture",
+    "compile_twice_deterministic": true,
+    "php_lint_passed": true,
+    "exact_goldens_passed": true,
+    "ast_contracts_passed": true
+  }
+}

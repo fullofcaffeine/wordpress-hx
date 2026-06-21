@@ -1,0 +1,327 @@
+{
+  "schema": "wphx.generated-php-lowering-snapshots.v1",
+  "issue": "WPHX-700.02",
+  "generated_at": "2026-06-21T19:45:00.000Z",
+  "generator": "tools/generated-php/run-lowering-snapshots.mjs",
+  "evidence_class": "generated_shape",
+  "artifact_scope": "minimized_fixture",
+  "scope": "T0b generated-PHP lowering contracts. These snapshots prove generated PHP shape only; WordPress behavior parity remains owned by differential, ABI, plugin/drop-in, live database, and upstream PHPUnit lanes.",
+  "inputs": {
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 5811,
+      "sha256": "sha256:c27b6be710bad37eda5fb68d8e10e0d0abbd60430daa177b0c919cdcf12aff5c"
+    },
+    "generator": {
+      "path": "tools/generated-php/run-lowering-snapshots.mjs",
+      "bytes": 19173,
+      "sha256": "sha256:8f6c77507ca3af46f3976c70ca8927557ae01540a6213a0c6b4d7ab5fe0fb407"
+    },
+    "selected_snapshot_artifacts": [
+      {
+        "path": "tests/lowering/php/mysqli-global-call/expected/WpdbMysqliGlobalLoweringProofEntry.php",
+        "bytes": 881,
+        "sha256": "sha256:e02d050691dc5b0d3cc9126251b4f30d8206a0e15cc31d5e8f437d7cf20bcf2c"
+      },
+      {
+        "path": "tests/lowering/php/mysqli-global-call/expected/contract.ast.json",
+        "bytes": 2586,
+        "sha256": "sha256:118f619d17127cf602a529a412f1ec0b2d0565e8749d00bd37d94c542d95a749"
+      }
+    ]
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_version": "8.4.7",
+    "php_cli_executable": "/opt/homebrew/bin/php",
+    "node_version": "v20.19.3",
+    "php_parser": "php-parser"
+  },
+  "cases": [
+    {
+      "id": "php-lowering/mysqli-global-call",
+      "issue": "WPHX-305.19",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "owner": "WPHX-700.02",
+      "compile": {
+        "first": {
+          "command": "haxe -cp src -cp fixtures/wp-core/src -main wphx.fixtures.wp.core.WpdbMysqliGlobalLoweringProofEntry -php build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first",
+          "status": 0,
+          "signal": null,
+          "stdout": "",
+          "stderr": "",
+          "error": null
+        },
+        "second": {
+          "command": "haxe -cp src -cp fixtures/wp-core/src -main wphx.fixtures.wp.core.WpdbMysqliGlobalLoweringProofEntry -php build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/second",
+          "status": 0,
+          "signal": null,
+          "stdout": "",
+          "stderr": "",
+          "error": null
+        },
+        "passed": true
+      },
+      "compile_twice": {
+        "deterministic": true,
+        "first_file_count": 16,
+        "second_file_count": 16,
+        "missing_in_second": [],
+        "missing_in_first": [],
+        "changed": []
+      },
+      "php_lint": [
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/index.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/index.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/index.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/Array_hx.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/Array_hx.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/Array_hx.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/Exception.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/Exception.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/Exception.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/iterators/ArrayIterator.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/iterators/ArrayIterator.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/iterators/ArrayIterator.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/ValueException.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/ValueException.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/haxe/ValueException.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxAnon.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxAnon.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxAnon.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxClass.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxClass.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxClass.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxClosure.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxClosure.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxClosure.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxDynamicStr.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxDynamicStr.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxDynamicStr.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxEnum.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxEnum.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxEnum.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxString.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxString.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_Boot/HxString.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_polyfills.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_polyfills.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/_polyfills.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/Boot.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/Boot.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/php/Boot.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/Std.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/Std.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/Std.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/wphx/fixtures/wp/core/WpdbMysqliGlobalLoweringProofEntry.php",
+          "command": "php -l build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/wphx/fixtures/wp/core/WpdbMysqliGlobalLoweringProofEntry.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/wphx/fixtures/wp/core/WpdbMysqliGlobalLoweringProofEntry.php",
+          "stderr": "",
+          "error": null
+        }
+      ],
+      "selected_outputs": [
+        {
+          "generated": "build/generated-php/wphx-700-02/php-lowering/mysqli-global-call/first/lib/wphx/fixtures/wp/core/WpdbMysqliGlobalLoweringProofEntry.php",
+          "bytes": 883,
+          "sha256": "sha256:c2521a60fa1b8bc08a55c599b098951c8e5ced3dc7118c6195007eec15daef8f",
+          "exact_golden": {
+            "path": "tests/lowering/php/mysqli-global-call/expected/WpdbMysqliGlobalLoweringProofEntry.php",
+            "status": "passed"
+          },
+          "ast_contract": {
+            "path": "tests/lowering/php/mysqli-global-call/expected/contract.ast.json",
+            "status": "passed"
+          },
+          "required_global_calls": [
+            {
+              "method": "fetchObject",
+              "function": "\\mysqli_fetch_object",
+              "arguments": [
+                "$result"
+              ],
+              "observed": {
+                "target_kind": "global_function",
+                "function": "\\mysqli_fetch_object",
+                "arguments": [
+                  "$result"
+                ]
+              },
+              "passed": true
+            },
+            {
+              "method": "nativeQuery",
+              "function": "\\mysqli_query",
+              "arguments": [
+                "$handle",
+                "$query"
+              ],
+              "observed": {
+                "target_kind": "global_function",
+                "function": "\\mysqli_query",
+                "arguments": [
+                  "$handle",
+                  "$query"
+                ]
+              },
+              "passed": true
+            }
+          ],
+          "forbidden_patterns": [
+            {
+              "id": "class-static-mysqli-call",
+              "pattern": "::\\?mysqli_(query|fetch_object)\\s*\\(",
+              "detected": false
+            },
+            {
+              "id": "haxe-mysqli-global-static-call",
+              "pattern": "MysqliGlobal::(query|fetchObject)\\s*\\(",
+              "detected": false
+            }
+          ],
+          "passed": true
+        }
+      ],
+      "sources": [
+        {
+          "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbMysqliGlobalLoweringProofEntry.hx",
+          "bytes": 544,
+          "sha256": "sha256:e1d7a383667315721a23f439072119d889654927f023667f1ddc972bc83922a1"
+        },
+        {
+          "path": "src/wphx/wp/db/native/MysqliGlobal.hx",
+          "bytes": 334,
+          "sha256": "sha256:87d99124c56324044503ebaebc61d1c0ffde35e5e480c53d943ad506e05b4584"
+        },
+        {
+          "path": "src/wphx/wp/db/native/MysqliHandle.hx",
+          "bytes": 76,
+          "sha256": "sha256:7f71e0df4884245f748dc109d0b535f9bfc7daf441ab7ba5c6c9cde030d9e603"
+        },
+        {
+          "path": "src/wphx/wp/db/native/MysqliResult.hx",
+          "bytes": 83,
+          "sha256": "sha256:1fba55433a29459b56d736f68b5efc896fa3e4860182572a5eb16605fb395e0d"
+        }
+      ],
+      "validation_result": {
+        "status": "passed",
+        "compile_passed": true,
+        "compile_twice_deterministic": true,
+        "php_lint_passed": true,
+        "exact_goldens_passed": true,
+        "ast_contracts_passed": true,
+        "call_shape_contracts_passed": true,
+        "forbidden_patterns_absent": true
+      }
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "case_count": 1,
+    "generated_shape_cases": 1,
+    "artifact_scope": "minimized_fixture",
+    "compile_twice_deterministic": true,
+    "php_lint_passed": true,
+    "exact_goldens_passed": true,
+    "ast_contracts_passed": true
+  }
+}

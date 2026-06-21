@@ -1,0 +1,104 @@
+{
+  "schema": "wphx.php-ast-contract.v1",
+  "namespace": "wphx\\fixtures\\wp\\core",
+  "uses": [
+    "\\php\\Boot"
+  ],
+  "classes": [
+    {
+      "name": "WpdbMysqliGlobalLoweringProofEntry",
+      "final": false,
+      "abstract": false,
+      "extends": null,
+      "implements": [],
+      "methods": [
+        {
+          "name": "fetchObject",
+          "visibility": "public",
+          "static": true,
+          "final": false,
+          "abstract": false,
+          "returns_by_reference": false,
+          "parameters": [
+            {
+              "name": "result",
+              "position": 0,
+              "by_reference": false,
+              "variadic": false,
+              "type": null,
+              "default": null
+            }
+          ],
+          "return_statement": {
+            "kind": "call",
+            "target": {
+              "kind": "global_function",
+              "name": "\\mysqli_fetch_object",
+              "resolution": "fqn"
+            },
+            "arguments": [
+              "$result"
+            ]
+          }
+        },
+        {
+          "name": "main",
+          "visibility": "public",
+          "static": true,
+          "final": false,
+          "abstract": false,
+          "returns_by_reference": false,
+          "parameters": [],
+          "return_statement": null
+        },
+        {
+          "name": "nativeQuery",
+          "visibility": "public",
+          "static": true,
+          "final": false,
+          "abstract": false,
+          "returns_by_reference": false,
+          "parameters": [
+            {
+              "name": "handle",
+              "position": 0,
+              "by_reference": false,
+              "variadic": false,
+              "type": null,
+              "default": null
+            },
+            {
+              "name": "query",
+              "position": 1,
+              "by_reference": false,
+              "variadic": false,
+              "type": null,
+              "default": null
+            }
+          ],
+          "return_statement": {
+            "kind": "call",
+            "target": {
+              "kind": "global_function",
+              "name": "\\mysqli_query",
+              "resolution": "fqn"
+            },
+            "arguments": [
+              "$handle",
+              "$query"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "boot_registrations": [
+    {
+      "target": "Boot::registerClass",
+      "arguments": [
+        "WpdbMysqliGlobalLoweringProofEntry::class",
+        "'wphx.fixtures.wp.core.WpdbMysqliGlobalLoweringProofEntry'"
+      ]
+    }
+  ]
+}
