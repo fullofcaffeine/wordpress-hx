@@ -65,7 +65,7 @@
       "receipt:wphx-305-18-wpdb-mysqli-lowering-strategy",
       "receipt:wphx-305-17-wpdb-mysqli-row-traversal-candidate"
     ],
-    "manifest_digest": "sha256:4033c58f86c7b49367aedaa064f8c2cfc0d935830f1de2f8061a924eb629f2f9"
+    "manifest_digest": "sha256:00574784b8dd71d4e377be107b7cf9e1ee35cbf89116809733068e935a17cc1c"
   },
   "notes": "This artifact records a decision and proof path, not a generated wpdb behavior change. The next slice should scaffold the actual PHP target/reflaxe lowering proof."
 }

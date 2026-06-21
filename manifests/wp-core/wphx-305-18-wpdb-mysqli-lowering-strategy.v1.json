@@ -45,8 +45,8 @@
       {
         "id": "ruby-reflaxe-compiler",
         "path": "../haxe.ruby/src/reflaxe/ruby/RubyCompiler.hx",
-        "bytes": 327121,
-        "sha256": "sha256:9c5516736a57dde407e24c9d5111a8c6b248aadc9b081d7b19612f8e5eb60889",
+        "bytes": 329287,
+        "sha256": "sha256:d303afa783915a638319225055f7e2dbc49f8b17f71b327aaeb970cacb10b007",
         "evidence": "The Ruby target uses a GenericCompiler-backed Reflaxe compiler with a target AST.",
         "pattern_checks": [
           {

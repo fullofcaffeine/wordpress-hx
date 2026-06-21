@@ -7,7 +7,7 @@
     "predecessor_manifest": {
       "path": "manifests/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
       "bytes": 41623,
-      "sha256": "sha256:f1763dc67c90b8af95102440b1b8924d2ff26947cb615c7d2bcbb9416d63e89f"
+      "sha256": "sha256:00574784b8dd71d4e377be107b7cf9e1ee35cbf89116809733068e935a17cc1c"
     },
     "predecessor_receipt": {
       "path": "receipts/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
