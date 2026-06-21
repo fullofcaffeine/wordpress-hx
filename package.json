@@ -135,6 +135,8 @@
     "wp:core:wphx-305-row-materialization-candidate:check": "node tools/wp-core/run-wpdb-row-materialization-candidate.mjs --check",
     "wp:core:wphx-305-dropin-public-state-plan": "node tools/wp-core/run-wpdb-dropin-public-state-plan.mjs",
     "wp:core:wphx-305-dropin-public-state-plan:check": "node tools/wp-core/run-wpdb-dropin-public-state-plan.mjs --check",
+    "wp:core:wphx-305-public-state-descriptor-candidate": "node tools/wp-core/run-wpdb-public-state-descriptor-candidate.mjs",
+    "wp:core:wphx-305-public-state-descriptor-candidate:check": "node tools/wp-core/run-wpdb-public-state-descriptor-candidate.mjs --check",
     "wp:core:wphx-305-mysqli-lowering-strategy": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs",
     "wp:core:wphx-305-mysqli-lowering-strategy:check": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs --check",
     "wp:core:wphx-305-mysqli-global-lowering-proof": "node tools/wp-core/run-wpdb-mysqli-global-lowering-proof.mjs",

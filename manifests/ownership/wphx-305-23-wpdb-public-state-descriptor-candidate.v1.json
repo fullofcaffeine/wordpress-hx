@@ -1,0 +1,105 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-public-state-descriptor-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.23",
+    "external_ref": "WPHX-305.23"
+  },
+  "unit": {
+    "kind": "module",
+    "name": "wpdb public-state descriptor shell proof",
+    "area": "wp-includes",
+    "public_contract": "WordPress-compatible wpdb remains a PHP-visible class/global object with declared public fields, magic accessors, #[AllowDynamicProperties], and db.php replacement timing intact while typed Haxe owns the public-state inventory and mutation-policy descriptor."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/wp-db.php",
+      "src/wp-settings.php"
+    ],
+    "digest": "sha256:05798238c11b7631528728a55a4183d77b36e3dcdd2c22d4043e9ef5cdbce3a9"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/wpdb-public-state-descriptor-candidate.hxml",
+    "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbPublicStateDescriptorCandidateEntry.hx",
+    "tools/wp-core/run-wpdb-public-state-descriptor-candidate.mjs",
+    "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+    "receipts/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-305-23/haxe",
+    "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+    "manifests/ownership/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+    "receipts/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json"
+  ],
+  "typed_haxe_ownership": {
+    "descriptor": "wphx.wp.db.WpdbPublicStateDescriptor",
+    "owns": [
+      "declared wpdb public property inventory",
+      "magic-visible internal property inventory",
+      "public magic accessor inventory",
+      "protected __set write-block inventory",
+      "public-state category policy",
+      "public/magic mutation policy",
+      "db.php replacement and direct field_types mutation preservation flags"
+    ],
+    "does_not_yet_own": [
+      "wpdb instance storage",
+      "wpdb constructor side effects",
+      "require_wp_db() bootstrap implementation",
+      "db.php drop-in loading"
+    ]
+  },
+  "php_abi_shell": {
+    "preserved": [
+      "class wpdb remains PHP-visible",
+      "global $wpdb can be supplied by wp-content/db.php",
+      "require_wp_db() returns early when $wpdb is already set",
+      "plugins can observe declared public wpdb properties",
+      "plugins can add dynamic properties",
+      "wpdb magic methods remain public"
+    ],
+    "proof": "WPHX-305.23 reflection/drop-in probe compares generated Haxe descriptor output with WordPress 7.0 ReflectionClass and constructor-free __set behavior."
+  },
+  "bridge": {
+    "kind": "typed_descriptor_php_abi_shell",
+    "reason": "Public wpdb state is both core implementation detail and plugin ABI. This slice moves the inventory and mutation policy into typed Haxe while keeping the executable PHP class/bootstrap shell untouched until reflection and drop-in behavior have a green receipt.",
+    "bounded_by": [
+      "WPHX-305.22 public-state boundary plan",
+      "WordPress 7.0 ReflectionClass('wpdb') property/method oracle",
+      "constructor-free wpdb::__set write-block behavior probe",
+      "isolated require_wp_db() db.php drop-in early-return probe",
+      "WPHX-305.21 row materialization live candidate receipt",
+      "WPHX-305.20 mysqli @:phpGlobal live candidate receipt"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Do not move wpdb instance storage or require_wp_db() bootstrap ownership behind Haxe until the descriptor proof is followed by a state-storage adapter that preserves reflection, dynamic properties, magic access, and drop-in replacement under full bootstrap probes.",
+    "owner_issue": "WPHX-305.24",
+    "target_state": "verified_haxe_owned_wpdb_public_state_storage"
+  },
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-public-state-descriptor-candidate",
+      "npm run wp:core:wphx-305-public-state-descriptor-candidate:check",
+      "npm run wp:core:wphx-305-row-materialization-candidate:check",
+      "npm run wp:core:wphx-305-mysqli-phpglobal-candidate:check",
+      "npm run format:haxe:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-23-wpdb-public-state-descriptor-candidate",
+      "receipt:wphx-305-22-wpdb-dropin-public-state-plan",
+      "receipt:wphx-305-21-wpdb-row-materialization-candidate",
+      "receipt:wphx-305-20-wpdb-mysqli-phpglobal-candidate"
+    ],
+    "manifest_digest": "sha256:1f0a6a0662d166ea80eedee2f405b210ac1b39596583b9d4b59c081e0d42a7ed"
+  }
+}

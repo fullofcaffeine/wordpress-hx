@@ -1,0 +1,62 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-23-wpdb-public-state-descriptor-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.23",
+    "external_ref": "WPHX-305.23",
+    "title": "Implement typed wpdb public-state descriptor shell proof"
+  },
+  "recorded_at": "2026-06-21T07:10:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+      "role": "typed Haxe wpdb public-state descriptor candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+      "role": "Haxe/public PHP ABI ownership manifest"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+      "role": "typed Haxe wpdb public-state descriptor"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-public-state-descriptor-candidate.mjs",
+      "role": "descriptor reflection/drop-in proof runner"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbRowMaterialization.hx",
+      "role": "predecessor typed Haxe row materialization implementation kept green"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbMysqliExecution.hx",
+      "role": "predecessor typed Haxe mysqli @:phpGlobal execution implementation kept green"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-public-state-descriptor-candidate",
+    "npm run wp:core:wphx-305-public-state-descriptor-candidate:check",
+    "npm run wp:core:wphx-305-row-materialization-candidate:check",
+    "npm run wp:core:wphx-305-mysqli-phpglobal-candidate:check",
+    "npm run format:haxe:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "selected_strategy": "typed-wpdb-public-state-descriptor-and-shell-contract",
+    "public_property_count": 46,
+    "magic_visible_internal_property_count": 16,
+    "magic_method_count": 4,
+    "protected_write_blocked_property_count": 4,
+    "descriptor_probe_status": "passed",
+    "dropin_probe_status": "passed",
+    "dynamic_properties_required": true,
+    "db_dropin_replacement_required": true,
+    "source_escape_audit_passed": true,
+    "generated_methods_present": true,
+    "predecessor_row_materialization_status": "passed",
+    "predecessor_mysqli_phpglobal_status": "passed"
+  }
+}
