@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-07-wpdb-live-db-runtime-gate",
+  "issue": {
+    "id": "wordpresshx-l76.9.7",
+    "external_ref": "WPHX-305.07",
+    "title": "Add live MySQL/MariaDB database runtime gate"
+  },
+  "recorded_at": "2026-06-21T04:05:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+      "role": "wpdb live MySQL/MariaDB runtime gate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+      "role": "external-oracle ownership manifest for the live DB gate"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-live-db-runtime-gate.mjs",
+      "role": "live DB runtime generator and check-mode validator"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "locked MySQL and MariaDB DB runtime images"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-live-db",
+    "npm run wp:core:wphx-305-live-db:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 35,
+    "fixture_cases": 13,
+    "db_runtimes": 2,
+    "comparisons": 2,
+    "skipped_runtimes": 0
+  }
+}

@@ -126,6 +126,24 @@
       "media_type": "application/vnd.oci.image.index.v1+json",
       "linux_amd64_digest": "sha256:4cdb896d14c1a5d3d585f9725007eb265b483d4e9f1cd5df4f89669acd6c8244",
       "linux_arm64_digest": "sha256:ee6842444379a71fb8a3dfdb397e04b4f6c4182dbef6257faf2cde71fbb49aae"
+    },
+    "mysql_8_4": {
+      "registry": "registry-1.docker.io",
+      "repository": "library/mysql",
+      "tag": "8.4",
+      "index_digest": "sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+      "media_type": "application/vnd.oci.image.index.v1+json",
+      "linux_amd64_digest": "sha256:94d1a3602540127d4979699ff8f6b6ae3d276a95305b3822c17abf3258995575",
+      "linux_arm64_digest": "sha256:b6838bca58d96cdcfb36999bb90c3558a684ef2302430dad1694070cc984312c"
+    },
+    "mariadb_11_8": {
+      "registry": "registry-1.docker.io",
+      "repository": "library/mariadb",
+      "tag": "11.8",
+      "index_digest": "sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+      "media_type": "application/vnd.oci.image.index.v1+json",
+      "linux_amd64_digest": "sha256:d1f0379f1ef03c24aa465744e3fc3482deded8faca5d5178a458a75a18b2b5db",
+      "linux_arm64_digest": "sha256:d4638c2e594ba5f384b9a05ecd6913b5b16cb2dfa4c45313fcd7823cda1b89e1"
     }
   }
 }

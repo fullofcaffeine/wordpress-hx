@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 70,
+  "closed_task_count": 72,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -635,6 +635,26 @@
           "path": "receipts/wp-core/wphx-305-05-wpdb-charset-prefix-fixture.v1.json",
           "sha256": "2ee9a05c2f03b91e7e567d246917ae83efed93fda644ef387641357b27d0ea56",
           "id": "receipt:wphx-305-05-wpdb-charset-prefix-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-305.06",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-305-06-wpdb-schema-option-integration-fixture.v1.json",
+          "sha256": "a2209c80ccabb35b0501b4c445f1364df35459278939ec65df6dfbc0c773b3dc",
+          "id": "receipt:wphx-305-06-wpdb-schema-option-integration-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-305.07",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+          "sha256": "dfbd8ccdd2c67d824b0e341e400b2174a1a7a7dbdb37fd53fc2d83ab6949834a",
+          "id": "receipt:wphx-305-07-wpdb-live-db-runtime-gate"
         }
       ]
     },

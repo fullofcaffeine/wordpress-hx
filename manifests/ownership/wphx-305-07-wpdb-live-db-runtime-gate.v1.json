@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-live-db-runtime-gate",
+  "issue": {
+    "id": "wordpresshx-l76.9.7",
+    "external_ref": "WPHX-305.07"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "wpdb live MySQL/MariaDB runtime gate",
+    "area": "wp-includes/wp-admin",
+    "public_contract": "WordPress 7.0 wpdb, dbDelta/maybe_* schema helpers, and database-backed option/transient storage stay observable against locked live MySQL and MariaDB runtimes while the candidate side remains an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-admin/includes/schema.php",
+      "src/wp-admin/includes/upgrade.php"
+    ],
+    "digest": "sha256:3d637e4ff944dd8783efc2042c0252d18844288936712ec923381843c101255b"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wpdb-live-db-runtime-gate.mjs",
+    "manifests/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+    "receipts/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+    "manifests/ownership/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+    "receipts/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+    "build/wp-core/wphx-305-07"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-live-db",
+      "npm run wp:core:wphx-305-live-db:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-07-wpdb-live-db-runtime-gate"
+    ],
+    "manifest_digest": "sha256:ef6fcb7c66168989e9055e728d629dbecec3ad765e462407e922bf16bcd1a6ea"
+  },
+  "notes": "The gate provisions mysql-8.4 and mariadb-11.8 containers from locked index digests and runs the WPHX-305.06 seed cases plus live error/transaction/locking checks with local PHP mysqli. The broad wp-admin include remains stubbed because this workset is scoped to database helpers and storage paths."
+}

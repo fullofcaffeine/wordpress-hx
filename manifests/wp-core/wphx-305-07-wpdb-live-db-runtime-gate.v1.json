@@ -1,0 +1,1370 @@
+{
+  "schema": "wphx.wp-core-wpdb-live-db-runtime-gate.v1",
+  "issue": "WPHX-305.07",
+  "generated_at": "2026-06-21T04:05:00.000Z",
+  "generator": "tools/wp-core/run-wpdb-live-db-runtime-gate.mjs",
+  "inputs": {
+    "wpdb_surface_manifest": {
+      "path": "manifests/wp-core/wphx-305-01-wpdb-surface.v1.json",
+      "bytes": 146747,
+      "sha256": "sha256:caf57a36d30979862b6f3bcb74fa3668e17d68dac2db7f2776e03b60d6dc8616"
+    },
+    "schema_option_fixture": {
+      "path": "manifests/wp-core/wphx-305-06-wpdb-schema-option-integration-fixture.v1.json",
+      "bytes": 557008,
+      "sha256": "sha256:e7298014d1a97d13bc50c0887bb196d08fa16de403789c8992e0f47b5ad482f3"
+    },
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 5811,
+      "sha256": "sha256:c27b6be710bad37eda5fb68d8e10e0d0abbd60430daa177b0c919cdcf12aff5c"
+    },
+    "source_units": [
+      {
+        "path": "src/wp-includes/class-wp-hook.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-hook.php",
+        "bytes": 16636,
+        "sha256": "sha256:a66fe7372af72876fc702e50943f9a2a8dff4ed7394163e07491b80a06e27f1d"
+      },
+      {
+        "path": "src/wp-includes/compat.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/compat.php",
+        "bytes": 16063,
+        "sha256": "sha256:3b87e422b612fdf23d26e600552aa1f0444c8db49b2d079538a9e460db0a4025"
+      },
+      {
+        "path": "src/wp-includes/utf8.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/utf8.php",
+        "bytes": 7260,
+        "sha256": "sha256:f06764a8f214a4e3d71cbac4ea5af4d9edeaf07701cfe09436c251a4042db0d7"
+      },
+      {
+        "path": "src/wp-includes/load.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/load.php",
+        "bytes": 56475,
+        "sha256": "sha256:3efd0934bd8a454a8d7076fbbd21504ea097a753125a48e64b8a1dad380d357a"
+      },
+      {
+        "path": "src/wp-includes/plugin.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/plugin.php",
+        "bytes": 36501,
+        "sha256": "sha256:2e06902ae7d65d7dad37cbafd8e8feff83e4aeeff3a7839885ce7fe4f0c94d68"
+      },
+      {
+        "path": "src/wp-includes/class-wp-error.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-error.php",
+        "bytes": 7502,
+        "sha256": "sha256:fe0e54bcb095f3ebb6493cbd558f927234e1bff3f643b2ca00f7e2d74309400c"
+      },
+      {
+        "path": "src/wp-includes/class-wpdb.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wpdb.php",
+        "bytes": 118638,
+        "sha256": "sha256:99a30801ae7ed3ddb6faf5feef3b564210c8dc681fc42b8cd1ea7da0904218b5"
+      },
+      {
+        "path": "src/wp-includes/cache.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/cache.php",
+        "bytes": 13486,
+        "sha256": "sha256:a219c2b57cc9990b560c6b497c877db443b7e29239645a6a79b2d76839c46e19"
+      },
+      {
+        "path": "src/wp-includes/class-wp-object-cache.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-object-cache.php",
+        "bytes": 17524,
+        "sha256": "sha256:1857b774bd9cfbafbd50a1b1424f7df637d202cf3f2253cda9798d4ad56f3cf0"
+      },
+      {
+        "path": "src/wp-includes/functions.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/functions.php",
+        "bytes": 290326,
+        "sha256": "sha256:1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+      },
+      {
+        "path": "src/wp-includes/kses.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/kses.php",
+        "bytes": 82580,
+        "sha256": "sha256:4220320e7e4c3cc0fb82d76d0bfaeb1ccf49766ee2fea10d9ad0bf93ae2b090d"
+      },
+      {
+        "path": "src/wp-includes/formatting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/formatting.php",
+        "bytes": 354690,
+        "sha256": "sha256:922d8ce082d25d3375dae336feec1b13288df46e15c9c2dcac013c8cc2c44648"
+      },
+      {
+        "path": "src/wp-includes/option.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/option.php",
+        "bytes": 105079,
+        "sha256": "sha256:d1daad9a1d19ee438eb6e3b6698b42a3682f6f7ab9626be02f2157a238ea3e2f"
+      },
+      {
+        "path": "src/wp-admin/includes/schema.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/schema.php",
+        "bytes": 45583,
+        "sha256": "sha256:a446ddd76ce401fc8173bfee4e79a98f8c3567ed3ba7560c2f167ca85e6976b0"
+      },
+      {
+        "path": "src/wp-admin/includes/upgrade.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/upgrade.php",
+        "bytes": 116693,
+        "sha256": "sha256:45073fd59f493b42efe7a08e25a32c523bdad7169dc6da3b1e1224661d781878"
+      }
+    ],
+    "upstream_digest": "sha256:3d637e4ff944dd8783efc2042c0252d18844288936712ec923381843c101255b"
+  },
+  "fixture": {
+    "candidate_kind": "oracle_source_mirror",
+    "source_domains": [
+      "Database bootstrap, connection, server capability, and unavailable database boundaries",
+      "Query execution, result retrieval, public result state, and query logging",
+      "Charset, collation, safe-collation checks, and invalid text stripping",
+      "Table lists, prefixes, blog switching, and multisite table state"
+    ],
+    "db_runtimes": [
+      {
+        "id": "mysql-8.4",
+        "engine": "mysql",
+        "image": "library/mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+        "index_digest": "sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+        "linux_amd64_digest": "sha256:94d1a3602540127d4979699ff8f6b6ae3d276a95305b3822c17abf3258995575",
+        "linux_arm64_digest": "sha256:b6838bca58d96cdcfb36999bb90c3558a684ef2302430dad1694070cc984312c"
+      },
+      {
+        "id": "mariadb-11.8",
+        "engine": "mariadb",
+        "image": "library/mariadb@sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+        "index_digest": "sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+        "linux_amd64_digest": "sha256:d1f0379f1ef03c24aa465744e3fc3482deded8faca5d5178a458a75a18b2b5db",
+        "linux_arm64_digest": "sha256:d4638c2e594ba5f384b9a05ecd6913b5b16cb2dfa4c45313fcd7823cda1b89e1"
+      }
+    ],
+    "php_client": {
+      "id": "local-php-cli",
+      "executable": "/opt/homebrew/bin/php",
+      "mysqli_extension": true,
+      "pdo_mysql_extension": true
+    },
+    "covered_symbols": [
+      "wpdb::__construct",
+      "wpdb::db_connect",
+      "wpdb::query",
+      "wpdb::get_var",
+      "wpdb::get_row",
+      "wpdb::get_col",
+      "wpdb::get_results",
+      "wpdb::insert",
+      "wpdb::update",
+      "wpdb::delete",
+      "wpdb::prepare",
+      "wpdb::set_charset",
+      "wpdb::set_sql_mode",
+      "wpdb::get_table_charset",
+      "wpdb::get_col_charset",
+      "wpdb::get_col_length",
+      "wpdb::db_version",
+      "wpdb::db_server_info",
+      "maybe_create_table",
+      "maybe_add_column",
+      "dbDelta",
+      "wp_get_db_schema",
+      "wp_should_upgrade_global_tables",
+      "wp_load_alloptions",
+      "get_option",
+      "get_options",
+      "add_option",
+      "update_option",
+      "delete_option",
+      "wp_prime_option_caches",
+      "wp_set_option_autoload_values",
+      "set_transient",
+      "get_transient",
+      "delete_transient",
+      "delete_expired_transients"
+    ],
+    "cases": [
+      {
+        "id": "schema:maybe-create-table",
+        "symbol": "maybe_create_table",
+        "focus": "existing table short-circuit and missing table creation through a live SHOW TABLES and CREATE TABLE path"
+      },
+      {
+        "id": "schema:maybe-add-column",
+        "symbol": "maybe_add_column",
+        "focus": "live DESC column discovery and ALTER TABLE ADD COLUMN execution"
+      },
+      {
+        "id": "schema:dbdelta-plan-no-execute",
+        "symbol": "dbDelta",
+        "focus": "live DESCRIBE/SHOW INDEX metadata consumed for a non-executed dbDelta schema plan"
+      },
+      {
+        "id": "schema:dbdelta-execute-and-dml",
+        "symbol": "dbDelta",
+        "focus": "live ALTER/INSERT/UPDATE execution and resulting schema/data state"
+      },
+      {
+        "id": "schema:wp-get-db-schema-blog-scope",
+        "symbol": "wp_get_db_schema",
+        "focus": "schema SQL generation with live wpdb charset/collation state"
+      },
+      {
+        "id": "schema:global-upgrade-filter",
+        "symbol": "wp_should_upgrade_global_tables/dbDelta",
+        "focus": "global table dbDelta filtering before live metadata/execution"
+      },
+      {
+        "id": "options:autoload-add-update-delete",
+        "symbol": "wp_load_alloptions/get_option/add_option/update_option/delete_option",
+        "focus": "real option.php cache/storage flow over a live wp_options table"
+      },
+      {
+        "id": "options:batch-prime-and-autoload",
+        "symbol": "get_options/wp_prime_option_caches/wp_set_option_autoload_values",
+        "focus": "batch option priming and autoload updates against live rows"
+      },
+      {
+        "id": "transients:database-backed",
+        "symbol": "set_transient/get_transient/delete_transient",
+        "focus": "non-expiring transient storage through the live options table"
+      },
+      {
+        "id": "transients:delete-expired-sql",
+        "symbol": "delete_expired_transients",
+        "focus": "live multi-table expired transient cleanup SQL"
+      },
+      {
+        "id": "runtime:server-sql-mode-and-metadata",
+        "symbol": "wpdb::db_server_info/wpdb::set_sql_mode",
+        "focus": "server identity, SQL mode normalization, charset/collation, and information-schema metadata"
+      },
+      {
+        "id": "runtime:permission-error",
+        "symbol": "wpdb::query",
+        "focus": "limited-user permission denial and wpdb last_error behavior"
+      },
+      {
+        "id": "runtime:transaction-and-locking",
+        "symbol": "wpdb::query",
+        "focus": "transaction rollback and explicit table lock/unlock behavior"
+      }
+    ],
+    "inherited_seed_fixture": {
+      "manifest": "manifests/wp-core/wphx-305-06-wpdb-schema-option-integration-fixture.v1.json",
+      "validation_result": {
+        "status": "passed",
+        "candidate_kind": "oracle_source_mirror",
+        "covered_symbols": 31,
+        "fixture_cases": 10,
+        "comparisons": 3,
+        "skipped_runtimes": 0
+      }
+    },
+    "live_boundaries_covered": [
+      "mysqli connection/bootstrap through wpdb::__construct/db_connect",
+      "server charset/collation negotiation and SQL mode setup",
+      "real DDL/DML execution for maybe_create_table, maybe_add_column, and dbDelta",
+      "DESCRIBE and SHOW INDEX metadata consumed by dbDelta",
+      "database-backed option and transient storage in wp_options",
+      "limited-user permission denial captured through wpdb::last_error",
+      "transaction rollback and LOCK TABLES/UNLOCK TABLES behavior"
+    ],
+    "native_boundaries": [
+      {
+        "id": "local-php-mysqli-client",
+        "reason": "The locked php:8.4-cli and php:8.5-cli containers do not include mysqli/pdo_mysql in this toolchain. The live DB gate therefore uses the local PHP CLI mysqli client and records this as the client boundary."
+      },
+      {
+        "id": "wp-admin-admin-include-stub",
+        "reason": "upgrade.php requires wp-admin/includes/admin.php at load time, but the live gate exercises dbDelta(), maybe_create_table(), maybe_add_column(), wp_should_upgrade_global_tables(), option.php, and transient storage only."
+      },
+      {
+        "id": "root-container-bootstrap",
+        "reason": "The fixture provisions disposable local Docker databases with root bootstrap credentials, then creates a limited user for permission-denial coverage. Production credential provisioning and secret handling are outside this parity gate."
+      }
+    ],
+    "closes_gaps_from": [
+      {
+        "manifest": "manifests/wp-core/wphx-305-06-wpdb-schema-option-integration-fixture.v1.json",
+        "gap": "live-mysql-execution-not-yet-covered",
+        "resolution": "WPHX-305.07 runs the WPHX-305.06 schema/option/transient seed cases against locked live MySQL and MariaDB containers and records remaining non-database boundaries separately."
+      }
+    ],
+    "follows": [
+      "WPHX-305.06"
+    ]
+  },
+  "runtimes": {
+    "db": [
+      {
+        "id": "mysql-8.4",
+        "engine": "mysql",
+        "image_lock": {
+          "registry": "registry-1.docker.io",
+          "repository": "library/mysql",
+          "tag": "8.4",
+          "index_digest": "sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+          "media_type": "application/vnd.oci.image.index.v1+json",
+          "linux_amd64_digest": "sha256:94d1a3602540127d4979699ff8f6b6ae3d276a95305b3822c17abf3258995575",
+          "linux_arm64_digest": "sha256:b6838bca58d96cdcfb36999bb90c3558a684ef2302430dad1694070cc984312c"
+        },
+        "image": {
+          "image": "library/mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+          "id": "sha256:36fc05616f8ea53e509c0a3831c4a6ec1e624ae24a2aa93d8d8f08f8c5ff848e",
+          "repo_digests": [
+            "mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2"
+          ],
+          "architecture": "arm64",
+          "os": "linux",
+          "created": "2026-06-16T23:46:27.398798324Z"
+        },
+        "query": {
+          "version": "8.4.10",
+          "comment": "MySQL Community Server - GPL",
+          "db_name": "wordpresshx_live"
+        }
+      },
+      {
+        "id": "mariadb-11.8",
+        "engine": "mariadb",
+        "image_lock": {
+          "registry": "registry-1.docker.io",
+          "repository": "library/mariadb",
+          "tag": "11.8",
+          "index_digest": "sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+          "media_type": "application/vnd.oci.image.index.v1+json",
+          "linux_amd64_digest": "sha256:d1f0379f1ef03c24aa465744e3fc3482deded8faca5d5178a458a75a18b2b5db",
+          "linux_arm64_digest": "sha256:d4638c2e594ba5f384b9a05ecd6913b5b16cb2dfa4c45313fcd7823cda1b89e1"
+        },
+        "image": {
+          "image": "library/mariadb@sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+          "id": "sha256:1484037127ecbc5729abb5496edb74c33fc34e8a2b0c20ec96feda34a1d2bdd3",
+          "repo_digests": [
+            "mariadb@sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61"
+          ],
+          "architecture": "arm64",
+          "os": "linux",
+          "created": "2026-06-02T08:19:36.327440509Z"
+        },
+        "query": {
+          "version": "11.8.8-MariaDB-ubu2404",
+          "comment": "mariadb.org binary distribution",
+          "db_name": "wordpresshx_live"
+        }
+      }
+    ],
+    "php_client": {
+      "id": "local-php-cli",
+      "php_version": "8.4.7",
+      "executable": "/opt/homebrew/bin/php"
+    }
+  },
+  "run_summaries": [
+    {
+      "id": "mysql-8.4:oracle",
+      "runtime": "mysql-8.4",
+      "mode": "oracle",
+      "command": "php build/wp-core/wphx-305-07/probe.php oracle build/wp-core/wphx-305-07/oracle 127.0.0.1 <port> root <password> wordpresshx_live mysql-8.4",
+      "php_version": "8.4.7",
+      "database": {
+        "serverInfo": "8.4.10",
+        "dbVersion": "8.4.10",
+        "host": "127.0.0.1",
+        "database": "wordpresshx_live"
+      },
+      "case_count": 13,
+      "result_sha256": "sha256:a87a473d63703811178b209d259631c56d7fcdeef2bfebb532f329c4dc400d7b"
+    },
+    {
+      "id": "mysql-8.4:candidate",
+      "runtime": "mysql-8.4",
+      "mode": "candidate",
+      "command": "php build/wp-core/wphx-305-07/probe.php candidate build/wp-core/wphx-305-07/candidate 127.0.0.1 <port> root <password> wordpresshx_live mysql-8.4",
+      "php_version": "8.4.7",
+      "database": {
+        "serverInfo": "8.4.10",
+        "dbVersion": "8.4.10",
+        "host": "127.0.0.1",
+        "database": "wordpresshx_live"
+      },
+      "case_count": 13,
+      "result_sha256": "sha256:a87a473d63703811178b209d259631c56d7fcdeef2bfebb532f329c4dc400d7b"
+    },
+    {
+      "id": "mariadb-11.8:oracle",
+      "runtime": "mariadb-11.8",
+      "mode": "oracle",
+      "command": "php build/wp-core/wphx-305-07/probe.php oracle build/wp-core/wphx-305-07/oracle 127.0.0.1 <port> root <password> wordpresshx_live mariadb-11.8",
+      "php_version": "8.4.7",
+      "database": {
+        "serverInfo": "11.8.8-MariaDB-ubu2404",
+        "dbVersion": "11.8.8",
+        "host": "127.0.0.1",
+        "database": "wordpresshx_live"
+      },
+      "case_count": 13,
+      "result_sha256": "sha256:fd8fa367c4422a646ca2b1d86b1a5ea15e7ef5cc83c1551a65ffe27b28f7c8f5"
+    },
+    {
+      "id": "mariadb-11.8:candidate",
+      "runtime": "mariadb-11.8",
+      "mode": "candidate",
+      "command": "php build/wp-core/wphx-305-07/probe.php candidate build/wp-core/wphx-305-07/candidate 127.0.0.1 <port> root <password> wordpresshx_live mariadb-11.8",
+      "php_version": "8.4.7",
+      "database": {
+        "serverInfo": "11.8.8-MariaDB-ubu2404",
+        "dbVersion": "11.8.8",
+        "host": "127.0.0.1",
+        "database": "wordpresshx_live"
+      },
+      "case_count": 13,
+      "result_sha256": "sha256:fd8fa367c4422a646ca2b1d86b1a5ea15e7ef5cc83c1551a65ffe27b28f7c8f5"
+    }
+  ],
+  "trace_samples": [
+    {
+      "id": "mysql-8.4:oracle",
+      "runtime": "mysql-8.4",
+      "engine": "mysql",
+      "result": {
+        "runtime": "mysql-8.4",
+        "database": {
+          "serverInfo": "8.4.10",
+          "dbVersion": "8.4.10",
+          "host": "127.0.0.1",
+          "database": "wordpresshx_live"
+        },
+        "coveredFunctionExists": {
+          "maybe_create_table": true,
+          "maybe_add_column": true,
+          "dbDelta": true,
+          "wp_get_db_schema": true,
+          "wp_should_upgrade_global_tables": true,
+          "wp_load_alloptions": true,
+          "get_option": true,
+          "get_options": true,
+          "add_option": true,
+          "update_option": true,
+          "delete_option": true,
+          "wp_prime_option_caches": true,
+          "wp_set_option_autoload_values": true,
+          "set_transient": true,
+          "get_transient": true,
+          "delete_transient": true,
+          "delete_expired_transients": true
+        },
+        "coveredMethodExists": {
+          "wpdb_query": true,
+          "wpdb_get_var": true,
+          "wpdb_get_row": true,
+          "wpdb_get_col": true,
+          "wpdb_get_results": true,
+          "wpdb_insert": true,
+          "wpdb_update": true,
+          "wpdb_delete": true,
+          "wpdb_prepare": true,
+          "wpdb_db_server_info": true,
+          "wpdb_get_table_charset": true
+        },
+        "cases": [
+          {
+            "id": "schema:maybe-create-table",
+            "symbol": "maybe_create_table",
+            "value": {
+              "existing": true,
+              "created": true,
+              "existingTable": true,
+              "createdTable": true,
+              "createdCols": [
+                {
+                  "Field": "id",
+                  "Type": "int",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "0",
+                  "Extra": ""
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:maybe-add-column",
+            "symbol": "maybe_add_column",
+            "value": {
+              "existing": true,
+              "added": true,
+              "columns": [
+                {
+                  "Field": "id",
+                  "Type": "int",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "0",
+                  "Extra": ""
+                },
+                {
+                  "Field": "slug",
+                  "Type": "varchar(30)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "",
+                  "Extra": ""
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:dbdelta-plan-no-execute",
+            "symbol": "dbDelta",
+            "value": {
+              "plan": {
+                "0": "Added index wp_delta KEY `title_idx` (`title`)",
+                "wp_delta.title": "Changed default value of wp_delta.title from old to new",
+                "wp_delta.slug": "Added column wp_delta.slug"
+              },
+              "columns": [
+                {
+                  "Field": "id",
+                  "Type": "int",
+                  "Null": "NO",
+                  "Key": "PRI",
+                  "Default": "0",
+                  "Extra": ""
+                },
+                {
+                  "Field": "title",
+                  "Type": "varchar(20)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "old",
+                  "Extra": ""
+                }
+              ],
+              "indexes": [
+                {
+                  "Key_name": "PRIMARY",
+                  "Column_name": "id",
+                  "Non_unique": "0",
+                  "Sub_part": null,
+                  "Index_type": "BTREE"
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:dbdelta-execute-and-dml",
+            "symbol": "dbDelta",
+            "value": {
+              "plan": {
+                "0": "Added index wp_delta KEY `title_idx` (`title`)",
+                "wp_delta.title": "Changed default value of wp_delta.title from old to new",
+                "wp_delta.slug": "Added column wp_delta.slug"
+              },
+              "columns": [
+                {
+                  "Field": "id",
+                  "Type": "int",
+                  "Null": "NO",
+                  "Key": "PRI",
+                  "Default": "0",
+                  "Extra": ""
+                },
+                {
+                  "Field": "title",
+                  "Type": "varchar(50)",
+                  "Null": "NO",
+                  "Key": "MUL",
+                  "Default": "new",
+                  "Extra": ""
+                },
+                {
+                  "Field": "slug",
+                  "Type": "varchar(30)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "",
+                  "Extra": ""
+                }
+              ],
+              "indexes": [
+                {
+                  "Key_name": "PRIMARY",
+                  "Column_name": "id",
+                  "Non_unique": "0",
+                  "Sub_part": null,
+                  "Index_type": "BTREE"
+                },
+                {
+                  "Key_name": "title_idx",
+                  "Column_name": "title",
+                  "Non_unique": "1",
+                  "Sub_part": null,
+                  "Index_type": "BTREE"
+                }
+              ],
+              "rows": [
+                {
+                  "id": "1",
+                  "title": "Beta",
+                  "slug": "alpha"
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:wp-get-db-schema-blog-scope",
+            "symbol": "wp_get_db_schema",
+            "value": {
+              "bytes": 5827,
+              "sha256": "42261881530ef81c830a8f2babc23b2280994a72ec78d29475fcdf0fc12e34de",
+              "containsOptions": true,
+              "containsPosts": true,
+              "charsetCollate": "DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci",
+              "blogidAfter": 1,
+              "prefixAfter": "wp_"
+            },
+            "error": null
+          },
+          {
+            "id": "schema:global-upgrade-filter",
+            "symbol": "wp_should_upgrade_global_tables/dbDelta",
+            "value": {
+              "allowedShouldUpgrade": true,
+              "planDenied": [],
+              "planAllowed": [],
+              "indexes": []
+            },
+            "error": null
+          },
+          {
+            "id": "options:autoload-add-update-delete",
+            "symbol": "wp_load_alloptions/get_option/add_option/update_option/delete_option",
+            "value": {
+              "alloptionKeys": [
+                "siteurl",
+                "home",
+                "wphx_autoloaded",
+                "wphx_bulk_on"
+              ],
+              "siteurl": "https://example.test",
+              "home": "https://example.test",
+              "added": true,
+              "addedValue": {
+                "nested": "value"
+              },
+              "updated": true,
+              "updatedValue": "changed-value",
+              "deleted": true,
+              "deletedAfter": "after-delete-default",
+              "snapshot": {
+                "rows": {
+                  "wphx_added": {
+                    "value": {
+                      "nested": "value"
+                    },
+                    "rawSha256": "d5268a9d04d260ae80d62db7fd55899af1c91f2a1ee9e93d2d74595cd4ae8ed7",
+                    "rawBytes": 31,
+                    "autoload": "on"
+                  },
+                  "wphx_nonautoload": {
+                    "value": "changed-value",
+                    "rawSha256": "18f83cd3bc265ecec35f9f76bd5fabd0c5122a23f66039ec139684b367a85229",
+                    "rawBytes": 13,
+                    "autoload": "on"
+                  }
+                },
+                "cache": {
+                  "alloptionsKeys": [
+                    "siteurl",
+                    "home",
+                    "wphx_autoloaded",
+                    "wphx_bulk_on",
+                    "wphx_added",
+                    "wphx_nonautoload"
+                  ],
+                  "notoptionsKeys": [
+                    "wphx_delete_me"
+                  ],
+                  "keys": {
+                    "wphx_added": false,
+                    "wphx_nonautoload": false,
+                    "wphx_delete_me": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "options:batch-prime-and-autoload",
+            "symbol": "get_options/wp_prime_option_caches/wp_set_option_autoload_values",
+            "value": {
+              "options": {
+                "wphx_nonautoload": "stored-off",
+                "wphx_autoloaded": {
+                  "alpha": 1,
+                  "beta": false
+                },
+                "wphx_absent_batch": false
+              },
+              "autoloadResults": {
+                "wphx_bulk_on": true,
+                "wphx_bulk_off": true,
+                "wphx_absent": false
+              },
+              "snapshot": {
+                "rows": {
+                  "wphx_bulk_off": {
+                    "value": "bulk-off",
+                    "rawSha256": "9a7bcf94e84ab3659098a528788b455b124d277926328915440a35d35a45a00b",
+                    "rawBytes": 8,
+                    "autoload": "on"
+                  },
+                  "wphx_bulk_on": {
+                    "value": "bulk-on",
+                    "rawSha256": "4e9a61f9343da313202250faf11fdb3d89dd1b1b0269fb39ecc2842338be2a1b",
+                    "rawBytes": 7,
+                    "autoload": "off"
+                  },
+                  "wphx_nonautoload": {
+                    "value": "stored-off",
+                    "rawSha256": "52c80310284bc3ed38c8ea967e00ae04b45c1d56a4e029c78134d83a05a291bc",
+                    "rawBytes": 10,
+                    "autoload": "off"
+                  }
+                },
+                "cache": {
+                  "alloptionsKeys": false,
+                  "notoptionsKeys": [
+                    "wphx_absent_batch"
+                  ],
+                  "keys": {
+                    "wphx_nonautoload": {
+                      "sha256": "52c80310284bc3ed38c8ea967e00ae04b45c1d56a4e029c78134d83a05a291bc",
+                      "bytes": 10
+                    },
+                    "wphx_absent_batch": false,
+                    "wphx_bulk_on": false,
+                    "wphx_bulk_off": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "transients:database-backed",
+            "symbol": "set_transient/get_transient/delete_transient",
+            "value": {
+              "set": true,
+              "value": {
+                "payload": "value"
+              },
+              "deleted": true,
+              "after": false,
+              "snapshot": {
+                "rows": [],
+                "cache": {
+                  "alloptionsKeys": [
+                    "siteurl",
+                    "home",
+                    "wphx_autoloaded",
+                    "wphx_bulk_on"
+                  ],
+                  "notoptionsKeys": [
+                    "_transient_timeout_wphx_runtime",
+                    "_transient_wphx_runtime"
+                  ],
+                  "keys": {
+                    "_transient_wphx_runtime": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "transients:delete-expired-sql",
+            "symbol": "delete_expired_transients",
+            "value": {
+              "oldValue": "deleted",
+              "oldTimeout": "deleted",
+              "snapshot": {
+                "rows": [],
+                "cache": {
+                  "alloptionsKeys": [
+                    "siteurl",
+                    "home",
+                    "wphx_autoloaded",
+                    "wphx_bulk_on"
+                  ],
+                  "notoptionsKeys": [
+                    "_transient_old_value",
+                    "_transient_timeout_old_value"
+                  ],
+                  "keys": {
+                    "_transient_old_value": false,
+                    "_transient_timeout_old_value": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "runtime:server-sql-mode-and-metadata",
+            "symbol": "wpdb::db_server_info/wpdb::set_sql_mode",
+            "value": {
+              "dbServerInfo": "8.4.10",
+              "dbVersion": "8.4.10",
+              "sqlMode": "NO_ENGINE_SUBSTITUTION",
+              "charsetCollate": "DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci",
+              "tableCharset": "utf8mb4",
+              "optionNameCharset": "utf8mb4",
+              "optionValueCharset": "utf8mb4",
+              "optionNameLength": {
+                "type": "char",
+                "length": 191
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "runtime:permission-error",
+            "symbol": "wpdb::query",
+            "value": {
+              "selectCount": 10,
+              "createResult": false,
+              "createError": {
+                "present": true,
+                "sha256": "e327f4635e24d53ba0f0d525f386e05d8bea6644f293054b2617d3e1013ee145",
+                "message": "CREATE command denied to user 'wphx_limited'@'172.17.0.1' for table 'wp_permission_denied'"
+              },
+              "createdTable": false
+            },
+            "error": null
+          },
+          {
+            "id": "runtime:transaction-and-locking",
+            "symbol": "wpdb::query",
+            "value": {
+              "insideTransactionCount": 1,
+              "afterRollbackCount": 0,
+              "openTablesDuringLock": [
+                {
+                  "Table": "wp_options",
+                  "In_use": "1",
+                  "Name_locked": "0"
+                }
+              ]
+            },
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "mariadb-11.8:oracle",
+      "runtime": "mariadb-11.8",
+      "engine": "mariadb",
+      "result": {
+        "runtime": "mariadb-11.8",
+        "database": {
+          "serverInfo": "11.8.8-MariaDB-ubu2404",
+          "dbVersion": "11.8.8",
+          "host": "127.0.0.1",
+          "database": "wordpresshx_live"
+        },
+        "coveredFunctionExists": {
+          "maybe_create_table": true,
+          "maybe_add_column": true,
+          "dbDelta": true,
+          "wp_get_db_schema": true,
+          "wp_should_upgrade_global_tables": true,
+          "wp_load_alloptions": true,
+          "get_option": true,
+          "get_options": true,
+          "add_option": true,
+          "update_option": true,
+          "delete_option": true,
+          "wp_prime_option_caches": true,
+          "wp_set_option_autoload_values": true,
+          "set_transient": true,
+          "get_transient": true,
+          "delete_transient": true,
+          "delete_expired_transients": true
+        },
+        "coveredMethodExists": {
+          "wpdb_query": true,
+          "wpdb_get_var": true,
+          "wpdb_get_row": true,
+          "wpdb_get_col": true,
+          "wpdb_get_results": true,
+          "wpdb_insert": true,
+          "wpdb_update": true,
+          "wpdb_delete": true,
+          "wpdb_prepare": true,
+          "wpdb_db_server_info": true,
+          "wpdb_get_table_charset": true
+        },
+        "cases": [
+          {
+            "id": "schema:maybe-create-table",
+            "symbol": "maybe_create_table",
+            "value": {
+              "existing": true,
+              "created": true,
+              "existingTable": true,
+              "createdTable": true,
+              "createdCols": [
+                {
+                  "Field": "id",
+                  "Type": "int(11)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "0",
+                  "Extra": ""
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:maybe-add-column",
+            "symbol": "maybe_add_column",
+            "value": {
+              "existing": true,
+              "added": true,
+              "columns": [
+                {
+                  "Field": "id",
+                  "Type": "int(11)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "0",
+                  "Extra": ""
+                },
+                {
+                  "Field": "slug",
+                  "Type": "varchar(30)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "",
+                  "Extra": ""
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:dbdelta-plan-no-execute",
+            "symbol": "dbDelta",
+            "value": {
+              "plan": {
+                "0": "Added index wp_delta KEY `title_idx` (`title`)",
+                "wp_delta.title": "Changed default value of wp_delta.title from old to new",
+                "wp_delta.slug": "Added column wp_delta.slug"
+              },
+              "columns": [
+                {
+                  "Field": "id",
+                  "Type": "int(11)",
+                  "Null": "NO",
+                  "Key": "PRI",
+                  "Default": "0",
+                  "Extra": ""
+                },
+                {
+                  "Field": "title",
+                  "Type": "varchar(20)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "old",
+                  "Extra": ""
+                }
+              ],
+              "indexes": [
+                {
+                  "Key_name": "PRIMARY",
+                  "Column_name": "id",
+                  "Non_unique": "0",
+                  "Sub_part": null,
+                  "Index_type": "BTREE"
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:dbdelta-execute-and-dml",
+            "symbol": "dbDelta",
+            "value": {
+              "plan": {
+                "0": "Added index wp_delta KEY `title_idx` (`title`)",
+                "wp_delta.title": "Changed default value of wp_delta.title from old to new",
+                "wp_delta.slug": "Added column wp_delta.slug"
+              },
+              "columns": [
+                {
+                  "Field": "id",
+                  "Type": "int(11)",
+                  "Null": "NO",
+                  "Key": "PRI",
+                  "Default": "0",
+                  "Extra": ""
+                },
+                {
+                  "Field": "title",
+                  "Type": "varchar(50)",
+                  "Null": "NO",
+                  "Key": "MUL",
+                  "Default": "new",
+                  "Extra": ""
+                },
+                {
+                  "Field": "slug",
+                  "Type": "varchar(30)",
+                  "Null": "NO",
+                  "Key": "",
+                  "Default": "",
+                  "Extra": ""
+                }
+              ],
+              "indexes": [
+                {
+                  "Key_name": "PRIMARY",
+                  "Column_name": "id",
+                  "Non_unique": "0",
+                  "Sub_part": null,
+                  "Index_type": "BTREE"
+                },
+                {
+                  "Key_name": "title_idx",
+                  "Column_name": "title",
+                  "Non_unique": "1",
+                  "Sub_part": null,
+                  "Index_type": "BTREE"
+                }
+              ],
+              "rows": [
+                {
+                  "id": "1",
+                  "title": "Beta",
+                  "slug": "alpha"
+                }
+              ]
+            },
+            "error": null
+          },
+          {
+            "id": "schema:wp-get-db-schema-blog-scope",
+            "symbol": "wp_get_db_schema",
+            "value": {
+              "bytes": 5827,
+              "sha256": "42261881530ef81c830a8f2babc23b2280994a72ec78d29475fcdf0fc12e34de",
+              "containsOptions": true,
+              "containsPosts": true,
+              "charsetCollate": "DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci",
+              "blogidAfter": 1,
+              "prefixAfter": "wp_"
+            },
+            "error": null
+          },
+          {
+            "id": "schema:global-upgrade-filter",
+            "symbol": "wp_should_upgrade_global_tables/dbDelta",
+            "value": {
+              "allowedShouldUpgrade": true,
+              "planDenied": [],
+              "planAllowed": [],
+              "indexes": []
+            },
+            "error": null
+          },
+          {
+            "id": "options:autoload-add-update-delete",
+            "symbol": "wp_load_alloptions/get_option/add_option/update_option/delete_option",
+            "value": {
+              "alloptionKeys": [
+                "siteurl",
+                "home",
+                "wphx_autoloaded",
+                "wphx_bulk_on"
+              ],
+              "siteurl": "https://example.test",
+              "home": "https://example.test",
+              "added": true,
+              "addedValue": {
+                "nested": "value"
+              },
+              "updated": true,
+              "updatedValue": "changed-value",
+              "deleted": true,
+              "deletedAfter": "after-delete-default",
+              "snapshot": {
+                "rows": {
+                  "wphx_added": {
+                    "value": {
+                      "nested": "value"
+                    },
+                    "rawSha256": "d5268a9d04d260ae80d62db7fd55899af1c91f2a1ee9e93d2d74595cd4ae8ed7",
+                    "rawBytes": 31,
+                    "autoload": "on"
+                  },
+                  "wphx_nonautoload": {
+                    "value": "changed-value",
+                    "rawSha256": "18f83cd3bc265ecec35f9f76bd5fabd0c5122a23f66039ec139684b367a85229",
+                    "rawBytes": 13,
+                    "autoload": "on"
+                  }
+                },
+                "cache": {
+                  "alloptionsKeys": [
+                    "siteurl",
+                    "home",
+                    "wphx_autoloaded",
+                    "wphx_bulk_on",
+                    "wphx_added",
+                    "wphx_nonautoload"
+                  ],
+                  "notoptionsKeys": [
+                    "wphx_delete_me"
+                  ],
+                  "keys": {
+                    "wphx_added": false,
+                    "wphx_nonautoload": false,
+                    "wphx_delete_me": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "options:batch-prime-and-autoload",
+            "symbol": "get_options/wp_prime_option_caches/wp_set_option_autoload_values",
+            "value": {
+              "options": {
+                "wphx_nonautoload": "stored-off",
+                "wphx_autoloaded": {
+                  "alpha": 1,
+                  "beta": false
+                },
+                "wphx_absent_batch": false
+              },
+              "autoloadResults": {
+                "wphx_bulk_on": true,
+                "wphx_bulk_off": true,
+                "wphx_absent": false
+              },
+              "snapshot": {
+                "rows": {
+                  "wphx_bulk_off": {
+                    "value": "bulk-off",
+                    "rawSha256": "9a7bcf94e84ab3659098a528788b455b124d277926328915440a35d35a45a00b",
+                    "rawBytes": 8,
+                    "autoload": "on"
+                  },
+                  "wphx_bulk_on": {
+                    "value": "bulk-on",
+                    "rawSha256": "4e9a61f9343da313202250faf11fdb3d89dd1b1b0269fb39ecc2842338be2a1b",
+                    "rawBytes": 7,
+                    "autoload": "off"
+                  },
+                  "wphx_nonautoload": {
+                    "value": "stored-off",
+                    "rawSha256": "52c80310284bc3ed38c8ea967e00ae04b45c1d56a4e029c78134d83a05a291bc",
+                    "rawBytes": 10,
+                    "autoload": "off"
+                  }
+                },
+                "cache": {
+                  "alloptionsKeys": false,
+                  "notoptionsKeys": [
+                    "wphx_absent_batch"
+                  ],
+                  "keys": {
+                    "wphx_nonautoload": {
+                      "sha256": "52c80310284bc3ed38c8ea967e00ae04b45c1d56a4e029c78134d83a05a291bc",
+                      "bytes": 10
+                    },
+                    "wphx_absent_batch": false,
+                    "wphx_bulk_on": false,
+                    "wphx_bulk_off": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "transients:database-backed",
+            "symbol": "set_transient/get_transient/delete_transient",
+            "value": {
+              "set": true,
+              "value": {
+                "payload": "value"
+              },
+              "deleted": true,
+              "after": false,
+              "snapshot": {
+                "rows": [],
+                "cache": {
+                  "alloptionsKeys": [
+                    "siteurl",
+                    "home",
+                    "wphx_autoloaded",
+                    "wphx_bulk_on"
+                  ],
+                  "notoptionsKeys": [
+                    "_transient_timeout_wphx_runtime",
+                    "_transient_wphx_runtime"
+                  ],
+                  "keys": {
+                    "_transient_wphx_runtime": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "transients:delete-expired-sql",
+            "symbol": "delete_expired_transients",
+            "value": {
+              "oldValue": "deleted",
+              "oldTimeout": "deleted",
+              "snapshot": {
+                "rows": [],
+                "cache": {
+                  "alloptionsKeys": [
+                    "siteurl",
+                    "home",
+                    "wphx_autoloaded",
+                    "wphx_bulk_on"
+                  ],
+                  "notoptionsKeys": [
+                    "_transient_old_value",
+                    "_transient_timeout_old_value"
+                  ],
+                  "keys": {
+                    "_transient_old_value": false,
+                    "_transient_timeout_old_value": false
+                  }
+                }
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "runtime:server-sql-mode-and-metadata",
+            "symbol": "wpdb::db_server_info/wpdb::set_sql_mode",
+            "value": {
+              "dbServerInfo": "11.8.8-MariaDB-ubu2404",
+              "dbVersion": "11.8.8",
+              "sqlMode": "NO_ENGINE_SUBSTITUTION",
+              "charsetCollate": "DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci",
+              "tableCharset": "utf8mb4",
+              "optionNameCharset": "utf8mb4",
+              "optionValueCharset": "utf8mb4",
+              "optionNameLength": {
+                "type": "char",
+                "length": 191
+              }
+            },
+            "error": null
+          },
+          {
+            "id": "runtime:permission-error",
+            "symbol": "wpdb::query",
+            "value": {
+              "selectCount": 10,
+              "createResult": false,
+              "createError": {
+                "present": true,
+                "sha256": "5c3b25ed716a67a2452ac097cc7e8346618f38f94c65ea0c6819d943adf888a8",
+                "message": "CREATE command denied to user 'wphx_limited'@'172.17.0.1' for table `wordpresshx_live`.`wp_permission_denied`"
+              },
+              "createdTable": false
+            },
+            "error": null
+          },
+          {
+            "id": "runtime:transaction-and-locking",
+            "symbol": "wpdb::query",
+            "value": {
+              "insideTransactionCount": 1,
+              "afterRollbackCount": 0,
+              "openTablesDuringLock": [
+                {
+                  "Table": "wp_options",
+                  "In_use": "1",
+                  "Name_locked": "0"
+                }
+              ]
+            },
+            "error": null
+          }
+        ]
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "mysql-8.4",
+      "runtime": "mysql-8.4",
+      "engine": "mysql",
+      "matches": true,
+      "oracle_sha256": "sha256:a87a473d63703811178b209d259631c56d7fcdeef2bfebb532f329c4dc400d7b",
+      "candidate_sha256": "sha256:a87a473d63703811178b209d259631c56d7fcdeef2bfebb532f329c4dc400d7b",
+      "oracle_case_count": 13,
+      "candidate_case_count": 13
+    },
+    {
+      "id": "mariadb-11.8",
+      "runtime": "mariadb-11.8",
+      "engine": "mariadb",
+      "matches": true,
+      "oracle_sha256": "sha256:fd8fa367c4422a646ca2b1d86b1a5ea15e7ef5cc83c1551a65ffe27b28f7c8f5",
+      "candidate_sha256": "sha256:fd8fa367c4422a646ca2b1d86b1a5ea15e7ef5cc83c1551a65ffe27b28f7c8f5",
+      "oracle_case_count": 13,
+      "candidate_case_count": 13
+    }
+  ],
+  "remaining_gaps": [
+    {
+      "id": "haxe-candidate-not-yet-installed",
+      "owner": "WPHX-305",
+      "detail": "The candidate side is a copied WordPress oracle source tree until selected wpdb/schema/option helpers move behind typed Haxe parity candidates."
+    },
+    {
+      "id": "custom-php-db-client-image-not-yet-locked",
+      "owner": "future toolchain gate",
+      "detail": "The official locked PHP CLI images do not include mysqli/pdo_mysql. A future custom PHP DB-client image can add PHP-version matrix coverage for this live database gate."
+    },
+    {
+      "id": "full-admin-upgrade-surface-deferred",
+      "owner": "future admin/install workset",
+      "detail": "upgrade.php is loaded with a stubbed admin include because this harness covers database helpers and storage paths, not the broader install/admin API."
+    },
+    {
+      "id": "full-upstream-phpunit-not-yet-ported",
+      "owner": "WPHX-305",
+      "detail": "This fixture covers WPHX-305.06 seed traces plus live runtime checks. Full upstream wpdb, dbDelta, option, and transient PHPUnit parity remains a domain-level closure requirement."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 35,
+    "fixture_cases": 13,
+    "db_runtimes": 2,
+    "comparisons": 2,
+    "skipped_runtimes": 0
+  }
+}

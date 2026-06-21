@@ -109,6 +109,8 @@
     "wp:core:wphx-305-charset-prefix:check": "node tools/wp-core/run-wpdb-charset-prefix-fixture.mjs --check",
     "wp:core:wphx-305-schema-option": "node tools/wp-core/run-wpdb-schema-option-integration-fixture.mjs",
     "wp:core:wphx-305-schema-option:check": "node tools/wp-core/run-wpdb-schema-option-integration-fixture.mjs --check",
+    "wp:core:wphx-305-live-db": "node tools/wp-core/run-wpdb-live-db-runtime-gate.mjs",
+    "wp:core:wphx-305-live-db:check": "node tools/wp-core/run-wpdb-live-db-runtime-gate.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
