@@ -1,0 +1,41 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-000-01-test-architecture-adr",
+  "issue": {
+    "id": "wordpresshx-w91.21",
+    "external_ref": "WPHX-000.01",
+    "title": "Capture oracle test architecture decision"
+  },
+  "recorded_at": "2026-06-21T18:57:58Z",
+  "artifacts": [
+    {
+      "path": "docs/adr/ADR-003-test-architecture-and-snapshots.md",
+      "role": "accepted test architecture and snapshot policy ADR"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "agent rule clarifying GPT 5.5 Pro oracle review terminology"
+    },
+    {
+      "path": ".beads/issues.jsonl",
+      "role": "Beads export with WPHX-700 implementation follow-ups"
+    }
+  ],
+  "verification_commands": [
+    "npm run beads:validate",
+    "npm run receipts:validate",
+    "npm run security:gitleaks:staged"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "evidence_class": "provenance",
+    "artifact_scope": "governance_decision",
+    "follow_up_issues": [
+      "WPHX-700.02",
+      "WPHX-700.03",
+      "WPHX-700.04",
+      "WPHX-700.05",
+      "WPHX-700.06"
+    ]
+  }
+}

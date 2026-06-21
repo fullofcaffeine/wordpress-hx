@@ -27,7 +27,7 @@ Record checkout paths, commits, dirty state, and intended authority in `upstream
 6. Do not hide unsupported constructs. Create Beads issues and compiler-pressure records with minimized fixtures, upstream references, fallback, and removal condition.
 7. Keep upstream checkouts as siblings by default. Do not vendor, copy, or submodule WordPress, Gutenberg, genes-ts, or compiler repos unless a Beads task and ADR explicitly choose that path.
 8. Keep CAF out of bootstrap work. Preserve machine-readable boundaries for future ingestion, but do not add CAF commands, gates, or dependencies during the initial program setup.
-9. For unusually tricky or high-impact issues, especially architecture, compiler/target strategy, generated PHP ABI design, test architecture, concurrency/workflow design, or long-lived migration plans, explicitly consider asking GPT 5.5 Pro for a second-pass review. Refer to that reviewer as **the oracle** in notes, prompts, and Beads comments. Do not block routine implementation on the oracle, but when risk is high, suggest an oracle review and capture the prompt/context bundle so the decision is reproducible.
+9. For unusually tricky or high-impact issues, especially architecture, compiler/target strategy, generated PHP ABI design, test architecture, concurrency/workflow design, or long-lived migration plans, explicitly consider asking GPT 5.5 Pro for a second-pass review. Refer to that external architecture reviewer as **the oracle** in notes, prompts, and Beads comments, while keeping WordPress/Gutenberg as the behavior oracles. Do not block routine implementation on the oracle, but when risk is high, suggest an oracle review and capture the prompt/context bundle so the decision is reproducible.
 
 ## Haxe and Target Design
 
