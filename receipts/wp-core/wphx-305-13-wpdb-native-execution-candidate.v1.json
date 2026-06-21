@@ -1,0 +1,67 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-13-wpdb-native-execution-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.13",
+    "external_ref": "WPHX-305.13",
+    "title": "Promote wpdb native execution boundary Haxe candidate slice"
+  },
+  "recorded_at": "2026-06-21T05:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-13-wpdb-native-execution-candidate.v1.json",
+      "role": "wpdb native execution boundary live MySQL/MariaDB Haxe candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-13-wpdb-native-execution-candidate.v1.json",
+      "role": "Haxe parity candidate ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-native-execution-candidate.mjs",
+      "role": "wpdb native execution boundary live DB candidate generator and check-mode validator"
+    },
+    {
+      "path": "src/wphx/wp/db/LiveDbSchema.hx",
+      "role": "typed Haxe schema helper decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/DbDeltaPlanner.hx",
+      "role": "typed Haxe dbDelta planning decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbResultSelector.hx",
+      "role": "typed Haxe wpdb result-selection decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbQueryState.hx",
+      "role": "typed Haxe wpdb query-state decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbNativeExecution.hx",
+      "role": "typed Haxe wpdb native-execution decision implementation"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-native-execution-candidate",
+    "npm run wp:core:wphx-305-native-execution-candidate:check",
+    "npm run wp:core:wphx-305-query-state-candidate:check",
+    "npm run wp:core:wphx-305-query-result-candidate:check",
+    "npm run wp:core:wphx-305-dbdelta-candidate:check",
+    "npm run wp:core:wphx-305-live-db-candidate:check",
+    "npm run wp:core:wphx-305-live-db:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_generated_wpdb_native_execution_shell",
+    "promoted_symbols": 8,
+    "promoted_decisions": 17,
+    "covered_symbols": 37,
+    "fixture_cases": 16,
+    "db_runtimes": 2,
+    "comparisons": 2,
+    "skipped_runtimes": 0
+  }
+}
