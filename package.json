@@ -123,6 +123,8 @@
     "wp:core:wphx-305-native-execution-candidate:check": "node tools/wp-core/run-wpdb-native-execution-candidate.mjs --check",
     "wp:core:wphx-305-result-population-candidate": "node tools/wp-core/run-wpdb-result-population-candidate.mjs",
     "wp:core:wphx-305-result-population-candidate:check": "node tools/wp-core/run-wpdb-result-population-candidate.mjs --check",
+    "wp:core:wphx-305-raw-resource-candidate": "node tools/wp-core/run-wpdb-raw-resource-candidate.mjs",
+    "wp:core:wphx-305-raw-resource-candidate:check": "node tools/wp-core/run-wpdb-raw-resource-candidate.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
