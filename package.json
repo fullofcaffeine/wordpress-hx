@@ -129,6 +129,8 @@
     "wp:core:wphx-305-mysqli-boundary-candidate:check": "node tools/wp-core/run-wpdb-mysqli-boundary-candidate.mjs --check",
     "wp:core:wphx-305-mysqli-row-traversal-candidate": "node tools/wp-core/run-wpdb-mysqli-row-traversal-candidate.mjs",
     "wp:core:wphx-305-mysqli-row-traversal-candidate:check": "node tools/wp-core/run-wpdb-mysqli-row-traversal-candidate.mjs --check",
+    "wp:core:wphx-305-mysqli-lowering-strategy": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs",
+    "wp:core:wphx-305-mysqli-lowering-strategy:check": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",

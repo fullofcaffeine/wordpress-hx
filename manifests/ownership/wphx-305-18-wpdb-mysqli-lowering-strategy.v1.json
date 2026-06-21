@@ -1,0 +1,71 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-mysqli-lowering-strategy",
+  "issue": {
+    "id": "wordpresshx-l76.9.18",
+    "external_ref": "WPHX-305.18"
+  },
+  "unit": {
+    "kind": "compiler-strategy",
+    "name": "wpdb mysqli global PHP call lowering strategy",
+    "area": "wp-includes/class-wpdb.php and PHP target generation",
+    "public_contract": "WordPress-compatible wpdb PHP methods keep their reflection-visible public interface while typed Haxe owns query/fetch decision logic. Until a PHP target/reflaxe lowering emits receiver-less mysqli_query()/mysqli_fetch_object() calls directly, WPHX_305_17_MysqliBoundary remains the narrow generated PHP target-native boundary for those two native operations."
+  },
+  "ownership_state": "compiler_strategy_selected_deferred",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "paths": [
+      "src/wp-includes/class-wpdb.php"
+    ],
+    "inherited_manifest": "manifests/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs",
+    "manifests/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
+    "manifests/ownership/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
+    "receipts/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-305-18",
+    "manifests/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
+    "manifests/ownership/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
+    "receipts/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json"
+  ],
+  "bridge": {
+    "kind": "compiler_pressure_record",
+    "reason": "The stock Haxe PHP target can type the mysqli handle/result values but currently lowers static extern calls through an extern-class receiver. That is not idiomatic WordPress PHP for mysqli_query()/mysqli_fetch_object(), and source-level PHP string escapes would violate the typed ownership boundary.",
+    "bounded_by": [
+      "stock Haxe PHP extern probes",
+      "Reflaxe/custom target references from sibling compiler repos",
+      "WPHX_305_17_MysqliBoundary generated PHP target-native boundary",
+      "WPHX-305.17 live MySQL/MariaDB row-traversal receipt"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Replace WPHX_305_17_MysqliBoundary only after a PHP target/backend proof emits direct receiver-less mysqli_query()/mysqli_fetch_object() calls from typed Haxe and the WPHX-305 live database gates continue to pass.",
+    "owner_issue": "WPHX-305.19",
+    "target_state": "verified_haxe_owned_php_global_lowering"
+  },
+  "smell_fixes": [
+    {
+      "description": "Chose a compiler/backend fix over broader Dynamic, untyped, raw php.Syntax.code, or PHP postprocessing. This keeps the port as a real Haxe-owned implementation while preserving WordPress plugin-facing PHP.",
+      "behavior_policy": "no_observable_change"
+    }
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-mysqli-lowering-strategy",
+      "npm run wp:core:wphx-305-mysqli-lowering-strategy:check",
+      "npm run wp:core:wphx-305-mysqli-row-traversal-candidate:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-18-wpdb-mysqli-lowering-strategy",
+      "receipt:wphx-305-17-wpdb-mysqli-row-traversal-candidate"
+    ],
+    "manifest_digest": "sha256:7ff37f492e53ba7e71a7962ae74569123474b21a05d086d0eaa5a64862d72983"
+  },
+  "notes": "This artifact records a decision and proof path, not a generated wpdb behavior change. The next slice should scaffold the actual PHP target/reflaxe lowering proof."
+}

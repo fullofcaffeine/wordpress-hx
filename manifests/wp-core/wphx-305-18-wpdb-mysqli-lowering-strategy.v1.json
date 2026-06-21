@@ -1,0 +1,806 @@
+{
+  "schema": "wphx.wp-core-wpdb-mysqli-lowering-strategy.v1",
+  "issue": "WPHX-305.18",
+  "generated_at": "2026-06-21T06:20:00.000Z",
+  "generator": "tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs",
+  "inputs": {
+    "predecessor_manifest": {
+      "path": "manifests/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+      "bytes": 91501,
+      "sha256": "sha256:2ebd128400b51ab90a0cd3870f7401f548887be18f1d1f60d0e3b5386bc6a51b"
+    },
+    "predecessor_receipt": {
+      "path": "receipts/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+      "bytes": 3240,
+      "sha256": "sha256:cb734574fc1f1df856a586f7044c49cd401c7ef2a6d54aefb76326c4422f30a9"
+    },
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 5811,
+      "sha256": "sha256:c27b6be710bad37eda5fb68d8e10e0d0abbd60430daa177b0c919cdcf12aff5c"
+    },
+    "reference_repos": [
+      {
+        "id": "reflaxe-readme",
+        "path": "../haxe.compilerdev.reference/reflaxe/README.md",
+        "bytes": 13734,
+        "sha256": "sha256:47fc620ae244081b362ab66e8865aa7b110759ec1217d45e0a8cc233800ddd6e",
+        "evidence": "Reflaxe exists to translate Haxe typed AST into target-language output from macros.",
+        "pattern_checks": [
+          {
+            "pattern": "typed AST",
+            "present": true
+          },
+          {
+            "pattern": "target language",
+            "present": true
+          },
+          {
+            "pattern": "ReflectCompiler.AddCompiler",
+            "present": true
+          }
+        ],
+        "status": "passed"
+      },
+      {
+        "id": "ruby-reflaxe-compiler",
+        "path": "../haxe.ruby/src/reflaxe/ruby/RubyCompiler.hx",
+        "bytes": 326247,
+        "sha256": "sha256:f002ce473d2364e19de8e74c39aa67730469b2c40e2a7b0ea599fc6b7f4e7a8a",
+        "evidence": "The Ruby target uses a GenericCompiler-backed Reflaxe compiler with a target AST.",
+        "pattern_checks": [
+          {
+            "pattern": "extends GenericCompiler",
+            "present": true
+          },
+          {
+            "pattern": "RubyExpr",
+            "present": true
+          }
+        ],
+        "status": "passed"
+      },
+      {
+        "id": "ruby-receiverless-call-printer",
+        "path": "../haxe.ruby/src/reflaxe/ruby/ast/RubyASTPrinter.hx",
+        "bytes": 4634,
+        "sha256": "sha256:3aeeaa3abec2cb4b0d12b0149424c94e09b26fec9519a846d582d02f545a14d7",
+        "evidence": "The Ruby AST printer has a receiver-less call representation, the shape needed for PHP global functions.",
+        "pattern_checks": [
+          {
+            "pattern": "RubyCall(receiver, name, args)",
+            "present": true
+          },
+          {
+            "pattern": "receiver == null",
+            "present": true
+          }
+        ],
+        "status": "passed"
+      },
+      {
+        "id": "elixir-call-builder",
+        "path": "../haxe.elixir.codex/src/reflaxe/elixir/ast/builders/CallExprBuilder.hx",
+        "bytes": 85077,
+        "sha256": "sha256:1070549148f747cab1a1f10831cfaccacdddb5baf734497b599d8290085a25b3",
+        "evidence": "The Elixir target centralizes typed call lowering from TCall into target-specific call forms.",
+        "pattern_checks": [
+          {
+            "pattern": "buildCall",
+            "present": true
+          },
+          {
+            "pattern": "TCall",
+            "present": true
+          }
+        ],
+        "status": "passed"
+      },
+      {
+        "id": "rust-compiler-call-lowering",
+        "path": "../haxe.rust/src/reflaxe/rust/RustCompiler.hx",
+        "bytes": 560450,
+        "sha256": "sha256:7eb535508fecad91f7bf22076c951fff372f4941e630c28161f38f570a2638c8",
+        "evidence": "The Rust target keeps call lowering in compiler code instead of source-level string escapes.",
+        "pattern_checks": [
+          {
+            "pattern": "function compileCall",
+            "present": true
+          },
+          {
+            "pattern": "TCall",
+            "present": true
+          },
+          {
+            "pattern": "ECall",
+            "present": true
+          }
+        ],
+        "status": "passed"
+      }
+    ]
+  },
+  "inherited_context": {
+    "predecessor": {
+      "issue": "WPHX-305.17",
+      "candidate_kind": "haxe_generated_wpdb_mysqli_row_traversal_shell",
+      "validation_result": {
+        "status": "passed",
+        "candidate_kind": "haxe_generated_wpdb_mysqli_row_traversal_shell",
+        "promoted_symbols": 14,
+        "promoted_decisions": 30,
+        "covered_symbols": 43,
+        "fixture_cases": 18,
+        "db_runtimes": 2,
+        "comparisons": 2,
+        "skipped_runtimes": 0
+      },
+      "remaining_gap_ids": [
+        "wpdb-generated-mysqli-boundary-not-yet-replaced-by-direct-haxe-lowering",
+        "custom-php-db-client-image-not-yet-locked",
+        "full-admin-upgrade-surface-deferred",
+        "full-upstream-phpunit-not-yet-ported"
+      ]
+    },
+    "predecessor_receipt_result": {
+      "status": "passed",
+      "candidate_kind": "haxe_generated_wpdb_mysqli_row_traversal_shell",
+      "promoted_symbols": 14,
+      "promoted_decisions": 30,
+      "covered_symbols": 43,
+      "fixture_cases": 18,
+      "db_runtimes": 2,
+      "comparisons": 2,
+      "skipped_runtimes": 0
+    }
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_version": "8.4.7",
+    "php_cli_executable": "/opt/homebrew/bin/php"
+  },
+  "probes": [
+    {
+      "id": "stock-static-native-extern",
+      "description": "Stock Haxe PHP static extern functions with @:native global PHP names.",
+      "expected_shape": "Haxe should compile, but current stock PHP output qualifies calls through the extern class instead of emitting receiver-less PHP global calls.",
+      "source": {
+        "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/src/probe/Main.hx",
+        "bytes": 558,
+        "sha256": "sha256:a2d8ff643b5a5fc2823af1a662333b1bb8b204e5ba4621692ed766b64db800c3",
+        "contains_dynamic": false,
+        "contains_untyped": false,
+        "contains_php_syntax_code": false
+      },
+      "compile": {
+        "command": "haxe -cp build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/src -main probe.Main -php build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out",
+        "status": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "error": null
+      },
+      "generated_php_files": [
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/index.php",
+          "bytes": 300,
+          "sha256": "sha256:d46a5eb479889517dab877172a73d13d2dfd6509b4e61c1b839848e9ed9a657d"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Array_hx.php",
+          "bytes": 25987,
+          "sha256": "sha256:85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/Exception.php",
+          "bytes": 3913,
+          "sha256": "sha256:9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "bytes": 596,
+          "sha256": "sha256:478e61df72d091166dabb3ad58bc4ef040ecd554ae17751a2e322308c01125ef"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "bytes": 508,
+          "sha256": "sha256:3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/ValueException.php",
+          "bytes": 1062,
+          "sha256": "sha256:647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "bytes": 1398,
+          "sha256": "sha256:c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClass.php",
+          "bytes": 3266,
+          "sha256": "sha256:1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "bytes": 3162,
+          "sha256": "sha256:a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "bytes": 4438,
+          "sha256": "sha256:c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "bytes": 1316,
+          "sha256": "sha256:f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxString.php",
+          "bytes": 9912,
+          "sha256": "sha256:1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_polyfills.php",
+          "bytes": 2272,
+          "sha256": "sha256:80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/Boot.php",
+          "bytes": 42682,
+          "sha256": "sha256:9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/probe/Main.php",
+          "bytes": 725,
+          "sha256": "sha256:90ed4f4575bb59ec282626e6e083d8bd0f21d847f01af2f8ffa99e2e93b46f76"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Std.php",
+          "bytes": 1131,
+          "sha256": "sha256:2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+        }
+      ],
+      "php_lint": [
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/index.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/index.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/index.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Array_hx.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Array_hx.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Array_hx.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/Exception.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/Exception.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/Exception.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/ValueException.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/ValueException.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/haxe/ValueException.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClass.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClass.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClass.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxString.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxString.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_Boot/HxString.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_polyfills.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_polyfills.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/_polyfills.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/Boot.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/Boot.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/php/Boot.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/probe/Main.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/probe/Main.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/probe/Main.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Std.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Std.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-static-native-extern/out/lib/Std.php",
+          "stderr": "",
+          "error": null
+        }
+      ],
+      "evidence_lines": [
+        {
+          "line": 3013,
+          "text": "\t\t$result = MysqliFunctions::mysqli_query($handle, \"SELECT 1\");"
+        },
+        {
+          "line": 3015,
+          "text": "\t\tMysqliFunctions::mysqli_fetch_object($result);"
+        }
+      ],
+      "class_static_call_detected": true,
+      "direct_global_call_detected": false,
+      "verdict": "stock_target_does_not_prove_direct_global_calls"
+    },
+    {
+      "id": "stock-leading-backslash-native-extern",
+      "description": "Stock Haxe PHP static extern functions with leading-backslash @:native names.",
+      "expected_shape": "A leading PHP namespace slash still must not require an extern class receiver, and current stock output does not prove the needed direct global-call shape.",
+      "source": {
+        "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/src/probe/Main.hx",
+        "bytes": 580,
+        "sha256": "sha256:7a474fee93a89e16e473388bd351d91c2ec254c530c5452cc61811ee49ee76dd",
+        "contains_dynamic": false,
+        "contains_untyped": false,
+        "contains_php_syntax_code": false
+      },
+      "compile": {
+        "command": "haxe -cp build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/src -main probe.Main -php build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out",
+        "status": 0,
+        "signal": null,
+        "stdout": "",
+        "stderr": "",
+        "error": null
+      },
+      "generated_php_files": [
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/index.php",
+          "bytes": 300,
+          "sha256": "sha256:d46a5eb479889517dab877172a73d13d2dfd6509b4e61c1b839848e9ed9a657d"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Array_hx.php",
+          "bytes": 25987,
+          "sha256": "sha256:85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/Exception.php",
+          "bytes": 3913,
+          "sha256": "sha256:9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "bytes": 596,
+          "sha256": "sha256:478e61df72d091166dabb3ad58bc4ef040ecd554ae17751a2e322308c01125ef"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "bytes": 508,
+          "sha256": "sha256:3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/ValueException.php",
+          "bytes": 1062,
+          "sha256": "sha256:647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "bytes": 1398,
+          "sha256": "sha256:c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClass.php",
+          "bytes": 3266,
+          "sha256": "sha256:1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "bytes": 3162,
+          "sha256": "sha256:a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "bytes": 4438,
+          "sha256": "sha256:c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "bytes": 1316,
+          "sha256": "sha256:f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxString.php",
+          "bytes": 9912,
+          "sha256": "sha256:1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_polyfills.php",
+          "bytes": 2272,
+          "sha256": "sha256:80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/Boot.php",
+          "bytes": 42682,
+          "sha256": "sha256:9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/probe/Main.php",
+          "bytes": 772,
+          "sha256": "sha256:8a5ec25d447cc12fd9a2143569f7e684a411e4ce8926ae21120eab1164e992b2"
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Std.php",
+          "bytes": 1131,
+          "sha256": "sha256:2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+        }
+      ],
+      "php_lint": [
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/index.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/index.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/index.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Array_hx.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Array_hx.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Array_hx.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/Exception.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/Exception.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/Exception.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayIterator.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/iterators/ArrayKeyValueIterator.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/ValueException.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/ValueException.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/haxe/ValueException.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxAnon.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClass.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClass.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClass.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxClosure.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxDynamicStr.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxEnum.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxString.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxString.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_Boot/HxString.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_polyfills.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_polyfills.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/_polyfills.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/Boot.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/Boot.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/php/Boot.php",
+          "stderr": "",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/probe/Main.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/probe/Main.php",
+          "status": 255,
+          "signal": null,
+          "stdout": "Parse error: syntax error, unexpected fully qualified name \"\\mysqli_query\" in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/probe/Main.php on line 18\nErrors parsing build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/probe/Main.php",
+          "stderr": "PHP Parse error:  syntax error, unexpected fully qualified name \"\\mysqli_query\" in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/probe/Main.php on line 18",
+          "error": null
+        },
+        {
+          "path": "build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Std.php",
+          "command": "php -l build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Std.php",
+          "status": 0,
+          "signal": null,
+          "stdout": "No syntax errors detected in build/wp-core/wphx-305-18/stock-haxe-php-global-call-probes/stock-leading-backslash-native-extern/out/lib/Std.php",
+          "stderr": "",
+          "error": null
+        }
+      ],
+      "evidence_lines": [
+        {
+          "line": 3013,
+          "text": "\t\t$result = DirectMysqliFunctions::\\mysqli_query($handle, \"SELECT 1\");"
+        },
+        {
+          "line": 3015,
+          "text": "\t\tDirectMysqliFunctions::\\mysqli_fetch_object($result);"
+        }
+      ],
+      "class_static_call_detected": true,
+      "direct_global_call_detected": false,
+      "verdict": "stock_target_does_not_prove_direct_global_calls"
+    }
+  ],
+  "custom_target_inventory": [
+    {
+      "path": "src/reflaxe/php",
+      "exists": false
+    },
+    {
+      "path": "src/reflaxe/wordpressphp",
+      "exists": false
+    },
+    {
+      "path": "src/wphx/compiler/php",
+      "exists": false
+    },
+    {
+      "path": "tools/php-target",
+      "exists": false
+    },
+    {
+      "path": "tools/reflaxe/php",
+      "exists": false
+    },
+    {
+      "path": "std/php/_std/wphx",
+      "exists": false
+    }
+  ],
+  "selected_strategy": {
+    "id": "reflaxe-or-custom-php-global-function-intrinsic",
+    "status": "selected_deferred",
+    "decision": "The stock Haxe PHP target does not prove direct receiver-less global mysqli_query()/mysqli_fetch_object() lowering. Select a narrow PHP target/reflaxe intrinsic for typed target-AST calls and keep WPHX_305_17_MysqliBoundary as the temporary ABI-safe boundary."
+  },
+  "selected_lowering_spec": {
+    "id": "typed-php-global-function-intrinsic-spec",
+    "status": "selected_for_custom_target_proof",
+    "typed_call_shape": [
+      {
+        "haxe_owner": "wpdb::_do_query typed native execution path",
+        "callee": "mysqli_query",
+        "receiver": null,
+        "args": [
+          "dbh:MysqliHandle",
+          "query:String"
+        ],
+        "return_type": "MysqliResult"
+      },
+      {
+        "haxe_owner": "wpdb::query selected-row traversal path",
+        "callee": "mysqli_fetch_object",
+        "receiver": null,
+        "args": [
+          "result:MysqliResult"
+        ],
+        "return_type": "Null<NativeRowObject>"
+      }
+    ],
+    "required_php_shape": [
+      "mysqli_query( $dbh, $query )",
+      "mysqli_fetch_object( $result )"
+    ],
+    "target_ast_requirement": "Represent PHP native functions as receiver-less calls in the PHP target AST, not as class-static extern method calls and not as source-level php.Syntax.code strings.",
+    "target_compatibility_requirement": "Emit idiomatic PHP globals so existing plugins, themes, reflection, stack traces, mysqli behavior, and wpdb replacement/drop-in expectations continue to observe WordPress-compatible PHP."
+  },
+  "rejected_options": [
+    {
+      "id": "stock-static-externs",
+      "status": "rejected_for_now",
+      "reason": "The stock static extern probe compiles but does not prove direct receiver-less mysqli_query()/mysqli_fetch_object() global calls on the locked toolchain."
+    },
+    {
+      "id": "leading-backslash-native-name",
+      "status": "rejected_for_now",
+      "reason": "Adding a leading PHP namespace slash to @:native still does not create an owned receiver-less global function call representation."
+    },
+    {
+      "id": "php-syntax-code",
+      "status": "rejected",
+      "reason": "Raw php.Syntax.code would paste target PHP into Haxe strings and bypass typed Haxe ownership. It may only appear in a narrow documented boundary, not as the selected porting strategy."
+    },
+    {
+      "id": "ad-hoc-generated-php-postprocessor",
+      "status": "rejected",
+      "reason": "A text postprocessor would be fragile around namespaces, stack traces, source maps, and plugin-visible PHP; the lowering belongs in a typed target/backend layer."
+    },
+    {
+      "id": "broaden-types-with-dynamic-or-untyped",
+      "status": "rejected",
+      "reason": "The issue is target call shape, not Haxe type expressiveness. Dynamic or untyped would hide the boundary rather than prove safe PHP emission."
+    }
+  ],
+  "remaining_gaps": [
+    {
+      "id": "php-target-global-function-intrinsic-not-yet-implemented",
+      "owner": "WPHX-305.19",
+      "detail": "Scaffold or improve a PHP target path that lowers typed receiver-less calls to idiomatic mysqli_query()/mysqli_fetch_object() PHP without Dynamic, untyped, raw php.Syntax.code, broad casts, or postprocessing."
+    },
+    {
+      "id": "wpdb-generated-mysqli-boundary-still-temporary",
+      "owner": "WPHX-305",
+      "detail": "WPHX_305_17_MysqliBoundary remains the explicit two-method target-native boundary until direct global-call lowering is implemented and live database gates pass."
+    },
+    {
+      "id": "full-wpdb-and-dbdelta-ownership-not-yet-complete",
+      "owner": "WPHX-305",
+      "detail": "The query/fetch call shape is one compiler gap inside the broader wpdb/dbDelta/storage ownership track."
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "compiler_strategy_decision",
+    "selected_strategy": "reflaxe-or-custom-php-global-function-intrinsic",
+    "stock_direct_global_lowering_available": false,
+    "probes": 2,
+    "reference_records": 5,
+    "reference_evidence_passed": true,
+    "predecessor_passed": true
+  },
+  "ownership_manifest": "manifests/ownership/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json"
+}
