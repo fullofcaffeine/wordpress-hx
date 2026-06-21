@@ -1,0 +1,100 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-query-result-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.11",
+    "external_ref": "WPHX-305.11"
+  },
+  "unit": {
+    "kind": "module",
+    "name": "wpdb query/result live database Haxe candidate",
+    "area": "wp-includes/wp-admin",
+    "public_contract": "WordPress-compatible maybe_create_table(), maybe_add_column(), dbDelta(), and wpdb::get_var/get_row/get_results remain callable with their public PHP class/function shape while selected schema, dbDelta, and result-selection decisions delegate to typed Haxe and continue to execute against locked live MySQL and MariaDB runtimes through wpdb."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-admin/includes/schema.php",
+      "src/wp-admin/includes/upgrade.php"
+    ],
+    "digest": "sha256:3d637e4ff944dd8783efc2042c0252d18844288936712ec923381843c101255b"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/wpdb-query-result-candidate.hxml",
+    "src/wphx/wp/db/LiveDbSchema.hx",
+    "src/wphx/wp/db/DbDeltaPlanner.hx",
+    "src/wphx/wp/db/WpdbResultSelector.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbQueryResultCandidateEntry.hx",
+    "tools/wp-core/run-wpdb-query-result-candidate.mjs",
+    "manifests/wp-core/wphx-305-11-wpdb-query-result-candidate.v1.json",
+    "receipts/wp-core/wphx-305-11-wpdb-query-result-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-305-11",
+    "manifests/wp-core/wphx-305-11-wpdb-query-result-candidate.v1.json",
+    "manifests/ownership/wphx-305-11-wpdb-query-result-candidate.v1.json",
+    "receipts/wp-core/wphx-305-11-wpdb-query-result-candidate.v1.json"
+  ],
+  "bridge": {
+    "kind": "generated_shell",
+    "reason": "WordPress core and plugins call global PHP upgrade helpers and wpdb methods with native PHP signatures, mutable public state, and stdClass/array result contracts. The candidate keeps those public PHP shells and delegates normalized table/column existence, dbDelta planning, and bounded result-selection decisions to Haxe.",
+    "bounded_by": [
+      "generated candidate wp-admin/includes/upgrade.php shell",
+      "generated candidate wp-includes/class-wpdb.php method shell",
+      "WPHX-305.11 live MySQL/MariaDB oracle comparison receipt",
+      "native mysqli-backed wpdb query boundary for real database execution"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Promote from generated shell candidate to verified owned distribution only after broader wpdb/schema distribution work proves include timing, reflection, mixed PHP ABI, plugin compatibility, and wpdb replacement/drop-in behavior.",
+    "owner_issue": "WPHX-305",
+    "target_state": "verified_haxe_owned"
+  },
+  "smell_fixes": [
+    {
+      "description": "Separated maybe_create_table()/maybe_add_column() branch decisions, bounded dbDelta classification, and wpdb result-shape/null decisions from native SQL execution into typed Haxe helpers, making the decision surface explicit without changing observable WordPress behavior.",
+      "compatibility_evidence": [
+        "schema:maybe-create-table",
+        "schema:maybe-add-column",
+        "schema:dbdelta-plan-no-execute",
+        "schema:dbdelta-execute-and-dml",
+        "runtime:wpdb-result-shapes"
+      ],
+      "behavior_policy": "no_observable_change"
+    }
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-query-result-candidate",
+      "npm run wp:core:wphx-305-query-result-candidate:check",
+      "npm run wp:core:wphx-305-dbdelta-candidate:check",
+      "npm run wp:core:wphx-305-live-db-candidate:check",
+      "npm run wp:core:wphx-305-live-db:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-11-wpdb-query-result-candidate",
+      "receipt:wphx-305-08-wpdb-live-db-candidate",
+      "receipt:wphx-305-07-wpdb-live-db-runtime-gate"
+    ],
+    "manifest_digest": "sha256:71a963f17c86a814429029f3aa7aeed666bc11b9ce0a8e5d62cbd0656e4d4036"
+  },
+  "notes": "The candidate provisions mysql-8.4 and mariadb-11.8 containers from locked index digests and runs the WPHX-305.07 live DB cases plus a WPHX-305.11 result-shape case with local PHP mysqli. The broad wp-admin include remains stubbed because this workset is scoped to database helpers, dbDelta planning decisions, wpdb result selection, and storage paths."
+}

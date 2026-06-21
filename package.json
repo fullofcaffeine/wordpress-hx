@@ -115,6 +115,8 @@
     "wp:core:wphx-305-live-db-candidate:check": "node tools/wp-core/run-wpdb-live-db-candidate.mjs --check",
     "wp:core:wphx-305-dbdelta-candidate": "node tools/wp-core/run-wpdb-dbdelta-candidate.mjs",
     "wp:core:wphx-305-dbdelta-candidate:check": "node tools/wp-core/run-wpdb-dbdelta-candidate.mjs --check",
+    "wp:core:wphx-305-query-result-candidate": "node tools/wp-core/run-wpdb-query-result-candidate.mjs",
+    "wp:core:wphx-305-query-result-candidate:check": "node tools/wp-core/run-wpdb-query-result-candidate.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
