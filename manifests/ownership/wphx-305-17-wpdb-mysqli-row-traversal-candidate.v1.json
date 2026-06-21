@@ -1,0 +1,125 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-mysqli-row-traversal-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.17",
+    "external_ref": "WPHX-305.17"
+  },
+  "unit": {
+    "kind": "module",
+    "name": "wpdb mysqli row traversal live database Haxe candidate",
+    "area": "wp-includes/wp-admin",
+    "public_contract": "WordPress-compatible maybe_create_table(), maybe_add_column(), dbDelta(), and wpdb::query/get_var/get_row/get_results remain callable with their public PHP class/function shape while selected schema, dbDelta, result-population, raw mysqli metadata, query/fetch boundary-entry, and fetched-row traversal decisions delegate to typed Haxe. The raw mysqli_query() and mysqli_fetch_object() calls stay isolated in a generated PHP target-native boundary and continue to execute against locked live MySQL and MariaDB runtimes through wpdb."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-admin/includes/schema.php",
+      "src/wp-admin/includes/upgrade.php"
+    ],
+    "digest": "sha256:3d637e4ff944dd8783efc2042c0252d18844288936712ec923381843c101255b"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/wpdb-mysqli-row-traversal-candidate.hxml",
+    "src/wphx/wp/db/LiveDbSchema.hx",
+    "src/wphx/wp/db/DbDeltaPlanner.hx",
+    "src/wphx/wp/db/WpdbResultSelector.hx",
+    "src/wphx/wp/db/WpdbQueryState.hx",
+    "src/wphx/wp/db/WpdbNativeExecution.hx",
+    "src/wphx/wp/db/WpdbResultPopulation.hx",
+    "src/wphx/wp/db/WpdbRawResource.hx",
+    "src/wphx/wp/db/WpdbMysqliBoundary.hx",
+    "src/wphx/wp/db/WpdbRowTraversal.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbMysqliRowTraversalCandidateEntry.hx",
+    "tools/wp-core/run-wpdb-mysqli-row-traversal-candidate.mjs",
+    "manifests/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+    "receipts/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-305-17",
+    "manifests/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+    "manifests/ownership/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+    "receipts/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json"
+  ],
+  "bridge": {
+    "kind": "generated_shell",
+    "reason": "WordPress core and plugins call global PHP upgrade helpers and wpdb methods with native PHP signatures, mutable public state, and stdClass/array result contracts. The candidate keeps those public PHP shells, delegates normalized table/column existence, dbDelta planning, selected-row result population, raw mysqli metadata guards, query/fetch boundary-entry decisions, and fetched-row traversal policy to Haxe, and isolates this slice's mysqli_query()/mysqli_fetch_object() calls in WPHX_305_17_MysqliBoundary.",
+    "bounded_by": [
+      "generated candidate wp-admin/includes/upgrade.php shell",
+      "generated candidate wp-includes/class-wpdb.php method shell",
+      "WPHX-305.17 live MySQL/MariaDB oracle comparison receipt",
+      "native mysqli-backed wpdb query boundary for real database execution",
+      "WPHX_305_17_MysqliBoundary generated PHP target-native boundary",
+      "stock Haxe PHP target global-function extern probe"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Promote from generated shell candidate to verified owned distribution only after broader wpdb/schema distribution work proves include timing, reflection, mixed PHP ABI, plugin compatibility, and wpdb replacement/drop-in behavior.",
+    "owner_issue": "WPHX-305",
+    "target_state": "verified_haxe_owned"
+  },
+  "smell_fixes": [
+    {
+      "description": "Separated maybe_create_table()/maybe_add_column() branch decisions, bounded dbDelta classification, wpdb result-shape/null decisions, wpdb::query return/state branch decisions, _do_query timing/logging/execution/reconnect policy, selected-row last_result/num_rows population policy, fetched-row presence and assignment-slot policy, mysqli metadata read/fallback guards, and mysqli query/fetch boundary-entry decisions from native SQL execution into typed Haxe helpers. Raw mysqli_query() and mysqli_fetch_object() are isolated in a two-method generated PHP boundary because stock Haxe PHP externs do not emit direct global PHP function calls.",
+      "compatibility_evidence": [
+        "schema:maybe-create-table",
+        "schema:maybe-add-column",
+        "schema:dbdelta-plan-no-execute",
+        "schema:dbdelta-execute-and-dml",
+        "runtime:wpdb-result-shapes",
+        "runtime:wpdb-native-execution-decisions",
+        "runtime:wpdb-native-execution-log",
+        "runtime:wpdb-mysqli-row-traversal-loop",
+        "runtime:wpdb-mysqli-row-traversal-metadata"
+      ],
+      "behavior_policy": "no_observable_change"
+    }
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-mysqli-row-traversal-candidate",
+      "npm run wp:core:wphx-305-mysqli-row-traversal-candidate:check",
+      "npm run wp:core:wphx-305-mysqli-boundary-candidate:check",
+      "npm run wp:core:wphx-305-raw-resource-candidate:check",
+      "npm run wp:core:wphx-305-result-population-candidate:check",
+      "npm run wp:core:wphx-305-native-execution-candidate:check",
+      "npm run wp:core:wphx-305-query-state-candidate:check",
+      "npm run wp:core:wphx-305-query-result-candidate:check",
+      "npm run wp:core:wphx-305-dbdelta-candidate:check",
+      "npm run wp:core:wphx-305-live-db-candidate:check",
+      "npm run wp:core:wphx-305-live-db:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-17-wpdb-mysqli-row-traversal-candidate",
+      "receipt:wphx-305-16-wpdb-mysqli-boundary-candidate",
+      "receipt:wphx-305-15-wpdb-raw-resource-candidate",
+      "receipt:wphx-305-14-wpdb-result-population-candidate",
+      "receipt:wphx-305-13-wpdb-native-execution-candidate",
+      "receipt:wphx-305-12-wpdb-query-state-candidate",
+      "receipt:wphx-305-11-wpdb-query-result-candidate",
+      "receipt:wphx-305-10-wpdb-dbdelta-candidate",
+      "receipt:wphx-305-08-wpdb-live-db-candidate",
+      "receipt:wphx-305-07-wpdb-live-db-runtime-gate"
+    ],
+    "manifest_digest": "sha256:2ebd128400b51ab90a0cd3870f7401f548887be18f1d1f60d0e3b5386bc6a51b"
+  },
+  "notes": "The candidate provisions mysql-8.4 and mariadb-11.8 containers from locked index digests and runs the WPHX-305.07 live DB cases plus WPHX-305.11 result-shape, WPHX-305.12 query-state, WPHX-305.13 native-execution, WPHX-305.14 result-population, WPHX-305.15 raw-resource metadata, WPHX-305.16 mysqli boundary, and WPHX-305.17 fetched-row traversal cases with local PHP mysqli. The broad wp-admin include remains stubbed because this workset is scoped to database helpers, dbDelta planning decisions, wpdb mysqli native boundaries, and storage paths."
+}

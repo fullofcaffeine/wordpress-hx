@@ -1,0 +1,87 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-17-wpdb-mysqli-row-traversal-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.17",
+    "external_ref": "WPHX-305.17",
+    "title": "Promote wpdb mysqli row traversal Haxe candidate slice"
+  },
+  "recorded_at": "2026-06-21T05:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+      "role": "wpdb mysqli row traversal live MySQL/MariaDB Haxe candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+      "role": "Haxe parity candidate ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-mysqli-row-traversal-candidate.mjs",
+      "role": "wpdb mysqli row traversal live DB candidate generator and check-mode validator"
+    },
+    {
+      "path": "src/wphx/wp/db/LiveDbSchema.hx",
+      "role": "typed Haxe schema helper decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/DbDeltaPlanner.hx",
+      "role": "typed Haxe dbDelta planning decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbResultSelector.hx",
+      "role": "typed Haxe wpdb result-selection decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbQueryState.hx",
+      "role": "typed Haxe wpdb query-state decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbNativeExecution.hx",
+      "role": "typed Haxe wpdb native-execution decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbResultPopulation.hx",
+      "role": "typed Haxe wpdb result-population decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbRawResource.hx",
+      "role": "typed Haxe wpdb raw mysqli resource metadata guard implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbMysqliBoundary.hx",
+      "role": "typed Haxe wpdb mysqli query/fetch boundary-entry decision implementation"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbRowTraversal.hx",
+      "role": "typed Haxe wpdb fetched-row traversal decision implementation"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-mysqli-row-traversal-candidate",
+    "npm run wp:core:wphx-305-mysqli-row-traversal-candidate:check",
+    "npm run wp:core:wphx-305-mysqli-boundary-candidate:check",
+    "npm run wp:core:wphx-305-raw-resource-candidate:check",
+    "npm run wp:core:wphx-305-result-population-candidate:check",
+    "npm run wp:core:wphx-305-native-execution-candidate:check",
+    "npm run wp:core:wphx-305-query-state-candidate:check",
+    "npm run wp:core:wphx-305-query-result-candidate:check",
+    "npm run wp:core:wphx-305-dbdelta-candidate:check",
+    "npm run wp:core:wphx-305-live-db-candidate:check",
+    "npm run wp:core:wphx-305-live-db:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_generated_wpdb_mysqli_row_traversal_shell",
+    "promoted_symbols": 14,
+    "promoted_decisions": 30,
+    "covered_symbols": 43,
+    "fixture_cases": 18,
+    "db_runtimes": 2,
+    "comparisons": 2,
+    "skipped_runtimes": 0
+  }
+}

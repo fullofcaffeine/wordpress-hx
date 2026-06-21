@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 80,
+  "closed_task_count": 81,
   "entries": [
     {
       "external_ref": "WPHX-001",
@@ -373,7 +373,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "fa87e91bee3b56faa16a9dab98e494ab159d79fe9ae8a755c5598dae1dcaa1b7",
+          "sha256": "ed6812522be57e900e1ca91da05370e1501c0ab32fccad24c730bf0ef1d25e63",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -735,6 +735,16 @@
           "path": "receipts/wp-core/wphx-305-16-wpdb-mysqli-boundary-candidate.v1.json",
           "sha256": "10278e8049fcc553453d3a2aad9fa3ab33bd26e72867d581e015a69f798a9457",
           "id": "receipt:wphx-305-16-wpdb-mysqli-boundary-candidate"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-305.17",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+          "sha256": "cb734574fc1f1df856a586f7044c49cd401c7ef2a6d54aefb76326c4422f30a9",
+          "id": "receipt:wphx-305-17-wpdb-mysqli-row-traversal-candidate"
         }
       ]
     },
