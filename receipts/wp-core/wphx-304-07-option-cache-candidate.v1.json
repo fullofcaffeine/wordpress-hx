@@ -1,0 +1,45 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-304-07-option-cache-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.8.7",
+    "external_ref": "WPHX-304.07",
+    "title": "Promote first pure options/cache helpers to Haxe parity candidates"
+  },
+  "recorded_at": "2026-06-21T04:55:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-304-07-option-cache-candidate.v1.json",
+      "role": "option/cache Haxe candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-304-07-option-cache-candidate.v1.json",
+      "role": "Haxe parity candidate ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-option-cache-candidate.mjs",
+      "role": "candidate generator and oracle comparator"
+    },
+    {
+      "path": "src/wphx/wp/options/PureOptionCache.hx",
+      "role": "typed Haxe pure option/cache helper implementation"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-304-option-cache-candidate",
+    "npm run wp:core:wphx-304-option-cache-candidate:check",
+    "npm run wp:core:wphx-304-option-storage:check",
+    "npm run wp:core:wphx-304-object-cache:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_generated_option_cache_shell",
+    "promoted_symbols": 3,
+    "fixture_cases": 5,
+    "comparisons": 3,
+    "skipped_runtimes": 0,
+    "oracle_behavior_matches_haxe_candidate": true
+  }
+}

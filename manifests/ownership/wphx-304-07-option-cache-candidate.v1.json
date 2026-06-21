@@ -1,0 +1,84 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/option-cache-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.8.7",
+    "external_ref": "WPHX-304.07"
+  },
+  "unit": {
+    "kind": "module",
+    "name": "pure options/cache Haxe parity candidates",
+    "area": "wp-includes/option.php wp-includes/cache.php",
+    "public_contract": "WordPress-compatible global PHP functions remain callable with the same names and reflection-visible PHP files while selected pure option/cache decision logic delegates to typed Haxe-generated PHP."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/option.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/plugin.php"
+    ],
+    "digest": "sha256:76b09935f6787f808476fa5e526e1024a61a34e21bb08ef1cdaa2e3e2a585cf3"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/option-cache-candidate.hxml",
+    "src/wphx/wp/options/PureOptionCache.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/OptionCacheCandidateEntry.hx",
+    "tools/wp-core/run-option-cache-candidate.mjs",
+    "manifests/wp-core/wphx-304-07-option-cache-candidate.v1.json",
+    "receipts/wp-core/wphx-304-07-option-cache-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-304-07",
+    "manifests/wp-core/wphx-304-07-option-cache-candidate.v1.json",
+    "manifests/ownership/wphx-304-07-option-cache-candidate.v1.json",
+    "receipts/wp-core/wphx-304-07-option-cache-candidate.v1.json"
+  ],
+  "bridge": {
+    "kind": "generated_shell",
+    "reason": "WordPress plugins and core call global PHP functions with mixed native values and filters. The candidate keeps the public PHP shell and delegates only pure normalized decisions to Haxe.",
+    "bounded_by": [
+      "generated candidate wp-includes/option.php and wp-includes/cache.php shells",
+      "WPHX-304.07 oracle comparison receipt",
+      "native apply_filters boundary for autoload defaults and max-size thresholds"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Promote from generated shell candidate to verified owned distribution only after option/cache distribution work proves reflection, include timing, filters, mixed PHP ABI, and plugin compatibility.",
+    "owner_issue": "WPHX-304",
+    "target_state": "verified_haxe_owned"
+  },
+  "smell_fixes": [
+    {
+      "description": "Moved repeated autoload switch/size/feature decision branches into typed Haxe functions with small scalar contracts and explicit nullable-bool handling.",
+      "compatibility_evidence": [
+        "option-autoload:explicit-values",
+        "option-autoload:default-filter",
+        "option-size:threshold-filter",
+        "cache-supports:default-runtime"
+      ],
+      "behavior_policy": "no_observable_change"
+    }
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-304-option-cache-candidate",
+      "npm run wp:core:wphx-304-option-cache-candidate:check",
+      "npm run wp:core:wphx-304-option-storage:check",
+      "npm run wp:core:wphx-304-object-cache:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-304-07-option-cache-candidate",
+      "receipt:wphx-304-02-option-storage-fixture",
+      "receipt:wphx-304-04-object-cache-fixture",
+      "receipt:wphx-304-05-serialization-cache-fixture"
+    ],
+    "manifest_digest": "sha256:1445279bd05f6f832783d673be15c4eb458546240843d877f0838601f06c4980"
+  },
+  "notes": "maybe_serialize(), maybe_unserialize(), is_serialized(), salted helpers, and cache/global mutation APIs remain native/oracle-owned for now because their PHP serialization grammar, references, globals, or drop-in timing are not low-risk pure Haxe candidates."
+}

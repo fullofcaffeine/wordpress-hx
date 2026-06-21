@@ -93,6 +93,8 @@
     "wp:core:wphx-304-object-cache:check": "node tools/wp-core/run-object-cache-fixture.mjs --check",
     "wp:core:wphx-304-serialization-cache": "node tools/wp-core/run-serialization-cache-fixture.mjs",
     "wp:core:wphx-304-serialization-cache:check": "node tools/wp-core/run-serialization-cache-fixture.mjs --check",
+    "wp:core:wphx-304-option-cache-candidate": "node tools/wp-core/run-option-cache-candidate.mjs",
+    "wp:core:wphx-304-option-cache-candidate:check": "node tools/wp-core/run-option-cache-candidate.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
