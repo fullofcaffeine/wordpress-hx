@@ -1,0 +1,88 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.25",
+    "external_ref": "WPHX-305.25",
+    "title": "Expand wpdb public-state storage adapter coverage"
+  },
+  "recorded_at": "2026-06-21T07:35:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json",
+      "role": "typed Haxe wpdb public-state expanded storage adapter candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json",
+      "role": "Haxe storage adapter/PHP ABI shell ownership manifest"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
+      "role": "typed Haxe wpdb expanded public/magic default and write-route adapter"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-public-state-expanded-storage-adapter-candidate.mjs",
+      "role": "storage adapter shell/oracle/drop-in proof runner"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbPublicStateStorageAdapter.hx",
+      "role": "predecessor selected-state storage adapter kept green"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+      "role": "predecessor typed Haxe wpdb public-state descriptor kept green"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbRowMaterialization.hx",
+      "role": "predecessor typed Haxe row materialization implementation kept green"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbMysqliExecution.hx",
+      "role": "predecessor typed Haxe mysqli @:phpGlobal execution implementation kept green"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-public-state-expanded-storage-adapter-candidate",
+    "npm run wp:core:wphx-305-public-state-expanded-storage-adapter-candidate:check",
+    "npm run wp:core:wphx-305-public-state-storage-adapter-candidate:check",
+    "npm run wp:core:wphx-305-public-state-descriptor-candidate:check",
+    "npm run wp:core:wphx-305-row-materialization-candidate:check",
+    "npm run wp:core:wphx-305-mysqli-phpglobal-candidate:check",
+    "npm run format:haxe:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "selected_strategy": "typed-wpdb-public-state-expanded-storage-adapter-and-php-abi-shell",
+    "expanded_public_storage_property_count": 46,
+    "expanded_magic_storage_property_count": 15,
+    "lazy_magic_native_boundary_property_count": 1,
+    "native_array_public_property_count": 6,
+    "native_array_magic_property_count": 3,
+    "native_resource_boundary_property_count": 2,
+    "protected_write_blocked_property_count": 4,
+    "storage_probe_status": "passed",
+    "dropin_probe_status": "passed",
+    "direct_public_writes_preserved": true,
+    "table_prefix_mutation_preserved": true,
+    "dynamic_property_addition_preserved": true,
+    "magic_internal_writes_preserved": true,
+    "protected_write_blocks_preserved": true,
+    "field_types_native_php_array_preserved": true,
+    "native_public_array_defaults_preserved": true,
+    "native_magic_array_defaults_preserved": true,
+    "native_resource_boundaries_preserved": true,
+    "lazy_magic_boundary_preserved": true,
+    "reflection_public_properties_preserved": true,
+    "reflection_public_magic_methods_preserved": true,
+    "reflection_dynamic_properties_preserved": true,
+    "source_escape_audit_passed": true,
+    "generated_methods_present": true,
+    "predecessor_public_state_storage_adapter_status": "passed",
+    "predecessor_public_state_descriptor_status": "passed",
+    "predecessor_row_materialization_status": "passed",
+    "predecessor_mysqli_phpglobal_status": "passed"
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-public-state-expanded-storage-adapter-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.25",
+    "external_ref": "WPHX-305.25"
+  },
+  "unit": {
+    "kind": "module",
+    "name": "wpdb public-state expanded storage adapter shell proof",
+    "area": "wp-includes",
+    "public_contract": "WordPress-compatible wpdb remains a PHP-visible class/global object with declared public fields, dynamic properties, magic accessors, protected __set write-block behavior, field_types direct mutation, and db.php replacement timing intact while typed Haxe owns expanded public/magic state default and write-routing policy."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/wp-db.php",
+      "src/wp-settings.php"
+    ],
+    "digest": "sha256:05798238c11b7631528728a55a4183d77b36e3dcdd2c22d4043e9ef5cdbce3a9"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/wpdb-public-state-expanded-storage-adapter-candidate.hxml",
+    "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+    "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbPublicStateExpandedStorageAdapterCandidateEntry.hx",
+    "tools/wp-core/run-wpdb-public-state-expanded-storage-adapter-candidate.mjs",
+    "manifests/wp-core/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json",
+    "receipts/wp-core/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-305-25/haxe",
+    "build/wp-core/wphx-305-25/candidate-shell.php",
+    "build/wp-core/wphx-305-25/storage-adapter-probe.php",
+    "build/wp-core/wphx-305-25/wp-content/db.php",
+    "build/wp-core/wphx-305-25/dropin-probe.php",
+    "manifests/wp-core/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json",
+    "manifests/ownership/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json",
+    "receipts/wp-core/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json"
+  ],
+  "typed_haxe_ownership": {
+    "adapter": "wphx.wp.db.WpdbPublicStateExpandedStorageAdapter",
+    "owns": [
+      "all declared public property default kind/value policy",
+      "expanded magic-visible property default kind/value policy except lazy col_info",
+      "direct public write shell-routing policy",
+      "dynamic plugin property shell-routing policy",
+      "magic-visible storage write-routing policy",
+      "protected __set write-block routing policy",
+      "native PHP array default shape policy",
+      "native resource boundary routing policy",
+      "lazy col_info boundary routing policy",
+      "reflection shape compatibility policy",
+      "db.php replacement preservation flag"
+    ],
+    "does_not_yet_own": [
+      "complete wpdb class replacement",
+      "actual mysqli resource values",
+      "lazy col_info materialization",
+      "wpdb constructor side effects",
+      "require_wp_db() bootstrap implementation",
+      "db.php drop-in loading"
+    ]
+  },
+  "php_abi_shell": {
+    "preserved": [
+      "class wpdb remains PHP-visible",
+      "global $wpdb can be supplied by wp-content/db.php",
+      "direct public property reads/writes still use PHP object fields",
+      "plugins can add dynamic properties",
+      "expanded magic-visible internals route through adapter-backed shell storage",
+      "protected magic write blocks remain compatible",
+      "field_types and table-list defaults remain native PHP arrays",
+      "dbh/result remain native-resource boundaries at the PHP shell",
+      "public reflection shape matches wpdb"
+    ],
+    "proof": "WPHX-305.25 compares a Haxe-adapter-backed PHP shell against a constructor-free WordPress 7.0 wpdb oracle and also installs that shell through a temp db.php drop-in."
+  },
+  "bridge": {
+    "kind": "typed_storage_adapter_php_abi_shell",
+    "reason": "This slice moves all declared public defaults plus expanded magic-visible state routing into typed Haxe while keeping mixed native PHP values in the PHP ABI shell. That avoids Dynamic and raw php.Syntax.code while proving public/magic behavior against WordPress before attempting complete wpdb class ownership.",
+    "bounded_by": [
+      "WPHX-305.24 selected storage adapter proof",
+      "WPHX-305.23 descriptor/reflection proof",
+      "WordPress 7.0 constructor-free wpdb public/magic behavior oracle",
+      "Haxe-adapter-backed PHP shell state snapshot comparison",
+      "isolated require_wp_db() db.php drop-in probe",
+      "WPHX-305.21 row materialization live candidate receipt",
+      "WPHX-305.20 mysqli @:phpGlobal live candidate receipt"
+    ]
+  },
+  "removal_gate": {
+    "condition": "Do not replace the full wpdb class or require_wp_db() bootstrap until actual mysqli resources, lazy col_info materialization, constructor side effects, live plugin reflection probes, and bootstrap loading are proven under broader WordPress probes.",
+    "owner_issue": "WPHX-305.26",
+    "target_state": "verified_haxe_owned_wpdb_class_shell"
+  },
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-public-state-expanded-storage-adapter-candidate",
+      "npm run wp:core:wphx-305-public-state-expanded-storage-adapter-candidate:check",
+      "npm run wp:core:wphx-305-public-state-storage-adapter-candidate:check",
+      "npm run wp:core:wphx-305-public-state-descriptor-candidate:check",
+      "npm run wp:core:wphx-305-row-materialization-candidate:check",
+      "npm run wp:core:wphx-305-mysqli-phpglobal-candidate:check",
+      "npm run format:haxe:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate",
+      "receipt:wphx-305-24-wpdb-public-state-storage-adapter-candidate",
+      "receipt:wphx-305-23-wpdb-public-state-descriptor-candidate",
+      "receipt:wphx-305-21-wpdb-row-materialization-candidate",
+      "receipt:wphx-305-20-wpdb-mysqli-phpglobal-candidate"
+    ],
+    "manifest_digest": "sha256:377d9b3b56a1264e7fd407093d1072dfa7c8abe5e04ad438ee108ee47071e00f"
+  }
+}

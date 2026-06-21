@@ -1,0 +1,2079 @@
+{
+  "schema": "wphx.wp-core-wpdb-public-state-expanded-storage-adapter-candidate.v1",
+  "issue": "WPHX-305.25",
+  "generated_at": "2026-06-21T07:35:00.000Z",
+  "generator": "tools/wp-core/run-wpdb-public-state-expanded-storage-adapter-candidate.mjs",
+  "inputs": {
+    "public_state_storage_adapter_candidate_manifest": {
+      "path": "manifests/wp-core/wphx-305-24-wpdb-public-state-storage-adapter-candidate.v1.json",
+      "bytes": 28176,
+      "sha256": "sha256:d8f87b9c3e707d94a37b4fca0a74ae248b5764ef6b6f616e91790c5c9fe82061"
+    },
+    "public_state_descriptor_candidate_manifest": {
+      "path": "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+      "bytes": 21690,
+      "sha256": "sha256:1f0a6a0662d166ea80eedee2f405b210ac1b39596583b9d4b59c081e0d42a7ed"
+    },
+    "public_state_plan_manifest": {
+      "path": "manifests/wp-core/wphx-305-22-wpdb-dropin-public-state-plan.v1.json",
+      "bytes": 56563,
+      "sha256": "sha256:30ec3e1ec84ec6a44d2bc8afc9aab59b0ad40124f156d1ca7f0c552e2810521d"
+    },
+    "row_materialization_candidate_manifest": {
+      "path": "manifests/wp-core/wphx-305-21-wpdb-row-materialization-candidate.v1.json",
+      "bytes": 103491,
+      "sha256": "sha256:74022c10c23983c6d2d70e7d940a7ec0ebb99642c810f0b8029def6f7b1b30aa"
+    },
+    "mysqli_phpglobal_candidate_manifest": {
+      "path": "manifests/wp-core/wphx-305-20-wpdb-mysqli-phpglobal-candidate.v1.json",
+      "bytes": 96632,
+      "sha256": "sha256:df054684218dee8f34a93d5d018838b5fbe4947842c43f6a30f6d6b807f802fa"
+    },
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 5811,
+      "sha256": "sha256:c27b6be710bad37eda5fb68d8e10e0d0abbd60430daa177b0c919cdcf12aff5c"
+    },
+    "haxe_sources": [
+      {
+        "path": "fixtures/wp-core/wpdb-public-state-expanded-storage-adapter-candidate.hxml",
+        "bytes": 149,
+        "sha256": "sha256:1c330f9f57fbb34faba4fd9b90e2f93cd1130b452e2feb0f12a479548df2e5d3"
+      },
+      {
+        "path": "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+        "bytes": 5676,
+        "sha256": "sha256:47385736e9b0f2de0948ed63a20ae066df4c25a8f61906ec41e03aa93b02e033"
+      },
+      {
+        "path": "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
+        "bytes": 8542,
+        "sha256": "sha256:dcd93285fc6d78546383ac5c3ff4abd1c7d309e20b6b16a71ba12464340d5a26"
+      },
+      {
+        "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbPublicStateExpandedStorageAdapterCandidateEntry.hx",
+        "bytes": 2625,
+        "sha256": "sha256:1b02ed92eedc44c76d7f5754e33c9257054f1c55d666c633c2c16b55e4120270"
+      }
+    ],
+    "source_units": [
+      {
+        "path": "src/wp-includes/class-wpdb.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wpdb.php",
+        "bytes": 118638,
+        "sha256": "sha256:99a30801ae7ed3ddb6faf5feef3b564210c8dc681fc42b8cd1ea7da0904218b5"
+      },
+      {
+        "path": "src/wp-includes/load.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/load.php",
+        "bytes": 56475,
+        "sha256": "sha256:3efd0934bd8a454a8d7076fbbd21504ea097a753125a48e64b8a1dad380d357a"
+      },
+      {
+        "path": "src/wp-includes/wp-db.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/wp-db.php",
+        "bytes": 445,
+        "sha256": "sha256:9d82cf0ad6d04f044da36e20f724b314146edea68dc57f43334082a5ce4dd12e"
+      },
+      {
+        "path": "src/wp-settings.php",
+        "repo_path": "../wordpress-develop/src/wp-settings.php",
+        "bytes": 32650,
+        "sha256": "sha256:e56fb879616515a04ead712bd6c72026c2177ff09bae14efa60d0046e6bb7861"
+      }
+    ],
+    "upstream_digest": "sha256:05798238c11b7631528728a55a4183d77b36e3dcdd2c22d4043e9ef5cdbce3a9"
+  },
+  "fixture": {
+    "candidate_kind": "typed_haxe_wpdb_public_state_expanded_storage_adapter_shell_proof",
+    "selected_strategy": "typed-wpdb-public-state-expanded-storage-adapter-and-php-abi-shell",
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "locked_php_cli": "/opt/homebrew/bin/php",
+    "generated_haxe_files": [
+      {
+        "path": "index.php",
+        "bytes": 410,
+        "sha256": "007d2e67d3053a12afdcee0111b5985d970f986b06c12293d5d90703d2529eb2"
+      },
+      {
+        "path": "lib/Array_hx.php",
+        "bytes": 25987,
+        "sha256": "85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+      },
+      {
+        "path": "lib/haxe/Exception.php",
+        "bytes": 3913,
+        "sha256": "9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 596,
+        "sha256": "478e61df72d091166dabb3ad58bc4ef040ecd554ae17751a2e322308c01125ef"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 508,
+        "sha256": "3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+      },
+      {
+        "path": "lib/haxe/ValueException.php",
+        "bytes": 1062,
+        "sha256": "647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+      },
+      {
+        "path": "lib/php/_Boot/HxAnon.php",
+        "bytes": 1398,
+        "sha256": "c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+      },
+      {
+        "path": "lib/php/_Boot/HxClass.php",
+        "bytes": 3266,
+        "sha256": "1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+      },
+      {
+        "path": "lib/php/_Boot/HxClosure.php",
+        "bytes": 3162,
+        "sha256": "a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+      },
+      {
+        "path": "lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 4438,
+        "sha256": "c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+      },
+      {
+        "path": "lib/php/_Boot/HxEnum.php",
+        "bytes": 1316,
+        "sha256": "f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+      },
+      {
+        "path": "lib/php/_Boot/HxString.php",
+        "bytes": 9912,
+        "sha256": "1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+      },
+      {
+        "path": "lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "lib/php/Boot.php",
+        "bytes": 42682,
+        "sha256": "9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+      },
+      {
+        "path": "lib/Std.php",
+        "bytes": 1131,
+        "sha256": "2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/core/WpdbPublicStateExpandedStorageAdapterCandidateEntry.php",
+        "bytes": 6644,
+        "sha256": "d3a87f541f4f6e168772fdfbd135fc4b85721c80e5f62fa75080c8ec420f11dd"
+      },
+      {
+        "path": "lib/wphx/wp/db/WpdbPublicStateDescriptor.php",
+        "bytes": 9841,
+        "sha256": "d86e8c684f190a6789e49cd128cce66901a1b63a02bd5170b214c89bfdecb96a"
+      },
+      {
+        "path": "lib/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.php",
+        "bytes": 18961,
+        "sha256": "fe715fc87e6f87c54ec487ff28b3d8f877dd11afc0384c0274c5eb3f05cfa568"
+      }
+    ],
+    "haxe_storage_adapter": {
+      "source": "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
+      "descriptor_source": "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+      "generated_php": {
+        "path": "build/wp-core/wphx-305-25/haxe/lib/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.php",
+        "bytes": 18961,
+        "sha256": "sha256:fe715fc87e6f87c54ec487ff28b3d8f877dd11afc0384c0274c5eb3f05cfa568",
+        "descriptor_path": "build/wp-core/wphx-305-25/haxe/lib/wphx/wp/db/WpdbPublicStateDescriptor.php",
+        "descriptor_sha256": "sha256:d86e8c684f190a6789e49cd128cce66901a1b63a02bd5170b214c89bfdecb96a",
+        "entry_path": "build/wp-core/wphx-305-25/haxe/lib/wphx/fixtures/wp/core/WpdbPublicStateExpandedStorageAdapterCandidateEntry.php",
+        "entry_sha256": "sha256:d3a87f541f4f6e168772fdfbd135fc4b85721c80e5f62fa75080c8ec420f11dd",
+        "generated_php_postprocessing_required": false,
+        "methods": {
+          "expanded_public_storage_properties": true,
+          "expanded_magic_storage_properties": true,
+          "lazy_magic_native_boundary_properties": true,
+          "native_resource_boundary_properties": true,
+          "native_array_public_properties": true,
+          "native_array_magic_properties": true,
+          "public_default_kind": true,
+          "magic_default_kind": true,
+          "should_route_public_write_to_php_property": true,
+          "should_route_dynamic_write_to_php_property": true,
+          "should_route_magic_write_to_storage": true,
+          "should_defer_magic_read_to_wordpress_lazy_boundary": true,
+          "should_block_magic_write": true,
+          "write_route": true,
+          "complete_declared_public_state_coverage": true
+        },
+        "evidence_lines": [
+          {
+            "line": 103,
+            "text": "\tpublic static function expandedMagicStorageProperties () {"
+          },
+          {
+            "line": 127,
+            "text": "\tpublic static function expandedPublicStorageProperties () {"
+          },
+          {
+            "line": 143,
+            "text": "\tpublic static function lazyMagicNativeBoundaryProperties () {"
+          },
+          {
+            "line": 172,
+            "text": "\tpublic static function magicDefaultKind ($name) {"
+          },
+          {
+            "line": 274,
+            "text": "\tpublic static function nativeResourceBoundaryProperties () {"
+          },
+          {
+            "line": 317,
+            "text": "\tpublic static function publicDefaultKind ($name) {"
+          },
+          {
+            "line": 473,
+            "text": "\tpublic static function shouldRouteDynamicWriteToPhpProperty ($name) {"
+          },
+          {
+            "line": 499,
+            "text": "\tpublic static function shouldRouteMagicWriteToStorage ($name) {"
+          }
+        ]
+      },
+      "source_escape_audits": [
+        {
+          "path": "src/wphx/wp/db/WpdbPublicStateDescriptor.hx",
+          "contains_dynamic": false,
+          "contains_untyped": false,
+          "contains_cast": false,
+          "contains_php_syntax_code": false
+        },
+        {
+          "path": "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
+          "contains_dynamic": false,
+          "contains_untyped": false,
+          "contains_cast": false,
+          "contains_php_syntax_code": false
+        },
+        {
+          "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbPublicStateExpandedStorageAdapterCandidateEntry.hx",
+          "contains_dynamic": false,
+          "contains_untyped": false,
+          "contains_cast": false,
+          "contains_php_syntax_code": false
+        }
+      ],
+      "adapter_matches_plan": {
+        "public_storage_properties_match_expected": true,
+        "magic_storage_properties_match_expected": true,
+        "lazy_magic_native_boundary_properties_match_expected": true,
+        "native_array_public_properties_match_expected": true,
+        "native_array_magic_properties_match_expected": true,
+        "native_resource_boundary_properties_match_expected": true,
+        "all_public_storage_properties_are_declared_wpdb_properties": true,
+        "all_magic_storage_properties_are_magic_visible_wpdb_properties": true,
+        "complete_declared_public_state_coverage": true
+      },
+      "storage_probe": {
+        "adapter_contract": {
+          "expanded_public_storage_properties": [
+            "base_prefix",
+            "blogid",
+            "blogmeta",
+            "blogs",
+            "charset",
+            "collate",
+            "commentmeta",
+            "comments",
+            "error",
+            "field_types",
+            "func_call",
+            "global_tables",
+            "insert_id",
+            "is_mysql",
+            "last_error",
+            "last_query",
+            "last_result",
+            "links",
+            "ms_global_tables",
+            "num_queries",
+            "num_rows",
+            "old_ms_global_tables",
+            "old_tables",
+            "options",
+            "postmeta",
+            "posts",
+            "prefix",
+            "queries",
+            "ready",
+            "registration_log",
+            "rows_affected",
+            "show_errors",
+            "signups",
+            "site",
+            "sitecategories",
+            "siteid",
+            "sitemeta",
+            "suppress_errors",
+            "tables",
+            "term_relationships",
+            "term_taxonomy",
+            "termmeta",
+            "terms",
+            "time_start",
+            "usermeta",
+            "users"
+          ],
+          "expanded_magic_storage_properties": [
+            "allow_unsafe_unquoted_parameters",
+            "check_current_query",
+            "checking_collation",
+            "col_meta",
+            "dbh",
+            "dbhost",
+            "dbname",
+            "dbpassword",
+            "dbuser",
+            "has_connected",
+            "incompatible_modes",
+            "reconnect_retries",
+            "result",
+            "table_charset",
+            "use_mysqli"
+          ],
+          "lazy_magic_native_boundary_properties": [
+            "col_info"
+          ],
+          "native_resource_boundary_properties": [
+            "dbh",
+            "result"
+          ],
+          "native_array_public_properties": [
+            "field_types",
+            "global_tables",
+            "ms_global_tables",
+            "old_ms_global_tables",
+            "old_tables",
+            "tables"
+          ],
+          "native_array_magic_properties": [
+            "col_meta",
+            "incompatible_modes",
+            "table_charset"
+          ],
+          "complete_declared_public_state_coverage": true,
+          "field_types_direct_mutation_allowed": true,
+          "table_prefix_mutation_allowed": true,
+          "dynamic_plugin_property_allowed": true,
+          "dbhost_write_route": "magic_storage",
+          "dbh_write_route": "magic_storage",
+          "result_write_route": "magic_storage",
+          "col_meta_write_route": "protected_magic_write_block",
+          "col_info_write_route": "wordpress_lazy_magic_boundary",
+          "field_types_write_route": "direct_public_php_property",
+          "base_prefix_write_route": "direct_public_php_property",
+          "dynamic_write_route": "dynamic_php_property",
+          "preserves_db_dropin_replacement": true
+        },
+        "oracle": {
+          "initial_public": {
+            "base_prefix": {
+              "type": "null",
+              "value": null
+            },
+            "blogid": {
+              "type": "int",
+              "value": 0
+            },
+            "blogmeta": {
+              "type": "null",
+              "value": null
+            },
+            "blogs": {
+              "type": "null",
+              "value": null
+            },
+            "charset": {
+              "type": "null",
+              "value": null
+            },
+            "collate": {
+              "type": "null",
+              "value": null
+            },
+            "commentmeta": {
+              "type": "null",
+              "value": null
+            },
+            "comments": {
+              "type": "null",
+              "value": null
+            },
+            "error": {
+              "type": "null",
+              "value": null
+            },
+            "field_types": {
+              "type": "array",
+              "count": 0,
+              "json": "[]"
+            },
+            "func_call": {
+              "type": "null",
+              "value": null
+            },
+            "global_tables": {
+              "type": "array",
+              "count": 2,
+              "json": "[\"users\",\"usermeta\"]"
+            },
+            "insert_id": {
+              "type": "int",
+              "value": 0
+            },
+            "is_mysql": {
+              "type": "null",
+              "value": null
+            },
+            "last_error": {
+              "type": "string",
+              "value": ""
+            },
+            "last_query": {
+              "type": "null",
+              "value": null
+            },
+            "last_result": {
+              "type": "null",
+              "value": null
+            },
+            "links": {
+              "type": "null",
+              "value": null
+            },
+            "ms_global_tables": {
+              "type": "array",
+              "count": 6,
+              "json": "[\"blogs\",\"blogmeta\",\"signups\",\"site\",\"sitemeta\",\"registration_log\"]"
+            },
+            "num_queries": {
+              "type": "int",
+              "value": 0
+            },
+            "num_rows": {
+              "type": "int",
+              "value": 0
+            },
+            "old_ms_global_tables": {
+              "type": "array",
+              "count": 1,
+              "json": "[\"sitecategories\"]"
+            },
+            "old_tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"categories\",\"post2cat\",\"link2cat\"]"
+            },
+            "options": {
+              "type": "null",
+              "value": null
+            },
+            "postmeta": {
+              "type": "null",
+              "value": null
+            },
+            "posts": {
+              "type": "null",
+              "value": null
+            },
+            "prefix": {
+              "type": "string",
+              "value": ""
+            },
+            "queries": {
+              "type": "null",
+              "value": null
+            },
+            "ready": {
+              "type": "bool",
+              "value": false
+            },
+            "registration_log": {
+              "type": "null",
+              "value": null
+            },
+            "rows_affected": {
+              "type": "int",
+              "value": 0
+            },
+            "show_errors": {
+              "type": "bool",
+              "value": false
+            },
+            "signups": {
+              "type": "null",
+              "value": null
+            },
+            "site": {
+              "type": "null",
+              "value": null
+            },
+            "sitecategories": {
+              "type": "null",
+              "value": null
+            },
+            "siteid": {
+              "type": "int",
+              "value": 0
+            },
+            "sitemeta": {
+              "type": "null",
+              "value": null
+            },
+            "suppress_errors": {
+              "type": "bool",
+              "value": false
+            },
+            "tables": {
+              "type": "array",
+              "count": 10,
+              "json": "[\"posts\",\"comments\",\"links\",\"options\",\"postmeta\",\"terms\",\"term_taxonomy\",\"term_relationships\",\"termmeta\",\"commentmeta\"]"
+            },
+            "term_relationships": {
+              "type": "null",
+              "value": null
+            },
+            "term_taxonomy": {
+              "type": "null",
+              "value": null
+            },
+            "termmeta": {
+              "type": "null",
+              "value": null
+            },
+            "terms": {
+              "type": "null",
+              "value": null
+            },
+            "time_start": {
+              "type": "null",
+              "value": null
+            },
+            "usermeta": {
+              "type": "null",
+              "value": null
+            },
+            "users": {
+              "type": "null",
+              "value": null
+            }
+          },
+          "after_public_write": {
+            "base_prefix": {
+              "type": "string",
+              "value": "base_"
+            },
+            "blogid": {
+              "type": "int",
+              "value": 2
+            },
+            "blogmeta": {
+              "type": "string",
+              "value": "base_blogmeta"
+            },
+            "blogs": {
+              "type": "string",
+              "value": "base_blogs"
+            },
+            "charset": {
+              "type": "string",
+              "value": "utf8mb4"
+            },
+            "collate": {
+              "type": "string",
+              "value": "utf8mb4_unicode_ci"
+            },
+            "commentmeta": {
+              "type": "string",
+              "value": "base_commentmeta"
+            },
+            "comments": {
+              "type": "string",
+              "value": "base_comments"
+            },
+            "error": {
+              "type": "string",
+              "value": "public-error"
+            },
+            "field_types": {
+              "type": "array",
+              "count": 2,
+              "json": "{\"option_id\":\"%d\",\"post_author\":\"%d\"}"
+            },
+            "func_call": {
+              "type": "string",
+              "value": "wpdb::query"
+            },
+            "global_tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"users\",\"usermeta\",\"wphx_global\"]"
+            },
+            "insert_id": {
+              "type": "int",
+              "value": 11
+            },
+            "is_mysql": {
+              "type": "bool",
+              "value": true
+            },
+            "last_error": {
+              "type": "string",
+              "value": "last-public-error"
+            },
+            "last_query": {
+              "type": "string",
+              "value": "SELECT 1"
+            },
+            "last_result": {
+              "type": "array",
+              "count": 2,
+              "json": "[\"row-one\",\"row-two\"]"
+            },
+            "links": {
+              "type": "string",
+              "value": "base_links"
+            },
+            "ms_global_tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"blogs\",\"blogmeta\",\"wphx_ms_global\"]"
+            },
+            "num_queries": {
+              "type": "int",
+              "value": 13
+            },
+            "num_rows": {
+              "type": "int",
+              "value": 7
+            },
+            "old_ms_global_tables": {
+              "type": "array",
+              "count": 2,
+              "json": "[\"sitecategories\",\"old_ms_extra\"]"
+            },
+            "old_tables": {
+              "type": "array",
+              "count": 4,
+              "json": "[\"categories\",\"post2cat\",\"link2cat\",\"old_extra\"]"
+            },
+            "options": {
+              "type": "string",
+              "value": "base_options"
+            },
+            "postmeta": {
+              "type": "string",
+              "value": "base_postmeta"
+            },
+            "posts": {
+              "type": "string",
+              "value": "base_posts"
+            },
+            "prefix": {
+              "type": "string",
+              "value": "wp_"
+            },
+            "queries": {
+              "type": "array",
+              "count": 1,
+              "json": "[\"SELECT 1\"]"
+            },
+            "ready": {
+              "type": "bool",
+              "value": true
+            },
+            "registration_log": {
+              "type": "string",
+              "value": "base_registration_log"
+            },
+            "rows_affected": {
+              "type": "int",
+              "value": 3
+            },
+            "show_errors": {
+              "type": "bool",
+              "value": true
+            },
+            "signups": {
+              "type": "string",
+              "value": "base_signups"
+            },
+            "site": {
+              "type": "string",
+              "value": "base_site"
+            },
+            "sitecategories": {
+              "type": "string",
+              "value": "base_sitecategories"
+            },
+            "siteid": {
+              "type": "int",
+              "value": 5
+            },
+            "sitemeta": {
+              "type": "string",
+              "value": "base_sitemeta"
+            },
+            "suppress_errors": {
+              "type": "bool",
+              "value": true
+            },
+            "tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"posts\",\"comments\",\"wphx_table\"]"
+            },
+            "term_relationships": {
+              "type": "string",
+              "value": "base_term_relationships"
+            },
+            "term_taxonomy": {
+              "type": "string",
+              "value": "base_term_taxonomy"
+            },
+            "termmeta": {
+              "type": "string",
+              "value": "base_termmeta"
+            },
+            "terms": {
+              "type": "string",
+              "value": "base_terms"
+            },
+            "time_start": {
+              "type": "float",
+              "value": 123.456
+            },
+            "usermeta": {
+              "type": "string",
+              "value": "base_usermeta"
+            },
+            "users": {
+              "type": "string",
+              "value": "base_users"
+            }
+          },
+          "dynamic_state": {
+            "isset": true,
+            "value": "plugin-value",
+            "object_vars_has_key": true
+          },
+          "initial_magic": {
+            "allow_unsafe_unquoted_parameters": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "check_current_query": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "checking_collation": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            },
+            "col_meta": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "dbh": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbhost": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbname": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbpassword": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbuser": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "has_connected": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            },
+            "incompatible_modes": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 6,
+                "json": "[\"NO_ZERO_DATE\",\"ONLY_FULL_GROUP_BY\",\"STRICT_TRANS_TABLES\",\"STRICT_ALL_TABLES\",\"TRADITIONAL\",\"ANSI\"]"
+              }
+            },
+            "reconnect_retries": {
+              "isset": true,
+              "value": {
+                "type": "int",
+                "value": 5
+              }
+            },
+            "result": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "table_charset": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "use_mysqli": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          },
+          "lazy_magic": {
+            "col_info": {
+              "threw": true,
+              "class": "TypeError"
+            }
+          },
+          "after_magic_write": {
+            "allow_unsafe_unquoted_parameters": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "check_current_query": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "checking_collation": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "col_meta": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "dbh": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "native-resource-boundary-dbh"
+              }
+            },
+            "dbhost": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "127.0.0.1"
+              }
+            },
+            "dbname": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "wordpresshx"
+              }
+            },
+            "dbpassword": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "secret-redacted"
+              }
+            },
+            "dbuser": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "wp_user"
+              }
+            },
+            "has_connected": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "incompatible_modes": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 2,
+                "json": "[\"ANSI\",\"TRADITIONAL\"]"
+              }
+            },
+            "reconnect_retries": {
+              "isset": true,
+              "value": {
+                "type": "int",
+                "value": 9
+              }
+            },
+            "result": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "native-resource-boundary-result"
+              }
+            },
+            "table_charset": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "use_mysqli": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            }
+          },
+          "after_magic_unset": {
+            "dbhost_isset": false
+          },
+          "protected_write_blocks": {
+            "allow_unsafe_unquoted_parameters": {
+              "before": {
+                "type": "bool",
+                "value": true
+              },
+              "after": {
+                "type": "bool",
+                "value": true
+              },
+              "blocked": true
+            },
+            "check_current_query": {
+              "before": {
+                "type": "bool",
+                "value": true
+              },
+              "after": {
+                "type": "bool",
+                "value": true
+              },
+              "blocked": true
+            },
+            "col_meta": {
+              "before": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "after": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "blocked": true
+            },
+            "table_charset": {
+              "before": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "after": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "blocked": true
+            }
+          }
+        },
+        "candidate": {
+          "initial_public": {
+            "base_prefix": {
+              "type": "null",
+              "value": null
+            },
+            "blogid": {
+              "type": "int",
+              "value": 0
+            },
+            "blogmeta": {
+              "type": "null",
+              "value": null
+            },
+            "blogs": {
+              "type": "null",
+              "value": null
+            },
+            "charset": {
+              "type": "null",
+              "value": null
+            },
+            "collate": {
+              "type": "null",
+              "value": null
+            },
+            "commentmeta": {
+              "type": "null",
+              "value": null
+            },
+            "comments": {
+              "type": "null",
+              "value": null
+            },
+            "error": {
+              "type": "null",
+              "value": null
+            },
+            "field_types": {
+              "type": "array",
+              "count": 0,
+              "json": "[]"
+            },
+            "func_call": {
+              "type": "null",
+              "value": null
+            },
+            "global_tables": {
+              "type": "array",
+              "count": 2,
+              "json": "[\"users\",\"usermeta\"]"
+            },
+            "insert_id": {
+              "type": "int",
+              "value": 0
+            },
+            "is_mysql": {
+              "type": "null",
+              "value": null
+            },
+            "last_error": {
+              "type": "string",
+              "value": ""
+            },
+            "last_query": {
+              "type": "null",
+              "value": null
+            },
+            "last_result": {
+              "type": "null",
+              "value": null
+            },
+            "links": {
+              "type": "null",
+              "value": null
+            },
+            "ms_global_tables": {
+              "type": "array",
+              "count": 6,
+              "json": "[\"blogs\",\"blogmeta\",\"signups\",\"site\",\"sitemeta\",\"registration_log\"]"
+            },
+            "num_queries": {
+              "type": "int",
+              "value": 0
+            },
+            "num_rows": {
+              "type": "int",
+              "value": 0
+            },
+            "old_ms_global_tables": {
+              "type": "array",
+              "count": 1,
+              "json": "[\"sitecategories\"]"
+            },
+            "old_tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"categories\",\"post2cat\",\"link2cat\"]"
+            },
+            "options": {
+              "type": "null",
+              "value": null
+            },
+            "postmeta": {
+              "type": "null",
+              "value": null
+            },
+            "posts": {
+              "type": "null",
+              "value": null
+            },
+            "prefix": {
+              "type": "string",
+              "value": ""
+            },
+            "queries": {
+              "type": "null",
+              "value": null
+            },
+            "ready": {
+              "type": "bool",
+              "value": false
+            },
+            "registration_log": {
+              "type": "null",
+              "value": null
+            },
+            "rows_affected": {
+              "type": "int",
+              "value": 0
+            },
+            "show_errors": {
+              "type": "bool",
+              "value": false
+            },
+            "signups": {
+              "type": "null",
+              "value": null
+            },
+            "site": {
+              "type": "null",
+              "value": null
+            },
+            "sitecategories": {
+              "type": "null",
+              "value": null
+            },
+            "siteid": {
+              "type": "int",
+              "value": 0
+            },
+            "sitemeta": {
+              "type": "null",
+              "value": null
+            },
+            "suppress_errors": {
+              "type": "bool",
+              "value": false
+            },
+            "tables": {
+              "type": "array",
+              "count": 10,
+              "json": "[\"posts\",\"comments\",\"links\",\"options\",\"postmeta\",\"terms\",\"term_taxonomy\",\"term_relationships\",\"termmeta\",\"commentmeta\"]"
+            },
+            "term_relationships": {
+              "type": "null",
+              "value": null
+            },
+            "term_taxonomy": {
+              "type": "null",
+              "value": null
+            },
+            "termmeta": {
+              "type": "null",
+              "value": null
+            },
+            "terms": {
+              "type": "null",
+              "value": null
+            },
+            "time_start": {
+              "type": "null",
+              "value": null
+            },
+            "usermeta": {
+              "type": "null",
+              "value": null
+            },
+            "users": {
+              "type": "null",
+              "value": null
+            }
+          },
+          "after_public_write": {
+            "base_prefix": {
+              "type": "string",
+              "value": "base_"
+            },
+            "blogid": {
+              "type": "int",
+              "value": 2
+            },
+            "blogmeta": {
+              "type": "string",
+              "value": "base_blogmeta"
+            },
+            "blogs": {
+              "type": "string",
+              "value": "base_blogs"
+            },
+            "charset": {
+              "type": "string",
+              "value": "utf8mb4"
+            },
+            "collate": {
+              "type": "string",
+              "value": "utf8mb4_unicode_ci"
+            },
+            "commentmeta": {
+              "type": "string",
+              "value": "base_commentmeta"
+            },
+            "comments": {
+              "type": "string",
+              "value": "base_comments"
+            },
+            "error": {
+              "type": "string",
+              "value": "public-error"
+            },
+            "field_types": {
+              "type": "array",
+              "count": 2,
+              "json": "{\"option_id\":\"%d\",\"post_author\":\"%d\"}"
+            },
+            "func_call": {
+              "type": "string",
+              "value": "wpdb::query"
+            },
+            "global_tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"users\",\"usermeta\",\"wphx_global\"]"
+            },
+            "insert_id": {
+              "type": "int",
+              "value": 11
+            },
+            "is_mysql": {
+              "type": "bool",
+              "value": true
+            },
+            "last_error": {
+              "type": "string",
+              "value": "last-public-error"
+            },
+            "last_query": {
+              "type": "string",
+              "value": "SELECT 1"
+            },
+            "last_result": {
+              "type": "array",
+              "count": 2,
+              "json": "[\"row-one\",\"row-two\"]"
+            },
+            "links": {
+              "type": "string",
+              "value": "base_links"
+            },
+            "ms_global_tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"blogs\",\"blogmeta\",\"wphx_ms_global\"]"
+            },
+            "num_queries": {
+              "type": "int",
+              "value": 13
+            },
+            "num_rows": {
+              "type": "int",
+              "value": 7
+            },
+            "old_ms_global_tables": {
+              "type": "array",
+              "count": 2,
+              "json": "[\"sitecategories\",\"old_ms_extra\"]"
+            },
+            "old_tables": {
+              "type": "array",
+              "count": 4,
+              "json": "[\"categories\",\"post2cat\",\"link2cat\",\"old_extra\"]"
+            },
+            "options": {
+              "type": "string",
+              "value": "base_options"
+            },
+            "postmeta": {
+              "type": "string",
+              "value": "base_postmeta"
+            },
+            "posts": {
+              "type": "string",
+              "value": "base_posts"
+            },
+            "prefix": {
+              "type": "string",
+              "value": "wp_"
+            },
+            "queries": {
+              "type": "array",
+              "count": 1,
+              "json": "[\"SELECT 1\"]"
+            },
+            "ready": {
+              "type": "bool",
+              "value": true
+            },
+            "registration_log": {
+              "type": "string",
+              "value": "base_registration_log"
+            },
+            "rows_affected": {
+              "type": "int",
+              "value": 3
+            },
+            "show_errors": {
+              "type": "bool",
+              "value": true
+            },
+            "signups": {
+              "type": "string",
+              "value": "base_signups"
+            },
+            "site": {
+              "type": "string",
+              "value": "base_site"
+            },
+            "sitecategories": {
+              "type": "string",
+              "value": "base_sitecategories"
+            },
+            "siteid": {
+              "type": "int",
+              "value": 5
+            },
+            "sitemeta": {
+              "type": "string",
+              "value": "base_sitemeta"
+            },
+            "suppress_errors": {
+              "type": "bool",
+              "value": true
+            },
+            "tables": {
+              "type": "array",
+              "count": 3,
+              "json": "[\"posts\",\"comments\",\"wphx_table\"]"
+            },
+            "term_relationships": {
+              "type": "string",
+              "value": "base_term_relationships"
+            },
+            "term_taxonomy": {
+              "type": "string",
+              "value": "base_term_taxonomy"
+            },
+            "termmeta": {
+              "type": "string",
+              "value": "base_termmeta"
+            },
+            "terms": {
+              "type": "string",
+              "value": "base_terms"
+            },
+            "time_start": {
+              "type": "float",
+              "value": 123.456
+            },
+            "usermeta": {
+              "type": "string",
+              "value": "base_usermeta"
+            },
+            "users": {
+              "type": "string",
+              "value": "base_users"
+            }
+          },
+          "dynamic_state": {
+            "isset": true,
+            "value": "plugin-value",
+            "object_vars_has_key": true
+          },
+          "initial_magic": {
+            "allow_unsafe_unquoted_parameters": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "check_current_query": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "checking_collation": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            },
+            "col_meta": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "dbh": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbhost": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbname": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbpassword": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "dbuser": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "has_connected": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            },
+            "incompatible_modes": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 6,
+                "json": "[\"NO_ZERO_DATE\",\"ONLY_FULL_GROUP_BY\",\"STRICT_TRANS_TABLES\",\"STRICT_ALL_TABLES\",\"TRADITIONAL\",\"ANSI\"]"
+              }
+            },
+            "reconnect_retries": {
+              "isset": true,
+              "value": {
+                "type": "int",
+                "value": 5
+              }
+            },
+            "result": {
+              "isset": false,
+              "value": {
+                "type": "null",
+                "value": null
+              }
+            },
+            "table_charset": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "use_mysqli": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            }
+          },
+          "lazy_magic": {
+            "col_info": {
+              "threw": true,
+              "class": "TypeError"
+            }
+          },
+          "after_magic_write": {
+            "allow_unsafe_unquoted_parameters": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "check_current_query": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "checking_collation": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "col_meta": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "dbh": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "native-resource-boundary-dbh"
+              }
+            },
+            "dbhost": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "127.0.0.1"
+              }
+            },
+            "dbname": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "wordpresshx"
+              }
+            },
+            "dbpassword": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "secret-redacted"
+              }
+            },
+            "dbuser": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "wp_user"
+              }
+            },
+            "has_connected": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "incompatible_modes": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 2,
+                "json": "[\"ANSI\",\"TRADITIONAL\"]"
+              }
+            },
+            "reconnect_retries": {
+              "isset": true,
+              "value": {
+                "type": "int",
+                "value": 9
+              }
+            },
+            "result": {
+              "isset": true,
+              "value": {
+                "type": "string",
+                "value": "native-resource-boundary-result"
+              }
+            },
+            "table_charset": {
+              "isset": true,
+              "value": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              }
+            },
+            "use_mysqli": {
+              "isset": true,
+              "value": {
+                "type": "bool",
+                "value": false
+              }
+            }
+          },
+          "after_magic_unset": {
+            "dbhost_isset": false
+          },
+          "protected_write_blocks": {
+            "allow_unsafe_unquoted_parameters": {
+              "before": {
+                "type": "bool",
+                "value": true
+              },
+              "after": {
+                "type": "bool",
+                "value": true
+              },
+              "blocked": true
+            },
+            "check_current_query": {
+              "before": {
+                "type": "bool",
+                "value": true
+              },
+              "after": {
+                "type": "bool",
+                "value": true
+              },
+              "blocked": true
+            },
+            "col_meta": {
+              "before": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "after": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "blocked": true
+            },
+            "table_charset": {
+              "before": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "after": {
+                "type": "array",
+                "count": 0,
+                "json": "[]"
+              },
+              "blocked": true
+            }
+          }
+        },
+        "reflection": {
+          "oracle": {
+            "public_properties": [
+              "base_prefix",
+              "blogid",
+              "blogmeta",
+              "blogs",
+              "charset",
+              "collate",
+              "commentmeta",
+              "comments",
+              "error",
+              "field_types",
+              "func_call",
+              "global_tables",
+              "insert_id",
+              "is_mysql",
+              "last_error",
+              "last_query",
+              "last_result",
+              "links",
+              "ms_global_tables",
+              "num_queries",
+              "num_rows",
+              "old_ms_global_tables",
+              "old_tables",
+              "options",
+              "postmeta",
+              "posts",
+              "prefix",
+              "queries",
+              "ready",
+              "registration_log",
+              "rows_affected",
+              "show_errors",
+              "signups",
+              "site",
+              "sitecategories",
+              "siteid",
+              "sitemeta",
+              "suppress_errors",
+              "tables",
+              "term_relationships",
+              "term_taxonomy",
+              "termmeta",
+              "terms",
+              "time_start",
+              "usermeta",
+              "users"
+            ],
+            "public_magic_methods": [
+              "__get",
+              "__isset",
+              "__set",
+              "__unset"
+            ],
+            "allows_dynamic_properties": true
+          },
+          "candidate": {
+            "public_properties": [
+              "base_prefix",
+              "blogid",
+              "blogmeta",
+              "blogs",
+              "charset",
+              "collate",
+              "commentmeta",
+              "comments",
+              "error",
+              "field_types",
+              "func_call",
+              "global_tables",
+              "insert_id",
+              "is_mysql",
+              "last_error",
+              "last_query",
+              "last_result",
+              "links",
+              "ms_global_tables",
+              "num_queries",
+              "num_rows",
+              "old_ms_global_tables",
+              "old_tables",
+              "options",
+              "postmeta",
+              "posts",
+              "prefix",
+              "queries",
+              "ready",
+              "registration_log",
+              "rows_affected",
+              "show_errors",
+              "signups",
+              "site",
+              "sitecategories",
+              "siteid",
+              "sitemeta",
+              "suppress_errors",
+              "tables",
+              "term_relationships",
+              "term_taxonomy",
+              "termmeta",
+              "terms",
+              "time_start",
+              "usermeta",
+              "users"
+            ],
+            "public_magic_methods": [
+              "__get",
+              "__isset",
+              "__set",
+              "__unset"
+            ],
+            "allows_dynamic_properties": true
+          }
+        },
+        "comparisons": {
+          "state_snapshots_match": true,
+          "field_types_direct_mutation_preserved": true,
+          "table_prefix_mutation_preserved": true,
+          "native_public_array_defaults_preserved": true,
+          "native_magic_array_defaults_preserved": true,
+          "native_resource_boundaries_preserved": true,
+          "dynamic_property_addition_preserved": true,
+          "magic_internal_write_preserved": true,
+          "lazy_magic_boundary_preserved": true,
+          "protected_write_blocks_preserved": true,
+          "reflection_public_properties_preserved": true,
+          "reflection_public_magic_methods_preserved": true,
+          "reflection_dynamic_properties_preserved": true,
+          "adapter_expands_complete_declared_public_state": true,
+          "adapter_routes_public_field_types": true,
+          "adapter_routes_public_base_prefix": true,
+          "adapter_routes_magic_dbhost": true,
+          "adapter_routes_native_resource_boundaries": true,
+          "adapter_blocks_col_meta": true,
+          "adapter_defers_lazy_col_info": true,
+          "adapter_routes_dynamic_plugin_property": true
+        },
+        "status": "passed"
+      },
+      "dropin_probe": {
+        "class_wpdb_loaded": true,
+        "global_wpdb_set": true,
+        "global_wpdb_class": "WPHX_305_25_Dropin_Wpdb",
+        "global_wpdb_marker": "dropin",
+        "dropin_replacement_preserved": true,
+        "default_wpdb_constructor_skipped": true,
+        "adapter_public_state_available": true,
+        "adapter_prefix_state_available": true,
+        "adapter_field_types_native_array_available": true,
+        "adapter_magic_state_available": true
+      }
+    },
+    "public_abi_policy": {
+      "preserve_class_name_wpdb": true,
+      "preserve_global_wpdb": true,
+      "preserve_db_php_dropin_replacement": true,
+      "preserve_declared_public_properties": true,
+      "preserve_direct_public_property_writes": true,
+      "preserve_dynamic_properties": true,
+      "preserve_magic_accessors": true,
+      "preserve_protected_magic_write_blocks": true,
+      "preserve_field_types_native_php_array": true,
+      "preserve_table_list_native_php_arrays": true,
+      "preserve_native_resource_boundaries": true,
+      "preserve_lazy_col_info_boundary": true,
+      "preserve_reflection_public_shape": true,
+      "raw_php_syntax_code_used_in_haxe": false,
+      "generated_php_postprocessing_required": false
+    },
+    "inherited_public_state_descriptor_candidate": {
+      "manifest": "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+      "validation_result": {
+        "status": "passed",
+        "selected_strategy": "typed-wpdb-public-state-descriptor-and-shell-contract",
+        "public_property_count": 46,
+        "magic_visible_internal_property_count": 16,
+        "magic_method_count": 4,
+        "protected_write_blocked_property_count": 4,
+        "descriptor_probe_status": "passed",
+        "dropin_probe_status": "passed",
+        "dynamic_properties_required": true,
+        "db_dropin_replacement_required": true,
+        "source_escape_audit_passed": true,
+        "generated_methods_present": true,
+        "predecessor_row_materialization_status": "passed",
+        "predecessor_mysqli_phpglobal_status": "passed"
+      }
+    },
+    "inherited_public_state_storage_adapter_candidate": {
+      "manifest": "manifests/wp-core/wphx-305-24-wpdb-public-state-storage-adapter-candidate.v1.json",
+      "validation_result": {
+        "status": "passed",
+        "selected_strategy": "typed-wpdb-public-state-storage-adapter-and-php-abi-shell",
+        "selected_public_storage_property_count": 9,
+        "selected_magic_storage_property_count": 7,
+        "protected_write_blocked_property_count": 4,
+        "storage_probe_status": "passed",
+        "dropin_probe_status": "passed",
+        "direct_public_writes_preserved": true,
+        "dynamic_property_addition_preserved": true,
+        "magic_internal_writes_preserved": true,
+        "protected_write_blocks_preserved": true,
+        "field_types_native_php_array_preserved": true,
+        "source_escape_audit_passed": true,
+        "generated_methods_present": true,
+        "predecessor_public_state_descriptor_status": "passed",
+        "predecessor_row_materialization_status": "passed",
+        "predecessor_mysqli_phpglobal_status": "passed"
+      }
+    },
+    "inherited_row_materialization_candidate": {
+      "manifest": "manifests/wp-core/wphx-305-21-wpdb-row-materialization-candidate.v1.json",
+      "validation_result": {
+        "status": "passed",
+        "candidate_kind": "haxe_generated_wpdb_row_materialization_shell",
+        "selected_strategy": "typed-haxe-row-materialization",
+        "direct_query_call_detected": true,
+        "direct_fetch_object_call_detected": true,
+        "direct_row_is_object_call_detected": true,
+        "direct_row_get_object_vars_call_detected": true,
+        "direct_row_array_values_call_detected": true,
+        "direct_row_array_shift_call_detected": true,
+        "generated_mysqli_boundary_detected": false,
+        "shell_uses_query_helper": true,
+        "shell_uses_fetch_helper": true,
+        "shell_uses_row_materialization_helper": true,
+        "raw_object_vars_in_wpdb_shell": false,
+        "promoted_symbols": 14,
+        "promoted_decisions": 38,
+        "covered_symbols": 43,
+        "fixture_cases": 18,
+        "db_runtimes": 2,
+        "comparisons": 2,
+        "skipped_runtimes": 0
+      }
+    },
+    "inherited_mysqli_phpglobal_candidate": {
+      "manifest": "manifests/wp-core/wphx-305-20-wpdb-mysqli-phpglobal-candidate.v1.json",
+      "validation_result": {
+        "status": "passed",
+        "candidate_kind": "haxe_generated_wpdb_mysqli_phpglobal_shell",
+        "selected_strategy": "typed-haxe-phpglobal-mysqli-execution",
+        "direct_query_call_detected": true,
+        "direct_fetch_object_call_detected": true,
+        "generated_mysqli_boundary_detected": false,
+        "shell_uses_query_helper": true,
+        "shell_uses_fetch_helper": true,
+        "promoted_symbols": 14,
+        "promoted_decisions": 32,
+        "covered_symbols": 43,
+        "fixture_cases": 18,
+        "db_runtimes": 2,
+        "comparisons": 2,
+        "skipped_runtimes": 0
+      }
+    },
+    "promoted_symbols": [
+      "wpdb::$base_prefix",
+      "wpdb::$field_types",
+      "wpdb::$global_tables",
+      "wpdb::$ms_global_tables",
+      "wpdb::$old_ms_global_tables",
+      "wpdb::$old_tables",
+      "wpdb::$last_error",
+      "wpdb::$num_rows",
+      "wpdb::$prefix",
+      "wpdb::$ready",
+      "wpdb::$tables",
+      "wpdb::__get",
+      "wpdb::__set",
+      "wpdb::__isset",
+      "wpdb::__unset",
+      "require_wp_db"
+    ],
+    "promoted_decisions": [
+      "all declared public property default kind/value policy",
+      "expanded magic-visible property default kind/value policy except lazy col_info",
+      "direct public property write route remains PHP object storage",
+      "dynamic plugin property write route remains PHP object storage",
+      "magic-visible internal write route uses adapter-backed shell storage",
+      "protected magic write-block route remains blocked",
+      "field_types and table-list direct reassignment remain native PHP arrays",
+      "dbh/result remain native-resource shell boundaries",
+      "col_info remains WordPress lazy native metadata boundary",
+      "candidate public reflection shape remains wpdb-compatible",
+      "db.php replacement can supply adapter-backed shell global"
+    ],
+    "closes_gaps_from": [
+      {
+        "manifest": "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+        "gap": "wpdb-public-state-storage-not-yet-haxe-owned",
+        "resolution": "WPHX-305.25 moves all declared public defaults and expanded magic-visible write routes into typed Haxe adapter policy, then proves the PHP ABI shell matches WordPress direct public writes, dynamic properties, magic internal writes, protected __set blocks, native arrays/resources, reflection shape, and db.php replacement behavior."
+      },
+      {
+        "manifest": "manifests/wp-core/wphx-305-24-wpdb-public-state-storage-adapter-candidate.v1.json",
+        "gap": "selected-wpdb-state-storage-only",
+        "resolution": "WPHX-305.25 keeps the WPHX-305.24 selected adapter green while expanding coverage from nine public and seven magic fields to all 46 declared public fields, 15 eager magic-visible internals, and the col_info lazy native boundary."
+      }
+    ],
+    "remaining_gaps": [
+      {
+        "id": "complete-wpdb-class-shell-not-yet-haxe-owned",
+        "owner": "WPHX-305.26",
+        "detail": "WPHX-305.25 owns complete declared public default/routing policy and expanded magic storage policy, but actual mysqli resources, lazy col_info materialization, constructor side effects, and live plugin reflection probes still need proof before replacing the full wpdb class shell."
+      },
+      {
+        "id": "require-wp-db-bootstrap-not-yet-haxe-owned",
+        "owner": "future WPHX-305 bootstrap distribution workset",
+        "detail": "require_wp_db(), db.php inclusion, and global $wpdb replacement remain WordPress PHP shell behavior; WPHX-305.25 proves adapter-backed drop-in compatibility but does not replace bootstrap code."
+      },
+      {
+        "id": "full-upstream-phpunit-not-yet-ported",
+        "owner": "WPHX-305",
+        "detail": "Storage ABI probes and live DB candidate gates cover this slice, but full upstream wpdb/dbDelta/option PHPUnit parity remains a domain closure requirement."
+      }
+    ]
+  },
+  "validation_result": {
+    "status": "passed",
+    "selected_strategy": "typed-wpdb-public-state-expanded-storage-adapter-and-php-abi-shell",
+    "expanded_public_storage_property_count": 46,
+    "expanded_magic_storage_property_count": 15,
+    "lazy_magic_native_boundary_property_count": 1,
+    "native_array_public_property_count": 6,
+    "native_array_magic_property_count": 3,
+    "native_resource_boundary_property_count": 2,
+    "protected_write_blocked_property_count": 4,
+    "storage_probe_status": "passed",
+    "dropin_probe_status": "passed",
+    "direct_public_writes_preserved": true,
+    "table_prefix_mutation_preserved": true,
+    "dynamic_property_addition_preserved": true,
+    "magic_internal_writes_preserved": true,
+    "protected_write_blocks_preserved": true,
+    "field_types_native_php_array_preserved": true,
+    "native_public_array_defaults_preserved": true,
+    "native_magic_array_defaults_preserved": true,
+    "native_resource_boundaries_preserved": true,
+    "lazy_magic_boundary_preserved": true,
+    "reflection_public_properties_preserved": true,
+    "reflection_public_magic_methods_preserved": true,
+    "reflection_dynamic_properties_preserved": true,
+    "source_escape_audit_passed": true,
+    "generated_methods_present": true,
+    "predecessor_public_state_storage_adapter_status": "passed",
+    "predecessor_public_state_descriptor_status": "passed",
+    "predecessor_row_materialization_status": "passed",
+    "predecessor_mysqli_phpglobal_status": "passed"
+  }
+}
