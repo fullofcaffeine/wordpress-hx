@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-query-results-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.9.3",
+    "external_ref": "WPHX-305.03"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "wpdb query/read-result differential fixture harness",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 wpdb query state, read-result output shapes, column metadata reads, flush semantics, and query logging stay observable while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/class-wpdb.php"
+    ],
+    "digest": "sha256:7d86b6df476e98022588b629cc276ac15c744f44f637076ded619eb81b9cae29"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wpdb-query-results-fixture.mjs",
+    "manifests/wp-core/wphx-305-03-wpdb-query-results-fixture.v1.json",
+    "receipts/wp-core/wphx-305-03-wpdb-query-results-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-305-03-wpdb-query-results-fixture.v1.json",
+    "manifests/ownership/wphx-305-03-wpdb-query-results-fixture.v1.json",
+    "receipts/wp-core/wphx-305-03-wpdb-query-results-fixture.v1.json",
+    "build/wp-core/wphx-305-03"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-query-results",
+      "npm run wp:core:wphx-305-query-results:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-03-wpdb-query-results-fixture"
+    ],
+    "manifest_digest": "sha256:fca6cebeff8ddec7cfbf3c6a597969535c1966d45222afb414c95a9fb33a58d6"
+  },
+  "notes": "The candidate fixture root is an oracle source mirror for WPHX-305.03. The probe uses a constrained query/result test double so WordPress read-result methods are exercised deterministically; live mysqli_result traversal remains a later WPHX-305 gate."
+}

@@ -101,6 +101,8 @@
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",
     "wp:core:wphx-305-prepare-escaping:check": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs --check",
+    "wp:core:wphx-305-query-results": "node tools/wp-core/run-wpdb-query-results-fixture.mjs",
+    "wp:core:wphx-305-query-results:check": "node tools/wp-core/run-wpdb-query-results-fixture.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",
