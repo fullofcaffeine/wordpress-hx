@@ -1,0 +1,79 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-26-wpdb-class-shell-resource-strategy-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.9.26",
+    "external_ref": "WPHX-305.26",
+    "title": "Prove complete wpdb class shell and native resource strategy"
+  },
+  "recorded_at": "2026-06-21T07:50:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-26-wpdb-class-shell-resource-strategy-candidate.v1.json",
+      "role": "typed Haxe wpdb class-shell/resource strategy candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-26-wpdb-class-shell-resource-strategy-candidate.v1.json",
+      "role": "class-shell/resource/bootstrap strategy ownership manifest"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbClassShellStrategy.hx",
+      "role": "typed Haxe wpdb class-shell/resource route policy"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-class-shell-resource-strategy-candidate.mjs",
+      "role": "live class-shell/resource/drop-in proof runner"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
+      "role": "predecessor expanded public-state adapter kept green"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbMysqliExecution.hx",
+      "role": "predecessor typed Haxe mysqli @:phpGlobal execution implementation kept green"
+    },
+    {
+      "path": "src/wphx/wp/db/WpdbRowMaterialization.hx",
+      "role": "predecessor typed Haxe row materialization implementation kept green"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-class-shell-resource-strategy-candidate",
+    "npm run wp:core:wphx-305-class-shell-resource-strategy-candidate:check",
+    "npm run wp:core:wphx-305-public-state-expanded-storage-adapter-candidate:check",
+    "npm run wp:core:wphx-305-public-state-storage-adapter-candidate:check",
+    "npm run wp:core:wphx-305-public-state-descriptor-candidate:check",
+    "npm run wp:core:wphx-305-row-materialization-candidate:check",
+    "npm run wp:core:wphx-305-mysqli-phpglobal-candidate:check",
+    "npm run format:haxe:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "selected_strategy": "typed-wpdb-class-shell-resource-strategy-and-live-php-abi-shell",
+    "db_runtimes": 2,
+    "runtime_results_passed": true,
+    "constructor_side_effects_preserved": true,
+    "actual_mysqli_query_result_preserved": true,
+    "lazy_col_info_materialization_preserved": true,
+    "parent_visible_native_resource_bridge_preserved": true,
+    "plugin_dynamic_property_preserved": true,
+    "protected_magic_write_blocks_preserved": true,
+    "reflection_public_properties_preserved": true,
+    "require_wp_db_dropin_replacement_preserved": true,
+    "source_escape_audit_passed": true,
+    "generated_methods_present": true,
+    "strategy_matches_plan": true,
+    "predecessor_statuses": {
+      "public_state_expanded_storage_adapter": "passed",
+      "public_state_storage_adapter": "passed",
+      "public_state_descriptor": "passed",
+      "row_materialization": "passed",
+      "mysqli_phpglobal": "passed",
+      "raw_resource": "passed",
+      "mysqli_boundary": "passed"
+    }
+  }
+}

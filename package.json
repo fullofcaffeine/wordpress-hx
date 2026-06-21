@@ -141,6 +141,8 @@
     "wp:core:wphx-305-public-state-storage-adapter-candidate:check": "node tools/wp-core/run-wpdb-public-state-storage-adapter-candidate.mjs --check",
     "wp:core:wphx-305-public-state-expanded-storage-adapter-candidate": "node tools/wp-core/run-wpdb-public-state-expanded-storage-adapter-candidate.mjs",
     "wp:core:wphx-305-public-state-expanded-storage-adapter-candidate:check": "node tools/wp-core/run-wpdb-public-state-expanded-storage-adapter-candidate.mjs --check",
+    "wp:core:wphx-305-class-shell-resource-strategy-candidate": "node tools/wp-core/run-wpdb-class-shell-resource-strategy-candidate.mjs",
+    "wp:core:wphx-305-class-shell-resource-strategy-candidate:check": "node tools/wp-core/run-wpdb-class-shell-resource-strategy-candidate.mjs --check",
     "wp:core:wphx-305-mysqli-lowering-strategy": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs",
     "wp:core:wphx-305-mysqli-lowering-strategy:check": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs --check",
     "wp:core:wphx-305-mysqli-global-lowering-proof": "node tools/wp-core/run-wpdb-mysqli-global-lowering-proof.mjs",
