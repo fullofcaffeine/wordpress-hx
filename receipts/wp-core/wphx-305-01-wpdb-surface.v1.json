@@ -1,0 +1,40 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-01-wpdb-surface",
+  "issue": {
+    "id": "wordpresshx-l76.9.1",
+    "external_ref": "WPHX-305.01",
+    "title": "Inventory wpdb/database surface"
+  },
+  "recorded_at": "2026-06-21T00:40:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-01-wpdb-surface.v1.json",
+      "role": "WPHX-305.01 generated database surface manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-305-01-wpdb-surface.v1.json",
+      "role": "external-oracle ownership manifest for this first database surface"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-surface.mjs",
+      "role": "deterministic generator and drift check"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-surface",
+    "npm run wp:core:wphx-305-surface:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_units": 9,
+    "native_boundaries": 3,
+    "deferred_cross_domain_behaviors": 3,
+    "domains": 9,
+    "public_symbols": 171,
+    "upstream_tests": 20,
+    "ownership_state": "external_oracle"
+  }
+}

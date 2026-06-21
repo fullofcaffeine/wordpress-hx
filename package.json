@@ -97,6 +97,8 @@
     "wp:core:wphx-304-settings-defaults:check": "node tools/wp-core/run-settings-defaults-fixture.mjs --check",
     "wp:core:wphx-304-option-cache-candidate": "node tools/wp-core/run-option-cache-candidate.mjs",
     "wp:core:wphx-304-option-cache-candidate:check": "node tools/wp-core/run-option-cache-candidate.mjs --check",
+    "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
+    "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:linker": "node tools/wp-linker/run-original-path-linker.mjs",
     "wp:linker:check": "node tools/wp-linker/run-original-path-linker.mjs --check",
     "wp:macro:bindings": "node tools/wp-macro/run-binding-validator.mjs",

@@ -1,0 +1,90 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wpdb-surface",
+  "issue": {
+    "id": "wordpresshx-l76.9.1",
+    "external_ref": "WPHX-305.01"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "wpdb/database surface",
+    "area": "wp-includes/wp-admin",
+    "public_contract": "WordPress 7.0 wpdb public class, global $wpdb bootstrap, query/escaping/read/write/charset/table/schema APIs, and database-backed option storage paths remain oracle-owned until per-slice Haxe parity candidates replace them."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/wp-db.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/functions.php",
+      "src/wp-admin/includes/upgrade.php",
+      "src/wp-admin/install-helper.php",
+      "src/wp-admin/includes/schema.php",
+      "src/wp-includes/option.php"
+    ],
+    "digest": "sha256:01dd27e43fd221925e1c5a08a17caa23a70f1c69012727fbe6bfb60c621a02d2"
+  },
+  "native_boundaries": [
+    {
+      "id": "mysqli-driver",
+      "owner": "php-native",
+      "source_path": "src/wp-includes/class-wpdb.php",
+      "symbols": [
+        "wpdb::db_connect",
+        "wpdb::_do_query",
+        "wpdb::_real_escape",
+        "wpdb::select",
+        "wpdb::set_charset",
+        "wpdb::db_version",
+        "wpdb::db_server_info"
+      ],
+      "reason": "Runtime query execution, connection state, escaping, and server capability discovery cross into PHP mysqli and an actual MySQL-compatible server."
+    },
+    {
+      "id": "db-dropin",
+      "owner": "wordpress-plugin-boundary",
+      "source_path": "src/wp-includes/wp-db.php",
+      "symbols": [
+        "$wpdb",
+        "wp-content/db.php"
+      ],
+      "reason": "WordPress allows a custom wp-content/db.php drop-in or replacement global $wpdb object. Public ABI and generated PHP must preserve that replacement seam."
+    },
+    {
+      "id": "fatal-database-template",
+      "owner": "php-output-boundary",
+      "source_path": "src/wp-includes/functions.php",
+      "symbols": [
+        "dead_db"
+      ],
+      "reason": "The unavailable-database path emits headers and HTML. Port candidates should isolate display side effects behind a narrow boundary."
+    }
+  ],
+  "owned_paths": [
+    "tools/wp-core/run-wpdb-surface.mjs",
+    "manifests/wp-core/wphx-305-01-wpdb-surface.v1.json",
+    "receipts/wp-core/wphx-305-01-wpdb-surface.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-305-01-wpdb-surface.v1.json",
+    "manifests/ownership/wphx-305-01-wpdb-surface.v1.json",
+    "receipts/wp-core/wphx-305-01-wpdb-surface.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-305-surface",
+      "npm run wp:core:wphx-305-surface:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-305-01-wpdb-surface"
+    ],
+    "manifest_digest": "sha256:caf57a36d30979862b6f3bcb74fa3668e17d68dac2db7f2776e03b60d6dc8616"
+  },
+  "notes": "This first WPHX-305 slice inventories the oracle surface and fixture entry points only. Runtime database execution remains external_oracle and PHP-native until later WPHX-305.x slices add differential fixtures and Haxe promotion gates."
+}
