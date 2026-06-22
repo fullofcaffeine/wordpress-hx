@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 105,
+  "closed_task_count": 106,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -363,7 +363,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "06142492179d1772c1317e7c1b0a2ea20d5ccac3d03687467ddc7e889d9f3141",
+          "sha256": "64bb73e592dcdec4af9e85a6d8cadef1ede61350d67fae7af5bd6b61214820e5",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -909,6 +909,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-311.01",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
+          "sha256": "77375ba936427bb373415867ae9c705a91cd0a0519f723074282c744632985ea",
+          "id": "receipt:wphx-311-01-rest-settings-controller-fixture"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-700.01",
       "receipts": [
         {
@@ -943,7 +953,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-04-ci-parity-gates.v1.json",
-          "sha256": "f7ccf83ecbccd3474d921879db2e015bfee9d82d7caf21659f6d0debb37d28d9",
+          "sha256": "b4f59780f841ad67e11811ba814affc43c2754c8d1ea0305df8e93913f301bf6",
           "id": "receipt:wphx-700-04-ci-parity-gates"
         }
       ]

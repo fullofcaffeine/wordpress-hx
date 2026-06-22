@@ -1,0 +1,73 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rest-settings-controller-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.10.1",
+    "external_ref": "WPHX-311.01"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "REST settings controller differential fixture harness",
+    "area": "wp-includes/rest-api.php wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php",
+    "public_contract": "The /wp/v2/settings REST controller must preserve WordPress route registration, permission callback, show_in_rest schema, request ArrayAccess, option update/delete, and WP_Error behavior while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/pomo/plural-forms.php",
+      "src/wp-includes/pomo/entry.php",
+      "src/wp-includes/pomo/translations.php",
+      "src/wp-includes/l10n.php",
+      "src/wp-includes/class-wp-list-util.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wp-http-response.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-includes/rest-api.php",
+      "src/wp-includes/rest-api/class-wp-rest-request.php",
+      "src/wp-includes/rest-api/class-wp-rest-response.php",
+      "src/wp-includes/rest-api/class-wp-rest-server.php",
+      "src/wp-includes/rest-api/endpoints/class-wp-rest-controller.php",
+      "src/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php"
+    ],
+    "digest": "sha256:fa9e8eab91c03099ffef9abc64496bee6de6cd3002777ea24ad23ccbbfcbc277"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-rest-settings-controller-fixture.mjs",
+    "manifests/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
+    "manifests/ownership/wphx-311-01-rest-settings-controller-fixture.v1.json",
+    "receipts/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
+    "manifests/ownership/wphx-311-01-rest-settings-controller-fixture.v1.json",
+    "receipts/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
+    "build/wp-core/wphx-311-01"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-311-rest-settings-controller",
+      "npm run wp:core:wphx-311-rest-settings-controller:check",
+      "npm run wp:core:wphx-304-settings-defaults:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-311-01-rest-settings-controller-fixture",
+      "receipt:wphx-304-06-settings-defaults-fixture",
+      "receipt:wphx-305-domain-closure"
+    ],
+    "manifest_digest": "sha256:adb90a17a48fe6412c202775d46b262a9204cce1922ecbf3826161acab05c357"
+  },
+  "notes": "This fixture proves REST settings-controller behavior with a deterministic wpdb/cache test double. It is not yet a typed Haxe REST implementation or full REST server dispatch proof."
+}

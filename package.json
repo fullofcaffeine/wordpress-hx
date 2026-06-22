@@ -107,6 +107,8 @@
     "wp:core:wphx-304-settings-defaults:check": "node tools/wp-core/run-settings-defaults-fixture.mjs --check",
     "wp:core:wphx-304-option-cache-candidate": "node tools/wp-core/run-option-cache-candidate.mjs",
     "wp:core:wphx-304-option-cache-candidate:check": "node tools/wp-core/run-option-cache-candidate.mjs --check",
+    "wp:core:wphx-311-rest-settings-controller": "node tools/wp-core/run-rest-settings-controller-fixture.mjs",
+    "wp:core:wphx-311-rest-settings-controller:check": "node tools/wp-core/run-rest-settings-controller-fixture.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",
