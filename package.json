@@ -133,6 +133,8 @@
     "wp:core:wphx-317-multisite-options-transients:check": "node tools/wp-core/run-multisite-options-transients-fixture.mjs --check",
     "wp:core:wphx-317-blog-switch-cache": "node tools/wp-core/run-multisite-blog-switch-cache-fixture.mjs",
     "wp:core:wphx-317-blog-switch-cache:check": "node tools/wp-core/run-multisite-blog-switch-cache-fixture.mjs --check",
+    "wp:core:wphx-317-site-network-query": "node tools/wp-core/run-multisite-site-network-query-fixture.mjs",
+    "wp:core:wphx-317-site-network-query:check": "node tools/wp-core/run-multisite-site-network-query-fixture.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",

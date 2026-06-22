@@ -5,7 +5,7 @@ This document is the durable human-readable rollup for progress toward a WordPre
 Beads remains the task database. This matrix is a status ledger over Beads issues, receipts, manifests, and PRD milestones. Update it in the same change whenever milestone status, scope, evidence gates, Gutenberg split policy, or completion estimates change.
 
 Last updated: 2026-06-22
-Source checkpoint: `483bbed`
+Source checkpoint: `WPHX-317.04 artifacts in this change`
 Tracking issue: `WPHX-000.02`
 
 ## Super Progress
@@ -18,7 +18,7 @@ This is an evidence-weighted program estimate, not source-line completion. It gi
 | --- | ---: | ---: | ---: | --- |
 | Program governance, baselines, manifests, Beads, receipts | 10 | 95 | 9.5 | `WPHX-000`, `WPHX-800`, baseline receipts, locked sibling repo policy |
 | PHP target feasibility, ABI, linker, public boundary foundation | 20 | 100 | 20.0 | `WPHX-100` and `WPHX-200` closed |
-| WordPress PHP runtime Haxe ownership | 40 | 14 | 5.6 | `WPHX-300` has several verified vertical slices, but much of Core remains unported |
+| WordPress PHP runtime Haxe ownership | 40 | 15 | 6.0 | `WPHX-300` has several verified vertical slices, but much of Core remains unported |
 | Installed WordPress distribution behavior and ecosystem gates | 15 | 5 | 0.8 | `WPHX-700` has strong early gates, but complete installed-system parity is not yet closed |
 | Browser, classic JS, Gutenberg package ownership | 10 | 0 | 0.0 | `WPHX-400`, `WPHX-500`, and `WPHX-600` are not yet active implementation tracks |
 | Security, performance, reliability, and release closure | 5 | 0 | 0.0 | early security corpus exists, full nonfunctional closure is later-stage work |
@@ -52,7 +52,7 @@ The score should move only when evidence moves. A closed task can increase confi
 | `WPHX-304` Options/transients/object cache | closed | Option/cache candidate gates and fixtures exist |
 | `WPHX-305` wpdb/database abstraction | closed | Strong wpdb vertical slice exists, including native mysqli and packaged ABI gates; still not evidence that every related Core DB path is Haxe-owned |
 | `WPHX-311` REST API/schema | closed | Settings and REST server decision slices are typed Haxe strategy candidates; packaged, installed-browser, DB-backed, and cross-origin REST gates cover the active transport surface |
-| `WPHX-317` Multisite/network | open | `WPHX-317.01` surface inventory, `WPHX-317.02` site/network option plus site-transient fixtures, and `WPHX-317.03` blog switch/cache fixtures are closed; 3/7 child tasks are complete, with remaining fixture and Haxe-candidate follow-ups open |
+| `WPHX-317` Multisite/network | open | `WPHX-317.01` surface inventory, `WPHX-317.02` site/network option plus site-transient fixtures, `WPHX-317.03` blog switch/cache fixtures, and `WPHX-317.04` site/network ABI/query fixtures are closed; 4/7 child tasks are complete, with remaining installed-routing, admin/user, and Haxe-candidate follow-ups open |
 | `WPHX-322` PHP first-party manifest closure | open | Needed to prove the remaining Core PHP runtime inventory has ownership states and closure gates |
 
 ## Gutenberg Plan

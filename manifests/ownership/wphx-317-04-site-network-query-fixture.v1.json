@@ -1,0 +1,67 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/site-network-query-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.11.3",
+    "external_ref": "WPHX-317.04"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "WP_Site, WP_Network, WP_Site_Query, and WP_Network_Query ABI/query fixture harness",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 multisite site/network classes and query objects preserve reflection-visible ABI, magic property behavior, query SQL shape, found-row behavior, cache priming, and public object values while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/cache-compat.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-includes/class-wp-meta-query.php",
+      "src/wp-includes/class-wp-network.php",
+      "src/wp-includes/class-wp-network-query.php",
+      "src/wp-includes/ms-network.php",
+      "src/wp-includes/class-wp-site.php",
+      "src/wp-includes/class-wp-site-query.php",
+      "src/wp-includes/ms-site.php",
+      "src/wp-includes/ms-blogs.php"
+    ],
+    "digest": "sha256:9592a4dff21b1f4055b72378e723e9e1a7d97e7c1d4a1a8ac626a23360359fc5"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-multisite-site-network-query-fixture.mjs",
+    "manifests/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
+    "receipts/wp-core/wphx-317-04-site-network-query-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
+    "manifests/ownership/wphx-317-04-site-network-query-fixture.v1.json",
+    "receipts/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
+    "build/wp-core/wphx-317-04"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-317-site-network-query",
+      "npm run wp:core:wphx-317-site-network-query:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-317-04-site-network-query-fixture"
+    ],
+    "manifest_digest": "sha256:f6e205a44b6631d80f66a52df8579bf9ff686837c4bf339d69a3c6fb487a0b0f"
+  },
+  "notes": "The candidate fixture root is an oracle source mirror for WPHX-317.04. The probe supplies deterministic site/network rows and option values through a constrained wpdb test double; installed multisite routing, live database parity, and Haxe-owned class/query replacements remain later WPHX-317 gates."
+}

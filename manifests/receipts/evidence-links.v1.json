@@ -1099,6 +1099,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-317.04",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
+          "sha256": "6e46830978f68fe8372b042c952c21f3a7e2c13d61ab96b16864281ff8f5a712",
+          "id": "receipt:wphx-317-04-site-network-query-fixture"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-700.01",
       "receipts": [
         {

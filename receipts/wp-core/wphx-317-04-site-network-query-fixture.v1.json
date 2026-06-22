@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-317-04-site-network-query-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.11.3",
+    "external_ref": "WPHX-317.04",
+    "title": "Build WP_Site and WP_Network ABI/query fixtures"
+  },
+  "recorded_at": "2026-06-22T22:18:04.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
+      "role": "WP_Site/WP_Network ABI and query fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-317-04-site-network-query-fixture.v1.json",
+      "role": "external-oracle ownership manifest for the site/network query fixture harness"
+    },
+    {
+      "path": "tools/wp-core/run-multisite-site-network-query-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-317-site-network-query",
+    "npm run wp:core:wphx-317-site-network-query:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 21,
+    "fixture_cases": 7,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}
