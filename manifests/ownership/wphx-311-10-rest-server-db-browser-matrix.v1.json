@@ -1,0 +1,48 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rest-server-db-browser-matrix",
+  "issue": {
+    "id": "wordpresshx-ys8",
+    "external_ref": "WPHX-311.10"
+  },
+  "unit": {
+    "kind": "packaged-distribution-db-backed-browser-matrix",
+    "name": "WP_REST_Server DB-backed installed browser and cross-origin CORS matrix",
+    "area": "wp-includes/rest-api/class-wp-rest-server.php",
+    "public_contract": "The packaged REST server candidate must match vanilla through browser fetches against isolated database-backed installed roots, including cross-origin CORS/preflight behavior and no upstream WP_REST_Server fallback."
+  },
+  "ownership_state": "packaged_distribution_candidate",
+  "owned_paths": [
+    "tools/wp-core/run-rest-server-db-browser-matrix.mjs",
+    "manifests/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+    "manifests/ownership/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+    "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+    ".github/workflows/php-conformance.yml",
+    "tools/ci/check-php-conformance-ci.mjs"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+    "manifests/ownership/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+    "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+    "build/wp-core/wphx-311-10",
+    "build/wp-core/wphx-311-07/oracle-package/wphx-rest-db-browser-router.php",
+    "build/wp-core/wphx-311-07/candidate-package/wphx-rest-db-browser-router.php"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-311-rest-server-db-browser",
+      "npm run wp:core:wphx-311-rest-server-db-browser:check",
+      "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+      "npm run ci:php-conformance:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-311-10-rest-server-db-browser-matrix",
+      "receipt:wphx-311-09-rest-server-installed-browser",
+      "receipt:wphx-311-08-rest-server-web-e2e"
+    ],
+    "manifest_digest": "sha256:5bce96563e488a9bcfd23c593e455d38efa2af2747c0df871ada781febb2f10f"
+  },
+  "notes": "This matrix uses upstream wpdb as DB plumbing for the focused REST server slice. It does not claim wpdb ownership; WPHX-305 remains the database abstraction authority."
+}

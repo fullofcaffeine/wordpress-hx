@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 119,
+  "closed_task_count": 120,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -373,7 +373,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "8ba52cb3450bc86aeb7a03c8d8fab6e0f309ad6a6f1e1f5f8d10da00ecb118bf",
+          "sha256": "1e269b60acc4b58324588c72f7cf0b268223abf5d664142c69f24cde1c034fc8",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -993,7 +993,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
-          "sha256": "9aaf714c230731ae27b48f42b78eafa50b541c363a400afff26a77434f39d236",
+          "sha256": "f05913a7737ee40a69946f0c7ef1743093b663d03596425b93144217054d42c7",
           "id": "receipt:wphx-311-08-rest-server-web-e2e"
         }
       ]
@@ -1003,8 +1003,18 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
-          "sha256": "b09fd24b5dee71c89b1df8250802bfe45d6f121729d34fb3b6b556ebbf871f4a",
+          "sha256": "6eddeb4ff04127aa693754765d4abcf48d36cc65e40c03bef006ee174b6148e8",
           "id": "receipt:wphx-311-09-rest-server-installed-browser"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-311.10",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+          "sha256": "4eed628b59a1f2373913ac5fdb7a085150962fd5b5cf1438f141e029d9728aba",
+          "id": "receipt:wphx-311-10-rest-server-db-browser-matrix"
         }
       ]
     },
@@ -1083,7 +1093,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-04-ci-parity-gates.v1.json",
-          "sha256": "8e4939ecce970bb788632bf6a5db531aeda7d01df97051be1fcf8ceab16b738b",
+          "sha256": "4cc3527e151f04724f8d356222385aea8cff65bfde710ff428681b743580b686",
           "id": "receipt:wphx-700-04-ci-parity-gates"
         }
       ]

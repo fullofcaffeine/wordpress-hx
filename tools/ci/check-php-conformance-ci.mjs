@@ -70,7 +70,8 @@ const REQUIRED_COMMANDS = [
   "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
   "npm run php:db-client-images:check",
   "npm run wp:core:wphx-305-live-db:check",
-  "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
+  "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+  "npm run wp:core:wphx-311-rest-server-db-browser:check"
 ];
 
 const REQUIRED_SUITES = [
@@ -288,7 +289,8 @@ const parityGatesManifest = {
     "npm run wp:core:wphx-311-rest-server-installed-browser:check",
     "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-live-db:check",
-    "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
+    "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+    "npm run wp:core:wphx-311-rest-server-db-browser:check"
   ],
   validation_result: {
     status: "passed",
@@ -308,6 +310,7 @@ const parityGatesManifest = {
     wphx_311_rest_server_packaged_http_gate_required: true,
     wphx_311_rest_server_web_e2e_gate_required: true,
     wphx_311_rest_server_installed_browser_gate_required: true,
+    wphx_311_rest_server_db_browser_gate_required: true,
     wphx_700_08_packaged_distribution_abi_gate_required: true,
     wphx_305_live_db_candidate_gate_required: true,
     mysql_mariadb_images_pinned: true,
@@ -358,6 +361,7 @@ const parityGatesReceipt = {
     "npm run wp:core:wphx-311-rest-server-packaged-http:check",
     "npm run wp:core:wphx-311-rest-server-web-e2e:check",
     "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+    "npm run wp:core:wphx-311-rest-server-db-browser:check",
     "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
     "npm run beads:validate",

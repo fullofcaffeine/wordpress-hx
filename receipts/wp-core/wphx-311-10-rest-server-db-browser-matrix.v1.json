@@ -1,0 +1,92 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-311-10-rest-server-db-browser-matrix",
+  "issue": {
+    "id": "wordpresshx-ys8",
+    "external_ref": "WPHX-311.10",
+    "title": "Add DB-backed and cross-origin REST browser matrix"
+  },
+  "recorded_at": "2026-06-22T21:30:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+      "role": "REST server DB-backed installed browser and cross-origin CORS/preflight matrix"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+      "role": "REST server DB-backed browser matrix ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-rest-server-db-browser-matrix.mjs",
+      "role": "Playwright/browser, live MySQL, and packaged REST matrix generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-311-rest-server-db-browser",
+    "npm run wp:core:wphx-311-rest-server-db-browser:check",
+    "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+    "npm run ci:php-conformance:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-311-09-rest-server-installed-browser",
+    "receipt:wphx-311-08-rest-server-web-e2e",
+    "receipt:wphx-311-07-rest-server-packaged-http",
+    "receipt:wphx-305-domain-closure"
+  ],
+  "manifest_sha256": "sha256:5bce96563e488a9bcfd23c593e455d38efa2af2747c0df871ada781febb2f10f",
+  "validation_result": {
+    "status": "passed",
+    "evidence_classes": [
+      "targeted_semantic_parity",
+      "runtime_abi",
+      "live_integration_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "same_origin_cases": 4,
+    "cross_origin_cases": 2,
+    "selected_headers": [
+      "content-type",
+      "x-robots-tag",
+      "link",
+      "x-content-type-options",
+      "access-control-expose-headers",
+      "access-control-allow-headers",
+      "access-control-allow-origin",
+      "access-control-allow-methods",
+      "access-control-allow-credentials",
+      "vary",
+      "allow"
+    ],
+    "runtime_count": 1,
+    "package_boundaries": [
+      {
+        "status": "passed",
+        "checks": {
+          "class_declared_in_package": true,
+          "upstream_server_not_included": true,
+          "owned_methods_declared_in_package": true,
+          "haxe_strategy_loaded": true,
+          "wpdb_loaded_for_db_plumbing": true
+        }
+      }
+    ],
+    "cors_preflight": [
+      {
+        "status": "passed",
+        "checks": {
+          "saw_browser_preflight": true,
+          "saw_cross_origin_actual_request": true,
+          "preflight_requested_post": true,
+          "preflight_requested_custom_header": true,
+          "preflight_response_allowed_origin": true,
+          "preflight_response_allowed_methods": true,
+          "preflight_response_allowed_headers": true
+        },
+        "preflight_count": 2,
+        "cross_origin_actual_count": 3
+      }
+    ]
+  }
+}

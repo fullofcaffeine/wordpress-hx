@@ -51,7 +51,7 @@ The score should move only when evidence moves. A closed task can increase confi
 | `WPHX-303` Error/deprecation/formatting/escaping/KSES | closed | Multiple Haxe-owned decision slices and security corpus gates exist |
 | `WPHX-304` Options/transients/object cache | closed | Option/cache candidate gates and fixtures exist |
 | `WPHX-305` wpdb/database abstraction | closed | Strong wpdb vertical slice exists, including native mysqli and packaged ABI gates; still not evidence that every related Core DB path is Haxe-owned |
-| `WPHX-311` REST API/schema | in progress | Settings and REST server decision slices are actively being moved into typed Haxe |
+| `WPHX-311` REST API/schema | in progress | Settings and REST server decision slices are actively being moved into typed Haxe; installed browser, DB-backed, and cross-origin REST gates cover the active transport surface |
 | `WPHX-317` Multisite/network | open | Not yet started |
 | `WPHX-322` PHP first-party manifest closure | open | Needed to prove the remaining Core PHP runtime inventory has ownership states and closure gates |
 

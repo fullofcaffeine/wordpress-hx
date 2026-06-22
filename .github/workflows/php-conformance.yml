@@ -100,6 +100,7 @@ jobs:
             command: |
               npm run wp:core:wphx-305-live-db:check
               npm run wp:core:wphx-305-db-connect-strategy-candidate:check
+              npm run wp:core:wphx-311-rest-server-db-browser:check
 
     steps:
       - name: Checkout
