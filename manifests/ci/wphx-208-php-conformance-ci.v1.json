@@ -5,7 +5,7 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:ec578dd1cd0ff489e1e5d5e87a5e78fdc2f0e046aa84ae41871276bd223cd5b3",
+    "sha256": "sha256:198a550e3b09ed67e67ac410358e1fb20d4b9ac31c9bf33b3a00fc54f2ff8a00",
     "triggers": [
       "pull_request",
       "push:main",
@@ -65,6 +65,7 @@
       "npm run wp:core:wphx-304-option-cache-candidate:check",
       "npm run wp:core:wphx-305-mysqli-global-lowering-proof:check",
       "npm run wp:core:wphx-305-prepare-escaping-strategy-candidate:check",
+      "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
       "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
     ]
   },

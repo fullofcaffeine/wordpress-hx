@@ -1,0 +1,41 @@
+{
+  "schema": "wphx.ownership.v1",
+  "issue": "WPHX-700.08",
+  "generated_at": "2026-06-21T03:20:00.000Z",
+  "generator": "tools/wp-core/run-wpdb-packaged-abi-no-fallback-gate.mjs",
+  "evidence_class": "runtime_abi",
+  "artifact_scope": "packaged_distribution",
+  "owned_units": [
+    {
+      "path": "wp-includes/class-wpdb.php",
+      "owner": "WPHX-700.08",
+      "status": "candidate_owned_packaged_abi_shell",
+      "evidence": "manifests/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+      "note": "This packaged shell proves no-fallback ABI ownership for selected wpdb methods; it is not a behavior-complete wpdb port."
+    },
+    {
+      "path": "wp-includes/wp-db.php",
+      "owner": "WPHX-700.08",
+      "status": "candidate_bootstrap_wrapper",
+      "evidence": "manifests/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json"
+    },
+    {
+      "path": "wp-settings.php",
+      "owner": "WPHX-700.08",
+      "status": "candidate_bootstrap_probe_root",
+      "evidence": "manifests/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "packaged_distribution_root_built": true,
+    "class_wpdb_declared_by_candidate_package": true,
+    "class_wpdb_has_no_parent": true,
+    "global_wpdb_is_candidate_instance": true,
+    "owned_methods_declared_in_candidate_file": true,
+    "upstream_wpdb_file_not_included": true,
+    "dynamic_plugin_property_visible": true,
+    "public_property_order_prefix_preserved": true,
+    "full_diagnostics_recorded": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback",
+  "issue": {
+    "id": "wordpresshx-w91.3.8",
+    "external_ref": "WPHX-700.08",
+    "title": "WPHX-700.08 — Add packaged-distribution wpdb ABI no-fallback gate"
+  },
+  "recorded_at": "2026-06-21T03:20:00.000Z",
+  "command": "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback",
+  "evidence_class": "runtime_abi",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "manifests/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+      "role": "packaged-distribution wpdb runtime ABI no-fallback manifest",
+      "sha256": "sha256:1e96a0a466a3fb58392dd52a1217685438d4267c5d93da7c6fc90a2bfe8811eb"
+    },
+    {
+      "path": "manifests/ownership/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+      "role": "packaged-distribution ownership manifest",
+      "sha256": "sha256:32dbcc4233037a9955f71bc5ae03bd2522de8356eafe7c74e14716af0aaacd73"
+    },
+    {
+      "path": "build/wp-core/wphx-700-08/diagnostics/wpdb-packaged-abi-no-fallback.json",
+      "role": "full PHP probe stdout/stderr diagnostics",
+      "sha256": "sha256:e96a1868f87d69ba6503b743316b41192dc2a27bf8fc2ccb6828dddaefab8275"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback",
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
+    "npm run ci:php-conformance:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "packaged_distribution_root_built": true,
+    "class_wpdb_declared_by_candidate_package": true,
+    "class_wpdb_has_no_parent": true,
+    "global_wpdb_is_candidate_instance": true,
+    "owned_methods_declared_in_candidate_file": true,
+    "upstream_wpdb_file_not_included": true,
+    "dynamic_plugin_property_visible": true,
+    "public_property_order_prefix_preserved": true,
+    "full_diagnostics_recorded": true
+  }
+}

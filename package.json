@@ -153,6 +153,8 @@
     "wp:core:wphx-305-query-execution-strategy-candidate:check": "node tools/wp-core/run-wpdb-query-execution-strategy-candidate.mjs --check",
     "wp:core:wphx-305-db-connect-strategy-candidate": "node tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
     "wp:core:wphx-305-db-connect-strategy-candidate:check": "node tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs --check",
+    "wp:core:wphx-700-wpdb-packaged-abi-no-fallback": "node tools/wp-core/run-wpdb-packaged-abi-no-fallback-gate.mjs",
+    "wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check": "node tools/wp-core/run-wpdb-packaged-abi-no-fallback-gate.mjs --check",
     "wp:core:wphx-305-mysqli-lowering-strategy": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs",
     "wp:core:wphx-305-mysqli-lowering-strategy:check": "node tools/wp-core/run-wpdb-mysqli-lowering-strategy.mjs --check",
     "wp:core:wphx-305-mysqli-global-lowering-proof": "node tools/wp-core/run-wpdb-mysqli-global-lowering-proof.mjs",

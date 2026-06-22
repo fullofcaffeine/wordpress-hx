@@ -5,11 +5,11 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "source_manifest": {
     "path": "manifests/ci/wphx-208-php-conformance-ci.v1.json",
-    "sha256": "sha256:58f231aaf0c157e48f1092ceed524004c6bc575e12330967c316b6d1d0f776e0"
+    "sha256": "sha256:24dacfe53953bc1277a4bc56346a87934b0acf4506796dc40de291027bdc985f"
   },
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:ec578dd1cd0ff489e1e5d5e87a5e78fdc2f0e046aa84ae41871276bd223cd5b3",
+    "sha256": "sha256:198a550e3b09ed67e67ac410358e1fb20d4b9ac31c9bf33b3a00fc54f2ff8a00",
     "deterministic_suite": "wp-core-deterministic-parity",
     "live_db_suite": "wp-core-live-db-parity",
     "artifact_upload": "actions/upload-artifact@v4"
@@ -17,12 +17,14 @@
   "evidence_classes": [
     "generated_shape",
     "targeted_semantic_parity",
+    "runtime_abi",
     "live_integration_parity"
   ],
   "artifact_scopes": [
     "minimized_fixture",
     "bridge_shell",
-    "linked_candidate"
+    "linked_candidate",
+    "packaged_distribution"
   ],
   "required_parity_commands": [
     "npm run generated-php:lowering-snapshots:check",
@@ -30,6 +32,7 @@
     "npm run wp:core:wphx-304-option-cache-candidate:check",
     "npm run wp:core:wphx-305-mysqli-global-lowering-proof:check",
     "npm run wp:core:wphx-305-prepare-escaping-strategy-candidate:check",
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
   ],
   "validation_result": {
@@ -41,6 +44,7 @@
     "wphx_304_candidate_gate_required": true,
     "wphx_305_generated_shape_gate_required": true,
     "wphx_305_prepare_escaping_strategy_gate_required": true,
+    "wphx_700_08_packaged_distribution_abi_gate_required": true,
     "wphx_305_live_db_candidate_gate_required": true,
     "mysql_mariadb_images_pinned": true,
     "conformance_artifacts_uploaded": true

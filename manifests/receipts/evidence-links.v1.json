@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 98,
+  "closed_task_count": 99,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -363,7 +363,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "442fc8088c5e883693e6e0c2ae2bb1742c95a3f752d9b2310f8bf7b7d503d36d",
+          "sha256": "bbaed1c8579d4f6869148e6edc8f3b15757a647b0aa47a3cf3e782bd5772c4f9",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -383,7 +383,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "7ba16d471bc9590cc73b1ef992886431de667717fd39bb89266c8bcfe4059571",
+          "sha256": "2c070e6db4da3240017ef8f97f651dcbcfffc6139e8f898228dc997a347e6d43",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -923,8 +923,18 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-04-ci-parity-gates.v1.json",
-          "sha256": "54b300f4791da1e9f4ff10b32bb3a855578d648bc20da0b17a6ac8d5e1125ddf",
+          "sha256": "f7ccf83ecbccd3474d921879db2e015bfee9d82d7caf21659f6d0debb37d28d9",
           "id": "receipt:wphx-700-04-ci-parity-gates"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-700.08",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+          "sha256": "336fe5972dfb3de77299134ebd8adf4e38a48b5bf055d5569585ee56a6150e37",
+          "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]
     },

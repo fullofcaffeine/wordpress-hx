@@ -58,6 +58,7 @@ const REQUIRED_COMMANDS = [
   "npm run wp:core:wphx-304-option-cache-candidate:check",
   "npm run wp:core:wphx-305-mysqli-global-lowering-proof:check",
   "npm run wp:core:wphx-305-prepare-escaping-strategy-candidate:check",
+  "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
   "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
 ];
 
@@ -243,14 +244,15 @@ const parityGatesManifest = {
     live_db_suite: "wp-core-live-db-parity",
     artifact_upload: "actions/upload-artifact@v4"
   },
-  evidence_classes: ["generated_shape", "targeted_semantic_parity", "live_integration_parity"],
-  artifact_scopes: ["minimized_fixture", "bridge_shell", "linked_candidate"],
+  evidence_classes: ["generated_shape", "targeted_semantic_parity", "runtime_abi", "live_integration_parity"],
+  artifact_scopes: ["minimized_fixture", "bridge_shell", "linked_candidate", "packaged_distribution"],
   required_parity_commands: [
     "npm run generated-php:lowering-snapshots:check",
     "npm run wp:core:wphx-303-wp-error:check",
     "npm run wp:core:wphx-304-option-cache-candidate:check",
     "npm run wp:core:wphx-305-mysqli-global-lowering-proof:check",
     "npm run wp:core:wphx-305-prepare-escaping-strategy-candidate:check",
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
   ],
   validation_result: {
@@ -262,6 +264,7 @@ const parityGatesManifest = {
     wphx_304_candidate_gate_required: true,
     wphx_305_generated_shape_gate_required: true,
     wphx_305_prepare_escaping_strategy_gate_required: true,
+    wphx_700_08_packaged_distribution_abi_gate_required: true,
     wphx_305_live_db_candidate_gate_required: true,
     mysql_mariadb_images_pinned: true,
     conformance_artifacts_uploaded: true
@@ -302,6 +305,7 @@ const parityGatesReceipt = {
     "npm run wp:core:wphx-303-wp-error:check",
     "npm run wp:core:wphx-304-option-cache-candidate:check",
     "npm run wp:core:wphx-305-mysqli-global-lowering-proof:check",
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
     "npm run beads:validate",
     "npm run receipts:validate"
