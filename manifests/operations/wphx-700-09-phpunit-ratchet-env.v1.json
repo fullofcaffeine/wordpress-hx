@@ -1,0 +1,144 @@
+{
+  "schema": "wphx.upstream-phpunit-ratchet-env.v1",
+  "issue": "WPHX-700.09",
+  "generated_at": "2026-06-21T04:45:00.000Z",
+  "generator": "tools/upstream/provision-phpunit-ratchet-env.mjs",
+  "evidence_class": "upstream_suite_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": true,
+  "inputs": {
+    "provisioner": {
+      "path": "tools/upstream/provision-phpunit-ratchet-env.mjs",
+      "bytes": 16575,
+      "sha256": "sha256:1fc04999a49c266b97f7cb3d6d91c90b33e6a6e7b6f778ea4980faa0a449edf8"
+    },
+    "ratchet_runner": {
+      "path": "tools/upstream/run-phpunit-ratchet.mjs",
+      "bytes": 11730,
+      "sha256": "sha256:f675ba034e39f6544a95c1f1c4228bcaef8577d91526212a407d4ccd57dc15db"
+    },
+    "groups": {
+      "path": "tests/upstream/phpunit/groups.json",
+      "bytes": 936,
+      "sha256": "sha256:b12f7be3efaca0216c9ed315004d4408470dc47af11371e0c3cfe37ecf375660"
+    },
+    "known_deltas": {
+      "path": "tests/upstream/phpunit/known-deltas.json",
+      "bytes": 240,
+      "sha256": "sha256:581ab2c229862441cd7f0f8fb6adff411939e96632e3e669399fcbb7f2b02771"
+    },
+    "toolchain": {
+      "path": "toolchain.lock.json",
+      "bytes": 5811,
+      "sha256": "sha256:c27b6be710bad37eda5fb68d8e10e0d0abbd60430daa177b0c919cdcf12aff5c"
+    }
+  },
+  "roots": {
+    "upstream_root": "../wordpress-develop",
+    "expected_upstream_ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "vanilla_root": "build/upstream-phpunit/wphx-700-09/vanilla-root",
+    "candidate_root": "build/upstream-phpunit/wphx-700-09/candidate-root",
+    "candidate_assembly": {
+      "base": "pinned WordPress 7.0.0 worktree",
+      "active_overlays": [],
+      "note": "This provisions the executable ratchet environment. Future candidate packaging tasks should add generated/Haxe-owned overlays before this gate is used as final distribution parity evidence."
+    },
+    "vanilla_ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "candidate_ref": "26b68024931348d267b70e2a29910e1320d0094f"
+  },
+  "composer": [
+    {
+      "side": "vanilla",
+      "status": "passed",
+      "stdout": {
+        "path": "build/upstream-phpunit/wphx-700-09/logs/vanilla-composer.stdout.txt",
+        "bytes": 275,
+        "sha256": "sha256:f2f9dd8d3c8226f0a9df48ccab5221c6b9e58daf60a50832689257b53a651aeb"
+      },
+      "stderr": {
+        "path": "build/upstream-phpunit/wphx-700-09/logs/vanilla-composer.stderr.txt",
+        "bytes": 15781,
+        "sha256": "sha256:443f0dea7fa67a0d9de0159d531e0dca742dbe1ad966d24208f5a85275eced3f"
+      }
+    },
+    {
+      "side": "candidate",
+      "status": "passed",
+      "stdout": {
+        "path": "build/upstream-phpunit/wphx-700-09/logs/candidate-composer.stdout.txt",
+        "bytes": 275,
+        "sha256": "sha256:f2f9dd8d3c8226f0a9df48ccab5221c6b9e58daf60a50832689257b53a651aeb"
+      },
+      "stderr": {
+        "path": "build/upstream-phpunit/wphx-700-09/logs/candidate-composer.stderr.txt",
+        "bytes": 15781,
+        "sha256": "sha256:443f0dea7fa67a0d9de0159d531e0dca742dbe1ad966d24208f5a85275eced3f"
+      }
+    }
+  ],
+  "database_runtime": {
+    "engine": "mysql",
+    "image": {
+      "image": "library/mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
+      "id": "sha256:36fc05616f8ea53e509c0a3831c4a6ec1e624ae24a2aa93d8d8f08f8c5ff848e",
+      "repo_digests": [
+        "mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2"
+      ],
+      "architecture": "arm64",
+      "os": "linux",
+      "created": "2026-06-16T23:46:27.398798324Z"
+    },
+    "query": {
+      "version": "8.4.10",
+      "comment": "MySQL Community Server - GPL"
+    },
+    "databases": [
+      "wordpresshx_phpunit_vanilla",
+      "wordpresshx_phpunit_candidate"
+    ]
+  },
+  "test_configs": {
+    "vanilla": {
+      "path": "build/upstream-phpunit/wphx-700-09/vanilla-root/wp-tests-config.php",
+      "database": "wordpresshx_phpunit_vanilla",
+      "db_host": "127.0.0.1:<redacted-port>",
+      "sha256": "sha256:b27697ec712199ea6008867fa4b29cf1186e55db8dba7c8a40e05e7ad4230864"
+    },
+    "candidate": {
+      "path": "build/upstream-phpunit/wphx-700-09/candidate-root/wp-tests-config.php",
+      "database": "wordpresshx_phpunit_candidate",
+      "db_host": "127.0.0.1:<redacted-port>",
+      "sha256": "sha256:46b12ef8121bc2aa477da18ae8628391045081259baea8cea5656d171d6ac9c8"
+    }
+  },
+  "ratchet_report": {
+    "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
+    "sha256": "sha256:7020e7b5caa4f688f8e11cd5c098980bda4d69556f796c3fe8483d118ac25377",
+    "status": "passed",
+    "classifications": [
+      {
+        "group": "wpdb-core",
+        "owner": "WPHX-305",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      {
+        "group": "options-cache",
+        "owner": "WPHX-304",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      }
+    ]
+  },
+  "validation_result": {
+    "status": "passed",
+    "environment_ready": true,
+    "vanilla_candidate_roots_distinct": true,
+    "isolated_databases": true,
+    "ratchet_runs_executed": 4,
+    "all_classifications_parity_pass": true,
+    "rejects_new_vanilla_pass_candidate_fail": true
+  }
+}

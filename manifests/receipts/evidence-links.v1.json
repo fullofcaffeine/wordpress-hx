@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 99,
+  "closed_task_count": 101,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -929,12 +929,37 @@
       ]
     },
     {
+      "external_ref": "WPHX-700.05",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet-provisioned.v1.json",
+          "sha256": "a448ab11aa42f10274b6b2354c676cb95be1b02cac3b4373c91782133f8f7d30",
+          "id": "receipt:wphx-700-05-upstream-phpunit-ratchet-provisioned"
+        },
+        {
+          "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
+          "sha256": "40cf750a75e6e17174a97487811e8289b70148f313b5861ccf170a3b92b07883",
+          "id": "receipt:wphx-700-05-upstream-phpunit-ratchet"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-700.08",
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
           "sha256": "336fe5972dfb3de77299134ebd8adf4e38a48b5bf055d5569585ee56a6150e37",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-700.09",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-700-09-phpunit-ratchet-env.v1.json",
+          "sha256": "b9539bc5d8b87e63d8c089e084a569c346b469a0e38c102597f0f765ab4bccce",
+          "id": "receipt:wphx-700-09-phpunit-ratchet-env"
         }
       ]
     },

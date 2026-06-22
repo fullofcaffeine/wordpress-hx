@@ -36,6 +36,8 @@
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
     "upstream:phpunit-ratchet": "node tools/upstream/run-phpunit-ratchet.mjs",
     "upstream:phpunit-ratchet:check": "node tools/upstream/run-phpunit-ratchet.mjs --check",
+    "upstream:phpunit-ratchet:provision": "node tools/upstream/provision-phpunit-ratchet-env.mjs",
+    "upstream:phpunit-ratchet:provision:check": "node tools/upstream/provision-phpunit-ratchet-env.mjs --check",
     "php:facade:f1": "node tools/php-facade/run-f1-global-function.mjs",
     "php:facade:f1:check": "node tools/php-facade/run-f1-global-function.mjs --check",
     "php:facade:f2": "node tools/php-facade/run-f2-references.mjs",

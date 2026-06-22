@@ -9,6 +9,15 @@ npm run upstream:phpunit-ratchet
 npm run upstream:phpunit-ratchet:check
 ```
 
+To provision and execute the disposable local runtime inputs:
+
+```bash
+npm run upstream:phpunit-ratchet:provision
+npm run upstream:phpunit-ratchet:provision:check
+```
+
+The provisioner creates vanilla and candidate worktrees under `build/upstream-phpunit/wphx-700-09/`, installs Composer dependencies in those disposable roots, starts the locked MySQL runtime, writes local `wp-tests-config.php` files with isolated databases, and runs the ratchet in report-only mode.
+
 The runner compares pinned vanilla WordPress against a packaged candidate distribution for the selected database, options, and cache PHPUnit files in `tests/upstream/phpunit/groups.json`.
 
 Required runtime inputs:

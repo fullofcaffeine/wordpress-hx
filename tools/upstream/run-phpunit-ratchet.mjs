@@ -6,6 +6,7 @@ import { dirname, resolve } from "node:path";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
+const runtimeReportOnly = args.has("--runtime-report-only");
 
 const ISSUE = {
   id: "wordpresshx-w91.3.5",
@@ -214,17 +215,43 @@ const execution =
         classifications: [],
         blocked_reason: "Required upstream PHPUnit runtime inputs are missing; no upstream suite parity is claimed."
       };
+const behaviorParityClaimed =
+  execution.status === "passed" &&
+  execution.classifications.length > 0 &&
+  execution.classifications.every((entry) => entry.classification === "parity_pass");
 const report = {
   schema: "wphx.upstream-phpunit-ratchet-report.v1",
   issue: ISSUE.external_ref,
   generated_at: RECORDED_AT,
   evidence_class: "upstream_suite_parity",
   artifact_scope: "packaged_distribution",
-  behavior_parity_claimed: execution.status === "passed",
+  behavior_parity_claimed: behaviorParityClaimed,
   prerequisites,
   execution
 };
 writeFile(REPORT, JSON.stringify(report, null, 2) + "\n");
+
+if (runtimeReportOnly) {
+  console.log(
+    JSON.stringify(
+      {
+        status: execution.status,
+        report: REPORT,
+        evidence_class: report.evidence_class,
+        artifact_scope: report.artifact_scope,
+        behavior_parity_claimed: report.behavior_parity_claimed,
+        environment_ready: prerequisites.status === "ready",
+        blocked_inputs: prerequisites.missing
+      },
+      null,
+      2
+    )
+  );
+  if (execution.status === "failed") {
+    process.exit(1);
+  }
+  process.exit(0);
+}
 
 const manifest = {
   schema: "wphx.upstream-phpunit-ratchet.v1",
@@ -233,7 +260,7 @@ const manifest = {
   generator: RUNNER,
   evidence_class: "upstream_suite_parity",
   artifact_scope: "packaged_distribution",
-  behavior_parity_claimed: execution.status === "passed",
+  behavior_parity_claimed: behaviorParityClaimed,
   inputs: {
     runner: inputRecord(RUNNER),
     groups: inputRecord(GROUPS),

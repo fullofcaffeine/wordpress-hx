@@ -15,7 +15,7 @@
     {
       "path": "manifests/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
       "role": "upstream PHPUnit ratchet manifest",
-      "sha256": "sha256:8a5f50608f7d42ff623bd2012f08db203f1375a1fc0be9655c6c1989ddd6a91d"
+      "sha256": "sha256:9ea536143f3247b9fc8207c0ba84d2860f6b224df2212c647b0c374931857168"
     },
     {
       "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
