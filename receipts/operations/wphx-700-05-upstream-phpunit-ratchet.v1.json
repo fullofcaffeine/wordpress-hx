@@ -15,7 +15,7 @@
     {
       "path": "manifests/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
       "role": "upstream PHPUnit ratchet manifest",
-      "sha256": "sha256:9ea536143f3247b9fc8207c0ba84d2860f6b224df2212c647b0c374931857168"
+      "sha256": "sha256:853d07b9c3a5c25adf2800ef1c04d61dd7f851348e0262bc11856025a7ba27e5"
     },
     {
       "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
@@ -26,11 +26,6 @@
       "path": "tests/upstream/phpunit/known-deltas.json",
       "role": "owned known-deltas ledger"
     }
-  ],
-  "verification_commands": [
-    "npm run upstream:phpunit-ratchet",
-    "npm run upstream:phpunit-ratchet:check",
-    "npm run receipts:validate"
   ],
   "validation_result": {
     "status": "blocked",

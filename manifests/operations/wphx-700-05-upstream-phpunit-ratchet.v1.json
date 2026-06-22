@@ -9,8 +9,8 @@
   "inputs": {
     "runner": {
       "path": "tools/upstream/run-phpunit-ratchet.mjs",
-      "bytes": 11730,
-      "sha256": "sha256:f675ba034e39f6544a95c1f1c4228bcaef8577d91526212a407d4ccd57dc15db"
+      "bytes": 11013,
+      "sha256": "sha256:d8414424312d8bb9bb5f8d98d067ea502239af6dc675b7bf590471384ebfeccd"
     },
     "groups": {
       "path": "tests/upstream/phpunit/groups.json",

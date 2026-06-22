@@ -34,6 +34,8 @@
     "license:provenance": "node tools/license/audit-provenance.mjs",
     "license:provenance:check": "node tools/license/audit-provenance.mjs --check",
     "oracle:vanilla": "node tools/oracle/vanilla-oracle.mjs",
+    "operations:runner-support": "node tools/support/check-runner-support.mjs",
+    "operations:runner-support:check": "node tools/support/check-runner-support.mjs --check",
     "upstream:phpunit-ratchet": "node tools/upstream/run-phpunit-ratchet.mjs",
     "upstream:phpunit-ratchet:check": "node tools/upstream/run-phpunit-ratchet.mjs --check",
     "upstream:phpunit-ratchet:provision": "node tools/upstream/provision-phpunit-ratchet-env.mjs",

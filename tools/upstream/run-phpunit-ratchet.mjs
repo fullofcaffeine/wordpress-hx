@@ -1,8 +1,17 @@
 #!/usr/bin/env node
-import { createHash } from "node:crypto";
-import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import {
+  artifactRecord,
+  captureProcessArtifacts,
+  jsonText,
+  readJson,
+  runProcess,
+  sha256Text,
+  verificationReceipt,
+  writeFileRecursive,
+  writeOrCheck
+} from "../support/wphx-runner-support.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -25,48 +34,10 @@ const VANILLA_ROOT = process.env.WPHX_PHPUNIT_VANILLA_ROOT ?? "../wordpress-deve
 const CANDIDATE_ROOT = process.env.WPHX_PHPUNIT_CANDIDATE_ROOT ?? "";
 const EXPECTED_UPSTREAM_REF = "26b68024931348d267b70e2a29910e1320d0094f";
 
-function sha256(value) {
-  return `sha256:${createHash("sha256").update(value).digest("hex")}`;
-}
-
-function sha256File(path) {
-  return createHash("sha256").update(readFileSync(path)).digest("hex");
-}
-
-function readJson(path) {
-  return JSON.parse(readFileSync(path, "utf8"));
-}
-
-function writeFile(path, contents) {
-  mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, contents);
-}
-
-function inputRecord(path) {
-  return {
-    path,
-    bytes: statSync(path).size,
-    sha256: `sha256:${sha256File(path)}`
-  };
-}
-
-function writeOrCheck(path, contents) {
-  if (checkOnly) {
-    if (!existsSync(path)) throw new Error(`${path} is missing`);
-    if (readFileSync(path, "utf8") !== contents) {
-      throw new Error(`${path} is stale; run npm run upstream:phpunit-ratchet`);
-    }
-    return;
-  }
-
-  writeFile(path, contents);
-}
-
 function run(command, commandArgs, options = {}) {
-  return spawnSync(command, commandArgs, {
+  return runProcess(command, commandArgs, {
     cwd: options.cwd,
-    env: options.env ?? process.env,
-    encoding: "utf8",
+    env: options.env,
     maxBuffer: 1024 * 1024 * 50
   });
 }
@@ -145,8 +116,7 @@ function runGroup(side, root, phpunit, group) {
   const result = run(spec.command, spec.args, { cwd: spec.cwd });
   const stdoutPath = `${BUILD_ROOT}/logs/${side}-${group.id}.stdout.txt`;
   const stderrPath = `${BUILD_ROOT}/logs/${side}-${group.id}.stderr.txt`;
-  writeFile(stdoutPath, result.stdout ?? "");
-  writeFile(stderrPath, result.stderr ?? "");
+  const captured = captureProcessArtifacts(result, { stdoutPath, stderrPath });
   return {
     side,
     group: group.id,
@@ -155,9 +125,9 @@ function runGroup(side, root, phpunit, group) {
     exit_code: result.status,
     signal: result.signal,
     status: result.status === 0 ? "pass" : "fail",
-    junit: existsSync(spec.junit) ? inputRecord(spec.junit) : null,
-    stdout: inputRecord(stdoutPath),
-    stderr: inputRecord(stderrPath)
+    junit: existsSync(spec.junit) ? artifactRecord(spec.junit) : null,
+    stdout: captured.stdout,
+    stderr: captured.stderr
   };
 }
 
@@ -229,7 +199,7 @@ const report = {
   prerequisites,
   execution
 };
-writeFile(REPORT, JSON.stringify(report, null, 2) + "\n");
+writeFileRecursive(REPORT, jsonText(report));
 
 if (runtimeReportOnly) {
   console.log(
@@ -262,9 +232,9 @@ const manifest = {
   artifact_scope: "packaged_distribution",
   behavior_parity_claimed: behaviorParityClaimed,
   inputs: {
-    runner: inputRecord(RUNNER),
-    groups: inputRecord(GROUPS),
-    known_deltas: inputRecord(KNOWN_DELTAS)
+    runner: artifactRecord(RUNNER),
+    groups: artifactRecord(GROUPS),
+    known_deltas: artifactRecord(KNOWN_DELTAS)
   },
   upstream: {
     expected_ref: EXPECTED_UPSTREAM_REF,
@@ -275,7 +245,7 @@ const manifest = {
   known_deltas: knownDeltas,
   report: {
     path: REPORT,
-    sha256: `sha256:${sha256File(REPORT)}`
+    sha256: artifactRecord(REPORT).sha256
   },
   validation_result: {
     status: execution.status,
@@ -290,26 +260,25 @@ const manifest = {
     blocked_inputs: prerequisites.missing
   }
 };
-const manifestText = JSON.stringify(manifest, null, 2) + "\n";
-const receipt = {
-  schema: "wphx.verification-receipt.v1",
+const manifestText = jsonText(manifest);
+const receipt = verificationReceipt({
   id: "receipt:wphx-700-05-upstream-phpunit-ratchet",
   issue: ISSUE,
-  recorded_at: RECORDED_AT,
+  recordedAt: RECORDED_AT,
   command: "npm run upstream:phpunit-ratchet",
-  evidence_class: manifest.evidence_class,
-  artifact_scope: manifest.artifact_scope,
-  behavior_parity_claimed: manifest.behavior_parity_claimed,
+  evidenceClass: manifest.evidence_class,
+  artifactScope: manifest.artifact_scope,
+  behaviorParityClaimed: manifest.behavior_parity_claimed,
   artifacts: [
     {
       path: OUT,
       role: "upstream PHPUnit ratchet manifest",
-      sha256: sha256(manifestText)
+      sha256: sha256Text(manifestText)
     },
     {
       path: REPORT,
       role: "complete upstream PHPUnit ratchet report",
-      sha256: `sha256:${sha256File(REPORT)}`
+      sha256: artifactRecord(REPORT).sha256
     },
     {
       path: KNOWN_DELTAS,
@@ -321,12 +290,22 @@ const receipt = {
     "npm run upstream:phpunit-ratchet:check",
     "npm run receipts:validate"
   ],
-  validation_result: manifest.validation_result
-};
-const receiptText = JSON.stringify(receipt, null, 2) + "\n";
+  validationResult: manifest.validation_result
+});
+const receiptText = jsonText(receipt);
 
-writeOrCheck(OUT, manifestText);
-writeOrCheck(RECEIPT, receiptText);
+writeOrCheck({
+  path: OUT,
+  contents: manifestText,
+  checkOnly,
+  updateCommand: "npm run upstream:phpunit-ratchet"
+});
+writeOrCheck({
+  path: RECEIPT,
+  contents: receiptText,
+  checkOnly,
+  updateCommand: "npm run upstream:phpunit-ratchet"
+});
 
 console.log(
   JSON.stringify(

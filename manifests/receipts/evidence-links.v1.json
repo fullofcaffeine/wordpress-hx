@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 101,
+  "closed_task_count": 102,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -933,13 +933,23 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet-provisioned.v1.json",
-          "sha256": "a448ab11aa42f10274b6b2354c676cb95be1b02cac3b4373c91782133f8f7d30",
+          "sha256": "03ae2080c8529e3684d41dc145c12a870ddd454a6386e89d20aaae4667017c5c",
           "id": "receipt:wphx-700-05-upstream-phpunit-ratchet-provisioned"
         },
         {
           "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
-          "sha256": "40cf750a75e6e17174a97487811e8289b70148f313b5861ccf170a3b92b07883",
+          "sha256": "281e18feab2b3b0b4c394e544f27d492be3454da8c6a4a10a589f53a267b80ed",
           "id": "receipt:wphx-700-05-upstream-phpunit-ratchet"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-700.06",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-700-06-runner-support.v1.json",
+          "sha256": "c76e7bac961ba64bc9ead291361c617cf9a27b0cc82774cf44a64ad9ee4c1238",
+          "id": "receipt:wphx-700-06-runner-support"
         }
       ]
     },
@@ -958,7 +968,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-09-phpunit-ratchet-env.v1.json",
-          "sha256": "b9539bc5d8b87e63d8c089e084a569c346b469a0e38c102597f0f765ab4bccce",
+          "sha256": "46783c4e167b6ea1c5b7fcee0e2696a0c94de3367a19e9a6507047b18d25d444",
           "id": "receipt:wphx-700-09-phpunit-ratchet-env"
         }
       ]

@@ -1,0 +1,63 @@
+{
+  "schema": "wphx.runner-support.v1",
+  "issue": "WPHX-700.06",
+  "generated_at": "2026-06-21T05:20:00.000Z",
+  "generator": "tools/support/check-runner-support.mjs",
+  "evidence_class": "provenance",
+  "artifact_scope": "helper",
+  "behavior_parity_claimed": false,
+  "inputs": {
+    "checker": {
+      "path": "tools/support/check-runner-support.mjs",
+      "bytes": 4774,
+      "sha256": "sha256:247912e26c99b70d6e879a88ebdc6f3fa644f0ebe2e5b75eca937d2ec003c373"
+    },
+    "support_module": {
+      "path": "tools/support/wphx-runner-support.mjs",
+      "bytes": 2607,
+      "sha256": "sha256:1b6898d86745bd66ce283b9fe23f13deba77e81812c7ba35cafeb6f109866fd7"
+    },
+    "adopted_runner": {
+      "path": "tools/upstream/run-phpunit-ratchet.mjs",
+      "bytes": 11013,
+      "sha256": "sha256:d8414424312d8bb9bb5f8d98d067ea502239af6dc675b7bf590471384ebfeccd"
+    },
+    "package_json": {
+      "path": "package.json",
+      "bytes": 16781,
+      "sha256": "sha256:404fcdde3caa57f0f36e8d64be8cfea1214d4e52fa96de1a168a17786d08b9fd"
+    }
+  },
+  "shared_capabilities": {
+    "artifact_records": true,
+    "deterministic_write_or_check": true,
+    "process_stdout_stderr_capture": true,
+    "receipt_builder": true,
+    "evidence_metadata_fields": [
+      "evidence_class",
+      "artifact_scope",
+      "behavior_parity_claimed"
+    ],
+    "junit_supported_as_artifact_record": true
+  },
+  "adopted_by": [
+    {
+      "runner": "tools/upstream/run-phpunit-ratchet.mjs",
+      "command": "npm run upstream:phpunit-ratchet",
+      "check_command": "npm run upstream:phpunit-ratchet:check",
+      "evidence_class": "upstream_suite_parity",
+      "artifact_scope": "packaged_distribution",
+      "preserves_stdout_stderr_by_digest": true,
+      "optional_junit_by_digest": true
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "support_module_exists": true,
+    "expected_exports_present": true,
+    "adopted_runner_uses_support": true,
+    "deterministic_check_mode_supported": true,
+    "stdout_stderr_capture_supported": true,
+    "receipt_metadata_supported": true
+  }
+}

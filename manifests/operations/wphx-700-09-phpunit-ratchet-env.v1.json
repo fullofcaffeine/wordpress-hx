@@ -14,8 +14,8 @@
     },
     "ratchet_runner": {
       "path": "tools/upstream/run-phpunit-ratchet.mjs",
-      "bytes": 11730,
-      "sha256": "sha256:f675ba034e39f6544a95c1f1c4228bcaef8577d91526212a407d4ccd57dc15db"
+      "bytes": 11013,
+      "sha256": "sha256:d8414424312d8bb9bb5f8d98d067ea502239af6dc675b7bf590471384ebfeccd"
     },
     "groups": {
       "path": "tests/upstream/phpunit/groups.json",
@@ -113,7 +113,7 @@
   },
   "ratchet_report": {
     "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
-    "sha256": "sha256:7020e7b5caa4f688f8e11cd5c098980bda4d69556f796c3fe8483d118ac25377",
+    "sha256": "sha256:ef72066bcecb459d01aad4c1586d9f992f72dcec2007cb74a7a0b752c44d1624",
     "status": "passed",
     "classifications": [
       {
