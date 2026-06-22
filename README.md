@@ -13,6 +13,7 @@ This is a complete porting program, not just a typed wrapper layer over WordPres
 Important sibling checkouts are recorded in [docs/operations/repositories.md](docs/operations/repositories.md) and `upstream.lock.json`. The current vanilla WordPress oracle is `../wordpress-develop`.
 
 Dependent-library split policy, including the future `gutenberghx` repo trigger, is recorded in [docs/operations/dependent-libraries.md](docs/operations/dependent-libraries.md).
+Program progress, including the current super-progress estimate and Gutenberg plan, is recorded in [docs/operations/progress-matrix.md](docs/operations/progress-matrix.md).
 HHX/template authoring policy is recorded in [docs/operations/hhx-template-policy.md](docs/operations/hhx-template-policy.md).
 Beads operating rules and the pinned bootstrap tool versions are recorded in [docs/operations/beads.md](docs/operations/beads.md) and [toolchain.lock.json](toolchain.lock.json).
 Agent instruction hierarchy and precedent adaptation notes are recorded in [docs/operations/agent-instructions.md](docs/operations/agent-instructions.md).

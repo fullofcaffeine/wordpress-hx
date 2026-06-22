@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 118,
+  "closed_task_count": 119,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -10,6 +10,16 @@
           "path": "receipts/operations/wphx-000-01-test-architecture-adr.v1.json",
           "sha256": "c089dbc4fccf9a317e7a20b747d497789c7f042def5ca2e99124838678eef70a",
           "id": "receipt:wphx-000-01-test-architecture-adr"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-000.02",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-000-02-progress-matrix.v1.json",
+          "sha256": "526c4f34118cf5611bfd542f16ea5677b2508543afd462232ae061d3e762f62a",
+          "id": "receipt:wphx-000-02-progress-matrix"
         }
       ]
     },

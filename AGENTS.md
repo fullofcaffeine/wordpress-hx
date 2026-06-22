@@ -55,7 +55,9 @@ Generated target readability is a product surface. If good Haxe source emits wea
 
 ## Documentation
 
-Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-libraries.md`, `docs/operations/hhx-template-policy.md`, `docs/operations/port-philosophy.md`, `docs/operations/beads.md`, `docs/operations/agent-instructions.md`, `docs/operations/ownership-state-model.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
+Keep `README.md`, `docs/operations/repositories.md`, `docs/operations/dependent-libraries.md`, `docs/operations/hhx-template-policy.md`, `docs/operations/port-philosophy.md`, `docs/operations/beads.md`, `docs/operations/agent-instructions.md`, `docs/operations/ownership-state-model.md`, `docs/operations/progress-matrix.md`, lock manifests, `AGENTS.md`, and Beads current as repo paths, baselines, gates, or operating rules change. Do not let chat history become the only source of truth.
+
+Hard rule: keep `docs/operations/progress-matrix.md` current. Any task that changes parent milestone status, seeds or closes a major `WPHX-*` track, adds or removes material evidence gates, changes the Gutenberg/gutenberghx plan, changes ownership-state interpretation, or changes the super-progress estimate must update the matrix in the same change. Progress claims must distinguish Beads child completion from verified Haxe ownership and installed WordPress functionality.
 
 ## Beads Authority
 
