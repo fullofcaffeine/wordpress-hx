@@ -15,6 +15,8 @@ class RestServerDispatchStrategy
 			"dispatch",
 			"respond_to_request",
 			"response_to_data",
+			"get_response_links",
+			"get_target_hints_for_link",
 			"get_compact_response_links"
 		];
 	}
@@ -146,6 +148,46 @@ class RestServerDispatchStrategy
 	public static function shouldAppendUsedCuries(usedCuriesAreEmpty:Bool):Bool
 	{
 		return !usedCuriesAreEmpty;
+	}
+
+	public static function shouldReturnEmptyResponseLinks(linksAreEmpty:Bool):Bool
+	{
+		return linksAreEmpty;
+	}
+
+	public static function shouldSkipTargetHintsForRel(relIsSelf:Bool):Bool
+	{
+		return !relIsSelf;
+	}
+
+	public static function shouldAttachTargetHints(targetHintsAvailable:Bool):Bool
+	{
+		return targetHintsAvailable;
+	}
+
+	public static function shouldReturnNullForExplicitTargetHintsAllow(hasExplicitTargetHintsAllow:Bool):Bool
+	{
+		return hasExplicitTargetHintsAllow;
+	}
+
+	public static function shouldReturnNullForMissingTargetRequest(requestAvailable:Bool):Bool
+	{
+		return !requestAvailable;
+	}
+
+	public static function shouldReturnNullForTargetMatchError(matchIsWpError:Bool):Bool
+	{
+		return matchIsWpError;
+	}
+
+	public static function shouldReturnNullForTargetParamError(paramsAreWpError:Bool):Bool
+	{
+		return paramsAreWpError;
+	}
+
+	public static function shouldReturnNullForTargetSanitizeError(sanitizeIsWpError:Bool):Bool
+	{
+		return sanitizeIsWpError;
 	}
 
 	public static function shouldUsePreDispatchResult(resultIsEmpty:Bool):Bool

@@ -17,8 +17,8 @@
     },
     "packaged_runner": {
       "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
-      "bytes": 46303,
-      "sha256": "sha256:c7290637f10d9a0305069c8bc089e5770a01cf4c545bddfc3cb08052fbc51b4b"
+      "bytes": 48853,
+      "sha256": "sha256:ccd4f1cd304d830f74559db08776e6174f0c34c7c1adf355b94b146c7164c3d7"
     },
     "package_json": {
       "path": "package.json",
@@ -27,8 +27,8 @@
     },
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
-      "bytes": 99866,
-      "sha256": "sha256:9bb9be7e1139f6fce1c4eb4f7ab359a6d7052b48a25a24d7ccb31659833daea4"
+      "bytes": 99929,
+      "sha256": "sha256:1f5eaf61ad2b4e0df23552e03438b6145a6ec8c07a252f572f2bff3c33ac655d"
     },
     "upstream_phpunit_groups": {
       "path": "tests/upstream/phpunit/groups.json",
@@ -127,13 +127,13 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.php",
-        "bytes": 7793,
-        "sha256": "sha256:972f6119d9958a83fa41291eb047ea3e65172290406b42155df4722b38cdb7b4"
+        "bytes": 9249,
+        "sha256": "sha256:1c03b6a49aa353e9a0976117d739c9b1d090aab48686d25ea23569b053ebbce1"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/wp/rest/RestServerDispatchStrategy.php",
-        "bytes": 14527,
-        "sha256": "sha256:6f343122cc74bad4ea31d7c27065a997f45029e7b8b3698a3936c234ce7f3b88"
+        "bytes": 16597,
+        "sha256": "sha256:22606b5a92a1f72e7f4b746d25d6edebe656c57caa20511981db982b8d614c7e"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/cache.php",
@@ -242,8 +242,8 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "bytes": 53181,
-        "sha256": "sha256:b2990ec11fd9107d5836364e81c2d90a6a14318463eb75f0afddcbb2417f658f"
+        "bytes": 53644,
+        "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/endpoints/class-wp-rest-controller.php",
@@ -268,8 +268,8 @@
     ],
     "candidate_rest_server": {
       "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-      "bytes": 53181,
-      "sha256": "sha256:b2990ec11fd9107d5836364e81c2d90a6a14318463eb75f0afddcbb2417f658f"
+      "bytes": 53644,
+      "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
     },
     "owned_methods": [
       "serve_request",

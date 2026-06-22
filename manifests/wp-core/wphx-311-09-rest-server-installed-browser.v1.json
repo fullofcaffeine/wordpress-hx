@@ -28,7 +28,7 @@
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
       "bytes": 29219,
-      "sha256": "sha256:f40599cec3f240c67836ef43b6d667ee7353f857314dc624e0168bad71f41bba"
+      "sha256": "sha256:67c0f3da7a9ed50db395f2bfeb2348756b0f319b9bfe069ad78dfedd6187afad"
     }
   },
   "browser": {
@@ -128,13 +128,13 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.php",
-        "bytes": 7793,
-        "sha256": "sha256:972f6119d9958a83fa41291eb047ea3e65172290406b42155df4722b38cdb7b4"
+        "bytes": 9249,
+        "sha256": "sha256:1c03b6a49aa353e9a0976117d739c9b1d090aab48686d25ea23569b053ebbce1"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/wp/rest/RestServerDispatchStrategy.php",
-        "bytes": 14527,
-        "sha256": "sha256:6f343122cc74bad4ea31d7c27065a997f45029e7b8b3698a3936c234ce7f3b88"
+        "bytes": 16597,
+        "sha256": "sha256:22606b5a92a1f72e7f4b746d25d6edebe656c57caa20511981db982b8d614c7e"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/index.php",
@@ -248,8 +248,8 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "bytes": 53181,
-        "sha256": "sha256:b2990ec11fd9107d5836364e81c2d90a6a14318463eb75f0afddcbb2417f658f"
+        "bytes": 53644,
+        "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/endpoints/class-wp-rest-controller.php",
@@ -279,8 +279,8 @@
     ],
     "candidate_rest_server": {
       "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-      "bytes": 53181,
-      "sha256": "sha256:b2990ec11fd9107d5836364e81c2d90a6a14318463eb75f0afddcbb2417f658f"
+      "bytes": 53644,
+      "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
     },
     "owned_methods": [
       "serve_request",

@@ -70,7 +70,15 @@ const HAXE_SOURCES = [
   "fixtures/wp-core/src/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.hx"
 ];
 
-const OWNED_METHODS = ["serve_request", "dispatch", "respond_to_request", "response_to_data", "get_compact_response_links"];
+const OWNED_METHODS = [
+  "serve_request",
+  "dispatch",
+  "respond_to_request",
+  "response_to_data",
+  "get_response_links",
+  "get_target_hints_for_link",
+  "get_compact_response_links"
+];
 const CASES = [
   {
     id: "rest-http:get-settings-success",
@@ -529,6 +537,88 @@ function transformCandidateRestServer() {
 \t}
 
 \treturn $data;
+}`
+  );
+  source = replaceMethod(
+    source,
+    "get_response_links",
+    `public static function get_response_links( $response ) {
+\t$dispatch_strategy = '\\\\wphx\\\\wp\\\\rest\\\\RestServerDispatchStrategy';
+\t$links             = $response->get_links();
+
+\tif ( $dispatch_strategy::shouldReturnEmptyResponseLinks( empty( $links ) ) ) {
+\t\treturn array();
+\t}
+
+\t$data = array();
+\tforeach ( $links as $rel => $items ) {
+\t\t$data[ $rel ] = array();
+
+\t\tforeach ( $items as $item ) {
+\t\t\t$attributes         = $item['attributes'];
+\t\t\t$attributes['href'] = $item['href'];
+
+\t\t\tif ( $dispatch_strategy::shouldSkipTargetHintsForRel( 'self' === $rel ) ) {
+\t\t\t\t$data[ $rel ][] = $attributes;
+\t\t\t\tcontinue;
+\t\t\t}
+
+\t\t\t$target_hints = self::get_target_hints_for_link( $attributes );
+\t\t\tif ( $dispatch_strategy::shouldAttachTargetHints( ! empty( $target_hints ) ) ) {
+\t\t\t\t$attributes['targetHints'] = $target_hints;
+\t\t\t}
+
+\t\t\t$data[ $rel ][] = $attributes;
+\t\t}
+\t}
+
+\treturn $data;
+}`
+  );
+  source = replaceMethod(
+    source,
+    "get_target_hints_for_link",
+    `protected static function get_target_hints_for_link( $link ) {
+\t$dispatch_strategy = '\\\\wphx\\\\wp\\\\rest\\\\RestServerDispatchStrategy';
+
+\tif ( $dispatch_strategy::shouldReturnNullForExplicitTargetHintsAllow( isset( $link['targetHints']['allow'] ) ) ) {
+\t\treturn null;
+\t}
+
+\t$request = WP_REST_Request::from_url( $link['href'] );
+\tif ( $dispatch_strategy::shouldReturnNullForMissingTargetRequest( (bool) $request ) ) {
+\t\treturn null;
+\t}
+
+\t$server = rest_get_server();
+\t$match  = $server->match_request_to_handler( $request );
+
+\tif ( $dispatch_strategy::shouldReturnNullForTargetMatchError( is_wp_error( $match ) ) ) {
+\t\treturn null;
+\t}
+
+\tif ( $dispatch_strategy::shouldReturnNullForTargetParamError( is_wp_error( $request->has_valid_params() ) ) ) {
+\t\treturn null;
+\t}
+
+\tif ( $dispatch_strategy::shouldReturnNullForTargetSanitizeError( is_wp_error( $request->sanitize_params() ) ) ) {
+\t\treturn null;
+\t}
+
+\t$target_hints = array();
+
+\t$response = new WP_REST_Response();
+\t$response->set_matched_route( $match[0] );
+\t$response->set_matched_handler( $match[1] );
+\t$headers = rest_send_allow_header( $response, $server, $request )->get_headers();
+
+\tforeach ( $headers as $name => $value ) {
+\t\t$name = WP_REST_Request::canonicalize_header_name( $name );
+
+\t\t$target_hints[ $name ] = array_map( 'trim', explode( ',', $value ) );
+\t}
+
+\treturn $target_hints;
 }`
   );
   source = replaceMethod(

@@ -33,6 +33,14 @@ class RestServerDispatchStrategyCandidateEntry
 		RestServerDispatchStrategy.shouldAttemptCurieCompaction("https://api.w.org/foo", "https://api.w.org/");
 		RestServerDispatchStrategy.shouldInstallCompactedRel(true);
 		RestServerDispatchStrategy.shouldAppendUsedCuries(false);
+		RestServerDispatchStrategy.shouldReturnEmptyResponseLinks(true);
+		RestServerDispatchStrategy.shouldSkipTargetHintsForRel(false);
+		RestServerDispatchStrategy.shouldAttachTargetHints(true);
+		RestServerDispatchStrategy.shouldReturnNullForExplicitTargetHintsAllow(true);
+		RestServerDispatchStrategy.shouldReturnNullForMissingTargetRequest(false);
+		RestServerDispatchStrategy.shouldReturnNullForTargetMatchError(true);
+		RestServerDispatchStrategy.shouldReturnNullForTargetParamError(true);
+		RestServerDispatchStrategy.shouldReturnNullForTargetSanitizeError(true);
 		RestServerDispatchStrategy.shouldUsePreDispatchResult(false);
 		RestServerDispatchStrategy.shouldConvertPreDispatchError(true);
 		RestServerDispatchStrategy.shouldReturnMatchedError(true);
