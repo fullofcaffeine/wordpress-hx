@@ -88,6 +88,7 @@ jobs:
               npm run wp:core:wphx-305-prepare-escaping-strategy-candidate:check
               npm run wp:core:wphx-311-rest-settings-controller:check
               npm run wp:core:wphx-311-rest-settings-dispatch:check
+              npm run wp:core:wphx-311-rest-settings-schema-candidate:check
               npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check
           - suite: wp-core-live-db-parity
             command: |

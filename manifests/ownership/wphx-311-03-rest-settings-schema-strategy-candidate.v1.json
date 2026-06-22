@@ -1,0 +1,98 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rest-settings-schema-strategy-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.10.3",
+    "external_ref": "WPHX-311.03"
+  },
+  "unit": {
+    "kind": "class-method-strategy",
+    "name": "WP_REST_Settings_Controller registered-options schema strategy",
+    "area": "wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php",
+    "public_contract": "The REST settings controller must expose registered settings through the same PHP class/method ABI while typed Haxe owns the bounded visibility, REST name, supported schema type, null-sanitize, and capability decisions."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/pomo/plural-forms.php",
+      "src/wp-includes/pomo/entry.php",
+      "src/wp-includes/pomo/translations.php",
+      "src/wp-includes/l10n.php",
+      "src/wp-includes/class-wp-list-util.php",
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wp-http-response.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/option.php",
+      "src/wp-includes/rest-api.php",
+      "src/wp-includes/rest-api/class-wp-rest-request.php",
+      "src/wp-includes/rest-api/class-wp-rest-response.php",
+      "src/wp-includes/rest-api/class-wp-rest-server.php",
+      "src/wp-includes/rest-api/endpoints/class-wp-rest-controller.php",
+      "src/wp-includes/rest-api/endpoints/class-wp-rest-settings-controller.php"
+    ],
+    "digest": "sha256:fa9e8eab91c03099ffef9abc64496bee6de6cd3002777ea24ad23ccbbfcbc277"
+  },
+  "owned_paths": [
+    "fixtures/wp-core/rest-settings-schema-strategy-candidate.hxml",
+    "src/wphx/wp/rest/RestSettingsSchemaStrategy.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsSchemaStrategyCandidateEntry.hx",
+    "tools/wp-core/run-rest-settings-schema-strategy-candidate.mjs",
+    "manifests/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+    "manifests/ownership/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+    "receipts/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+    "manifests/ownership/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+    "receipts/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+    "build/wp-core/wphx-311-03"
+  ],
+  "abi_policy": {
+    "php_surface_preserved": [
+      "WP_REST_Settings_Controller remains a PHP class with the same public/protected method names",
+      "get_registered_options remains protected",
+      "get_item_schema, sanitize_callback, and get_item_permissions_check stay plugin/reflection visible through the upstream class shell"
+    ],
+    "haxe_owned_decisions": [
+      "show_in_rest visibility",
+      "show_in_rest array argument usage",
+      "REST response property name fallback",
+      "supported schema type filtering",
+      "additionalProperties normalization route",
+      "null sanitizer passthrough route",
+      "manage_options capability identifier"
+    ],
+    "native_boundaries": [
+      "PHP arrays remain native at the WordPress boundary",
+      "register_setting(), get_registered_settings(), rest_default_additional_properties_to_false(), rest_parse_request_arg(), current_user_can(), and filters remain PHP-native WordPress boundaries"
+    ]
+  },
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-311-rest-settings-schema-candidate",
+      "npm run wp:core:wphx-311-rest-settings-schema-candidate:check",
+      "npm run wp:core:wphx-311-rest-settings-controller:check",
+      "npm run wp:core:wphx-311-rest-settings-dispatch:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-311-03-rest-settings-schema-strategy-candidate",
+      "receipt:wphx-311-01-rest-settings-controller-fixture",
+      "receipt:wphx-311-02-rest-settings-dispatch-fixture"
+    ],
+    "manifest_digest": "sha256:84a35d0d4c80e38bc29269b68744ec793dcba0b7ba86dbb66406fb6b4f5bb526"
+  },
+  "notes": "This is the first typed Haxe REST settings candidate. It intentionally does not replace request objects, PHP array ABI, filters, or full controller update/get_item bodies."
+}

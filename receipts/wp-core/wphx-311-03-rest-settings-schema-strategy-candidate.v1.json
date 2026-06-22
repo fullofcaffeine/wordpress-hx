@@ -1,0 +1,53 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-311-03-rest-settings-schema-strategy-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.10.3",
+    "external_ref": "WPHX-311.03",
+    "title": "Promote REST settings strategy to Haxe candidate"
+  },
+  "recorded_at": "2026-06-22T09:15:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+      "role": "typed Haxe REST settings schema strategy candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+      "role": "Haxe parity-candidate ownership manifest"
+    },
+    {
+      "path": "src/wphx/wp/rest/RestSettingsSchemaStrategy.hx",
+      "role": "typed Haxe REST settings strategy source"
+    },
+    {
+      "path": "tools/wp-core/run-rest-settings-schema-strategy-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-311-rest-settings-schema-candidate",
+    "npm run wp:core:wphx-311-rest-settings-schema-candidate:check",
+    "npm run wp:core:wphx-311-rest-settings-controller:check",
+    "npm run wp:core:wphx-311-rest-settings-dispatch:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-311-01-rest-settings-controller-fixture",
+    "receipt:wphx-311-02-rest-settings-dispatch-fixture"
+  ],
+  "manifest_sha256": "sha256:84a35d0d4c80e38bc29269b68744ec793dcba0b7ba86dbb66406fb6b4f5bb526",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_generated_rest_settings_schema_strategy_shell",
+    "evidence_class": "targeted_semantic_parity",
+    "artifact_scope": "linked_candidate",
+    "promoted_symbols": 4,
+    "fixture_cases": 4,
+    "comparisons": 3,
+    "skipped_runtimes": 0,
+    "source_escape_audit_passed": true
+  }
+}

@@ -5,11 +5,11 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "source_manifest": {
     "path": "manifests/ci/wphx-208-php-conformance-ci.v1.json",
-    "sha256": "sha256:4620fdba95834ae5becbc2b129a511830fa983a8fcae1daad51b7945de770840"
+    "sha256": "sha256:d6f44aa51a5900a29003736431605c4d3904eb24a68d96ac5e25b8e9abc2c52d"
   },
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:ca9956975205dbebf96ceb99e260d2f5e79f32953dcc3e824329876d5867c620",
+    "sha256": "sha256:4c30a4831c2ac92401205faf9456019272636f9738178fc9898d764b6d76e3b7",
     "deterministic_suite": "wp-core-deterministic-parity",
     "live_db_suite": "wp-core-live-db-parity",
     "artifact_upload": "actions/upload-artifact@v4"
@@ -35,6 +35,7 @@
     "npm run wp:core:wphx-305-prepare-escaping-strategy-candidate:check",
     "npm run wp:core:wphx-311-rest-settings-controller:check",
     "npm run wp:core:wphx-311-rest-settings-dispatch:check",
+    "npm run wp:core:wphx-311-rest-settings-schema-candidate:check",
     "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-live-db:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check"
@@ -50,6 +51,7 @@
     "wphx_305_prepare_escaping_strategy_gate_required": true,
     "wphx_311_rest_settings_controller_gate_required": true,
     "wphx_311_rest_settings_dispatch_gate_required": true,
+    "wphx_311_rest_settings_schema_candidate_gate_required": true,
     "wphx_700_08_packaged_distribution_abi_gate_required": true,
     "wphx_305_live_db_candidate_gate_required": true,
     "mysql_mariadb_images_pinned": true,

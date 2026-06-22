@@ -111,6 +111,8 @@
     "wp:core:wphx-311-rest-settings-controller:check": "node tools/wp-core/run-rest-settings-controller-fixture.mjs --check",
     "wp:core:wphx-311-rest-settings-dispatch": "node tools/wp-core/run-rest-settings-dispatch-fixture.mjs",
     "wp:core:wphx-311-rest-settings-dispatch:check": "node tools/wp-core/run-rest-settings-dispatch-fixture.mjs --check",
+    "wp:core:wphx-311-rest-settings-schema-candidate": "node tools/wp-core/run-rest-settings-schema-strategy-candidate.mjs",
+    "wp:core:wphx-311-rest-settings-schema-candidate:check": "node tools/wp-core/run-rest-settings-schema-strategy-candidate.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",
