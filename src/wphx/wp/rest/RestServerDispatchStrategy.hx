@@ -1,5 +1,7 @@
 package wphx.wp.rest;
 
+using StringTools;
+
 @:keep
 class RestServerDispatchStrategy
 {
@@ -8,7 +10,13 @@ class RestServerDispatchStrategy
 
 	public static function ownedServerBodies():Array<String>
 	{
-		return ["serve_request", "dispatch", "respond_to_request"];
+		return [
+			"serve_request",
+			"dispatch",
+			"respond_to_request",
+			"response_to_data",
+			"get_compact_response_links"
+		];
 	}
 
 	public static function serverBodyRoute(methodName:String):String
@@ -103,6 +111,41 @@ class RestServerDispatchStrategy
 	public static function shouldEchoJsonp(jsonpCallbackPresent:Bool):Bool
 	{
 		return jsonpCallbackPresent;
+	}
+
+	public static function shouldAttachResponseLinks(linksAreEmpty:Bool):Bool
+	{
+		return !linksAreEmpty;
+	}
+
+	public static function shouldEmbedResponseData(embedRequested:Bool):Bool
+	{
+		return embedRequested;
+	}
+
+	public static function shouldEmbedNumericArrayData(dataIsNumericArray:Bool):Bool
+	{
+		return dataIsNumericArray;
+	}
+
+	public static function shouldReturnEmptyCompactLinks(linksAreEmpty:Bool):Bool
+	{
+		return linksAreEmpty;
+	}
+
+	public static function shouldAttemptCurieCompaction(rel:String, hrefPrefix:String):Bool
+	{
+		return rel.startsWith(hrefPrefix);
+	}
+
+	public static function shouldInstallCompactedRel(matchesTemplate:Bool):Bool
+	{
+		return matchesTemplate;
+	}
+
+	public static function shouldAppendUsedCuries(usedCuriesAreEmpty:Bool):Bool
+	{
+		return !usedCuriesAreEmpty;
 	}
 
 	public static function shouldUsePreDispatchResult(resultIsEmpty:Bool):Bool

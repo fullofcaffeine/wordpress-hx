@@ -26,6 +26,13 @@ class RestServerDispatchStrategyCandidateEntry
 		RestServerDispatchStrategy.shouldReturnWithoutBodyForHead(true);
 		RestServerDispatchStrategy.shouldReturnWithoutBodyForStatus(204, false);
 		RestServerDispatchStrategy.shouldEchoJsonp(true);
+		RestServerDispatchStrategy.shouldAttachResponseLinks(false);
+		RestServerDispatchStrategy.shouldEmbedResponseData(true);
+		RestServerDispatchStrategy.shouldEmbedNumericArrayData(false);
+		RestServerDispatchStrategy.shouldReturnEmptyCompactLinks(true);
+		RestServerDispatchStrategy.shouldAttemptCurieCompaction("https://api.w.org/foo", "https://api.w.org/");
+		RestServerDispatchStrategy.shouldInstallCompactedRel(true);
+		RestServerDispatchStrategy.shouldAppendUsedCuries(false);
 		RestServerDispatchStrategy.shouldUsePreDispatchResult(false);
 		RestServerDispatchStrategy.shouldConvertPreDispatchError(true);
 		RestServerDispatchStrategy.shouldReturnMatchedError(true);

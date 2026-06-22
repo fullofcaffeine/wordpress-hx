@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 115,
+  "closed_task_count": 116,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -963,7 +963,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
-          "sha256": "81dde633dec1bd4a13b9506076ee215ed6d1fcc775b588c2fe7dab11ad271d1b",
+          "sha256": "2a4ddee76a1c9b8d26937c5b57db190a275e7eecfbbdfd92fa03db438ded4351",
           "id": "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
         }
       ]
@@ -973,7 +973,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
-          "sha256": "f8902696163dd17b5ed7a6cde2ee76f8ee31fa377ec071663175df6051cdb30a",
+          "sha256": "a467be364923c1b05a8c28fc184315dabe36fe0cb4a9be4bd4ecfa2447ea40a1",
           "id": "receipt:wphx-311-07-rest-server-packaged-http"
         }
       ]
@@ -983,7 +983,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
-          "sha256": "d23e42f61d2118bc7608b8c9c38f4eaaa96c2536dd872e1e05ffa2d3328d71a7",
+          "sha256": "d351fc07c4b3ea5243aa7590575d0554c590907f47666568f410dedaa38a8038",
           "id": "receipt:wphx-311-08-rest-server-web-e2e"
         }
       ]
@@ -993,7 +993,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
-          "sha256": "86cc8cbe3722c9180975115c46f1d029c38cf98ac424569886d6a34f8bef3018",
+          "sha256": "ee81b481142f1c38bcac6af54e01517441564197bbdd1862dda7929a484c8980",
           "id": "receipt:wphx-311-09-rest-server-installed-browser"
         }
       ]
@@ -1005,6 +1005,16 @@
           "path": "receipts/wp-core/wphx-311-11-rest-server-serve-request-strategy.v1.json",
           "sha256": "03dc76b78f7d850c2693dd9a055a410a1ba3d9212b221d209dd96e6150668c0e",
           "id": "receipt:wphx-311-11-rest-server-serve-request-strategy"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-311.12",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-311-12-rest-server-response-data-strategy.v1.json",
+          "sha256": "2d539eaf4d07c78600bbef5fb712212f14627e3c7856249d13389397673b50ab",
+          "id": "receipt:wphx-311-12-rest-server-response-data-strategy"
         }
       ]
     },

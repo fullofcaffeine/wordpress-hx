@@ -1,0 +1,70 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-311-12-rest-server-response-data-strategy",
+  "issue": {
+    "id": "wordpresshx-60i",
+    "external_ref": "WPHX-311.12",
+    "title": "Port REST response data/link decisions"
+  },
+  "recorded_at": "2026-06-22T15:10:00.000Z",
+  "artifacts": [
+    {
+      "path": "src/wphx/wp/rest/RestServerDispatchStrategy.hx",
+      "role": "typed Haxe response data and compact link decision strategy"
+    },
+    {
+      "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.hx",
+      "role": "Haxe compile entry that keeps response data/link helpers reachable"
+    },
+    {
+      "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
+      "role": "candidate class-wp-rest-server.php shell emitter using typed Haxe response data/link decisions"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-12-rest-server-response-data-strategy.v1.json",
+      "role": "response data/link strategy ownership manifest"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-311-rest-server-dispatch-candidate:check",
+    "npm run wp:core:wphx-311-rest-server-packaged-http:check",
+    "npm run wp:core:wphx-311-rest-server-web-e2e:check",
+    "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+    "npm run format:haxe:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-311-11-rest-server-serve-request-strategy",
+    "receipt:wphx-311-09-rest-server-installed-browser",
+    "receipt:wphx-311-08-rest-server-web-e2e",
+    "receipt:wphx-311-07-rest-server-packaged-http",
+    "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "evidence_classes": [
+      "targeted_semantic_parity",
+      "runtime_abi",
+      "live_integration_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "typed_haxe_helpers": [
+      "shouldAttachResponseLinks",
+      "shouldEmbedResponseData",
+      "shouldEmbedNumericArrayData",
+      "shouldReturnEmptyCompactLinks",
+      "shouldAttemptCurieCompaction",
+      "shouldInstallCompactedRel",
+      "shouldAppendUsedCuries"
+    ],
+    "php_native_boundaries_preserved": [
+      "response array mutation",
+      "get_response_links",
+      "get_curies",
+      "embed_links",
+      "target-hint discovery"
+    ]
+  }
+}

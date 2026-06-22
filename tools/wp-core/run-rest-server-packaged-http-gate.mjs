@@ -70,7 +70,7 @@ const HAXE_SOURCES = [
   "fixtures/wp-core/src/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.hx"
 ];
 
-const OWNED_METHODS = ["serve_request", "dispatch", "respond_to_request"];
+const OWNED_METHODS = ["serve_request", "dispatch", "respond_to_request", "response_to_data", "get_compact_response_links"];
 const CASES = [
   {
     id: "rest-http:get-settings-success",
@@ -200,7 +200,7 @@ function installBootstrap(source) {
 }
 
 function replaceMethod(source, methodName, replacement) {
-  const pattern = new RegExp(`((?:public|protected|private)\\s+function\\s+${methodName}\\s*\\()`, "m");
+  const pattern = new RegExp(`((?:public|protected|private)(?:\\s+static)?\\s+function\\s+${methodName}\\s*\\()`, "m");
   const match = pattern.exec(source);
   if (!match) {
     throw new Error(`Unable to locate method ${methodName}`);
@@ -502,6 +502,74 @@ function transformCandidateRestServer() {
 \t}
 
 \treturn $response;
+}`
+  );
+  source = replaceMethod(
+    source,
+    "response_to_data",
+    `public function response_to_data( $response, $embed ) {
+\t$dispatch_strategy = '\\\\wphx\\\\wp\\\\rest\\\\RestServerDispatchStrategy';
+\t$data              = $response->get_data();
+\t$links             = self::get_compact_response_links( $response );
+
+\tif ( $dispatch_strategy::shouldAttachResponseLinks( empty( $links ) ) ) {
+\t\t$data['_links'] = $links;
+\t}
+
+\tif ( $dispatch_strategy::shouldEmbedResponseData( (bool) $embed ) ) {
+\t\t$this->embed_cache = array();
+\t\tif ( $dispatch_strategy::shouldEmbedNumericArrayData( wp_is_numeric_array( $data ) ) ) {
+\t\t\tforeach ( $data as $key => $item ) {
+\t\t\t\t$data[ $key ] = $this->embed_links( $item, $embed );
+\t\t\t}
+\t\t} else {
+\t\t\t$data = $this->embed_links( $data, $embed );
+\t\t}
+\t\t$this->embed_cache = array();
+\t}
+
+\treturn $data;
+}`
+  );
+  source = replaceMethod(
+    source,
+    "get_compact_response_links",
+    `public static function get_compact_response_links( $response ) {
+\t$dispatch_strategy = '\\\\wphx\\\\wp\\\\rest\\\\RestServerDispatchStrategy';
+\t$links             = self::get_response_links( $response );
+
+\tif ( $dispatch_strategy::shouldReturnEmptyCompactLinks( empty( $links ) ) ) {
+\t\treturn array();
+\t}
+
+\t$curies      = $response->get_curies();
+\t$used_curies = array();
+
+\tforeach ( $links as $rel => $items ) {
+\t\tforeach ( $curies as $curie ) {
+\t\t\t$href_prefix = substr( $curie['href'], 0, strpos( $curie['href'], '{rel}' ) );
+\t\t\tif ( ! $dispatch_strategy::shouldAttemptCurieCompaction( $rel, $href_prefix ) ) {
+\t\t\t\tcontinue;
+\t\t\t}
+
+\t\t\t$rel_regex = str_replace( '\\\\{rel\\\\}', '(.+)', preg_quote( $curie['href'], '!' ) );
+\t\t\t$matches   = array();
+\t\t\tpreg_match( '!' . $rel_regex . '!', $rel, $matches );
+\t\t\tif ( $dispatch_strategy::shouldInstallCompactedRel( ! empty( $matches ) ) ) {
+\t\t\t\t$new_rel                       = $curie['name'] . ':' . $matches[1];
+\t\t\t\t$used_curies[ $curie['name'] ] = $curie;
+\t\t\t\t$links[ $new_rel ]             = $items;
+\t\t\t\tunset( $links[ $rel ] );
+\t\t\t\tbreak;
+\t\t\t}
+\t\t}
+\t}
+
+\tif ( $dispatch_strategy::shouldAppendUsedCuries( empty( $used_curies ) ) ) {
+\t\t$links['curies'] = array_values( $used_curies );
+\t}
+
+\treturn $links;
 }`
   );
   writeFileSync(path, source);

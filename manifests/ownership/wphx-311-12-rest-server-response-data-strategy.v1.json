@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rest-server-response-data-strategy",
+  "issue": {
+    "id": "wordpresshx-60i",
+    "external_ref": "WPHX-311.12"
+  },
+  "unit": {
+    "kind": "typed-haxe-rest-server-strategy",
+    "name": "WP_REST_Server response data and compact link decisions",
+    "area": "wp-includes/rest-api/class-wp-rest-server.php",
+    "public_contract": "The packaged REST server candidate keeps WordPress-native response/link/embed data operations in PHP while routing response_to_data() and get_compact_response_links() branch decisions through typed Haxe helpers."
+  },
+  "ownership_state": "typed_haxe_strategy_candidate",
+  "owned_paths": [
+    "src/wphx/wp/rest/RestServerDispatchStrategy.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.hx",
+    "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
+    "manifests/ownership/wphx-311-12-rest-server-response-data-strategy.v1.json",
+    "receipts/wp-core/wphx-311-12-rest-server-response-data-strategy.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
+    "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
+    "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
+    "manifests/wp-core/wphx-311-09-rest-server-installed-browser.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-311-rest-server-dispatch-candidate:check",
+      "npm run wp:core:wphx-311-rest-server-packaged-http:check",
+      "npm run wp:core:wphx-311-rest-server-web-e2e:check",
+      "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+      "npm run format:haxe:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-311-12-rest-server-response-data-strategy",
+      "receipt:wphx-311-11-rest-server-serve-request-strategy",
+      "receipt:wphx-311-09-rest-server-installed-browser",
+      "receipt:wphx-311-08-rest-server-web-e2e",
+      "receipt:wphx-311-07-rest-server-packaged-http",
+      "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
+    ]
+  },
+  "notes": "This slice does not move PHP array shape mutation, response get_links()/get_curies(), embed_links(), get_response_links(), or target-hint discovery into Haxe. Those remain PHP shell boundaries because they are WordPress ABI-visible data operations."
+}
