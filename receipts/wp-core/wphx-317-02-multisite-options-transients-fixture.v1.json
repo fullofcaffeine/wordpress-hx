@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-317-02-multisite-options-transients-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.11.1",
+    "external_ref": "WPHX-317.02",
+    "title": "Build site/network option and site-transient differential fixtures"
+  },
+  "recorded_at": "2026-06-22T21:39:49.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-317-02-multisite-options-transients-fixture.v1.json",
+      "role": "multisite site/network option and site-transient differential fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-317-02-multisite-options-transients-fixture.v1.json",
+      "role": "external-oracle ownership manifest for the fixture harness"
+    },
+    {
+      "path": "tools/wp-core/run-multisite-options-transients-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-317-multisite-options-transients",
+    "npm run wp:core:wphx-317-multisite-options-transients:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 14,
+    "fixture_cases": 9,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}

@@ -5,7 +5,7 @@ This document is the durable human-readable rollup for progress toward a WordPre
 Beads remains the task database. This matrix is a status ledger over Beads issues, receipts, manifests, and PRD milestones. Update it in the same change whenever milestone status, scope, evidence gates, Gutenberg split policy, or completion estimates change.
 
 Last updated: 2026-06-22
-Source checkpoint: `4e630a2`
+Source checkpoint: `57e3803`
 Tracking issue: `WPHX-000.02`
 
 ## Super Progress
@@ -52,7 +52,7 @@ The score should move only when evidence moves. A closed task can increase confi
 | `WPHX-304` Options/transients/object cache | closed | Option/cache candidate gates and fixtures exist |
 | `WPHX-305` wpdb/database abstraction | closed | Strong wpdb vertical slice exists, including native mysqli and packaged ABI gates; still not evidence that every related Core DB path is Haxe-owned |
 | `WPHX-311` REST API/schema | closed | Settings and REST server decision slices are typed Haxe strategy candidates; packaged, installed-browser, DB-backed, and cross-origin REST gates cover the active transport surface |
-| `WPHX-317` Multisite/network | open | `WPHX-317.01` surface inventory is closed; 1/7 child tasks are complete, with fixture and Haxe-candidate follow-ups open. Runtime behavior remains oracle-owned until those slices land |
+| `WPHX-317` Multisite/network | open | `WPHX-317.01` surface inventory and `WPHX-317.02` site/network option plus site-transient fixtures are closed; 2/7 child tasks are complete, with remaining fixture and Haxe-candidate follow-ups open |
 | `WPHX-322` PHP first-party manifest closure | open | Needed to prove the remaining Core PHP runtime inventory has ownership states and closure gates |
 
 ## Gutenberg Plan

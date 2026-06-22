@@ -129,6 +129,8 @@
     "wp:core:wphx-311-rest-server-db-browser:check": "node tools/wp-core/run-rest-server-db-browser-matrix.mjs --check",
     "wp:core:wphx-317-multisite-surface": "node tools/wp-core/run-multisite-network-surface.mjs",
     "wp:core:wphx-317-multisite-surface:check": "node tools/wp-core/run-multisite-network-surface.mjs --check",
+    "wp:core:wphx-317-multisite-options-transients": "node tools/wp-core/run-multisite-options-transients-fixture.mjs",
+    "wp:core:wphx-317-multisite-options-transients:check": "node tools/wp-core/run-multisite-options-transients-fixture.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",

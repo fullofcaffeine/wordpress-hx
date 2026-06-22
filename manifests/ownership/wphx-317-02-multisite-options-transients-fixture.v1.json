@@ -1,0 +1,59 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/multisite-options-transients-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.11.1",
+    "external_ref": "WPHX-317.02"
+  },
+  "unit": {
+    "kind": "workset",
+    "name": "multisite site/network option and site-transient differential fixture harness",
+    "area": "wp-includes",
+    "public_contract": "WordPress 7.0 multisite site/network option and site-transient behavior remains observable while the candidate side is still an oracle source mirror."
+  },
+  "ownership_state": "external_oracle",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-hook.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/load.php",
+      "src/wp-includes/plugin.php",
+      "src/wp-includes/cache.php",
+      "src/wp-includes/class-wp-object-cache.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/kses.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/class-wp-network.php",
+      "src/wp-includes/ms-network.php",
+      "src/wp-includes/option.php"
+    ],
+    "digest": "sha256:21718f32f363bed9ac7c91fc17f9bfaed2d6e1fc840896d0cfd67eda213c107a"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-multisite-options-transients-fixture.mjs",
+    "manifests/wp-core/wphx-317-02-multisite-options-transients-fixture.v1.json",
+    "receipts/wp-core/wphx-317-02-multisite-options-transients-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-317-02-multisite-options-transients-fixture.v1.json",
+    "manifests/ownership/wphx-317-02-multisite-options-transients-fixture.v1.json",
+    "receipts/wp-core/wphx-317-02-multisite-options-transients-fixture.v1.json",
+    "build/wp-core/wphx-317-02"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-317-multisite-options-transients",
+      "npm run wp:core:wphx-317-multisite-options-transients:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-317-02-multisite-options-transients-fixture"
+    ],
+    "manifest_digest": "sha256:b78708cb9f27ebc40dac76be64e12817c09fa7ed264029f63ffd0d738d7c6f58"
+  },
+  "notes": "The candidate fixture root is an oracle source mirror for WPHX-317.02. The probe enables multisite and supplies deterministic sitemeta behavior through a constrained wpdb test double; full SQL/storage parity remains WPHX-305, and first Haxe-owned multisite helpers are deferred to WPHX-317.07."
+}
