@@ -6,9 +6,9 @@
   "command": "npm run ci:php-conformance",
   "status": "passed",
   "manifest": "manifests/ci/wphx-208-php-conformance-ci.v1.json",
-  "manifest_sha256": "sha256:54a284a4550e9e4729b71535688e5f52b6c5e8d17ac7d4a1c3cc68db53ab746e",
+  "manifest_sha256": "sha256:3e537b25ef107e394c79a62d2e331d0dbc4021c375a66f69d066edc102ee9541",
   "workflow": ".github/workflows/php-conformance.yml",
-  "workflow_sha256": "sha256:2e8c785e71cc40dd0f207122cff550a609eae9c4d6485e4bc1c97f3e43102dfa",
+  "workflow_sha256": "sha256:246338f46a81f79babda94eaf5cc265c4c0ec9c596901811a6d1abbdc8e6766a",
   "matrix_suites": 6,
-  "required_commands": 40
+  "required_commands": 41
 }

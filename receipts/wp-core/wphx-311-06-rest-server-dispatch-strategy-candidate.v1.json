@@ -1,0 +1,60 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.10.6",
+    "external_ref": "WPHX-311.06",
+    "title": "Promote REST server dispatch routing to Haxe candidate"
+  },
+  "recorded_at": "2026-06-22T11:25:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
+      "role": "REST server dispatch typed Haxe candidate parity manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
+      "role": "linked-candidate ownership manifest for the typed dispatch strategy"
+    },
+    {
+      "path": "tools/wp-core/run-rest-server-dispatch-strategy-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    },
+    {
+      "path": "src/wphx/wp/rest/RestServerDispatchStrategy.hx",
+      "role": "typed Haxe dispatch decision strategy"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-311-rest-server-dispatch-candidate",
+    "npm run wp:core:wphx-311-rest-server-dispatch-candidate:check",
+    "npm run wp:core:wphx-311-rest-settings-controller:check",
+    "npm run wp:core:wphx-311-rest-settings-dispatch:check",
+    "npm run wp:core:wphx-311-rest-settings-schema-candidate:check",
+    "npm run wp:core:wphx-311-rest-settings-value-candidate:check",
+    "npm run wp:core:wphx-311-rest-settings-update-candidate:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-311-05-rest-settings-update-strategy-candidate",
+    "receipt:wphx-311-04-rest-settings-value-strategy-candidate",
+    "receipt:wphx-311-03-rest-settings-schema-strategy-candidate",
+    "receipt:wphx-311-02-rest-settings-dispatch-fixture",
+    "receipt:wphx-311-01-rest-settings-controller-fixture"
+  ],
+  "manifest_sha256": "sha256:e1d68b1b0e58dfc9bdf7d71d545b96c35b92255c756ab406e86a2a0c17694429",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_generated_rest_server_dispatch_strategy_shell",
+    "evidence_class": "targeted_semantic_parity",
+    "artifact_scope": "linked_candidate",
+    "covered_symbols": 12,
+    "promoted_symbols": 2,
+    "fixture_cases": 9,
+    "comparisons": 3,
+    "skipped_runtimes": 0,
+    "source_escape_audit_passed": true
+  }
+}

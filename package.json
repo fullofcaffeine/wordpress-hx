@@ -117,6 +117,8 @@
     "wp:core:wphx-311-rest-settings-value-candidate:check": "node tools/wp-core/run-rest-settings-value-strategy-candidate.mjs --check",
     "wp:core:wphx-311-rest-settings-update-candidate": "node tools/wp-core/run-rest-settings-update-strategy-candidate.mjs",
     "wp:core:wphx-311-rest-settings-update-candidate:check": "node tools/wp-core/run-rest-settings-update-strategy-candidate.mjs --check",
+    "wp:core:wphx-311-rest-server-dispatch-candidate": "node tools/wp-core/run-rest-server-dispatch-strategy-candidate.mjs",
+    "wp:core:wphx-311-rest-server-dispatch-candidate:check": "node tools/wp-core/run-rest-server-dispatch-strategy-candidate.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",

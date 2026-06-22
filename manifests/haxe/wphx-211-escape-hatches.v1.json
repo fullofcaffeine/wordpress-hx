@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 101,
+  "scanned_file_count": 103,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -29,6 +29,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/PublicClassLoweringProofEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/PureFormattingCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsSchemaStrategyCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsUpdateStrategyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsValueStrategyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpErrorCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbClassShellResourceStrategyCandidateEntry.hx",
@@ -105,6 +106,7 @@
     "src/wphx/wp/macros/BindingValidator.hx",
     "src/wphx/wp/options/PureOptionCache.hx",
     "src/wphx/wp/rest/RestSettingsSchemaStrategy.hx",
+    "src/wphx/wp/rest/RestSettingsUpdateStrategy.hx",
     "src/wphx/wp/rest/RestSettingsValueStrategy.hx"
   ],
   "lookback_lines": 6,

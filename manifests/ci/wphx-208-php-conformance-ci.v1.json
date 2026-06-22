@@ -5,7 +5,7 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:2e8c785e71cc40dd0f207122cff550a609eae9c4d6485e4bc1c97f3e43102dfa",
+    "sha256": "sha256:246338f46a81f79babda94eaf5cc265c4c0ec9c596901811a6d1abbdc8e6766a",
     "triggers": [
       "pull_request",
       "push:main",
@@ -70,6 +70,7 @@
       "npm run wp:core:wphx-311-rest-settings-schema-candidate:check",
       "npm run wp:core:wphx-311-rest-settings-value-candidate:check",
       "npm run wp:core:wphx-311-rest-settings-update-candidate:check",
+      "npm run wp:core:wphx-311-rest-server-dispatch-candidate:check",
       "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
       "npm run php:db-client-images:check",
       "npm run wp:core:wphx-305-live-db:check",
