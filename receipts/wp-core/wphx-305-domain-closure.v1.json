@@ -1,0 +1,191 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-305-domain-closure",
+  "issue": {
+    "id": "wordpresshx-l76.9",
+    "external_ref": "WPHX-305",
+    "title": "wpdb and database abstraction"
+  },
+  "recorded_at": "2026-06-22T06:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-305-01-wpdb-surface.v1.json",
+      "role": "wpdb/database surface inventory"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-02-wpdb-prepare-escaping-fixture.v1.json",
+      "role": "wpdb prepare/escaping differential fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-03-wpdb-query-results-fixture.v1.json",
+      "role": "wpdb query/read-result differential fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-04-wpdb-write-fields-fixture.v1.json",
+      "role": "wpdb write/field-format differential fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-05-wpdb-charset-prefix-fixture.v1.json",
+      "role": "wpdb charset/collation/prefix differential fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-06-wpdb-schema-option-integration-fixture.v1.json",
+      "role": "wpdb schema and option integration fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-07-wpdb-live-db-runtime-gate.v1.json",
+      "role": "live MySQL/MariaDB runtime gate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-08-wpdb-live-db-candidate.v1.json",
+      "role": "first typed Haxe live database candidate"
+    },
+    {
+      "path": "manifests/toolchain/wphx-305-09-php-db-client-images.v1.json",
+      "role": "locked PHP DB-client runtime images"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-10-wpdb-dbdelta-candidate.v1.json",
+      "role": "dbDelta typed Haxe candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-11-wpdb-query-result-candidate.v1.json",
+      "role": "query-result typed Haxe candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-12-wpdb-query-state-candidate.v1.json",
+      "role": "query-state typed Haxe candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-13-wpdb-native-execution-candidate.v1.json",
+      "role": "native SQL execution typed Haxe candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-14-wpdb-result-population-candidate.v1.json",
+      "role": "result population typed Haxe candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-15-wpdb-raw-resource-candidate.v1.json",
+      "role": "raw resource boundary candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-16-wpdb-mysqli-boundary-candidate.v1.json",
+      "role": "mysqli boundary candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-17-wpdb-mysqli-row-traversal-candidate.v1.json",
+      "role": "mysqli row traversal candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-18-wpdb-mysqli-lowering-strategy.v1.json",
+      "role": "mysqli lowering strategy"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-19-wpdb-mysqli-global-lowering-proof.v1.json",
+      "role": "stock Haxe @:phpGlobal mysqli lowering proof"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-20-wpdb-mysqli-phpglobal-candidate.v1.json",
+      "role": "mysqli @:phpGlobal candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-21-wpdb-row-materialization-candidate.v1.json",
+      "role": "row materialization candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-22-wpdb-dropin-public-state-plan.v1.json",
+      "role": "drop-in and public-state boundary plan"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-23-wpdb-public-state-descriptor-candidate.v1.json",
+      "role": "public-state descriptor candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-24-wpdb-public-state-storage-adapter-candidate.v1.json",
+      "role": "public-state storage adapter candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-25-wpdb-public-state-expanded-storage-adapter-candidate.v1.json",
+      "role": "expanded public-state storage adapter candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-26-wpdb-class-shell-resource-strategy-candidate.v1.json",
+      "role": "class shell/resource strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-27-wpdb-method-body-strategy-candidate.v1.json",
+      "role": "method-body strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-28-wpdb-query-execution-strategy-candidate.v1.json",
+      "role": "query-execution strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
+      "role": "db_connect strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-30-wpdb-prepare-escaping-strategy-candidate.v1.json",
+      "role": "prepare/escaping strategy candidate"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:db-client-images:check",
+    "npm run wp:core:wphx-305-live-db:check",
+    "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+    "npm run ci:php-conformance:check",
+    "npm run receipts:validate",
+    "npm run build:profiles:check",
+    "npm run beads:validate",
+    "npm run precommit"
+  ],
+  "follow_up": [
+    {
+      "issue": "WPHX-311",
+      "bead": "wordpresshx-l76.10",
+      "reason": "Owns REST API and schema behavior, including WP_REST_Settings_Controller coverage for show_in_rest settings."
+    },
+    {
+      "issue": "WPHX-317",
+      "bead": "wordpresshx-l76.11",
+      "reason": "Owns multisite/network behavior and remaining site-option/site-transient storage paths."
+    },
+    {
+      "issue": "WPHX-322",
+      "bead": "wordpresshx-l76.12",
+      "reason": "Owns full PHP first-party manifest closure and upstream PHPUnit/domain parity ratcheting."
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "closed_child_slices": 29,
+    "fixture_domains": [
+      "surface inventory",
+      "prepare/escaping",
+      "query/read results",
+      "write fields",
+      "charset/collation/prefix",
+      "schema/option integration",
+      "live MySQL/MariaDB runtime",
+      "typed Haxe wpdb/dbDelta/query/result/native mysqli candidates",
+      "public-state and class-shell strategy candidates",
+      "db_connect and prepare/escaping strategy candidates"
+    ],
+    "ownership_summary": {
+      "haxe_parity_candidate": [
+        "schema helper planning",
+        "dbDelta planning",
+        "query/result state planning",
+        "native mysqli call lowering",
+        "row materialization",
+        "wpdb public-state descriptors and adapters",
+        "db_connect strategy",
+        "prepare/escaping strategy"
+      ],
+      "external_oracle": [
+        "full packaged wpdb replacement remains gated by distribution-level ABI and upstream PHPUnit closure",
+        "live database behavior remains compared against WordPress 7.0 oracle fixtures"
+      ]
+    }
+  }
+}
