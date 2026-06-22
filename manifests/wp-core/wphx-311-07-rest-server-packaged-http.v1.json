@@ -11,8 +11,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
-      "bytes": 48853,
-      "sha256": "sha256:ccd4f1cd304d830f74559db08776e6174f0c34c7c1adf355b94b146c7164c3d7"
+      "bytes": 51479,
+      "sha256": "sha256:0d30ca4c244e0ecd90a615e3bd40160204587093cb10079b10473c6c0016bef2"
     },
     "haxe_sources": [
       {
@@ -22,13 +22,13 @@
       },
       {
         "path": "src/wphx/wp/rest/RestServerDispatchStrategy.hx",
-        "bytes": 6928,
-        "sha256": "sha256:aa21f21119c3a512ed5a522bcdba235ed5a89efae27e462866fc935604dc5484"
+        "bytes": 8120,
+        "sha256": "sha256:fafc9370b41c4158d6bd41976be14d0335fa81e7c49dab05fdea6a1befa01c5c"
       },
       {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.hx",
-        "bytes": 3482,
-        "sha256": "sha256:dccbe73aff3c96c27b156047c737389af5677883825620fe0d73bae105b2001f"
+        "bytes": 4140,
+        "sha256": "sha256:01f4deecfc46fc0d80d6353f425cbe9521b8489c78998a7ddc5dfe800bc9d7b8"
       }
     ],
     "prior_manifests": [
@@ -59,8 +59,8 @@
       },
       {
         "path": "manifests/wp-core/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
-        "bytes": 1765933,
-        "sha256": "sha256:09aa1c73fac07364e522d8912f72e376036062122b1236d451f968a628fe9dae"
+        "bytes": 1765934,
+        "sha256": "sha256:2f0645cbbe474824919c76fa57929a7dcb640d95995c7de4212952bab5246dcf"
       }
     ],
     "toolchain_lock": {
@@ -308,13 +308,13 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.php",
-        "bytes": 9249,
-        "sha256": "sha256:1c03b6a49aa353e9a0976117d739c9b1d090aab48686d25ea23569b053ebbce1"
+        "bytes": 11017,
+        "sha256": "sha256:0f9683a26f0e7371b504963349c1f56ca90d0332fe680d26d7d4051641c5aac1"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/wp/rest/RestServerDispatchStrategy.php",
-        "bytes": 16597,
-        "sha256": "sha256:22606b5a92a1f72e7f4b746d25d6edebe656c57caa20511981db982b8d614c7e"
+        "bytes": 19482,
+        "sha256": "sha256:094629d003209b1e1dcd1c175b9ecb35d12c18bc44f37d57f419e95213d18e65"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/cache.php",
@@ -423,8 +423,8 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "bytes": 53644,
-        "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
+        "bytes": 53737,
+        "sha256": "sha256:8e097e1d373e51147b9e30f740fc159276be041b167c1752a869e19393299d63"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/endpoints/class-wp-rest-controller.php",
@@ -445,8 +445,8 @@
     "haxe_out": "build/wp-core/wphx-311-07/haxe",
     "candidate_rest_server": {
       "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-      "bytes": 53644,
-      "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
+      "bytes": 53737,
+      "sha256": "sha256:8e097e1d373e51147b9e30f740fc159276be041b167c1752a869e19393299d63"
     }
   },
   "fixture": {
@@ -470,6 +470,10 @@
       {
         "id": "rest-http:pre-serve-manual",
         "focus": "rest_pre_serve_request can manually serve output and suppress default JSON emission"
+      },
+      {
+        "id": "rest-http:get-settings-embed",
+        "focus": "_embed request path runs response_to_data() through embed_links() while preserving response shape"
       }
     ],
     "owned_methods": [
@@ -479,7 +483,8 @@
       "response_to_data",
       "get_response_links",
       "get_target_hints_for_link",
-      "get_compact_response_links"
+      "get_compact_response_links",
+      "embed_links"
     ],
     "native_boundaries": [
       {
@@ -521,7 +526,7 @@
       "mode": "oracle",
       "command": "php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle build/wp-core/wphx-311-07/oracle-package",
       "image": null,
-      "normalized_sha256": "sha256:b7bb1303b535645368fcb4d3418c38f1e47ff857e1ea0d768d5a5ff9fa6b8aa9",
+      "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
       "php_version": "8.4.7",
       "package_boundary": {
         "classFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
@@ -553,7 +558,7 @@
       "mode": "candidate",
       "command": "php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate build/wp-core/wphx-311-07/candidate-package",
       "image": null,
-      "normalized_sha256": "sha256:b7bb1303b535645368fcb4d3418c38f1e47ff857e1ea0d768d5a5ff9fa6b8aa9",
+      "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
       "php_version": "8.4.7",
       "package_boundary": {
         "classFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
@@ -585,7 +590,7 @@
       "mode": "oracle",
       "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle /work/build/wp-core/wphx-311-07/oracle-package",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
-      "normalized_sha256": "sha256:b7bb1303b535645368fcb4d3418c38f1e47ff857e1ea0d768d5a5ff9fa6b8aa9",
+      "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
       "php_version": "8.4.22",
       "package_boundary": {
         "classFile": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
@@ -617,7 +622,7 @@
       "mode": "candidate",
       "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate /work/build/wp-core/wphx-311-07/candidate-package",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
-      "normalized_sha256": "sha256:b7bb1303b535645368fcb4d3418c38f1e47ff857e1ea0d768d5a5ff9fa6b8aa9",
+      "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
       "php_version": "8.4.22",
       "package_boundary": {
         "classFile": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
@@ -649,7 +654,7 @@
       "mode": "oracle",
       "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle /work/build/wp-core/wphx-311-07/oracle-package",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
-      "normalized_sha256": "sha256:b7bb1303b535645368fcb4d3418c38f1e47ff857e1ea0d768d5a5ff9fa6b8aa9",
+      "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
       "php_version": "8.5.7",
       "package_boundary": {
         "classFile": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
@@ -681,7 +686,7 @@
       "mode": "candidate",
       "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate /work/build/wp-core/wphx-311-07/candidate-package",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
-      "normalized_sha256": "sha256:b7bb1303b535645368fcb4d3418c38f1e47ff857e1ea0d768d5a5ff9fa6b8aa9",
+      "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
       "php_version": "8.5.7",
       "package_boundary": {
         "classFile": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
@@ -1011,6 +1016,64 @@
                 "autoload": "off"
               }
             }
+          },
+          {
+            "id": "rest-http:get-settings-embed",
+            "return": null,
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=UTF-8",
+              "X-Robots-Tag": "noindex",
+              "Link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+              "X-Content-Type-Options": "nosniff",
+              "Access-Control-Expose-Headers": "X-WP-Total, X-WP-TotalPages, Link",
+              "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+              "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+              "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private"
+            },
+            "removedHeaders": [
+              "Last-Modified"
+            ],
+            "body": {
+              "kind": "json",
+              "value": {
+                "wphx_rest_text": " stored text ",
+                "renamed_count": 12
+              }
+            },
+            "events": [],
+            "capabilityChecks": [
+              {
+                "capability": "manage_options",
+                "args": []
+              }
+            ],
+            "options": {
+              "blog_charset": {
+                "value": "UTF-8",
+                "autoload": "on"
+              },
+              "home": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "permalink_structure": {
+                "value": "",
+                "autoload": "on"
+              },
+              "siteurl": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "wphx_rest_named": {
+                "value": "12",
+                "autoload": "off"
+              },
+              "wphx_rest_text": {
+                "value": " stored text ",
+                "autoload": "off"
+              }
+            }
           }
         ],
         "phpErrors": []
@@ -1282,6 +1345,64 @@
                 "status": 200
               }
             ],
+            "capabilityChecks": [
+              {
+                "capability": "manage_options",
+                "args": []
+              }
+            ],
+            "options": {
+              "blog_charset": {
+                "value": "UTF-8",
+                "autoload": "on"
+              },
+              "home": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "permalink_structure": {
+                "value": "",
+                "autoload": "on"
+              },
+              "siteurl": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "wphx_rest_named": {
+                "value": "12",
+                "autoload": "off"
+              },
+              "wphx_rest_text": {
+                "value": " stored text ",
+                "autoload": "off"
+              }
+            }
+          },
+          {
+            "id": "rest-http:get-settings-embed",
+            "return": null,
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=UTF-8",
+              "X-Robots-Tag": "noindex",
+              "Link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+              "X-Content-Type-Options": "nosniff",
+              "Access-Control-Expose-Headers": "X-WP-Total, X-WP-TotalPages, Link",
+              "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+              "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+              "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private"
+            },
+            "removedHeaders": [
+              "Last-Modified"
+            ],
+            "body": {
+              "kind": "json",
+              "value": {
+                "wphx_rest_text": " stored text ",
+                "renamed_count": 12
+              }
+            },
+            "events": [],
             "capabilityChecks": [
               {
                 "capability": "manage_options",
@@ -1621,6 +1742,64 @@
                 "autoload": "off"
               }
             }
+          },
+          {
+            "id": "rest-http:get-settings-embed",
+            "return": null,
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=UTF-8",
+              "X-Robots-Tag": "noindex",
+              "Link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+              "X-Content-Type-Options": "nosniff",
+              "Access-Control-Expose-Headers": "X-WP-Total, X-WP-TotalPages, Link",
+              "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+              "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+              "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private"
+            },
+            "removedHeaders": [
+              "Last-Modified"
+            ],
+            "body": {
+              "kind": "json",
+              "value": {
+                "wphx_rest_text": " stored text ",
+                "renamed_count": 12
+              }
+            },
+            "events": [],
+            "capabilityChecks": [
+              {
+                "capability": "manage_options",
+                "args": []
+              }
+            ],
+            "options": {
+              "blog_charset": {
+                "value": "UTF-8",
+                "autoload": "on"
+              },
+              "home": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "permalink_structure": {
+                "value": "",
+                "autoload": "on"
+              },
+              "siteurl": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "wphx_rest_named": {
+                "value": "12",
+                "autoload": "off"
+              },
+              "wphx_rest_text": {
+                "value": " stored text ",
+                "autoload": "off"
+              }
+            }
           }
         ],
         "phpErrors": []
@@ -1892,6 +2071,64 @@
                 "status": 200
               }
             ],
+            "capabilityChecks": [
+              {
+                "capability": "manage_options",
+                "args": []
+              }
+            ],
+            "options": {
+              "blog_charset": {
+                "value": "UTF-8",
+                "autoload": "on"
+              },
+              "home": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "permalink_structure": {
+                "value": "",
+                "autoload": "on"
+              },
+              "siteurl": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "wphx_rest_named": {
+                "value": "12",
+                "autoload": "off"
+              },
+              "wphx_rest_text": {
+                "value": " stored text ",
+                "autoload": "off"
+              }
+            }
+          },
+          {
+            "id": "rest-http:get-settings-embed",
+            "return": null,
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=UTF-8",
+              "X-Robots-Tag": "noindex",
+              "Link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+              "X-Content-Type-Options": "nosniff",
+              "Access-Control-Expose-Headers": "X-WP-Total, X-WP-TotalPages, Link",
+              "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+              "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+              "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private"
+            },
+            "removedHeaders": [
+              "Last-Modified"
+            ],
+            "body": {
+              "kind": "json",
+              "value": {
+                "wphx_rest_text": " stored text ",
+                "renamed_count": 12
+              }
+            },
+            "events": [],
             "capabilityChecks": [
               {
                 "capability": "manage_options",
@@ -2231,6 +2468,64 @@
                 "autoload": "off"
               }
             }
+          },
+          {
+            "id": "rest-http:get-settings-embed",
+            "return": null,
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=UTF-8",
+              "X-Robots-Tag": "noindex",
+              "Link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+              "X-Content-Type-Options": "nosniff",
+              "Access-Control-Expose-Headers": "X-WP-Total, X-WP-TotalPages, Link",
+              "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+              "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+              "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private"
+            },
+            "removedHeaders": [
+              "Last-Modified"
+            ],
+            "body": {
+              "kind": "json",
+              "value": {
+                "wphx_rest_text": " stored text ",
+                "renamed_count": 12
+              }
+            },
+            "events": [],
+            "capabilityChecks": [
+              {
+                "capability": "manage_options",
+                "args": []
+              }
+            ],
+            "options": {
+              "blog_charset": {
+                "value": "UTF-8",
+                "autoload": "on"
+              },
+              "home": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "permalink_structure": {
+                "value": "",
+                "autoload": "on"
+              },
+              "siteurl": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "wphx_rest_named": {
+                "value": "12",
+                "autoload": "off"
+              },
+              "wphx_rest_text": {
+                "value": " stored text ",
+                "autoload": "off"
+              }
+            }
           }
         ],
         "phpErrors": []
@@ -2534,6 +2829,64 @@
                 "autoload": "off"
               }
             }
+          },
+          {
+            "id": "rest-http:get-settings-embed",
+            "return": null,
+            "status": 200,
+            "headers": {
+              "Content-Type": "application/json; charset=UTF-8",
+              "X-Robots-Tag": "noindex",
+              "Link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+              "X-Content-Type-Options": "nosniff",
+              "Access-Control-Expose-Headers": "X-WP-Total, X-WP-TotalPages, Link",
+              "Access-Control-Allow-Headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type",
+              "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+              "Cache-Control": "no-cache, must-revalidate, max-age=0, no-store, private"
+            },
+            "removedHeaders": [
+              "Last-Modified"
+            ],
+            "body": {
+              "kind": "json",
+              "value": {
+                "wphx_rest_text": " stored text ",
+                "renamed_count": 12
+              }
+            },
+            "events": [],
+            "capabilityChecks": [
+              {
+                "capability": "manage_options",
+                "args": []
+              }
+            ],
+            "options": {
+              "blog_charset": {
+                "value": "UTF-8",
+                "autoload": "on"
+              },
+              "home": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "permalink_structure": {
+                "value": "",
+                "autoload": "on"
+              },
+              "siteurl": {
+                "value": "https://example.test",
+                "autoload": "on"
+              },
+              "wphx_rest_named": {
+                "value": "12",
+                "autoload": "off"
+              },
+              "wphx_rest_text": {
+                "value": " stored text ",
+                "autoload": "off"
+              }
+            }
           }
         ],
         "phpErrors": []
@@ -2636,7 +2989,7 @@
       }
     ],
     "package_boundary_runtimes": 3,
-    "fixture_cases": 5,
+    "fixture_cases": 6,
     "comparisons": 3,
     "skipped_runtimes": 0
   }

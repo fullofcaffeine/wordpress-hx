@@ -17,7 +17,8 @@ class RestServerDispatchStrategy
 			"response_to_data",
 			"get_response_links",
 			"get_target_hints_for_link",
-			"get_compact_response_links"
+			"get_compact_response_links",
+			"embed_links"
 		];
 	}
 
@@ -188,6 +189,56 @@ class RestServerDispatchStrategy
 	public static function shouldReturnNullForTargetSanitizeError(sanitizeIsWpError:Bool):Bool
 	{
 		return sanitizeIsWpError;
+	}
+
+	public static function shouldReturnUnembeddedData(linksAreEmpty:Bool):Bool
+	{
+		return linksAreEmpty;
+	}
+
+	public static function shouldProcessEmbedRelation(embedIsArray:Bool, relationAllowed:Bool):Bool
+	{
+		return !embedIsArray || relationAllowed;
+	}
+
+	public static function shouldKeepEmptyEmbedForNonEmbeddable(itemEmbeddable:Bool):Bool
+	{
+		return !itemEmbeddable;
+	}
+
+	public static function shouldLoadEmbedCache(cacheEntryExists:Bool):Bool
+	{
+		return !cacheEntryExists;
+	}
+
+	public static function shouldSkipEmbedForMissingRequest(requestAvailable:Bool):Bool
+	{
+		return !requestAvailable;
+	}
+
+	public static function shouldSetEmbedContext(contextIsEmpty:Bool):Bool
+	{
+		return contextIsEmpty;
+	}
+
+	public static function shouldInspectPerPageMaximum(perPageIsEmpty:Bool):Bool
+	{
+		return perPageIsEmpty;
+	}
+
+	public static function shouldUseMatchedPerPageMaximum(matchedIsError:Bool, maximumIsSet:Bool):Bool
+	{
+		return !matchedIsError && maximumIsSet;
+	}
+
+	public static function shouldAttachEmbeddedRelation(hasLinks:Bool):Bool
+	{
+		return hasLinks;
+	}
+
+	public static function shouldAttachEmbeddedData(embeddedIsEmpty:Bool):Bool
+	{
+		return !embeddedIsEmpty;
 	}
 
 	public static function shouldUsePreDispatchResult(resultIsEmpty:Bool):Bool

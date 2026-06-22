@@ -34,7 +34,7 @@
     "receipt:wphx-311-05-rest-settings-update-strategy-candidate",
     "receipt:wphx-311-02-rest-settings-dispatch-fixture"
   ],
-  "manifest_sha256": "sha256:1f5eaf61ad2b4e0df23552e03438b6145a6ec8c07a252f572f2bff3c33ac655d",
+  "manifest_sha256": "sha256:baeb95a0ee817dc0b7c3ba86990167997f6e7abc09f4826b916013681ea553ba",
   "validation_result": {
     "status": "passed",
     "evidence_classes": [
@@ -78,7 +78,7 @@
       }
     ],
     "package_boundary_runtimes": 3,
-    "fixture_cases": 5,
+    "fixture_cases": 6,
     "comparisons": 3,
     "skipped_runtimes": 0
   }

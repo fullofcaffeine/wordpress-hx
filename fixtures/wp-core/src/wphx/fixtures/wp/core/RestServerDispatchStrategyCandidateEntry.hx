@@ -41,6 +41,16 @@ class RestServerDispatchStrategyCandidateEntry
 		RestServerDispatchStrategy.shouldReturnNullForTargetMatchError(true);
 		RestServerDispatchStrategy.shouldReturnNullForTargetParamError(true);
 		RestServerDispatchStrategy.shouldReturnNullForTargetSanitizeError(true);
+		RestServerDispatchStrategy.shouldReturnUnembeddedData(true);
+		RestServerDispatchStrategy.shouldProcessEmbedRelation(true, false);
+		RestServerDispatchStrategy.shouldKeepEmptyEmbedForNonEmbeddable(false);
+		RestServerDispatchStrategy.shouldLoadEmbedCache(false);
+		RestServerDispatchStrategy.shouldSkipEmbedForMissingRequest(false);
+		RestServerDispatchStrategy.shouldSetEmbedContext(true);
+		RestServerDispatchStrategy.shouldInspectPerPageMaximum(true);
+		RestServerDispatchStrategy.shouldUseMatchedPerPageMaximum(false, true);
+		RestServerDispatchStrategy.shouldAttachEmbeddedRelation(true);
+		RestServerDispatchStrategy.shouldAttachEmbeddedData(false);
 		RestServerDispatchStrategy.shouldUsePreDispatchResult(false);
 		RestServerDispatchStrategy.shouldConvertPreDispatchError(true);
 		RestServerDispatchStrategy.shouldReturnMatchedError(true);

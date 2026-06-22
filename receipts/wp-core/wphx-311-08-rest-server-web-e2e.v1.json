@@ -39,7 +39,7 @@
     "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate",
     "receipt:wphx-700-05-upstream-phpunit-ratchet"
   ],
-  "manifest_sha256": "sha256:67c0f3da7a9ed50db395f2bfeb2348756b0f319b9bfe069ad78dfedd6187afad",
+  "manifest_sha256": "sha256:e81382470c7e0cc2f914546dd660b69a3b39dfd4c59dbea5ba4df9e763c3f673",
   "validation_result": {
     "status": "passed",
     "evidence_classes": [
@@ -48,7 +48,7 @@
       "live_integration_parity"
     ],
     "artifact_scope": "packaged_distribution",
-    "fixture_cases": 6,
+    "fixture_cases": 7,
     "selected_headers": [
       "content-type",
       "x-robots-tag",

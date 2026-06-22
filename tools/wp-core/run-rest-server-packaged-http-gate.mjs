@@ -77,7 +77,8 @@ const OWNED_METHODS = [
   "response_to_data",
   "get_response_links",
   "get_target_hints_for_link",
-  "get_compact_response_links"
+  "get_compact_response_links",
+  "embed_links"
 ];
 const CASES = [
   {
@@ -99,6 +100,10 @@ const CASES = [
   {
     id: "rest-http:pre-serve-manual",
     focus: "rest_pre_serve_request can manually serve output and suppress default JSON emission"
+  },
+  {
+    id: "rest-http:get-settings-embed",
+    focus: "_embed request path runs response_to_data() through embed_links() while preserving response shape"
   }
 ];
 
@@ -662,6 +667,73 @@ function transformCandidateRestServer() {
 \treturn $links;
 }`
   );
+  source = replaceMethod(
+    source,
+    "embed_links",
+    `protected function embed_links( $data, $embed = true ) {
+\t$dispatch_strategy = '\\\\wphx\\\\wp\\\\rest\\\\RestServerDispatchStrategy';
+
+\tif ( $dispatch_strategy::shouldReturnUnembeddedData( empty( $data['_links'] ) ) ) {
+\t\treturn $data;
+\t}
+
+\t$embedded = array();
+
+\tforeach ( $data['_links'] as $rel => $links ) {
+\t\tif ( ! $dispatch_strategy::shouldProcessEmbedRelation( is_array( $embed ), ! is_array( $embed ) || in_array( $rel, $embed, true ) ) ) {
+\t\t\tcontinue;
+\t\t}
+
+\t\t$embeds = array();
+
+\t\tforeach ( $links as $item ) {
+\t\t\tif ( $dispatch_strategy::shouldKeepEmptyEmbedForNonEmbeddable( ! empty( $item['embeddable'] ) ) ) {
+\t\t\t\t$embeds[] = array();
+\t\t\t\tcontinue;
+\t\t\t}
+
+\t\t\tif ( $dispatch_strategy::shouldLoadEmbedCache( array_key_exists( $item['href'], $this->embed_cache ) ) ) {
+\t\t\t\t$request = WP_REST_Request::from_url( $item['href'] );
+\t\t\t\tif ( $dispatch_strategy::shouldSkipEmbedForMissingRequest( (bool) $request ) ) {
+\t\t\t\t\t$embeds[] = array();
+\t\t\t\t\tcontinue;
+\t\t\t\t}
+
+\t\t\t\tif ( $dispatch_strategy::shouldSetEmbedContext( empty( $request['context'] ) ) ) {
+\t\t\t\t\t$request['context'] = 'embed';
+\t\t\t\t}
+
+\t\t\t\tif ( $dispatch_strategy::shouldInspectPerPageMaximum( empty( $request['per_page'] ) ) ) {
+\t\t\t\t\t$matched = $this->match_request_to_handler( $request );
+\t\t\t\t\tif ( $dispatch_strategy::shouldUseMatchedPerPageMaximum( is_wp_error( $matched ), isset( $matched[1]['args']['per_page']['maximum'] ) ) ) {
+\t\t\t\t\t\t$request['per_page'] = (int) $matched[1]['args']['per_page']['maximum'];
+\t\t\t\t\t}
+\t\t\t\t}
+
+\t\t\t\t$response = $this->dispatch( $request );
+
+\t\t\t\t$response = apply_filters( 'rest_post_dispatch', rest_ensure_response( $response ), $this, $request );
+
+\t\t\t\t$this->embed_cache[ $item['href'] ] = $this->response_to_data( $response, false );
+\t\t\t}
+
+\t\t\t$embeds[] = $this->embed_cache[ $item['href'] ];
+\t\t}
+
+\t\t$has_links = count( array_filter( $embeds ) );
+
+\t\tif ( $dispatch_strategy::shouldAttachEmbeddedRelation( (bool) $has_links ) ) {
+\t\t\t$embedded[ $rel ] = $embeds;
+\t\t}
+\t}
+
+\tif ( $dispatch_strategy::shouldAttachEmbeddedData( empty( $embedded ) ) ) {
+\t\t$data['_embedded'] = $embedded;
+\t}
+
+\treturn $data;
+}`
+  );
   writeFileSync(path, source);
 }
 
@@ -1055,6 +1127,12 @@ function wphx_311_07_run_cases() {
 \t\t\t\t4
 \t\t\t);
 \t\t}
+\t);
+\t$cases[] = wphx_311_07_run_http_case(
+\t\t'rest-http:get-settings-embed',
+\t\t'GET',
+\t\t'/wp/v2/settings',
+\t\tarray( '_embed' => '1' )
 \t);
 \treturn $cases;
 }

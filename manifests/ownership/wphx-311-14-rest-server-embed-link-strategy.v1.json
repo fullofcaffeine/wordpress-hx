@@ -1,0 +1,53 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rest-server-embed-link-strategy",
+  "issue": {
+    "id": "wordpresshx-e8f",
+    "external_ref": "WPHX-311.14"
+  },
+  "unit": {
+    "kind": "typed-haxe-rest-server-strategy",
+    "name": "WP_REST_Server embed_links decisions",
+    "area": "wp-includes/rest-api/class-wp-rest-server.php",
+    "public_contract": "The packaged REST server candidate preserves WordPress-native embedded response data, request parsing, dispatch, filters, cache values, and recursive response_to_data() calls in PHP while routing embed_links() branch decisions through typed Haxe helpers."
+  },
+  "ownership_state": "typed_haxe_strategy_candidate",
+  "owned_paths": [
+    "src/wphx/wp/rest/RestServerDispatchStrategy.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.hx",
+    "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
+    "tools/wp-core/run-rest-server-web-e2e-gate.mjs",
+    "tools/wp-core/run-rest-server-installed-browser-gate.mjs",
+    "manifests/ownership/wphx-311-14-rest-server-embed-link-strategy.v1.json",
+    "receipts/wp-core/wphx-311-14-rest-server-embed-link-strategy.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
+    "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
+    "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
+    "manifests/wp-core/wphx-311-09-rest-server-installed-browser.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-311-rest-server-dispatch-candidate:check",
+      "npm run wp:core:wphx-311-rest-server-packaged-http:check",
+      "npm run wp:core:wphx-311-rest-server-web-e2e:check",
+      "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+      "npm run format:haxe:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run beads:validate",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-311-14-rest-server-embed-link-strategy",
+      "receipt:wphx-311-13-rest-server-response-link-target-strategy",
+      "receipt:wphx-311-12-rest-server-response-data-strategy",
+      "receipt:wphx-311-11-rest-server-serve-request-strategy",
+      "receipt:wphx-311-09-rest-server-installed-browser",
+      "receipt:wphx-311-08-rest-server-web-e2e",
+      "receipt:wphx-311-07-rest-server-packaged-http",
+      "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
+    ]
+  },
+  "notes": "This slice does not move WP_REST_Request::from_url(), match_request_to_handler(), dispatch(), rest_post_dispatch, embed cache storage, or response_to_data() recursion into Haxe. Those remain PHP boundaries because they are WordPress runtime and ABI-visible operations."
+}

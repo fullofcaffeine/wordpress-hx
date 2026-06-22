@@ -84,6 +84,12 @@ const CASES = [
     method: "OPTIONS",
     path: "/wp-json/wp/v2/settings",
     focus: "browser fetch observes installed-entry OPTIONS behavior and exposed transport headers"
+  },
+  {
+    id: "rest-browser:get-settings-embed",
+    method: "GET",
+    path: "/wp-json/wp/v2/settings?_embed=1",
+    focus: "browser fetch observes _embed response_to_data() path through installed entry routing"
   }
 ];
 

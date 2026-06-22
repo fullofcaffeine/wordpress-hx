@@ -34,7 +34,7 @@
     "receipt:wphx-311-07-rest-server-packaged-http",
     "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
   ],
-  "manifest_sha256": "sha256:10fd0e271311b02aa6d173e90a8c7152c69d242da33b422f2fbbfd7e6f293e85",
+  "manifest_sha256": "sha256:392e57bff764d0446a823adaa252e146385b887f53f21fc194c469afcc588556",
   "validation_result": {
     "status": "passed",
     "evidence_classes": [
@@ -43,7 +43,7 @@
       "live_integration_parity"
     ],
     "artifact_scope": "packaged_distribution",
-    "fixture_cases": 7,
+    "fixture_cases": 8,
     "selected_headers": [
       "content-type",
       "x-robots-tag",

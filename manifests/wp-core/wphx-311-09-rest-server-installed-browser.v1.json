@@ -12,13 +12,13 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-installed-browser-gate.mjs",
-      "bytes": 20213,
-      "sha256": "sha256:f63a8fa8f254c9a081e2739e04500d8037b4f22374849b7222abfd2a081edef9"
+      "bytes": 20429,
+      "sha256": "sha256:fb916b288cadfeccab25d9ce54c123694ac35f276d6291a9a470261a59b1637b"
     },
     "web_runner": {
       "path": "tools/wp-core/run-rest-server-web-e2e-gate.mjs",
-      "bytes": 28126,
-      "sha256": "sha256:f39ac2a816b08100a39b9f133d8fa95c1d1e0e2aa864429356535296582f8c6f"
+      "bytes": 28338,
+      "sha256": "sha256:8bb2427de39206f80a42a3012a547dd649cdead0d653901ba923b83431200f5d"
     },
     "package_json": {
       "path": "package.json",
@@ -27,8 +27,8 @@
     },
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
-      "bytes": 29219,
-      "sha256": "sha256:67c0f3da7a9ed50db395f2bfeb2348756b0f319b9bfe069ad78dfedd6187afad"
+      "bytes": 31061,
+      "sha256": "sha256:e81382470c7e0cc2f914546dd660b69a3b39dfd4c59dbea5ba4df9e763c3f673"
     }
   },
   "browser": {
@@ -128,13 +128,13 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/fixtures/wp/core/RestServerDispatchStrategyCandidateEntry.php",
-        "bytes": 9249,
-        "sha256": "sha256:1c03b6a49aa353e9a0976117d739c9b1d090aab48686d25ea23569b053ebbce1"
+        "bytes": 11017,
+        "sha256": "sha256:0f9683a26f0e7371b504963349c1f56ca90d0332fe680d26d7d4051641c5aac1"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/haxe/lib/wphx/wp/rest/RestServerDispatchStrategy.php",
-        "bytes": 16597,
-        "sha256": "sha256:22606b5a92a1f72e7f4b746d25d6edebe656c57caa20511981db982b8d614c7e"
+        "bytes": 19482,
+        "sha256": "sha256:094629d003209b1e1dcd1c175b9ecb35d12c18bc44f37d57f419e95213d18e65"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/index.php",
@@ -248,8 +248,8 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "bytes": 53644,
-        "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
+        "bytes": 53737,
+        "sha256": "sha256:8e097e1d373e51147b9e30f740fc159276be041b167c1752a869e19393299d63"
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/endpoints/class-wp-rest-controller.php",
@@ -279,8 +279,8 @@
     ],
     "candidate_rest_server": {
       "path": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-      "bytes": 53644,
-      "sha256": "sha256:d6c2d3fd1520312cbd1f3b0458b4b88f569d2ed15230703e3091ebb3db1c99cc"
+      "bytes": 53737,
+      "sha256": "sha256:8e097e1d373e51147b9e30f740fc159276be041b167c1752a869e19393299d63"
     },
     "owned_methods": [
       "serve_request",
@@ -333,6 +333,12 @@
         "method": "OPTIONS",
         "path": "/wp-json/wp/v2/settings",
         "focus": "browser fetch observes installed-entry OPTIONS behavior and exposed transport headers"
+      },
+      {
+        "id": "rest-browser:get-settings-embed",
+        "method": "GET",
+        "path": "/wp-json/wp/v2/settings?_embed=1",
+        "focus": "browser fetch observes _embed response_to_data() path through installed entry routing"
       }
     ],
     "selected_headers": [
@@ -357,7 +363,7 @@
       "id": "installed-browser:oracle",
       "mode": "oracle",
       "command": "php -S 127.0.0.1:<ephemeral> wphx-installed-router.php",
-      "normalized_sha256": "sha256:759f8e3c32bb0d0315f40e8e1f5da52c6d815caa711ae50f2e1fc2d1e5619e5e",
+      "normalized_sha256": "sha256:43f0d70a7d0fcba0041dc1b5b486528bc234603dcef0aeb4a6f2024f152cab5d",
       "browser": {
         "location": {
           "pathname": "/__wphx/browser-harness",
@@ -395,7 +401,7 @@
       "id": "installed-browser:candidate",
       "mode": "candidate",
       "command": "php -S 127.0.0.1:<ephemeral> wphx-installed-router.php",
-      "normalized_sha256": "sha256:759f8e3c32bb0d0315f40e8e1f5da52c6d815caa711ae50f2e1fc2d1e5619e5e",
+      "normalized_sha256": "sha256:43f0d70a7d0fcba0041dc1b5b486528bc234603dcef0aeb4a6f2024f152cab5d",
       "browser": {
         "location": {
           "pathname": "/__wphx/browser-harness",
@@ -582,6 +588,27 @@
             }
           }
         }
+      },
+      {
+        "id": "rest-browser:get-settings-embed",
+        "method": "GET",
+        "path": "/wp-json/wp/v2/settings?_embed=1",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8",
+          "x-robots-tag": "noindex",
+          "link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+          "x-content-type-options": "nosniff",
+          "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages, Link",
+          "access-control-allow-headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type"
+        },
+        "body": {
+          "kind": "json",
+          "value": {
+            "wphx_rest_text": " stored text ",
+            "renamed_count": 12
+          }
+        }
       }
     ],
     "candidate": [
@@ -734,6 +761,27 @@
             }
           }
         }
+      },
+      {
+        "id": "rest-browser:get-settings-embed",
+        "method": "GET",
+        "path": "/wp-json/wp/v2/settings?_embed=1",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8",
+          "x-robots-tag": "noindex",
+          "link": "<https://example.test/index.php?rest_route=/>; rel=\"https://api.w.org/\"",
+          "x-content-type-options": "nosniff",
+          "access-control-expose-headers": "X-WP-Total, X-WP-TotalPages, Link",
+          "access-control-allow-headers": "Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type"
+        },
+        "body": {
+          "kind": "json",
+          "value": {
+            "wphx_rest_text": " stored text ",
+            "renamed_count": 12
+          }
+        }
       }
     ]
   },
@@ -776,7 +824,7 @@
       "live_integration_parity"
     ],
     "artifact_scope": "packaged_distribution",
-    "fixture_cases": 7,
+    "fixture_cases": 8,
     "selected_headers": [
       "content-type",
       "x-robots-tag",

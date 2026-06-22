@@ -76,6 +76,12 @@ const CASES = [
     method: "GET",
     path: "/wp-json/wp/v2/settings?manual=1",
     focus: "rest_pre_serve_request can manually serve transport output"
+  },
+  {
+    id: "rest-web:get-settings-embed",
+    method: "GET",
+    path: "/wp-json/wp/v2/settings?_embed=1",
+    focus: "_embed request path runs response_to_data() through embed_links() over HTTP transport"
   }
 ];
 
