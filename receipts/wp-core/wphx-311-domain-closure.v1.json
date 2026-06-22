@@ -1,0 +1,133 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-311-domain-closure",
+  "issue": {
+    "id": "wordpresshx-l76.10",
+    "external_ref": "WPHX-311",
+    "title": "REST API and schema"
+  },
+  "recorded_at": "2026-06-22T21:20:04.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
+      "role": "REST settings controller oracle fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-02-rest-settings-dispatch-fixture.v1.json",
+      "role": "REST settings dispatch oracle fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
+      "role": "typed Haxe REST settings schema strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-04-rest-settings-value-strategy-candidate.v1.json",
+      "role": "typed Haxe REST settings value strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-05-rest-settings-update-strategy-candidate.v1.json",
+      "role": "typed Haxe REST settings update strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-06-rest-server-dispatch-strategy-candidate.v1.json",
+      "role": "typed Haxe REST server dispatch strategy candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
+      "role": "packaged REST server HTTP/no-fallback gate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
+      "role": "REST server PHP web transport gate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
+      "role": "REST server installed browser gate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+      "role": "REST server database-backed browser and cross-origin matrix"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-11-rest-server-serve-request-strategy.v1.json",
+      "role": "typed Haxe serve_request decision strategy"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-12-rest-server-response-data-strategy.v1.json",
+      "role": "typed Haxe response data and compact links strategy"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-13-rest-server-response-link-target-strategy.v1.json",
+      "role": "typed Haxe response link and target-hint strategy"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-14-rest-server-embed-link-strategy.v1.json",
+      "role": "typed Haxe embed link strategy"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-311-rest-settings-controller:check",
+    "npm run wp:core:wphx-311-rest-settings-dispatch:check",
+    "npm run wp:core:wphx-311-rest-settings-schema-candidate:check",
+    "npm run wp:core:wphx-311-rest-settings-value-candidate:check",
+    "npm run wp:core:wphx-311-rest-settings-update-candidate:check",
+    "npm run wp:core:wphx-311-rest-server-dispatch-candidate:check",
+    "npm run wp:core:wphx-311-rest-server-packaged-http:check",
+    "npm run wp:core:wphx-311-rest-server-web-e2e:check",
+    "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+    "npm run wp:core:wphx-311-rest-server-db-browser:check",
+    "npm run ci:php-conformance:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "follow_up": [
+    {
+      "issue": "WPHX-317",
+      "bead": "wordpresshx-l76.11",
+      "reason": "Owns multisite/network REST-adjacent behavior and site-option/site-transient storage paths."
+    },
+    {
+      "issue": "WPHX-322",
+      "bead": "wordpresshx-l76.12",
+      "reason": "Owns full PHP first-party manifest closure after domain slices, including remaining REST/core source-unit ownership gaps."
+    },
+    {
+      "issue": "WPHX-700",
+      "bead": "wordpresshx-w91.3",
+      "reason": "Owns broader installed-system, upstream-suite, ecosystem, security, performance, and release-distribution parity."
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "closed_child_slices": 14,
+    "fixture_domains": [
+      "REST settings controller schema/value/update behavior",
+      "REST server dispatch and serve_request decisions",
+      "response_to_data, compact link, response link, target hint, and embed link decisions",
+      "packaged HTTP/no-fallback ABI",
+      "PHP web transport",
+      "installed browser fetch",
+      "database-backed installed browser fetch",
+      "cross-origin CORS/preflight behavior"
+    ],
+    "ownership_summary": {
+      "typed_haxe_strategy_candidate": [
+        "settings schema/value/update decisions",
+        "REST dispatch routing decisions",
+        "serve_request decision pipeline",
+        "response data/link decisions",
+        "target hints and embed link decisions"
+      ],
+      "packaged_distribution_candidate": [
+        "WP_REST_Server packaged class file without upstream fallback",
+        "browser-visible same-origin and cross-origin REST transport",
+        "database-backed settings route over real wpdb/wp_options plumbing"
+      ],
+      "external_oracle": [
+        "complete REST server method ownership remains part of WPHX-322 first-party manifest closure",
+        "full installed WordPress root, auth cookies, permalink routing, external plugins, and expanded runtime matrix remain WPHX-700 distribution work"
+      ]
+    }
+  }
+}
