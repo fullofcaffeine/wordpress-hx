@@ -30,7 +30,11 @@
     },
     {
       "path": "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
-      "role": "live db_connect/resource/drop-in proof runner"
+      "role": "live db_connect/resource/drop-in proof runner with WPHX-700.03 isolated process/schema lane"
+    },
+    {
+      "path": "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json",
+      "role": "WPHX-700.03 isolated oracle/candidate and linked-candidate ABI hardening manifest"
     },
     {
       "path": "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
@@ -85,6 +89,10 @@
     "protected_magic_write_blocks_preserved": true,
     "reflection_public_properties_preserved": true,
     "require_wp_db_dropin_replacement_preserved": true,
+    "isolated_oracle_candidate_processes_preserved": true,
+    "isolated_oracle_candidate_databases_preserved": true,
+    "isolated_oracle_candidate_observations_preserved": true,
+    "linked_candidate_abi_declares_owned_methods": true,
     "dropin_db_connect_body_preserved": true,
     "dropin_method_body_get_col_info_preserved": true,
     "dropin_method_body_flush_preserved": true,

@@ -28,17 +28,23 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbDbConnectStrategyCandidateEntry.hx",
     "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
     "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
+    "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json",
     "receipts/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json"
   ],
   "generated_paths": [
     "build/wp-core/wphx-305-29/haxe",
     "build/wp-core/wphx-305-29/candidate-shell.php",
     "build/wp-core/wphx-305-29/db-connect-probe.php",
+    "build/wp-core/wphx-305-29/isolated-oracle-probe.php",
+    "build/wp-core/wphx-305-29/isolated-candidate-probe.php",
+    "build/wp-core/wphx-305-29/diagnostics",
     "build/wp-core/wphx-305-29/wp-content/db.php",
     "build/wp-core/wphx-305-29/dropin-probe.php",
     "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
     "manifests/ownership/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
-    "receipts/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json"
+    "receipts/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
+    "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json",
+    "receipts/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json"
   ],
   "typed_haxe_ownership": {
     "strategy": "wphx.wp.db.WpdbDbConnectStrategy",
@@ -70,7 +76,7 @@
       "dynamic plugin properties remain available",
       "protected magic writes remain blocked"
     ],
-    "proof": "WPHX-305.29 provisions mysql-8.4 and mariadb-11.8 from locked images and compares a WPHX_305_29_Wpdb_Db_Connect_Shell subclass against WordPress wpdb for db_connect() success/failure paths, parse_db_host handoff, inherited query() execution paths, get_col_info() paths, flush() resource cleanup, constructor side effects, mysqli_result, lazy col_info, plugin mutation, reflection shape, protected magic write blocks, and db.php replacement."
+    "proof": "WPHX-305.29 provisions mysql-8.4 and mariadb-11.8 from locked images and compares a WPHX_305_29_Wpdb_Db_Connect_Shell subclass against WordPress wpdb for db_connect() success/failure paths, parse_db_host handoff, inherited query() execution paths, get_col_info() paths, flush() resource cleanup, constructor side effects, mysqli_result, lazy col_info, plugin mutation, reflection shape, protected magic write blocks, and db.php replacement. WPHX-700.03 adds separate oracle/candidate PHP processes with separate schemas plus linked-candidate ABI reflection for candidate-owned method declarations."
   },
   "verification": {
     "oracle_commands": [
@@ -91,6 +97,7 @@
     ],
     "receipt_refs": [
       "receipt:wphx-305-29-wpdb-db-connect-strategy-candidate",
+      "receipt:wphx-700-03-isolated-parity-and-linked-abi",
       "receipt:wphx-305-28-wpdb-query-execution-strategy-candidate",
       "receipt:wphx-305-27-wpdb-method-body-strategy-candidate",
       "receipt:wphx-305-26-wpdb-class-shell-resource-strategy-candidate",
@@ -100,6 +107,6 @@
       "receipt:wphx-305-21-wpdb-row-materialization-candidate",
       "receipt:wphx-305-20-wpdb-mysqli-phpglobal-candidate"
     ],
-    "manifest_digest": "sha256:e679ab0062f861adb985e34f4486f202ddc967f73f027075e9b93b6082214b64"
+    "manifest_digest": "sha256:0b9ba6cb1f9eecadd1d65a4ea682856718a0e3ce21e7f0d1f56d05cca7074b8b"
   }
 }

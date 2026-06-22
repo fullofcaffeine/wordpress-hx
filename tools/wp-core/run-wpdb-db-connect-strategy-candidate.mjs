@@ -13,11 +13,19 @@ const ISSUE = {
   external_ref: "WPHX-305.29",
   title: "Move wpdb db_connect native construction beyond the PHP parent shell"
 };
+const HARDENING_ISSUE = {
+  id: "wordpresshx-w91.3.3",
+  external_ref: "WPHX-700.03",
+  title: "WPHX-700.03 — Isolate oracle/candidate parity processes and distribution ABI checks"
+};
 const HXML = "fixtures/wp-core/wpdb-db-connect-strategy-candidate.hxml";
 const OUT_ROOT = "build/wp-core/wphx-305-29";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
 const SHELL = `${OUT_ROOT}/candidate-shell.php`;
 const PROBE = `${OUT_ROOT}/db-connect-probe.php`;
+const ISOLATED_ORACLE_PROBE = `${OUT_ROOT}/isolated-oracle-probe.php`;
+const ISOLATED_CANDIDATE_PROBE = `${OUT_ROOT}/isolated-candidate-probe.php`;
+const DIAGNOSTICS_DIR = `${OUT_ROOT}/diagnostics`;
 const DROPIN_DIR = `${OUT_ROOT}/wp-content`;
 const DROPIN = `${DROPIN_DIR}/db.php`;
 const DROPIN_PROBE = `${OUT_ROOT}/dropin-probe.php`;
@@ -26,6 +34,8 @@ const ENTRY_PHP = `${HAXE_OUT}/lib/wphx/fixtures/wp/core/WpdbDbConnectStrategyCa
 const OUT = "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json";
 const OWNERSHIP = "manifests/ownership/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json";
 const RECEIPT = "receipts/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json";
+const HARDENING_OUT = "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json";
+const HARDENING_RECEIPT = "receipts/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json";
 const QUERY_EXECUTION_STRATEGY_CANDIDATE = "manifests/wp-core/wphx-305-28-wpdb-query-execution-strategy-candidate.v1.json";
 const METHOD_BODY_STRATEGY_CANDIDATE = "manifests/wp-core/wphx-305-27-wpdb-method-body-strategy-candidate.v1.json";
 const CLASS_SHELL_RESOURCE_STRATEGY_CANDIDATE =
@@ -43,6 +53,7 @@ const UPSTREAM_ROOT = "../wordpress-develop";
 const DB_NAME = "wordpresshx_live";
 const DB_USER = "root";
 const DB_PASSWORD = "wordpresshx-live-password";
+const ISOLATED_DB_PREFIX = "wordpresshx_iso";
 
 const SOURCE_FILES = ["src/wp-includes/class-wpdb.php", "src/wp-includes/load.php", "src/wp-includes/wp-db.php"];
 
@@ -211,6 +222,49 @@ function dbProbe(port) {
         WPHX_DB_PASSWORD: DB_PASSWORD,
         WPHX_DB_NAME: DB_NAME,
         WPHX_DB_PORT: String(port)
+      }
+    })
+  );
+}
+
+function isolatedDbName(runtime, side) {
+  const runtimeId = runtime.id.replace(/[^A-Za-z0-9_]+/g, "_");
+  return `${ISOLATED_DB_PREFIX}_${runtimeId}_${side}`;
+}
+
+function resetDatabase(port, dbName) {
+  const code = `
+    mysqli_report(MYSQLI_REPORT_OFF);
+    $mysqli = @new mysqli('127.0.0.1', getenv('WPHX_DB_USER'), getenv('WPHX_DB_PASSWORD'), '', intval(getenv('WPHX_DB_PORT')));
+    if ($mysqli->connect_errno) {
+      fwrite(STDERR, $mysqli->connect_error . PHP_EOL);
+      exit(2);
+    }
+    $db = getenv('WPHX_DB_NAME');
+    if (!preg_match('/^[A-Za-z0-9_]+$/', $db)) {
+      fwrite(STDERR, 'Unsafe database name' . PHP_EOL);
+      exit(3);
+    }
+    $quoted = chr(96) . $db . chr(96);
+    $mysqli->query("DROP DATABASE IF EXISTS " . $quoted);
+    if ($mysqli->errno) {
+      fwrite(STDERR, $mysqli->error . PHP_EOL);
+      exit(4);
+    }
+    $mysqli->query("CREATE DATABASE " . $quoted . " CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    if ($mysqli->errno) {
+      fwrite(STDERR, $mysqli->error . PHP_EOL);
+      exit(5);
+    }
+    echo json_encode(array('database' => $db), JSON_UNESCAPED_SLASHES) . PHP_EOL;
+  `;
+  return JSON.parse(
+    command("php", ["-r", code], {
+      env: {
+        WPHX_DB_USER: DB_USER,
+        WPHX_DB_PASSWORD: DB_PASSWORD,
+        WPHX_DB_PORT: String(port),
+        WPHX_DB_NAME: dbName
       }
     })
   );
@@ -1155,6 +1209,249 @@ echo json_encode(
 `;
 }
 
+function isolatedProbeSource(kind) {
+  const isCandidate = kind === "candidate";
+  const bootstrap = isCandidate
+    ? `require_once ${phpString(resolve(SHELL))};
+$class_name = 'WPHX_305_29_Wpdb_Db_Connect_Shell';
+$expected_candidate_file = realpath(${phpString(resolve(SHELL))});
+`
+    : `${wordpressProbeStubs()}
+require_once ${phpString(resolve(upstreamPath("src/wp-includes/class-wpdb.php")))};
+#[AllowDynamicProperties]
+class WPHX_305_29_Isolated_Oracle_Wpdb extends wpdb {
+  public function wphx_set_dbpassword_for_probe(string $dbpassword): void {
+    $this->dbpassword = $dbpassword;
+  }
+}
+$class_name = 'WPHX_305_29_Isolated_Oracle_Wpdb';
+$expected_candidate_file = null;
+`;
+
+  return `<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'stderr');
+mysqli_report(MYSQLI_REPORT_OFF);
+
+${bootstrap}
+
+$db_host = $argv[1];
+$db_port = (int) $argv[2];
+$db_user = $argv[3];
+$db_password = $argv[4];
+$db_name = $argv[5];
+$runtime_id = $argv[6];
+$side = $argv[7];
+$db_host_with_port = $db_host . ':' . $db_port;
+
+function wphx_700_03_normalize_host($value): string {
+  return preg_replace('/:\\\\d+$/', ':<port>', (string) $value);
+}
+
+function wphx_700_03_value_shape($value): array {
+  if (is_array($value)) {
+    return array('type' => 'array', 'count' => count($value));
+  }
+  if (is_object($value)) {
+    return array('type' => 'object', 'class' => get_class($value));
+  }
+  if (is_bool($value)) {
+    return array('type' => 'bool', 'value' => $value);
+  }
+  if (is_int($value)) {
+    return array('type' => 'int', 'value' => $value);
+  }
+  if (is_null($value)) {
+    return array('type' => 'null', 'value' => null);
+  }
+  return array('type' => gettype($value), 'value' => (string) $value);
+}
+
+function wphx_700_03_constructor_snapshot($object): array {
+  return array(
+    'dbuser' => $object->__get('dbuser'),
+    'dbpassword_set' => is_string($object->__get('dbpassword')) && '' !== $object->__get('dbpassword'),
+    'dbname_set' => is_string($object->__get('dbname')) && '' !== $object->__get('dbname'),
+    'dbhost' => wphx_700_03_normalize_host($object->__get('dbhost')),
+    'dbh_type' => get_debug_type($object->__get('dbh')),
+    'ready' => $object->ready,
+    'has_connected' => $object->__get('has_connected'),
+    'is_mysql' => $object->is_mysql,
+    'use_mysqli' => $object->__get('use_mysqli'),
+    'charset' => $object->charset,
+    'collate' => $object->collate
+  );
+}
+
+function wphx_700_03_db_connect_success_snapshot($object): array {
+  $return_value = $object->db_connect(false);
+  $database_return = $object->query('SELECT DATABASE() AS db_name');
+  $database_name = is_array($object->last_result) && isset($object->last_result[0])
+    ? (string) $object->last_result[0]->db_name
+    : null;
+  return array(
+    'return_value' => $return_value,
+    'dbh_type' => get_debug_type($object->__get('dbh')),
+    'dbh_is_mysqli' => $object->__get('dbh') instanceof mysqli,
+    'ready' => $object->ready,
+    'has_connected' => $object->__get('has_connected'),
+    'is_mysql' => $object->is_mysql,
+    'use_mysqli' => $object->__get('use_mysqli'),
+    'charset' => $object->charset,
+    'collate' => $object->collate,
+    'database_query_return' => $database_return,
+    'database_name_matches_input' => $database_name === $object->__get('dbname')
+  );
+}
+
+function wphx_700_03_db_connect_failure_snapshot($object, string $bad_password): array {
+  $object->wphx_set_dbpassword_for_probe($bad_password);
+  $return_value = $object->db_connect(false);
+  return array(
+    'return_value' => $return_value,
+    'dbh_shape' => wphx_700_03_value_shape($object->__get('dbh')),
+    'ready' => $object->ready,
+    'has_connected' => $object->__get('has_connected'),
+    'is_mysql' => $object->is_mysql,
+    'last_error_is_string' => is_string($object->last_error)
+  );
+}
+
+function wphx_700_03_parse_db_host_snapshot($object): array {
+  $hosts = array(
+    'ipv4_port' => '127.0.0.1:3306',
+    'localhost_socket' => 'localhost:/tmp/mysql.sock',
+    'ipv6_bracketed_port' => '[::1]:3306',
+    'ipv6_plain' => '::1'
+  );
+  $parsed = array();
+  foreach ($hosts as $name => $host) {
+    $parsed[$name] = $object->parse_db_host($host);
+  }
+  return $parsed;
+}
+
+function wphx_700_03_query_snapshot($object): array {
+  $return_value = $object->query("SELECT 1 AS alpha, 'two' AS beta");
+  return array(
+    'return_value' => $return_value,
+    'result_is_mysqli_result' => $object->__get('result') instanceof mysqli_result,
+    'num_rows' => $object->num_rows,
+    'last_result_count' => is_array($object->last_result) ? count($object->last_result) : null,
+    'last_result_first_row' => is_array($object->last_result) && isset($object->last_result[0])
+      ? array('alpha' => (string) $object->last_result[0]->alpha, 'beta' => (string) $object->last_result[0]->beta)
+      : null
+  );
+}
+
+function wphx_700_03_identifier($name): string {
+  return chr(96) . str_replace(chr(96), chr(96) . chr(96), $name) . chr(96);
+}
+
+function wphx_700_03_query_execution_snapshot($object, string $runtime_id): array {
+  $table = wphx_700_03_identifier('wphx_700_03_' . preg_replace('/[^a-z0-9_]+/i', '_', strtolower($runtime_id)));
+  $drop_return = $object->query("DROP TABLE IF EXISTS $table");
+  $create_return = $object->query("CREATE TABLE $table (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(32) NOT NULL UNIQUE, value VARCHAR(32) NOT NULL)");
+  $insert_alpha_return = $object->query("INSERT INTO $table (name, value) VALUES ('alpha', 'one')");
+  $insert_beta_return = $object->query("INSERT INTO $table (name, value) VALUES ('beta', 'two')");
+  $update_return = $object->query("UPDATE $table SET value = 'two-updated' WHERE name = 'beta'");
+  $select_return = $object->query("SELECT name, value FROM $table ORDER BY id ASC");
+  $selected_rows = array();
+  foreach ((array) $object->last_result as $row) {
+    $selected_rows[] = array('name' => (string) $row->name, 'value' => (string) $row->value);
+  }
+  $duplicate_return = $object->query("INSERT INTO $table (name, value) VALUES ('alpha', 'duplicate')");
+  $duplicate_insert_id = $object->insert_id;
+  $duplicate_last_error_is_string = is_string($object->last_error) && '' !== $object->last_error;
+  $drop_after_return = $object->query("DROP TABLE IF EXISTS $table");
+
+  return array(
+    'drop_return' => $drop_return,
+    'create_return' => $create_return,
+    'insert_alpha_return' => $insert_alpha_return,
+    'insert_beta_return' => $insert_beta_return,
+    'update_return' => $update_return,
+    'select_return' => $select_return,
+    'selected_rows' => $selected_rows,
+    'duplicate_return' => $duplicate_return,
+    'duplicate_insert_id' => $duplicate_insert_id,
+    'duplicate_last_error_is_string' => $duplicate_last_error_is_string,
+    'drop_after_return' => $drop_after_return
+  );
+}
+
+function wphx_700_03_plugin_snapshot($object): array {
+  $object->wphx_plugin_extension = 'plugin-value';
+  return array(
+    'dynamic_property_added' => isset($object->wphx_plugin_extension) && 'plugin-value' === $object->wphx_plugin_extension,
+    'dynamic_property_in_object_vars' => array_key_exists('wphx_plugin_extension', get_object_vars($object))
+  );
+}
+
+function wphx_700_03_linked_candidate_abi(string $class_name, ?string $expected_candidate_file): array {
+  $reflection = new ReflectionClass($class_name);
+  $class_file = realpath($reflection->getFileName());
+  $parent = $reflection->getParentClass();
+  $owned_methods = array();
+  foreach (array('db_connect', 'query', 'flush', 'get_col_info') as $method_name) {
+    $method = $reflection->getMethod($method_name);
+    $declaring_class = $method->getDeclaringClass();
+    $declaring_file = realpath($method->getFileName());
+    $owned_methods[$method_name] = array(
+      'declaring_class' => $declaring_class->getName(),
+      'declaring_file' => $declaring_file,
+      'declared_by_candidate_class' => $declaring_class->getName() === $class_name,
+      'declared_in_candidate_file' => $expected_candidate_file !== null && $declaring_file === $expected_candidate_file
+    );
+  }
+  $all_owned_methods_declared_by_candidate = true;
+  foreach ($owned_methods as $method) {
+    $all_owned_methods_declared_by_candidate = $all_owned_methods_declared_by_candidate
+      && $method['declared_by_candidate_class']
+      && $method['declared_in_candidate_file'];
+  }
+  return array(
+    'class_name' => $reflection->getName(),
+    'class_file' => $class_file,
+    'expected_candidate_file' => $expected_candidate_file,
+    'class_declared_in_candidate_file' => $expected_candidate_file !== null && $class_file === $expected_candidate_file,
+    'parent_class' => $parent ? $parent->getName() : null,
+    'parent_file' => $parent ? realpath($parent->getFileName()) : null,
+    'owned_methods' => $owned_methods,
+    'all_owned_methods_declared_by_candidate' => $all_owned_methods_declared_by_candidate
+  );
+}
+
+$subject = new $class_name($db_user, $db_password, $db_name, $db_host_with_port);
+$failure_subject = new $class_name($db_user, $db_password, $db_name, $db_host_with_port);
+$bad_password = $db_password . '-wphx-bad';
+
+$observations = array(
+  'constructor' => wphx_700_03_constructor_snapshot($subject),
+  'db_connect_success' => wphx_700_03_db_connect_success_snapshot($subject),
+  'db_connect_failure' => wphx_700_03_db_connect_failure_snapshot($failure_subject, $bad_password),
+  'parse_db_host' => wphx_700_03_parse_db_host_snapshot($subject),
+  'query' => wphx_700_03_query_snapshot($subject),
+  'query_execution' => wphx_700_03_query_execution_snapshot($subject, $runtime_id),
+  'plugin' => wphx_700_03_plugin_snapshot($subject)
+);
+$abi = ${isCandidate ? "wphx_700_03_linked_candidate_abi($class_name, $expected_candidate_file)" : "null"};
+
+echo json_encode(
+  array(
+    'runtime' => $runtime_id,
+    'side' => $side,
+    'database' => $db_name,
+    'process_isolation' => true,
+    'observations' => $observations,
+    'linked_candidate_abi' => $abi,
+    'status' => 'passed'
+  ),
+  JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES
+) . PHP_EOL;
+`;
+}
+
 function dropinProbeSource() {
   return `<?php
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
@@ -1241,8 +1538,11 @@ echo json_encode(
 function writeProbeFiles() {
   mkdirSync(OUT_ROOT, { recursive: true });
   mkdirSync(DROPIN_DIR, { recursive: true });
+  mkdirSync(DIAGNOSTICS_DIR, { recursive: true });
   writeFileSync(SHELL, shellSource());
   writeFileSync(PROBE, classShellProbeSource());
+  writeFileSync(ISOLATED_ORACLE_PROBE, isolatedProbeSource("oracle"));
+  writeFileSync(ISOLATED_CANDIDATE_PROBE, isolatedProbeSource("candidate"));
   writeFileSync(
     DROPIN,
     `<?php
@@ -1258,6 +1558,97 @@ $wpdb = new WPHX_305_29_Dropin_Wpdb(DB_USER, DB_PASSWORD, DB_NAME, DB_HOST);
 
 function runJsonPhp(path, runtime, port) {
   return JSON.parse(command("php", [path, "127.0.0.1", String(port), DB_USER, DB_PASSWORD, DB_NAME, runtime.id]));
+}
+
+function artifactRecord(path) {
+  return {
+    path,
+    bytes: statSync(path).size,
+    sha256: sha256File(path)
+  };
+}
+
+function runJsonPhpWithArtifacts(path, args, artifactPrefix) {
+  const result = spawnSync("php", [path, ...args], {
+    encoding: "utf8",
+    env: { ...process.env },
+    maxBuffer: 1024 * 1024 * 80
+  });
+  const stdoutPath = `${DIAGNOSTICS_DIR}/${artifactPrefix}.stdout.json`;
+  const stderrPath = `${DIAGNOSTICS_DIR}/${artifactPrefix}.stderr.txt`;
+  const processPath = `${DIAGNOSTICS_DIR}/${artifactPrefix}.process.json`;
+  mkdirSync(DIAGNOSTICS_DIR, { recursive: true });
+  writeFileSync(stdoutPath, result.stdout ?? "");
+  writeFileSync(stderrPath, result.stderr ?? "");
+  const processRecord = {
+    command: ["php", path, ...args]
+      .map((value, index) => (index === 3 || index === 5 ? "<redacted>" : value))
+      .join(" "),
+    status: result.status,
+    signal: result.signal,
+    error: result.error ? result.error.message : null
+  };
+  writeFileSync(processPath, JSON.stringify(processRecord, null, 2) + "\n");
+  if (result.status !== 0) {
+    throw new Error(`${path} failed with status ${result.status}; see ${processPath}`);
+  }
+  return {
+    json: JSON.parse(result.stdout),
+    diagnostics: {
+      stdout: artifactRecord(stdoutPath),
+      stderr: artifactRecord(stderrPath),
+      process: artifactRecord(processPath)
+    }
+  };
+}
+
+function runIsolatedParity(runtime, port) {
+  const oracleDb = isolatedDbName(runtime, "oracle");
+  const candidateDb = isolatedDbName(runtime, "candidate");
+  const oracleDbReset = resetDatabase(port, oracleDb);
+  const candidateDbReset = resetDatabase(port, candidateDb);
+  const oracleRun = runJsonPhpWithArtifacts(
+    ISOLATED_ORACLE_PROBE,
+    ["127.0.0.1", String(port), DB_USER, DB_PASSWORD, oracleDb, runtime.id, "oracle"],
+    `${runtime.id}-isolated-oracle`
+  );
+  const candidateRun = runJsonPhpWithArtifacts(
+    ISOLATED_CANDIDATE_PROBE,
+    ["127.0.0.1", String(port), DB_USER, DB_PASSWORD, candidateDb, runtime.id, "candidate"],
+    `${runtime.id}-isolated-candidate`
+  );
+  const observationsMatch =
+    JSON.stringify(oracleRun.json.observations) === JSON.stringify(candidateRun.json.observations);
+  const abi = candidateRun.json.linked_candidate_abi;
+  const linkedCandidateAbiPassed =
+    abi?.class_declared_in_candidate_file === true && abi?.all_owned_methods_declared_by_candidate === true;
+  return {
+    evidence_class: "live_integration_parity",
+    artifact_scope: "linked_candidate",
+    process_model: "separate_php_processes",
+    database_model: "separate_schemas",
+    databases: {
+      oracle: oracleDbReset.database,
+      candidate: candidateDbReset.database
+    },
+    oracle: {
+      process_isolation: oracleRun.json.process_isolation,
+      diagnostics: oracleRun.diagnostics
+    },
+    candidate: {
+      process_isolation: candidateRun.json.process_isolation,
+      diagnostics: candidateRun.diagnostics,
+      linked_candidate_abi: abi
+    },
+    comparisons: {
+      isolated_observations_match: observationsMatch,
+      linked_candidate_abi_passed: linkedCandidateAbiPassed,
+      separate_database_names: oracleDb !== candidateDb,
+      separate_processes_recorded:
+        oracleRun.json.process_isolation === true && candidateRun.json.process_isolation === true
+    },
+    status: observationsMatch && linkedCandidateAbiPassed && oracleDb !== candidateDb ? "passed" : "failed"
+  };
 }
 
 function analyzeGeneratedStrategy() {
@@ -1296,7 +1687,7 @@ function analyzeGeneratedStrategy() {
   };
 }
 
-function runtimeSummary(runtime, probe, dropinProbe, image, query) {
+function runtimeSummary(runtime, probe, dropinProbe, isolatedParity, image, query) {
   return {
     id: runtime.id,
     engine: runtime.engine,
@@ -1308,6 +1699,7 @@ function runtimeSummary(runtime, probe, dropinProbe, image, query) {
     },
     class_shell_probe: probe,
     dropin_probe: dropinProbe,
+    isolated_parity: isolatedParity,
     passed:
       probe.status === "passed" &&
       Object.values(probe.comparisons).every(Boolean) &&
@@ -1319,7 +1711,8 @@ function runtimeSummary(runtime, probe, dropinProbe, image, query) {
       dropinProbe.method_body_get_col_info_available === true &&
       dropinProbe.method_body_flush_available === true &&
       dropinProbe.query_execution_body_available === true &&
-      dropinProbe.dynamic_plugin_property_available === true
+      dropinProbe.dynamic_plugin_property_available === true &&
+      isolatedParity.status === "passed"
   };
 }
 
@@ -1355,9 +1748,24 @@ function ownershipManifest(manifestSha, upstreamDigest, runtimes) {
       "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbDbConnectStrategyCandidateEntry.hx",
       "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
       OUT,
+      HARDENING_OUT,
       RECEIPT
     ],
-    generated_paths: [HAXE_OUT, SHELL, PROBE, DROPIN, DROPIN_PROBE, OUT, OWNERSHIP, RECEIPT],
+    generated_paths: [
+      HAXE_OUT,
+      SHELL,
+      PROBE,
+      ISOLATED_ORACLE_PROBE,
+      ISOLATED_CANDIDATE_PROBE,
+      DIAGNOSTICS_DIR,
+      DROPIN,
+      DROPIN_PROBE,
+      OUT,
+      OWNERSHIP,
+      RECEIPT,
+      HARDENING_OUT,
+      HARDENING_RECEIPT
+    ],
     typed_haxe_ownership: {
       strategy: "wphx.wp.db.WpdbDbConnectStrategy",
       owns: [
@@ -1389,7 +1797,7 @@ function ownershipManifest(manifestSha, upstreamDigest, runtimes) {
         "protected magic writes remain blocked"
       ],
       proof:
-        `WPHX-305.29 provisions ${runtimes.map((runtime) => runtime.id).join(" and ")} from locked images and compares a WPHX_305_29_Wpdb_Db_Connect_Shell subclass against WordPress wpdb for db_connect() success/failure paths, parse_db_host handoff, inherited query() execution paths, get_col_info() paths, flush() resource cleanup, constructor side effects, mysqli_result, lazy col_info, plugin mutation, reflection shape, protected magic write blocks, and db.php replacement.`
+        `WPHX-305.29 provisions ${runtimes.map((runtime) => runtime.id).join(" and ")} from locked images and compares a WPHX_305_29_Wpdb_Db_Connect_Shell subclass against WordPress wpdb for db_connect() success/failure paths, parse_db_host handoff, inherited query() execution paths, get_col_info() paths, flush() resource cleanup, constructor side effects, mysqli_result, lazy col_info, plugin mutation, reflection shape, protected magic write blocks, and db.php replacement. WPHX-700.03 adds separate oracle/candidate PHP processes with separate schemas plus linked-candidate ABI reflection for candidate-owned method declarations.`
     },
     verification: {
       oracle_commands: [
@@ -1410,6 +1818,7 @@ function ownershipManifest(manifestSha, upstreamDigest, runtimes) {
       ],
       receipt_refs: [
         "receipt:wphx-305-29-wpdb-db-connect-strategy-candidate",
+        "receipt:wphx-700-03-isolated-parity-and-linked-abi",
         "receipt:wphx-305-28-wpdb-query-execution-strategy-candidate",
         "receipt:wphx-305-27-wpdb-method-body-strategy-candidate",
         "receipt:wphx-305-26-wpdb-class-shell-resource-strategy-candidate",
@@ -1465,7 +1874,8 @@ for (const runtime of dbRuntimes) {
   const result = await withDbRuntime(runtime, async ({ port, query, image }) => {
     const classShellProbe = runJsonPhp(PROBE, runtime, port);
     const dropinProbe = runJsonPhp(DROPIN_PROBE, runtime, port);
-    return runtimeSummary(runtime, classShellProbe, dropinProbe, image, query);
+    const isolatedParity = runIsolatedParity(runtime, port);
+    return runtimeSummary(runtime, classShellProbe, dropinProbe, isolatedParity, image, query);
   });
   runtimeResults.push(result);
 }
@@ -1595,6 +2005,10 @@ const manifest = {
   issue: ISSUE.external_ref,
   generated_at: RECORDED_AT,
   generator: "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
+  evidence_class: "live_integration_parity",
+  artifact_scope: "bridge_shell_with_linked_candidate_isolation",
+  artifact_scope_notes:
+    "The historical class-shell/drop-in probes remain bridge_shell evidence. WPHX-700.03 adds isolated oracle/candidate PHP processes with separate schemas and a linked_candidate ABI check for candidate-owned method declarations.",
   inputs: {
     query_execution_strategy_candidate_manifest: inputRecord(QUERY_EXECUTION_STRATEGY_CANDIDATE),
     method_body_strategy_candidate_manifest: inputRecord(METHOD_BODY_STRATEGY_CANDIDATE),
@@ -1630,6 +2044,8 @@ const manifest = {
         server: result.server,
         class_shell_probe_status: result.class_shell_probe.status,
         dropin_probe_status: result.dropin_probe.dropin_replacement_preserved ? "passed" : "failed",
+        isolated_parity_status: result.isolated_parity.status,
+        isolated_parity: result.isolated_parity,
         comparisons: result.class_shell_probe.comparisons,
         dropin_probe: result.dropin_probe,
         passed: result.passed
@@ -1712,9 +2128,9 @@ const manifest = {
       },
       {
         id: "packaged-distribution-bootstrap-not-yet-owned",
-        owner: "future WPHX-305 distribution workset",
+        owner: "future packaged-distribution WPHX-305 workset",
         detail:
-          "The probe proves require_wp_db()/db.php replacement semantics in isolation. Packaging the replacement into a distributable WordPress core layout remains future distribution work."
+          "WPHX-700.03 adds linked-candidate ABI proof that owned methods are declared by candidate-owned files instead of inherited upstream fallbacks. Packaging the replacement into a distributable WordPress core layout remains future distribution work."
       },
       {
         id: "full-upstream-phpunit-not-yet-ported",
@@ -1760,6 +2176,18 @@ const manifest = {
     protected_magic_write_blocks_preserved: runtimeResults.every((result) => result.class_shell_probe.comparisons.protected_magic_write_blocks_preserved),
     reflection_public_properties_preserved: runtimeResults.every((result) => result.class_shell_probe.comparisons.reflection_public_properties_preserved),
     require_wp_db_dropin_replacement_preserved: runtimeResults.every((result) => result.dropin_probe.dropin_replacement_preserved),
+    isolated_oracle_candidate_processes_preserved: runtimeResults.every(
+      (result) => result.isolated_parity.comparisons.separate_processes_recorded
+    ),
+    isolated_oracle_candidate_databases_preserved: runtimeResults.every(
+      (result) => result.isolated_parity.comparisons.separate_database_names
+    ),
+    isolated_oracle_candidate_observations_preserved: runtimeResults.every(
+      (result) => result.isolated_parity.comparisons.isolated_observations_match
+    ),
+    linked_candidate_abi_declares_owned_methods: runtimeResults.every(
+      (result) => result.isolated_parity.comparisons.linked_candidate_abi_passed
+    ),
     dropin_db_connect_body_preserved: runtimeResults.every((result) => result.dropin_probe.db_connect_body_available),
     dropin_method_body_get_col_info_preserved: runtimeResults.every((result) => result.dropin_probe.method_body_get_col_info_available),
     dropin_method_body_flush_preserved: runtimeResults.every((result) => result.dropin_probe.method_body_flush_available),
@@ -1779,6 +2207,45 @@ if (validationStatus !== "passed") {
 const manifestText = JSON.stringify(manifest, null, 2) + "\n";
 const manifestSha = sha256(manifestText);
 const ownershipText = JSON.stringify(ownershipManifest(manifestSha, upstreamDigest, dbRuntimes), null, 2) + "\n";
+const hardeningManifest = {
+  schema: "wphx.operation-isolated-parity-and-linked-abi.v1",
+  issue: HARDENING_ISSUE.external_ref,
+  generated_at: RECORDED_AT,
+  generator: "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
+  source_manifest: {
+    path: OUT,
+    sha256: manifestSha
+  },
+  evidence_class: "live_integration_parity",
+  artifact_scope: "linked_candidate",
+  claim:
+    "WPHX-305.29 now includes isolated oracle/candidate PHP processes with separate database schemas and linked-candidate ABI reflection proving owned wpdb methods are declared by candidate-owned files.",
+  runtime_results: runtimeResults.map((result) => ({
+    id: result.id,
+    engine: result.engine,
+    isolated_parity: result.isolated_parity
+  })),
+  validation_result: {
+    status:
+      runtimeResults.every((result) => result.isolated_parity.status === "passed") &&
+      manifest.validation_result.linked_candidate_abi_declares_owned_methods
+        ? "passed"
+        : "failed",
+    db_runtimes: runtimeResults.length,
+    isolated_oracle_candidate_processes_preserved: manifest.validation_result.isolated_oracle_candidate_processes_preserved,
+    isolated_oracle_candidate_databases_preserved: manifest.validation_result.isolated_oracle_candidate_databases_preserved,
+    isolated_oracle_candidate_observations_preserved: manifest.validation_result.isolated_oracle_candidate_observations_preserved,
+    linked_candidate_abi_declares_owned_methods: manifest.validation_result.linked_candidate_abi_declares_owned_methods,
+    full_diagnostics_preserved_by_digest: runtimeResults.every(
+      (result) =>
+        result.isolated_parity.oracle.diagnostics.stdout.sha256.startsWith("sha256:") &&
+        result.isolated_parity.oracle.diagnostics.stderr.sha256.startsWith("sha256:") &&
+        result.isolated_parity.candidate.diagnostics.stdout.sha256.startsWith("sha256:") &&
+        result.isolated_parity.candidate.diagnostics.stderr.sha256.startsWith("sha256:")
+    )
+  }
+};
+const hardeningManifestText = JSON.stringify(hardeningManifest, null, 2) + "\n";
 const receipt = {
   schema: "wphx.verification-receipt.v1",
   id: "receipt:wphx-305-29-wpdb-db-connect-strategy-candidate",
@@ -1807,7 +2274,11 @@ const receipt = {
     },
     {
       path: "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
-      role: "live db_connect/resource/drop-in proof runner"
+      role: "live db_connect/resource/drop-in proof runner with WPHX-700.03 isolated process/schema lane"
+    },
+    {
+      path: HARDENING_OUT,
+      role: "WPHX-700.03 isolated oracle/candidate and linked-candidate ABI hardening manifest"
     },
     {
       path: "src/wphx/wp/db/WpdbPublicStateExpandedStorageAdapter.hx",
@@ -1841,11 +2312,43 @@ const receipt = {
   validation_result: manifest.validation_result
 };
 const receiptText = JSON.stringify(receipt, null, 2) + "\n";
+const hardeningReceipt = {
+  schema: "wphx.verification-receipt.v1",
+  id: "receipt:wphx-700-03-isolated-parity-and-linked-abi",
+  issue: HARDENING_ISSUE,
+  recorded_at: RECORDED_AT,
+  artifacts: [
+    {
+      path: HARDENING_OUT,
+      role: "isolated oracle/candidate process and linked-candidate ABI manifest"
+    },
+    {
+      path: OUT,
+      role: "strengthened WPHX-305.29 db_connect live parity manifest"
+    },
+    {
+      path: "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
+      role: "runner that emits isolated PHP process diagnostics and linked-candidate ABI checks"
+    }
+  ],
+  verification_commands: [
+    "npm run wp:core:wphx-305-db-connect-strategy-candidate",
+    "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  evidence_class: hardeningManifest.evidence_class,
+  artifact_scope: hardeningManifest.artifact_scope,
+  validation_result: hardeningManifest.validation_result
+};
+const hardeningReceiptText = JSON.stringify(hardeningReceipt, null, 2) + "\n";
 
 try {
   writeOrCheck(OUT, manifestText);
   writeOrCheck(OWNERSHIP, ownershipText);
   writeOrCheck(RECEIPT, receiptText);
+  writeOrCheck(HARDENING_OUT, hardeningManifestText);
+  writeOrCheck(HARDENING_RECEIPT, hardeningReceiptText);
 } catch (error) {
   console.error(JSON.stringify({ status: "failed", error: error.message }, null, 2));
   process.exit(1);
@@ -1858,6 +2361,8 @@ console.log(
       output: OUT,
       ownership: OWNERSHIP,
       receipt: RECEIPT,
+      hardening_output: HARDENING_OUT,
+      hardening_receipt: HARDENING_RECEIPT,
       selected_strategy: manifest.validation_result.selected_strategy,
       db_runtimes: manifest.validation_result.db_runtimes,
       constructor_side_effects_preserved: manifest.validation_result.constructor_side_effects_preserved,
@@ -1875,6 +2380,10 @@ console.log(
       lazy_col_info_materialization_preserved: manifest.validation_result.lazy_col_info_materialization_preserved,
       parent_visible_native_resource_bridge_preserved: manifest.validation_result.parent_visible_native_resource_bridge_preserved,
       require_wp_db_dropin_replacement_preserved: manifest.validation_result.require_wp_db_dropin_replacement_preserved,
+      isolated_oracle_candidate_processes_preserved: manifest.validation_result.isolated_oracle_candidate_processes_preserved,
+      isolated_oracle_candidate_databases_preserved: manifest.validation_result.isolated_oracle_candidate_databases_preserved,
+      isolated_oracle_candidate_observations_preserved: manifest.validation_result.isolated_oracle_candidate_observations_preserved,
+      linked_candidate_abi_declares_owned_methods: manifest.validation_result.linked_candidate_abi_declares_owned_methods,
       dropin_db_connect_body_preserved: manifest.validation_result.dropin_db_connect_body_preserved
     },
     null,

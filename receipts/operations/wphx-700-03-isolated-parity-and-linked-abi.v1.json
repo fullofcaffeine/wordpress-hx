@@ -1,0 +1,41 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-700-03-isolated-parity-and-linked-abi",
+  "issue": {
+    "id": "wordpresshx-w91.3.3",
+    "external_ref": "WPHX-700.03",
+    "title": "WPHX-700.03 — Isolate oracle/candidate parity processes and distribution ABI checks"
+  },
+  "recorded_at": "2026-06-21T07:50:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json",
+      "role": "isolated oracle/candidate process and linked-candidate ABI manifest"
+    },
+    {
+      "path": "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
+      "role": "strengthened WPHX-305.29 db_connect live parity manifest"
+    },
+    {
+      "path": "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
+      "role": "runner that emits isolated PHP process diagnostics and linked-candidate ABI checks"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-305-db-connect-strategy-candidate",
+    "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "evidence_class": "live_integration_parity",
+  "artifact_scope": "linked_candidate",
+  "validation_result": {
+    "status": "passed",
+    "db_runtimes": 2,
+    "isolated_oracle_candidate_processes_preserved": true,
+    "isolated_oracle_candidate_databases_preserved": true,
+    "isolated_oracle_candidate_observations_preserved": true,
+    "linked_candidate_abi_declares_owned_methods": true,
+    "full_diagnostics_preserved_by_digest": true
+  }
+}

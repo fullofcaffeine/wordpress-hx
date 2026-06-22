@@ -3,6 +3,9 @@
   "issue": "WPHX-305.29",
   "generated_at": "2026-06-21T07:50:00.000Z",
   "generator": "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
+  "evidence_class": "live_integration_parity",
+  "artifact_scope": "bridge_shell_with_linked_candidate_isolation",
+  "artifact_scope_notes": "The historical class-shell/drop-in probes remain bridge_shell evidence. WPHX-700.03 adds isolated oracle/candidate PHP processes with separate schemas and a linked_candidate ABI check for candidate-owned method declarations.",
   "inputs": {
     "query_execution_strategy_candidate_manifest": {
       "path": "manifests/wp-core/wphx-305-28-wpdb-query-execution-strategy-candidate.v1.json",
@@ -107,8 +110,8 @@
       },
       {
         "path": "src/wphx/wp/db/WpdbDbConnectStrategy.hx",
-        "bytes": 3596,
-        "sha256": "sha256:fda87fd81e9d5884d8c5c794240aebe6374963a55fbcb187732f68c46449eeec"
+        "bytes": 3593,
+        "sha256": "sha256:40022118404cd37f27750ca928abcaeab5c563a7d661c6bbda750beeb63a2650"
       },
       {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbDbConnectStrategyCandidateEntry.hx",
@@ -232,8 +235,8 @@
       },
       {
         "path": "lib/wphx/wp/db/WpdbDbConnectStrategy.php",
-        "bytes": 7996,
-        "sha256": "a7367511cde07e8767a4f00b013a119133d160ce727bfc0a156e1dbe2ef638c9"
+        "bytes": 8006,
+        "sha256": "08cef9b555a444a5d347e113a4f188aae149479ea3f03ef9eae24792d88ef17b"
       },
       {
         "path": "lib/wphx/wp/db/WpdbMethodBodyStrategy.php",
@@ -275,8 +278,8 @@
       "source": "src/wphx/wp/db/WpdbDbConnectStrategy.hx",
       "generated_php": {
         "path": "build/wp-core/wphx-305-29/haxe/lib/wphx/wp/db/WpdbDbConnectStrategy.php",
-        "bytes": 7996,
-        "sha256": "sha256:a7367511cde07e8767a4f00b013a119133d160ce727bfc0a156e1dbe2ef638c9",
+        "bytes": 8006,
+        "sha256": "sha256:08cef9b555a444a5d347e113a4f188aae149479ea3f03ef9eae24792d88ef17b",
         "entry_path": "build/wp-core/wphx-305-29/haxe/lib/wphx/fixtures/wp/core/WpdbDbConnectStrategyCandidateEntry.php",
         "entry_sha256": "sha256:d636b159e9e68c965521bf214eccf99b365f5ca0277fae7abde85b12e29bb9fb",
         "generated_php_postprocessing_required": false,
@@ -415,6 +418,99 @@
           },
           "class_shell_probe_status": "passed",
           "dropin_probe_status": "passed",
+          "isolated_parity_status": "passed",
+          "isolated_parity": {
+            "evidence_class": "live_integration_parity",
+            "artifact_scope": "linked_candidate",
+            "process_model": "separate_php_processes",
+            "database_model": "separate_schemas",
+            "databases": {
+              "oracle": "wordpresshx_iso_mysql_8_4_oracle",
+              "candidate": "wordpresshx_iso_mysql_8_4_candidate"
+            },
+            "oracle": {
+              "process_isolation": true,
+              "diagnostics": {
+                "stdout": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-oracle.stdout.json",
+                  "bytes": 3089,
+                  "sha256": "sha256:5cab4614ce8018c2f9b3e72191ce4e16d566328025fb8f0659f243c8b3e7a527"
+                },
+                "stderr": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-oracle.stderr.txt",
+                  "bytes": 195,
+                  "sha256": "sha256:2e66afcb6dcd91acc793a21e8765dfe87aef7ff298b7176fdae028f4d0949995"
+                },
+                "process": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-oracle.process.json",
+                  "bytes": 212,
+                  "sha256": "sha256:d4cbf7ec7377865385abf3bec50426ac9c707a212e18864028b57ed47edc9b2a"
+                }
+              }
+            },
+            "candidate": {
+              "process_isolation": true,
+              "diagnostics": {
+                "stdout": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-candidate.stdout.json",
+                  "bytes": 5093,
+                  "sha256": "sha256:4bc7be0ba854c80a4bb3ce677235495d92850b4c2862ebfd3569250ec5042338"
+                },
+                "stderr": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-candidate.stderr.txt",
+                  "bytes": 195,
+                  "sha256": "sha256:2e66afcb6dcd91acc793a21e8765dfe87aef7ff298b7176fdae028f4d0949995"
+                },
+                "process": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-candidate.process.json",
+                  "bytes": 221,
+                  "sha256": "sha256:88b52bc0b1d1d125020cb701b2b9efe06871b9518f28913fca55de8a481dc1f4"
+                }
+              },
+              "linked_candidate_abi": {
+                "class_name": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                "class_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "expected_candidate_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "class_declared_in_candidate_file": true,
+                "parent_class": "wpdb",
+                "parent_file": "/Users/fullofcaffeine/workspace/code/wordpress-develop/src/wp-includes/class-wpdb.php",
+                "owned_methods": {
+                  "db_connect": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  },
+                  "query": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  },
+                  "flush": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  },
+                  "get_col_info": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  }
+                },
+                "all_owned_methods_declared_by_candidate": true
+              }
+            },
+            "comparisons": {
+              "isolated_observations_match": true,
+              "linked_candidate_abi_passed": true,
+              "separate_database_names": true,
+              "separate_processes_recorded": true
+            },
+            "status": "passed"
+          },
           "comparisons": {
             "constructor_side_effects_preserved": true,
             "db_connect_success_side_effects_preserved": true,
@@ -480,6 +576,99 @@
           },
           "class_shell_probe_status": "passed",
           "dropin_probe_status": "passed",
+          "isolated_parity_status": "passed",
+          "isolated_parity": {
+            "evidence_class": "live_integration_parity",
+            "artifact_scope": "linked_candidate",
+            "process_model": "separate_php_processes",
+            "database_model": "separate_schemas",
+            "databases": {
+              "oracle": "wordpresshx_iso_mariadb_11_8_oracle",
+              "candidate": "wordpresshx_iso_mariadb_11_8_candidate"
+            },
+            "oracle": {
+              "process_isolation": true,
+              "diagnostics": {
+                "stdout": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-oracle.stdout.json",
+                  "bytes": 3095,
+                  "sha256": "sha256:ce8fcae424171e967a9f8da2aa1573401cbd42e22207fb6401644782ad86358d"
+                },
+                "stderr": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-oracle.stderr.txt",
+                  "bytes": 176,
+                  "sha256": "sha256:3fc12fd3c66b7c1e7f0a4d4ea5ec9fc98f349a7454ef4cdcbacfa1b57195281d"
+                },
+                "process": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-oracle.process.json",
+                  "bytes": 218,
+                  "sha256": "sha256:5ec5aeee8b9a3dd7e4400b5536bc651d29f47fd5f7eff23f57b4b26d98f977c8"
+                }
+              }
+            },
+            "candidate": {
+              "process_isolation": true,
+              "diagnostics": {
+                "stdout": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-candidate.stdout.json",
+                  "bytes": 5099,
+                  "sha256": "sha256:d36b81d04946e2a88266908c287de99ce322c3e5cb47ff3f9094e10eabd46a10"
+                },
+                "stderr": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-candidate.stderr.txt",
+                  "bytes": 176,
+                  "sha256": "sha256:3fc12fd3c66b7c1e7f0a4d4ea5ec9fc98f349a7454ef4cdcbacfa1b57195281d"
+                },
+                "process": {
+                  "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-candidate.process.json",
+                  "bytes": 227,
+                  "sha256": "sha256:2ca6f1bf1d1b38b9b1978a6ba170d358d5d4da6249e6e1ee96f43d226928e8e9"
+                }
+              },
+              "linked_candidate_abi": {
+                "class_name": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                "class_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "expected_candidate_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "class_declared_in_candidate_file": true,
+                "parent_class": "wpdb",
+                "parent_file": "/Users/fullofcaffeine/workspace/code/wordpress-develop/src/wp-includes/class-wpdb.php",
+                "owned_methods": {
+                  "db_connect": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  },
+                  "query": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  },
+                  "flush": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  },
+                  "get_col_info": {
+                    "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
+                    "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                    "declared_by_candidate_class": true,
+                    "declared_in_candidate_file": true
+                  }
+                },
+                "all_owned_methods_declared_by_candidate": true
+              }
+            },
+            "comparisons": {
+              "isolated_observations_match": true,
+              "linked_candidate_abi_passed": true,
+              "separate_database_names": true,
+              "separate_processes_recorded": true
+            },
+            "status": "passed"
+          },
           "comparisons": {
             "constructor_side_effects_preserved": true,
             "db_connect_success_side_effects_preserved": true,
@@ -796,8 +985,8 @@
       },
       {
         "id": "packaged-distribution-bootstrap-not-yet-owned",
-        "owner": "future WPHX-305 distribution workset",
-        "detail": "The probe proves require_wp_db()/db.php replacement semantics in isolation. Packaging the replacement into a distributable WordPress core layout remains future distribution work."
+        "owner": "future packaged-distribution WPHX-305 workset",
+        "detail": "WPHX-700.03 adds linked-candidate ABI proof that owned methods are declared by candidate-owned files instead of inherited upstream fallbacks. Packaging the replacement into a distributable WordPress core layout remains future distribution work."
       },
       {
         "id": "full-upstream-phpunit-not-yet-ported",
@@ -830,6 +1019,10 @@
     "protected_magic_write_blocks_preserved": true,
     "reflection_public_properties_preserved": true,
     "require_wp_db_dropin_replacement_preserved": true,
+    "isolated_oracle_candidate_processes_preserved": true,
+    "isolated_oracle_candidate_databases_preserved": true,
+    "isolated_oracle_candidate_observations_preserved": true,
+    "linked_candidate_abi_declares_owned_methods": true,
     "dropin_db_connect_body_preserved": true,
     "dropin_method_body_get_col_info_preserved": true,
     "dropin_method_body_flush_preserved": true,
