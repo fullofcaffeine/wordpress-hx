@@ -1098,7 +1098,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
-          "sha256": "d5b44206a5f244a9a8c00fff132ce27d9e356ede8021cf2ff5af462bfe3e99b5",
+          "sha256": "c54ef186824020819bb98184ad94aadcaf27d6efac28eb294b43c6e1a90a3075",
           "id": "receipt:wphx-311-10-rest-server-db-browser-matrix"
         }
       ]
@@ -1313,7 +1313,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
-          "sha256": "af028b20ba8957daa3f7fcc9ae31e1ac8acf0fe7b28facdf5a4f0504229a6787",
+          "sha256": "28101f0fce5145bcfec79f967601089a522cd39ecc7086bda58194abf6dd91ad",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]

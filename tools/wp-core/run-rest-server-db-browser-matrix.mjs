@@ -454,15 +454,10 @@ return true;
 }
 
 function dockerImageInfo(image) {
-  const raw = command("docker", ["image", "inspect", imageRef(image)]);
-  const [info] = JSON.parse(raw);
   return {
     reference: imageRef(image),
-    id: info.Id,
-    repo_digests: info.RepoDigests,
-    architecture: info.Architecture,
-    os: info.Os,
-    created: info.Created
+    repository: image.repository,
+    index_digest: image.index_digest
   };
 }
 

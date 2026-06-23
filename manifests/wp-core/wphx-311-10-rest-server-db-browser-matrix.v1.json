@@ -12,8 +12,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-db-browser-matrix.mjs",
-      "bytes": 42486,
-      "sha256": "sha256:ebc3527b0488eadc13d64b8c7868063ed6bfe0aa38a24fd01bb53a9e88e1b3c6"
+      "bytes": 42318,
+      "sha256": "sha256:02e362c8813d208844e03fc21feb10fb883b998ce1cbbd76f7fbcf5fd60bc1c0"
     },
     "installed_browser_runner": {
       "path": "tools/wp-core/run-rest-server-installed-browser-gate.mjs",
@@ -410,13 +410,8 @@
         "cost_tier": "pr-live-db",
         "image": {
           "reference": "library/mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
-          "id": "sha256:36fc05616f8ea53e509c0a3831c4a6ec1e624ae24a2aa93d8d8f08f8c5ff848e",
-          "repo_digests": [
-            "mysql@sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2"
-          ],
-          "architecture": "arm64",
-          "os": "linux",
-          "created": "2026-06-16T23:46:27.398798324Z"
+          "repository": "library/mysql",
+          "index_digest": "sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2"
         },
         "readiness_query": {
           "version": "8.4.10",

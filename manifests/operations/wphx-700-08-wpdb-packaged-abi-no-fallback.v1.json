@@ -9,8 +9,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-wpdb-packaged-abi-no-fallback-gate.mjs",
-      "bytes": 19079,
-      "sha256": "sha256:299ba11562aa16d701449ffbcd92607769334b17b8fc16f4e602a2fc49f655ef"
+      "bytes": 19996,
+      "sha256": "sha256:830b1ccf964435a7c1529ed3a2d27b399664244b61efeae214369142185cc05f"
     },
     "package_json": {
       "path": "package.json",
@@ -168,24 +168,24 @@
       "sha256": "sha256:e96a1868f87d69ba6503b743316b41192dc2a27bf8fc2ccb6828dddaefab8275"
     },
     "diagnostics_digest": "sha256:e96a1868f87d69ba6503b743316b41192dc2a27bf8fc2ccb6828dddaefab8275",
-    "result_digest": "sha256:5fe0599d6c8f861d04d969892e585a1772158995b621b66db58ecbd3199e4861",
+    "result_digest": "sha256:88fbd8c804dda0b5c11641879e97699c0ab54a9de4fb1b95ee8a121d0548ea50",
     "result": {
       "status": "passed",
       "evidence_class": "runtime_abi",
       "artifact_scope": "packaged_distribution",
       "behavior_parity_claimed": false,
-      "package_root": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution",
-      "expected_class_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
-      "upstream_wpdb": "/Users/fullofcaffeine/workspace/code/wordpress-develop/src/wp-includes/class-wpdb.php",
+      "package_root": "build/wp-core/wphx-700-08/packaged-distribution",
+      "expected_class_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+      "upstream_wpdb": "../wordpress-develop/src/wp-includes/class-wpdb.php",
       "reflection": {
         "class_name": "wpdb",
-        "class_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+        "class_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
         "parent_class": null,
         "parent_file": null,
         "owned_methods": {
           "__construct": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 4,
@@ -194,7 +194,7 @@
           },
           "db_connect": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -203,7 +203,7 @@
           },
           "query": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -212,7 +212,7 @@
           },
           "flush": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 0,
@@ -221,7 +221,7 @@
           },
           "get_col_info": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 2,
@@ -230,7 +230,7 @@
           },
           "prepare": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 2,
@@ -239,7 +239,7 @@
           },
           "_real_escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -248,7 +248,7 @@
           },
           "_escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -257,7 +257,7 @@
           },
           "escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -266,7 +266,7 @@
           },
           "escape_by_ref": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -275,7 +275,7 @@
           },
           "_weak_escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -284,7 +284,7 @@
           },
           "quote_identifier": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -293,7 +293,7 @@
           },
           "_escape_identifier_value": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "private",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -302,7 +302,7 @@
           },
           "esc_like": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -311,7 +311,7 @@
           },
           "placeholder_escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 0,
@@ -320,7 +320,7 @@
           },
           "add_placeholder_escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -329,7 +329,7 @@
           },
           "remove_placeholder_escape": {
             "declaring_class": "wpdb",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
+            "declaring_file": "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php",
             "visibility": "public",
             "declares_by_reference_return": false,
             "parameter_count": 1,
@@ -374,10 +374,10 @@
       },
       "load_order": {
         "included_files": [
-          "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/probe/wpdb-packaged-abi-probe.php",
-          "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-settings.php",
-          "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/wp-db.php",
-          "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php"
+          "build/wp-core/wphx-700-08/probe/wpdb-packaged-abi-probe.php",
+          "build/wp-core/wphx-700-08/packaged-distribution/wp-settings.php",
+          "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/wp-db.php",
+          "build/wp-core/wphx-700-08/packaged-distribution/wp-includes/class-wpdb.php"
         ],
         "included_upstream_wpdb": false
       },

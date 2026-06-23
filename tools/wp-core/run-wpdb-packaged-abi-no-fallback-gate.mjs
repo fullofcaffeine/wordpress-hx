@@ -23,6 +23,8 @@ const OWNERSHIP = "manifests/ownership/wphx-700-08-wpdb-packaged-abi-no-fallback
 const RECEIPT = "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json";
 const RUNNER = "tools/wp-core/run-wpdb-packaged-abi-no-fallback-gate.mjs";
 const UPSTREAM_WPDB = "../wordpress-develop/src/wp-includes/class-wpdb.php";
+const REPO_ROOT = process.cwd().replaceAll("\\", "/");
+const UPSTREAM_ROOT = resolve("../wordpress-develop").replaceAll("\\", "/");
 const PRIOR_MANIFESTS = [
   "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json",
   "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
@@ -110,6 +112,29 @@ function inputRecord(path) {
     bytes: statSync(path).size,
     sha256: `sha256:${sha256File(path)}`
   };
+}
+
+function normalizeRuntimePath(value) {
+  if (typeof value !== "string") return value;
+
+  const normalized = value.replaceAll("\\", "/");
+  if (normalized.startsWith(`${REPO_ROOT}/`)) {
+    return normalized.slice(REPO_ROOT.length + 1);
+  }
+  if (normalized.startsWith(`${UPSTREAM_ROOT}/`)) {
+    return `../wordpress-develop/${normalized.slice(UPSTREAM_ROOT.length + 1)}`;
+  }
+  return normalized;
+}
+
+function stableRuntimeValue(value) {
+  if (Array.isArray(value)) return value.map(stableRuntimeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [key, stableRuntimeValue(entry)])
+    );
+  }
+  return normalizeRuntimePath(value);
 }
 
 function writeOrCheck(path, contents) {
@@ -472,6 +497,7 @@ const linkedFiles = linkOriginalPathTree({ root: PACKAGE_ROOT, files: linkerFile
 writeFile(PROBE, probeSource());
 const lint = assertLint([...linkedFiles.map((file) => file.path), PROBE]);
 const probe = runProbe();
+const stableProbeResult = stableRuntimeValue(probe.parsed);
 
 const generatedClassPath = `${PACKAGE_ROOT}/wp-includes/class-wpdb.php`;
 const generatedWpDbPath = `${PACKAGE_ROOT}/wp-includes/wp-db.php`;
@@ -515,8 +541,8 @@ const manifest = {
     sha256: `sha256:${sha256File(PROBE)}`,
     diagnostics: diagnosticsRecord,
     diagnostics_digest: sha256(readFileSync(DIAGNOSTICS, "utf8")),
-    result_digest: sha256(JSON.stringify(probe.parsed)),
-    result: probe.parsed
+    result_digest: sha256(JSON.stringify(stableProbeResult)),
+    result: stableProbeResult
   },
   no_fallback_contract: {
     candidate_class_file: generatedClassPath,

@@ -35,7 +35,7 @@
     "receipt:wphx-311-07-rest-server-packaged-http",
     "receipt:wphx-305-domain-closure"
   ],
-  "manifest_sha256": "sha256:33390a1c4c4a2d3f50282a41382be71e1be12d37c0de4efdfe8b0b7492b23652",
+  "manifest_sha256": "sha256:a97d53ccf32ef40337c7c0674a0e5c363b159b578ca5363e983a2c332daf296d",
   "validation_result": {
     "status": "passed",
     "evidence_classes": [
