@@ -1149,6 +1149,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-322",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-322-php-first-party-manifest-closure.v1.json",
+          "sha256": "e9b07bd4cecc3231b696cc99ba27b8a0b09e8f006ad9a035bc7b3390304c20df",
+          "id": "receipt:wphx-322-php-first-party-manifest-closure"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-700.01",
       "receipts": [
         {

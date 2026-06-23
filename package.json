@@ -141,6 +141,8 @@
     "wp:core:wphx-317-signup-lifecycle:check": "node tools/wp-core/run-multisite-signup-lifecycle-fixture.mjs --check",
     "wp:core:wphx-317-multisite-adapter-contract-candidate": "node tools/wp-core/run-multisite-adapter-contract-candidate.mjs",
     "wp:core:wphx-317-multisite-adapter-contract-candidate:check": "node tools/wp-core/run-multisite-adapter-contract-candidate.mjs --check",
+    "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
+    "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
     "wp:core:wphx-305-surface:check": "node tools/wp-core/run-wpdb-surface.mjs --check",
     "wp:core:wphx-305-prepare-escaping": "node tools/wp-core/run-wpdb-prepare-escaping-fixture.mjs",

@@ -1,0 +1,48 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-322-php-first-party-manifest-closure",
+  "issue": {
+    "id": "wordpresshx-l76.12",
+    "external_ref": "WPHX-322",
+    "title": "PHP first-party manifest closure"
+  },
+  "recorded_at": "2026-06-23T07:10:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-322-php-first-party-manifest-closure.v1.json",
+      "role": "WordPress 7.0 PHP first-party source/artifact closure and split manifest"
+    },
+    {
+      "path": "tools/wp-core/run-php-first-party-manifest-closure.mjs",
+      "role": "deterministic closure generator and check-mode validator"
+    },
+    {
+      "path": "manifests/source-inventory.jsonl",
+      "role": "source inventory input"
+    },
+    {
+      "path": "manifests/artifact-provenance.jsonl",
+      "role": "distribution artifact provenance input"
+    }
+  ],
+  "verification_commands": [
+    "npm run inventory:check",
+    "npm run wp:core:wphx-322-php-first-party-closure",
+    "npm run wp:core:wphx-322-php-first-party-closure:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "inventory_closure": {
+      "unclassified_executable_source_units": 0,
+      "unclassified_shipped_executable_artifacts": 0,
+      "unclassified_test_units": 0
+    },
+    "c1_source_count": 1564,
+    "c1_artifact_count": 1222,
+    "unassigned_count": 0,
+    "missing_closed_evidence_links": 0,
+    "vendor_follow_up": "WPHX-323"
+  }
+}
