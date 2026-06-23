@@ -124,6 +124,14 @@ This repository is intended to be public, but it still enforces leak prevention:
 
 If a scanner flags anything, treat the repository as not publishable until the finding is resolved and history is assessed.
 
+## License
+
+WordPressHX is licensed as `GPL-2.0-or-later`.
+
+You own original contributions you write here, but this project is a WordPress-compatible porting program with WordPress and Gutenberg as GPL-licensed upstream oracles. The runtime/distribution track should therefore be treated as GPL-compatible work. Commercial use, paid distribution, hosted services, support, and embedded deployments are compatible with the project goal, but distributing covered runtime artifacts means preserving GPL rights for recipients.
+
+The npm package remains marked `"private": true` to prevent accidental registry publication. That flag does not mean the GitHub repository must stay private.
+
 ## Contribution Notes
 
 Read [AGENTS.md](AGENTS.md) before making changes. The short version:

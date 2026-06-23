@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "description": "Experimental WordPress 7.0 and Gutenberg migration program using Haxe, Codex, and Beads.",
-  "license": "UNLICENSED",
+  "license": "GPL-2.0-or-later",
   "type": "module",
   "scripts": {
     "format:haxe": "bash scripts/lint/haxe-format.sh --write",
