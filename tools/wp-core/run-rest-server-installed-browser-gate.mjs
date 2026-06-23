@@ -3,9 +3,9 @@ import { createHash } from "node:crypto";
 import { execFileSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
-import { dirname } from "node:path";
+import { dirname, relative, resolve } from "node:path";
 import { chromium } from "playwright";
-import { filesUnder } from "../wp-linker/original-path-linker.mjs";
+import { normalizeGeneratedPhpForManifest, walk } from "../wp-linker/original-path-linker.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -17,6 +17,7 @@ const ISSUE = {
 };
 
 const RECORDED_AT = "2026-06-22T14:10:00.000Z";
+const UPSTREAM_ROOT = "../wordpress-develop";
 const WEB_RUNNER = "tools/wp-core/run-rest-server-web-e2e-gate.mjs";
 const BUILD_ROOT = "build/wp-core/wphx-311-07";
 const INSTALLED_BUILD_ROOT = "build/wp-core/wphx-311-09";
@@ -108,6 +109,39 @@ function sha256(value) {
 
 function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
+}
+
+function stablePackageContent(value) {
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const upstreamRoot = resolve(UPSTREAM_ROOT).replaceAll("\\", "/");
+  return normalizeGeneratedPhpForManifest(value)
+    .replaceAll(cwd, "<repo>")
+    .replaceAll(upstreamRoot, "../wordpress-develop");
+}
+
+function stablePackageFile(root, path) {
+  const normalized = stablePackageContent(readFileSync(path, "utf8"));
+  return {
+    path: `${root}/${relative(root, path)}`,
+    bytes: Buffer.byteLength(normalized),
+    sha256: sha256(normalized)
+  };
+}
+
+function normalizePath(value) {
+  if (typeof value !== "string") return value;
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const normalized = value.replaceAll("\\", "/");
+  if (normalized.startsWith(`${cwd}/`)) return normalized.slice(cwd.length + 1);
+  return normalized;
+}
+
+function stableRuntimeValue(value) {
+  if (Array.isArray(value)) return value.map(stableRuntimeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, stableRuntimeValue(entry)]));
+  }
+  return normalizePath(value);
 }
 
 function inputRecord(path) {
@@ -468,11 +502,9 @@ if (!comparison.matches || candidateBoundary.status !== "passed") {
   process.exit(1);
 }
 
-const packageFiles = filesUnder(CANDIDATE_ROOT).map((file) => ({
-  path: `${CANDIDATE_ROOT}/${file.path}`,
-  bytes: file.bytes,
-  sha256: `sha256:${file.sha256}`
-}));
+const packageFiles = walk(CANDIDATE_ROOT)
+  .map((path) => stablePackageFile(CANDIDATE_ROOT, path))
+  .sort((a, b) => a.path.localeCompare(b.path));
 const manifest = {
   schema: "wphx.wp-core-rest-server-installed-browser.v1",
   issue: ISSUE.external_ref,
@@ -522,7 +554,7 @@ const manifest = {
       command: oracleRun.command,
       normalized_sha256: sha256(JSON.stringify(normalizeCases(oracleRun))),
       browser: oracleRun.browser,
-      package_boundary: oracleRun.boundary
+      package_boundary: stableRuntimeValue(oracleRun.boundary)
     },
     {
       id: "installed-browser:candidate",
@@ -530,7 +562,7 @@ const manifest = {
       command: candidateRun.command,
       normalized_sha256: sha256(JSON.stringify(normalizeCases(candidateRun))),
       browser: candidateRun.browser,
-      package_boundary: candidateRun.boundary
+      package_boundary: stableRuntimeValue(candidateRun.boundary)
     }
   ],
   comparison,

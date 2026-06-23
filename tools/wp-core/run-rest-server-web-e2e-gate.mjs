@@ -3,8 +3,8 @@ import { createHash } from "node:crypto";
 import { execFileSync, spawn } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
-import { dirname, resolve } from "node:path";
-import { filesUnder } from "../wp-linker/original-path-linker.mjs";
+import { dirname, relative, resolve } from "node:path";
+import { normalizeGeneratedPhpForManifest, walk } from "../wp-linker/original-path-linker.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -100,6 +100,23 @@ function sha256(value) {
 
 function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
+}
+
+function stablePackageContent(value) {
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const upstreamRoot = resolve(UPSTREAM_ROOT).replaceAll("\\", "/");
+  return normalizeGeneratedPhpForManifest(value)
+    .replaceAll(cwd, "<repo>")
+    .replaceAll(upstreamRoot, "../wordpress-develop");
+}
+
+function stablePackageFile(root, path) {
+  const normalized = stablePackageContent(readFileSync(path, "utf8"));
+  return {
+    path: `${root}/${relative(root, path)}`,
+    bytes: Buffer.byteLength(normalized),
+    sha256: sha256(normalized)
+  };
 }
 
 function normalizePath(value) {
@@ -733,11 +750,9 @@ if (!comparison.matches || candidateBoundary.status !== "passed") {
   process.exit(1);
 }
 
-const packageFiles = filesUnder(CANDIDATE_ROOT).map((file) => ({
-  path: `${CANDIDATE_ROOT}/${file.path}`,
-  bytes: file.bytes,
-  sha256: `sha256:${file.sha256}`
-}));
+const packageFiles = walk(CANDIDATE_ROOT)
+  .map((path) => stablePackageFile(CANDIDATE_ROOT, path))
+  .sort((a, b) => a.path.localeCompare(b.path));
 const manifest = {
   schema: "wphx.wp-core-rest-server-web-e2e.v1",
   issue: ISSUE.external_ref,

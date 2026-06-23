@@ -12,8 +12,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-web-e2e-gate.mjs",
-      "bytes": 28958,
-      "sha256": "sha256:fce7f9d1cac43fd5f0616cce57de3b91d0f9c5d25984001fa19883b72f41ded8"
+      "bytes": 29524,
+      "sha256": "sha256:7239789998a65a1c28449ef8cb3306572cc962d6e144d90bcdc6b138b2cf30fe"
     },
     "packaged_runner": {
       "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
@@ -262,8 +262,8 @@
       },
       {
         "path": "build/wp-core/wphx-311-07/candidate-package/wphx-rest-web-router.php",
-        "bytes": 10886,
-        "sha256": "sha256:96bbd164a83b2f87b431df5f77627a3d25ee5b75e7a9f75884702462a583faf7"
+        "bytes": 10852,
+        "sha256": "sha256:13a6b1fa9aaa95a140d1826ad8e02eb643ef8f30beb9fc7d37fcbca5476bd286"
       }
     ],
     "candidate_rest_server": {

@@ -4,9 +4,9 @@ import { execFileSync, spawn } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { createServer as createHttpServer } from "node:http";
 import { createServer as createNetServer } from "node:net";
-import { dirname, resolve } from "node:path";
+import { dirname, relative, resolve } from "node:path";
 import { chromium } from "playwright";
-import { filesUnder } from "../wp-linker/original-path-linker.mjs";
+import { normalizeGeneratedPhpForManifest, walk } from "../wp-linker/original-path-linker.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -113,6 +113,39 @@ function sha256(value) {
 
 function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
+}
+
+function stablePackageContent(value) {
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const upstreamRoot = resolve(UPSTREAM_ROOT).replaceAll("\\", "/");
+  return normalizeGeneratedPhpForManifest(value)
+    .replaceAll(cwd, "<repo>")
+    .replaceAll(upstreamRoot, "../wordpress-develop");
+}
+
+function stablePackageFile(root, path) {
+  const normalized = stablePackageContent(readFileSync(path, "utf8"));
+  return {
+    path: `${root}/${relative(root, path)}`,
+    bytes: Buffer.byteLength(normalized),
+    sha256: sha256(normalized)
+  };
+}
+
+function normalizePath(value) {
+  if (typeof value !== "string") return value;
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const normalized = value.replaceAll("\\", "/");
+  if (normalized.startsWith(`${cwd}/`)) return normalized.slice(cwd.length + 1);
+  return normalized;
+}
+
+function stableRuntimeValue(value) {
+  if (Array.isArray(value)) return value.map(stableRuntimeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, stableRuntimeValue(entry)]));
+  }
+  return normalizePath(value);
 }
 
 function inputRecord(path) {
@@ -957,14 +990,14 @@ try {
           command: oracleRun.command,
           db_name: oracleRun.db_name,
           normalized_sha256: sha256(JSON.stringify(comparableRun(oracleRun))),
-          package_boundary: oracleRun.package_boundary,
+          package_boundary: stableRuntimeValue(oracleRun.package_boundary),
           request_log_sha256: sha256(JSON.stringify(oracleRun.request_log))
         },
         candidate: {
           command: candidateRun.command,
           db_name: candidateRun.db_name,
           normalized_sha256: sha256(JSON.stringify(comparableRun(candidateRun))),
-          package_boundary: candidateRun.package_boundary,
+          package_boundary: stableRuntimeValue(candidateRun.package_boundary),
           request_log_sha256: sha256(JSON.stringify(candidateRun.request_log))
         },
         comparison,
@@ -978,11 +1011,9 @@ try {
   await launched.browser.close();
 }
 
-const packageFiles = filesUnder(CANDIDATE_ROOT).map((file) => ({
-  path: `${CANDIDATE_ROOT}/${file.path}`,
-  bytes: file.bytes,
-  sha256: `sha256:${file.sha256}`
-}));
+const packageFiles = walk(CANDIDATE_ROOT)
+  .map((path) => stablePackageFile(CANDIDATE_ROOT, path))
+  .sort((a, b) => a.path.localeCompare(b.path));
 const manifest = {
   schema: "wphx.wp-core-rest-server-db-browser-matrix.v1",
   issue: ISSUE.external_ref,
