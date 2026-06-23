@@ -1,0 +1,68 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/taxonomy-comment-live-db-fixture",
+  "issue": {
+    "id": "wordpresshx-jxj",
+    "external_ref": "WPHX-308.06"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "taxonomy/comment live DB SQL-result fixture",
+    "area": "wp-includes/class-wp-term-query.php wp-includes/class-wp-comment-query.php",
+    "public_contract": "Mirrored upstream WP_Term_Query, WP_Comment_Query, WP_Meta_Query, taxonomy/comment functions, and wpdb source execute selected query cases against a locked live MySQL runtime. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
+  },
+  "ownership_state": "upstream_oracle_source_mirror",
+  "ownership_axes": {
+    "semantic_owner": "upstream_wordpress_oracle",
+    "adapter_contract_owner": "not_claimed",
+    "emission_strategy": "oracle_source_mirror_fixture",
+    "execution_provider": "php_live_mysql",
+    "compatibility_evidence": "live_integration_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "fixture-only-upstream-source-mirror",
+    "removal_gate": "Replace the candidate side with Haxe-owned taxonomy/comment public PHP output and keep this live DB fixture green before claiming migrated WPHX-308 ownership."
+  },
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "ref": "26b68024931348d267b70e2a29910e1320d0094f",
+    "paths": [
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wpdb.php",
+      "src/wp-includes/class-wp-taxonomy.php",
+      "src/wp-includes/class-wp-term.php",
+      "src/wp-includes/class-wp-comment.php",
+      "src/wp-includes/class-wp-meta-query.php",
+      "src/wp-includes/class-wp-date-query.php",
+      "src/wp-includes/class-wp-term-query.php",
+      "src/wp-includes/class-wp-comment-query.php",
+      "src/wp-includes/taxonomy.php",
+      "src/wp-includes/comment.php"
+    ],
+    "digest": "sha256:ae1cd3e6725857748afe105dab1039497499c81853aafa28bc95c5cc6da5cda6"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs",
+    "manifests/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+    "manifests/ownership/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+    "receipts/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+    "manifests/ownership/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+    "receipts/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+    "build/wp-core/wphx-308-06"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-308-taxonomy-comment-live-db",
+      "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-308-06-taxonomy-comment-live-db-fixture"
+    ],
+    "manifest_digest": "sha256:a30ba730cc8b1d0743782a590324304707d1922eef66c216a081e6bce78be927"
+  }
+}

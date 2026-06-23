@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-308-06-taxonomy-comment-live-db-fixture",
+  "issue": {
+    "id": "wordpresshx-jxj",
+    "external_ref": "WPHX-308.06",
+    "title": "Add taxonomy/comment live DB SQL-result fixture"
+  },
+  "recorded_at": "2026-06-23T23:55:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+      "role": "taxonomy/comment live DB SQL-result parity manifest",
+      "sha256": "sha256:a30ba730cc8b1d0743782a590324304707d1922eef66c216a081e6bce78be927"
+    },
+    {
+      "path": "manifests/ownership/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+      "role": "oracle-source-mirror ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs",
+      "role": "live DB runner"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "locked MySQL and PHP DB-client image inputs"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:db-client-images",
+    "npm run php:db-client-images:check",
+    "npm run wp:core:wphx-308-taxonomy-comment-live-db",
+    "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 8,
+    "db_runtimes": 1,
+    "php_client_runtimes": 1
+  }
+}

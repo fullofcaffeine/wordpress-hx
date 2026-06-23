@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 148,
+  "closed_task_count": 149,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -393,7 +393,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "abfd6f6ba6bb627e23b943be28554ebd09230294c089c742816c1c2e9120c040",
+          "sha256": "1685e649062918590e7b8add5c8ddb9ad43f42654563a4ad42f514e24181b9a1",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -1094,6 +1094,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-308.06",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+          "sha256": "ee07fe6c4dd8ee6968e1f7007c731f459dd44c79c319579e223672b45a9d8fa2",
+          "id": "receipt:wphx-308-06-taxonomy-comment-live-db-fixture"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-311",
       "receipts": [
         {
@@ -1388,7 +1398,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-04-ci-parity-gates.v1.json",
-          "sha256": "598802e88ea947d7b2ce5350666c1fa9b8c29ee16481ec1b3612cc55fd2e8c3c",
+          "sha256": "90e33cd72c3ed86f40274c14049bd7221ff26de7fe7672add4774a32a6d34312",
           "id": "receipt:wphx-700-04-ci-parity-gates"
         }
       ]
@@ -1413,7 +1423,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-06-runner-support.v1.json",
-          "sha256": "bd18a9967c629fce803e08fff32d74da94ebedd632edbf6c6767348114973a59",
+          "sha256": "108aa50555a701fcc98ea9251153274830a72ba4e160059e3225b2df93973904",
           "id": "receipt:wphx-700-06-runner-support"
         }
       ]

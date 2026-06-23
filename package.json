@@ -181,6 +181,8 @@
     "wp:core:wphx-308-taxonomy-comment-count-cache:check": "node tools/wp-core/run-taxonomy-comment-count-cache-fixture.mjs --check",
     "wp:core:wphx-308-taxonomy-comment-query-state": "node tools/wp-core/run-taxonomy-comment-query-state-fixture.mjs",
     "wp:core:wphx-308-taxonomy-comment-query-state:check": "node tools/wp-core/run-taxonomy-comment-query-state-fixture.mjs --check",
+    "wp:core:wphx-308-taxonomy-comment-live-db": "npm run php:db-client-images && node tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs",
+    "wp:core:wphx-308-taxonomy-comment-live-db:check": "npm run php:db-client-images:check && node tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",

@@ -15,7 +15,7 @@
     {
       "path": "manifests/operations/wphx-700-06-runner-support.v1.json",
       "role": "shared runner support manifest",
-      "sha256": "sha256:54884dbfb3d4fb64cb2d6854caaa29a15fa0ce048bf772c42a4740f9a9f16030"
+      "sha256": "sha256:70a742f588d03802651aefd9f519371005c2f0219eb066789d827b7557ef9f2d"
     },
     {
       "path": "tools/support/wphx-runner-support.mjs",

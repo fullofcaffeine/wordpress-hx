@@ -81,6 +81,7 @@ const REQUIRED_COMMANDS = [
   "npm run wp:core:wphx-305-live-db:check",
   "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
   "npm run wp:core:wphx-307-wp-query-live-db:check",
+  "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
   "npm run wp:core:wphx-311-rest-server-db-browser:check"
 ];
 
@@ -311,6 +312,7 @@ const parityGatesManifest = {
     "npm run wp:core:wphx-305-live-db:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
     "npm run wp:core:wphx-307-wp-query-live-db:check",
+    "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
     "npm run wp:core:wphx-311-rest-server-db-browser:check"
   ],
   validation_result: {
@@ -339,6 +341,7 @@ const parityGatesManifest = {
     wphx_308_taxonomy_comment_crud_gate_required: true,
     wphx_308_taxonomy_comment_count_cache_gate_required: true,
     wphx_308_taxonomy_comment_query_state_gate_required: true,
+    wphx_308_taxonomy_comment_live_db_gate_required: true,
     mysql_mariadb_images_pinned: true,
     conformance_artifacts_uploaded: true
   }
@@ -398,6 +401,7 @@ const parityGatesReceipt = {
     "npm run wp:core:wphx-308-taxonomy-comment-crud:check",
     "npm run wp:core:wphx-308-taxonomy-comment-count-cache:check",
     "npm run wp:core:wphx-308-taxonomy-comment-query-state:check",
+    "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
     "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
     "npm run beads:validate",
