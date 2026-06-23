@@ -70,7 +70,7 @@
       "receipt:wphx-311-07-rest-server-packaged-http",
       "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
     ],
-    "manifest_digest": "sha256:baeb95a0ee817dc0b7c3ba86990167997f6e7abc09f4826b916013681ea553ba"
+    "manifest_digest": "sha256:005a1784a5a2e8a69adf9f1f0a65ef1530bad434f0eef556f29e2fca420fbd7d"
   },
   "notes": "This gate proves a packaged source-root boundary and CLI-safe HTTP serving traces. Browser/web-server E2E, upstream PHPUnit ratcheting, full auth/capability behavior, and a complete REST server Haxe class port remain separate work."
 }

@@ -6,7 +6,7 @@
   "command": "npm run wp:linker",
   "status": "passed",
   "manifest": "manifests/wp-linker/wphx-205-original-path-linker.v1.json",
-  "manifest_sha256": "sha256:d417a52bcdf3aff52e781cb9a6a710056e75a321e5076234d781879d795b1ebb",
+  "manifest_sha256": "sha256:f853b15a7f37db8b312559d6d3164c266c8faffee2751af7e8bbea4cde097c3c",
   "linked_shell_file_count": 9,
   "runtime_run_count": 36,
   "comparison_count": 18,

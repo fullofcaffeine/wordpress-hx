@@ -25,18 +25,18 @@
     "prior_manifests": [
       {
         "path": "manifests/operations/wphx-700-03-isolated-parity-and-linked-abi.v1.json",
-        "bytes": 10357,
-        "sha256": "sha256:553098452b4e89a0d4cfeae6c121933c981e51551eaa0d0eb3a5c13e2da4cd40"
+        "bytes": 8931,
+        "sha256": "sha256:dbdfdfed3f9bfd58e78c21d6a4f52bbe0794270a52d91ac952bb97763d10ce92"
       },
       {
         "path": "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
-        "bytes": 48578,
-        "sha256": "sha256:d6bf71f45cec33e6edda238ff123c7c6f8991b090e53d55e54b5bce52cc520a9"
+        "bytes": 47150,
+        "sha256": "sha256:af01a13f84bcc97a534840e77e1310418df6cfe636e1b5e79cb20cd41608b57f"
       },
       {
         "path": "manifests/wp-core/wphx-305-30-wpdb-prepare-escaping-strategy-candidate.v1.json",
         "bytes": 211237,
-        "sha256": "sha256:abc08a1877eda6d181e365e10e21c6c66ae6230d2bcdd3fd9e198fa30b60ba3b"
+        "sha256": "sha256:2af4270d0e393ef50d8620b183607210397ddb87c2ed7aaeb299fd1cf2c9e797"
       }
     ]
   },

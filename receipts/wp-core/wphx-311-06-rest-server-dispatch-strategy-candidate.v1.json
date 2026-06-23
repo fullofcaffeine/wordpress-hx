@@ -44,7 +44,7 @@
     "receipt:wphx-311-02-rest-settings-dispatch-fixture",
     "receipt:wphx-311-01-rest-settings-controller-fixture"
   ],
-  "manifest_sha256": "sha256:2f0645cbbe474824919c76fa57929a7dcb640d95995c7de4212952bab5246dcf",
+  "manifest_sha256": "sha256:e08ae8a9cfbea48a9c629370f3a0fff3ec6e82e92e24625df9aa2c09605212b9",
   "validation_result": {
     "status": "passed",
     "candidate_kind": "haxe_generated_rest_server_dispatch_strategy_shell",

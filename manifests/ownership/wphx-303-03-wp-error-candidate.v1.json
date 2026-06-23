@@ -76,7 +76,7 @@
       "receipt:wphx-303-03-wp-error-candidate",
       "receipt:wphx-303-01-error-format-surface"
     ],
-    "manifest_digest": "sha256:61e98e8805c620e6195109c2314a1afe123de4ecb94b6ac6f78f551c15a2a620"
+    "manifest_digest": "sha256:836283b142f1b1e7636b8801653b152fb1cec204d7f3f577746eba2d3e0d659f"
   },
   "notes": "is_wp_error() remains a native PHP boundary in load.php for instanceof semantics and the is_wp_error_instance action. The WP_Error class shell also keeps native PHP arrays because public property mutation is part of the compatibility surface."
 }

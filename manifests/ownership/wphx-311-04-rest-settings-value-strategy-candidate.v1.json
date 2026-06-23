@@ -94,7 +94,7 @@
       "receipt:wphx-311-02-rest-settings-dispatch-fixture",
       "receipt:wphx-311-01-rest-settings-controller-fixture"
     ],
-    "manifest_digest": "sha256:6a1d99357397add05602cc98bba326147b84d077a069233f4b9ae4fa955ad8ea"
+    "manifest_digest": "sha256:e6d9e436ce934660c1788fcfe691d5c4c578b34fa4849eae73e64dba99d74d74"
   },
   "notes": "This slice keeps native PHP arrays and WordPress schema functions at the boundary. update_item mutation routing remains a later WPHX-311 candidate."
 }

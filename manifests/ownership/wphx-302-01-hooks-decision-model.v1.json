@@ -44,7 +44,7 @@
       "receipt:wphx-302-hook-surface",
       "receipt:wphx-302-04-hook-distribution-surface"
     ],
-    "manifest_digest": "sha256:4a9449ca8ffb0b42e850efa061a1bf247231ac06df051d1a84dbeace2f8648dc"
+    "manifest_digest": "sha256:af906eb8f6db38e00229069d3974f92355ef0662fce214c46d11bd368de51d18"
   },
   "notes": "WPHX-302.01 promotes the Haxe-authored hook decision model; WPHX-302.04 verifies it as part of the distribution surface with plugin.php/class-wp-hook.php provenance and approved public ABI boundaries."
 }

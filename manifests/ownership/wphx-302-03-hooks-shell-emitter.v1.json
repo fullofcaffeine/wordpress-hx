@@ -47,7 +47,7 @@
       "receipt:wphx-302-03-hook-shell-emitter",
       "receipt:wphx-302-04-hook-distribution-surface"
     ],
-    "manifest_digest": "sha256:1923b65627a24b683b29ad7b2490b56ea0dc0e5b7343a6d444eeaf5a8bad64f8"
+    "manifest_digest": "sha256:ea22f112c2f1df0fc1536eeca06813ffced0fc5bdc733f2f7fce2bdc94a483f8"
   },
   "notes": "WPHX-302.03 replaces the broad JS-authored public shell bodies with counted emission transforms over the locked WordPress 7.0 oracle files. WPHX-302.04 verifies the generated shell as distribution-ready Haxe-owned output with source maps, provenance, and approved PHP-native public ABI boundaries."
 }

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
+import { normalizeGeneratedPhpForManifest } from "../wp-linker/original-path-linker.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -60,11 +61,14 @@ function walk(dir) {
 
 function filesUnder(dir) {
   return walk(dir)
-    .map((path) => ({
-      path: relative(dir, path),
-      bytes: statSync(path).size,
-      sha256: sha256File(path)
-    }))
+    .map((path) => {
+      const normalized = normalizeGeneratedPhpForManifest(readFileSync(path, "utf8"));
+      return {
+        path: relative(dir, path),
+        bytes: Buffer.byteLength(normalized),
+        sha256: sha256(normalized)
+      };
+    })
     .sort((a, b) => a.path.localeCompare(b.path));
 }
 

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
+import { normalizeGeneratedPhpForManifest } from "../wp-linker/original-path-linker.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -39,7 +40,7 @@ function phpVersionFamily(version) {
 }
 
 function sha256(path) {
-  return createHash("sha256").update(readFileSync(path)).digest("hex");
+  return createHash("sha256").update(normalizeGeneratedPhpForManifest(readFileSync(path, "utf8"))).digest("hex");
 }
 
 function walk(dir) {
@@ -54,7 +55,7 @@ function generatedFiles() {
   return walk(OUT_DIR)
     .map((path) => ({
       path: relative(OUT_DIR, path),
-      bytes: statSync(path).size,
+      bytes: Buffer.byteLength(normalizeGeneratedPhpForManifest(readFileSync(path, "utf8"))),
       sha256: sha256(path)
     }))
     .sort((a, b) => a.path.localeCompare(b.path));

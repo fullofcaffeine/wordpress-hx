@@ -41,7 +41,7 @@
     "receipt_refs": [
       "receipt:wphx-301-bootstrap-traces"
     ],
-    "manifest_digest": "sha256:d1fdbf0a0a8fc933ccec6bf56e6de15086772d2e9956f1c3a842e33111de6e4c"
+    "manifest_digest": "sha256:5de125526ea07ebebf9083ddada613bf1d1ba45393b3ac67c4cdc994f5fdbdc2"
   },
   "notes": "This is the first bootstrap workset scaffold. It records gate and load-order evidence before claiming individual source units as Haxe parity candidates."
 }

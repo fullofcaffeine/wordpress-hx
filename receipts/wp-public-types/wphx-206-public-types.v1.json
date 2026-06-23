@@ -6,7 +6,7 @@
   "command": "npm run wp:public-types",
   "status": "passed",
   "manifest": "manifests/wp-public-types/wphx-206-public-types.v1.json",
-  "manifest_sha256": "sha256:e170c14c590b19a6880ac298bc6c37f590c97ccbc422f95c7c66224e89216a1f",
+  "manifest_sha256": "sha256:da9866678915f2f04151d8d39caedf21f13c2de6a8a41f51d88ab0ec3c2af8aa",
   "generated_public_files": [
     "wp-includes/class-wphx-public-types.php"
   ],

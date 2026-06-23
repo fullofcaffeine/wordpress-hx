@@ -92,7 +92,7 @@
       "receipt:wphx-311-01-rest-settings-controller-fixture",
       "receipt:wphx-311-02-rest-settings-dispatch-fixture"
     ],
-    "manifest_digest": "sha256:84a35d0d4c80e38bc29269b68744ec793dcba0b7ba86dbb66406fb6b4f5bb526"
+    "manifest_digest": "sha256:eec01c339c928107af8019c9d1858feca8f9c6629e52eaf49b27935e18c2d70f"
   },
   "notes": "This is the first typed Haxe REST settings candidate. It intentionally does not replace request objects, PHP array ABI, filters, or full controller update/get_item bodies."
 }

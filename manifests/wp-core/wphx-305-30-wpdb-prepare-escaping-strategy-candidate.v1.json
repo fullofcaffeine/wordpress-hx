@@ -21,8 +21,8 @@
     },
     "db_connect_strategy_manifest": {
       "path": "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
-      "bytes": 48578,
-      "sha256": "sha256:d6bf71f45cec33e6edda238ff123c7c6f8991b090e53d55e54b5bce52cc520a9"
+      "bytes": 47150,
+      "sha256": "sha256:af01a13f84bcc97a534840e77e1310418df6cfe636e1b5e79cb20cd41608b57f"
     },
     "toolchain_lock": {
       "path": "toolchain.lock.json",

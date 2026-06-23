@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 
 export function sha256Text(value) {
@@ -8,6 +8,27 @@ export function sha256Text(value) {
 
 export function sha256File(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
+}
+
+export function normalizeGeneratedPhpForManifest(value) {
+  return value.replace(/^(\s*#)(.*?\.hx)(:\d+:.*)$/gm, (_match, prefix, sourcePath, suffix) => {
+    const normalized = sourcePath.replaceAll("\\", "/");
+    const stablePath =
+      normalized.match(/\/std\/(.+)$/)?.[1] ??
+      normalized.match(/\/fixtures\/(.+)$/)?.[1]?.replace(/^/, "fixtures/") ??
+      normalized.match(/\/src\/(.+)$/)?.[1]?.replace(/^/, "src/") ??
+      normalized.split("/").pop();
+    return `${prefix}${stablePath}${suffix}`;
+  });
+}
+
+function stableFileManifest(path) {
+  const content = readFileSync(path, "utf8");
+  const normalized = normalizeGeneratedPhpForManifest(content);
+  return {
+    bytes: Buffer.byteLength(normalized),
+    sha256: sha256Text(normalized)
+  };
 }
 
 export function walk(dir) {
@@ -20,11 +41,14 @@ export function walk(dir) {
 
 export function filesUnder(dir) {
   return walk(dir)
-    .map((path) => ({
-      path: relative(dir, path),
-      bytes: statSync(path).size,
-      sha256: sha256File(path)
-    }))
+    .map((path) => {
+      const manifest = stableFileManifest(path);
+      return {
+        path: relative(dir, path),
+        bytes: manifest.bytes,
+        sha256: manifest.sha256
+      };
+    })
     .sort((a, b) => a.path.localeCompare(b.path));
 }
 

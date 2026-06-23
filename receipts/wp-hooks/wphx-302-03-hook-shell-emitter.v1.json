@@ -6,8 +6,8 @@
   "command": "npm run wp:hooks:shell-emitter",
   "status": "passed",
   "manifest": "manifests/wp-hooks/wphx-302-03-hook-shell-emitter.v1.json",
-  "manifest_sha256": "sha256:1923b65627a24b683b29ad7b2490b56ea0dc0e5b7343a6d444eeaf5a8bad64f8",
+  "manifest_sha256": "sha256:ea22f112c2f1df0fc1536eeca06813ffced0fc5bdc733f2f7fce2bdc94a483f8",
   "ownership_manifest": "manifests/ownership/wphx-302-03-hooks-shell-emitter.v1.json",
-  "ownership_manifest_sha256": "sha256:3cbd5b3f0d908a9ac8fe16e6d0a49691c3d18ca681f96aa88b2c3443300548b3",
+  "ownership_manifest_sha256": "sha256:b68eac0eccea717bdc4f7b6f93498365f63d066f9adb53a2f1fa9d80a5d0d9ab",
   "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"
 }

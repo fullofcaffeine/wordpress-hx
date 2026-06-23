@@ -6,9 +6,9 @@
   "command": "npm run wp:hooks:parity-candidate",
   "status": "passed",
   "manifest": "manifests/wp-hooks/wphx-302-01-hook-parity-candidate.v1.json",
-  "manifest_sha256": "sha256:4a9449ca8ffb0b42e850efa061a1bf247231ac06df051d1a84dbeace2f8648dc",
+  "manifest_sha256": "sha256:af906eb8f6db38e00229069d3974f92355ef0662fce214c46d11bd368de51d18",
   "ownership_manifest": "manifests/ownership/wphx-302-01-hooks-decision-model.v1.json",
-  "ownership_manifest_sha256": "sha256:33b918e22a6d8c16960fc99799e4a47795af660a81b391479be7a4cddce7f658",
+  "ownership_manifest_sha256": "sha256:a749a23b66ad948df04f26facd6dd588a68f1ded6b7f14c3f3a5fa5689fb4ece",
   "runtime_run_count": 6,
   "comparison_count": 3,
   "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358"

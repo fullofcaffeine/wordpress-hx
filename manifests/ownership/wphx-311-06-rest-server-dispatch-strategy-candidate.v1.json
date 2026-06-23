@@ -79,7 +79,7 @@
       "receipt:wphx-311-02-rest-settings-dispatch-fixture",
       "receipt:wphx-311-01-rest-settings-controller-fixture"
     ],
-    "manifest_digest": "sha256:2f0645cbbe474824919c76fa57929a7dcb640d95995c7de4212952bab5246dcf"
+    "manifest_digest": "sha256:e08ae8a9cfbea48a9c629370f3a0fff3ec6e82e92e24625df9aa2c09605212b9"
   },
   "notes": "This is a linked candidate over mirrored WordPress source. It does not yet prove HTTP serving, installed distribution packaging, or full REST server replacement without upstream PHP source present."
 }
