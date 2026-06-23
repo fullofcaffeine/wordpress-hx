@@ -8,7 +8,7 @@ Date: 2026-06-22
 
 WordPressHX must preserve compatibility with unmodified WordPress PHP plugins, themes, and drop-ins while progressively moving first-party WordPress behavior into Haxe-owned source.
 
-The architecture discussion raised a future possibility: Haxe-authored WordPress logic could eventually target Rust or another runtime while still keeping a PHP compatibility surface. GPT 5.5 Pro, recorded in project notes as the oracle, reviewed this direction and recommended a narrower current policy:
+The architecture discussion raised a future possibility: Haxe-authored WordPress logic could eventually target Rust, WebAssembly, or another runtime while still keeping a PHP compatibility surface. GPT 5.5 Pro, recorded in project notes as the oracle, reviewed this direction and recommended a narrower current policy:
 
 - now, build PHP-hosted, Haxe-authored WordPress;
 - later, optionally delegate narrowly eligible pure internal kernels to Rust/native providers;
@@ -23,12 +23,22 @@ WordPressHX will use this architecture:
 ```text
 Haxe-owned WordPress semantic and compatibility model
   -> generated PHP compatibility adapter as the privileged host
-  -> optional native providers only for narrowly eligible internal kernels
+  -> optional native/WASM/custom-target providers only for eligible profiles
 ```
 
 PHP is the privileged compatibility host because unmodified plugins and themes consume PHP runtime behavior. PHP and Rust are not symmetric adapters while PHP plugin compatibility is a requirement.
 
-Rust/native delegation is a future research and optimization option, not a current parity goal. A future Rust provider may implement selected pure kernels behind generated adapters and PHP fallbacks, but it must not own PHP-visible request state.
+Rust/native/WASM/custom-target delegation is a future research and optimization option, not a current parity goal. A future Rust, WASM, JavaScript, native, or custom Haxe target provider may implement selected pure kernels or bounded runtime profiles behind generated adapters and PHP fallbacks, but it must not own PHP-visible request state unless the claim explicitly includes a real PHP compatibility host.
+
+The intended long-term architecture is parallel:
+
+- first-party WordPress semantics migrate into Haxe-owned source;
+- PHP adapters preserve the existing plugin/theme ABI;
+- alternate Haxe targets execute the subset of semantics their runtimes can support;
+- PHP plugin/theme compatibility remains available through generated PHP, embedded PHP, or a named compatibility bridge when a profile claims it;
+- profiles that do not provide PHP plugin/theme compatibility must say so explicitly.
+
+Haxe's multi-target model is the reason this is worth preserving. Once behavior is genuinely Haxe-owned, WordPressHX can explore any target Haxe supports or that the project can make Haxe support. Concrete future examples include a Go profile through `fullofcaffeine/reflaxe.go` and a Rust profile through `fullofcaffeine/reflaxe.rust`. Those profiles may be valuable for service, worker, CLI, static-export, native-provider, or later runtime experiments. They do not justify target-neutral abstractions before PHP parity proves the boundaries.
 
 ## Ownership Axes
 
@@ -86,7 +96,8 @@ Use two complementary emitters:
 | Private namespaced implementation classes | Stock Haxe PHP target |
 | Original WordPress files and public PHP ABI | Haxe-owned typed Adapter IR plus deterministic original-path emitter/linker |
 | Generic defects in normal Haxe-to-PHP lowering | Improve the stock Haxe PHP backend |
-| Optional pure internal native kernels | Generated narrow native-provider binding |
+| Optional pure internal native/WASM kernels | Generated narrow native-provider binding |
+| Bounded alternate runtime profiles | Haxe target, `reflaxe.go`, `reflaxe.rust`, or another custom Haxe target plus explicit compatibility profile |
 | Whole custom Haxe PHP target | Defer until compiler-pressure evidence proves it necessary |
 
 The current original-path linker is an assembly mechanism. The durable version should consume typed adapter plans, not arbitrary production PHP strings.
@@ -109,7 +120,7 @@ A function or subsystem is eligible for Rust/native delegation only when all of 
 
 Do not use JSON as the generic crossing format for arbitrary PHP values. It loses PHP distinctions around integer/string keys, aliases, objects, resources, binary strings, and false/null/error cases.
 
-## Native Candidate Classes
+## Native And WASM Candidate Classes
 
 Plausible future candidates are internal kernels, not public WordPress subsystems:
 
@@ -119,6 +130,10 @@ Plausible future candidates are internal kernels, not public WordPress subsystem
 - pure schema validation;
 - selected path or formatting kernels;
 - selected HTML tokenizer/parser internals after fuzz parity.
+
+WASM has an additional long-term product question: a browser-hosted WordPressHX profile that could complement or replace parts of the current WordPress Playground architecture. `back2dos/wasmix` is the current reference/base candidate for that investigation because it compiles a subset of Haxe to WebAssembly and bridges with Haxe/JavaScript. This does not change the current PHP-hosted parity path. A future WASM profile must name its compatibility scope explicitly and must not claim full PHP-plugin compatibility unless it hosts a real PHP engine and passes the corresponding adapter, plugin, filesystem, diagnostic, request-lifecycle, and reflection evidence.
+
+The same rule applies to every alternate target. A generated JavaScript, Go, Rust, native, WASM, CLI, static-export, or future custom target can be valid when it names what it supports. It can coexist with third-party plugin/theme support if the runtime keeps a PHP compatibility host in the loop. It cannot silently replace PHP and still claim normal WordPress ecosystem compatibility.
 
 Keep PHP-hosted until much later:
 
@@ -152,13 +167,16 @@ Any stronger "Rust-hosted, PHP-plugin-compatible" claim requires a separate ADR 
 - Existing upstream-derived shell work must be classified as bridge evidence until public declarations and bodies are emitted from Haxe-owned adapter contracts.
 - PHP-specific Haxe adapter code is allowed when it represents real PHP semantics. Do not force every line to be target-neutral.
 - Provider-neutral interfaces should be introduced only when a demonstrated second provider exists.
-- Rust/native work is deferred until PHP parity and boundary evidence are stronger.
+- Rust/native/WASM work is deferred until PHP parity and boundary evidence are stronger.
+- Multi-target output is a strategic goal, but target claims must be profile-specific and evidence-backed.
 - Future progress metrics and ownership manifests should distinguish semantic ownership from adapter-contract ownership and execution provider.
 
 ## Non-Goals
 
 - Rust-first WordPress during PHP parity.
+- WASM-first WordPress during PHP parity.
 - Peer PHP and Rust adapters claiming ordinary PHP plugin compatibility.
+- Peer PHP and WASM adapters claiming ordinary PHP plugin compatibility.
 - Reimplementing observable PHP runtime semantics in Rust.
 - A whole custom Haxe PHP target without minimized evidence.
 - Long-lived production PHP bodies embedded in JavaScript/MJS runners.

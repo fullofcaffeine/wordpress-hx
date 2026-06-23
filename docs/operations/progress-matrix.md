@@ -25,7 +25,7 @@ This is an evidence-weighted program estimate, not source-line completion. It gi
 
 The score should move only when evidence moves. A closed task can increase confidence in a slice without implying that the whole source area is ported.
 
-ADR-004 clarifies ownership claims without changing the score: PHP is the privileged compatibility host for current parity, Haxe owns both migrated semantics and adapter intent, and Rust/native providers are future optional internal providers only for narrowly eligible kernels with PHP fallbacks and native-on/native-off evidence. Future ownership rollups should distinguish semantic ownership, adapter-contract ownership, emission strategy, execution provider, and evidence level.
+ADR-004 clarifies ownership claims without changing the score: PHP is the privileged compatibility host for current parity, Haxe owns both migrated semantics and adapter intent, and Rust/native/WASM/custom-target providers are future optional providers only for narrowly eligible kernels or explicitly named profiles with PHP fallbacks and native-on/native-off evidence. A later multi-target track, including a browser/WASM profile potentially based on `back2dos/wasmix`, a Go profile potentially based on `fullofcaffeine/reflaxe.go`, and a Rust profile potentially based on `fullofcaffeine/reflaxe.rust`, is tracked as a long-term research option and does not contribute to current parity progress. Future ownership rollups should distinguish semantic ownership, adapter-contract ownership, emission strategy, execution provider, and evidence level.
 
 ## PRD Milestone Matrix
 
@@ -41,6 +41,7 @@ ADR-004 clarifies ownership claims without changing the score: PHP is the privil
 | `WPHX-700` | Parity, security, performance, and distribution | open | 9/9 current children closed | Early generated-PHP, live parity, packaged ABI, upstream PHPUnit ratchet, and CI gates exist; full distribution/security/performance closure remains open | Keep ratcheting toward installed-system parity, full upstream suites, ecosystem fixtures, and nonfunctional gates |
 | `WPHX-800` | Codex and Beads program operations | closed | 7/7 | Program workflow, task packs, receipts, multi-agent, and Dolt backup/sync are operational | Maintain via `WPHX-000` follow-ups unless a new operations epic is needed |
 | `WPHX-COMP` | Compiler-pressure queue | created on demand | n/a | No broad custom PHP/Reflaxe target track is justified yet | File minimized generic fixtures when stock PHP or genes-ts cannot meet required target shape |
+| `WPHX-MTGT` | Future multi-target profiles, including browser/WASM, Go, Rust, and Playground-adjacent research | not seeded | 0/0 | Explicit long-term option only; `back2dos/wasmix` is the current WASM reference/base candidate; `fullofcaffeine/reflaxe.go` and `fullofcaffeine/reflaxe.rust` are current Go/Rust references; broader Haxe-supported/custom targets remain possible | Start only after PHP parity and browser platform evidence can define bounded compatibility profiles and the PHP plugin/theme adapter story |
 
 ## WordPress PHP Core Detail
 
