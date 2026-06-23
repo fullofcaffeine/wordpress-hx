@@ -1,0 +1,54 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/auth-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.13",
+    "external_ref": "WPHX-306"
+  },
+  "unit": {
+    "kind": "haxe_adapter_contract",
+    "name": "users/auth capability, nonce, cookie, password-family, and application-password routing decisions",
+    "area": "wp-includes/capabilities.php wp-includes/pluggable.php wp-includes/user.php wp-includes/class-wp-user.php",
+    "public_contract": "Haxe owns the first typed auth adapter-contract decision model. Public PHP ABI replacement, password hashing, cookie signing, and installed authentication parity are not claimed in this slice."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "ownership_axes": {
+    "semantic_owner": "haxe",
+    "adapter_contract_owner": "haxe_typed",
+    "emission_strategy": "stock_haxe_php_private_impl",
+    "execution_provider": "haxe_php",
+    "compatibility_evidence": "targeted_semantic_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "adapter-contract-candidate-without-public-php-installation",
+    "removal_gate": "Move these contracts into typed Adapter IR/original-path generation and pass auth/capability/cookie/nonce oracle fixtures before claiming public PHP ABI ownership."
+  },
+  "owned_paths": [
+    "fixtures/wp-core/auth-adapter-contract-candidate.hxml",
+    "src/wphx/wp/auth/AuthAdapterContract.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/AuthAdapterContractCandidateEntry.hx",
+    "tools/wp-core/run-user-auth-adapter-contract-candidate.mjs",
+    "manifests/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+    "manifests/ownership/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+    "build/wp-core/wphx-306-02"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-306-auth-adapter-contract-candidate",
+      "npm run wp:core:wphx-306-auth-adapter-contract-candidate:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-306-02-auth-adapter-contract-candidate"
+    ],
+    "manifest_digest": "sha256:ad8e6814cae83a4adffd85be774b4ea32bcc5c7e3752c91d29912ba8620a56ce"
+  },
+  "notes": "This is a PHP-hosted Haxe candidate. It adds no native provider and no handwritten production PHP shell."
+}

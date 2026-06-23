@@ -5,12 +5,12 @@ This document is the durable human-readable rollup for progress toward a WordPre
 Beads remains the task database. This matrix is a status ledger over Beads issues, receipts, manifests, and PRD milestones. Update it in the same change whenever milestone status, scope, evidence gates, Gutenberg split policy, or completion estimates change.
 
 Last updated: 2026-06-23
-Source checkpoint: `WPHX-322 first-party PHP manifest closure`
+Source checkpoint: `WPHX-306 user/auth adapter-contract candidate`
 Tracking issue: `WPHX-000.02`
 
 ## Super Progress
 
-Current super progress toward "WordPress completely in Haxe and functional": **37%**.
+Current super progress toward "WordPress completely in Haxe and functional": **38%**.
 
 This is an evidence-weighted program estimate, not source-line completion. It gives credit for proven target foundations, ABI/linker infrastructure, vertical WordPress slices, and executable parity gates, but it discounts shell/scaffold work and gives almost no credit for Gutenberg/browser ownership until `WPHX-400` and `WPHX-500` start producing package-level receipts.
 
@@ -18,7 +18,7 @@ This is an evidence-weighted program estimate, not source-line completion. It gi
 | --- | ---: | ---: | ---: | --- |
 | Program governance, baselines, manifests, Beads, receipts | 10 | 95 | 9.5 | `WPHX-000`, `WPHX-800`, baseline receipts, locked sibling repo policy |
 | PHP target feasibility, ABI, linker, public boundary foundation | 20 | 100 | 20.0 | `WPHX-100` and `WPHX-200` closed |
-| WordPress PHP runtime Haxe ownership | 40 | 17 | 6.8 | `WPHX-300` has verified vertical slices plus first-party PHP manifest ownership/split closure, but much of Core remains unported |
+| WordPress PHP runtime Haxe ownership | 40 | 18 | 7.2 | `WPHX-300` has verified vertical slices, first-party PHP manifest ownership/split closure, and the first user/auth Haxe adapter-contract candidate, but much of Core remains unported |
 | Installed WordPress distribution behavior and ecosystem gates | 15 | 5 | 0.8 | `WPHX-700` has strong early gates, but complete installed-system parity is not yet closed |
 | Browser, classic JS, Gutenberg package ownership | 10 | 0 | 0.0 | `WPHX-400`, `WPHX-500`, and `WPHX-600` are not yet active implementation tracks |
 | Security, performance, reliability, and release closure | 5 | 0 | 0.0 | early security corpus exists, full nonfunctional closure is later-stage work |
@@ -34,7 +34,7 @@ ADR-004 clarifies ownership claims without changing the score: PHP is the privil
 | `WPHX-000` | Program governance and baseline | open | 16/16 baseline children closed, plus ongoing governance follow-ups | Control-plane baseline is usable; governance remains open for program-level decisions like this matrix | Keep PRD, AGENTS, operations docs, locks, and progress matrix current |
 | `WPHX-100` | PHP target feasibility | closed | 9/9 | Stock PHP target feasibility gates passed | Reopen only through compiler-pressure evidence |
 | `WPHX-200` | PHP ABI, runtime, and linker | closed | 8/8 | ABI extraction, macro contracts, boundary types, facades, linker, public types, source maps, and escape-hatch audit exist | Use this foundation for each migrated Core slice |
-| `WPHX-300` | WordPress PHP core | open | 8/8 original direct children closed; WPHX-306 through WPHX-320 follow-up domains are now explicitly seeded | Bootstrap, hooks, error/formatting/escaping/KSES, options/cache, wpdb, REST, multisite, and first-party PHP manifest/split closure have receipts; broad Core implementation remains open through seeded follow-up domains | Work WPHX-306 through WPHX-320 by source-domain priority; continue replacing shells with Haxe-owned runtime logic |
+| `WPHX-300` | WordPress PHP core | open | 8/8 original direct children closed; WPHX-306 is in progress; WPHX-307 through WPHX-320 remain seeded follow-up domains | Bootstrap, hooks, error/formatting/escaping/KSES, options/cache, wpdb, REST, multisite, first-party PHP manifest/split closure, and users/auth adapter-contract evidence have receipts; broad Core implementation remains open through remaining seeded follow-up domains | Continue WPHX-306 oracle/security fixtures, then work WPHX-307 through WPHX-320 by source-domain priority |
 | `WPHX-400` | genes-ts/browser platform | open | 0/0 | Planning/feasibility track, not active implementation yet | Seed browser platform tasks and prove genes-ts package, React/TSX, exports, source maps, and bundling gates |
 | `WPHX-500` | Gutenberg packages | not seeded | 0/0 | Do not start broad package translation yet | Create after `WPHX-400` package/React feasibility justifies parallelization and an ADR confirms repo protocol |
 | `WPHX-600` | WordPress classic JS and browser vendors | not seeded | 0/0 | Not active | Start after browser platform gates expose the right package/runtime boundaries |
@@ -53,6 +53,7 @@ ADR-004 clarifies ownership claims without changing the score: PHP is the privil
 | `WPHX-303` Error/deprecation/formatting/escaping/KSES | closed | Multiple Haxe-owned decision slices and security corpus gates exist |
 | `WPHX-304` Options/transients/object cache | closed | Option/cache candidate gates and fixtures exist |
 | `WPHX-305` wpdb/database abstraction | closed | Strong wpdb vertical slice exists, including native mysqli and packaged ABI gates; still not evidence that every related Core DB path is Haxe-owned |
+| `WPHX-306` Users/roles/capabilities/auth/cookies/nonces | in progress | Foundation receipt covers 45 C1 source files, 45 distribution artifacts, 379 ABI entries, 40 upstream tests, and the first typed Haxe auth adapter-contract candidate for capability, nonce, cookie-scheme, password-family, and application-password routing. Public PHP replacement, password hashing/signing, raw cookie/header behavior, application-password authentication, runtime ABI, and installed login/auth parity remain open gates. |
 | `WPHX-311` REST API/schema | closed | Settings and REST server decision slices are typed Haxe strategy candidates; packaged, installed-browser, DB-backed, and cross-origin REST gates cover the active transport surface |
 | `WPHX-317` Multisite/network | closed | Domain closure receipt exists across all 7 child tasks: surface inventory, site/network option plus site-transient fixtures, blog switch/cache fixtures, site/network ABI/query fixtures, bootstrap/domain-path routing fixtures, signup/lifecycle/counts/quota fixtures, and the first typed Haxe multisite adapter-contract candidate. Public PHP replacement and installed multisite distribution claims remain later gates. |
 | `WPHX-322` PHP first-party manifest closure | closed | Manifest/split closure assigns 1,564 C1 PHP runtime source entries and 1,222 C1 PHP distribution artifacts to closed domains or explicit follow-up owners, with zero unassigned; PHP vendor entries are excluded to WPHX-323 |

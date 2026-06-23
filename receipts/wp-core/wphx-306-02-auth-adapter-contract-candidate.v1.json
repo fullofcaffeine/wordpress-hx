@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-306-02-auth-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.13",
+    "external_ref": "WPHX-306",
+    "title": "Promote first auth pure helpers to Haxe parity candidates"
+  },
+  "recorded_at": "2026-06-23T20:50:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+      "role": "auth Haxe semantic/adapter-contract candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+      "role": "ADR-004-aware ownership manifest for auth Haxe candidate"
+    },
+    {
+      "path": "src/wphx/wp/auth/AuthAdapterContract.hx",
+      "role": "typed Haxe auth semantic and adapter-contract model"
+    },
+    {
+      "path": "tools/wp-core/run-user-auth-adapter-contract-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-306-auth-adapter-contract-candidate",
+    "npm run wp:core:wphx-306-auth-adapter-contract-candidate:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_auth_adapter_contract_candidate",
+    "promoted_contracts": 5,
+    "runtime_runs": 1,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

@@ -1,0 +1,742 @@
+{
+  "schema": "wphx.wp-core-user-auth-surface.v1",
+  "issue": "WPHX-306",
+  "generated_at": "2026-06-23T20:45:00.000Z",
+  "generator": "tools/wp-core/run-user-auth-surface.mjs",
+  "inputs": {
+    "source_inventory": {
+      "path": "manifests/source-inventory.jsonl",
+      "bytes": 11207179,
+      "sha256": "sha256:69d3f94f72d7c955a55c46991f81331522f0e306a89af9e037ce216a5263aff3"
+    },
+    "artifact_provenance": {
+      "path": "manifests/artifact-provenance.jsonl",
+      "bytes": 1829830,
+      "sha256": "sha256:b5855fd8ea57e1712b332514e4e2f46b0f5bf70b176c7657bf0e592fa56229d4"
+    },
+    "test_inventory": {
+      "path": "manifests/test-inventory.jsonl",
+      "bytes": 1921833,
+      "sha256": "sha256:fdfb65de3dcfb9cc649a1802bae9ffa5714aa6cc627ad608d94d7cd78e0af9ff"
+    },
+    "php_abi": {
+      "path": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
+      "bytes": 35108922,
+      "sha256": "sha256:e77b6138e9781b04fe3ce8a0982743475179c74d4d790562ab43cb59b82ffc6b"
+    },
+    "first_party_closure": {
+      "path": "manifests/wp-core/wphx-322-php-first-party-manifest-closure.v1.json",
+      "bytes": 38022,
+      "sha256": "sha256:2ebc43942267fd9d42d19a4bda00d8e7a02e38a80fc6b866e97018a8833e1080"
+    }
+  },
+  "scope": {
+    "owner": "WPHX-306",
+    "included": "C1 WordPress 7.0 PHP source and distribution artifacts classified to users, roles, capabilities, auth, cookies, nonces, sessions, and application passwords by the WPHX-322 owner rules.",
+    "excluded_cross_domain_examples": [
+      {
+        "owner": "WPHX-311",
+        "reason": "REST users and application-password controllers remain REST transport/domain work."
+      },
+      {
+        "owner": "WPHX-314",
+        "reason": "Author/comment-author block render files remain block-render work."
+      },
+      {
+        "owner": "WPHX-317",
+        "reason": "Multisite user admin files with ms/network ownership remain multisite work."
+      },
+      {
+        "owner": "WPHX-320",
+        "reason": "Default theme author templates remain default-theme PHP work."
+      },
+      {
+        "owner": "WPHX-323",
+        "reason": "Vendor request/auth/cookie classes remain PHP vendor manifest work."
+      }
+    ]
+  },
+  "coverage": {
+    "source_count": 45,
+    "artifact_count": 45,
+    "abi_entry_count": 379,
+    "test_count": 40,
+    "source_by_group": {
+      "admin_user_screens": {
+        "count": 20,
+        "paths": [
+          "src/wp-admin/authorize-application.php",
+          "src/wp-admin/includes/class-wp-users-list-table.php",
+          "src/wp-admin/includes/user.php",
+          "src/wp-admin/network/site-users.php",
+          "src/wp-admin/network/user-edit.php",
+          "src/wp-admin/network/user-new.php",
+          "src/wp-admin/network/users.php",
+          "src/wp-admin/user-edit.php",
+          "src/wp-admin/user-new.php",
+          "src/wp-admin/user/about.php",
+          "src/wp-admin/user/admin.php",
+          "src/wp-admin/user/contribute.php",
+          "src/wp-admin/user/credits.php",
+          "src/wp-admin/user/freedoms.php",
+          "src/wp-admin/user/index.php",
+          "src/wp-admin/user/menu.php",
+          "src/wp-admin/user/privacy.php",
+          "src/wp-admin/user/profile.php",
+          "src/wp-admin/user/user-edit.php",
+          "src/wp-admin/users.php"
+        ]
+      },
+      "login_activation": {
+        "count": 2,
+        "paths": [
+          "src/wp-activate.php",
+          "src/wp-login.php"
+        ]
+      },
+      "pluggable_auth_cookies_nonces_passwords": {
+        "count": 2,
+        "paths": [
+          "src/wp-includes/pluggable-deprecated.php",
+          "src/wp-includes/pluggable.php"
+        ]
+      },
+      "roles_capabilities": {
+        "count": 1,
+        "paths": [
+          "src/wp-includes/capabilities.php"
+        ]
+      },
+      "sessions_application_passwords": {
+        "count": 4,
+        "paths": [
+          "src/wp-admin/includes/class-wp-application-passwords-list-table.php",
+          "src/wp-includes/class-wp-application-passwords.php",
+          "src/wp-includes/class-wp-session-tokens.php",
+          "src/wp-includes/class-wp-user-meta-session-tokens.php"
+        ]
+      },
+      "user_auth_related": {
+        "count": 12,
+        "paths": [
+          "src/wp-includes/author-template.php",
+          "src/wp-includes/blocks/comment-author-name.php",
+          "src/wp-includes/blocks/post-author-biography.php",
+          "src/wp-includes/blocks/post-author-name.php",
+          "src/wp-includes/blocks/post-author.php",
+          "src/wp-includes/php-ai-client/src/Messages/DTO/UserMessage.php",
+          "src/wp-includes/php-ai-client/src/Providers/Http/Contracts/RequestAuthenticationInterface.php",
+          "src/wp-includes/php-ai-client/src/Providers/Http/Contracts/WithRequestAuthenticationInterface.php",
+          "src/wp-includes/php-ai-client/src/Providers/Http/DTO/ApiKeyRequestAuthentication.php",
+          "src/wp-includes/php-ai-client/src/Providers/Http/Enums/RequestAuthenticationMethod.php",
+          "src/wp-includes/php-ai-client/src/Providers/Http/Traits/WithRequestAuthenticationTrait.php",
+          "src/wp-includes/sitemaps/providers/class-wp-sitemaps-users.php"
+        ]
+      },
+      "user_model_query_meta": {
+        "count": 4,
+        "paths": [
+          "src/wp-includes/class-wp-user-query.php",
+          "src/wp-includes/class-wp-user-request.php",
+          "src/wp-includes/class-wp-user.php",
+          "src/wp-includes/user.php"
+        ]
+      }
+    },
+    "artifact_by_group": {
+      "admin_user_screens": {
+        "count": 20,
+        "paths": [
+          "wp-admin/authorize-application.php",
+          "wp-admin/includes/class-wp-users-list-table.php",
+          "wp-admin/includes/user.php",
+          "wp-admin/network/site-users.php",
+          "wp-admin/network/user-edit.php",
+          "wp-admin/network/user-new.php",
+          "wp-admin/network/users.php",
+          "wp-admin/user-edit.php",
+          "wp-admin/user-new.php",
+          "wp-admin/user/about.php",
+          "wp-admin/user/admin.php",
+          "wp-admin/user/contribute.php",
+          "wp-admin/user/credits.php",
+          "wp-admin/user/freedoms.php",
+          "wp-admin/user/index.php",
+          "wp-admin/user/menu.php",
+          "wp-admin/user/privacy.php",
+          "wp-admin/user/profile.php",
+          "wp-admin/user/user-edit.php",
+          "wp-admin/users.php"
+        ]
+      },
+      "login_activation": {
+        "count": 2,
+        "paths": [
+          "wp-activate.php",
+          "wp-login.php"
+        ]
+      },
+      "pluggable_auth_cookies_nonces_passwords": {
+        "count": 2,
+        "paths": [
+          "wp-includes/pluggable-deprecated.php",
+          "wp-includes/pluggable.php"
+        ]
+      },
+      "roles_capabilities": {
+        "count": 1,
+        "paths": [
+          "wp-includes/capabilities.php"
+        ]
+      },
+      "sessions_application_passwords": {
+        "count": 4,
+        "paths": [
+          "wp-admin/includes/class-wp-application-passwords-list-table.php",
+          "wp-includes/class-wp-application-passwords.php",
+          "wp-includes/class-wp-session-tokens.php",
+          "wp-includes/class-wp-user-meta-session-tokens.php"
+        ]
+      },
+      "user_auth_related": {
+        "count": 12,
+        "paths": [
+          "wp-includes/author-template.php",
+          "wp-includes/blocks/comment-author-name.php",
+          "wp-includes/blocks/post-author-biography.php",
+          "wp-includes/blocks/post-author-name.php",
+          "wp-includes/blocks/post-author.php",
+          "wp-includes/php-ai-client/src/Messages/DTO/UserMessage.php",
+          "wp-includes/php-ai-client/src/Providers/Http/Contracts/RequestAuthenticationInterface.php",
+          "wp-includes/php-ai-client/src/Providers/Http/Contracts/WithRequestAuthenticationInterface.php",
+          "wp-includes/php-ai-client/src/Providers/Http/DTO/ApiKeyRequestAuthentication.php",
+          "wp-includes/php-ai-client/src/Providers/Http/Enums/RequestAuthenticationMethod.php",
+          "wp-includes/php-ai-client/src/Providers/Http/Traits/WithRequestAuthenticationTrait.php",
+          "wp-includes/sitemaps/providers/class-wp-sitemaps-users.php"
+        ]
+      },
+      "user_model_query_meta": {
+        "count": 4,
+        "paths": [
+          "wp-includes/class-wp-user-query.php",
+          "wp-includes/class-wp-user-request.php",
+          "wp-includes/class-wp-user.php",
+          "wp-includes/user.php"
+        ]
+      }
+    },
+    "abi_by_group": {
+      "admin_user_screens": {
+        "count": 34,
+        "functions": [
+          "add_user",
+          "admin_created_user_email",
+          "default_password_nag",
+          "default_password_nag_edit_user",
+          "default_password_nag_handler",
+          "delete_users_add_js",
+          "edit_user",
+          "get_editable_roles",
+          "get_user_to_edit",
+          "get_users_drafts",
+          "use_ssl_preference",
+          "wp_delete_user",
+          "wp_is_authorize_application_password_request_valid",
+          "wp_is_authorize_application_redirect_url_valid",
+          "wp_revoke_user"
+        ],
+        "classes": [
+          "WP_Users_List_Table"
+        ],
+        "methods": [
+          "WP_Users_List_Table::__construct",
+          "WP_Users_List_Table::ajax_user_can",
+          "WP_Users_List_Table::current_action",
+          "WP_Users_List_Table::display_rows",
+          "WP_Users_List_Table::extra_tablenav",
+          "WP_Users_List_Table::get_bulk_actions",
+          "WP_Users_List_Table::get_columns",
+          "WP_Users_List_Table::get_default_primary_column_name",
+          "WP_Users_List_Table::get_role_list",
+          "WP_Users_List_Table::get_sortable_columns",
+          "WP_Users_List_Table::get_views",
+          "WP_Users_List_Table::no_items",
+          "WP_Users_List_Table::prepare_items",
+          "WP_Users_List_Table::single_row"
+        ]
+      },
+      "login_activation": {
+        "count": 7,
+        "functions": [
+          "do_activate_header",
+          "login_footer",
+          "login_header",
+          "wp_login_viewport_meta",
+          "wp_shake_js",
+          "wpmu_activate_stylesheet"
+        ],
+        "classes": [],
+        "methods": []
+      },
+      "pluggable_auth_cookies_nonces_passwords": {
+        "count": 50,
+        "functions": [
+          "_wp_sanitize_utf8_in_redirect",
+          "auth_redirect",
+          "cache_users",
+          "check_admin_referer",
+          "check_ajax_referer",
+          "get_avatar",
+          "get_currentuserinfo",
+          "get_user_by",
+          "get_user_by_email",
+          "get_userdata",
+          "get_userdatabylogin",
+          "is_user_logged_in",
+          "set_current_user",
+          "wp_authenticate",
+          "wp_check_password",
+          "wp_clear_auth_cookie",
+          "wp_clearcookie",
+          "wp_create_nonce",
+          "wp_generate_auth_cookie",
+          "wp_generate_password",
+          "wp_get_cookie_login",
+          "wp_get_current_user",
+          "wp_hash",
+          "wp_hash_password",
+          "wp_login",
+          "wp_logout",
+          "wp_mail",
+          "wp_new_user_notification",
+          "wp_nonce_tick",
+          "wp_notify_moderator",
+          "wp_notify_postauthor",
+          "wp_parse_auth_cookie",
+          "wp_password_change_notification",
+          "wp_password_needs_rehash",
+          "wp_rand",
+          "wp_redirect",
+          "wp_safe_redirect",
+          "wp_salt",
+          "wp_sanitize_redirect",
+          "wp_set_auth_cookie",
+          "wp_set_current_user",
+          "wp_set_password",
+          "wp_setcookie",
+          "wp_text_diff",
+          "wp_validate_auth_cookie",
+          "wp_validate_redirect",
+          "wp_verify_nonce"
+        ],
+        "classes": [
+          "wp_atom_server"
+        ],
+        "methods": [
+          "wp_atom_server::__call",
+          "wp_atom_server::__callStatic"
+        ]
+      },
+      "roles_capabilities": {
+        "count": 17,
+        "functions": [
+          "add_role",
+          "author_can",
+          "current_user_can",
+          "current_user_can_for_site",
+          "get_role",
+          "get_super_admins",
+          "grant_super_admin",
+          "is_super_admin",
+          "map_meta_cap",
+          "remove_role",
+          "revoke_super_admin",
+          "user_can",
+          "user_can_for_site",
+          "wp_maybe_grant_install_languages_cap",
+          "wp_maybe_grant_resume_extensions_caps",
+          "wp_maybe_grant_site_health_caps",
+          "wp_roles"
+        ],
+        "classes": [],
+        "methods": []
+      },
+      "sessions_application_passwords": {
+        "count": 60,
+        "functions": [],
+        "classes": [
+          "WP_Application_Passwords",
+          "WP_Application_Passwords_List_Table",
+          "WP_Session_Tokens",
+          "WP_User_Meta_Session_Tokens"
+        ],
+        "methods": [
+          "WP_Application_Passwords::application_name_exists_for_user",
+          "WP_Application_Passwords::check_password",
+          "WP_Application_Passwords::chunk_password",
+          "WP_Application_Passwords::create_new_application_password",
+          "WP_Application_Passwords::delete_all_application_passwords",
+          "WP_Application_Passwords::delete_application_password",
+          "WP_Application_Passwords::get_user_application_password",
+          "WP_Application_Passwords::get_user_application_passwords",
+          "WP_Application_Passwords::hash_password",
+          "WP_Application_Passwords::is_in_use",
+          "WP_Application_Passwords::record_application_password_usage",
+          "WP_Application_Passwords::set_user_application_passwords",
+          "WP_Application_Passwords::update_application_password",
+          "WP_Application_Passwords_List_Table::column_created",
+          "WP_Application_Passwords_List_Table::column_default",
+          "WP_Application_Passwords_List_Table::column_last_ip",
+          "WP_Application_Passwords_List_Table::column_last_used",
+          "WP_Application_Passwords_List_Table::column_name",
+          "WP_Application_Passwords_List_Table::column_revoke",
+          "WP_Application_Passwords_List_Table::display_tablenav",
+          "WP_Application_Passwords_List_Table::get_columns",
+          "WP_Application_Passwords_List_Table::get_default_primary_column_name",
+          "WP_Application_Passwords_List_Table::prepare_items",
+          "WP_Application_Passwords_List_Table::print_js_template_row",
+          "WP_Application_Passwords_List_Table::single_row",
+          "WP_Session_Tokens::__construct",
+          "WP_Session_Tokens::create",
+          "WP_Session_Tokens::destroy",
+          "WP_Session_Tokens::destroy_all",
+          "WP_Session_Tokens::destroy_all_for_all_users",
+          "WP_Session_Tokens::destroy_all_sessions",
+          "WP_Session_Tokens::destroy_other_sessions",
+          "WP_Session_Tokens::destroy_others",
+          "WP_Session_Tokens::drop_sessions",
+          "WP_Session_Tokens::get",
+          "WP_Session_Tokens::get_all",
+          "WP_Session_Tokens::get_instance",
+          "WP_Session_Tokens::get_session",
+          "WP_Session_Tokens::get_sessions",
+          "WP_Session_Tokens::hash_token",
+          "WP_Session_Tokens::is_still_valid",
+          "WP_Session_Tokens::update",
+          "WP_Session_Tokens::update_session",
+          "WP_Session_Tokens::verify",
+          "WP_User_Meta_Session_Tokens::destroy_all_sessions",
+          "WP_User_Meta_Session_Tokens::destroy_other_sessions",
+          "WP_User_Meta_Session_Tokens::drop_sessions",
+          "WP_User_Meta_Session_Tokens::get_session",
+          "WP_User_Meta_Session_Tokens::get_sessions",
+          "WP_User_Meta_Session_Tokens::prepare_session",
+          "WP_User_Meta_Session_Tokens::update_session",
+          "WP_User_Meta_Session_Tokens::update_sessions"
+        ]
+      },
+      "user_auth_related": {
+        "count": 52,
+        "functions": [
+          "__clear_multi_author_cache",
+          "get_author_posts_url",
+          "get_the_author",
+          "get_the_author_link",
+          "get_the_author_meta",
+          "get_the_author_posts",
+          "get_the_author_posts_link",
+          "get_the_modified_author",
+          "is_multi_author",
+          "register_block_core_comment_author_name",
+          "register_block_core_post_author",
+          "register_block_core_post_author_biography",
+          "register_block_core_post_author_name",
+          "render_block_core_comment_author_name",
+          "render_block_core_post_author",
+          "render_block_core_post_author_biography",
+          "render_block_core_post_author_name",
+          "the_author",
+          "the_author_link",
+          "the_author_meta",
+          "the_author_posts",
+          "the_author_posts_link",
+          "the_modified_author",
+          "wp_list_authors"
+        ],
+        "classes": [
+          "WP_Sitemaps_Users",
+          "WordPress\\AiClient\\Messages\\DTO\\UserMessage",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication",
+          "WordPress\\AiClient\\Providers\\Http\\Enums\\RequestAuthenticationMethod"
+        ],
+        "methods": [
+          "WP_Sitemaps_Users::__construct",
+          "WP_Sitemaps_Users::get_max_num_pages",
+          "WP_Sitemaps_Users::get_url_list",
+          "WP_Sitemaps_Users::get_users_query_args",
+          "WordPress\\AiClient\\Messages\\DTO\\UserMessage::__construct",
+          "WordPress\\AiClient\\Providers\\Http\\Contracts\\RequestAuthenticationInterface::authenticateRequest",
+          "WordPress\\AiClient\\Providers\\Http\\Contracts\\WithRequestAuthenticationInterface::getRequestAuthentication",
+          "WordPress\\AiClient\\Providers\\Http\\Contracts\\WithRequestAuthenticationInterface::setRequestAuthentication",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication::__construct",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication::authenticateRequest",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication::fromArray",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication::getApiKey",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication::getJsonSchema",
+          "WordPress\\AiClient\\Providers\\Http\\DTO\\ApiKeyRequestAuthentication::toArray",
+          "WordPress\\AiClient\\Providers\\Http\\Enums\\RequestAuthenticationMethod::getImplementationClass",
+          "WordPress\\AiClient\\Providers\\Http\\Traits\\WithRequestAuthenticationTrait::getRequestAuthentication",
+          "WordPress\\AiClient\\Providers\\Http\\Traits\\WithRequestAuthenticationTrait::setRequestAuthentication"
+        ]
+      },
+      "user_model_query_meta": {
+        "count": 159,
+        "functions": [
+          "_get_additional_user_keys",
+          "_wp_get_current_user",
+          "_wp_get_user_contactmethods",
+          "_wp_privacy_account_request_confirmed",
+          "_wp_privacy_account_request_confirmed_message",
+          "_wp_privacy_action_request_types",
+          "_wp_privacy_send_erasure_fulfillment_notification",
+          "_wp_privacy_send_request_confirmation_notification",
+          "add_user_meta",
+          "check_password_reset_key",
+          "clean_user_cache",
+          "count_many_users_posts",
+          "count_user_posts",
+          "count_users",
+          "delete_user_meta",
+          "delete_user_option",
+          "email_exists",
+          "get_blogs_of_user",
+          "get_current_user_id",
+          "get_password_reset_key",
+          "get_user",
+          "get_user_count",
+          "get_user_meta",
+          "get_user_option",
+          "get_users",
+          "is_user_member_of_blog",
+          "new_user_email_admin_notice",
+          "register_new_user",
+          "reset_password",
+          "retrieve_password",
+          "sanitize_user_field",
+          "send_confirmation_on_profile_email",
+          "setup_userdata",
+          "update_user_caches",
+          "update_user_meta",
+          "update_user_option",
+          "username_exists",
+          "validate_username",
+          "wp_authenticate_application_password",
+          "wp_authenticate_cookie",
+          "wp_authenticate_email_password",
+          "wp_authenticate_spam_check",
+          "wp_authenticate_username_password",
+          "wp_cache_set_users_last_changed",
+          "wp_create_user",
+          "wp_create_user_request",
+          "wp_destroy_all_sessions",
+          "wp_destroy_current_session",
+          "wp_destroy_other_sessions",
+          "wp_dropdown_users",
+          "wp_generate_user_request_key",
+          "wp_get_all_sessions",
+          "wp_get_password_hint",
+          "wp_get_session_token",
+          "wp_get_user_contact_methods",
+          "wp_get_user_request",
+          "wp_get_users_with_no_role",
+          "wp_insert_user",
+          "wp_is_application_passwords_available",
+          "wp_is_application_passwords_available_for_user",
+          "wp_is_application_passwords_supported",
+          "wp_is_large_user_count",
+          "wp_is_password_reset_allowed_for_user",
+          "wp_list_users",
+          "wp_maybe_update_user_counts",
+          "wp_register_persisted_preferences_meta",
+          "wp_register_user_personal_data_exporter",
+          "wp_schedule_update_user_counts",
+          "wp_send_new_user_notifications",
+          "wp_send_user_request",
+          "wp_signon",
+          "wp_update_user",
+          "wp_update_user_counts",
+          "wp_user_personal_data_exporter",
+          "wp_user_request_action_description",
+          "wp_validate_application_password",
+          "wp_validate_logged_in_cookie",
+          "wp_validate_user_request_key"
+        ],
+        "classes": [
+          "WP_User",
+          "WP_User_Query",
+          "WP_User_Request"
+        ],
+        "methods": [
+          "WP_User::__call",
+          "WP_User::__construct",
+          "WP_User::__get",
+          "WP_User::__isset",
+          "WP_User::__set",
+          "WP_User::__unset",
+          "WP_User::_init_caps",
+          "WP_User::add_cap",
+          "WP_User::add_role",
+          "WP_User::exists",
+          "WP_User::for_blog",
+          "WP_User::for_site",
+          "WP_User::get",
+          "WP_User::get_caps_data",
+          "WP_User::get_data_by",
+          "WP_User::get_role_caps",
+          "WP_User::get_site_id",
+          "WP_User::has_cap",
+          "WP_User::has_prop",
+          "WP_User::init",
+          "WP_User::level_reduction",
+          "WP_User::remove_all_caps",
+          "WP_User::remove_cap",
+          "WP_User::remove_role",
+          "WP_User::set_role",
+          "WP_User::to_array",
+          "WP_User::translate_level_to_cap",
+          "WP_User::update_user_level_from_caps",
+          "WP_User_Query::__call",
+          "WP_User_Query::__construct",
+          "WP_User_Query::__get",
+          "WP_User_Query::__isset",
+          "WP_User_Query::__set",
+          "WP_User_Query::__unset",
+          "WP_User_Query::fill_query_vars",
+          "WP_User_Query::generate_cache_key",
+          "WP_User_Query::get",
+          "WP_User_Query::get_cache_last_changed",
+          "WP_User_Query::get_results",
+          "WP_User_Query::get_search_sql",
+          "WP_User_Query::get_total",
+          "WP_User_Query::parse_order",
+          "WP_User_Query::parse_orderby",
+          "WP_User_Query::prepare_query",
+          "WP_User_Query::query",
+          "WP_User_Query::set",
+          "WP_User_Request::__construct"
+        ]
+      }
+    },
+    "abi_risks": {
+      "functions_with_reference_parameters": [],
+      "variadic_functions": [
+        "author_can",
+        "current_user_can",
+        "current_user_can_for_site",
+        "map_meta_cap",
+        "user_can",
+        "user_can_for_site"
+      ],
+      "conditional_functions": [
+        "_wp_sanitize_utf8_in_redirect",
+        "auth_redirect",
+        "cache_users",
+        "check_admin_referer",
+        "check_ajax_referer",
+        "get_avatar",
+        "get_currentuserinfo",
+        "get_user_by",
+        "get_user_by_email",
+        "get_userdata",
+        "get_userdatabylogin",
+        "is_user_logged_in",
+        "set_current_user",
+        "wp_authenticate",
+        "wp_check_password",
+        "wp_clear_auth_cookie",
+        "wp_clearcookie",
+        "wp_create_nonce",
+        "wp_generate_auth_cookie",
+        "wp_generate_password",
+        "wp_get_cookie_login",
+        "wp_get_current_user",
+        "wp_hash",
+        "wp_hash_password",
+        "wp_login",
+        "wp_logout",
+        "wp_mail",
+        "wp_new_user_notification",
+        "wp_nonce_tick",
+        "wp_notify_moderator",
+        "wp_notify_postauthor",
+        "wp_parse_auth_cookie",
+        "wp_password_change_notification",
+        "wp_password_needs_rehash",
+        "wp_rand",
+        "wp_redirect",
+        "wp_safe_redirect",
+        "wp_salt",
+        "wp_sanitize_redirect",
+        "wp_set_auth_cookie",
+        "wp_set_current_user",
+        "wp_set_password",
+        "wp_setcookie",
+        "wp_text_diff",
+        "wp_validate_auth_cookie",
+        "wp_validate_redirect",
+        "wp_verify_nonce"
+      ]
+    },
+    "test_paths": [
+      "tests/phpunit/tests/auth.php",
+      "tests/phpunit/tests/functions/wpAuthCheck.php",
+      "tests/phpunit/tests/functions/wpNonceAys.php",
+      "tests/phpunit/tests/functions/wpNonceField.php",
+      "tests/phpunit/tests/functions/wpNonceUrl.php",
+      "tests/phpunit/tests/option/userSettings.php",
+      "tests/phpunit/tests/rest-api/application-passwords.php",
+      "tests/phpunit/tests/rest-api/rest-application-passwords-controller.php",
+      "tests/phpunit/tests/rest-api/rest-users-controller.php",
+      "tests/phpunit/tests/user.php",
+      "tests/phpunit/tests/user/capabilities.php",
+      "tests/phpunit/tests/user/countUserPosts.php",
+      "tests/phpunit/tests/user/countUsers.php",
+      "tests/phpunit/tests/user/dateQuery.php",
+      "tests/phpunit/tests/user/getActiveBlogForUser.php",
+      "tests/phpunit/tests/user/getTheAuthor.php",
+      "tests/phpunit/tests/user/getTheAuthorLink.php",
+      "tests/phpunit/tests/user/getTheAuthorMeta.php",
+      "tests/phpunit/tests/user/getTheAuthorPosts.php",
+      "tests/phpunit/tests/user/getTheAuthorPostsLink.php",
+      "tests/phpunit/tests/user/getTheModifiedAuthor.php",
+      "tests/phpunit/tests/user/getUserCount.php",
+      "tests/phpunit/tests/user/mapMetaCap.php",
+      "tests/phpunit/tests/user/multisite.php",
+      "tests/phpunit/tests/user/passwordHash.php",
+      "tests/phpunit/tests/user/query.php",
+      "tests/phpunit/tests/user/queryCache.php",
+      "tests/phpunit/tests/user/retrievePassword.php",
+      "tests/phpunit/tests/user/session.php",
+      "tests/phpunit/tests/user/slashes.php",
+      "tests/phpunit/tests/user/updateUserCaches.php",
+      "tests/phpunit/tests/user/wpAuthenticateSpamCheck.php",
+      "tests/phpunit/tests/user/wpDeleteUser.php",
+      "tests/phpunit/tests/user/wpDropdownUsers.php",
+      "tests/phpunit/tests/user/wpGetUsersWithNoRole.php",
+      "tests/phpunit/tests/user/wpListAuthors.php",
+      "tests/phpunit/tests/user/wpListUsers.php",
+      "tests/phpunit/tests/user/wpRegisterPersistedPreferencesMeta.php",
+      "tests/phpunit/tests/user/wpSendUserRequest.php",
+      "tests/phpunit/tests/user/wpSetCurrentUser.php"
+    ]
+  },
+  "evidence_plan": {
+    "first_haxe_candidate": "WPHX-306.02 typed AuthAdapterContract for capability, nonce, cookie-scheme, password-family, and application-password routing decisions.",
+    "required_next_fixtures": [
+      "capability and map_meta_cap oracle fixture",
+      "auth cookie set/validate/clear subprocess fixture with raw header/cookie observations",
+      "nonce create/verify/tick fixture with deterministic salts and time control",
+      "password hash/check fixture across phpass, bcrypt, and WordPress bcrypt families",
+      "application-password authentication fixture",
+      "WP_User, WP_Roles, WP_Role, WP_User_Query runtime ABI reflection fixture"
+    ],
+    "claim": "This surface manifest bounds WPHX-306 and names fixture gates. It does not claim public PHP replacement or installed-distribution auth parity."
+  },
+  "validation_result": {
+    "status": "passed",
+    "source_count": 45,
+    "artifact_count": 45,
+    "abi_entry_count": 379,
+    "test_count": 40
+  }
+}

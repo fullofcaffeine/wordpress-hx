@@ -1,0 +1,32 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-306-01-user-auth-surface",
+  "issue": {
+    "id": "wordpresshx-l76.13",
+    "external_ref": "WPHX-306",
+    "title": "Inventory users/auth/capability/cookie/nonce surface"
+  },
+  "recorded_at": "2026-06-23T20:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-306-01-user-auth-surface.v1.json",
+      "role": "users/auth/capability/cookie/nonce surface inventory"
+    },
+    {
+      "path": "tools/wp-core/run-user-auth-surface.mjs",
+      "role": "deterministic surface generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-306-user-auth-surface",
+    "npm run wp:core:wphx-306-user-auth-surface:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_count": 45,
+    "artifact_count": 45,
+    "abi_entry_count": 379,
+    "test_count": 40
+  },
+  "manifest_sha256": "sha256:0337450dd123f7c4007c9af534fbdc937c7675b4a6c3031f644f973d2477c26a"
+}
