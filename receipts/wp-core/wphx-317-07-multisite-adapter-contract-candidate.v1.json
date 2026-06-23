@@ -1,0 +1,46 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-317-07-multisite-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.11.6",
+    "external_ref": "WPHX-317.07",
+    "title": "Promote first multisite pure helpers to Haxe parity candidates"
+  },
+  "recorded_at": "2026-06-23T00:36:17.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+      "role": "multisite Haxe semantic/adapter-contract candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+      "role": "ADR-004-aware ownership manifest for multisite Haxe candidate"
+    },
+    {
+      "path": "src/wphx/wp/multisite/MultisiteAdapterContract.hx",
+      "role": "typed Haxe multisite semantic and adapter-contract model"
+    },
+    {
+      "path": "tools/wp-core/run-multisite-adapter-contract-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-317-multisite-adapter-contract-candidate",
+    "npm run wp:core:wphx-317-multisite-adapter-contract-candidate:check",
+    "npm run wp:core:wphx-317-multisite-options-transients:check",
+    "npm run wp:core:wphx-317-blog-switch-cache:check",
+    "npm run wp:core:wphx-317-site-network-query:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_multisite_adapter_contract_candidate",
+    "promoted_contracts": 9,
+    "runtime_runs": 3,
+    "skipped_runtimes": 0,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

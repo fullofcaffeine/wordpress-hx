@@ -1,0 +1,60 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/multisite-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.11.6",
+    "external_ref": "WPHX-317.07"
+  },
+  "unit": {
+    "kind": "haxe_adapter_contract",
+    "name": "multisite pure semantic and adapter-contract decisions",
+    "area": "wp-includes/class-wp-site.php wp-includes/class-wp-network.php wp-includes/class-wp-site-query.php wp-includes/class-wp-network-query.php",
+    "public_contract": "Haxe owns the first typed multisite decision model for magic property routing, cookie-domain derivation, and query order parsing. Public PHP ABI replacement is not claimed in this slice."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "ownership_axes": {
+    "semantic_owner": "haxe",
+    "adapter_contract_owner": "haxe_typed",
+    "emission_strategy": "stock_haxe_php_private_impl",
+    "execution_provider": "haxe_php",
+    "compatibility_evidence": "targeted_semantic_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "adapter-contract-candidate-without-public-php-installation",
+    "removal_gate": "Move the typed contract into the Adapter IR/original-path emitter before claiming public WP_Site/WP_Network/WP_*_Query PHP ABI ownership."
+  },
+  "owned_paths": [
+    "fixtures/wp-core/multisite-adapter-contract-candidate.hxml",
+    "src/wphx/wp/multisite/MultisiteAdapterContract.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/MultisiteAdapterContractCandidateEntry.hx",
+    "tools/wp-core/run-multisite-adapter-contract-candidate.mjs",
+    "manifests/wp-core/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-317-07-multisite-adapter-contract-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+    "manifests/ownership/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+    "build/wp-core/wphx-317-07"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-317-multisite-adapter-contract-candidate",
+      "npm run wp:core:wphx-317-multisite-adapter-contract-candidate:check",
+      "npm run wp:core:wphx-317-multisite-options-transients:check",
+      "npm run wp:core:wphx-317-blog-switch-cache:check",
+      "npm run wp:core:wphx-317-site-network-query:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-317-07-multisite-adapter-contract-candidate",
+      "receipt:wphx-317-02-multisite-options-transients-fixture",
+      "receipt:wphx-317-03-multisite-blog-switch-cache-fixture",
+      "receipt:wphx-317-04-site-network-query-fixture"
+    ],
+    "manifest_digest": "sha256:ac7a519f0e8d684ec9ec3a4464a7c5d1911e60518f30eeb082eb4cb68e855cf0"
+  },
+  "notes": "ADR-004 applies: this is not a Rust/native provider and not a public PHP shell replacement. It is the first Haxe-owned multisite semantic/adapter-contract model, bounded by existing WPHX-317 oracle fixtures."
+}

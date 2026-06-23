@@ -393,7 +393,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "cc0df33ae8792b3d8d5621c0f786b20397e76f64c618569cd80ed6da6e6b1399",
+          "sha256": "607c6a4139c58079625e54af1fe74bec765738c838190c60f1d6d96595575a20",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -1105,6 +1105,16 @@
           "path": "receipts/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
           "sha256": "6e46830978f68fe8372b042c952c21f3a7e2c13d61ab96b16864281ff8f5a712",
           "id": "receipt:wphx-317-04-site-network-query-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-317.07",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-317-07-multisite-adapter-contract-candidate.v1.json",
+          "sha256": "f7aa4dc331cbb4831daaec01b5a3522d8d83c142ba8cd21968e785c67c67bd75",
+          "id": "receipt:wphx-317-07-multisite-adapter-contract-candidate"
         }
       ]
     },

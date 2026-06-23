@@ -1,0 +1,4 @@
+-cp src
+-cp fixtures/wp-core/src
+-main wphx.fixtures.wp.core.MultisiteAdapterContractCandidateEntry
+-php build/wp-core/wphx-317-07/haxe
