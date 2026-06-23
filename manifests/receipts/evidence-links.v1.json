@@ -1423,7 +1423,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
-          "sha256": "24900e4bb6813fef54b3d3d31015104ac781e4f95d365e93355bdadbc1d3a84c",
+          "sha256": "39ce28059268a040eb81071609977ddb63b6dcb490b9a43aad62a914e694a433",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]
