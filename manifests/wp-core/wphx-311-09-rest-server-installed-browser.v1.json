@@ -12,8 +12,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-installed-browser-gate.mjs",
-      "bytes": 21670,
-      "sha256": "sha256:4986484ed7160c3c6d06c302b8eadbad586f1b5ae79470bb1b72c74a05921209"
+      "bytes": 22173,
+      "sha256": "sha256:90650c11689a3858fb2fbd87fca989100c4e1364751f971223aca3e5f7259266"
     },
     "web_runner": {
       "path": "tools/wp-core/run-rest-server-web-e2e-gate.mjs",

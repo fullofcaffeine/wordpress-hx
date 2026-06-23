@@ -333,12 +333,27 @@ async function runBrowserRoot(browser, mode, root) {
             return { kind: "raw", value: text };
           }
         }
+        function sleep(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
+        async function fetchWithRetry(input, init) {
+          let lastError;
+          for (let attempt = 0; attempt < 5; attempt += 1) {
+            try {
+              return await fetch(input, init);
+            } catch (error) {
+              lastError = error;
+              await sleep(100 * (attempt + 1));
+            }
+          }
+          throw lastError;
+        }
         async function fetchCase(testCase) {
           const headers = {};
           if (testCase.contentType) {
             headers["content-type"] = testCase.contentType;
           }
-          const response = await fetch(testCase.path, {
+          const response = await fetchWithRetry(testCase.path, {
             method: testCase.method,
             headers,
             body: testCase.body
@@ -353,7 +368,7 @@ async function runBrowserRoot(browser, mode, root) {
             body: normalizeBody(text)
           };
         }
-        const boundaryResponse = await fetch("/__wphx/package-boundary");
+        const boundaryResponse = await fetchWithRetry("/__wphx/package-boundary");
         const boundary = await boundaryResponse.json();
         const browserCases = [];
         for (const testCase of cases) {

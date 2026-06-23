@@ -1098,7 +1098,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
-          "sha256": "fe008714ec6faa0acc5a69546f99aa2c235bd7a37498421585a9e2e813ef3a78",
+          "sha256": "1ccabeb0fccf42cb79c0dfe638e4468420e99d8987a5e7b83a2d5207e1735f4d",
           "id": "receipt:wphx-311-09-rest-server-installed-browser"
         }
       ]
