@@ -1,0 +1,444 @@
+{
+  "schema": "wphx.wp-core-taxonomy-comment-adapter-contract-candidate.v1",
+  "issue": "WPHX-308.02",
+  "generated_at": "2026-06-23T19:20:00.000Z",
+  "generator": "tools/wp-core/run-taxonomy-comment-adapter-contract-candidate.mjs",
+  "evidence_classes": [
+    "targeted_semantic_parity",
+    "generated_shape"
+  ],
+  "artifact_scope": "helper",
+  "inputs": {
+    "prior_manifest": {
+      "path": "manifests/wp-core/wphx-308-01-taxonomy-comments-surface.v1.json",
+      "bytes": 38734,
+      "sha256": "sha256:c70255713a83f53a53a002c31b09e7222c8eb22e686bbbb384f49d0a07048407"
+    },
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 7167,
+      "sha256": "sha256:9230d83997bb6cc37768adf6b45715721875f7991e0840e2321c18a2c63e5298"
+    },
+    "hxml": {
+      "path": "fixtures/wp-core/taxonomy-comment-adapter-contract-candidate.hxml",
+      "bytes": 142,
+      "sha256": "sha256:6d8922e4bfed9ebe7a7f651d25961d19f9ff4ee66f91dcedcf8f6c5a4c169d02"
+    },
+    "haxe_sources": [
+      {
+        "path": "fixtures/wp-core/taxonomy-comment-adapter-contract-candidate.hxml",
+        "bytes": 142,
+        "sha256": "sha256:6d8922e4bfed9ebe7a7f651d25961d19f9ff4ee66f91dcedcf8f6c5a4c169d02"
+      },
+      {
+        "path": "src/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.hx",
+        "bytes": 7862,
+        "sha256": "sha256:01f0f94359ac233aae26421f796a4d3a938dd3d71aa96b5f95dc056d1dab47d4"
+      },
+      {
+        "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.hx",
+        "bytes": 5973,
+        "sha256": "sha256:d244ca2b5510bb52f3d2edea01acb05243dfbb1d5cd9c55f46912d10b0b5fa27"
+      }
+    ]
+  },
+  "fixture": {
+    "candidate_kind": "haxe_taxonomy_comment_adapter_contract_candidate",
+    "promoted_contracts": [
+      "taxonomy visibility and REST exposure routing",
+      "term insert/update/delete/duplicate/default-term routing",
+      "object-term relationship append/replace/remove/no-op routing",
+      "term count and cache invalidation intent",
+      "comment insert/update/delete/trash/status routing",
+      "comment moderation duplicate/flood/disallowed/hold/approve routing",
+      "comment and taxonomy query filter classification",
+      "taxonomy, term, relationship, cache, comment, status, and query hook intent"
+    ],
+    "upstream_reference_functions": [
+      "register_taxonomy",
+      "wp_insert_term",
+      "wp_update_term",
+      "wp_delete_term",
+      "wp_set_object_terms",
+      "wp_update_term_count",
+      "clean_term_cache",
+      "wp_insert_comment",
+      "wp_update_comment",
+      "wp_delete_comment",
+      "wp_set_comment_status",
+      "wp_allow_comment",
+      "WP_Comment_Query::parse_query",
+      "WP_Term_Query::parse_query"
+    ],
+    "expected_observations": {
+      "taxonomy:rest": "taxonomy_rest_visible",
+      "taxonomy:public": "taxonomy_public",
+      "taxonomy:queryable": "taxonomy_private_queryable",
+      "taxonomy:admin": "taxonomy_admin_only",
+      "taxonomy:internal": "taxonomy_internal",
+      "term:invalid-taxonomy": "term_invalid_request",
+      "term:insert": "term_insert",
+      "term:duplicate": "term_duplicate",
+      "term:update": "term_update",
+      "term:update-duplicate": "term_duplicate",
+      "term:delete": "term_delete",
+      "term:delete-default": "term_default_delete_blocked",
+      "term:missing": "term_missing",
+      "term:invalid-id": "term_invalid_request",
+      "rel:invalid": "relationship_invalid_request",
+      "rel:append": "relationship_append",
+      "rel:replace": "relationship_replace",
+      "rel:remove": "relationship_remove",
+      "rel:no-change": "relationship_no_change",
+      "count:none": "count_no_change",
+      "count:deferred": "count_deferred",
+      "count:taxonomy": "clean_taxonomy_cache",
+      "count:term": "clean_term_cache",
+      "count:update-now": "count_update_now",
+      "comment:insert": "comment_insert",
+      "comment:invalid": "comment_invalid_request",
+      "comment:update": "comment_update",
+      "comment:delete": "comment_delete",
+      "comment:trash": "comment_trash",
+      "comment:approve": "comment_approve",
+      "comment:unapprove": "comment_unapprove",
+      "comment:spam": "comment_spam",
+      "comment:status-trash": "comment_trash",
+      "comment:bad-status": "comment_invalid_request",
+      "moderation:duplicate": "moderation_duplicate",
+      "moderation:flood": "moderation_flood",
+      "moderation:disallowed": "moderation_disallowed",
+      "moderation:hold": "moderation_hold",
+      "moderation:approve": "moderation_approve",
+      "query:status": "query_status",
+      "query:type": "query_type",
+      "query:post": "query_post",
+      "query:parent": "query_parent",
+      "query:author": "query_author",
+      "query:date": "query_date",
+      "query:search": "query_search",
+      "query:meta": "query_meta",
+      "query:taxonomy": "query_taxonomy",
+      "query:unknown": "query_unknown",
+      "hook:taxonomy": "taxonomy_register_hooks",
+      "hook:term": "term_write_hooks",
+      "hook:relationship": "term_relationship_hooks",
+      "hook:cache": "term_cache_hooks",
+      "hook:comment-write": "comment_write_hooks",
+      "hook:comment-status": "comment_status_hooks",
+      "hook:comment-query": "comment_query_hooks",
+      "hook:failed": "no_taxonomy_comment_hooks"
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "handwritten_php_shells_added": false,
+      "adapter_contract_owner": "haxe_typed",
+      "semantic_owner": "haxe",
+      "native_provider_claimed": false,
+      "removal_gate": "Install through typed Adapter IR/original-path generation and run differential PHP taxonomy/comment fixtures before claiming public PHP ABI ownership."
+    },
+    "source_escape_audits": [
+      {
+        "path": "src/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.hx",
+        "contains_dynamic": false,
+        "contains_untyped": false,
+        "contains_cast": false,
+        "contains_php_syntax_code": false,
+        "contains_raw_javascript": false
+      },
+      {
+        "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.hx",
+        "contains_dynamic": false,
+        "contains_untyped": false,
+        "contains_cast": false,
+        "contains_php_syntax_code": false,
+        "contains_raw_javascript": false
+      }
+    ]
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_profile": "8.4"
+  },
+  "build": {
+    "generated_file_hash_policy": "normalize_haxe_std_source_map_paths",
+    "generated_haxe_files": [
+      {
+        "path": "index.php",
+        "bytes": 396,
+        "sha256": "6e1e313c7946ce34922d2d349ee2de8cea1cd6de95a605f82d35c509fd304a1e"
+      },
+      {
+        "path": "lib/Array_hx.php",
+        "bytes": 22828,
+        "sha256": "32c90a3a4abe627e47449eb18915fdefb8183d786653e6e07bd3d4b4388f0d39"
+      },
+      {
+        "path": "lib/haxe/Exception.php",
+        "bytes": 3562,
+        "sha256": "316e56175b8f42282044b6c41c8dabc43ed717529be60aa7b6197545b700c63f"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1140,
+        "sha256": "6b5f7004e25a72bdfb6651c9e792c2e5ab3f1532a5ca070b45daec3f9fa5273c"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 481,
+        "sha256": "03388d4a73896cff3ebf578ae5cb8e65288f6bc7f211d4fb5c90068a31819012"
+      },
+      {
+        "path": "lib/haxe/ValueException.php",
+        "bytes": 1008,
+        "sha256": "38feb416f5ef92c9e3869b45b2339751be4bce751d8354230c5b558a310e3858"
+      },
+      {
+        "path": "lib/php/_Boot/HxAnon.php",
+        "bytes": 1182,
+        "sha256": "ba3e39829863ad05fe6deea1c94410d53456c0286580044eb2c7f9b272961706"
+      },
+      {
+        "path": "lib/php/_Boot/HxClass.php",
+        "bytes": 2861,
+        "sha256": "74af3a5ecc7de5d684262d23601f5421418a377aec56bb67accb6ede288ccf5a"
+      },
+      {
+        "path": "lib/php/_Boot/HxClosure.php",
+        "bytes": 2757,
+        "sha256": "4b0b18483c8b6844ac785a4a8771d2891a2786ba7b5135010f4c5adfca0b05fb"
+      },
+      {
+        "path": "lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 3952,
+        "sha256": "721523ea64f02298bc95c91eff8785e48e28fd85280d0bcde1850a887d13aa00"
+      },
+      {
+        "path": "lib/php/_Boot/HxEnum.php",
+        "bytes": 1181,
+        "sha256": "f52cbeca2116dc45c9bdb9502dc5e64575c4f8014145b85bafcc827bd98d2e0a"
+      },
+      {
+        "path": "lib/php/_Boot/HxString.php",
+        "bytes": 8211,
+        "sha256": "d729c50f86111a4ea769ea7102aadda87ab914abd07f7539b7e847ef194cc82b"
+      },
+      {
+        "path": "lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "lib/php/Boot.php",
+        "bytes": 36175,
+        "sha256": "d06ed1e404e568d996bbb5a4af6b58d200be9ee8c66cc4538d04e414042081a9"
+      },
+      {
+        "path": "lib/Std.php",
+        "bytes": 1104,
+        "sha256": "fff3bd412e47aae2dc7c32d9d9ee1db47348ab0b6601aa26ccaee25ba12b71ea"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.php",
+        "bytes": 15625,
+        "sha256": "b6c97b4ce7c5c2a355c81bbead13bcf60805c634e8320ba41cc2259795bbf399"
+      },
+      {
+        "path": "lib/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.php",
+        "bytes": 18534,
+        "sha256": "09c59bfffba48490a0ff3865c3cbb9c670c0501cd21e2b99746f88d92280a7bc"
+      }
+    ],
+    "php_lint": [
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/index.php",
+        "relative_path": "index.php",
+        "sha256": "sha256:6e1e313c7946ce34922d2d349ee2de8cea1cd6de95a605f82d35c509fd304a1e",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/index.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/Array_hx.php",
+        "relative_path": "lib/Array_hx.php",
+        "sha256": "sha256:32c90a3a4abe627e47449eb18915fdefb8183d786653e6e07bd3d4b4388f0d39",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/Array_hx.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/haxe/Exception.php",
+        "relative_path": "lib/haxe/Exception.php",
+        "sha256": "sha256:316e56175b8f42282044b6c41c8dabc43ed717529be60aa7b6197545b700c63f",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/haxe/Exception.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/haxe/iterators/ArrayIterator.php",
+        "relative_path": "lib/haxe/iterators/ArrayIterator.php",
+        "sha256": "sha256:6b5f7004e25a72bdfb6651c9e792c2e5ab3f1532a5ca070b45daec3f9fa5273c",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/haxe/iterators/ArrayIterator.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "relative_path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "sha256": "sha256:03388d4a73896cff3ebf578ae5cb8e65288f6bc7f211d4fb5c90068a31819012",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/haxe/iterators/ArrayKeyValueIterator.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/haxe/ValueException.php",
+        "relative_path": "lib/haxe/ValueException.php",
+        "sha256": "sha256:38feb416f5ef92c9e3869b45b2339751be4bce751d8354230c5b558a310e3858",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/haxe/ValueException.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxAnon.php",
+        "relative_path": "lib/php/_Boot/HxAnon.php",
+        "sha256": "sha256:ba3e39829863ad05fe6deea1c94410d53456c0286580044eb2c7f9b272961706",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxAnon.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxClass.php",
+        "relative_path": "lib/php/_Boot/HxClass.php",
+        "sha256": "sha256:74af3a5ecc7de5d684262d23601f5421418a377aec56bb67accb6ede288ccf5a",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxClass.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxClosure.php",
+        "relative_path": "lib/php/_Boot/HxClosure.php",
+        "sha256": "sha256:4b0b18483c8b6844ac785a4a8771d2891a2786ba7b5135010f4c5adfca0b05fb",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxClosure.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxDynamicStr.php",
+        "relative_path": "lib/php/_Boot/HxDynamicStr.php",
+        "sha256": "sha256:721523ea64f02298bc95c91eff8785e48e28fd85280d0bcde1850a887d13aa00",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxDynamicStr.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxEnum.php",
+        "relative_path": "lib/php/_Boot/HxEnum.php",
+        "sha256": "sha256:f52cbeca2116dc45c9bdb9502dc5e64575c4f8014145b85bafcc827bd98d2e0a",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxEnum.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxString.php",
+        "relative_path": "lib/php/_Boot/HxString.php",
+        "sha256": "sha256:d729c50f86111a4ea769ea7102aadda87ab914abd07f7539b7e847ef194cc82b",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_Boot/HxString.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/_polyfills.php",
+        "relative_path": "lib/php/_polyfills.php",
+        "sha256": "sha256:80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/_polyfills.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/php/Boot.php",
+        "relative_path": "lib/php/Boot.php",
+        "sha256": "sha256:d06ed1e404e568d996bbb5a4af6b58d200be9ee8c66cc4538d04e414042081a9",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/php/Boot.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/Std.php",
+        "relative_path": "lib/Std.php",
+        "sha256": "sha256:fff3bd412e47aae2dc7c32d9d9ee1db47348ab0b6601aa26ccaee25ba12b71ea",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/Std.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.php",
+        "relative_path": "lib/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.php",
+        "sha256": "sha256:b6c97b4ce7c5c2a355c81bbead13bcf60805c634e8320ba41cc2259795bbf399",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.php"
+      },
+      {
+        "path": "build/wp-core/wphx-308-02/haxe/lib/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.php",
+        "relative_path": "lib/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.php",
+        "sha256": "sha256:09c59bfffba48490a0ff3865c3cbb9c670c0501cd21e2b99746f88d92280a7bc",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-308-02/haxe/lib/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.php"
+      }
+    ]
+  },
+  "run": {
+    "command": "php build/wp-core/wphx-308-02/haxe/index.php",
+    "raw_output_sha256": "sha256:c55c2af8e5823263d94ffeb9abb7247f1c63869dd62ecef08f36ba5743d672dc",
+    "observations": {
+      "taxonomy:rest": "taxonomy_rest_visible",
+      "taxonomy:public": "taxonomy_public",
+      "taxonomy:queryable": "taxonomy_private_queryable",
+      "taxonomy:admin": "taxonomy_admin_only",
+      "taxonomy:internal": "taxonomy_internal",
+      "term:invalid-taxonomy": "term_invalid_request",
+      "term:insert": "term_insert",
+      "term:duplicate": "term_duplicate",
+      "term:update": "term_update",
+      "term:update-duplicate": "term_duplicate",
+      "term:delete": "term_delete",
+      "term:delete-default": "term_default_delete_blocked",
+      "term:missing": "term_missing",
+      "term:invalid-id": "term_invalid_request",
+      "rel:invalid": "relationship_invalid_request",
+      "rel:append": "relationship_append",
+      "rel:replace": "relationship_replace",
+      "rel:remove": "relationship_remove",
+      "rel:no-change": "relationship_no_change",
+      "count:none": "count_no_change",
+      "count:deferred": "count_deferred",
+      "count:taxonomy": "clean_taxonomy_cache",
+      "count:term": "clean_term_cache",
+      "count:update-now": "count_update_now",
+      "comment:insert": "comment_insert",
+      "comment:invalid": "comment_invalid_request",
+      "comment:update": "comment_update",
+      "comment:delete": "comment_delete",
+      "comment:trash": "comment_trash",
+      "comment:approve": "comment_approve",
+      "comment:unapprove": "comment_unapprove",
+      "comment:spam": "comment_spam",
+      "comment:status-trash": "comment_trash",
+      "comment:bad-status": "comment_invalid_request",
+      "moderation:duplicate": "moderation_duplicate",
+      "moderation:flood": "moderation_flood",
+      "moderation:disallowed": "moderation_disallowed",
+      "moderation:hold": "moderation_hold",
+      "moderation:approve": "moderation_approve",
+      "query:status": "query_status",
+      "query:type": "query_type",
+      "query:post": "query_post",
+      "query:parent": "query_parent",
+      "query:author": "query_author",
+      "query:date": "query_date",
+      "query:search": "query_search",
+      "query:meta": "query_meta",
+      "query:taxonomy": "query_taxonomy",
+      "query:unknown": "query_unknown",
+      "hook:taxonomy": "taxonomy_register_hooks",
+      "hook:term": "term_write_hooks",
+      "hook:relationship": "term_relationship_hooks",
+      "hook:cache": "term_cache_hooks",
+      "hook:comment-write": "comment_write_hooks",
+      "hook:comment-status": "comment_status_hooks",
+      "hook:comment-query": "comment_query_hooks",
+      "hook:failed": "no_taxonomy_comment_hooks"
+    },
+    "matches_expected": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "php-authored-taxonomy-comment-oracle-fixtures-not-yet-built",
+      "owner": "WPHX-308.02",
+      "detail": "The candidate has not yet run through vanilla WordPress and packaged candidate public taxonomy/comment APIs, database state, hooks, cache mutation, comment moderation, and query observations."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-308.02",
+      "detail": "No original-path wp-includes/taxonomy.php, wp-includes/comment.php, wp-includes/comment-template.php, WP_Term_Query, or WP_Comment_Query adapter is claimed in this slice."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-308-02-taxonomy-comment-adapter-contract-candidate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_taxonomy_comment_adapter_contract_candidate",
+    "promoted_contracts": 8,
+    "runtime_runs": 1,
+    "observation_count": 57,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

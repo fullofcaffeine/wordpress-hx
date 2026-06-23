@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 140,
+  "closed_task_count": 141,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -383,7 +383,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "7e629b0bc4ba790c3432e9f134aa1f50a70d22fe7c1bb34b034ad6b4d04ec622",
+          "sha256": "d74756598c3882addba656aa3df94ab93356df04bb7039f406d5b8f307d4ce89",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -1024,6 +1024,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-308.02",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-308-02-taxonomy-comment-adapter-contract-candidate.v1.json",
+          "sha256": "611e3f98003334750def0b8750d3547fc659fd9c00a9d16d6447d4623b618a44",
+          "id": "receipt:wphx-308-02-taxonomy-comment-adapter-contract-candidate"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-311",
       "receipts": [
         {
@@ -1108,7 +1118,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
-          "sha256": "b961bf3156832e38cfcd842b348bb2acc27cadecbaae515e4f2ad8a4bf99cb0e",
+          "sha256": "ee4b8d6b9711a9913750a23e240acc99d628755b3b3c1e01dd8f8714782f1317",
           "id": "receipt:wphx-311-08-rest-server-web-e2e"
         }
       ]
@@ -1118,7 +1128,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
-          "sha256": "797dd5c304fb3857e4f533609473253d219f038a9887238240a311f61a0b6e5a",
+          "sha256": "00926d0b340e3d94ef31fa54cb1ed2ca56afaeb599e6287e96036cda99019db4",
           "id": "receipt:wphx-311-09-rest-server-installed-browser"
         }
       ]
@@ -1128,7 +1138,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
-          "sha256": "d04bacd88dd130e8aa9d321095ff571e9d0d8dade1c603a40f973c4aac69fc6d",
+          "sha256": "8dc4710d5fac7ce2bb9c037c3513609b888a5e4a2e8df3762add0427e7eaa488",
           "id": "receipt:wphx-311-10-rest-server-db-browser-matrix"
         }
       ]
@@ -1353,7 +1363,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
-          "sha256": "daca67f7eb300ed0ee921e1bf883dff8a74ced0257e194ee068145f03849764c",
+          "sha256": "a21dc0970f4d379a8a22ff8b6e00801040cb6c942bcc41e6a0670d91a4bfd7a1",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]

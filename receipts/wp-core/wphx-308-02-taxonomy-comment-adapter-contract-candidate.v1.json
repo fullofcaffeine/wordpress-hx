@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-308-02-taxonomy-comment-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-0bj",
+    "external_ref": "WPHX-308.02",
+    "title": "Add taxonomy/comment adapter-contract candidate"
+  },
+  "recorded_at": "2026-06-23T19:20:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-308-02-taxonomy-comment-adapter-contract-candidate.v1.json",
+      "role": "taxonomy/comment Haxe semantic/adapter-contract candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-308-02-taxonomy-comment-adapter-contract-candidate.v1.json",
+      "role": "ADR-004-aware ownership manifest for taxonomy/comment Haxe candidate"
+    },
+    {
+      "path": "src/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.hx",
+      "role": "typed Haxe taxonomy/comment semantic and adapter-contract model"
+    },
+    {
+      "path": "tools/wp-core/run-taxonomy-comment-adapter-contract-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-308-taxonomy-comment-adapter-contract-candidate",
+    "npm run wp:core:wphx-308-taxonomy-comment-adapter-contract-candidate:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_taxonomy_comment_adapter_contract_candidate",
+    "promoted_contracts": 8,
+    "runtime_runs": 1,
+    "observation_count": 57,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

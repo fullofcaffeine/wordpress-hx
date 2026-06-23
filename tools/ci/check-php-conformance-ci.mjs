@@ -72,6 +72,7 @@ const REQUIRED_COMMANDS = [
   "npm run wp:core:wphx-307-post-crud-status-adapter-contract-candidate:check",
   "npm run wp:core:wphx-307-post-meta-cache-adapter-contract-candidate:check",
   "npm run wp:core:wphx-307-post-revision-adapter-contract-candidate:check",
+  "npm run wp:core:wphx-308-taxonomy-comment-adapter-contract-candidate:check",
   "npm run php:db-client-images:check",
   "npm run wp:core:wphx-305-live-db:check",
   "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
