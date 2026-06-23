@@ -1189,6 +1189,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-306.06",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+          "sha256": "4127c2bb1c820173f7e07103f5db60b9e4055db88e6217155dcd7b2174277e13",
+          "id": "receipt:wphx-306-06-user-auth-runtime-abi-fixture"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-322",
       "receipts": [
         {

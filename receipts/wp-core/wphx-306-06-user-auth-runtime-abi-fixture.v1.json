@@ -1,0 +1,39 @@
+{
+  "schema": "wphx.receipt.v1",
+  "id": "receipt:wphx-306-06-user-auth-runtime-abi-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.13.4",
+    "external_ref": "WPHX-306.06",
+    "title": "User/auth runtime ABI fixture"
+  },
+  "generated_at": "2026-06-23T23:35:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+      "sha256": "sha256:5aa9f1bd24908fa1b50428d72ee180ed7f4072eefd683ebdef3ad4fe2e8dc353",
+      "role": "user/auth runtime ABI fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+      "sha256": "sha256:422b660126f75b9432201b3a07a352ecb3e1a94e6229198c9bf3b858b516fa52",
+      "role": "ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-user-auth-runtime-abi-fixture.mjs",
+      "sha256": "sha256:2f02b361625a3081c83236224c2c82586dff582672112d5f122e1527a5de5bab",
+      "role": "fixture runner"
+    }
+  ],
+  "commands": [
+    "npm run wp:core:wphx-306-runtime-abi",
+    "npm run wp:core:wphx-306-runtime-abi:check"
+  ],
+  "result": {
+    "status": "passed",
+    "evidence_class": "runtime_abi",
+    "artifact_scope": "oracle_source_mirror",
+    "class_count": 7,
+    "fixture_case_count": 6,
+    "observations_equal": true
+  }
+}

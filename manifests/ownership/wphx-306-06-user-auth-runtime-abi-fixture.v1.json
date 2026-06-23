@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/user-auth-runtime-abi-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.13.4",
+    "external_ref": "WPHX-306.06"
+  },
+  "unit": {
+    "kind": "runtime_abi_fixture",
+    "name": "users/auth runtime ABI and plugin-facing reflection fixture",
+    "area": "wp-includes user/auth classes",
+    "public_contract": "This fixture records WordPress 7.0 runtime ABI for user/auth classes: reflection-visible declarations, declaring files/classes, public object state order, dynamic properties, magic methods, serialization shape, session token storage, and plugin-style access."
+  },
+  "ownership_state": "oracle_fixture",
+  "ownership_axes": {
+    "semantic_owner": "upstream_oracle",
+    "adapter_contract_owner": "not_claimed",
+    "emission_strategy": "upstream_source_mirror_fixture",
+    "execution_provider": "php_oracle_process",
+    "compatibility_evidence": "runtime_abi"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "oracle-source-mirror-runtime-abi-fixture",
+    "removal_gate": "Replace candidate mirror with generated original-path PHP once WPHX-306 public adapter classes exist; keep this fixture as the ABI oracle."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-user-auth-runtime-abi-fixture.mjs",
+    "manifests/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+    "manifests/ownership/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+    "receipts/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-306-06"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-306-runtime-abi",
+      "npm run wp:core:wphx-306-runtime-abi:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-306-06-user-auth-runtime-abi-fixture"
+    ],
+    "manifest_digest": "sha256:5aa9f1bd24908fa1b50428d72ee180ed7f4072eefd683ebdef3ad4fe2e8dc353"
+  }
+}
