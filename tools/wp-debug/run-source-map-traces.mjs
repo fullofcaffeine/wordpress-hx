@@ -193,13 +193,14 @@ function parseHaxeComments(file) {
   for (const [index, line] of lines.entries()) {
     const match = line.match(pattern);
     if (!match) continue;
+    const stableComment = line.trim().replace(match[1], normalizeHaxeSourcePath(match[1]));
     mappings.push({
       generated_path: file,
       generated_line: index + 1,
       haxe_path: match[1],
       haxe_line: Number(match[2]),
       haxe_characters: match[3],
-      generated_comment_sha256: sha256Text(line.trim())
+      generated_comment_sha256: sha256Text(stableComment)
     });
   }
   return mappings;

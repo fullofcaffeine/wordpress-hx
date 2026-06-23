@@ -128,6 +128,38 @@ function sha256(value) {
   return `sha256:${createHash("sha256").update(value).digest("hex")}`;
 }
 
+function phpVersionFamily(value) {
+  const [major, minor] = String(value).split(".");
+  return `${major}.${minor}`;
+}
+
+function normalizePath(value) {
+  if (typeof value !== "string") return value;
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const upstreamRoot = resolve(UPSTREAM_ROOT).replaceAll("\\", "/");
+  const normalized = value.replaceAll("\\", "/");
+  if (normalized.startsWith(`${cwd}/`)) return normalized.slice(cwd.length + 1);
+  if (normalized.startsWith(`${upstreamRoot}/`)) return `../wordpress-develop/${normalized.slice(upstreamRoot.length + 1)}`;
+  if (normalized.startsWith("/work/")) return normalized.slice("/work/".length);
+  return normalized;
+}
+
+function stableCommand(value) {
+  return normalizePath(value)
+    .replace(resolve(UPSTREAM_ROOT).replaceAll("\\", "/"), "../wordpress-develop")
+    .replaceAll(process.cwd().replaceAll("\\", "/"), "$PWD");
+}
+
+function stableRuntimeValue(value) {
+  if (Array.isArray(value)) return value.map(stableRuntimeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [key, key === "phpVersion" ? phpVersionFamily(entry) : stableRuntimeValue(entry)])
+    );
+  }
+  return normalizePath(value);
+}
+
 function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
 }
@@ -1396,8 +1428,8 @@ const manifest = {
   runtimes: {
     local: {
       id: "local-php-cli",
-      php_version: localOracle.result.phpVersion,
-      executable: lock.tools.php_cli.executable
+      php_version_family: phpVersionFamily(localOracle.result.phpVersion),
+      executable: "php"
     },
     docker: dockerImages.map(([id, image]) => ({ id, image })),
     skipped: skippedRuntimes
@@ -1406,11 +1438,11 @@ const manifest = {
     id: run.id,
     runtime: run.runtime,
     mode: run.mode,
-    command: run.command,
+    command: stableCommand(run.command),
     image: run.image ?? null,
     normalized_sha256: sha256(JSON.stringify(normalize(run.result))),
-    php_version: run.result.phpVersion,
-    package_boundary: run.result.packageBoundary
+    php_version_family: phpVersionFamily(run.result.phpVersion),
+    package_boundary: stableRuntimeValue(run.result.packageBoundary)
   })),
   comparisons,
   package_boundaries: candidateBoundaries,

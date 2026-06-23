@@ -11,8 +11,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
-      "bytes": 51479,
-      "sha256": "sha256:0d30ca4c244e0ecd90a615e3bd40160204587093cb10079b10473c6c0016bef2"
+      "bytes": 52785,
+      "sha256": "sha256:e8c36d43fc4d42643b77c578bf8b26532b8163978e0130444f0483e41d00fd2a"
     },
     "haxe_sources": [
       {
@@ -34,8 +34,8 @@
     "prior_manifests": [
       {
         "path": "manifests/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
-        "bytes": 4822263,
-        "sha256": "sha256:adb90a17a48fe6412c202775d46b262a9204cce1922ecbf3826161acab05c357"
+        "bytes": 4822236,
+        "sha256": "sha256:3fbb96055fd08b608dd53f0142610785426ae30e4bbfd59da9a32741b03a745d"
       },
       {
         "path": "manifests/wp-core/wphx-311-02-rest-settings-dispatch-fixture.v1.json",
@@ -504,8 +504,8 @@
   "runtimes": {
     "local": {
       "id": "local-php-cli",
-      "php_version": "8.4.7",
-      "executable": "/opt/homebrew/bin/php"
+      "php_version_family": "8.4",
+      "executable": "php"
     },
     "docker": [
       {
@@ -527,26 +527,26 @@
       "command": "php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle build/wp-core/wphx-311-07/oracle-package",
       "image": null,
       "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
-      "php_version": "8.4.7",
+      "php_version_family": "8.4",
       "package_boundary": {
-        "classFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         }
@@ -559,26 +559,26 @@
       "command": "php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate build/wp-core/wphx-311-07/candidate-package",
       "image": null,
       "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
-      "php_version": "8.4.7",
+      "php_version_family": "8.4",
       "package_boundary": {
-        "classFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         }
@@ -588,29 +588,29 @@
       "id": "docker-php-8.4-cli:oracle",
       "runtime": "docker-php-8.4-cli",
       "mode": "oracle",
-      "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle /work/build/wp-core/wphx-311-07/oracle-package",
+      "command": "docker run --rm -v $PWD:/work -v ../wordpress-develop:/wordpress-develop -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle /work/build/wp-core/wphx-311-07/oracle-package",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
-      "php_version": "8.4.22",
+      "php_version_family": "8.4",
       "package_boundary": {
-        "classFile": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         }
@@ -620,29 +620,29 @@
       "id": "docker-php-8.4-cli:candidate",
       "runtime": "docker-php-8.4-cli",
       "mode": "candidate",
-      "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate /work/build/wp-core/wphx-311-07/candidate-package",
+      "command": "docker run --rm -v $PWD:/work -v ../wordpress-develop:/wordpress-develop -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate /work/build/wp-core/wphx-311-07/candidate-package",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
-      "php_version": "8.4.22",
+      "php_version_family": "8.4",
       "package_boundary": {
-        "classFile": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         }
@@ -652,29 +652,29 @@
       "id": "docker-php-8.5-cli:oracle",
       "runtime": "docker-php-8.5-cli",
       "mode": "oracle",
-      "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle /work/build/wp-core/wphx-311-07/oracle-package",
+      "command": "docker run --rm -v $PWD:/work -v ../wordpress-develop:/wordpress-develop -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php oracle /work/build/wp-core/wphx-311-07/oracle-package",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
-      "php_version": "8.5.7",
+      "php_version_family": "8.5",
       "package_boundary": {
-        "classFile": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         }
@@ -684,29 +684,29 @@
       "id": "docker-php-8.5-cli:candidate",
       "runtime": "docker-php-8.5-cli",
       "mode": "candidate",
-      "command": "docker run --rm -v $PWD:/work -v /Users/fullofcaffeine/workspace/code/wordpress-develop:/wordpress-develop -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate /work/build/wp-core/wphx-311-07/candidate-package",
+      "command": "docker run --rm -v $PWD:/work -v ../wordpress-develop:/wordpress-develop -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-07/probe/rest-server-http-probe.php candidate /work/build/wp-core/wphx-311-07/candidate-package",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "normalized_sha256": "sha256:db9145a4fe489ac425b7f872297cae49366daf085f7745fdd51a01b466ebafb5",
-      "php_version": "8.5.7",
+      "php_version_family": "8.5",
       "package_boundary": {
-        "classFile": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/work/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         }

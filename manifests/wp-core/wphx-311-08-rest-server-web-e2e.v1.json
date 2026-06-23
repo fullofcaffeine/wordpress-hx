@@ -17,8 +17,8 @@
     },
     "packaged_runner": {
       "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
-      "bytes": 51479,
-      "sha256": "sha256:0d30ca4c244e0ecd90a615e3bd40160204587093cb10079b10473c6c0016bef2"
+      "bytes": 52785,
+      "sha256": "sha256:e8c36d43fc4d42643b77c578bf8b26532b8163978e0130444f0483e41d00fd2a"
     },
     "package_json": {
       "path": "package.json",
@@ -27,8 +27,8 @@
     },
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
-      "bytes": 112123,
-      "sha256": "sha256:005a1784a5a2e8a69adf9f1f0a65ef1530bad434f0eef556f29e2fca420fbd7d"
+      "bytes": 111392,
+      "sha256": "sha256:dd6bfc2376c1f9ee3cdd771dc32fd2d32f5e8f51804657d81d1f66342f332cdf"
     },
     "upstream_phpunit_groups": {
       "path": "tests/upstream/phpunit/groups.json",

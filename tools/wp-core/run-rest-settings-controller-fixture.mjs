@@ -129,6 +129,28 @@ function sha256(value) {
   return `sha256:${createHash("sha256").update(value).digest("hex")}`;
 }
 
+function phpVersionFamily(value) {
+  const [major, minor] = String(value).split(".");
+  return `${major}.${minor}`;
+}
+
+function stableRuntimeValue(value) {
+  if (Array.isArray(value)) return value.map(stableRuntimeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, entry]) => [key, key === "phpVersion" ? phpVersionFamily(entry) : stableRuntimeValue(entry)])
+    );
+  }
+  return value;
+}
+
+function stableRun(run) {
+  return {
+    ...run,
+    result: stableRuntimeValue(run.result)
+  };
+}
+
 function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
 }
@@ -1046,13 +1068,13 @@ const manifest = {
   runtimes: {
     local: {
       id: "local-php-cli",
-      php_version: localOracle.result.phpVersion,
-      executable: lock.tools.php_cli.executable
+      php_version_family: phpVersionFamily(localOracle.result.phpVersion),
+      executable: "php"
     },
     docker: dockerImages.map(([id, image]) => ({ id, image })),
     skipped: skippedRuntimes
   },
-  runs,
+  runs: runs.map(stableRun),
   comparisons,
   remaining_gaps: [
     {

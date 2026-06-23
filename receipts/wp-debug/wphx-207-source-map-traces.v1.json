@@ -6,7 +6,7 @@
   "command": "npm run wp:debug:sourcemap",
   "status": "passed",
   "manifest": "manifests/wp-debug/wphx-207-source-map-traces.v1.json",
-  "manifest_sha256": "sha256:18918d4365189e10e314bace2d215d6a11288a3544c0d5f5df02fcb90f55d2b1",
+  "manifest_sha256": "sha256:b6d1f699cf3841abbf77f647fea349a76d48ad965c9a2ca55f9e9ebefad5a048",
   "runtime_run_count": 3,
   "generated_shell": "wp-includes/load.php",
   "original_source_unit": "source:wordpress-7.0.0:src/wp-includes/load.php"
