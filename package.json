@@ -149,6 +149,8 @@
     "wp:core:wphx-306-foundation:check": "node tools/wp-core/run-user-auth-foundation.mjs --check",
     "wp:core:wphx-306-capability-role": "node tools/wp-core/run-user-capability-role-fixture.mjs",
     "wp:core:wphx-306-capability-role:check": "node tools/wp-core/run-user-capability-role-fixture.mjs --check",
+    "wp:core:wphx-306-auth-cookie-nonce": "node tools/wp-core/run-user-auth-cookie-nonce-fixture.mjs",
+    "wp:core:wphx-306-auth-cookie-nonce:check": "node tools/wp-core/run-user-auth-cookie-nonce-fixture.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",

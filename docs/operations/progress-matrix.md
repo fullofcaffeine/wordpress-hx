@@ -5,7 +5,7 @@ This document is the durable human-readable rollup for progress toward a WordPre
 Beads remains the task database. This matrix is a status ledger over Beads issues, receipts, manifests, and PRD milestones. Update it in the same change whenever milestone status, scope, evidence gates, Gutenberg split policy, or completion estimates change.
 
 Last updated: 2026-06-23
-Source checkpoint: `WPHX-306.03 capability and role oracle fixture`
+Source checkpoint: `WPHX-306.04 auth-cookie and nonce oracle fixture`
 Tracking issue: `WPHX-000.02`
 
 ## Super Progress
@@ -18,7 +18,7 @@ This is an evidence-weighted program estimate, not source-line completion. It gi
 | --- | ---: | ---: | ---: | --- |
 | Program governance, baselines, manifests, Beads, receipts | 10 | 95 | 9.5 | `WPHX-000`, `WPHX-800`, baseline receipts, locked sibling repo policy |
 | PHP target feasibility, ABI, linker, public boundary foundation | 20 | 100 | 20.0 | `WPHX-100` and `WPHX-200` closed |
-| WordPress PHP runtime Haxe ownership | 40 | 18 | 7.2 | `WPHX-300` has verified vertical slices, first-party PHP manifest ownership/split closure, the first user/auth Haxe adapter-contract candidate, and a capability/role oracle fixture, but much of Core remains unported |
+| WordPress PHP runtime Haxe ownership | 40 | 18 | 7.2 | `WPHX-300` has verified vertical slices, first-party PHP manifest ownership/split closure, the first user/auth Haxe adapter-contract candidate, and auth-domain oracle fixtures, but much of Core remains unported |
 | Installed WordPress distribution behavior and ecosystem gates | 15 | 5 | 0.8 | `WPHX-700` has strong early gates, but complete installed-system parity is not yet closed |
 | Browser, classic JS, Gutenberg package ownership | 10 | 0 | 0.0 | `WPHX-400`, `WPHX-500`, and `WPHX-600` are not yet active implementation tracks |
 | Security, performance, reliability, and release closure | 5 | 0 | 0.0 | early security corpus exists, full nonfunctional closure is later-stage work |
@@ -53,7 +53,7 @@ ADR-004 clarifies ownership claims without changing the score: PHP is the privil
 | `WPHX-303` Error/deprecation/formatting/escaping/KSES | closed | Multiple Haxe-owned decision slices and security corpus gates exist |
 | `WPHX-304` Options/transients/object cache | closed | Option/cache candidate gates and fixtures exist |
 | `WPHX-305` wpdb/database abstraction | closed | Strong wpdb vertical slice exists, including native mysqli and packaged ABI gates; still not evidence that every related Core DB path is Haxe-owned |
-| `WPHX-306` Users/roles/capabilities/auth/cookies/nonces | in progress | Foundation receipt covers 45 C1 source files, 45 distribution artifacts, 379 ABI entries, 40 upstream tests, and the first typed Haxe auth adapter-contract candidate. `WPHX-306.03` adds a capability/role oracle fixture covering 9 cases and 21 symbols across roles, primitive caps, meta caps, filters, missing users, super-admin behavior, and site switching. Public PHP replacement, password hashing/signing, raw cookie/header behavior, application-password authentication, runtime ABI, and installed login/auth parity remain open gates. |
+| `WPHX-306` Users/roles/capabilities/auth/cookies/nonces | in progress | Foundation receipt covers 45 C1 source files, 45 distribution artifacts, 379 ABI entries, 40 upstream tests, and the first typed Haxe auth adapter-contract candidate. `WPHX-306.03` adds a capability/role oracle fixture covering 9 cases and 21 symbols. `WPHX-306.04` adds an auth-cookie/nonce oracle fixture covering 9 cases and 11 symbols across cookie generation/parsing/validation, malformed/bad hash/bad session paths, set/clear cookie intent, nonce current/previous/invalid routes, logged-out nonce filtering, and pluggable declaration timing. Public PHP replacement, real web-SAPI Set-Cookie headers, password/application-password behavior, runtime ABI, and installed login/auth parity remain open gates. |
 | `WPHX-311` REST API/schema | closed | Settings and REST server decision slices are typed Haxe strategy candidates; packaged, installed-browser, DB-backed, and cross-origin REST gates cover the active transport surface |
 | `WPHX-317` Multisite/network | closed | Domain closure receipt exists across all 7 child tasks: surface inventory, site/network option plus site-transient fixtures, blog switch/cache fixtures, site/network ABI/query fixtures, bootstrap/domain-path routing fixtures, signup/lifecycle/counts/quota fixtures, and the first typed Haxe multisite adapter-contract candidate. Public PHP replacement and installed multisite distribution claims remain later gates. |
 | `WPHX-322` PHP first-party manifest closure | closed | Manifest/split closure assigns 1,564 C1 PHP runtime source entries and 1,222 C1 PHP distribution artifacts to closed domains or explicit follow-up owners, with zero unassigned; PHP vendor entries are excluded to WPHX-323 |

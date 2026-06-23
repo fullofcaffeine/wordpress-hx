@@ -1169,6 +1169,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-306.04",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-306-04-auth-cookie-nonce-fixture.v1.json",
+          "sha256": "a7dff203620ab982b743328beaeb4f4222e939b46378d314ece8ae80a4add134",
+          "id": "receipt:wphx-306-04-auth-cookie-nonce-fixture"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-322",
       "receipts": [
         {

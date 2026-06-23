@@ -1,0 +1,449 @@
+{
+  "schema": "wphx.wp-core-user-auth-cookie-nonce-fixture.v1",
+  "issue": "WPHX-306.04",
+  "generated_at": "2026-06-23T22:05:00.000Z",
+  "generator": "tools/wp-core/run-user-auth-cookie-nonce-fixture.mjs",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "commit": "26b68024931348d267b70e2a29910e1320d0094f",
+    "source_files": [
+      {
+        "path": "src/wp-includes/pluggable.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      }
+    ]
+  },
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-306-01-user-auth-surface.v1.json",
+      "bytes": 28464,
+      "sha256": "sha256:0337450dd123f7c4007c9af534fbdc937c7675b4a6c3031f644f973d2477c26a"
+    },
+    "foundation_manifest": {
+      "path": "manifests/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+      "bytes": 15721,
+      "sha256": "sha256:ad8e6814cae83a4adffd85be774b4ea32bcc5c7e3752c91d29912ba8620a56ce"
+    }
+  },
+  "fixture": {
+    "evidence_class": "targeted_semantic_parity",
+    "artifact_scope": "oracle_source_mirror_fixture",
+    "source_files": [
+      "src/wp-includes/pluggable.php"
+    ],
+    "covered_symbols": [
+      "wp_generate_auth_cookie",
+      "wp_parse_auth_cookie",
+      "wp_validate_auth_cookie",
+      "wp_set_auth_cookie",
+      "wp_clear_auth_cookie",
+      "wp_nonce_tick",
+      "wp_create_nonce",
+      "wp_verify_nonce",
+      "wp_hash",
+      "wp_salt",
+      "wp_get_session_token"
+    ],
+    "cases": [
+      {
+        "id": "auth-cookie:generate-parse-validate",
+        "symbol": "wp_generate_auth_cookie/wp_validate_auth_cookie",
+        "focus": "valid auth cookie roundtrip with deterministic token and salts"
+      },
+      {
+        "id": "auth-cookie:bad-hash",
+        "symbol": "wp_validate_auth_cookie",
+        "focus": "tampered HMAC fails and fires auth_cookie_bad_hash"
+      },
+      {
+        "id": "auth-cookie:bad-session-token",
+        "symbol": "wp_validate_auth_cookie",
+        "focus": "valid HMAC with revoked token fails session verification"
+      },
+      {
+        "id": "auth-cookie:malformed",
+        "symbol": "wp_parse_auth_cookie/wp_validate_auth_cookie",
+        "focus": "malformed cookie returns false and fires malformed hook"
+      },
+      {
+        "id": "auth-cookie:set",
+        "symbol": "wp_set_auth_cookie",
+        "focus": "auth and logged-in cookie generation, scheme selection, expiry deltas, and set-cookie intent"
+      },
+      {
+        "id": "auth-cookie:clear",
+        "symbol": "wp_clear_auth_cookie",
+        "focus": "clear-cookie intent and clear_auth_cookie hook"
+      },
+      {
+        "id": "nonce:current-previous-invalid",
+        "symbol": "wp_create_nonce/wp_verify_nonce",
+        "focus": "current tick returns 1, previous tick returns 2, invalid nonce returns false and fires failure hook"
+      },
+      {
+        "id": "nonce:logged-out-filter",
+        "symbol": "nonce_user_logged_out",
+        "focus": "logged-out nonce UID filter participates in nonce creation and verification"
+      },
+      {
+        "id": "pluggable:declaration-timing",
+        "symbol": "function_exists guards",
+        "focus": "selected pluggable functions are declared after include and were not declared before include"
+      }
+    ],
+    "normalization": [
+      "Cookie values are summarized by SHA-256 and structural fields rather than committed raw secrets.",
+      "Hook arguments containing cookie values are summarized by digest and part count.",
+      "Auth-cookie expiration hook arguments are recorded as deltas from current process time.",
+      "Nonce lifetime is filtered to a large value so the tick is stable across routine check runs."
+    ],
+    "candidate_policy": {
+      "public_php_replacement_claimed": false,
+      "haxe_semantic_ownership_claimed": false,
+      "handwritten_production_php_added": false,
+      "note": "The candidate side currently mirrors locked upstream source to establish a stable differential fixture. A later WPHX-306 slice must replace the candidate mirror with generated original-path PHP before ownership can be upgraded."
+    }
+  },
+  "runs": {
+    "oracle": {
+      "mode": "oracle",
+      "command": "php build/wp-core/wphx-306-04/probe.php oracle build/wp-core/wphx-306-04/oracle",
+      "raw_output_sha256": "sha256:8f0c39cd6ee32cc31c50a46a9df3e9bae9e1671f6d1995ebc289001c2c0caf40",
+      "result": {
+        "mode": "oracle",
+        "observations": {
+          "auth-cookie:bad-hash": false,
+          "auth-cookie:bad-hash-actions": [
+            {
+              "hook": "auth_cookie_bad_hash",
+              "args": [
+                [
+                  "admin",
+                  "2000000000",
+                  "session-token-current",
+                  "badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb",
+                  "auth"
+                ]
+              ]
+            }
+          ],
+          "auth-cookie:bad-session-actions": [
+            {
+              "hook": "auth_cookie_bad_session_token",
+              "args": [
+                [
+                  "admin",
+                  "2000000000",
+                  "revoked-token",
+                  "fd70968b626e2fc71936bd128d9f72650809f7401c5cff1ab25abfbe11ae1a2d",
+                  "auth"
+                ]
+              ]
+            }
+          ],
+          "auth-cookie:bad-session-token": false,
+          "auth-cookie:clear-actions": [
+            {
+              "hook": "clear_auth_cookie",
+              "args": []
+            }
+          ],
+          "auth-cookie:clear-headers-count": 0,
+          "auth-cookie:generated": {
+            "sha256": "5d072a74e47d84853ddf2d4a6538dfb5c84c64ec59fdd6932de549c2e111f421",
+            "parts": 4,
+            "username": "admin",
+            "expiration_is_expected": true,
+            "token": "session-token-current",
+            "hmac_length": 64
+          },
+          "auth-cookie:malformed": false,
+          "auth-cookie:malformed-actions": [
+            {
+              "hook": "auth_cookie_malformed",
+              "args": [
+                "not|enough|parts",
+                "auth"
+              ]
+            }
+          ],
+          "auth-cookie:parsed": {
+            "username": "admin",
+            "expiration": "2000000000",
+            "token": "session-token-current",
+            "hmac": "9913eded79f356cf1bc7d8a646dc59187b892aaa3980149a5cf2b4aa7d14adcf",
+            "scheme": "auth"
+          },
+          "auth-cookie:set-actions": {
+            "set_auth_cookie": [
+              {
+                "hook": "set_auth_cookie",
+                "args": [
+                  {
+                    "parts": 4,
+                    "username": "admin",
+                    "expiration_delta_kind": "remember_expiration",
+                    "token": "session-token-current",
+                    "hmac_length": 64
+                  },
+                  {
+                    "time_delta_kind": "remember_browser_expire"
+                  },
+                  {
+                    "time_delta_kind": "remember_expiration"
+                  },
+                  1,
+                  "auth",
+                  "session-token-current"
+                ]
+              }
+            ],
+            "set_logged_in_cookie": [
+              {
+                "hook": "set_logged_in_cookie",
+                "args": [
+                  {
+                    "parts": 4,
+                    "username": "admin",
+                    "expiration_delta_kind": "remember_expiration",
+                    "token": "session-token-current",
+                    "hmac_length": 64
+                  },
+                  {
+                    "time_delta_kind": "remember_browser_expire"
+                  },
+                  {
+                    "time_delta_kind": "remember_expiration"
+                  },
+                  1,
+                  "logged_in",
+                  "session-token-current"
+                ]
+              }
+            ]
+          },
+          "auth-cookie:set-headers": [],
+          "auth-cookie:validated": 1,
+          "errors": [],
+          "nonce:created-length": 10,
+          "nonce:failure-actions": [
+            {
+              "hook": "wp_verify_nonce_failed",
+              "args": [
+                "invalidnonce",
+                "save-post",
+                {
+                  "WP_User": {
+                    "ID": 1,
+                    "user_login": "admin"
+                  }
+                },
+                "session-token-current"
+              ]
+            }
+          ],
+          "nonce:logged-out-current": 1,
+          "nonce:verify-current": 1,
+          "nonce:verify-invalid": false,
+          "nonce:verify-previous": 2,
+          "pluggable:declared-after": {
+            "wp_validate_auth_cookie": true,
+            "wp_generate_auth_cookie": true,
+            "wp_create_nonce": true,
+            "wp_verify_nonce": true
+          },
+          "pluggable:declared-before": {
+            "wp_validate_auth_cookie": false,
+            "wp_generate_auth_cookie": false,
+            "wp_create_nonce": false,
+            "wp_verify_nonce": false
+          }
+        }
+      }
+    },
+    "candidate": {
+      "mode": "candidate",
+      "command": "php build/wp-core/wphx-306-04/probe.php candidate build/wp-core/wphx-306-04/candidate",
+      "raw_output_sha256": "sha256:fef140297e3aac17449271db3d40452b2b7e943531e59f401cb4259bd2b374dd",
+      "result": {
+        "mode": "candidate",
+        "observations": {
+          "auth-cookie:bad-hash": false,
+          "auth-cookie:bad-hash-actions": [
+            {
+              "hook": "auth_cookie_bad_hash",
+              "args": [
+                [
+                  "admin",
+                  "2000000000",
+                  "session-token-current",
+                  "badbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadbadb",
+                  "auth"
+                ]
+              ]
+            }
+          ],
+          "auth-cookie:bad-session-actions": [
+            {
+              "hook": "auth_cookie_bad_session_token",
+              "args": [
+                [
+                  "admin",
+                  "2000000000",
+                  "revoked-token",
+                  "fd70968b626e2fc71936bd128d9f72650809f7401c5cff1ab25abfbe11ae1a2d",
+                  "auth"
+                ]
+              ]
+            }
+          ],
+          "auth-cookie:bad-session-token": false,
+          "auth-cookie:clear-actions": [
+            {
+              "hook": "clear_auth_cookie",
+              "args": []
+            }
+          ],
+          "auth-cookie:clear-headers-count": 0,
+          "auth-cookie:generated": {
+            "sha256": "5d072a74e47d84853ddf2d4a6538dfb5c84c64ec59fdd6932de549c2e111f421",
+            "parts": 4,
+            "username": "admin",
+            "expiration_is_expected": true,
+            "token": "session-token-current",
+            "hmac_length": 64
+          },
+          "auth-cookie:malformed": false,
+          "auth-cookie:malformed-actions": [
+            {
+              "hook": "auth_cookie_malformed",
+              "args": [
+                "not|enough|parts",
+                "auth"
+              ]
+            }
+          ],
+          "auth-cookie:parsed": {
+            "username": "admin",
+            "expiration": "2000000000",
+            "token": "session-token-current",
+            "hmac": "9913eded79f356cf1bc7d8a646dc59187b892aaa3980149a5cf2b4aa7d14adcf",
+            "scheme": "auth"
+          },
+          "auth-cookie:set-actions": {
+            "set_auth_cookie": [
+              {
+                "hook": "set_auth_cookie",
+                "args": [
+                  {
+                    "parts": 4,
+                    "username": "admin",
+                    "expiration_delta_kind": "remember_expiration",
+                    "token": "session-token-current",
+                    "hmac_length": 64
+                  },
+                  {
+                    "time_delta_kind": "remember_browser_expire"
+                  },
+                  {
+                    "time_delta_kind": "remember_expiration"
+                  },
+                  1,
+                  "auth",
+                  "session-token-current"
+                ]
+              }
+            ],
+            "set_logged_in_cookie": [
+              {
+                "hook": "set_logged_in_cookie",
+                "args": [
+                  {
+                    "parts": 4,
+                    "username": "admin",
+                    "expiration_delta_kind": "remember_expiration",
+                    "token": "session-token-current",
+                    "hmac_length": 64
+                  },
+                  {
+                    "time_delta_kind": "remember_browser_expire"
+                  },
+                  {
+                    "time_delta_kind": "remember_expiration"
+                  },
+                  1,
+                  "logged_in",
+                  "session-token-current"
+                ]
+              }
+            ]
+          },
+          "auth-cookie:set-headers": [],
+          "auth-cookie:validated": 1,
+          "errors": [],
+          "nonce:created-length": 10,
+          "nonce:failure-actions": [
+            {
+              "hook": "wp_verify_nonce_failed",
+              "args": [
+                "invalidnonce",
+                "save-post",
+                {
+                  "WP_User": {
+                    "ID": 1,
+                    "user_login": "admin"
+                  }
+                },
+                "session-token-current"
+              ]
+            }
+          ],
+          "nonce:logged-out-current": 1,
+          "nonce:verify-current": 1,
+          "nonce:verify-invalid": false,
+          "nonce:verify-previous": 2,
+          "pluggable:declared-after": {
+            "wp_validate_auth_cookie": true,
+            "wp_generate_auth_cookie": true,
+            "wp_create_nonce": true,
+            "wp_verify_nonce": true
+          },
+          "pluggable:declared-before": {
+            "wp_validate_auth_cookie": false,
+            "wp_generate_auth_cookie": false,
+            "wp_create_nonce": false,
+            "wp_verify_nonce": false
+          }
+        }
+      }
+    },
+    "observations_equal": true
+  },
+  "parity": {
+    "status": "passed",
+    "oracle_observation_sha256": "sha256:006ab64df4c1574463da879676afa3936b8ca3cd77a6cc85e7cd8069be06d90d",
+    "candidate_observation_sha256": "sha256:006ab64df4c1574463da879676afa3936b8ca3cd77a6cc85e7cd8069be06d90d"
+  },
+  "remaining_gaps": [
+    {
+      "id": "generated-auth-adapter-not-installed",
+      "owner": "WPHX-306",
+      "detail": "Auth-cookie and nonce behavior is only proven between upstream mirrors. Generated public PHP and typed Adapter IR are not yet installed."
+    },
+    {
+      "id": "native-setcookie-not-fully-observable-in-cli",
+      "owner": "WPHX-306",
+      "detail": "The fixture records hook-level cookie intent and CLI headers_list. Installed HTTP/E2E gates must later validate real Set-Cookie headers through a web SAPI."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-306-04-auth-cookie-nonce-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "cases": 9,
+    "covered_symbols": 11,
+    "public_php_replacement_claimed": false,
+    "artifact_scope": "oracle_source_mirror_fixture"
+  }
+}

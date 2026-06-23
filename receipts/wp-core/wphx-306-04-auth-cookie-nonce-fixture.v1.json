@@ -1,0 +1,37 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-306-04-auth-cookie-nonce-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.13.2",
+    "external_ref": "WPHX-306.04",
+    "title": "Auth cookie and nonce oracle fixture"
+  },
+  "recorded_at": "2026-06-23T22:05:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-306-04-auth-cookie-nonce-fixture.v1.json",
+      "role": "auth-cookie and nonce differential fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-306-04-auth-cookie-nonce-fixture.v1.json",
+      "role": "ownership manifest for auth-cookie and nonce fixture"
+    },
+    {
+      "path": "tools/wp-core/run-user-auth-cookie-nonce-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-306-auth-cookie-nonce",
+    "npm run wp:core:wphx-306-auth-cookie-nonce:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "cases": 9,
+    "covered_symbols": 11,
+    "public_php_replacement_claimed": false,
+    "artifact_scope": "oracle_source_mirror_fixture"
+  }
+}
