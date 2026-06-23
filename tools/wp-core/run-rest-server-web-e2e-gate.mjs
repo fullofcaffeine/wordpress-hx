@@ -547,7 +547,7 @@ function normalizeBody(text) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url);
+  const response = await fetchWithRetry(url);
   const text = await response.text();
   return {
     status: response.status,
@@ -556,12 +556,25 @@ async function fetchJson(url) {
   };
 }
 
+async function fetchWithRetry(input, init) {
+  let lastError;
+  for (let attempt = 0; attempt < 5; attempt += 1) {
+    try {
+      return await fetch(input, init);
+    } catch (error) {
+      lastError = error;
+      await sleep(100 * (attempt + 1));
+    }
+  }
+  throw lastError;
+}
+
 async function fetchCase(baseUrl, testCase) {
   const headers = {};
   if (testCase.contentType) {
     headers["content-type"] = testCase.contentType;
   }
-  const response = await fetch(`${baseUrl}${testCase.path}`, {
+  const response = await fetchWithRetry(`${baseUrl}${testCase.path}`, {
     method: testCase.method,
     headers,
     body: testCase.body

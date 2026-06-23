@@ -42,7 +42,7 @@
       "receipt:wphx-311-07-rest-server-packaged-http",
       "receipt:wphx-700-05-upstream-phpunit-ratchet"
     ],
-    "manifest_digest": "sha256:d586872ab560505244c248b62e2fc16d92654f2b338eccec3d0599a35ee778e6"
+    "manifest_digest": "sha256:0ccc8d6026ce78e217546da7b6f72dd0f8a1be7d6d62aaaa18b599281937eb77"
   },
   "notes": "This gate uses PHP's built-in web server over packaged oracle/candidate roots. The candidate package still mirrors many WP_REST_Server methods from upstream PHP while owned dispatch/serve_request/respond_to_request methods are declared from the candidate package file."
 }
