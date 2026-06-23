@@ -28,7 +28,7 @@
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
       "bytes": 111392,
-      "sha256": "sha256:bd9b172f3bfc721aa224b709470abbc0ea1b7852ee46d70f612d44a931469738"
+      "sha256": "sha256:c42c4aa5faa69d38b46c0e67f88d4dcadd7941194b7db940ed688798cce17005"
     },
     "upstream_phpunit_groups": {
       "path": "tests/upstream/phpunit/groups.json",

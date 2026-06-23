@@ -6,13 +6,13 @@
   "inputs": {
     "controller_fixture_manifest": {
       "path": "manifests/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
-      "bytes": 4822263,
-      "sha256": "sha256:adb90a17a48fe6412c202775d46b262a9204cce1922ecbf3826161acab05c357"
+      "bytes": 4822236,
+      "sha256": "sha256:3fbb96055fd08b608dd53f0142610785426ae30e4bbfd59da9a32741b03a745d"
     },
     "dispatch_fixture_manifest": {
       "path": "manifests/wp-core/wphx-311-02-rest-settings-dispatch-fixture.v1.json",
-      "bytes": 3499767,
-      "sha256": "sha256:186c341ecc03066b74cd244cbeb5729593e62ff5bcd6864498889e6fee97ab8b"
+      "bytes": 3499740,
+      "sha256": "sha256:d8c6a3a84538231df28f6e59f410e78c14b061807aceaaabc3f40abaa2ad0b29"
     },
     "toolchain_lock": {
       "path": "toolchain.lock.json",
@@ -355,8 +355,8 @@
   "runtimes": {
     "local": {
       "id": "local-php-cli",
-      "php_version": "8.4.7",
-      "executable": "/opt/homebrew/bin/php"
+      "php_version_family": "8.4",
+      "executable": "php"
     },
     "docker": [
       {
@@ -376,7 +376,7 @@
       "runtime": "local-php-cli",
       "mode": "oracle",
       "command": "php build/wp-core/wphx-311-03/probe.php oracle build/wp-core/wphx-311-03/oracle",
-      "php_version": "8.4.7",
+      "php_version_family": "8.4",
       "haxe_strategy_loaded": false,
       "case_count": 4,
       "normalized_sha256": "sha256:0679dcba72b5d7d4024f1844f0984045a41af591c7c4023f85db51a926f38e59"
@@ -386,7 +386,7 @@
       "runtime": "local-php-cli",
       "mode": "candidate",
       "command": "php build/wp-core/wphx-311-03/probe.php candidate build/wp-core/wphx-311-03/candidate",
-      "php_version": "8.4.7",
+      "php_version_family": "8.4",
       "haxe_strategy_loaded": true,
       "case_count": 4,
       "normalized_sha256": "sha256:0679dcba72b5d7d4024f1844f0984045a41af591c7c4023f85db51a926f38e59"
@@ -396,7 +396,7 @@
       "runtime": "docker-php-8.4-cli",
       "mode": "oracle",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-03/probe.php oracle /work/build/wp-core/wphx-311-03/oracle",
-      "php_version": "8.4.22",
+      "php_version_family": "8.4",
       "haxe_strategy_loaded": false,
       "case_count": 4,
       "normalized_sha256": "sha256:0679dcba72b5d7d4024f1844f0984045a41af591c7c4023f85db51a926f38e59"
@@ -406,7 +406,7 @@
       "runtime": "docker-php-8.4-cli",
       "mode": "candidate",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-311-03/probe.php candidate /work/build/wp-core/wphx-311-03/candidate",
-      "php_version": "8.4.22",
+      "php_version_family": "8.4",
       "haxe_strategy_loaded": true,
       "case_count": 4,
       "normalized_sha256": "sha256:0679dcba72b5d7d4024f1844f0984045a41af591c7c4023f85db51a926f38e59"
@@ -416,7 +416,7 @@
       "runtime": "docker-php-8.5-cli",
       "mode": "oracle",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-03/probe.php oracle /work/build/wp-core/wphx-311-03/oracle",
-      "php_version": "8.5.7",
+      "php_version_family": "8.5",
       "haxe_strategy_loaded": false,
       "case_count": 4,
       "normalized_sha256": "sha256:0679dcba72b5d7d4024f1844f0984045a41af591c7c4023f85db51a926f38e59"
@@ -426,7 +426,7 @@
       "runtime": "docker-php-8.5-cli",
       "mode": "candidate",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-311-03/probe.php candidate /work/build/wp-core/wphx-311-03/candidate",
-      "php_version": "8.5.7",
+      "php_version_family": "8.5",
       "haxe_strategy_loaded": true,
       "case_count": 4,
       "normalized_sha256": "sha256:0679dcba72b5d7d4024f1844f0984045a41af591c7c4023f85db51a926f38e59"

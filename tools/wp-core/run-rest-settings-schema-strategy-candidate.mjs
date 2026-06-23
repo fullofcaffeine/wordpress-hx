@@ -115,6 +115,11 @@ function sha256(value) {
   return `sha256:${createHash("sha256").update(value).digest("hex")}`;
 }
 
+function phpVersionFamily(value) {
+  const [major, minor] = String(value).split(".");
+  return `${major}.${minor}`;
+}
+
 function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
 }
@@ -870,8 +875,8 @@ const manifest = {
   runtimes: {
     local: {
       id: "local-php-cli",
-      php_version: localOracle.result.phpVersion,
-      executable: lock.tools.php_cli.executable
+      php_version_family: phpVersionFamily(localOracle.result.phpVersion),
+      executable: "php"
     },
     docker: dockerImages.map(([id, image]) => ({ id, image })),
     skipped: skippedRuntimes
@@ -881,7 +886,7 @@ const manifest = {
     runtime: run.runtime,
     mode: run.mode,
     command: run.command,
-    php_version: run.result.phpVersion,
+    php_version_family: phpVersionFamily(run.result.phpVersion),
     haxe_strategy_loaded: run.result.haxeStrategyLoaded,
     case_count: run.result.cases.length,
     normalized_sha256: sha256(JSON.stringify(normalize(run.result)))

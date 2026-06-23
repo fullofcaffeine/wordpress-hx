@@ -44,8 +44,8 @@
       },
       {
         "path": "manifests/wp-core/wphx-311-03-rest-settings-schema-strategy-candidate.v1.json",
-        "bytes": 20405,
-        "sha256": "sha256:eec01c339c928107af8019c9d1858feca8f9c6629e52eaf49b27935e18c2d70f"
+        "bytes": 20420,
+        "sha256": "sha256:f9c17c7fc3a45bd71c8391bb369890e194726ffe9b13add798754fea7eea0b4e"
       },
       {
         "path": "manifests/wp-core/wphx-311-04-rest-settings-value-strategy-candidate.v1.json",
