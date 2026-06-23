@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-307-07-wp-query-live-db-fixture",
+  "issue": {
+    "id": "wordpresshx-ze7",
+    "external_ref": "WPHX-307.07",
+    "title": "Add WP_Query live DB SQL/result fixture"
+  },
+  "recorded_at": "2026-06-23T22:25:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-307-07-wp-query-live-db-fixture.v1.json",
+      "role": "WP_Query live DB SQL/result parity manifest",
+      "sha256": "sha256:96e86fe4f0400e944959516e1a7be9fbe95a067713de14f0497dafcc9f4d3d59"
+    },
+    {
+      "path": "manifests/ownership/wphx-307-07-wp-query-live-db-fixture.v1.json",
+      "role": "oracle-source-mirror ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-wp-query-live-db-fixture.mjs",
+      "role": "live DB runner"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "locked MySQL and PHP DB-client image inputs"
+    }
+  ],
+  "verification_commands": [
+    "npm run php:db-client-images",
+    "npm run php:db-client-images:check",
+    "npm run wp:core:wphx-307-wp-query-live-db",
+    "npm run wp:core:wphx-307-wp-query-live-db:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "db_runtimes": 1,
+    "php_client_runtimes": 1
+  }
+}

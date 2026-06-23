@@ -169,6 +169,8 @@
     "wp:core:wphx-307-post-revision-adapter-contract-candidate:check": "node tools/wp-core/run-post-revision-adapter-contract-candidate.mjs --check",
     "wp:core:wphx-307-wp-query-runtime-fixture": "node tools/wp-core/run-wp-query-runtime-fixture.mjs",
     "wp:core:wphx-307-wp-query-runtime-fixture:check": "node tools/wp-core/run-wp-query-runtime-fixture.mjs --check",
+    "wp:core:wphx-307-wp-query-live-db": "npm run php:db-client-images && node tools/wp-core/run-wp-query-live-db-fixture.mjs",
+    "wp:core:wphx-307-wp-query-live-db:check": "npm run php:db-client-images:check && node tools/wp-core/run-wp-query-live-db-fixture.mjs --check",
     "wp:core:wphx-308-taxonomy-comments-surface": "node tools/wp-core/run-taxonomy-comments-surface.mjs",
     "wp:core:wphx-308-taxonomy-comments-surface:check": "node tools/wp-core/run-taxonomy-comments-surface.mjs --check",
     "wp:core:wphx-308-taxonomy-comment-adapter-contract-candidate": "node tools/wp-core/run-taxonomy-comment-adapter-contract-candidate.mjs",

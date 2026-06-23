@@ -40,7 +40,7 @@
       "receipt:wphx-311-08-rest-server-web-e2e",
       "receipt:wphx-311-07-rest-server-packaged-http"
     ],
-    "manifest_digest": "sha256:6d71adf4b5ab1a9bc7a01101dac4746d10a5743ed2f87c9c9f7c8fe8f8e4ee9e"
+    "manifest_digest": "sha256:93275647cd81c9c66350ce369e29bea6b93303f9ff58e35787877fc584ec0c15"
   },
   "notes": "This gate validates browser-visible REST transport through an installed-style entry file. It still uses deterministic settings/wpdb fixtures instead of a full database-backed WordPress install."
 }

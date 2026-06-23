@@ -43,6 +43,6 @@
     "receipt_refs": [
       "receipt:wphx-306-07-auth-installed-distribution-gate"
     ],
-    "manifest_digest": "sha256:b56ef8963151a106543288eb40d48212347714d19a0562833ff70d2df861fc77"
+    "manifest_digest": "sha256:2ac800575b7d198bf0f6dad5ff620ddb7b847865e681a7d9b3f5542f1c1e846b"
   }
 }

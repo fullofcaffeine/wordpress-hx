@@ -39,7 +39,7 @@
     "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate",
     "receipt:wphx-700-05-upstream-phpunit-ratchet"
   ],
-  "manifest_sha256": "sha256:1c6a9a7fd557fb5bea95737b4d22fe0f54d42bcd2a46c8e90b22660f46a88cdc",
+  "manifest_sha256": "sha256:4d60ec3991f99c5128a7ccb051837da38b23239f4debb23dace7eaf063698733",
   "validation_result": {
     "status": "passed",
     "evidence_classes": [

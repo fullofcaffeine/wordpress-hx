@@ -14,8 +14,8 @@
     },
     "package_json": {
       "path": "package.json",
-      "bytes": 25443,
-      "sha256": "sha256:b871f7c24a9ceeff22146108e73ee13877cb559230536bf902d07759a1430f31"
+      "bytes": 25719,
+      "sha256": "sha256:055e7aaf70e3e10862d37d13c10856e1efd0572b036798295e638bbbb272df85"
     },
     "upstream_wpdb": {
       "path": "../wordpress-develop/src/wp-includes/class-wpdb.php",

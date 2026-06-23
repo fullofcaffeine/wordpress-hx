@@ -11,12 +11,12 @@
     {
       "path": "manifests/wp-core/wphx-306-07-auth-installed-distribution-gate.v1.json",
       "role": "users/auth installed-style HTTP distribution parity manifest",
-      "sha256": "sha256:b56ef8963151a106543288eb40d48212347714d19a0562833ff70d2df861fc77"
+      "sha256": "sha256:2ac800575b7d198bf0f6dad5ff620ddb7b847865e681a7d9b3f5542f1c1e846b"
     },
     {
       "path": "manifests/ownership/wphx-306-07-auth-installed-distribution-gate.v1.json",
       "role": "users/auth installed distribution ownership manifest",
-      "sha256": "sha256:0df169891657e6debb8f2e34935e5a20aa456392220be3b7caf78f5303db5033"
+      "sha256": "sha256:b9fe7ace990926074adf6b00e422abb562d96fffa52385affbf57af128e40c67"
     },
     {
       "path": "tools/wp-core/run-user-auth-installed-distribution-gate.mjs",
@@ -37,7 +37,7 @@
     "receipt:wphx-306-05-password-application-fixture",
     "receipt:wphx-306-06-user-auth-runtime-abi-fixture"
   ],
-  "manifest_sha256": "sha256:b56ef8963151a106543288eb40d48212347714d19a0562833ff70d2df861fc77",
+  "manifest_sha256": "sha256:2ac800575b7d198bf0f6dad5ff620ddb7b847865e681a7d9b3f5542f1c1e846b",
   "validation_result": {
     "status": "passed",
     "fixture_cases": 10,

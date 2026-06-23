@@ -78,6 +78,7 @@ const REQUIRED_COMMANDS = [
   "npm run php:db-client-images:check",
   "npm run wp:core:wphx-305-live-db:check",
   "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+  "npm run wp:core:wphx-307-wp-query-live-db:check",
   "npm run wp:core:wphx-311-rest-server-db-browser:check"
 ];
 
@@ -303,6 +304,7 @@ const parityGatesManifest = {
     "npm run wp:core:wphx-307-wp-query-runtime-fixture:check",
     "npm run wp:core:wphx-305-live-db:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
+    "npm run wp:core:wphx-307-wp-query-live-db:check",
     "npm run wp:core:wphx-311-rest-server-db-browser:check"
   ],
   validation_result: {
@@ -326,6 +328,7 @@ const parityGatesManifest = {
     wphx_311_rest_server_db_browser_gate_required: true,
     wphx_700_08_packaged_distribution_abi_gate_required: true,
     wphx_305_live_db_candidate_gate_required: true,
+    wphx_307_wp_query_live_db_gate_required: true,
     mysql_mariadb_images_pinned: true,
     conformance_artifacts_uploaded: true
   }
@@ -380,6 +383,7 @@ const parityGatesReceipt = {
     "npm run wp:core:wphx-307-post-meta-cache-adapter-contract-candidate:check",
     "npm run wp:core:wphx-307-post-revision-adapter-contract-candidate:check",
     "npm run wp:core:wphx-307-wp-query-runtime-fixture:check",
+    "npm run wp:core:wphx-307-wp-query-live-db:check",
     "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
     "npm run beads:validate",
