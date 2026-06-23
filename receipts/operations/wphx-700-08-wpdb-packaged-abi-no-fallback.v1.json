@@ -15,7 +15,7 @@
     {
       "path": "manifests/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
       "role": "packaged-distribution wpdb runtime ABI no-fallback manifest",
-      "sha256": "sha256:3ae9cf272d1f39882ecb64a78c7e858e6779c0b1dc5f2cba7d05d6e7ef8a5f8e"
+      "sha256": "sha256:9c38ffdf554abf4287a2ab9c19cf79ecbf8b0c0fece90559b844860a66216eee"
     },
     {
       "path": "manifests/ownership/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",

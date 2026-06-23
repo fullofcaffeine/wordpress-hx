@@ -97,6 +97,7 @@ jobs:
               npm run wp:core:wphx-311-rest-server-installed-browser:check
               npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check
               npm run wp:core:wphx-307-posts-query-adapter-contract-candidate:check
+              npm run wp:core:wphx-307-post-crud-status-adapter-contract-candidate:check
           - suite: wp-core-live-db-parity
             command: |
               npm run wp:core:wphx-305-live-db:check

@@ -5,7 +5,7 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:88f7038256b45544fb865f6a94ba15171acfd1eb523af76233357e4ced4e7a9d",
+    "sha256": "sha256:de0e55c91611aa4ae43bed6153e1cf53d3dfa75d4e1a7664e63896279bb06d3a",
     "triggers": [
       "pull_request",
       "push:main",

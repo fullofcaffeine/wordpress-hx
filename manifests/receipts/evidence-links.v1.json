@@ -383,7 +383,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "196ab72e8c05929703dbd2125c074197795fe059f182ecc6cff92e7aefd24f24",
+          "sha256": "2f2d72cc2efd9239762712374ec883536fe56b3c2fbaffc25def5e129be5b7d9",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -403,7 +403,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "17e97f35deeef7c8de87fd45bc172a425eea7442185d2b80f47db3d5be66d867",
+          "sha256": "3ef86dde842f8471c3e86edd8cb88a60b489aac7dfcd518a8a070c85c22f9095",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -1088,7 +1088,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
-          "sha256": "621816d101ceab15ab8ed1d8a5befb9aecf730e3b82fdcf75cbfb0409201841d",
+          "sha256": "243879d3077cc35629e13dec8bfc1f11f6a4a159e4482c2dbb1f3d07b2cb19ff",
           "id": "receipt:wphx-311-08-rest-server-web-e2e"
         }
       ]
@@ -1098,7 +1098,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
-          "sha256": "1ccabeb0fccf42cb79c0dfe638e4468420e99d8987a5e7b83a2d5207e1735f4d",
+          "sha256": "ccb2d2c33587fdd9f30b92f4598fc4363e5f2f8ff14d06bffa534c54a55c618e",
           "id": "receipt:wphx-311-09-rest-server-installed-browser"
         }
       ]
@@ -1108,7 +1108,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
-          "sha256": "91e07d304bd4be2f27ac4dc87487f56177a82dabcf2d92d57387b1d04a4bcc0f",
+          "sha256": "0bdf52531dbc2046cedf5b7f80d95fb5d48e43d31da84efc18996017da350af6",
           "id": "receipt:wphx-311-10-rest-server-db-browser-matrix"
         }
       ]
@@ -1323,7 +1323,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
-          "sha256": "6c4407f2d467018283ac0bddb9ae4996a3a68623818a6b1af4a9cec43121620d",
+          "sha256": "51d1d4d2c3a3bbb27ec2763fbf1f5d094256bbed571ff96cf42d1ae6319fcde5",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]

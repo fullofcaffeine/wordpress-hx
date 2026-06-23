@@ -42,7 +42,7 @@
       "receipt:wphx-311-09-rest-server-installed-browser",
       "receipt:wphx-311-08-rest-server-web-e2e"
     ],
-    "manifest_digest": "sha256:ae66fe04babe55a7bb619316907af4e5110308fa459f679914425ed87b4681c1"
+    "manifest_digest": "sha256:8ef3e25a45645b0e80f18cf8ae8ee12735eca10340ed59e249bfb59e0c324ed4"
   },
   "notes": "This matrix uses upstream wpdb as DB plumbing for the focused REST server slice. It does not claim wpdb ownership; WPHX-305 remains the database abstraction authority."
 }

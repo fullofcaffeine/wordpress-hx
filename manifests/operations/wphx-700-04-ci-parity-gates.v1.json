@@ -5,11 +5,11 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "source_manifest": {
     "path": "manifests/ci/wphx-208-php-conformance-ci.v1.json",
-    "sha256": "sha256:db015a00a81aed73f44bba591b06f81460f8e10c3a3c6e431062550f6d27273f"
+    "sha256": "sha256:9022dc5621caa2359726c5f5f6cf971fdd840cfa60f452a8b53d8222c3c47e2a"
   },
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:88f7038256b45544fb865f6a94ba15171acfd1eb523af76233357e4ced4e7a9d",
+    "sha256": "sha256:de0e55c91611aa4ae43bed6153e1cf53d3dfa75d4e1a7664e63896279bb06d3a",
     "deterministic_suite": "wp-core-deterministic-parity",
     "live_db_suite": "wp-core-live-db-parity",
     "artifact_upload": "actions/upload-artifact@v4"
