@@ -30,7 +30,7 @@
   "related_receipts": [
     "receipt:wphx-311-01-rest-settings-controller-fixture"
   ],
-  "manifest_sha256": "sha256:186c341ecc03066b74cd244cbeb5729593e62ff5bcd6864498889e6fee97ab8b",
+  "manifest_sha256": "sha256:d8c6a3a84538231df28f6e59f410e78c14b061807aceaaabc3f40abaa2ad0b29",
   "validation_result": {
     "status": "passed",
     "candidate_kind": "oracle_source_mirror",

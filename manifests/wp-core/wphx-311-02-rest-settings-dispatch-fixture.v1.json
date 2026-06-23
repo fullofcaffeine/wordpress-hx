@@ -6,8 +6,8 @@
   "inputs": {
     "controller_fixture_manifest": {
       "path": "manifests/wp-core/wphx-311-01-rest-settings-controller-fixture.v1.json",
-      "bytes": 4822263,
-      "sha256": "sha256:adb90a17a48fe6412c202775d46b262a9204cce1922ecbf3826161acab05c357"
+      "bytes": 4822236,
+      "sha256": "sha256:3fbb96055fd08b608dd53f0142610785426ae30e4bbfd59da9a32741b03a745d"
     },
     "toolchain_lock": {
       "path": "toolchain.lock.json",
@@ -244,8 +244,8 @@
   "runtimes": {
     "local": {
       "id": "local-php-cli",
-      "php_version": "8.4.7",
-      "executable": "/opt/homebrew/bin/php"
+      "php_version_family": "8.4",
+      "executable": "php"
     },
     "docker": [
       {
@@ -267,7 +267,7 @@
       "command": "php build/wp-core/wphx-311-02/probe.php oracle build/wp-core/wphx-311-02/oracle",
       "result": {
         "mode": "oracle",
-        "phpVersion": "8.4.7",
+        "phpVersion": "8.4",
         "coveredClassExists": {
           "WP_REST_Settings_Controller": true,
           "WP_REST_Request": true,
@@ -6578,7 +6578,7 @@
       "command": "php build/wp-core/wphx-311-02/probe.php candidate build/wp-core/wphx-311-02/candidate",
       "result": {
         "mode": "candidate",
-        "phpVersion": "8.4.7",
+        "phpVersion": "8.4",
         "coveredClassExists": {
           "WP_REST_Settings_Controller": true,
           "WP_REST_Request": true,
@@ -12890,7 +12890,7 @@
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "phpVersion": "8.4.22",
+        "phpVersion": "8.4",
         "coveredClassExists": {
           "WP_REST_Settings_Controller": true,
           "WP_REST_Request": true,
@@ -19202,7 +19202,7 @@
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "candidate",
-        "phpVersion": "8.4.22",
+        "phpVersion": "8.4",
         "coveredClassExists": {
           "WP_REST_Settings_Controller": true,
           "WP_REST_Request": true,
@@ -25514,7 +25514,7 @@
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "phpVersion": "8.5.7",
+        "phpVersion": "8.5",
         "coveredClassExists": {
           "WP_REST_Settings_Controller": true,
           "WP_REST_Request": true,
@@ -31826,7 +31826,7 @@
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "candidate",
-        "phpVersion": "8.5.7",
+        "phpVersion": "8.5",
         "coveredClassExists": {
           "WP_REST_Settings_Controller": true,
           "WP_REST_Request": true,

@@ -102,6 +102,22 @@ function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
 }
 
+function normalizePath(value) {
+  if (typeof value !== "string") return value;
+  const cwd = process.cwd().replaceAll("\\", "/");
+  const normalized = value.replaceAll("\\", "/");
+  if (normalized.startsWith(`${cwd}/`)) return normalized.slice(cwd.length + 1);
+  return normalized;
+}
+
+function stableRuntimeValue(value) {
+  if (Array.isArray(value)) return value.map(stableRuntimeValue);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) => [key, stableRuntimeValue(entry)]));
+  }
+  return normalizePath(value);
+}
+
 function inputRecord(path) {
   return {
     path,
@@ -768,14 +784,14 @@ const manifest = {
       mode: "oracle",
       command: oracleRun.command,
       normalized_sha256: sha256(JSON.stringify(normalizeCases(oracleRun))),
-      package_boundary: oracleRun.boundary
+      package_boundary: stableRuntimeValue(oracleRun.boundary)
     },
     {
       id: "local-web-server:candidate",
       mode: "candidate",
       command: candidateRun.command,
       normalized_sha256: sha256(JSON.stringify(normalizeCases(candidateRun))),
-      package_boundary: candidateRun.boundary
+      package_boundary: stableRuntimeValue(candidateRun.boundary)
     }
   ],
   comparison,

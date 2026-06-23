@@ -5,9 +5,9 @@
   "id": "receipt:wphx-210-build-profiles",
   "issue": "WPHX-210",
   "manifest": "manifests/build-profiles/wphx-210-build-profiles.v1.json",
-  "manifest_sha256": "sha256:f08ddbc2382f4aa0df8075c15f32c0aa73d736efe35c12d7a00fe3153b520e81",
+  "manifest_sha256": "sha256:fae9377ba0c8d55344f89bbf3146769babd367711c79eac8434a6973278e642d",
   "profile_count": 3,
-  "profile_output_sha256": "sha256:ec18afdc080d2c6127157e5eb917a284ebdfd30aa6cdb7cf86dafcf73bf1c311",
+  "profile_output_sha256": "sha256:06ff9627888602c48122d0aec6f8ba43fd202540827046c2cfd85817897cd9d2",
   "recorded_at": "2026-06-20T20:10:00.000Z",
   "schema": "wphx.build-profiles-receipt.v1",
   "status": "passed"

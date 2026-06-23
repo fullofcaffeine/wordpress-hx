@@ -12,8 +12,8 @@
   "inputs": {
     "runner": {
       "path": "tools/wp-core/run-rest-server-web-e2e-gate.mjs",
-      "bytes": 28338,
-      "sha256": "sha256:8bb2427de39206f80a42a3012a547dd649cdead0d653901ba923b83431200f5d"
+      "bytes": 28958,
+      "sha256": "sha256:fce7f9d1cac43fd5f0616cce57de3b91d0f9c5d25984001fa19883b72f41ded8"
     },
     "packaged_runner": {
       "path": "tools/wp-core/run-rest-server-packaged-http-gate.mjs",
@@ -28,7 +28,7 @@
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
       "bytes": 111392,
-      "sha256": "sha256:dd6bfc2376c1f9ee3cdd771dc32fd2d32f5e8f51804657d81d1f66342f332cdf"
+      "sha256": "sha256:bd9b172f3bfc721aa224b709470abbc0ea1b7852ee46d70f612d44a931469738"
     },
     "upstream_phpunit_groups": {
       "path": "tests/upstream/phpunit/groups.json",
@@ -350,24 +350,24 @@
       "command": "php -S 127.0.0.1:<ephemeral> wphx-rest-web-router.php",
       "normalized_sha256": "sha256:541e316b6e6ccaac8b3fcdb7b05dee426f54d37f8769afe6b08cb6c2e4b39507",
       "package_boundary": {
-        "classFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/oracle-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         },
@@ -381,24 +381,24 @@
       "command": "php -S 127.0.0.1:<ephemeral> wphx-rest-web-router.php",
       "normalized_sha256": "sha256:541e316b6e6ccaac8b3fcdb7b05dee426f54d37f8769afe6b08cb6c2e4b39507",
       "package_boundary": {
-        "classFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
-        "expectedClassFile": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "classFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+        "expectedClassFile": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
         "classDeclaredInPackage": true,
         "upstreamServerIncluded": false,
         "ownedMethods": {
           "serve_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "dispatch": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           },
           "respond_to_request": {
             "declaring_class": "WP_REST_Server",
-            "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
+            "declaring_file": "build/wp-core/wphx-311-07/candidate-package/wp-includes/rest-api/class-wp-rest-server.php",
             "declared_in_package_file": true
           }
         },

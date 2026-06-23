@@ -76,7 +76,7 @@
       "output": {
         "bytes": 3995,
         "path": "build/wp70/debug/effective-profile.json",
-        "sha256": "sha256:966a88fd7fa777f3e43d17e107bc812d753f9f03a03a35afc351cba09bfcb68d"
+        "sha256": "sha256:77fd5f8fa0ce0d1214611bdf4c5a0c86a9529cbf7aca557ce27ff95e77409cd5"
       },
       "purpose": "Developer debugging with Haxe and original WordPress source locations preserved.",
       "role": "debug",
