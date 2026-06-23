@@ -1,0 +1,525 @@
+{
+  "schema": "wphx.wp-core-multisite-bootstrap-routing-fixture.v1",
+  "issue": "WPHX-317.05",
+  "generated_at": "2026-06-23T05:20:00.000Z",
+  "generator": "tools/wp-core/run-multisite-bootstrap-routing-fixture.mjs",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-317-01-multisite-network-surface.v1.json",
+      "bytes": 188430,
+      "sha256": "sha256:965b7cb5382eef8dc7a2f8b7c3ee4d9501009675c73b78edb84d8fa9b7c96083"
+    },
+    "site_network_query_fixture": {
+      "path": "manifests/wp-core/wphx-317-04-site-network-query-fixture.v1.json",
+      "bytes": 1448742,
+      "sha256": "sha256:f6e205a44b6631d80f66a52df8579bf9ff686837c4bf339d69a3c6fb487a0b0f"
+    },
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 7167,
+      "sha256": "sha256:9230d83997bb6cc37768adf6b45715721875f7991e0840e2321c18a2c63e5298"
+    },
+    "source_units": [
+      {
+        "path": "src/wp-includes/class-wp-network.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-network.php",
+        "bytes": 12296,
+        "sha256": "sha256:9d4427d96e30b4d64e3c8ed21e0088b8a8f2f6ebc87a44d858eb9ec3587bb78f"
+      },
+      {
+        "path": "src/wp-includes/class-wp-site.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-site.php",
+        "bytes": 7459,
+        "sha256": "sha256:29317614309b1cc198b3755c11829d329303c20c619f209a971dcb568c1bba1e"
+      },
+      {
+        "path": "src/wp-includes/ms-load.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/ms-load.php",
+        "bytes": 20038,
+        "sha256": "sha256:68303eb63594f268bbccf3d47d884caccd960d3a5e7afbae508713f7356f5a12"
+      }
+    ],
+    "upstream_digest": "sha256:f80278303fa6fceca00676dd6c23c95677f3def41b6e04f8c346f15a7b1c39b2"
+  },
+  "fixture": {
+    "candidate_kind": "oracle_source_mirror",
+    "source_domain": "multisite bootstrap and routing",
+    "evidence_class": "targeted_semantic_parity",
+    "artifact_scope": "oracle_mirror_fixture",
+    "covered_symbols": [
+      "wp_get_active_network_plugins",
+      "ms_site_check",
+      "get_network_by_path",
+      "get_site_by_path",
+      "ms_load_current_site_and_network",
+      "ms_not_installed",
+      "WP_Network::get_by_path",
+      "WP_Network::get_instance",
+      "WP_Site::get_instance"
+    ],
+    "cases": [
+      {
+        "id": "plugins:active-network-plugin-filtering",
+        "symbol": "wp_get_active_network_plugins",
+        "focus": "sorted sitewide plugin keys, validate_file rejection, .php suffix check, and file-existence filtering"
+      },
+      {
+        "id": "route:site-by-path-segments-and-www",
+        "symbol": "get_site_by_path",
+        "focus": "path-segment truncation, longest path selection, and www/non-www domain fallback"
+      },
+      {
+        "id": "route:network-by-path-domain-path",
+        "symbol": "get_network_by_path/WP_Network::get_by_path",
+        "focus": "domain suffix candidates, path candidates, and longest domain/path ordering"
+      },
+      {
+        "id": "bootstrap:subdirectory-network-first",
+        "symbol": "ms_load_current_site_and_network",
+        "focus": "subdirectory bootstrap resolves network first, populates current_site/current_blog, and fires no not-found actions"
+      },
+      {
+        "id": "bootstrap:subdomain-site-missing-redirect",
+        "symbol": "ms_load_current_site_and_network",
+        "focus": "subdomain bootstrap resolves network without a site and returns signup redirect destination"
+      },
+      {
+        "id": "bootstrap:constant-defined-network",
+        "symbol": "ms_load_current_site_and_network",
+        "focus": "DOMAIN_CURRENT_SITE/PATH_CURRENT_SITE constants route through configured current network and first path segment"
+      },
+      {
+        "id": "status:site-check-dropins",
+        "symbol": "ms_site_check",
+        "focus": "deleted and archived/spam sites return the expected content drop-in paths before wp_die fallback"
+      },
+      {
+        "id": "failure:ms-not-installed-admin",
+        "symbol": "ms_not_installed",
+        "focus": "admin failure path builds database/table diagnostics and exits through wp_die with response 500"
+      }
+    ],
+    "native_boundaries": [
+      {
+        "id": "wpdb-bootstrap-routing-test-double",
+        "reason": "The probe supplies deterministic wp_site/wp_blogs rows and SHOW TABLES behavior so real ms-load.php branches can execute without a live database. Installed database parity remains a later gate."
+      },
+      {
+        "id": "wp-die-capture",
+        "reason": "wp_die and dead_db are converted to typed exceptions inside the probe so failure output, title, response code, and diagnostic-message shape can be compared without terminating the runner."
+      },
+      {
+        "id": "filter-action-log",
+        "reason": "apply_filters and do_action preserve default pass-through behavior while recording hook names and arguments that are observable to plugins."
+      }
+    ],
+    "follow_up_owner": "WPHX-317.07"
+  },
+  "runtimes": {
+    "local": {
+      "id": "local-php-cli",
+      "php_version": "8.4.7",
+      "executable": "/opt/homebrew/bin/php"
+    },
+    "docker": [
+      {
+        "id": "docker-php-8.4-cli",
+        "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d"
+      },
+      {
+        "id": "docker-php-8.5-cli",
+        "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e"
+      }
+    ],
+    "skipped": []
+  },
+  "canonical_observations": {
+    "caseCount": 8,
+    "cases": [
+      {
+        "id": "plugins:active-network-plugin-filtering",
+        "symbol": "wp_get_active_network_plugins",
+        "value": [
+          "wp-content/plugins/alpha/network.php",
+          "wp-content/plugins/beta/main.php"
+        ],
+        "meta": []
+      },
+      {
+        "id": "route:site-by-path-segments-and-www",
+        "symbol": "get_site_by_path",
+        "value": {
+          "exactRoot": {
+            "class": "WP_Site",
+            "blog_id": 1,
+            "domain": "network.example.test",
+            "path": "/",
+            "site_id": 7,
+            "deleted": "0",
+            "archived": "0",
+            "spam": "0"
+          },
+          "nestedPath": {
+            "class": "WP_Site",
+            "blog_id": 2,
+            "domain": "network.example.test",
+            "path": "/site-two/",
+            "site_id": 7,
+            "deleted": "0",
+            "archived": "0",
+            "spam": "0"
+          },
+          "wwwPath": {
+            "class": "WP_Site",
+            "blog_id": 3,
+            "domain": "www.network.example.test",
+            "path": "/www/",
+            "site_id": 7,
+            "deleted": "0",
+            "archived": "0",
+            "spam": "0"
+          },
+          "missing": false
+        },
+        "meta": []
+      },
+      {
+        "id": "route:network-by-path-domain-path",
+        "symbol": "get_network_by_path",
+        "value": {
+          "root": {
+            "class": "WP_Network",
+            "id": 7,
+            "domain": "network.example.test",
+            "path": "/",
+            "blog_id": 1,
+            "cookie_domain": "network.example.test",
+            "site_name": "Network Example"
+          },
+          "childPathFallsBackToRoot": {
+            "class": "WP_Network",
+            "id": 7,
+            "domain": "network.example.test",
+            "path": "/",
+            "blog_id": 1,
+            "cookie_domain": "network.example.test",
+            "site_name": "Network Example"
+          },
+          "altPath": {
+            "class": "WP_Network",
+            "id": 8,
+            "domain": "alt.example.test",
+            "path": "/alt/",
+            "blog_id": 4,
+            "cookie_domain": "alt.example.test",
+            "site_name": "Alt Network"
+          },
+          "subdomainSuffix": {
+            "class": "WP_Network",
+            "id": 7,
+            "domain": "network.example.test",
+            "path": "/",
+            "blog_id": 1,
+            "cookie_domain": "network.example.test",
+            "site_name": "Network Example"
+          }
+        },
+        "meta": []
+      },
+      {
+        "id": "bootstrap:subdirectory-network-first",
+        "symbol": "ms_load_current_site_and_network",
+        "value": {
+          "result": true,
+          "currentSite": {
+            "class": "WP_Network",
+            "id": 8,
+            "domain": "alt.example.test",
+            "path": "/alt/",
+            "blog_id": 4,
+            "cookie_domain": "alt.example.test",
+            "site_name": "Alt Network"
+          },
+          "currentBlog": {
+            "class": "WP_Site",
+            "blog_id": 4,
+            "domain": "alt.example.test",
+            "path": "/alt/",
+            "site_id": 8,
+            "deleted": "0",
+            "archived": "0",
+            "spam": "0"
+          },
+          "actions": [],
+          "filters": [
+            "network_by_path_segments_count",
+            "pre_get_network_by_path",
+            "site_by_path_segments_count",
+            "pre_get_site_by_path",
+            "pre_get_main_site_id",
+            "pre_get_main_site_id"
+          ]
+        },
+        "meta": []
+      },
+      {
+        "id": "bootstrap:subdomain-site-missing-redirect",
+        "symbol": "ms_load_current_site_and_network",
+        "value": {
+          "result": "http://network.example.test/wp-signup.php?new=missing",
+          "currentSite": {
+            "class": "WP_Network",
+            "id": 7,
+            "domain": "network.example.test",
+            "path": "/",
+            "blog_id": 1,
+            "cookie_domain": "network.example.test",
+            "site_name": "Network Example"
+          },
+          "currentBlog": false,
+          "actions": [
+            {
+              "hook": "ms_site_not_found",
+              "args": [
+                {
+                  "class": "WP_Network",
+                  "id": 7,
+                  "domain": "network.example.test",
+                  "path": "/"
+                },
+                "missing.network.example.test",
+                "/missing/"
+              ]
+            }
+          ]
+        },
+        "meta": []
+      },
+      {
+        "id": "bootstrap:constant-defined-network",
+        "symbol": "ms_load_current_site_and_network",
+        "value": {
+          "result": true,
+          "currentSite": {
+            "class": "stdClass",
+            "id": 7,
+            "domain": "network.example.test",
+            "path": "/",
+            "blog_id": 1,
+            "cookie_domain": null,
+            "site_name": null
+          },
+          "currentBlog": {
+            "class": "WP_Site",
+            "blog_id": 2,
+            "domain": "network.example.test",
+            "path": "/site-two/",
+            "site_id": 7,
+            "deleted": "0",
+            "archived": "0",
+            "spam": "0"
+          },
+          "actions": []
+        },
+        "meta": []
+      },
+      {
+        "id": "status:site-check-dropins",
+        "symbol": "ms_site_check",
+        "value": {
+          "deleted": "wp-content/blog-deleted.php",
+          "suspended": "wp-content/blog-suspended.php"
+        },
+        "meta": []
+      },
+      {
+        "id": "failure:ms-not-installed-admin",
+        "symbol": "ms_not_installed",
+        "value": {
+          "threw": true,
+          "title": "Error establishing a database connection",
+          "args": {
+            "response": 500
+          },
+          "messageSha256": "4df98a2d87e6424d464c9540a29c379e14112a426565bdbe418f1363254f72b3",
+          "containsMissingTables": true,
+          "containsSiteTable": true
+        },
+        "meta": []
+      }
+    ],
+    "queryCount": 1,
+    "queries": [
+      {
+        "operation": "get_var",
+        "query": "SHOW TABLES LIKE 'wp\\_site'"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "id": "local-php-cli:oracle",
+      "runtime": "local-php-cli",
+      "mode": "oracle",
+      "command": "php build/wp-core/wphx-317-05/probe.php oracle build/wp-core/wphx-317-05/oracle",
+      "php_version": "8.4.7",
+      "normalized_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "case_count": 8,
+      "case_ids": [
+        "plugins:active-network-plugin-filtering",
+        "route:site-by-path-segments-and-www",
+        "route:network-by-path-domain-path",
+        "bootstrap:subdirectory-network-first",
+        "bootstrap:subdomain-site-missing-redirect",
+        "bootstrap:constant-defined-network",
+        "status:site-check-dropins",
+        "failure:ms-not-installed-admin"
+      ]
+    },
+    {
+      "id": "local-php-cli:candidate",
+      "runtime": "local-php-cli",
+      "mode": "candidate",
+      "command": "php build/wp-core/wphx-317-05/probe.php candidate build/wp-core/wphx-317-05/candidate",
+      "php_version": "8.4.7",
+      "normalized_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "case_count": 8,
+      "case_ids": [
+        "plugins:active-network-plugin-filtering",
+        "route:site-by-path-segments-and-www",
+        "route:network-by-path-domain-path",
+        "bootstrap:subdirectory-network-first",
+        "bootstrap:subdomain-site-missing-redirect",
+        "bootstrap:constant-defined-network",
+        "status:site-check-dropins",
+        "failure:ms-not-installed-admin"
+      ]
+    },
+    {
+      "id": "docker-php-8.4-cli:oracle",
+      "runtime": "docker-php-8.4-cli",
+      "mode": "oracle",
+      "command": "docker run --rm -v /Users/fullofcaffeine/workspace/code/wordpresshx:/workspace -w /workspace library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-317-05/probe.php oracle build/wp-core/wphx-317-05/oracle",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "php_version": "8.4.22",
+      "normalized_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "case_count": 8,
+      "case_ids": [
+        "plugins:active-network-plugin-filtering",
+        "route:site-by-path-segments-and-www",
+        "route:network-by-path-domain-path",
+        "bootstrap:subdirectory-network-first",
+        "bootstrap:subdomain-site-missing-redirect",
+        "bootstrap:constant-defined-network",
+        "status:site-check-dropins",
+        "failure:ms-not-installed-admin"
+      ]
+    },
+    {
+      "id": "docker-php-8.4-cli:candidate",
+      "runtime": "docker-php-8.4-cli",
+      "mode": "candidate",
+      "command": "docker run --rm -v /Users/fullofcaffeine/workspace/code/wordpresshx:/workspace -w /workspace library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-core/wphx-317-05/probe.php candidate build/wp-core/wphx-317-05/candidate",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+      "php_version": "8.4.22",
+      "normalized_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "case_count": 8,
+      "case_ids": [
+        "plugins:active-network-plugin-filtering",
+        "route:site-by-path-segments-and-www",
+        "route:network-by-path-domain-path",
+        "bootstrap:subdirectory-network-first",
+        "bootstrap:subdomain-site-missing-redirect",
+        "bootstrap:constant-defined-network",
+        "status:site-check-dropins",
+        "failure:ms-not-installed-admin"
+      ]
+    },
+    {
+      "id": "docker-php-8.5-cli:oracle",
+      "runtime": "docker-php-8.5-cli",
+      "mode": "oracle",
+      "command": "docker run --rm -v /Users/fullofcaffeine/workspace/code/wordpresshx:/workspace -w /workspace library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-317-05/probe.php oracle build/wp-core/wphx-317-05/oracle",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "php_version": "8.5.7",
+      "normalized_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "case_count": 8,
+      "case_ids": [
+        "plugins:active-network-plugin-filtering",
+        "route:site-by-path-segments-and-www",
+        "route:network-by-path-domain-path",
+        "bootstrap:subdirectory-network-first",
+        "bootstrap:subdomain-site-missing-redirect",
+        "bootstrap:constant-defined-network",
+        "status:site-check-dropins",
+        "failure:ms-not-installed-admin"
+      ]
+    },
+    {
+      "id": "docker-php-8.5-cli:candidate",
+      "runtime": "docker-php-8.5-cli",
+      "mode": "candidate",
+      "command": "docker run --rm -v /Users/fullofcaffeine/workspace/code/wordpresshx:/workspace -w /workspace library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-core/wphx-317-05/probe.php candidate build/wp-core/wphx-317-05/candidate",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "php_version": "8.5.7",
+      "normalized_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "case_count": 8,
+      "case_ids": [
+        "plugins:active-network-plugin-filtering",
+        "route:site-by-path-segments-and-www",
+        "route:network-by-path-domain-path",
+        "bootstrap:subdirectory-network-first",
+        "bootstrap:subdomain-site-missing-redirect",
+        "bootstrap:constant-defined-network",
+        "status:site-check-dropins",
+        "failure:ms-not-installed-admin"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "local-php-cli",
+      "matches": true,
+      "oracle_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "candidate_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611"
+    },
+    {
+      "id": "docker-php-8.4-cli",
+      "matches": true,
+      "oracle_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "candidate_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611"
+    },
+    {
+      "id": "docker-php-8.5-cli",
+      "matches": true,
+      "oracle_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611",
+      "candidate_sha256": "sha256:5bd671fdc4d412a4b6316a8f65b45eff8a14f1c0abc35caadcb4097612674611"
+    }
+  ],
+  "remaining_gaps": [
+    {
+      "id": "haxe-candidate-not-yet-installed",
+      "owner": "WPHX-317.07",
+      "detail": "The candidate side is a copied WordPress oracle source tree until multisite loader/adapter contracts are emitted from Haxe-owned sources."
+    },
+    {
+      "id": "live-database-not-yet-authoritative",
+      "owner": "WPHX-317.06",
+      "detail": "This fixture uses deterministic PHP test doubles; live MySQL/MariaDB multisite bootstrap parity remains an installed/distribution gate."
+    },
+    {
+      "id": "constant-defined-branch-runs-last",
+      "owner": "WPHX-317.07",
+      "detail": "PHP constants cannot be undefined in-process, so DOMAIN_CURRENT_SITE/PATH_CURRENT_SITE coverage is ordered last within the single probe process."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-317-05-multisite-bootstrap-routing-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 9,
+    "fixture_cases": 8,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}

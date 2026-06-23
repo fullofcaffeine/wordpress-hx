@@ -1109,6 +1109,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-317.05",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-317-05-multisite-bootstrap-routing-fixture.v1.json",
+          "sha256": "63cd956c42f3d1ced0788b21d5ea15108d392f34666c07847d6201a721055125",
+          "id": "receipt:wphx-317-05-multisite-bootstrap-routing-fixture"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-317.07",
       "receipts": [
         {

@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-317-05-multisite-bootstrap-routing-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.11.4",
+    "external_ref": "WPHX-317.05",
+    "title": "Build multisite bootstrap and domain-path routing fixtures"
+  },
+  "recorded_at": "2026-06-23T05:20:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-317-05-multisite-bootstrap-routing-fixture.v1.json",
+      "role": "multisite bootstrap and domain/path routing fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-317-05-multisite-bootstrap-routing-fixture.v1.json",
+      "role": "external-oracle ownership manifest for the bootstrap/routing fixture harness"
+    },
+    {
+      "path": "tools/wp-core/run-multisite-bootstrap-routing-fixture.mjs",
+      "role": "fixture generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-317-bootstrap-routing",
+    "npm run wp:core:wphx-317-bootstrap-routing:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "covered_symbols": 9,
+    "fixture_cases": 8,
+    "comparisons": 3,
+    "skipped_runtimes": 0
+  }
+}

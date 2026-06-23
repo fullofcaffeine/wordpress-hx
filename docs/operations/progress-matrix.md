@@ -54,7 +54,7 @@ ADR-004 clarifies ownership claims without changing the score: PHP is the privil
 | `WPHX-304` Options/transients/object cache | closed | Option/cache candidate gates and fixtures exist |
 | `WPHX-305` wpdb/database abstraction | closed | Strong wpdb vertical slice exists, including native mysqli and packaged ABI gates; still not evidence that every related Core DB path is Haxe-owned |
 | `WPHX-311` REST API/schema | closed | Settings and REST server decision slices are typed Haxe strategy candidates; packaged, installed-browser, DB-backed, and cross-origin REST gates cover the active transport surface |
-| `WPHX-317` Multisite/network | open | `WPHX-317.01` surface inventory, `WPHX-317.02` site/network option plus site-transient fixtures, `WPHX-317.03` blog switch/cache fixtures, `WPHX-317.04` site/network ABI/query fixtures, and `WPHX-317.07` first typed Haxe multisite adapter-contract candidate are closed; 5/7 child tasks are complete, with remaining installed-routing and signup/lifecycle/quota fixtures open |
+| `WPHX-317` Multisite/network | open | `WPHX-317.01` surface inventory, `WPHX-317.02` site/network option plus site-transient fixtures, `WPHX-317.03` blog switch/cache fixtures, `WPHX-317.04` site/network ABI/query fixtures, `WPHX-317.05` bootstrap/domain-path routing fixtures, and `WPHX-317.07` first typed Haxe multisite adapter-contract candidate are closed; 6/7 child tasks are complete, with signup/lifecycle/quota fixtures open |
 | `WPHX-322` PHP first-party manifest closure | open | Needed to prove the remaining Core PHP runtime inventory has ownership states and closure gates |
 
 ## Gutenberg Plan
