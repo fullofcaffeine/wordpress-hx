@@ -21,8 +21,8 @@
   "toolchain": {
     "haxe_version": "4.3.7",
     "locked_haxe_version": "4.3.7",
-    "php_cli_version": "8.4.7",
-    "docker_server_version": "28.3.2"
+    "php_cli_version_family": "8.4",
+    "docker_available": true
   },
   "build": {
     "command": "haxe fixtures/wp-boundary/boundary-types.hxml",

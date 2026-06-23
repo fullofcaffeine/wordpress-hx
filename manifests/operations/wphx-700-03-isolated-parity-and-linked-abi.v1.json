@@ -5,7 +5,7 @@
   "generator": "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
   "source_manifest": {
     "path": "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
-    "sha256": "sha256:d6bf71f45cec33e6edda238ff123c7c6f8991b090e53d55e54b5bce52cc520a9"
+    "sha256": "sha256:115d03178704656cd336ff3660236e4b31043210ead9b2bdee2e5e2c66fdae67"
   },
   "evidence_class": "live_integration_parity",
   "artifact_scope": "linked_candidate",
@@ -29,17 +29,17 @@
             "stdout": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-oracle.stdout.json",
               "bytes": 3089,
-              "sha256": "sha256:5cab4614ce8018c2f9b3e72191ce4e16d566328025fb8f0659f243c8b3e7a527"
+              "sha256_present": true
             },
             "stderr": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-oracle.stderr.txt",
               "bytes": 195,
-              "sha256": "sha256:2e66afcb6dcd91acc793a21e8765dfe87aef7ff298b7176fdae028f4d0949995"
+              "sha256_present": true
             },
             "process": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-oracle.process.json",
               "bytes": 212,
-              "sha256": "sha256:d4cbf7ec7377865385abf3bec50426ac9c707a212e18864028b57ed47edc9b2a"
+              "sha256_present": true
             }
           }
         },
@@ -49,48 +49,48 @@
             "stdout": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-candidate.stdout.json",
               "bytes": 5093,
-              "sha256": "sha256:4bc7be0ba854c80a4bb3ce677235495d92850b4c2862ebfd3569250ec5042338"
+              "sha256_present": true
             },
             "stderr": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-candidate.stderr.txt",
               "bytes": 195,
-              "sha256": "sha256:2e66afcb6dcd91acc793a21e8765dfe87aef7ff298b7176fdae028f4d0949995"
+              "sha256_present": true
             },
             "process": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mysql-8.4-isolated-candidate.process.json",
               "bytes": 221,
-              "sha256": "sha256:88b52bc0b1d1d125020cb701b2b9efe06871b9518f28913fca55de8a481dc1f4"
+              "sha256_present": true
             }
           },
           "linked_candidate_abi": {
             "class_name": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-            "class_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
-            "expected_candidate_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+            "class_file": "build/wp-core/wphx-305-29/candidate-shell.php",
+            "expected_candidate_file": "build/wp-core/wphx-305-29/candidate-shell.php",
             "class_declared_in_candidate_file": true,
             "parent_class": "wpdb",
-            "parent_file": "/Users/fullofcaffeine/workspace/code/wordpress-develop/src/wp-includes/class-wpdb.php",
+            "parent_file_role": "wordpress-oracle-class-wpdb",
             "owned_methods": {
               "db_connect": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               },
               "query": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               },
               "flush": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               },
               "get_col_info": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               }
@@ -125,17 +125,17 @@
             "stdout": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-oracle.stdout.json",
               "bytes": 3095,
-              "sha256": "sha256:ce8fcae424171e967a9f8da2aa1573401cbd42e22207fb6401644782ad86358d"
+              "sha256_present": true
             },
             "stderr": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-oracle.stderr.txt",
               "bytes": 176,
-              "sha256": "sha256:3fc12fd3c66b7c1e7f0a4d4ea5ec9fc98f349a7454ef4cdcbacfa1b57195281d"
+              "sha256_present": true
             },
             "process": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-oracle.process.json",
               "bytes": 218,
-              "sha256": "sha256:5ec5aeee8b9a3dd7e4400b5536bc651d29f47fd5f7eff23f57b4b26d98f977c8"
+              "sha256_present": true
             }
           }
         },
@@ -145,48 +145,48 @@
             "stdout": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-candidate.stdout.json",
               "bytes": 5099,
-              "sha256": "sha256:d36b81d04946e2a88266908c287de99ce322c3e5cb47ff3f9094e10eabd46a10"
+              "sha256_present": true
             },
             "stderr": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-candidate.stderr.txt",
               "bytes": 176,
-              "sha256": "sha256:3fc12fd3c66b7c1e7f0a4d4ea5ec9fc98f349a7454ef4cdcbacfa1b57195281d"
+              "sha256_present": true
             },
             "process": {
               "path": "build/wp-core/wphx-305-29/diagnostics/mariadb-11.8-isolated-candidate.process.json",
               "bytes": 227,
-              "sha256": "sha256:2ca6f1bf1d1b38b9b1978a6ba170d358d5d4da6249e6e1ee96f43d226928e8e9"
+              "sha256_present": true
             }
           },
           "linked_candidate_abi": {
             "class_name": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-            "class_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
-            "expected_candidate_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+            "class_file": "build/wp-core/wphx-305-29/candidate-shell.php",
+            "expected_candidate_file": "build/wp-core/wphx-305-29/candidate-shell.php",
             "class_declared_in_candidate_file": true,
             "parent_class": "wpdb",
-            "parent_file": "/Users/fullofcaffeine/workspace/code/wordpress-develop/src/wp-includes/class-wpdb.php",
+            "parent_file_role": "wordpress-oracle-class-wpdb",
             "owned_methods": {
               "db_connect": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               },
               "query": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               },
               "flush": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               },
               "get_col_info": {
                 "declaring_class": "WPHX_305_29_Wpdb_Db_Connect_Shell",
-                "declaring_file": "/Users/fullofcaffeine/workspace/code/wordpresshx/build/wp-core/wphx-305-29/candidate-shell.php",
+                "declaring_file": "build/wp-core/wphx-305-29/candidate-shell.php",
                 "declared_by_candidate_class": true,
                 "declared_in_candidate_file": true
               }

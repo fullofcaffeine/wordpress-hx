@@ -14,8 +14,8 @@
     },
     "generator": {
       "path": "tools/generated-php/run-lowering-snapshots.mjs",
-      "bytes": 34483,
-      "sha256": "sha256:ba8ca29199f07bb70859ac53c5e8ba727768b11d00769cd15d377bd76e258704"
+      "bytes": 34592,
+      "sha256": "sha256:a0d5b9c2b2c7ea3097514ea3c258ab5c4f23953b4b58e303721ae8e9896de31b"
     },
     "selected_snapshot_artifacts": [
       {
@@ -53,9 +53,9 @@
   "toolchain": {
     "haxe_version": "4.3.7",
     "locked_haxe_version": "4.3.7",
-    "php_cli_version": "8.4.7",
-    "php_cli_executable": "/opt/homebrew/bin/php",
-    "node_version": "v20.19.3",
+    "php_cli_version_family": "8.4",
+    "php_cli_executable": "php",
+    "node_version_major": "20",
     "php_parser": "php-parser"
   },
   "cases": [

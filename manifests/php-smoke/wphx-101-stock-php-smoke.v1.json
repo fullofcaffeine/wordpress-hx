@@ -13,8 +13,8 @@
   "toolchain": {
     "haxe_version": "4.3.7",
     "locked_haxe_version": "4.3.7",
-    "php_cli_version": "8.4.7",
-    "docker_server_version": "28.3.2"
+    "php_cli_version_family": "8.4",
+    "docker_available": true
   },
   "build": {
     "command": "haxe fixtures/php-smoke/php-smoke.hxml",
@@ -113,20 +113,20 @@
     {
       "id": "local-php-cli",
       "command": "php build/php-smoke/index.php",
-      "version": "8.4.7",
+      "version_family": "8.4",
       "output": "wphx-php-smoke:stock-haxe-php:3:alpha|beta|gamma:alpha=5,gamma=5:enabled"
     },
     {
       "id": "docker-php-8.4-cli",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/php-smoke/index.php",
-      "version": "8.4.22",
+      "version_family": "8.4",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "output": "wphx-php-smoke:stock-haxe-php:3:alpha|beta|gamma:alpha=5,gamma=5:enabled"
     },
     {
       "id": "docker-php-8.5-cli",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/php-smoke/index.php",
-      "version": "8.5.7",
+      "version_family": "8.5",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "output": "wphx-php-smoke:stock-haxe-php:3:alpha|beta|gamma:alpha=5,gamma=5:enabled"
     }

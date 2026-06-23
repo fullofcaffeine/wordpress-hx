@@ -323,7 +323,7 @@
       "receipts": [
         {
           "path": "receipts/wp-boundary/wphx-203-boundary-types.v1.json",
-          "sha256": "8da80a6b7082d23c9f4a0dadf898cc55cec76f72b0788b19dec4d699fd953a8c",
+          "sha256": "5a87bb4252250b25145d3e8a0b60dab06847703b35c19e0021f7e1b8b5ef8228",
           "id": "receipt:wphx-203-boundary-types"
         }
       ]

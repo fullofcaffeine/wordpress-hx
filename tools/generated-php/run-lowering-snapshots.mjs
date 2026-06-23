@@ -305,6 +305,10 @@ function command(commandName, commandArgs, options = {}) {
   }).trim();
 }
 
+function phpVersionFamily(version) {
+  return version.split(".").slice(0, 2).join(".");
+}
+
 function run(commandName, commandArgs, options = {}) {
   const result = spawnSync(commandName, commandArgs, {
     cwd: options.cwd,
@@ -884,9 +888,9 @@ function buildManifest(results, issue = ISSUE) {
     toolchain: {
       haxe_version: command("haxe", ["--version"]),
       locked_haxe_version: toolchainLock.tools.haxe.version,
-      php_cli_version: command("php", ["-r", "echo PHP_VERSION;"]),
-      php_cli_executable: toolchainLock.tools.php_cli.executable,
-      node_version: process.version,
+      php_cli_version_family: phpVersionFamily(command("php", ["-r", "echo PHP_VERSION;"])),
+      php_cli_executable: "php",
+      node_version_major: process.versions.node.split(".")[0],
       php_parser: "php-parser"
     },
     cases: results,

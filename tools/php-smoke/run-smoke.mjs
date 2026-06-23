@@ -34,6 +34,10 @@ function maybeCommand(commandName, commandArgs) {
   }
 }
 
+function phpVersionFamily(version) {
+  return version.split(".").slice(0, 2).join(".");
+}
+
 function sha256(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex");
 }
@@ -64,7 +68,7 @@ function runLocalPhp(label, commandPath) {
   return {
     id: label,
     command: `${commandPath} ${OUT_DIR}/index.php`,
-    version: command(commandPath, ["-r", "echo PHP_VERSION;"]),
+    version_family: phpVersionFamily(command(commandPath, ["-r", "echo PHP_VERSION;"])),
     output
   };
 }
@@ -77,7 +81,7 @@ function runDockerPhp(id, image) {
   return {
     id,
     command: `docker run --rm -v $PWD:/work -w /work ${image} php ${OUT_DIR}/index.php`,
-    version: command("docker", ["run", "--rm", image, "php", "-r", "echo PHP_VERSION;"]),
+    version_family: phpVersionFamily(command("docker", ["run", "--rm", image, "php", "-r", "echo PHP_VERSION;"])),
     image,
     output
   };
@@ -118,8 +122,8 @@ const manifest = {
   toolchain: {
     haxe_version: command("haxe", ["--version"]),
     locked_haxe_version: lock.tools.haxe.version,
-    php_cli_version: command("php", ["-r", "echo PHP_VERSION;"]),
-    docker_server_version: dockerVersion
+    php_cli_version_family: phpVersionFamily(command("php", ["-r", "echo PHP_VERSION;"])),
+    docker_available: dockerVersion != null
   },
   build: {
     command: `haxe ${HXML}`,

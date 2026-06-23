@@ -177,6 +177,69 @@ function phpString(value) {
   return JSON.stringify(value);
 }
 
+function relativeOrNull(path) {
+  if (path == null) return null;
+  return path.startsWith(process.cwd()) ? path.slice(process.cwd().length + 1) : path;
+}
+
+function stableDiagnostics(diagnostics) {
+  return Object.fromEntries(
+    Object.entries(diagnostics ?? {}).map(([key, value]) => [
+      key,
+      {
+        path: value.path,
+        bytes: value.bytes,
+        sha256_present: typeof value.sha256 === "string" && value.sha256.startsWith("sha256:")
+      }
+    ])
+  );
+}
+
+function stableLinkedCandidateAbi(abi) {
+  if (abi == null) return null;
+  return {
+    class_name: abi.class_name,
+    class_file: relativeOrNull(abi.class_file),
+    expected_candidate_file: relativeOrNull(abi.expected_candidate_file),
+    class_declared_in_candidate_file: abi.class_declared_in_candidate_file,
+    parent_class: abi.parent_class,
+    parent_file_role: abi.parent_file?.endsWith("src/wp-includes/class-wpdb.php") ? "wordpress-oracle-class-wpdb" : relativeOrNull(abi.parent_file),
+    owned_methods: Object.fromEntries(
+      Object.entries(abi.owned_methods ?? {}).map(([name, method]) => [
+        name,
+        {
+          declaring_class: method.declaring_class,
+          declaring_file: relativeOrNull(method.declaring_file),
+          declared_by_candidate_class: method.declared_by_candidate_class,
+          declared_in_candidate_file: method.declared_in_candidate_file
+        }
+      ])
+    ),
+    all_owned_methods_declared_by_candidate: abi.all_owned_methods_declared_by_candidate
+  };
+}
+
+function stableIsolatedParity(parity) {
+  return {
+    evidence_class: parity.evidence_class,
+    artifact_scope: parity.artifact_scope,
+    process_model: parity.process_model,
+    database_model: parity.database_model,
+    databases: parity.databases,
+    oracle: {
+      process_isolation: parity.oracle?.process_isolation,
+      diagnostics: stableDiagnostics(parity.oracle?.diagnostics)
+    },
+    candidate: {
+      process_isolation: parity.candidate?.process_isolation,
+      diagnostics: stableDiagnostics(parity.candidate?.diagnostics),
+      linked_candidate_abi: stableLinkedCandidateAbi(parity.candidate?.linked_candidate_abi)
+    },
+    comparisons: parity.comparisons,
+    status: parity.status
+  };
+}
+
 function sorted(values) {
   return [...values].sort((left, right) => String(left).localeCompare(String(right)));
 }
@@ -2045,7 +2108,7 @@ const manifest = {
         class_shell_probe_status: result.class_shell_probe.status,
         dropin_probe_status: result.dropin_probe.dropin_replacement_preserved ? "passed" : "failed",
         isolated_parity_status: result.isolated_parity.status,
-        isolated_parity: result.isolated_parity,
+        isolated_parity: stableIsolatedParity(result.isolated_parity),
         comparisons: result.class_shell_probe.comparisons,
         dropin_probe: result.dropin_probe,
         passed: result.passed
@@ -2223,7 +2286,7 @@ const hardeningManifest = {
   runtime_results: runtimeResults.map((result) => ({
     id: result.id,
     engine: result.engine,
-    isolated_parity: result.isolated_parity
+    isolated_parity: stableIsolatedParity(result.isolated_parity)
   })),
   validation_result: {
     status:
