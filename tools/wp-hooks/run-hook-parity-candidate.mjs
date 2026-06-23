@@ -48,6 +48,11 @@ function maybeCommand(commandName, commandArgs) {
   }
 }
 
+function phpVersionFamily(value = command("php", ["-r", "echo PHP_VERSION;"])) {
+  const [major, minor] = String(value).split(".");
+  return `${major}.${minor}`;
+}
+
 function sha256(value) {
   return `sha256:${createHash("sha256").update(value).digest("hex")}`;
 }
@@ -397,7 +402,14 @@ function stableValue(value) {
   if (value && typeof value === "object") {
     return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableValue(value[key])]));
   }
+  if (typeof value === "string") {
+    return value.replaceAll(process.cwd(), "$WORKSPACE").replaceAll("/work/", "$WORKSPACE/");
+  }
   return value;
+}
+
+function stableRun(run) {
+  return stableValue(run);
 }
 
 function compareRun(oracleRun, candidateRun) {
@@ -406,8 +418,8 @@ function compareRun(oracleRun, candidateRun) {
   return {
     id: oracleRun.id,
     matches: JSON.stringify(oracle) === JSON.stringify(candidate),
-    oracle: oracleRun.result,
-    candidate: candidateRun.result
+    oracle,
+    candidate
   };
 }
 
@@ -516,14 +528,14 @@ const manifest = {
   toolchain: {
     haxe_version: command("haxe", ["--version"]),
     locked_haxe_version: lock.tools.haxe.version,
-    php_cli_version: command("php", ["-r", "echo PHP_VERSION;"]),
-    docker_server_version: dockerVersion
+    php_cli_version_family: phpVersionFamily(),
+    docker_available: dockerVersion != null
   },
   build: {
     generated_haxe_files: filesUnder(HAXE_OUT),
     wp_hooks_candidate_files: filesUnder(OUT_ROOT)
   },
-  runtime_runs: runs,
+  runtime_runs: runs.map(stableRun),
   comparisons,
   ownership_manifest: OWNERSHIP,
   validation_result: {

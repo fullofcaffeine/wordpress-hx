@@ -51,7 +51,7 @@
       "receipt:wphx-302-03-hook-shell-emitter",
       "receipt:wphx-302-04-hook-distribution-surface"
     ],
-    "manifest_digest": "sha256:26e66564edd7664118dba243fd14fb7733d4fb5eeadc5b10fa4ed6632066e8f9"
+    "manifest_digest": "sha256:1193af06e2a8d26907574f39d36af80645c60f9f070946526cc7e7bb600b7d24"
   },
   "notes": "WPHX-302.04 closes the hook/plugin API bridge removal gate. Upstream plugin.php and class-wp-hook.php are now source/provenance oracles for generated distribution shells; executable hook decisions are owned by Haxe HookRuntime/HookKernel, and remaining PHP-native callables, references, globals, reflection-visible declarations, and include timing are approved public ABI boundaries."
 }

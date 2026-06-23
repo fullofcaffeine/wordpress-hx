@@ -6,9 +6,9 @@
   "command": "npm run wp:hooks:distribution-surface",
   "status": "passed",
   "manifest": "manifests/wp-hooks/wphx-302-04-hook-distribution-surface.v1.json",
-  "manifest_sha256": "sha256:26e66564edd7664118dba243fd14fb7733d4fb5eeadc5b10fa4ed6632066e8f9",
+  "manifest_sha256": "sha256:1193af06e2a8d26907574f39d36af80645c60f9f070946526cc7e7bb600b7d24",
   "ownership_manifest": "manifests/ownership/wphx-302-04-hooks-distribution-surface.v1.json",
-  "ownership_manifest_sha256": "sha256:97194d46f605cf071189d4db3c2d2b4b758794c0f44c9011d9942614d8b1f6a2",
+  "ownership_manifest_sha256": "sha256:1bba336a133e949050c54c7d4b52800366e56ae5497622c9eaaaf19a137500fb",
   "upstream_digest": "sha256:f40915601db31966c3fad5c84cb33449f827d613ca996723b08fd783d1c21358",
   "approved_public_abi_boundary_count": 5
 }

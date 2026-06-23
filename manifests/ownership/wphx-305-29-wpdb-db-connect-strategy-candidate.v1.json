@@ -107,6 +107,6 @@
       "receipt:wphx-305-21-wpdb-row-materialization-candidate",
       "receipt:wphx-305-20-wpdb-mysqli-phpglobal-candidate"
     ],
-    "manifest_digest": "sha256:03c994df71ca8bd7aae60e938c45b58392dbb4bf52cc4550419f9fab8e117dd8"
+    "manifest_digest": "sha256:a6b1f3f1717ac819a13bf94340165c93ade8f88c99c0d7065a447c96867461d8"
   }
 }

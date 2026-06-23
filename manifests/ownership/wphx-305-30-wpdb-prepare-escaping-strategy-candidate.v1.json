@@ -80,7 +80,7 @@
       "receipt:wphx-305-27-wpdb-method-body-strategy-candidate",
       "receipt:wphx-305-29-wpdb-db-connect-strategy-candidate"
     ],
-    "manifest_digest": "sha256:5e18dc7c446458efe77732637900313491bb4b84f8ed529c855e1aa8293e3a29"
+    "manifest_digest": "sha256:072a8dbdc0be404e46f24d2f1a675394e6ee3d7768ad0f494d25f170f99e50cd"
   },
   "notes": "The candidate remains a PHP ABI subclass because prepare()/escaping still expose native PHP variadics, references, filters, warnings, and mysqli resources. The branch/model decisions are Haxe-owned; the shell performs bounded PHP-native operations at the ABI edge."
 }

@@ -50,7 +50,7 @@
       "receipt:wphx-302-02-hook-runtime-boundary",
       "receipt:wphx-302-04-hook-distribution-surface"
     ],
-    "manifest_digest": "sha256:95364acb756b9a1dae7c91accde9d877ca79024eeade6e3a73234ed1a3f716a8"
+    "manifest_digest": "sha256:9663146aba45ab7ff0a0e9e72e2270abdabb297ec6d31a988a78e94076f70837"
   },
   "notes": "WPHX-302.02 replaces bounded hook shell decisions with typed Haxe runtime calls without using broad php.Syntax.code. WPHX-302.04 approves the remaining PHP-native callbacks, references, globals, reflection-visible declarations, and include timing as public ABI boundaries."
 }

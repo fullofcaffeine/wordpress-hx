@@ -53,8 +53,8 @@
   "toolchain": {
     "haxe_version": "4.3.7",
     "locked_haxe_version": "4.3.7",
-    "php_cli_version": "8.4.7",
-    "docker_server_version": "28.3.2"
+    "php_cli_version_family": "8.4",
+    "docker_available": true
   },
   "build": {
     "generated_haxe_files": [
@@ -374,74 +374,92 @@
   },
   "runtime_runs": [
     {
-      "id": "local-php-cli",
-      "runtime": "local-php-cli",
       "command": "php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
-      "mode": "wordpress-oracle",
-      "result": {
-        "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
-            5,
-            10,
-            20
-          ],
-          "callbackOrder": [
-            "low",
-            "middle",
-            "high"
-          ],
-          "afterRemovePriority": [
-            5,
-            20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
-          ]
-        },
-        "stack": {
-          "currentFilter": "inner_action",
-          "doingAny": true,
-          "doingOuter": true,
-          "doingMissing": false,
-          "filterCountAfterFirst": 1,
-          "actionCountAfterFirst": 1,
-          "filterCountAfterSecond": 2
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
-        }
-      }
-    },
-    {
       "id": "local-php-cli",
-      "runtime": "local-php-cli",
+      "mode": "wordpress-oracle",
+      "result": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
+        "priorities": {
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ]
+        },
+        "stack": {
+          "actionCountAfterFirst": 1,
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingMissing": false,
+          "doingOuter": true,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        }
+      },
+      "runtime": "local-php-cli"
+    },
+    {
       "command": "php build/wp-hooks-candidate/haxe-probe.php",
+      "id": "local-php-cli",
       "mode": "haxe-candidate",
       "result": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -449,173 +467,57 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "filterCountAfterSecond": 2,
-          "actionCountAfterFirst": 1
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
+          "filterCountAfterSecond": 2
         }
-      }
+      },
+      "runtime": "local-php-cli"
     },
     {
-      "id": "docker-php-8.4-cli",
-      "runtime": "docker-php-8.4-cli",
-      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
-      "mode": "wordpress-oracle",
-      "result": {
-        "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
-            5,
-            10,
-            20
-          ],
-          "callbackOrder": [
-            "low",
-            "middle",
-            "high"
-          ],
-          "afterRemovePriority": [
-            5,
-            20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
-          ]
-        },
-        "stack": {
-          "currentFilter": "inner_action",
-          "doingAny": true,
-          "doingOuter": true,
-          "doingMissing": false,
-          "filterCountAfterFirst": 1,
-          "actionCountAfterFirst": 1,
-          "filterCountAfterSecond": 2
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
-        }
-      }
-    },
-    {
       "id": "docker-php-8.4-cli",
-      "runtime": "docker-php-8.4-cli",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
-      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-hooks-candidate/haxe-probe.php",
-      "mode": "haxe-candidate",
-      "result": {
-        "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
-            5,
-            10,
-            20
-          ],
-          "callbackOrder": [
-            "low",
-            "middle",
-            "high"
-          ],
-          "afterRemovePriority": [
-            5,
-            20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
-          ]
-        },
-        "stack": {
-          "currentFilter": "inner_action",
-          "doingAny": true,
-          "doingOuter": true,
-          "doingMissing": false,
-          "filterCountAfterFirst": 1,
-          "filterCountAfterSecond": 2,
-          "actionCountAfterFirst": 1
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
-        }
-      }
-    },
-    {
-      "id": "docker-php-8.5-cli",
-      "runtime": "docker-php-8.5-cli",
-      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
-      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
       "mode": "wordpress-oracle",
       "result": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -623,57 +525,57 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "actionCountAfterFirst": 1,
           "filterCountAfterSecond": 2
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
         }
-      }
+      },
+      "runtime": "docker-php-8.4-cli"
     },
     {
-      "id": "docker-php-8.5-cli",
-      "runtime": "docker-php-8.5-cli",
-      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
-      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-hooks-candidate/haxe-probe.php",
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-hooks-candidate/haxe-probe.php",
+      "id": "docker-php-8.4-cli",
+      "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "mode": "haxe-candidate",
       "result": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -681,43 +583,141 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
+          ]
+        },
+        "stack": {
+          "actionCountAfterFirst": 1,
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingMissing": false,
+          "doingOuter": true,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
+        }
+      },
+      "runtime": "docker-php-8.4-cli"
+    },
+    {
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-hooks-candidate/oracle-probe.php build/wp-hooks-candidate/oracle/wp-includes/plugin.php",
+      "id": "docker-php-8.5-cli",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "mode": "wordpress-oracle",
+      "result": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
           ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
+        "priorities": {
           "acceptedArgCounts": [
             1,
             2,
             1
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "filterCountAfterSecond": 2,
-          "actionCountAfterFirst": 1
-        },
+          "filterCountAfterSecond": 2
+        }
+      },
+      "runtime": "docker-php-8.5-cli"
+    },
+    {
+      "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-hooks-candidate/haxe-probe.php",
+      "id": "docker-php-8.5-cli",
+      "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+      "mode": "haxe-candidate",
+      "result": {
         "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
           "actionDefaultArgs": [
             ""
-          ]
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
         },
         "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
           "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
+        "priorities": {
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
+            5,
+            20
+          ],
+          "callbackOrder": [
+            "low",
+            "middle",
+            "high"
+          ],
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
+            5,
+            10,
+            20
+          ]
+        },
+        "stack": {
+          "actionCountAfterFirst": 1,
+          "currentFilter": "inner_action",
+          "doingAny": true,
+          "doingMissing": false,
+          "doingOuter": true,
+          "filterCountAfterFirst": 1,
+          "filterCountAfterSecond": 2
         }
-      }
+      },
+      "runtime": "docker-php-8.5-cli"
     }
   ],
   "comparisons": [
@@ -725,12 +725,31 @@
       "id": "local-php-cli",
       "matches": true,
       "oracle": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -738,50 +757,50 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "actionCountAfterFirst": 1,
           "filterCountAfterSecond": 2
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
         }
       },
       "candidate": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -789,41 +808,22 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "filterCountAfterSecond": 2,
-          "actionCountAfterFirst": 1
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
+          "filterCountAfterSecond": 2
         }
       }
     },
@@ -831,12 +831,31 @@
       "id": "docker-php-8.4-cli",
       "matches": true,
       "oracle": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -844,50 +863,50 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "actionCountAfterFirst": 1,
           "filterCountAfterSecond": 2
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
         }
       },
       "candidate": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -895,41 +914,22 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "filterCountAfterSecond": 2,
-          "actionCountAfterFirst": 1
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
+          "filterCountAfterSecond": 2
         }
       }
     },
@@ -937,12 +937,31 @@
       "id": "docker-php-8.5-cli",
       "matches": true,
       "oracle": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -950,50 +969,50 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "actionCountAfterFirst": 1,
           "filterCountAfterSecond": 2
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
         }
       },
       "candidate": {
+        "dispatch": {
+          "actionDefaultArgs": [
+            ""
+          ],
+          "actionWritesValue": false,
+          "allArgsAccepted": 3,
+          "filterWritesValue": true,
+          "limitedArgsAccepted": 2,
+          "noArgsAccepted": 0
+        },
+        "pluginPaths": {
+          "activationHook": "activate_sample/sample.php",
+          "basename": "sample/sample.php",
+          "deactivationHook": "deactivate_sample/sample.php",
+          "mappedBasename": "mapped/mapped.php",
+          "muBasename": "loader.php"
+        },
         "priorities": {
-          "defaultPriority": 10,
-          "nullKernelPriority": 0,
-          "sortedPriorities": [
+          "acceptedArgCounts": [
+            1,
+            2,
+            1
+          ],
+          "afterRemovePriority": [
             5,
-            10,
             20
           ],
           "callbackOrder": [
@@ -1001,41 +1020,22 @@
             "middle",
             "high"
           ],
-          "afterRemovePriority": [
+          "defaultPriority": 10,
+          "nullKernelPriority": 0,
+          "sortedPriorities": [
             5,
+            10,
             20
-          ],
-          "acceptedArgCounts": [
-            1,
-            2,
-            1
           ]
         },
         "stack": {
+          "actionCountAfterFirst": 1,
           "currentFilter": "inner_action",
           "doingAny": true,
-          "doingOuter": true,
           "doingMissing": false,
+          "doingOuter": true,
           "filterCountAfterFirst": 1,
-          "filterCountAfterSecond": 2,
-          "actionCountAfterFirst": 1
-        },
-        "dispatch": {
-          "noArgsAccepted": 0,
-          "limitedArgsAccepted": 2,
-          "allArgsAccepted": 3,
-          "filterWritesValue": true,
-          "actionWritesValue": false,
-          "actionDefaultArgs": [
-            ""
-          ]
-        },
-        "pluginPaths": {
-          "basename": "sample/sample.php",
-          "muBasename": "loader.php",
-          "mappedBasename": "mapped/mapped.php",
-          "activationHook": "activate_sample/sample.php",
-          "deactivationHook": "deactivate_sample/sample.php"
+          "filterCountAfterSecond": 2
         }
       }
     }

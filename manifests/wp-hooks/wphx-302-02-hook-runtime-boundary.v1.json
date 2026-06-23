@@ -19,7 +19,7 @@
     "hook_surface_manifest": "manifests/wp-hooks/wphx-302-hook-surface.v1.json",
     "hook_surface_manifest_sha256": "sha256:59c322db3c6a59c2809ee0ba4e94b852f8efb40749eb8be527e8abae0289f561",
     "hook_candidate_manifest": "manifests/wp-hooks/wphx-302-01-hook-parity-candidate.v1.json",
-    "hook_candidate_manifest_sha256": "sha256:af906eb8f6db38e00229069d3974f92355ef0662fce214c46d11bd368de51d18",
+    "hook_candidate_manifest_sha256": "sha256:26fc6e498c66380548397aee95661e720ac1e053e2790b06c9c904bbfd4a6efd",
     "source_units": [
       {
         "unit": "src/wp-includes/plugin.php",

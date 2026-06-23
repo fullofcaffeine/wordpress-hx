@@ -550,14 +550,27 @@ function runDockerProbe(runtimeId, image, mode, root) {
   };
 }
 
+function stableValue(value) {
+  if (Array.isArray(value)) {
+    return value.map(stableValue);
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableValue(value[key])]));
+  }
+  if (typeof value === "string") {
+    return value.replaceAll(process.cwd(), "$WORKSPACE").replaceAll("/work/", "$WORKSPACE/");
+  }
+  return value;
+}
+
 function stableRun(run) {
-  return {
+  return stableValue({
     ...run,
     result: {
       ...run.result,
       phpVersion: phpVersionFamily(run.result.phpVersion)
     }
-  };
+  });
 }
 
 function compare(oracleResult, candidateResult) {

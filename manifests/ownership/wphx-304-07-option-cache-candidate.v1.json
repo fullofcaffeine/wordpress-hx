@@ -78,7 +78,7 @@
       "receipt:wphx-304-04-object-cache-fixture",
       "receipt:wphx-304-05-serialization-cache-fixture"
     ],
-    "manifest_digest": "sha256:ac8e2a79c4272ffb1a1af550da717bf1a4785a3585c71a0e0d86a8b3dfb3cbf1"
+    "manifest_digest": "sha256:2c4fb908182ab053b98c065659a0559ddf7e5a017cfefc20245022986e29ebab"
   },
   "notes": "maybe_serialize(), maybe_unserialize(), is_serialized(), salted helpers, and cache/global mutation APIs remain native/oracle-owned for now because their PHP serialization grammar, references, globals, or drop-in timing are not low-risk pure Haxe candidates."
 }

@@ -15,7 +15,7 @@
       "sha256": "sha256:9da68446a4b0696612208823d65ce4f02a93df82e9858760ce1821336c94ef55"
     },
     "runtime_boundary_manifest": "manifests/wp-hooks/wphx-302-02-hook-runtime-boundary.v1.json",
-    "runtime_boundary_manifest_sha256": "sha256:95364acb756b9a1dae7c91accde9d877ca79024eeade6e3a73234ed1a3f716a8",
+    "runtime_boundary_manifest_sha256": "sha256:9663146aba45ab7ff0a0e9e72e2270abdabb297ec6d31a988a78e94076f70837",
     "source_units": [
       {
         "unit": "src/wp-includes/plugin.php",

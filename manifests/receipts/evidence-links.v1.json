@@ -423,7 +423,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-302-01-hook-parity-candidate.v1.json",
-          "sha256": "ee8b07290c401fbf64e44cc6af2edf73e5e66d0db762bd0253da6a14d9cd1013",
+          "sha256": "948da81ef06d4186c48616ab8829d170edc574e937ea1d614a27c42a9b10abce",
           "id": "receipt:wphx-302-01-hook-parity-candidate"
         }
       ]
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-302-02-hook-runtime-boundary.v1.json",
-          "sha256": "8737d952c56b18df00a7647c8feeb17ac47e9dc058171432cf8d1ab63fc0da8b",
+          "sha256": "8601d8bbdf5b54a41606ecb4215abfe0850f9260e5328ef563fa3a8047a07210",
           "id": "receipt:wphx-302-02-hook-runtime-boundary"
         }
       ]
@@ -443,7 +443,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-302-03-hook-shell-emitter.v1.json",
-          "sha256": "82d363350625cb0575679a27c20865e47efef0119d489092f0c105c727827416",
+          "sha256": "a6644355abf3d05340bf82474c3088c149ec10ed98cf55fc16b802e88276d9e3",
           "id": "receipt:wphx-302-03-hook-shell-emitter"
         }
       ]
@@ -453,7 +453,7 @@
       "receipts": [
         {
           "path": "receipts/wp-hooks/wphx-302-04-hook-distribution-surface.v1.json",
-          "sha256": "b2cb7c77e1f67f6249da4dd07b5874ee2cb675441179ceb2d8df71db8b92c19b",
+          "sha256": "c3f8d403b141a592ee862d1771bbe47126402c9e2f736e0a0d89871b40e5f5e5",
           "id": "receipt:wphx-302-04-hook-distribution-surface"
         }
       ]
@@ -1313,7 +1313,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
-          "sha256": "609ef8cee264fe7c99265811355311944fbe2e47e27daeca531b7df6c69891f5",
+          "sha256": "55092060e5aa7219e75db600731cf98c53a6702e7300c6121d1875214f9a4034",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]

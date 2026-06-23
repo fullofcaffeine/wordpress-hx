@@ -187,7 +187,22 @@ function phpString(value) {
 
 function relativeOrNull(path) {
   if (path == null) return null;
-  return path.startsWith(process.cwd()) ? path.slice(process.cwd().length + 1) : path;
+  if (path.startsWith(process.cwd())) return path.slice(process.cwd().length + 1);
+  if (path.startsWith("/work/")) return path.slice("/work/".length);
+  return path;
+}
+
+function stableValue(value) {
+  if (Array.isArray(value)) {
+    return value.map(stableValue);
+  }
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.keys(value).sort().map((key) => [key, stableValue(value[key])]));
+  }
+  if (typeof value === "string") {
+    return value.replaceAll(process.cwd(), "$WORKSPACE").replaceAll("/work/", "$WORKSPACE/");
+  }
+  return value;
 }
 
 function stableDiagnostics(diagnostics) {
@@ -2119,8 +2134,8 @@ const manifest = {
         dropin_probe_status: result.dropin_probe.dropin_replacement_preserved ? "passed" : "failed",
         isolated_parity_status: result.isolated_parity.status,
         isolated_parity: stableIsolatedParity(result.isolated_parity),
-        comparisons: result.class_shell_probe.comparisons,
-        dropin_probe: result.dropin_probe,
+        comparisons: stableValue(result.class_shell_probe.comparisons),
+        dropin_probe: stableValue(result.dropin_probe),
         passed: result.passed
       }))
     },

@@ -44,18 +44,18 @@
       },
       {
         "path": "manifests/wp-hooks/wphx-302-01-hook-parity-candidate.v1.json",
-        "bytes": 31512,
-        "sha256": "sha256:af906eb8f6db38e00229069d3974f92355ef0662fce214c46d11bd368de51d18"
+        "bytes": 31508,
+        "sha256": "sha256:26fc6e498c66380548397aee95661e720ac1e053e2790b06c9c904bbfd4a6efd"
       },
       {
         "path": "manifests/wp-hooks/wphx-302-02-hook-runtime-boundary.v1.json",
         "bytes": 6243,
-        "sha256": "sha256:95364acb756b9a1dae7c91accde9d877ca79024eeade6e3a73234ed1a3f716a8"
+        "sha256": "sha256:9663146aba45ab7ff0a0e9e72e2270abdabb297ec6d31a988a78e94076f70837"
       },
       {
         "path": "manifests/wp-hooks/wphx-302-03-hook-shell-emitter.v1.json",
         "bytes": 4898,
-        "sha256": "sha256:e25addea1a88f9dad02d89f0a01f2ff38f833c12bc0fb4da1a53c030c255ea8e"
+        "sha256": "sha256:9254b86c7e3a55d4c9f09036cedd88e05b477165eafd5c78098f4cddcd6d7c31"
       }
     ],
     "prior_ownership_manifests": [
@@ -67,17 +67,17 @@
       {
         "path": "manifests/ownership/wphx-302-01-hooks-decision-model.v1.json",
         "bytes": 1948,
-        "sha256": "sha256:a749a23b66ad948df04f26facd6dd588a68f1ded6b7f14c3f3a5fa5689fb4ece"
+        "sha256": "sha256:560bae0d3d1c132d8a7ca915f833b2cc1f71012ed690c41f5ed8b7c67ad1efa5"
       },
       {
         "path": "manifests/ownership/wphx-302-02-hooks-runtime-boundary.v1.json",
         "bytes": 2242,
-        "sha256": "sha256:7e1ebc37dd54c14c20ed49c1d211ffef65c42040fb4ef9eaa9a3dad35efcce00"
+        "sha256": "sha256:0bd0c429ab859f519dfe761e0fae7c7a77344bcaebe134c73271bdcc07d49b4f"
       },
       {
         "path": "manifests/ownership/wphx-302-03-hooks-shell-emitter.v1.json",
         "bytes": 2087,
-        "sha256": "sha256:62ec77a4d6f1f6b82262d45d790067c6f9655024cbd0ef9ef0dbd0be770982f0"
+        "sha256": "sha256:04f3f998f71e9dad4fff15c17902efc303f90115f314488960b26daca611846c"
       }
     ]
   },
@@ -99,7 +99,7 @@
         "ownership_state": "verified_haxe_owned",
         "has_bridge": false,
         "has_removal_gate": false,
-        "sha256": "sha256:a749a23b66ad948df04f26facd6dd588a68f1ded6b7f14c3f3a5fa5689fb4ece"
+        "sha256": "sha256:560bae0d3d1c132d8a7ca915f833b2cc1f71012ed690c41f5ed8b7c67ad1efa5"
       },
       {
         "path": "manifests/ownership/wphx-302-02-hooks-runtime-boundary.v1.json",
@@ -108,7 +108,7 @@
         "ownership_state": "verified_haxe_owned",
         "has_bridge": false,
         "has_removal_gate": false,
-        "sha256": "sha256:7e1ebc37dd54c14c20ed49c1d211ffef65c42040fb4ef9eaa9a3dad35efcce00"
+        "sha256": "sha256:0bd0c429ab859f519dfe761e0fae7c7a77344bcaebe134c73271bdcc07d49b4f"
       },
       {
         "path": "manifests/ownership/wphx-302-03-hooks-shell-emitter.v1.json",
@@ -117,7 +117,7 @@
         "ownership_state": "verified_haxe_owned",
         "has_bridge": false,
         "has_removal_gate": false,
-        "sha256": "sha256:62ec77a4d6f1f6b82262d45d790067c6f9655024cbd0ef9ef0dbd0be770982f0"
+        "sha256": "sha256:04f3f998f71e9dad4fff15c17902efc303f90115f314488960b26daca611846c"
       }
     ],
     "ownership_state": "verified_haxe_owned",

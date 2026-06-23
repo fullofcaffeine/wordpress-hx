@@ -5,7 +5,7 @@
   "generator": "tools/wp-core/run-wpdb-db-connect-strategy-candidate.mjs",
   "source_manifest": {
     "path": "manifests/wp-core/wphx-305-29-wpdb-db-connect-strategy-candidate.v1.json",
-    "sha256": "sha256:03c994df71ca8bd7aae60e938c45b58392dbb4bf52cc4550419f9fab8e117dd8"
+    "sha256": "sha256:a6b1f3f1717ac819a13bf94340165c93ade8f88c99c0d7065a447c96867461d8"
   },
   "evidence_class": "live_integration_parity",
   "artifact_scope": "linked_candidate",
