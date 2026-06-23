@@ -1,0 +1,48 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/user-auth-installed-distribution-gate",
+  "issue": {
+    "id": "wordpresshx-l76.13.5",
+    "external_ref": "WPHX-306.07"
+  },
+  "unit": {
+    "kind": "packaged-installed-auth-gate",
+    "name": "users/auth installed-style HTTP distribution parity gate",
+    "area": "wp-login.php wp-admin/profile.php wp-admin/admin-ajax.php REST application-password auth and wp-includes auth classes/functions",
+    "public_contract": "The packaged auth surface must behave like vanilla through HTTP login/logout, auth cookies, nonce checks, profile/application-password flows, REST Basic auth, hooks, errors, and package-boundary reflection."
+  },
+  "ownership_state": "packaged_distribution_oracle_source_gate",
+  "ownership_axes": {
+    "semantic_owner": "upstream_oracle_for_public_php",
+    "adapter_contract_owner": "haxe_typed_contract_present",
+    "emission_strategy": "upstream_source_package_with_haxe_private_contract_artifacts",
+    "execution_provider": "php_web_server",
+    "compatibility_evidence": "live_integration_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "oracle-source-package-with-haxe-contract-artifacts",
+    "removal_gate": "Replace copied public auth files with typed Adapter IR/original-path generated PHP before claiming generated public auth replacement or no-upstream-fallback closure."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-user-auth-installed-distribution-gate.mjs",
+    "manifests/wp-core/wphx-306-07-auth-installed-distribution-gate.v1.json",
+    "manifests/ownership/wphx-306-07-auth-installed-distribution-gate.v1.json",
+    "receipts/wp-core/wphx-306-07-auth-installed-distribution-gate.v1.json"
+  ],
+  "generated_paths": [
+    "build/wp-core/wphx-306-07"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-306-installed-auth",
+      "npm run wp:core:wphx-306-installed-auth:check",
+      "npm run wp:core:wphx-306-auth-adapter-contract-candidate:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-306-07-auth-installed-distribution-gate"
+    ],
+    "manifest_digest": "sha256:b56ef8963151a106543288eb40d48212347714d19a0562833ff70d2df861fc77"
+  }
+}

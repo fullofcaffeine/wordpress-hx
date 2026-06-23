@@ -1,0 +1,906 @@
+{
+  "schema": "wphx.wp-core-auth-installed-distribution-gate.v1",
+  "issue": "WPHX-306.07",
+  "generated_at": "2026-06-24T03:45:00.000Z",
+  "generator": "tools/wp-core/run-user-auth-installed-distribution-gate.mjs",
+  "evidence_classes": [
+    "live_integration_parity",
+    "runtime_abi",
+    "targeted_semantic_parity"
+  ],
+  "artifact_scope": "packaged_distribution",
+  "upstream": {
+    "repo": "../wordpress-develop",
+    "commit": "26b68024931348d267b70e2a29910e1320d0094f",
+    "source_files": [
+      {
+        "path": "src/wp-includes/class-wp-error.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-error.php",
+        "bytes": 7502,
+        "sha256": "sha256:fe0e54bcb095f3ebb6493cbd558f927234e1bff3f643b2ca00f7e2d74309400c"
+      },
+      {
+        "path": "src/wp-includes/class-wp-role.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-role.php",
+        "bytes": 2523,
+        "sha256": "sha256:9ab9ad4a29fa3bc9e03c4f9a61fc91b407dbecb3d1f6521f706deaca5ca55b3e"
+      },
+      {
+        "path": "src/wp-includes/class-wp-roles.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-roles.php",
+        "bytes": 9321,
+        "sha256": "sha256:b116231e11cafb3698a39ace2663b69ee7488e4128a0c2ec250f2414094aba12"
+      },
+      {
+        "path": "src/wp-includes/class-wp-user.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-user.php",
+        "bytes": 23016,
+        "sha256": "sha256:5628d507a0979e34a439ad80caba9c5127df53bf8150d86c93b71b1e3d1a5543"
+      },
+      {
+        "path": "src/wp-includes/class-wp-user-query.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-user-query.php",
+        "bytes": 44102,
+        "sha256": "sha256:ea9ffe56294efba4a7c2f0075dc6e406942661aadb53a16911a94cbe899c49a6"
+      },
+      {
+        "path": "src/wp-includes/class-wp-session-tokens.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-session-tokens.php",
+        "bytes": 7319,
+        "sha256": "sha256:0708de7171949675139eda1e476935763f65e8a3a0cf40fc534dfffa00fb04cb"
+      },
+      {
+        "path": "src/wp-includes/class-wp-user-meta-session-tokens.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-user-meta-session-tokens.php",
+        "bytes": 2954,
+        "sha256": "sha256:bd32717507322f0e15234d546c4938c8e2d092d7166d4055f8ec6815ed09daa8"
+      },
+      {
+        "path": "src/wp-includes/class-wp-application-passwords.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-application-passwords.php",
+        "bytes": 17099,
+        "sha256": "sha256:266e15ec38652acaee5e3fd6103fc1275d2d6ea5c54f8926c1c4ddf688559658"
+      },
+      {
+        "path": "src/wp-includes/capabilities.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/capabilities.php",
+        "bytes": 43633,
+        "sha256": "sha256:12e26e9aede307a7ad1eed11137f0ac0ca7db1c9a841ef77d3f83f960c7a7fee"
+      },
+      {
+        "path": "src/wp-includes/pluggable.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      },
+      {
+        "path": "src/wp-includes/user.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/user.php",
+        "bytes": 178824,
+        "sha256": "sha256:3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+      }
+    ]
+  },
+  "inputs": {
+    "runner": {
+      "path": "tools/wp-core/run-user-auth-installed-distribution-gate.mjs",
+      "bytes": 41822,
+      "sha256": "sha256:59aebe98afd05ce1d74fe3b2cea10cce9fedb2c21747ba7cc23f847b3e35c7a2"
+    },
+    "package_json": {
+      "path": "package.json",
+      "bytes": 23107,
+      "sha256": "sha256:1456d531d70e363a4a9b145bec9a10a29587d5621c8f4340ba5b303315ce70be"
+    },
+    "contract_manifest": {
+      "path": "manifests/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+      "bytes": 15721,
+      "sha256": "sha256:ad8e6814cae83a4adffd85be774b4ea32bcc5c7e3752c91d29912ba8620a56ce"
+    },
+    "prior_manifests": [
+      {
+        "path": "manifests/wp-core/wphx-306-03-capability-role-fixture.v1.json",
+        "bytes": 9684,
+        "sha256": "sha256:230b25d76cb049a3a11068df9f7a6e8f0e1e6777d01cb3e6a6c5e47628a513be"
+      },
+      {
+        "path": "manifests/wp-core/wphx-306-04-auth-cookie-nonce-fixture.v1.json",
+        "bytes": 15495,
+        "sha256": "sha256:f6faa6f31d8dd7f8678b615409c026f4ad940a748ac8f0305ec88586625643a7"
+      },
+      {
+        "path": "manifests/wp-core/wphx-306-05-password-application-fixture.v1.json",
+        "bytes": 10478,
+        "sha256": "sha256:6e29638146bb3d94bb31d4a9f8517364dca5e344eca4c90cf2e3d90b622a3755"
+      },
+      {
+        "path": "manifests/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+        "bytes": 245377,
+        "sha256": "sha256:5aa9f1bd24908fa1b50428d72ee180ed7f4072eefd683ebdef3ad4fe2e8dc353"
+      }
+    ]
+  },
+  "package": {
+    "oracle_root": "build/wp-core/wphx-306-07/oracle-package",
+    "candidate_root": "build/wp-core/wphx-306-07/candidate-package",
+    "candidate_files": [
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/index.php",
+        "bytes": 374,
+        "sha256": "sha256:5f4436d5e9a8e5aabcafcbe7dff5f522482950e0c8990b4168732719758921d7"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/Array_hx.php",
+        "bytes": 25987,
+        "sha256": "sha256:85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/haxe/Exception.php",
+        "bytes": 3913,
+        "sha256": "sha256:9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1248,
+        "sha256": "sha256:9fe08304f6fc267231424a61fd632408d7b4207d52f470fbdc28d9e6fecfe75a"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 508,
+        "sha256": "sha256:3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/haxe/ValueException.php",
+        "bytes": 1062,
+        "sha256": "sha256:647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_Boot/HxAnon.php",
+        "bytes": 1398,
+        "sha256": "sha256:c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_Boot/HxClass.php",
+        "bytes": 3266,
+        "sha256": "sha256:1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_Boot/HxClosure.php",
+        "bytes": 3162,
+        "sha256": "sha256:a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 4438,
+        "sha256": "sha256:c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_Boot/HxEnum.php",
+        "bytes": 1316,
+        "sha256": "sha256:f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_Boot/HxString.php",
+        "bytes": 9912,
+        "sha256": "sha256:1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "sha256:80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/php/Boot.php",
+        "bytes": 42682,
+        "sha256": "sha256:9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/Std.php",
+        "bytes": 1131,
+        "sha256": "sha256:2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/StringTools.php",
+        "bytes": 1138,
+        "sha256": "sha256:4e310c5fae7f181c00289ac68d73218d1d1f87b59a4e6ec4b8776a7b0e56cf41"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/wphx/fixtures/wp/core/AuthAdapterContractCandidateEntry.php",
+        "bytes": 6586,
+        "sha256": "sha256:1099e9808e21228ff89d5487dc0bae95e934a9e679747fc2a7778c73de5d2abd"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/haxe/lib/wphx/wp/auth/AuthAdapterContract.php",
+        "bytes": 8253,
+        "sha256": "sha256:328ba2202285cc117ef643bf12cedbbf59fdd69e8a65b2373d9c43076449c07e"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/capabilities.php",
+        "bytes": 43633,
+        "sha256": "sha256:12e26e9aede307a7ad1eed11137f0ac0ca7db1c9a841ef77d3f83f960c7a7fee"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-application-passwords.php",
+        "bytes": 17099,
+        "sha256": "sha256:266e15ec38652acaee5e3fd6103fc1275d2d6ea5c54f8926c1c4ddf688559658"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-error.php",
+        "bytes": 7502,
+        "sha256": "sha256:fe0e54bcb095f3ebb6493cbd558f927234e1bff3f643b2ca00f7e2d74309400c"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-role.php",
+        "bytes": 2523,
+        "sha256": "sha256:9ab9ad4a29fa3bc9e03c4f9a61fc91b407dbecb3d1f6521f706deaca5ca55b3e"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-roles.php",
+        "bytes": 9321,
+        "sha256": "sha256:b116231e11cafb3698a39ace2663b69ee7488e4128a0c2ec250f2414094aba12"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-session-tokens.php",
+        "bytes": 7319,
+        "sha256": "sha256:0708de7171949675139eda1e476935763f65e8a3a0cf40fc534dfffa00fb04cb"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user-meta-session-tokens.php",
+        "bytes": 2954,
+        "sha256": "sha256:bd32717507322f0e15234d546c4938c8e2d092d7166d4055f8ec6815ed09daa8"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user-query.php",
+        "bytes": 44102,
+        "sha256": "sha256:ea9ffe56294efba4a7c2f0075dc6e406942661aadb53a16911a94cbe899c49a6"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user.php",
+        "bytes": 23016,
+        "sha256": "sha256:5628d507a0979e34a439ad80caba9c5127df53bf8150d86c93b71b1e3d1a5543"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/user.php",
+        "bytes": 178824,
+        "sha256": "sha256:3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+      },
+      {
+        "path": "build/wp-core/wphx-306-07/candidate-package/wphx-auth-installed-router.php",
+        "bytes": 19024,
+        "sha256": "sha256:cd23404a43fb8ad0fb53b7eeb61d7476c5ea384e4778377dfa0fcb6fcb4ff569"
+      }
+    ],
+    "public_auth_files_are_copied_oracle_source": true,
+    "generated_public_auth_replacement_claimed": false,
+    "haxe_contract_artifacts_in_candidate_package": true
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "boundary:auth-package",
+        "focus": "public auth functions/classes are declared from the package root and Haxe contract artifacts are present in the candidate package"
+      },
+      {
+        "id": "login:get-form",
+        "focus": "installed-style wp-login.php GET renders login form and nonce through HTTP"
+      },
+      {
+        "id": "login:post-success",
+        "focus": "wp_signon authenticates, fires hooks, and emits auth/logged-in Set-Cookie headers"
+      },
+      {
+        "id": "admin:profile-cookie",
+        "focus": "logged-in cookie validates through wp_validate_auth_cookie for profile/admin access"
+      },
+      {
+        "id": "ajax:nonce-invalid",
+        "focus": "admin-ajax-style nonce failure returns plugin-visible JSON error"
+      },
+      {
+        "id": "ajax:nonce-valid",
+        "focus": "admin-ajax-style nonce success verifies a current nonce for the logged-in user"
+      },
+      {
+        "id": "rest:application-password",
+        "focus": "REST-style Basic auth validates application passwords and records usage"
+      },
+      {
+        "id": "profile:application-password-create",
+        "focus": "profile-style application-password creation uses WordPress storage and hooks"
+      },
+      {
+        "id": "logout:clear-cookies",
+        "focus": "wp_logout clears auth cookies and fires logout hook"
+      },
+      {
+        "id": "login:post-failure",
+        "focus": "bad password returns WP_Error over HTTP without setting login cookies"
+      }
+    ],
+    "transport": "PHP built-in HTTP server plus curl with cookie carry-over",
+    "php_lint": {
+      "oracle": [
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wphx-auth-installed-router.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wphx-auth-installed-router.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-error.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-error.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-role.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-role.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-roles.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-roles.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-user.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-user.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-user-query.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-user-query.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-session-tokens.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-session-tokens.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-user-meta-session-tokens.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-user-meta-session-tokens.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-application-passwords.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/class-wp-application-passwords.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/capabilities.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/capabilities.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/pluggable.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/pluggable.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/oracle-package/wp-includes/user.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/oracle-package/wp-includes/user.php"
+        }
+      ],
+      "candidate": [
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wphx-auth-installed-router.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wphx-auth-installed-router.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-error.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-error.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-role.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-role.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-roles.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-roles.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user-query.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user-query.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-session-tokens.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-session-tokens.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user-meta-session-tokens.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-user-meta-session-tokens.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-application-passwords.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/class-wp-application-passwords.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/capabilities.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/capabilities.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/pluggable.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/pluggable.php"
+        },
+        {
+          "path": "build/wp-core/wphx-306-07/candidate-package/wp-includes/user.php",
+          "php_lint": "No syntax errors detected in build/wp-core/wphx-306-07/candidate-package/wp-includes/user.php"
+        }
+      ]
+    }
+  },
+  "runs": [
+    {
+      "id": "installed-auth:http-oracle",
+      "mode": "oracle",
+      "command": "php -S 127.0.0.1:<port> wphx-auth-installed-router.php",
+      "normalized_sha256": "sha256:0f75c7d2a9a7f04b7f13d2f5a9e991b250f317a1c9f0b9dc9f1052e22bc8ce80"
+    },
+    {
+      "id": "installed-auth:http-candidate",
+      "mode": "candidate",
+      "command": "php -S 127.0.0.1:<port> wphx-auth-installed-router.php",
+      "normalized_sha256": "sha256:0f75c7d2a9a7f04b7f13d2f5a9e991b250f317a1c9f0b9dc9f1052e22bc8ce80"
+    }
+  ],
+  "comparison": {
+    "observations_equal": true,
+    "oracle_normalized": {
+      "boundary": {
+        "boundary": {
+          "functions": {
+            "wp_signon": {
+              "file": "wphx-auth-installed-router.php:imported-user-function",
+              "parameters": [
+                "credentials",
+                "secure_cookie"
+              ]
+            },
+            "wp_authenticate": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "username",
+                "password"
+              ]
+            },
+            "wp_set_auth_cookie": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "user_id",
+                "remember",
+                "secure",
+                "token"
+              ]
+            },
+            "wp_validate_auth_cookie": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "cookie",
+                "scheme"
+              ]
+            },
+            "wp_create_nonce": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "action"
+              ]
+            },
+            "wp_verify_nonce": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "nonce",
+                "action"
+              ]
+            },
+            "wp_authenticate_application_password": {
+              "file": "wphx-auth-installed-router.php:imported-user-function",
+              "parameters": [
+                "input_user",
+                "username",
+                "password"
+              ]
+            },
+            "wp_validate_application_password": {
+              "file": "wphx-auth-installed-router.php:imported-user-function",
+              "parameters": [
+                "input_user"
+              ]
+            },
+            "current_user_can": {
+              "file": "wp-includes/capabilities.php",
+              "parameters": [
+                "capability",
+                "args"
+              ]
+            },
+            "user_can": {
+              "file": "wp-includes/capabilities.php",
+              "parameters": [
+                "user",
+                "capability",
+                "args"
+              ]
+            }
+          },
+          "classes": {
+            "WP_User": {
+              "file": "wp-includes/class-wp-user.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_Roles": {
+              "file": "wp-includes/class-wp-roles.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_Role": {
+              "file": "wp-includes/class-wp-role.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_User_Query": {
+              "file": "wp-includes/class-wp-user-query.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_Session_Tokens": {
+              "file": "wp-includes/class-wp-session-tokens.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_User_Meta_Session_Tokens": {
+              "file": "wp-includes/class-wp-user-meta-session-tokens.php",
+              "attributes": []
+            },
+            "WP_Application_Passwords": {
+              "file": "wp-includes/class-wp-application-passwords.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            }
+          },
+          "haxe_contract_present": "mode-specific",
+          "public_auth_files_are_copied_oracle_source": true,
+          "generated_public_auth_replacement_claimed": false
+        }
+      },
+      "login_form": {
+        "status": 200,
+        "has_login_form": false,
+        "has_nonce": false
+      },
+      "login_success": {
+        "status": 200,
+        "json": null,
+        "set_cookies": [
+          {
+            "name": "wordpress_wphx-auth-installed",
+            "value_parts": 4,
+            "username": "api-user",
+            "has_hmac": true,
+            "path": "/wp-content/plugins",
+            "httponly": true,
+            "expires": true
+          },
+          {
+            "name": "wordpress_wphx-auth-installed",
+            "value_parts": 4,
+            "username": "api-user",
+            "has_hmac": true,
+            "path": "/wp-admin",
+            "httponly": true,
+            "expires": true
+          },
+          {
+            "name": "wordpress_logged_in_wphx-auth-installed",
+            "value_parts": 4,
+            "username": "api-user",
+            "has_hmac": true,
+            "path": "/",
+            "httponly": true,
+            "expires": true
+          }
+        ]
+      },
+      "profile": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "invalid_ajax": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "valid_ajax": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "rest_me": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "app_password_create": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "logout": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "login_failure": {
+        "status": 403,
+        "json": {
+          "route": "login",
+          "ok": false,
+          "error_codes": [
+            "incorrect_password"
+          ],
+          "actions": [
+            "wp_authenticate",
+            "wp_error_added",
+            "wp_login_failed",
+            "wp_roles_init"
+          ],
+          "errors": []
+        },
+        "set_cookies": []
+      }
+    },
+    "candidate_normalized": {
+      "boundary": {
+        "boundary": {
+          "functions": {
+            "wp_signon": {
+              "file": "wphx-auth-installed-router.php:imported-user-function",
+              "parameters": [
+                "credentials",
+                "secure_cookie"
+              ]
+            },
+            "wp_authenticate": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "username",
+                "password"
+              ]
+            },
+            "wp_set_auth_cookie": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "user_id",
+                "remember",
+                "secure",
+                "token"
+              ]
+            },
+            "wp_validate_auth_cookie": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "cookie",
+                "scheme"
+              ]
+            },
+            "wp_create_nonce": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "action"
+              ]
+            },
+            "wp_verify_nonce": {
+              "file": "wp-includes/pluggable.php",
+              "parameters": [
+                "nonce",
+                "action"
+              ]
+            },
+            "wp_authenticate_application_password": {
+              "file": "wphx-auth-installed-router.php:imported-user-function",
+              "parameters": [
+                "input_user",
+                "username",
+                "password"
+              ]
+            },
+            "wp_validate_application_password": {
+              "file": "wphx-auth-installed-router.php:imported-user-function",
+              "parameters": [
+                "input_user"
+              ]
+            },
+            "current_user_can": {
+              "file": "wp-includes/capabilities.php",
+              "parameters": [
+                "capability",
+                "args"
+              ]
+            },
+            "user_can": {
+              "file": "wp-includes/capabilities.php",
+              "parameters": [
+                "user",
+                "capability",
+                "args"
+              ]
+            }
+          },
+          "classes": {
+            "WP_User": {
+              "file": "wp-includes/class-wp-user.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_Roles": {
+              "file": "wp-includes/class-wp-roles.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_Role": {
+              "file": "wp-includes/class-wp-role.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_User_Query": {
+              "file": "wp-includes/class-wp-user-query.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_Session_Tokens": {
+              "file": "wp-includes/class-wp-session-tokens.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            },
+            "WP_User_Meta_Session_Tokens": {
+              "file": "wp-includes/class-wp-user-meta-session-tokens.php",
+              "attributes": []
+            },
+            "WP_Application_Passwords": {
+              "file": "wp-includes/class-wp-application-passwords.php",
+              "attributes": [
+                "AllowDynamicProperties"
+              ]
+            }
+          },
+          "haxe_contract_present": "mode-specific",
+          "public_auth_files_are_copied_oracle_source": true,
+          "generated_public_auth_replacement_claimed": false
+        }
+      },
+      "login_form": {
+        "status": 200,
+        "has_login_form": false,
+        "has_nonce": false
+      },
+      "login_success": {
+        "status": 200,
+        "json": null,
+        "set_cookies": [
+          {
+            "name": "wordpress_wphx-auth-installed",
+            "value_parts": 4,
+            "username": "api-user",
+            "has_hmac": true,
+            "path": "/wp-content/plugins",
+            "httponly": true,
+            "expires": true
+          },
+          {
+            "name": "wordpress_wphx-auth-installed",
+            "value_parts": 4,
+            "username": "api-user",
+            "has_hmac": true,
+            "path": "/wp-admin",
+            "httponly": true,
+            "expires": true
+          },
+          {
+            "name": "wordpress_logged_in_wphx-auth-installed",
+            "value_parts": 4,
+            "username": "api-user",
+            "has_hmac": true,
+            "path": "/",
+            "httponly": true,
+            "expires": true
+          }
+        ]
+      },
+      "profile": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "invalid_ajax": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "valid_ajax": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "rest_me": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "app_password_create": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "logout": {
+        "status": 200,
+        "json": null,
+        "set_cookies": []
+      },
+      "login_failure": {
+        "status": 403,
+        "json": {
+          "route": "login",
+          "ok": false,
+          "error_codes": [
+            "incorrect_password"
+          ],
+          "actions": [
+            "wp_authenticate",
+            "wp_error_added",
+            "wp_login_failed",
+            "wp_roles_init"
+          ],
+          "errors": []
+        },
+        "set_cookies": []
+      }
+    }
+  },
+  "package_boundary": {
+    "status": "passed",
+    "declared_from_package_root": true,
+    "haxe_contract_present": true,
+    "generated_public_auth_replacement_claimed": false,
+    "public_auth_files_are_copied_oracle_source": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "generated-public-auth-replacement-not-yet-installed",
+      "owner": "WPHX-306-follow-up",
+      "detail": "This gate proves installed-style auth behavior over package roots and Haxe contract presence, but public auth PHP files are still copied WordPress oracle source. Typed Adapter IR/original-path generated auth files remain required before a no-upstream-fallback claim."
+    },
+    {
+      "id": "full-wordpress-installer-and-database-deferred",
+      "owner": "WPHX-700",
+      "detail": "The gate uses deterministic in-memory stores under PHP's HTTP server. Full MySQL-backed installation, admin screens, external plugin corpus, and selected upstream PHPUnit auth groups remain broader distribution work."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-306-07-auth-installed-distribution-gate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 10,
+    "evidence_classes": [
+      "live_integration_parity",
+      "runtime_abi",
+      "targeted_semantic_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "generated_public_auth_replacement_claimed": false,
+    "package_boundary": {
+      "status": "passed",
+      "declared_from_package_root": true,
+      "haxe_contract_present": true,
+      "generated_public_auth_replacement_claimed": false,
+      "public_auth_files_are_copied_oracle_source": true
+    }
+  }
+}

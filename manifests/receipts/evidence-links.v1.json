@@ -393,7 +393,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "607c6a4139c58079625e54af1fe74bec765738c838190c60f1d6d96595575a20",
+          "sha256": "02c88a3ad1975b3ab55da3f321fac9330f1a964567fed183d0e623723929f9cb",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -1155,6 +1155,11 @@
           "path": "receipts/wp-core/wphx-306-foundation.v1.json",
           "sha256": "647e611548e5a84897b2bc383741eb224966173d665c8a1c4536976ff787c8c9",
           "id": "receipt:wphx-306-foundation"
+        },
+        {
+          "path": "receipts/wp-core/wphx-306-domain-closure.v1.json",
+          "sha256": "c89fec44e1eacb9d66d4a020daf48344b2ca9464787c18d936a67842b1083022",
+          "id": "receipt:wphx-306-domain-closure"
         }
       ]
     },
@@ -1195,6 +1200,16 @@
           "path": "receipts/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
           "sha256": "4127c2bb1c820173f7e07103f5db60b9e4055db88e6217155dcd7b2174277e13",
           "id": "receipt:wphx-306-06-user-auth-runtime-abi-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-306.07",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-306-07-auth-installed-distribution-gate.v1.json",
+          "sha256": "0027eb8b12b1c11a69685079f254c130dbb736a5c13988ee8b77eaa1661ea950",
+          "id": "receipt:wphx-306-07-auth-installed-distribution-gate"
         }
       ]
     },

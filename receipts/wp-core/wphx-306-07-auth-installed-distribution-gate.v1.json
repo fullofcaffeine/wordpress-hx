@@ -1,0 +1,59 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-306-07-auth-installed-distribution-gate",
+  "issue": {
+    "id": "wordpresshx-l76.13.5",
+    "external_ref": "WPHX-306.07",
+    "title": "Installed auth distribution parity gate"
+  },
+  "recorded_at": "2026-06-24T03:45:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-306-07-auth-installed-distribution-gate.v1.json",
+      "role": "users/auth installed-style HTTP distribution parity manifest",
+      "sha256": "sha256:b56ef8963151a106543288eb40d48212347714d19a0562833ff70d2df861fc77"
+    },
+    {
+      "path": "manifests/ownership/wphx-306-07-auth-installed-distribution-gate.v1.json",
+      "role": "users/auth installed distribution ownership manifest",
+      "sha256": "sha256:0df169891657e6debb8f2e34935e5a20aa456392220be3b7caf78f5303db5033"
+    },
+    {
+      "path": "tools/wp-core/run-user-auth-installed-distribution-gate.mjs",
+      "role": "installed auth HTTP gate generator and check-mode validator",
+      "sha256": "sha256:59aebe98afd05ce1d74fe3b2cea10cce9fedb2c21747ba7cc23f847b3e35c7a2"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-306-installed-auth",
+    "npm run wp:core:wphx-306-installed-auth:check",
+    "npm run wp:core:wphx-306-auth-adapter-contract-candidate:check",
+    "npm run receipts:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-306-foundation",
+    "receipt:wphx-306-03-capability-role-fixture",
+    "receipt:wphx-306-04-auth-cookie-nonce-fixture",
+    "receipt:wphx-306-05-password-application-fixture",
+    "receipt:wphx-306-06-user-auth-runtime-abi-fixture"
+  ],
+  "manifest_sha256": "sha256:b56ef8963151a106543288eb40d48212347714d19a0562833ff70d2df861fc77",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 10,
+    "evidence_classes": [
+      "live_integration_parity",
+      "runtime_abi",
+      "targeted_semantic_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "generated_public_auth_replacement_claimed": false,
+    "package_boundary": {
+      "status": "passed",
+      "declared_from_package_root": true,
+      "haxe_contract_present": true,
+      "generated_public_auth_replacement_claimed": false,
+      "public_auth_files_are_copied_oracle_source": true
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-306-domain-closure",
+  "issue": {
+    "id": "wordpresshx-l76.13",
+    "external_ref": "WPHX-306",
+    "title": "Users, roles, capabilities, auth, cookies, nonces"
+  },
+  "recorded_at": "2026-06-24T03:55:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-306-01-user-auth-surface.v1.json",
+      "role": "users/auth source and distribution surface inventory"
+    },
+    {
+      "path": "manifests/wp-core/wphx-306-02-auth-adapter-contract-candidate.v1.json",
+      "role": "first typed Haxe auth semantic and adapter-contract candidate"
+    },
+    {
+      "path": "manifests/wp-core/wphx-306-03-capability-role-fixture.v1.json",
+      "role": "capability and role oracle fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-306-04-auth-cookie-nonce-fixture.v1.json",
+      "role": "auth cookie and nonce oracle fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-306-05-password-application-fixture.v1.json",
+      "role": "password and application-password oracle fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-306-06-user-auth-runtime-abi-fixture.v1.json",
+      "role": "user/auth runtime ABI fixture"
+    },
+    {
+      "path": "manifests/wp-core/wphx-306-07-auth-installed-distribution-gate.v1.json",
+      "role": "installed-style auth distribution parity gate"
+    },
+    {
+      "path": "src/wphx/wp/auth/AuthAdapterContract.hx",
+      "role": "typed Haxe auth semantic and adapter-contract model"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-306-auth-adapter-contract-candidate:check",
+    "npm run wp:core:wphx-306-capability-role:check",
+    "npm run wp:core:wphx-306-auth-cookie-nonce:check",
+    "npm run wp:core:wphx-306-password-application:check",
+    "npm run wp:core:wphx-306-runtime-abi:check",
+    "npm run wp:core:wphx-306-installed-auth:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run beads:validate",
+    "npm run receipts:validate"
+  ],
+  "follow_up": [
+    {
+      "issue": "future WPHX-306 generated public auth adapter",
+      "bead": null,
+      "reason": "Needed before claiming wp-includes/capabilities.php, pluggable.php, user.php, WP_User, WP_Roles, WP_Role, WP_User_Query, session-token, and application-password public PHP replacement without oracle-source fallback."
+    },
+    {
+      "issue": "WPHX-700",
+      "bead": "wordpresshx-w91.3",
+      "reason": "Owns broader installed-system closure: live database, selected upstream PHPUnit auth groups, full admin/login screens, external plugin corpus, and release distribution evidence."
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "closed_child_slices": 5,
+    "fixture_domains": [
+      "users/auth surface inventory",
+      "typed Haxe auth adapter-contract candidate",
+      "capabilities and roles",
+      "auth cookies and nonces",
+      "passwords and application passwords",
+      "runtime ABI and plugin-facing class shape",
+      "installed-style HTTP auth distribution behavior"
+    ],
+    "ownership_summary": {
+      "haxe_parity_candidate": [
+        "capability kind classification",
+        "nonce route classification",
+        "password hash-family route classification",
+        "auth/logged-in cookie scheme route classification",
+        "application-password authentication route classification"
+      ],
+      "external_oracle": [
+        "public PHP auth files remain oracle-source package fixtures",
+        "generated public PHP auth replacement is not claimed",
+        "full MySQL-backed installed WordPress auth parity remains WPHX-700 or later distribution work"
+      ]
+    },
+    "claim_boundaries": {
+      "public_php_replacement_claimed": false,
+      "installed_distribution_claimed": "focused installed-style package gate only",
+      "semantic_parity_scope": "targeted oracle/candidate fixtures, runtime ABI, one typed Haxe adapter-contract candidate, and a packaged HTTP gate with copied oracle public PHP"
+    }
+  }
+}
