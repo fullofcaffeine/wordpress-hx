@@ -1088,7 +1088,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
-          "sha256": "b4d94490699a795bb298ab01bb8a40caf10c187ee5327ae74e4df67173c7bd9e",
+          "sha256": "0c3d55d09c4a803e421cafb9fb3df2f1315c29a2f995f86610c7da5e511dd18a",
           "id": "receipt:wphx-311-08-rest-server-web-e2e"
         }
       ]
@@ -1098,7 +1098,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
-          "sha256": "613e85cb5f870d2ad49c932cd7c85467edc02e54ea259bb66d9ac872b5fb1d67",
+          "sha256": "53827b282722f4b07b30c8424c75b6754ae4ef2061b5cbc65ba9f1f7236cb2f7",
           "id": "receipt:wphx-311-09-rest-server-installed-browser"
         }
       ]
@@ -1108,7 +1108,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
-          "sha256": "4545aebf91b2809fc9b982adb6eaa240e82a55b16066f8e2540e81c9fcab098d",
+          "sha256": "73ce9c476ff6a313ea366331675278e0bb91f1afdc1b72f58c05ffbf233d0960",
           "id": "receipt:wphx-311-10-rest-server-db-browser-matrix"
         }
       ]

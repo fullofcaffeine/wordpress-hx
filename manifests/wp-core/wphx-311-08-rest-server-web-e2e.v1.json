@@ -22,8 +22,8 @@
     },
     "package_json": {
       "path": "package.json",
-      "bytes": 24179,
-      "sha256": "sha256:96d8f9a24c9971516f3a9d96431383055b2c06f2da9f80faac18490ae783308d"
+      "bytes": 24185,
+      "sha256": "sha256:1db1eb45e9490b993a3fb632c0ca568084219abdb6c5aa4bafa4ab3b214dbea4"
     },
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-07-rest-server-packaged-http.v1.json",
