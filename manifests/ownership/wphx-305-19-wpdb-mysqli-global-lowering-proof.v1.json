@@ -73,7 +73,7 @@
       "receipt:wphx-305-18-wpdb-mysqli-lowering-strategy",
       "receipt:wphx-305-17-wpdb-mysqli-row-traversal-candidate"
     ],
-    "manifest_digest": "sha256:ab4e36df669a350350d791c937700763344de1cb6f4fa1e5c886eea1c7491cc0"
+    "manifest_digest": "sha256:6406cb08189f1c877d289d970d22057db810c48911102856870b4637d707610e"
   },
   "notes": "This is a compiler/backend proof and typed extern scaffold, not yet the live wpdb candidate integration. WPHX-305.20 owns replacing the generated boundary in the live candidate."
 }

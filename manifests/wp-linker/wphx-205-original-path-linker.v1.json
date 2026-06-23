@@ -31,8 +31,8 @@
   "toolchain": {
     "haxe_version": "4.3.7",
     "locked_haxe_version": "4.3.7",
-    "php_cli_version": "8.4.7",
-    "docker_server_version": "28.3.2"
+    "php_cli_version_family": "8.4",
+    "docker_available": true
   },
   "build": {
     "command": "haxe fixtures/wp-linker/original-path-linker.hxml",
@@ -556,38 +556,35 @@
   },
   "runtime_runs": [
     {
-      "id": "oracle:include-load:entry-default",
       "command": "php build/wp-linker/probe.php oracle include-load entry-default fixtures/php-facade/oracle/include-load",
+      "id": "oracle:include-load:entry-default",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "entry-default",
         "result": {
-          "scenario": "entry-default",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -595,131 +592,131 @@
               "settings:2"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 2,
+                "returnValue": 2,
+                "settings": 2
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 2,
-                "repeated": 2,
-                "returnValue": 2
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:9"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
                 },
                 {
                   "load": true,
+                  "pluggable": true,
                   "repeated": "repeated:2",
-                  "returnValue": "return-value:2",
-                  "pluggable": true
+                  "returnValue": "return-value:2"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "trace:9",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-default"
+        },
+        "scenario": "entry-default",
+        "suite": "include-load"
       }
     },
     {
-      "id": "generated:include-load:entry-default",
       "command": "php build/wp-linker/probe.php generated include-load entry-default build/wp-linker/generated",
+      "id": "generated:include-load:entry-default",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "entry-default",
         "result": {
-          "scenario": "entry-default",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -727,471 +724,471 @@
               "settings:2"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 2,
+                "returnValue": 2,
+                "settings": 2
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 2,
-                "repeated": 2,
-                "returnValue": 2
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:9"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
                 },
                 {
                   "load": true,
+                  "pluggable": true,
                   "repeated": "repeated:2",
-                  "returnValue": "return-value:2",
-                  "pluggable": true
+                  "returnValue": "return-value:2"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "trace:9",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-default"
+        },
+        "scenario": "entry-default",
+        "suite": "include-load"
       }
     },
     {
-      "id": "oracle:include-load:entry-pluggable-override",
       "command": "php build/wp-linker/probe.php oracle include-load entry-pluggable-override fixtures/php-facade/oracle/include-load",
+      "id": "oracle:include-load:entry-pluggable-override",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "entry-pluggable-override",
         "result": {
-          "scenario": "entry-pluggable-override",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
               "settings:1"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "plugin-override"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-pluggable-override"
+        },
+        "scenario": "entry-pluggable-override",
+        "suite": "include-load"
       }
     },
     {
-      "id": "generated:include-load:entry-pluggable-override",
       "command": "php build/wp-linker/probe.php generated include-load entry-pluggable-override build/wp-linker/generated",
+      "id": "generated:include-load:entry-pluggable-override",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "entry-pluggable-override",
         "result": {
-          "scenario": "entry-pluggable-override",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
               "settings:1"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "plugin-override"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-pluggable-override"
+        },
+        "scenario": "entry-pluggable-override",
+        "suite": "include-load"
       }
     },
     {
-      "id": "oracle:include-load:direct-guard",
       "command": "php build/wp-linker/probe.php oracle include-load direct-guard fixtures/php-facade/oracle/include-load",
+      "id": "oracle:include-load:direct-guard",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "direct-guard",
         "result": {
-          "scenario": "direct-guard",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "directReturn": "ABSPATH_REQUIRED",
             "state": {
-              "defined": {
-                "ABSPATH": false,
-                "WPINC": false
-              },
               "constants": {
                 "ABSPATH": null,
                 "WPINC": null
               },
-              "functions": {
-                "loadMarker": false,
-                "pluggable": false
+              "counts": {
+                "repeated": null,
+                "returnValue": null,
+                "settings": null
+              },
+              "defined": {
+                "ABSPATH": false,
+                "WPINC": false
               },
               "functionValues": {
                 "loadMarker": null,
                 "pluggable": null
               },
-              "counts": {
-                "settings": null,
-                "repeated": null,
-                "returnValue": null
+              "functions": {
+                "loadMarker": false,
+                "pluggable": false
               },
-              "trace": [],
-              "loadReturns": []
+              "loadReturns": [],
+              "trace": []
             }
-          }
-        }
+          },
+          "scenario": "direct-guard"
+        },
+        "scenario": "direct-guard",
+        "suite": "include-load"
       }
     },
     {
-      "id": "generated:include-load:direct-guard",
       "command": "php build/wp-linker/probe.php generated include-load direct-guard build/wp-linker/generated",
+      "id": "generated:include-load:direct-guard",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "direct-guard",
         "result": {
-          "scenario": "direct-guard",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "directReturn": "ABSPATH_REQUIRED",
             "state": {
-              "defined": {
-                "ABSPATH": false,
-                "WPINC": false
-              },
               "constants": {
                 "ABSPATH": null,
                 "WPINC": null
               },
-              "functions": {
-                "loadMarker": false,
-                "pluggable": false
+              "counts": {
+                "repeated": null,
+                "returnValue": null,
+                "settings": null
+              },
+              "defined": {
+                "ABSPATH": false,
+                "WPINC": false
               },
               "functionValues": {
                 "loadMarker": null,
                 "pluggable": null
               },
-              "counts": {
-                "settings": null,
-                "repeated": null,
-                "returnValue": null
+              "functions": {
+                "loadMarker": false,
+                "pluggable": false
               },
-              "trace": [],
-              "loadReturns": []
+              "loadReturns": [],
+              "trace": []
             }
-          }
-        }
+          },
+          "scenario": "direct-guard"
+        },
+        "scenario": "direct-guard",
+        "suite": "include-load"
       }
     },
     {
-      "id": "oracle:include-load:scope-include",
       "command": "php build/wp-linker/probe.php oracle include-load scope-include fixtures/php-facade/oracle/include-load",
+      "id": "oracle:include-load:scope-include",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "scope-include",
         "result": {
-          "scenario": "scope-include",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -1199,114 +1196,114 @@
             ],
             "scope": {
               "existingAfterInclude": "caller-local",
-              "scopedValue": "scoped:caller-local",
-              "returnValue": "scope:return:scoped:caller-local"
+              "returnValue": "scope:return:scoped:caller-local",
+              "scopedValue": "scoped:caller-local"
             },
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "scope:included",
-                  "file": "<root>/wp-includes/scope.php",
-                  "detail": "caller-local"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "caller-local",
+                  "event": "scope:included",
+                  "file": "<root>/wp-includes/scope.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "scope-include"
+        },
+        "scenario": "scope-include",
+        "suite": "include-load"
       }
     },
     {
-      "id": "generated:include-load:scope-include",
       "command": "php build/wp-linker/probe.php generated include-load scope-include build/wp-linker/generated",
+      "id": "generated:include-load:scope-include",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "scope-include",
         "result": {
-          "scenario": "scope-include",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -1314,212 +1311,212 @@
             ],
             "scope": {
               "existingAfterInclude": "caller-local",
-              "scopedValue": "scoped:caller-local",
-              "returnValue": "scope:return:scoped:caller-local"
+              "returnValue": "scope:return:scoped:caller-local",
+              "scopedValue": "scoped:caller-local"
             },
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "scope:included",
-                  "file": "<root>/wp-includes/scope.php",
-                  "detail": "caller-local"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "caller-local",
+                  "event": "scope:included",
+                  "file": "<root>/wp-includes/scope.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "scope-include"
+        },
+        "scenario": "scope-include",
+        "suite": "include-load"
       }
     },
     {
-      "id": "oracle:template-scope:admin-style",
       "command": "php build/wp-linker/probe.php oracle template-scope admin-style fixtures/php-facade/oracle/template-scope",
+      "id": "oracle:template-scope:admin-style",
       "result": {
         "mode": "oracle",
-        "suite": "template-scope",
-        "scenario": "admin-style",
         "result": {
-          "scenario": "admin-style",
           "result": {
-            "returnValue": {
-              "kind": "admin",
-              "notice": "SAVED",
-              "itemCount": 3,
-              "marker": "template:ADMIN"
-            },
-            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
             "locals": {
-              "title": "Posts & Pages",
-              "notice": "SAVED",
               "items": [
                 "alpha",
                 "beta <two>",
                 "admin-mutated"
               ],
+              "notice": "SAVED",
               "screen": {
                 "id": "edit-post",
                 "rendered": true
-              }
+              },
+              "title": "Posts & Pages"
+            },
+            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
+            "returnValue": {
+              "itemCount": 3,
+              "kind": "admin",
+              "marker": "template:ADMIN",
+              "notice": "SAVED"
             },
             "trace": [
               {
                 "event": "admin:begin",
-                "title": "Posts & Pages",
-                "itemCount": 2
+                "itemCount": 2,
+                "title": "Posts & Pages"
               },
               {
                 "event": "admin:end",
-                "notice": "SAVED",
-                "itemCount": 3
+                "itemCount": 3,
+                "notice": "SAVED"
               }
             ]
-          }
-        }
+          },
+          "scenario": "admin-style"
+        },
+        "scenario": "admin-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "generated:template-scope:admin-style",
       "command": "php build/wp-linker/probe.php generated template-scope admin-style build/wp-linker/generated",
+      "id": "generated:template-scope:admin-style",
       "result": {
         "mode": "generated",
-        "suite": "template-scope",
-        "scenario": "admin-style",
         "result": {
-          "scenario": "admin-style",
           "result": {
-            "returnValue": {
-              "kind": "admin",
-              "notice": "SAVED",
-              "itemCount": 3,
-              "marker": "template:ADMIN"
-            },
-            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
             "locals": {
-              "title": "Posts & Pages",
-              "notice": "SAVED",
               "items": [
                 "alpha",
                 "beta <two>",
                 "admin-mutated"
               ],
+              "notice": "SAVED",
               "screen": {
                 "id": "edit-post",
                 "rendered": true
-              }
+              },
+              "title": "Posts & Pages"
+            },
+            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
+            "returnValue": {
+              "itemCount": 3,
+              "kind": "admin",
+              "marker": "template:ADMIN",
+              "notice": "SAVED"
             },
             "trace": [
               {
                 "event": "admin:begin",
-                "title": "Posts & Pages",
-                "itemCount": 2
+                "itemCount": 2,
+                "title": "Posts & Pages"
               },
               {
                 "event": "admin:end",
-                "notice": "SAVED",
-                "itemCount": 3
+                "itemCount": 3,
+                "notice": "SAVED"
               }
             ]
-          }
-        }
+          },
+          "scenario": "admin-style"
+        },
+        "scenario": "admin-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "oracle:template-scope:theme-style",
       "command": "php build/wp-linker/probe.php oracle template-scope theme-style fixtures/php-facade/oracle/template-scope",
+      "id": "oracle:template-scope:theme-style",
       "result": {
         "mode": "oracle",
-        "suite": "template-scope",
-        "scenario": "theme-style",
         "result": {
-          "scenario": "theme-style",
           "result": {
-            "returnValue": {
-              "kind": "theme",
-              "metaReturn": "meta:42",
-              "classCount": 3,
-              "postRendered": true
-            },
-            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
-            "locals": {
-              "post": {
-                "ID": 42,
-                "title": "Hello <World>",
-                "author": "Ada",
-                "date": "2026-06-20",
-                "content": "This is the content body for a theme template fixture.",
-                "rendered": true
-              },
-              "classes": [
-                "post",
-                "type-post",
-                "rendered"
-              ],
-              "metaLine": "By Ada on 2026-06-20"
-            },
             "globals": {
               "wpQuery": {
                 "seen": [
                   42
                 ]
               }
+            },
+            "locals": {
+              "classes": [
+                "post",
+                "type-post",
+                "rendered"
+              ],
+              "metaLine": "By Ada on 2026-06-20",
+              "post": {
+                "ID": 42,
+                "author": "Ada",
+                "content": "This is the content body for a theme template fixture.",
+                "date": "2026-06-20",
+                "rendered": true,
+                "title": "Hello <World>"
+              }
+            },
+            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
+            "returnValue": {
+              "classCount": 3,
+              "kind": "theme",
+              "metaReturn": "meta:42",
+              "postRendered": true
             },
             "trace": [
               {
@@ -1528,62 +1525,62 @@
               },
               {
                 "event": "theme:meta",
-                "postId": 42,
-                "meta": "By Ada on 2026-06-20"
+                "meta": "By Ada on 2026-06-20",
+                "postId": 42
               },
               {
-                "event": "theme:end",
-                "postId": 42,
                 "classes": [
                   "post",
                   "type-post",
                   "rendered"
-                ]
+                ],
+                "event": "theme:end",
+                "postId": 42
               }
             ]
-          }
-        }
+          },
+          "scenario": "theme-style"
+        },
+        "scenario": "theme-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "generated:template-scope:theme-style",
       "command": "php build/wp-linker/probe.php generated template-scope theme-style build/wp-linker/generated",
+      "id": "generated:template-scope:theme-style",
       "result": {
         "mode": "generated",
-        "suite": "template-scope",
-        "scenario": "theme-style",
         "result": {
-          "scenario": "theme-style",
           "result": {
-            "returnValue": {
-              "kind": "theme",
-              "metaReturn": "meta:42",
-              "classCount": 3,
-              "postRendered": true
-            },
-            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
-            "locals": {
-              "post": {
-                "ID": 42,
-                "title": "Hello <World>",
-                "author": "Ada",
-                "date": "2026-06-20",
-                "content": "This is the content body for a theme template fixture.",
-                "rendered": true
-              },
-              "classes": [
-                "post",
-                "type-post",
-                "rendered"
-              ],
-              "metaLine": "By Ada on 2026-06-20"
-            },
             "globals": {
               "wpQuery": {
                 "seen": [
                   42
                 ]
               }
+            },
+            "locals": {
+              "classes": [
+                "post",
+                "type-post",
+                "rendered"
+              ],
+              "metaLine": "By Ada on 2026-06-20",
+              "post": {
+                "ID": 42,
+                "author": "Ada",
+                "content": "This is the content body for a theme template fixture.",
+                "date": "2026-06-20",
+                "rendered": true,
+                "title": "Hello <World>"
+              }
+            },
+            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
+            "returnValue": {
+              "classCount": 3,
+              "kind": "theme",
+              "metaReturn": "meta:42",
+              "postRendered": true
             },
             "trace": [
               {
@@ -1592,57 +1589,57 @@
               },
               {
                 "event": "theme:meta",
-                "postId": 42,
-                "meta": "By Ada on 2026-06-20"
+                "meta": "By Ada on 2026-06-20",
+                "postId": 42
               },
               {
-                "event": "theme:end",
-                "postId": 42,
                 "classes": [
                   "post",
                   "type-post",
                   "rendered"
-                ]
+                ],
+                "event": "theme:end",
+                "postId": 42
               }
             ]
-          }
-        }
+          },
+          "scenario": "theme-style"
+        },
+        "scenario": "theme-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.4-cli:oracle:include-load:entry-default",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php oracle include-load entry-default fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.4-cli:oracle:include-load:entry-default",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "entry-default",
         "result": {
-          "scenario": "entry-default",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -1650,132 +1647,132 @@
               "settings:2"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 2,
+                "returnValue": 2,
+                "settings": 2
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 2,
-                "repeated": 2,
-                "returnValue": 2
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:9"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
                 },
                 {
                   "load": true,
+                  "pluggable": true,
                   "repeated": "repeated:2",
-                  "returnValue": "return-value:2",
-                  "pluggable": true
+                  "returnValue": "return-value:2"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "trace:9",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-default"
+        },
+        "scenario": "entry-default",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:generated:include-load:entry-default",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php generated include-load entry-default build/wp-linker/generated",
+      "id": "docker-php-8.4-cli:generated:include-load:entry-default",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "entry-default",
         "result": {
-          "scenario": "entry-default",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -1783,476 +1780,476 @@
               "settings:2"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 2,
+                "returnValue": 2,
+                "settings": 2
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 2,
-                "repeated": 2,
-                "returnValue": 2
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:9"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
                 },
                 {
                   "load": true,
+                  "pluggable": true,
                   "repeated": "repeated:2",
-                  "returnValue": "return-value:2",
-                  "pluggable": true
+                  "returnValue": "return-value:2"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "trace:9",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-default"
+        },
+        "scenario": "entry-default",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:oracle:include-load:entry-pluggable-override",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php oracle include-load entry-pluggable-override fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.4-cli:oracle:include-load:entry-pluggable-override",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "entry-pluggable-override",
         "result": {
-          "scenario": "entry-pluggable-override",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
               "settings:1"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "plugin-override"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-pluggable-override"
+        },
+        "scenario": "entry-pluggable-override",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:generated:include-load:entry-pluggable-override",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php generated include-load entry-pluggable-override build/wp-linker/generated",
+      "id": "docker-php-8.4-cli:generated:include-load:entry-pluggable-override",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "entry-pluggable-override",
         "result": {
-          "scenario": "entry-pluggable-override",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
               "settings:1"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "plugin-override"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-pluggable-override"
+        },
+        "scenario": "entry-pluggable-override",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:oracle:include-load:direct-guard",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php oracle include-load direct-guard fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.4-cli:oracle:include-load:direct-guard",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "direct-guard",
         "result": {
-          "scenario": "direct-guard",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "directReturn": "ABSPATH_REQUIRED",
             "state": {
-              "defined": {
-                "ABSPATH": false,
-                "WPINC": false
-              },
               "constants": {
                 "ABSPATH": null,
                 "WPINC": null
               },
-              "functions": {
-                "loadMarker": false,
-                "pluggable": false
+              "counts": {
+                "repeated": null,
+                "returnValue": null,
+                "settings": null
+              },
+              "defined": {
+                "ABSPATH": false,
+                "WPINC": false
               },
               "functionValues": {
                 "loadMarker": null,
                 "pluggable": null
               },
-              "counts": {
-                "settings": null,
-                "repeated": null,
-                "returnValue": null
+              "functions": {
+                "loadMarker": false,
+                "pluggable": false
               },
-              "trace": [],
-              "loadReturns": []
+              "loadReturns": [],
+              "trace": []
             }
-          }
-        }
+          },
+          "scenario": "direct-guard"
+        },
+        "scenario": "direct-guard",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:generated:include-load:direct-guard",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php generated include-load direct-guard build/wp-linker/generated",
+      "id": "docker-php-8.4-cli:generated:include-load:direct-guard",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "direct-guard",
         "result": {
-          "scenario": "direct-guard",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "directReturn": "ABSPATH_REQUIRED",
             "state": {
-              "defined": {
-                "ABSPATH": false,
-                "WPINC": false
-              },
               "constants": {
                 "ABSPATH": null,
                 "WPINC": null
               },
-              "functions": {
-                "loadMarker": false,
-                "pluggable": false
+              "counts": {
+                "repeated": null,
+                "returnValue": null,
+                "settings": null
+              },
+              "defined": {
+                "ABSPATH": false,
+                "WPINC": false
               },
               "functionValues": {
                 "loadMarker": null,
                 "pluggable": null
               },
-              "counts": {
-                "settings": null,
-                "repeated": null,
-                "returnValue": null
+              "functions": {
+                "loadMarker": false,
+                "pluggable": false
               },
-              "trace": [],
-              "loadReturns": []
+              "loadReturns": [],
+              "trace": []
             }
-          }
-        }
+          },
+          "scenario": "direct-guard"
+        },
+        "scenario": "direct-guard",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:oracle:include-load:scope-include",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php oracle include-load scope-include fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.4-cli:oracle:include-load:scope-include",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "scope-include",
         "result": {
-          "scenario": "scope-include",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -2260,115 +2257,115 @@
             ],
             "scope": {
               "existingAfterInclude": "caller-local",
-              "scopedValue": "scoped:caller-local",
-              "returnValue": "scope:return:scoped:caller-local"
+              "returnValue": "scope:return:scoped:caller-local",
+              "scopedValue": "scoped:caller-local"
             },
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "scope:included",
-                  "file": "<root>/wp-includes/scope.php",
-                  "detail": "caller-local"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "caller-local",
+                  "event": "scope:included",
+                  "file": "<root>/wp-includes/scope.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "scope-include"
+        },
+        "scenario": "scope-include",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:generated:include-load:scope-include",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php generated include-load scope-include build/wp-linker/generated",
+      "id": "docker-php-8.4-cli:generated:include-load:scope-include",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "scope-include",
         "result": {
-          "scenario": "scope-include",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -2376,215 +2373,215 @@
             ],
             "scope": {
               "existingAfterInclude": "caller-local",
-              "scopedValue": "scoped:caller-local",
-              "returnValue": "scope:return:scoped:caller-local"
+              "returnValue": "scope:return:scoped:caller-local",
+              "scopedValue": "scoped:caller-local"
             },
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "scope:included",
-                  "file": "<root>/wp-includes/scope.php",
-                  "detail": "caller-local"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "caller-local",
+                  "event": "scope:included",
+                  "file": "<root>/wp-includes/scope.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "scope-include"
+        },
+        "scenario": "scope-include",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.4-cli:oracle:template-scope:admin-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php oracle template-scope admin-style fixtures/php-facade/oracle/template-scope",
+      "id": "docker-php-8.4-cli:oracle:template-scope:admin-style",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "suite": "template-scope",
-        "scenario": "admin-style",
         "result": {
-          "scenario": "admin-style",
           "result": {
-            "returnValue": {
-              "kind": "admin",
-              "notice": "SAVED",
-              "itemCount": 3,
-              "marker": "template:ADMIN"
-            },
-            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
             "locals": {
-              "title": "Posts & Pages",
-              "notice": "SAVED",
               "items": [
                 "alpha",
                 "beta <two>",
                 "admin-mutated"
               ],
+              "notice": "SAVED",
               "screen": {
                 "id": "edit-post",
                 "rendered": true
-              }
+              },
+              "title": "Posts & Pages"
+            },
+            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
+            "returnValue": {
+              "itemCount": 3,
+              "kind": "admin",
+              "marker": "template:ADMIN",
+              "notice": "SAVED"
             },
             "trace": [
               {
                 "event": "admin:begin",
-                "title": "Posts & Pages",
-                "itemCount": 2
+                "itemCount": 2,
+                "title": "Posts & Pages"
               },
               {
                 "event": "admin:end",
-                "notice": "SAVED",
-                "itemCount": 3
+                "itemCount": 3,
+                "notice": "SAVED"
               }
             ]
-          }
-        }
+          },
+          "scenario": "admin-style"
+        },
+        "scenario": "admin-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.4-cli:generated:template-scope:admin-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php generated template-scope admin-style build/wp-linker/generated",
+      "id": "docker-php-8.4-cli:generated:template-scope:admin-style",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "generated",
-        "suite": "template-scope",
-        "scenario": "admin-style",
         "result": {
-          "scenario": "admin-style",
           "result": {
-            "returnValue": {
-              "kind": "admin",
-              "notice": "SAVED",
-              "itemCount": 3,
-              "marker": "template:ADMIN"
-            },
-            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
             "locals": {
-              "title": "Posts & Pages",
-              "notice": "SAVED",
               "items": [
                 "alpha",
                 "beta <two>",
                 "admin-mutated"
               ],
+              "notice": "SAVED",
               "screen": {
                 "id": "edit-post",
                 "rendered": true
-              }
+              },
+              "title": "Posts & Pages"
+            },
+            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
+            "returnValue": {
+              "itemCount": 3,
+              "kind": "admin",
+              "marker": "template:ADMIN",
+              "notice": "SAVED"
             },
             "trace": [
               {
                 "event": "admin:begin",
-                "title": "Posts & Pages",
-                "itemCount": 2
+                "itemCount": 2,
+                "title": "Posts & Pages"
               },
               {
                 "event": "admin:end",
-                "notice": "SAVED",
-                "itemCount": 3
+                "itemCount": 3,
+                "notice": "SAVED"
               }
             ]
-          }
-        }
+          },
+          "scenario": "admin-style"
+        },
+        "scenario": "admin-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.4-cli:oracle:template-scope:theme-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php oracle template-scope theme-style fixtures/php-facade/oracle/template-scope",
+      "id": "docker-php-8.4-cli:oracle:template-scope:theme-style",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "oracle",
-        "suite": "template-scope",
-        "scenario": "theme-style",
         "result": {
-          "scenario": "theme-style",
           "result": {
-            "returnValue": {
-              "kind": "theme",
-              "metaReturn": "meta:42",
-              "classCount": 3,
-              "postRendered": true
-            },
-            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
-            "locals": {
-              "post": {
-                "ID": 42,
-                "title": "Hello <World>",
-                "author": "Ada",
-                "date": "2026-06-20",
-                "content": "This is the content body for a theme template fixture.",
-                "rendered": true
-              },
-              "classes": [
-                "post",
-                "type-post",
-                "rendered"
-              ],
-              "metaLine": "By Ada on 2026-06-20"
-            },
             "globals": {
               "wpQuery": {
                 "seen": [
                   42
                 ]
               }
+            },
+            "locals": {
+              "classes": [
+                "post",
+                "type-post",
+                "rendered"
+              ],
+              "metaLine": "By Ada on 2026-06-20",
+              "post": {
+                "ID": 42,
+                "author": "Ada",
+                "content": "This is the content body for a theme template fixture.",
+                "date": "2026-06-20",
+                "rendered": true,
+                "title": "Hello <World>"
+              }
+            },
+            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
+            "returnValue": {
+              "classCount": 3,
+              "kind": "theme",
+              "metaReturn": "meta:42",
+              "postRendered": true
             },
             "trace": [
               {
@@ -2593,63 +2590,63 @@
               },
               {
                 "event": "theme:meta",
-                "postId": 42,
-                "meta": "By Ada on 2026-06-20"
+                "meta": "By Ada on 2026-06-20",
+                "postId": 42
               },
               {
-                "event": "theme:end",
-                "postId": 42,
                 "classes": [
                   "post",
                   "type-post",
                   "rendered"
-                ]
+                ],
+                "event": "theme:end",
+                "postId": 42
               }
             ]
-          }
-        }
+          },
+          "scenario": "theme-style"
+        },
+        "scenario": "theme-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.4-cli:generated:template-scope:theme-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d php build/wp-linker/probe.php generated template-scope theme-style build/wp-linker/generated",
+      "id": "docker-php-8.4-cli:generated:template-scope:theme-style",
       "image": "library/php@sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
       "result": {
         "mode": "generated",
-        "suite": "template-scope",
-        "scenario": "theme-style",
         "result": {
-          "scenario": "theme-style",
           "result": {
-            "returnValue": {
-              "kind": "theme",
-              "metaReturn": "meta:42",
-              "classCount": 3,
-              "postRendered": true
-            },
-            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
-            "locals": {
-              "post": {
-                "ID": 42,
-                "title": "Hello <World>",
-                "author": "Ada",
-                "date": "2026-06-20",
-                "content": "This is the content body for a theme template fixture.",
-                "rendered": true
-              },
-              "classes": [
-                "post",
-                "type-post",
-                "rendered"
-              ],
-              "metaLine": "By Ada on 2026-06-20"
-            },
             "globals": {
               "wpQuery": {
                 "seen": [
                   42
                 ]
               }
+            },
+            "locals": {
+              "classes": [
+                "post",
+                "type-post",
+                "rendered"
+              ],
+              "metaLine": "By Ada on 2026-06-20",
+              "post": {
+                "ID": 42,
+                "author": "Ada",
+                "content": "This is the content body for a theme template fixture.",
+                "date": "2026-06-20",
+                "rendered": true,
+                "title": "Hello <World>"
+              }
+            },
+            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
+            "returnValue": {
+              "classCount": 3,
+              "kind": "theme",
+              "metaReturn": "meta:42",
+              "postRendered": true
             },
             "trace": [
               {
@@ -2658,57 +2655,57 @@
               },
               {
                 "event": "theme:meta",
-                "postId": 42,
-                "meta": "By Ada on 2026-06-20"
+                "meta": "By Ada on 2026-06-20",
+                "postId": 42
               },
               {
-                "event": "theme:end",
-                "postId": 42,
                 "classes": [
                   "post",
                   "type-post",
                   "rendered"
-                ]
+                ],
+                "event": "theme:end",
+                "postId": 42
               }
             ]
-          }
-        }
+          },
+          "scenario": "theme-style"
+        },
+        "scenario": "theme-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.5-cli:oracle:include-load:entry-default",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php oracle include-load entry-default fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.5-cli:oracle:include-load:entry-default",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "entry-default",
         "result": {
-          "scenario": "entry-default",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -2716,132 +2713,132 @@
               "settings:2"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 2,
+                "returnValue": 2,
+                "settings": 2
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 2,
-                "repeated": 2,
-                "returnValue": 2
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:9"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
                 },
                 {
                   "load": true,
+                  "pluggable": true,
                   "repeated": "repeated:2",
-                  "returnValue": "return-value:2",
-                  "pluggable": true
+                  "returnValue": "return-value:2"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "trace:9",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-default"
+        },
+        "scenario": "entry-default",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:generated:include-load:entry-default",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php generated include-load entry-default build/wp-linker/generated",
+      "id": "docker-php-8.5-cli:generated:include-load:entry-default",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "entry-default",
         "result": {
-          "scenario": "entry-default",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -2849,476 +2846,476 @@
               "settings:2"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 2,
+                "returnValue": 2,
+                "settings": 2
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 2,
-                "repeated": 2,
-                "returnValue": 2
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:2"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:9"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
                 },
                 {
                   "load": true,
+                  "pluggable": true,
                   "repeated": "repeated:2",
-                  "returnValue": "return-value:2",
-                  "pluggable": true
+                  "returnValue": "return-value:2"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:2",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "trace:9",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-default"
+        },
+        "scenario": "entry-default",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:oracle:include-load:entry-pluggable-override",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php oracle include-load entry-pluggable-override fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.5-cli:oracle:include-load:entry-pluggable-override",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "entry-pluggable-override",
         "result": {
-          "scenario": "entry-pluggable-override",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
               "settings:1"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "plugin-override"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-pluggable-override"
+        },
+        "scenario": "entry-pluggable-override",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:generated:include-load:entry-pluggable-override",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php generated include-load entry-pluggable-override build/wp-linker/generated",
+      "id": "docker-php-8.5-cli:generated:include-load:entry-pluggable-override",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "entry-pluggable-override",
         "result": {
-          "scenario": "entry-pluggable-override",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
               "settings:1"
             ],
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "plugin-override"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "entry-pluggable-override"
+        },
+        "scenario": "entry-pluggable-override",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:oracle:include-load:direct-guard",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php oracle include-load direct-guard fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.5-cli:oracle:include-load:direct-guard",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "direct-guard",
         "result": {
-          "scenario": "direct-guard",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "directReturn": "ABSPATH_REQUIRED",
             "state": {
-              "defined": {
-                "ABSPATH": false,
-                "WPINC": false
-              },
               "constants": {
                 "ABSPATH": null,
                 "WPINC": null
               },
-              "functions": {
-                "loadMarker": false,
-                "pluggable": false
+              "counts": {
+                "repeated": null,
+                "returnValue": null,
+                "settings": null
+              },
+              "defined": {
+                "ABSPATH": false,
+                "WPINC": false
               },
               "functionValues": {
                 "loadMarker": null,
                 "pluggable": null
               },
-              "counts": {
-                "settings": null,
-                "repeated": null,
-                "returnValue": null
+              "functions": {
+                "loadMarker": false,
+                "pluggable": false
               },
-              "trace": [],
-              "loadReturns": []
+              "loadReturns": [],
+              "trace": []
             }
-          }
-        }
+          },
+          "scenario": "direct-guard"
+        },
+        "scenario": "direct-guard",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:generated:include-load:direct-guard",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php generated include-load direct-guard build/wp-linker/generated",
+      "id": "docker-php-8.5-cli:generated:include-load:direct-guard",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "direct-guard",
         "result": {
-          "scenario": "direct-guard",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "directReturn": "ABSPATH_REQUIRED",
             "state": {
-              "defined": {
-                "ABSPATH": false,
-                "WPINC": false
-              },
               "constants": {
                 "ABSPATH": null,
                 "WPINC": null
               },
-              "functions": {
-                "loadMarker": false,
-                "pluggable": false
+              "counts": {
+                "repeated": null,
+                "returnValue": null,
+                "settings": null
+              },
+              "defined": {
+                "ABSPATH": false,
+                "WPINC": false
               },
               "functionValues": {
                 "loadMarker": null,
                 "pluggable": null
               },
-              "counts": {
-                "settings": null,
-                "repeated": null,
-                "returnValue": null
+              "functions": {
+                "loadMarker": false,
+                "pluggable": false
               },
-              "trace": [],
-              "loadReturns": []
+              "loadReturns": [],
+              "trace": []
             }
-          }
-        }
+          },
+          "scenario": "direct-guard"
+        },
+        "scenario": "direct-guard",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:oracle:include-load:scope-include",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php oracle include-load scope-include fixtures/php-facade/oracle/include-load",
+      "id": "docker-php-8.5-cli:oracle:include-load:scope-include",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "suite": "include-load",
-        "scenario": "scope-include",
         "result": {
-          "scenario": "scope-include",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -3326,115 +3323,115 @@
             ],
             "scope": {
               "existingAfterInclude": "caller-local",
-              "scopedValue": "scoped:caller-local",
-              "returnValue": "scope:return:scoped:caller-local"
+              "returnValue": "scope:return:scoped:caller-local",
+              "scopedValue": "scoped:caller-local"
             },
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "scope:included",
-                  "file": "<root>/wp-includes/scope.php",
-                  "detail": "caller-local"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "caller-local",
+                  "event": "scope:included",
+                  "file": "<root>/wp-includes/scope.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "scope-include"
+        },
+        "scenario": "scope-include",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:generated:include-load:scope-include",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php generated include-load scope-include build/wp-linker/generated",
+      "id": "docker-php-8.5-cli:generated:include-load:scope-include",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "generated",
-        "suite": "include-load",
-        "scenario": "scope-include",
         "result": {
-          "scenario": "scope-include",
           "before": {
-            "defined": {
-              "ABSPATH": false,
-              "WPINC": false
-            },
             "constants": {
               "ABSPATH": null,
               "WPINC": null
             },
-            "functions": {
-              "loadMarker": false,
-              "pluggable": false
+            "counts": {
+              "repeated": null,
+              "returnValue": null,
+              "settings": null
+            },
+            "defined": {
+              "ABSPATH": false,
+              "WPINC": false
             },
             "functionValues": {
               "loadMarker": null,
               "pluggable": null
             },
-            "counts": {
-              "settings": null,
-              "repeated": null,
-              "returnValue": null
+            "functions": {
+              "loadMarker": false,
+              "pluggable": false
             },
-            "trace": [],
-            "loadReturns": []
+            "loadReturns": [],
+            "trace": []
           },
           "result": {
             "entryReturns": [
@@ -3442,215 +3439,215 @@
             ],
             "scope": {
               "existingAfterInclude": "caller-local",
-              "scopedValue": "scoped:caller-local",
-              "returnValue": "scope:return:scoped:caller-local"
+              "returnValue": "scope:return:scoped:caller-local",
+              "scopedValue": "scoped:caller-local"
             },
             "state": {
-              "defined": {
-                "ABSPATH": true,
-                "WPINC": true
-              },
               "constants": {
                 "ABSPATH": "<root>/",
                 "WPINC": "wp-includes"
               },
-              "functions": {
-                "loadMarker": true,
-                "pluggable": true
+              "counts": {
+                "repeated": 1,
+                "returnValue": 1,
+                "settings": 1
+              },
+              "defined": {
+                "ABSPATH": true,
+                "WPINC": true
               },
               "functionValues": {
                 "loadMarker": "haxe:LOAD",
                 "pluggable": "haxe:PLUGGABLE"
               },
-              "counts": {
-                "settings": 1,
-                "repeated": 1,
-                "returnValue": 1
+              "functions": {
+                "loadMarker": true,
+                "pluggable": true
               },
-              "trace": [
-                {
-                  "event": "settings:begin",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "load:included",
-                  "file": "<root>/wp-includes/load.php",
-                  "detail": "require_once"
-                },
-                {
-                  "event": "repeated:included",
-                  "file": "<root>/wp-includes/repeated.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "return-value:included",
-                  "file": "<root>/wp-includes/return-value.php",
-                  "detail": "count:1"
-                },
-                {
-                  "event": "pluggable:included",
-                  "file": "<root>/wp-includes/pluggable.php",
-                  "detail": "conditional"
-                },
-                {
-                  "event": "settings:end",
-                  "file": "<root>/wp-settings.php",
-                  "detail": "trace:5"
-                },
-                {
-                  "event": "scope:included",
-                  "file": "<root>/wp-includes/scope.php",
-                  "detail": "caller-local"
-                }
-              ],
               "loadReturns": [
                 {
                   "load": "load:included",
+                  "pluggable": "pluggable:available",
                   "repeated": "repeated:1",
-                  "returnValue": "return-value:1",
-                  "pluggable": "pluggable:available"
+                  "returnValue": "return-value:1"
+                }
+              ],
+              "trace": [
+                {
+                  "detail": "count:1",
+                  "event": "settings:begin",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "require_once",
+                  "event": "load:included",
+                  "file": "<root>/wp-includes/load.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "repeated:included",
+                  "file": "<root>/wp-includes/repeated.php"
+                },
+                {
+                  "detail": "count:1",
+                  "event": "return-value:included",
+                  "file": "<root>/wp-includes/return-value.php"
+                },
+                {
+                  "detail": "conditional",
+                  "event": "pluggable:included",
+                  "file": "<root>/wp-includes/pluggable.php"
+                },
+                {
+                  "detail": "trace:5",
+                  "event": "settings:end",
+                  "file": "<root>/wp-settings.php"
+                },
+                {
+                  "detail": "caller-local",
+                  "event": "scope:included",
+                  "file": "<root>/wp-includes/scope.php"
                 }
               ]
             }
-          }
-        }
+          },
+          "scenario": "scope-include"
+        },
+        "scenario": "scope-include",
+        "suite": "include-load"
       }
     },
     {
-      "id": "docker-php-8.5-cli:oracle:template-scope:admin-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php oracle template-scope admin-style fixtures/php-facade/oracle/template-scope",
+      "id": "docker-php-8.5-cli:oracle:template-scope:admin-style",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "suite": "template-scope",
-        "scenario": "admin-style",
         "result": {
-          "scenario": "admin-style",
           "result": {
-            "returnValue": {
-              "kind": "admin",
-              "notice": "SAVED",
-              "itemCount": 3,
-              "marker": "template:ADMIN"
-            },
-            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
             "locals": {
-              "title": "Posts & Pages",
-              "notice": "SAVED",
               "items": [
                 "alpha",
                 "beta <two>",
                 "admin-mutated"
               ],
+              "notice": "SAVED",
               "screen": {
                 "id": "edit-post",
                 "rendered": true
-              }
+              },
+              "title": "Posts & Pages"
+            },
+            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
+            "returnValue": {
+              "itemCount": 3,
+              "kind": "admin",
+              "marker": "template:ADMIN",
+              "notice": "SAVED"
             },
             "trace": [
               {
                 "event": "admin:begin",
-                "title": "Posts & Pages",
-                "itemCount": 2
+                "itemCount": 2,
+                "title": "Posts & Pages"
               },
               {
                 "event": "admin:end",
-                "notice": "SAVED",
-                "itemCount": 3
+                "itemCount": 3,
+                "notice": "SAVED"
               }
             ]
-          }
-        }
+          },
+          "scenario": "admin-style"
+        },
+        "scenario": "admin-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.5-cli:generated:template-scope:admin-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php generated template-scope admin-style build/wp-linker/generated",
+      "id": "docker-php-8.5-cli:generated:template-scope:admin-style",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "generated",
-        "suite": "template-scope",
-        "scenario": "admin-style",
         "result": {
-          "scenario": "admin-style",
           "result": {
-            "returnValue": {
-              "kind": "admin",
-              "notice": "SAVED",
-              "itemCount": 3,
-              "marker": "template:ADMIN"
-            },
-            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
             "locals": {
-              "title": "Posts & Pages",
-              "notice": "SAVED",
               "items": [
                 "alpha",
                 "beta <two>",
                 "admin-mutated"
               ],
+              "notice": "SAVED",
               "screen": {
                 "id": "edit-post",
                 "rendered": true
-              }
+              },
+              "title": "Posts & Pages"
+            },
+            "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>",
+            "returnValue": {
+              "itemCount": 3,
+              "kind": "admin",
+              "marker": "template:ADMIN",
+              "notice": "SAVED"
             },
             "trace": [
               {
                 "event": "admin:begin",
-                "title": "Posts & Pages",
-                "itemCount": 2
+                "itemCount": 2,
+                "title": "Posts & Pages"
               },
               {
                 "event": "admin:end",
-                "notice": "SAVED",
-                "itemCount": 3
+                "itemCount": 3,
+                "notice": "SAVED"
               }
             ]
-          }
-        }
+          },
+          "scenario": "admin-style"
+        },
+        "scenario": "admin-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.5-cli:oracle:template-scope:theme-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php oracle template-scope theme-style fixtures/php-facade/oracle/template-scope",
+      "id": "docker-php-8.5-cli:oracle:template-scope:theme-style",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "oracle",
-        "suite": "template-scope",
-        "scenario": "theme-style",
         "result": {
-          "scenario": "theme-style",
           "result": {
-            "returnValue": {
-              "kind": "theme",
-              "metaReturn": "meta:42",
-              "classCount": 3,
-              "postRendered": true
-            },
-            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
-            "locals": {
-              "post": {
-                "ID": 42,
-                "title": "Hello <World>",
-                "author": "Ada",
-                "date": "2026-06-20",
-                "content": "This is the content body for a theme template fixture.",
-                "rendered": true
-              },
-              "classes": [
-                "post",
-                "type-post",
-                "rendered"
-              ],
-              "metaLine": "By Ada on 2026-06-20"
-            },
             "globals": {
               "wpQuery": {
                 "seen": [
                   42
                 ]
               }
+            },
+            "locals": {
+              "classes": [
+                "post",
+                "type-post",
+                "rendered"
+              ],
+              "metaLine": "By Ada on 2026-06-20",
+              "post": {
+                "ID": 42,
+                "author": "Ada",
+                "content": "This is the content body for a theme template fixture.",
+                "date": "2026-06-20",
+                "rendered": true,
+                "title": "Hello <World>"
+              }
+            },
+            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
+            "returnValue": {
+              "classCount": 3,
+              "kind": "theme",
+              "metaReturn": "meta:42",
+              "postRendered": true
             },
             "trace": [
               {
@@ -3659,63 +3656,63 @@
               },
               {
                 "event": "theme:meta",
-                "postId": 42,
-                "meta": "By Ada on 2026-06-20"
+                "meta": "By Ada on 2026-06-20",
+                "postId": 42
               },
               {
-                "event": "theme:end",
-                "postId": 42,
                 "classes": [
                   "post",
                   "type-post",
                   "rendered"
-                ]
+                ],
+                "event": "theme:end",
+                "postId": 42
               }
             ]
-          }
-        }
+          },
+          "scenario": "theme-style"
+        },
+        "scenario": "theme-style",
+        "suite": "template-scope"
       }
     },
     {
-      "id": "docker-php-8.5-cli:generated:template-scope:theme-style",
       "command": "docker run --rm -v $PWD:/work -w /work library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e php build/wp-linker/probe.php generated template-scope theme-style build/wp-linker/generated",
+      "id": "docker-php-8.5-cli:generated:template-scope:theme-style",
       "image": "library/php@sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
       "result": {
         "mode": "generated",
-        "suite": "template-scope",
-        "scenario": "theme-style",
         "result": {
-          "scenario": "theme-style",
           "result": {
-            "returnValue": {
-              "kind": "theme",
-              "metaReturn": "meta:42",
-              "classCount": 3,
-              "postRendered": true
-            },
-            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
-            "locals": {
-              "post": {
-                "ID": 42,
-                "title": "Hello <World>",
-                "author": "Ada",
-                "date": "2026-06-20",
-                "content": "This is the content body for a theme template fixture.",
-                "rendered": true
-              },
-              "classes": [
-                "post",
-                "type-post",
-                "rendered"
-              ],
-              "metaLine": "By Ada on 2026-06-20"
-            },
             "globals": {
               "wpQuery": {
                 "seen": [
                   42
                 ]
               }
+            },
+            "locals": {
+              "classes": [
+                "post",
+                "type-post",
+                "rendered"
+              ],
+              "metaLine": "By Ada on 2026-06-20",
+              "post": {
+                "ID": 42,
+                "author": "Ada",
+                "content": "This is the content body for a theme template fixture.",
+                "date": "2026-06-20",
+                "rendered": true,
+                "title": "Hello <World>"
+              }
+            },
+            "output": "<article id=\"post-42\" class=\"post type-post rendered\">\n\t<h2>Hello &lt;World&gt;</h2>\n\t\t<p class=\"entry-meta\">By Ada on 2026-06-20</p>\n\t<div class=\"entry-summary\">This is the content body...</div>\n</article>",
+            "returnValue": {
+              "classCount": 3,
+              "kind": "theme",
+              "metaReturn": "meta:42",
+              "postRendered": true
             },
             "trace": [
               {
@@ -3724,21 +3721,24 @@
               },
               {
                 "event": "theme:meta",
-                "postId": 42,
-                "meta": "By Ada on 2026-06-20"
+                "meta": "By Ada on 2026-06-20",
+                "postId": 42
               },
               {
-                "event": "theme:end",
-                "postId": 42,
                 "classes": [
                   "post",
                   "type-post",
                   "rendered"
-                ]
+                ],
+                "event": "theme:end",
+                "postId": 42
               }
             ]
-          }
-        }
+          },
+          "scenario": "theme-style"
+        },
+        "scenario": "theme-style",
+        "suite": "template-scope"
       }
     }
   ],

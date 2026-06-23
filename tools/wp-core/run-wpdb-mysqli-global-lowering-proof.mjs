@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { execFileSync, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
+import { normalizeGeneratedPhpForManifest } from "../wp-linker/original-path-linker.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -76,6 +77,19 @@ function sha256File(path) {
   return `sha256:${createHash("sha256").update(readFileSync(path)).digest("hex")}`;
 }
 
+function phpVersionFamily(value = command("php", ["-r", "echo PHP_VERSION;"])) {
+  const [major, minor] = String(value).split(".");
+  return `${major}.${minor}`;
+}
+
+function generatedPhpRecord(path) {
+  const normalized = normalizeGeneratedPhpForManifest(readFileSync(path, "utf8"));
+  return {
+    bytes: Buffer.byteLength(normalized),
+    sha256: sha256(normalized)
+  };
+}
+
 function readJson(path) {
   return JSON.parse(readFileSync(path, "utf8"));
 }
@@ -127,10 +141,11 @@ function analyzeProofPhp(path) {
   const directQuery = /return\s+\\mysqli_query\(\$handle,\s*\$query\);/.test(source);
   const directFetch = /return\s+\\mysqli_fetch_object\(\$result\);/.test(source);
   const classStaticCallDetected = /::\\?mysqli_(query|fetch_object)\s*\(/.test(source);
+  const generatedRecord = generatedPhpRecord(path);
   return {
     path,
-    bytes: statSync(path).size,
-    sha256: sha256File(path),
+    bytes: generatedRecord.bytes,
+    sha256: generatedRecord.sha256,
     evidence_lines: evidenceLines,
     direct_query_call_detected: directQuery,
     direct_fetch_object_call_detected: directFetch,
@@ -161,10 +176,10 @@ function compareSemverDesc(left, right) {
 
 function findHaxeStdPhpGlobal(preferredVersions) {
   const home = process.env.HOME ?? "/Users/fullofcaffeine";
-  const searchRoot = `${home}/haxe`;
-  if (!existsSync(searchRoot)) return null;
-  const found = command("find", [searchRoot, "-path", "*/std/php/Global.hx"])
-    .split("\n")
+  const searchRoots = [process.env.HAXE_STD_PATH, `${home}/haxe`].filter((path) => path && existsSync(path));
+  if (searchRoots.length === 0) return null;
+  const found = searchRoots
+    .flatMap((searchRoot) => command("find", [searchRoot, "-path", "*/std/php/Global.hx"]).split("\n"))
     .filter(Boolean)
     .sort((left, right) => {
       const preferredLeft = preferredVersions.findIndex((version) => left.includes(`/versions/${version}/`));
@@ -330,15 +345,14 @@ const manifest = {
   toolchain: {
     haxe_version: haxeVersion,
     locked_haxe_version: toolchainLock.tools.haxe.version,
-    php_cli_version: command("php", ["-r", "echo PHP_VERSION;"]),
+    php_cli_version_family: phpVersionFamily(),
     php_cli_executable: toolchainLock.tools.php_cli.executable
   },
   proof: {
     compile,
     generated_php_files: generatedPhpFiles.map((path) => ({
       path: relative(".", path),
-      bytes: statSync(path).size,
-      sha256: sha256File(path)
+      ...generatedPhpRecord(path)
     })),
     php_lint: phpLint,
     proof_file: proof,
