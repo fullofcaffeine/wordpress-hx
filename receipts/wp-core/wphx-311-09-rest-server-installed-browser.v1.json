@@ -34,7 +34,7 @@
     "receipt:wphx-311-07-rest-server-packaged-http",
     "receipt:wphx-311-06-rest-server-dispatch-strategy-candidate"
   ],
-  "manifest_sha256": "sha256:af2b6296678e314a54e827e59259ed437d410fb2db79039bf4b7193f67e1387b",
+  "manifest_sha256": "sha256:fbf50fcbd10a02cce0e7950d9c4986d5228fed2f9891aaf0d7acfd2d4741279c",
   "validation_result": {
     "status": "passed",
     "evidence_classes": [
