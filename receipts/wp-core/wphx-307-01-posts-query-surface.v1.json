@@ -1,0 +1,33 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-307-01-posts-query-surface",
+  "issue": {
+    "id": "wordpresshx-l76.14",
+    "external_ref": "WPHX-307",
+    "title": "Inventory posts/query/revisions/metadata surface"
+  },
+  "recorded_at": "2026-06-23T04:30:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-307-01-posts-query-surface.v1.json",
+      "role": "posts/query/revisions/metadata surface inventory"
+    },
+    {
+      "path": "tools/wp-core/run-posts-query-surface.mjs",
+      "role": "deterministic surface generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-307-posts-query-surface",
+    "npm run wp:core:wphx-307-posts-query-surface:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_count": 51,
+    "artifact_count": 52,
+    "abi_entry_count": 806,
+    "class_count": 15,
+    "test_count": 116
+  },
+  "manifest_sha256": "sha256:6b62dd6147928f2b80ae22fa8c2c9ebd8735d6fcc769783dd47a498e7b9f8387"
+}

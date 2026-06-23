@@ -157,6 +157,8 @@
     "wp:core:wphx-306-runtime-abi:check": "node tools/wp-core/run-user-auth-runtime-abi-fixture.mjs --check",
     "wp:core:wphx-306-installed-auth": "node tools/wp-core/run-user-auth-installed-distribution-gate.mjs",
     "wp:core:wphx-306-installed-auth:check": "node tools/wp-core/run-user-auth-installed-distribution-gate.mjs --check",
+    "wp:core:wphx-307-posts-query-surface": "node tools/wp-core/run-posts-query-surface.mjs",
+    "wp:core:wphx-307-posts-query-surface:check": "node tools/wp-core/run-posts-query-surface.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
