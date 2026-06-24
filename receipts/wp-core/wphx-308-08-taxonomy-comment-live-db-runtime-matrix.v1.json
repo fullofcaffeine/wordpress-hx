@@ -1,0 +1,77 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-308-08-taxonomy-comment-live-db-runtime-matrix",
+  "issue": {
+    "id": "wordpresshx-acj",
+    "external_ref": "WPHX-308.08",
+    "title": "Expand taxonomy/comment live DB runtime matrix"
+  },
+  "recorded_at": "2026-06-24T00:35:00.000Z",
+  "command": "npm run wp:core:wphx-308-taxonomy-comment-live-db",
+  "evidence_class": "live_integration_parity",
+  "artifact_scope": "oracle_source_mirror_fixture",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs",
+      "role": "expanded live DB runner matrix",
+      "sha256": "sha256:045645ecce0a424cfc3598bf9d59e693451bdf4ae941edcec46b5bef2c099c12"
+    },
+    {
+      "path": "manifests/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+      "role": "refreshed taxonomy/comment live DB SQL/result manifest",
+      "sha256": "sha256:058889e19269899da84219f7c92a1590db17bf44c599772b693763d92a5d68b1"
+    },
+    {
+      "path": "manifests/ownership/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+      "role": "refreshed oracle-source-mirror ownership manifest",
+      "sha256": "sha256:4febc1f689a89d62d4a4fbd6178e505ba9d1859b83daadd77345c0ba44930a08"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+      "role": "refreshed underlying live DB fixture receipt",
+      "sha256": "sha256:d9c9a1c3bc1ba752691ec5971c9116ffcb1fb3ef5bed09f7a71555b1c06632a6"
+    },
+    {
+      "path": "manifests/toolchain/wphx-305-09-php-db-client-images.v1.json",
+      "role": "locked PHP DB-client image manifest",
+      "sha256": "sha256:64f49212ed80d88ceb568bf422757ba5f99b6e2392835e8e5f93ed27f6611abc"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "locked MySQL/MariaDB and PHP DB-client image inputs",
+      "sha256": "sha256:9230d83997bb6cc37768adf6b45715721875f7991e0840e2321c18a2c63e5298"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-308.08 progress interpretation",
+      "sha256": "sha256:bea3665cd0e12b74bf33dc8f9f9bffdc13870ac284d28c9f40974573c5c8402a"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-308-taxonomy-comment-live-db",
+    "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "fixture_cases": 8,
+    "db_runtimes": 2,
+    "php_client_runtimes": 2,
+    "comparisons": 4,
+    "runtime_matrix": [
+      "mysql-8.4:php-8.4-db-client",
+      "mysql-8.4:php-8.5-db-client",
+      "mariadb-11.8:php-8.4-db-client",
+      "mariadb-11.8:php-8.5-db-client"
+    ],
+    "behavior_parity_claimed": false,
+    "remaining_gates": [
+      "haxe_owned_public_php_replacement",
+      "executable_upstream_phpunit_ratchet",
+      "installed_distribution_taxonomy_comment_behavior"
+    ]
+  }
+}

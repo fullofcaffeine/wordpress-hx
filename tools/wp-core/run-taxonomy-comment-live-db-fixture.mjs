@@ -492,6 +492,15 @@ function dbRuntimeRecords(lock) {
         MYSQL_ROOT_PASSWORD: DB_PASSWORD,
         MYSQL_ROOT_HOST: "%"
       }
+    },
+    {
+      id: "mariadb-11.8",
+      engine: "mariadb",
+      image_lock: lock.container_images.mariadb_11_8,
+      env: {
+        MARIADB_ROOT_PASSWORD: DB_PASSWORD,
+        MARIADB_ROOT_HOST: "%"
+      }
     }
   ];
 }
@@ -502,6 +511,11 @@ function phpClientRecords(lock) {
       id: "php-8.4-db-client",
       php_minor: "8.4",
       image_lock: lock.container_images.php_8_4_db_client
+    },
+    {
+      id: "php-8.5-db-client",
+      php_minor: "8.5",
+      image_lock: lock.container_images.php_8_5_db_client
     }
   ];
 }
@@ -633,14 +647,14 @@ function ownershipManifest(manifestSha, upstreamDigest) {
       name: "taxonomy/comment live DB SQL-result fixture",
       area: "wp-includes/class-wp-term-query.php wp-includes/class-wp-comment-query.php",
       public_contract:
-        "Mirrored upstream WP_Term_Query, WP_Comment_Query, WP_Meta_Query, taxonomy/comment functions, and wpdb source execute selected query cases against a locked live MySQL runtime. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
+        "Mirrored upstream WP_Term_Query, WP_Comment_Query, WP_Meta_Query, taxonomy/comment functions, and wpdb source execute selected query cases against locked live MySQL/MariaDB and PHP DB-client runtimes. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
     },
     ownership_state: "upstream_oracle_source_mirror",
     ownership_axes: {
       semantic_owner: "upstream_wordpress_oracle",
       adapter_contract_owner: "not_claimed",
       emission_strategy: "oracle_source_mirror_fixture",
-      execution_provider: "php_live_mysql",
+      execution_provider: "php_live_mysql_mariadb_matrix",
       compatibility_evidence: "live_integration_parity"
     },
     bridge: {
@@ -691,7 +705,7 @@ function receipt(manifestSha) {
       },
       {
         path: "toolchain.lock.json",
-        role: "locked MySQL and PHP DB-client image inputs"
+        role: "locked MySQL/MariaDB and PHP DB-client image inputs"
       }
     ],
     verification_commands: [
@@ -704,8 +718,8 @@ function receipt(manifestSha) {
     validation_result: {
       status: "passed",
       fixture_cases: FIXTURE_CASES.length,
-      db_runtimes: 1,
-      php_client_runtimes: 1
+      db_runtimes: dbRuntimes.length,
+      php_client_runtimes: phpClients.length
     }
   };
 }
@@ -845,9 +859,9 @@ const manifest = {
           "This fixture isolates taxonomy/comment query SQL/result behavior. Generic WordPress services around hooks, cache, options, and post objects are deterministic stubs while the query classes, taxonomy/comment functions, and wpdb execution remain upstream PHP."
       },
       {
-        id: "mysql-only-initial-slice",
+        id: "live-db-matrix-slice",
         reason:
-          "WPHX-308.06 starts with the locked MySQL 8.4 runtime. MariaDB and upstream PHPUnit ratchets remain follow-up closure for the taxonomy/comment workset."
+          "WPHX-308.08 expands the live taxonomy/comment query slice across the locked MySQL 8.4, MariaDB 11.8, PHP 8.4 DB-client, and PHP 8.5 DB-client matrix. Upstream PHPUnit and installed-distribution ratchets remain follow-up closure for the taxonomy/comment workset."
       }
     ]
   },
@@ -879,9 +893,9 @@ const manifest = {
       detail: "The fixture stubs surrounding WordPress services to isolate query SQL/result parity. Installed WordPress and upstream PHPUnit query suites remain required closure gates."
     },
     {
-      id: "mariadb-and-php-version-matrix-deferred",
+      id: "upstream-phpunit-and-installed-distribution-deferred",
       owner: "WPHX-308",
-      detail: "This first live taxonomy/comment query slice uses MySQL 8.4 with PHP 8.4 DB-client. MariaDB and additional PHP minors are intentionally left for a later matrix expansion."
+      detail: "The live taxonomy/comment query slice now covers the pinned MySQL/MariaDB and PHP DB-client matrix, but executable upstream PHPUnit ratchets and installed WordPress distribution behavior remain follow-up gates."
     }
   ],
   ownership_manifest: OWNERSHIP,

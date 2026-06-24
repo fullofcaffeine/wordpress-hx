@@ -9,14 +9,14 @@
     "kind": "oracle_source_mirror_fixture",
     "name": "taxonomy/comment live DB SQL-result fixture",
     "area": "wp-includes/class-wp-term-query.php wp-includes/class-wp-comment-query.php",
-    "public_contract": "Mirrored upstream WP_Term_Query, WP_Comment_Query, WP_Meta_Query, taxonomy/comment functions, and wpdb source execute selected query cases against a locked live MySQL runtime. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
+    "public_contract": "Mirrored upstream WP_Term_Query, WP_Comment_Query, WP_Meta_Query, taxonomy/comment functions, and wpdb source execute selected query cases against locked live MySQL/MariaDB and PHP DB-client runtimes. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
   },
   "ownership_state": "upstream_oracle_source_mirror",
   "ownership_axes": {
     "semantic_owner": "upstream_wordpress_oracle",
     "adapter_contract_owner": "not_claimed",
     "emission_strategy": "oracle_source_mirror_fixture",
-    "execution_provider": "php_live_mysql",
+    "execution_provider": "php_live_mysql_mariadb_matrix",
     "compatibility_evidence": "live_integration_parity"
   },
   "bridge": {
@@ -63,6 +63,6 @@
     "receipt_refs": [
       "receipt:wphx-308-06-taxonomy-comment-live-db-fixture"
     ],
-    "manifest_digest": "sha256:a30ba730cc8b1d0743782a590324304707d1922eef66c216a081e6bce78be927"
+    "manifest_digest": "sha256:058889e19269899da84219f7c92a1590db17bf44c599772b693763d92a5d68b1"
   }
 }

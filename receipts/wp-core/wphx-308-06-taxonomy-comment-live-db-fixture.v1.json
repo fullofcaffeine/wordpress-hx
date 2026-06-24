@@ -11,7 +11,7 @@
     {
       "path": "manifests/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
       "role": "taxonomy/comment live DB SQL-result parity manifest",
-      "sha256": "sha256:a30ba730cc8b1d0743782a590324304707d1922eef66c216a081e6bce78be927"
+      "sha256": "sha256:058889e19269899da84219f7c92a1590db17bf44c599772b693763d92a5d68b1"
     },
     {
       "path": "manifests/ownership/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
@@ -23,7 +23,7 @@
     },
     {
       "path": "toolchain.lock.json",
-      "role": "locked MySQL and PHP DB-client image inputs"
+      "role": "locked MySQL/MariaDB and PHP DB-client image inputs"
     }
   ],
   "verification_commands": [
@@ -36,7 +36,7 @@
   "validation_result": {
     "status": "passed",
     "fixture_cases": 8,
-    "db_runtimes": 1,
-    "php_client_runtimes": 1
+    "db_runtimes": 2,
+    "php_client_runtimes": 2
   }
 }
