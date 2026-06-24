@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 119,
+  "scanned_file_count": 121,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -38,6 +38,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsSchemaStrategyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsUpdateStrategyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/RestSettingsValueStrategyCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/RoutingTemplateAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpErrorCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbClassShellResourceStrategyCandidateEntry.hx",
@@ -123,6 +124,7 @@
     "src/wphx/wp/rest/RestSettingsSchemaStrategy.hx",
     "src/wphx/wp/rest/RestSettingsUpdateStrategy.hx",
     "src/wphx/wp/rest/RestSettingsValueStrategy.hx",
+    "src/wphx/wp/routing/RoutingTemplateAdapterContract.hx",
     "src/wphx/wp/taxonomy/TaxonomyCommentAdapterContract.hx"
   ],
   "lookback_lines": 6,

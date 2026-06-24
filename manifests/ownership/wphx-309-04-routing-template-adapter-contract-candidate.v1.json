@@ -1,0 +1,55 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/routing-template-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-a1g",
+    "external_ref": "WPHX-309.04"
+  },
+  "unit": {
+    "kind": "haxe_adapter_contract",
+    "name": "rewrite, routing, canonical, link-template, request, hook, and template-loader intent",
+    "area": "wp-includes/class-wp.php wp-includes/class-wp-rewrite.php wp-includes/rewrite.php wp-includes/canonical.php wp-includes/link-template.php wp-includes/template-loader.php",
+    "public_contract": "Haxe owns the first typed routing/template adapter-contract decision model. Public PHP ABI replacement, rewrite-rule storage, front-end HTTP behavior, canonical redirect output, template includes, and installed routing behavior are not claimed in this slice."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "ownership_axes": {
+    "semantic_owner": "haxe",
+    "adapter_contract_owner": "haxe_typed",
+    "emission_strategy": "stock_haxe_php_private_impl",
+    "execution_provider": "haxe_php",
+    "compatibility_evidence": "targeted_semantic_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "adapter-contract-candidate-without-public-php-installation",
+    "removal_gate": "Install these decisions through typed Adapter IR/original-path generation and pass PHP-authored rewrite, parse_request, canonical, link-template, template-loader, installed HTTP, and upstream PHPUnit oracle fixtures before claiming public PHP ABI ownership."
+  },
+  "owned_paths": [
+    "fixtures/wp-core/routing-template-adapter-contract-candidate.hxml",
+    "src/wphx/wp/routing/RoutingTemplateAdapterContract.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/RoutingTemplateAdapterContractCandidateEntry.hx",
+    "tools/wp-core/run-routing-template-adapter-contract-candidate.mjs",
+    "manifests/wp-core/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+    "manifests/ownership/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-309-04-routing-template-adapter-contract-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+    "manifests/ownership/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+    "build/wp-core/wphx-309-04"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate",
+      "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-309-04-routing-template-adapter-contract-candidate"
+    ],
+    "manifest_digest": "sha256:1c1b92167dfcffa7c75bfbe809ee3a32064d9af3f2f8d8fcef52074c29ba75bf"
+  },
+  "notes": "This is a PHP-hosted Haxe candidate. It adds no native provider, no handwritten production PHP shell, and no public WordPress file replacement."
+}

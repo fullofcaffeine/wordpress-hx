@@ -5,11 +5,11 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "source_manifest": {
     "path": "manifests/ci/wphx-208-php-conformance-ci.v1.json",
-    "sha256": "sha256:1d67c0765d55caed13bab25dad32fb2d9f0932ce76b2cbb77a09db217e7ac2bd"
+    "sha256": "sha256:b5af30ba089e407b9bc379e4e1ac29f680cf21197f07a32ce47731811a1c5145"
   },
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:5c47ee07b44c4c2cd47504ea15bf622e43230ffcba23f7dc004fcadaa816e275",
+    "sha256": "sha256:1d426bfaeec54bec443e87dc37e0c21f82fd4658e90934f1ba80309e17977a5a",
     "deterministic_suite": "wp-core-deterministic-parity",
     "live_db_suite": "wp-core-live-db-parity",
     "artifact_upload": "actions/upload-artifact@v4"
@@ -52,6 +52,7 @@
     "npm run wp:core:wphx-308-taxonomy-comment-crud:check",
     "npm run wp:core:wphx-308-taxonomy-comment-count-cache:check",
     "npm run wp:core:wphx-308-taxonomy-comment-query-state:check",
+    "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate:check",
     "npm run wp:core:wphx-305-live-db:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
     "npm run wp:core:wphx-307-wp-query-live-db:check",
@@ -84,6 +85,7 @@
     "wphx_308_taxonomy_comment_crud_gate_required": true,
     "wphx_308_taxonomy_comment_count_cache_gate_required": true,
     "wphx_308_taxonomy_comment_query_state_gate_required": true,
+    "wphx_309_routing_template_adapter_contract_gate_required": true,
     "wphx_308_taxonomy_comment_live_db_gate_required": true,
     "mysql_mariadb_images_pinned": true,
     "conformance_artifacts_uploaded": true

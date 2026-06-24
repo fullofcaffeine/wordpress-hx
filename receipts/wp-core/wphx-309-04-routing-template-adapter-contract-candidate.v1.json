@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-309-04-routing-template-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-a1g",
+    "external_ref": "WPHX-309.04",
+    "title": "Add routing/template adapter-contract candidate"
+  },
+  "recorded_at": "2026-06-24T06:30:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+      "role": "routing/template Haxe semantic/adapter-contract candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+      "role": "ADR-004-aware ownership manifest for routing/template Haxe candidate"
+    },
+    {
+      "path": "src/wphx/wp/routing/RoutingTemplateAdapterContract.hx",
+      "role": "typed Haxe routing/template semantic and adapter-contract model"
+    },
+    {
+      "path": "tools/wp-core/run-routing-template-adapter-contract-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate",
+    "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_routing_template_adapter_contract_candidate",
+    "promoted_contracts": 6,
+    "runtime_runs": 1,
+    "observation_count": 40,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

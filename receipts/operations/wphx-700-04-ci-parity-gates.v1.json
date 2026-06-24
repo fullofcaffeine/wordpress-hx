@@ -52,6 +52,7 @@
     "npm run wp:core:wphx-308-taxonomy-comment-crud:check",
     "npm run wp:core:wphx-308-taxonomy-comment-count-cache:check",
     "npm run wp:core:wphx-308-taxonomy-comment-query-state:check",
+    "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate:check",
     "npm run wp:core:wphx-308-taxonomy-comment-live-db:check",
     "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
     "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
@@ -84,6 +85,7 @@
     "wphx_308_taxonomy_comment_crud_gate_required": true,
     "wphx_308_taxonomy_comment_count_cache_gate_required": true,
     "wphx_308_taxonomy_comment_query_state_gate_required": true,
+    "wphx_309_routing_template_adapter_contract_gate_required": true,
     "wphx_308_taxonomy_comment_live_db_gate_required": true,
     "mysql_mariadb_images_pinned": true,
     "conformance_artifacts_uploaded": true

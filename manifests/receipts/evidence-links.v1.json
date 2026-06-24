@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 157,
+  "closed_task_count": 158,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -393,7 +393,7 @@
       "receipts": [
         {
           "path": "receipts/ci/wphx-208-php-conformance-ci.v1.json",
-          "sha256": "1685e649062918590e7b8add5c8ddb9ad43f42654563a4ad42f514e24181b9a1",
+          "sha256": "20006c0dcc60b897903a7d9529d517b4f2f8e70da7258b3a7d0ec9801f538d76",
           "id": "receipt:wphx-208-php-conformance-ci"
         }
       ]
@@ -413,7 +413,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "ed3fdccecb4ea809130f67cff7a191a3f67dc7f8a40c8e61f1dad7aaf7fe843d",
+          "sha256": "a354b7745a8650686d4bd1381b4a7876c25a0d79836b8b8c7806160f9a9719a5",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -1184,6 +1184,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-309.04",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-309-04-routing-template-adapter-contract-candidate.v1.json",
+          "sha256": "e9caf2db010aee193a7dab3fc7a70a895385fe2c6909bbc230c38588fbbdd1eb",
+          "id": "receipt:wphx-309-04-routing-template-adapter-contract-candidate"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-311",
       "receipts": [
         {
@@ -1478,7 +1488,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-04-ci-parity-gates.v1.json",
-          "sha256": "90e33cd72c3ed86f40274c14049bd7221ff26de7fe7672add4774a32a6d34312",
+          "sha256": "7ce3fcbd665cb37bcbaa101091d3e1178fa6623c69dc3831f50f41f5e772f317",
           "id": "receipt:wphx-700-04-ci-parity-gates"
         }
       ]

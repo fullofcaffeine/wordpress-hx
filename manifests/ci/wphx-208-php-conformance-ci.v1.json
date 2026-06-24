@@ -5,7 +5,7 @@
   "generator": "tools/ci/check-php-conformance-ci.mjs",
   "workflow": {
     "path": ".github/workflows/php-conformance.yml",
-    "sha256": "sha256:5c47ee07b44c4c2cd47504ea15bf622e43230ffcba23f7dc004fcadaa816e275",
+    "sha256": "sha256:1d426bfaeec54bec443e87dc37e0c21f82fd4658e90934f1ba80309e17977a5a",
     "triggers": [
       "pull_request",
       "push:main",
@@ -84,6 +84,7 @@
       "npm run wp:core:wphx-308-taxonomy-comment-crud:check",
       "npm run wp:core:wphx-308-taxonomy-comment-count-cache:check",
       "npm run wp:core:wphx-308-taxonomy-comment-query-state:check",
+      "npm run wp:core:wphx-309-routing-template-adapter-contract-candidate:check",
       "npm run php:db-client-images:check",
       "npm run wp:core:wphx-305-live-db:check",
       "npm run wp:core:wphx-305-db-connect-strategy-candidate:check",
