@@ -1,0 +1,41 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-309-08-wpdb-packaged-abi-routing-link-hash-refresh",
+  "issue": {
+    "id": "wordpresshx-wfk",
+    "external_ref": "WPHX-309.08",
+    "title": "WPHX-309.08 - Refresh packaged ABI evidence after routing link fixture"
+  },
+  "recorded_at": "2026-06-24T03:45:41.000Z",
+  "command": "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback && npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check",
+  "evidence_class": "provenance_refresh",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "manifests/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+      "role": "wpdb packaged ABI no-fallback manifest with refreshed WPHX-309.06 package provenance",
+      "sha256": "sha256:363a7beeb8ead3344ddecb2d63d2a66bf61df9ce0bac559a7504d65dc5a023a5"
+    },
+    {
+      "path": "manifests/ownership/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+      "role": "wpdb packaged ABI no-fallback ownership manifest with unchanged ownership classification",
+      "sha256": "sha256:32dbcc4233037a9955f71bc5ae03bd2522de8356eafe7c74e14716af0aaacd73"
+    },
+    {
+      "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
+      "role": "wpdb packaged ABI no-fallback receipt with refreshed manifest digest",
+      "sha256": "sha256:7ade7425c15f5d4368ac38fbdcbe80edac61eb62f3ddc9f1593a6c401616c2ae"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback",
+    "npm run wp:core:wphx-700-wpdb-packaged-abi-no-fallback:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "refreshed_due_to": "WPHX-309.06 package.json provenance hash change from routing/link oracle fixture script registration",
+    "runtime_behavior_changed": false,
+    "behavior_parity_claimed": false
+  }
+}

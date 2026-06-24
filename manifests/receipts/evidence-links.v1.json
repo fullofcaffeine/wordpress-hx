@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 161,
+  "closed_task_count": 162,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -1224,6 +1224,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-309.08",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-309-08-wpdb-packaged-abi-routing-link-hash-refresh.v1.json",
+          "sha256": "1389603cf78ee955c4ea88f2df517aeb85f72004de4f61a193b52b46afe254e9",
+          "id": "receipt:wphx-309-08-wpdb-packaged-abi-routing-link-hash-refresh"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-311",
       "receipts": [
         {
@@ -1563,7 +1573,7 @@
       "receipts": [
         {
           "path": "receipts/operations/wphx-700-08-wpdb-packaged-abi-no-fallback.v1.json",
-          "sha256": "2deab5e26308bbfa415f7f0c2c4aadfba556daac126e61c3e7799a22447c4a2a",
+          "sha256": "7ade7425c15f5d4368ac38fbdcbe80edac61eb62f3ddc9f1593a6c401616c2ae",
           "id": "receipt:wphx-700-08-wpdb-packaged-abi-no-fallback"
         }
       ]
