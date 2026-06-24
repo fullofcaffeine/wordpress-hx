@@ -22,13 +22,13 @@
     },
     "package_json": {
       "path": "package.json",
-      "bytes": 27055,
-      "sha256": "sha256:36462f9efcf4097e9aacfd63168cd1f84e6d3da385e7d46ca558635b88f51547"
+      "bytes": 27289,
+      "sha256": "sha256:127f940aeb41d4dfc00351123e306a9241677f4fdf9c694f04dd83372d4951d5"
     },
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
       "bytes": 30569,
-      "sha256": "sha256:db30dde790eb44b7e7665e5e1ba52d4d0ab5cdea9d9862457a47d557ab63502c"
+      "sha256": "sha256:67999e6913e9512a9090ac81f255dd711bb7b43de213de109cb09260537f5518"
     }
   },
   "browser": {

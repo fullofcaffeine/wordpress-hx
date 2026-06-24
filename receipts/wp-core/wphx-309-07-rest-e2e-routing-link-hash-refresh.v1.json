@@ -1,0 +1,75 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-309-07-rest-e2e-routing-link-hash-refresh",
+  "issue": {
+    "id": "wordpresshx-7o9",
+    "external_ref": "WPHX-309.07",
+    "title": "WPHX-309.07 - Refresh REST evidence after routing link fixture"
+  },
+  "recorded_at": "2026-06-24T03:34:00.000Z",
+  "command": "npm run wp:core:wphx-311-rest-server-web-e2e && npm run wp:core:wphx-311-rest-server-installed-browser && npm run wp:core:wphx-311-rest-server-db-browser",
+  "evidence_class": "live_integration_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
+      "role": "REST web E2E manifest with refreshed WPHX-309.06 evidence-link provenance",
+      "sha256": "sha256:67999e6913e9512a9090ac81f255dd711bb7b43de213de109cb09260537f5518"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-08-rest-server-web-e2e.v1.json",
+      "role": "REST web E2E ownership manifest with refreshed manifest digest",
+      "sha256": "sha256:ca91a5ac74c0b06e62cde0cb7896a901c822cfb5997f4a0c82b1e5bb91c361be"
+    },
+    {
+      "path": "receipts/wp-core/wphx-311-08-rest-server-web-e2e.v1.json",
+      "role": "REST web E2E receipt with refreshed manifest digest",
+      "sha256": "sha256:01e302239086141e62f9738391822a7e0191ee8cf9dbbc78bff5dc1780bafd14"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
+      "role": "REST installed-browser manifest with refreshed prior-manifest digest",
+      "sha256": "sha256:0be19a137c2607e889c4f00adb1e0ca313c4b9522e61856e648a044739ce65e1"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-09-rest-server-installed-browser.v1.json",
+      "role": "REST installed-browser ownership manifest with refreshed manifest digest",
+      "sha256": "sha256:7bb8bc5dadd50afb87fffdbca18c31147a132eb38801edaa406f04737cc99bfa"
+    },
+    {
+      "path": "receipts/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
+      "role": "REST installed-browser receipt with refreshed manifest digest",
+      "sha256": "sha256:42a51bbe03b44fe395ede6a4c192f7257df859857fed0e6e0e4b3012cac0c036"
+    },
+    {
+      "path": "manifests/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+      "role": "REST DB-browser manifest with refreshed prior-manifest digest",
+      "sha256": "sha256:ca66c9013dfb84dbbbec955eb2ac863bdb472ef589b8644977da4f426219f2c8"
+    },
+    {
+      "path": "manifests/ownership/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+      "role": "REST DB-browser ownership manifest with refreshed manifest digest",
+      "sha256": "sha256:f5fe59f320ef0a90924f3ee2d8e4a97d074e88208815a2e9fe6b84106065ff10"
+    },
+    {
+      "path": "receipts/wp-core/wphx-311-10-rest-server-db-browser-matrix.v1.json",
+      "role": "REST DB-browser receipt with refreshed manifest digest",
+      "sha256": "sha256:1e47ac4dc00ea932f86e90cb9f9f3e1d608835e7dc367ed67bf05685b17efc62"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-311-rest-server-web-e2e",
+    "npm run wp:core:wphx-311-rest-server-web-e2e:check",
+    "npm run wp:core:wphx-311-rest-server-installed-browser",
+    "npm run wp:core:wphx-311-rest-server-installed-browser:check",
+    "npm run wp:core:wphx-311-rest-server-db-browser",
+    "npm run wp:core:wphx-311-rest-server-db-browser:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "refreshed_due_to": "WPHX-309.06 manifests/receipts/evidence-links.v1.json provenance hash change",
+    "runtime_behavior_changed": false,
+    "behavior_parity_claimed": false
+  }
+}
