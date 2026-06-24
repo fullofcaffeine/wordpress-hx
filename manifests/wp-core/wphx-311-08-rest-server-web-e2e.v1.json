@@ -32,8 +32,8 @@
     },
     "upstream_phpunit_groups": {
       "path": "tests/upstream/phpunit/groups.json",
-      "bytes": 3439,
-      "sha256": "sha256:7838d11def035b5d0c4787ecccacaf2adf50b4d0c2da4cabb88d326561f2bc28"
+      "bytes": 6724,
+      "sha256": "sha256:36c22548e92c5e93c7d68961d33d608b83fe33cf0c3cd11f944bbbdd57443cc1"
     }
   },
   "web_server": {

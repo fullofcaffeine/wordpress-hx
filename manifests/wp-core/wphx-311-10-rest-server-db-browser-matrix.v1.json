@@ -28,7 +28,7 @@
     "prior_manifest": {
       "path": "manifests/wp-core/wphx-311-09-rest-server-installed-browser.v1.json",
       "bytes": 33415,
-      "sha256": "sha256:db7d0cef6ac9a9c9d038f4e1ff38fac1230c8b0db288f047374560ab3aa85253"
+      "sha256": "sha256:f1d1a3fe03ba3e53ef3e80990d2664b7a1728f4c5043c9559e4de86c324fbf7c"
     },
     "toolchain_lock": {
       "path": "toolchain.lock.json",
