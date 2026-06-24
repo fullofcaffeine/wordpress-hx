@@ -1,7 +1,7 @@
 {
   "schema": "wphx.upstream-phpunit-groups.v1",
   "issue": "WPHX-700.05",
-  "description": "Upstream PHPUnit ratchet groups for database, options/cache, REST server/settings, taxonomy/term, and comment behavior.",
+  "description": "Upstream PHPUnit ratchet groups for database, options/cache, REST server/settings, posts/query/meta/revisions, taxonomy/term, and comment behavior.",
   "groups": [
     {
       "id": "wpdb-core",
@@ -44,6 +44,81 @@
         "tests/phpunit/tests/rest-api/rest-schema-sanitization.php",
         "tests/phpunit/tests/rest-api/rest-schema-validation.php",
         "tests/phpunit/tests/rest-api/wpIsRestEndpoint.php"
+      ]
+    },
+    {
+      "id": "posts-core",
+      "owner": "WPHX-307",
+      "files": [
+        "tests/phpunit/tests/post.php",
+        "tests/phpunit/tests/post/getPost.php",
+        "tests/phpunit/tests/post/getPosts.php",
+        "tests/phpunit/tests/post/getPostStatus.php",
+        "tests/phpunit/tests/post/getPostParent.php",
+        "tests/phpunit/tests/post/getPageByPath.php",
+        "tests/phpunit/tests/post/getPageByTitle.php",
+        "tests/phpunit/tests/post/getPageChildren.php",
+        "tests/phpunit/tests/post/getPages.php",
+        "tests/phpunit/tests/post/types.php",
+        "tests/phpunit/tests/post/objects.php",
+        "tests/phpunit/tests/post/slashes.php",
+        "tests/phpunit/tests/post/wpPost.php",
+        "tests/phpunit/tests/post/wpPostType.php",
+        "tests/phpunit/tests/post/wpInsertPost.php",
+        "tests/phpunit/tests/post/wpDeletePost.php",
+        "tests/phpunit/tests/post/wpTrashPost.php",
+        "tests/phpunit/tests/post/wpUntrashPost.php",
+        "tests/phpunit/tests/post/wpPublishPost.php",
+        "tests/phpunit/tests/post/wpUniquePostSlug.php",
+        "tests/phpunit/tests/post/wpAfterInsertPost.php"
+      ]
+    },
+    {
+      "id": "posts-meta-revisions-cache",
+      "owner": "WPHX-307",
+      "files": [
+        "tests/phpunit/tests/post/meta.php",
+        "tests/phpunit/tests/post/metaRevisions.php",
+        "tests/phpunit/tests/post/revisions.php",
+        "tests/phpunit/tests/post/wpGetAutoSave.php",
+        "tests/phpunit/tests/post/updatePostCache.php",
+        "tests/phpunit/tests/post/primePostCaches.php",
+        "tests/phpunit/tests/post/primePostParentsCaches.php",
+        "tests/phpunit/tests/post/updatePostAuthorCaches.php",
+        "tests/phpunit/tests/post/updateTermCountOnTransitionPostStatus.php",
+        "tests/phpunit/tests/meta.php",
+        "tests/phpunit/tests/meta/query.php",
+        "tests/phpunit/tests/meta/deleteMetadata.php",
+        "tests/phpunit/tests/meta/updateMetadata.php",
+        "tests/phpunit/tests/meta/registerMeta.php",
+        "tests/phpunit/tests/meta/isProtectedMeta.php",
+        "tests/phpunit/tests/meta/slashes.php"
+      ]
+    },
+    {
+      "id": "wp-query-core",
+      "owner": "WPHX-307",
+      "files": [
+        "tests/phpunit/tests/query.php",
+        "tests/phpunit/tests/post/query.php",
+        "tests/phpunit/tests/query/conditionals.php",
+        "tests/phpunit/tests/query/date.php",
+        "tests/phpunit/tests/query/dateQuery.php",
+        "tests/phpunit/tests/query/fieldsClause.php",
+        "tests/phpunit/tests/query/generatePostdata.php",
+        "tests/phpunit/tests/query/invalidQueries.php",
+        "tests/phpunit/tests/query/metaQuery.php",
+        "tests/phpunit/tests/query/noFoundRows.php",
+        "tests/phpunit/tests/query/parseQuery.php",
+        "tests/phpunit/tests/query/postStatus.php",
+        "tests/phpunit/tests/query/results.php",
+        "tests/phpunit/tests/query/search.php",
+        "tests/phpunit/tests/query/searchColumns.php",
+        "tests/phpunit/tests/query/setupPostdata.php",
+        "tests/phpunit/tests/query/stickies.php",
+        "tests/phpunit/tests/query/taxQuery.php",
+        "tests/phpunit/tests/query/thePost.php",
+        "tests/phpunit/tests/query/vars.php"
       ]
     },
     {

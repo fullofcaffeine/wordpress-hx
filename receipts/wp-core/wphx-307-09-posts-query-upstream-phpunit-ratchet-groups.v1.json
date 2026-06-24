@@ -1,0 +1,62 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-307-09-posts-query-upstream-phpunit-ratchet-groups",
+  "issue": {
+    "id": "wordpresshx-knq",
+    "external_ref": "WPHX-307.09",
+    "title": "WPHX-307.09 - Add posts/query upstream PHPUnit ratchet groups"
+  },
+  "recorded_at": "2026-06-24T00:51:00.000Z",
+  "command": "npm run upstream:phpunit-ratchet",
+  "evidence_class": "upstream_suite_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "tests/upstream/phpunit/groups.json",
+      "role": "selected upstream posts/query/meta/revisions PHPUnit ratchet groups",
+      "sha256": "sha256:36c22548e92c5e93c7d68961d33d608b83fe33cf0c3cd11f944bbbdd57443cc1"
+    },
+    {
+      "path": "manifests/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
+      "role": "refreshed upstream PHPUnit ratchet manifest",
+      "sha256": "sha256:6e1ee7b0cf9a9e372b69f9b553ad876029f53ab8daf597b24476bbcdd03b347d"
+    },
+    {
+      "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
+      "role": "refreshed upstream PHPUnit ratchet receipt",
+      "sha256": "sha256:de7f2d700cdea1d32707511dfea9316fa5355e9405d5abae7626f5a067e519d9"
+    },
+    {
+      "path": "docs/operations/upstream-phpunit-ratchet.md",
+      "role": "expanded ratchet scope documentation",
+      "sha256": "sha256:f7f4af5c80369b4112904ca86069fc15af090f520bbe78ff9fc4438b9545b010"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-307.09 progress interpretation",
+      "sha256": "sha256:f91d8b6ab40a09d645eade264a1b604aa1eaacd3fe0ddde87b2cd3183a24fc51"
+    }
+  ],
+  "verification_commands": [
+    "npm run upstream:phpunit-ratchet",
+    "npm run upstream:phpunit-ratchet:check",
+    "npm run upstream:phpunit-ratchet:provision:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "blocked",
+    "environment_ready": false,
+    "selected_upstream_groups_declared": true,
+    "selected_wphx_307_group_count": 3,
+    "selected_wphx_307_test_file_count": 57,
+    "runs_executed": 0,
+    "behavior_parity_claimed": false,
+    "blocked_inputs": [
+      "vanilla_phpunit_vendor_missing",
+      "vanilla_wp_tests_config_missing",
+      "candidate_root_env_missing"
+    ]
+  }
+}

@@ -14,8 +14,8 @@
     },
     "groups": {
       "path": "tests/upstream/phpunit/groups.json",
-      "bytes": 3439,
-      "sha256": "sha256:7838d11def035b5d0c4787ecccacaf2adf50b4d0c2da4cabb88d326561f2bc28"
+      "bytes": 6724,
+      "sha256": "sha256:36c22548e92c5e93c7d68961d33d608b83fe33cf0c3cd11f944bbbdd57443cc1"
     },
     "known_deltas": {
       "path": "tests/upstream/phpunit/known-deltas.json",
@@ -73,6 +73,81 @@
       ]
     },
     {
+      "id": "posts-core",
+      "owner": "WPHX-307",
+      "files": [
+        "tests/phpunit/tests/post.php",
+        "tests/phpunit/tests/post/getPost.php",
+        "tests/phpunit/tests/post/getPosts.php",
+        "tests/phpunit/tests/post/getPostStatus.php",
+        "tests/phpunit/tests/post/getPostParent.php",
+        "tests/phpunit/tests/post/getPageByPath.php",
+        "tests/phpunit/tests/post/getPageByTitle.php",
+        "tests/phpunit/tests/post/getPageChildren.php",
+        "tests/phpunit/tests/post/getPages.php",
+        "tests/phpunit/tests/post/types.php",
+        "tests/phpunit/tests/post/objects.php",
+        "tests/phpunit/tests/post/slashes.php",
+        "tests/phpunit/tests/post/wpPost.php",
+        "tests/phpunit/tests/post/wpPostType.php",
+        "tests/phpunit/tests/post/wpInsertPost.php",
+        "tests/phpunit/tests/post/wpDeletePost.php",
+        "tests/phpunit/tests/post/wpTrashPost.php",
+        "tests/phpunit/tests/post/wpUntrashPost.php",
+        "tests/phpunit/tests/post/wpPublishPost.php",
+        "tests/phpunit/tests/post/wpUniquePostSlug.php",
+        "tests/phpunit/tests/post/wpAfterInsertPost.php"
+      ]
+    },
+    {
+      "id": "posts-meta-revisions-cache",
+      "owner": "WPHX-307",
+      "files": [
+        "tests/phpunit/tests/post/meta.php",
+        "tests/phpunit/tests/post/metaRevisions.php",
+        "tests/phpunit/tests/post/revisions.php",
+        "tests/phpunit/tests/post/wpGetAutoSave.php",
+        "tests/phpunit/tests/post/updatePostCache.php",
+        "tests/phpunit/tests/post/primePostCaches.php",
+        "tests/phpunit/tests/post/primePostParentsCaches.php",
+        "tests/phpunit/tests/post/updatePostAuthorCaches.php",
+        "tests/phpunit/tests/post/updateTermCountOnTransitionPostStatus.php",
+        "tests/phpunit/tests/meta.php",
+        "tests/phpunit/tests/meta/query.php",
+        "tests/phpunit/tests/meta/deleteMetadata.php",
+        "tests/phpunit/tests/meta/updateMetadata.php",
+        "tests/phpunit/tests/meta/registerMeta.php",
+        "tests/phpunit/tests/meta/isProtectedMeta.php",
+        "tests/phpunit/tests/meta/slashes.php"
+      ]
+    },
+    {
+      "id": "wp-query-core",
+      "owner": "WPHX-307",
+      "files": [
+        "tests/phpunit/tests/query.php",
+        "tests/phpunit/tests/post/query.php",
+        "tests/phpunit/tests/query/conditionals.php",
+        "tests/phpunit/tests/query/date.php",
+        "tests/phpunit/tests/query/dateQuery.php",
+        "tests/phpunit/tests/query/fieldsClause.php",
+        "tests/phpunit/tests/query/generatePostdata.php",
+        "tests/phpunit/tests/query/invalidQueries.php",
+        "tests/phpunit/tests/query/metaQuery.php",
+        "tests/phpunit/tests/query/noFoundRows.php",
+        "tests/phpunit/tests/query/parseQuery.php",
+        "tests/phpunit/tests/query/postStatus.php",
+        "tests/phpunit/tests/query/results.php",
+        "tests/phpunit/tests/query/search.php",
+        "tests/phpunit/tests/query/searchColumns.php",
+        "tests/phpunit/tests/query/setupPostdata.php",
+        "tests/phpunit/tests/query/stickies.php",
+        "tests/phpunit/tests/query/taxQuery.php",
+        "tests/phpunit/tests/query/thePost.php",
+        "tests/phpunit/tests/query/vars.php"
+      ]
+    },
+    {
       "id": "taxonomy-term-core",
       "owner": "WPHX-308",
       "files": [
@@ -123,7 +198,7 @@
   },
   "report": {
     "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
-    "sha256": "sha256:eab14c88cbaab050eef0e6167c6767d2a7a8dbd79955bc3cb4703600929fb8f2"
+    "sha256": "sha256:0a349589984729452efd8a507f83ac13bbdfd4b9782e5a4d439ab4d0092b0738"
   },
   "validation_result": {
     "status": "blocked",
