@@ -9,14 +9,14 @@
     "kind": "oracle_source_mirror_fixture",
     "name": "WP_Query live DB SQL/result fixture",
     "area": "wp-includes/class-wp-query.php",
-    "public_contract": "Mirrored upstream WP_Query, WP_Meta_Query, WP_Tax_Query, and wpdb source execute selected query cases against a locked live MySQL runtime. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
+    "public_contract": "Mirrored upstream WP_Query, WP_Meta_Query, WP_Tax_Query, and wpdb source execute selected query cases against locked live MySQL/MariaDB and PHP DB-client runtimes. This is live SQL/result parity evidence only; it does not claim Haxe-owned public PHP replacement."
   },
   "ownership_state": "upstream_oracle_source_mirror",
   "ownership_axes": {
     "semantic_owner": "upstream_wordpress_oracle",
     "adapter_contract_owner": "not_claimed",
     "emission_strategy": "oracle_source_mirror_fixture",
-    "execution_provider": "php_live_mysql",
+    "execution_provider": "php_live_mysql_mariadb_matrix",
     "compatibility_evidence": "live_integration_parity"
   },
   "bridge": {
@@ -57,6 +57,6 @@
     "receipt_refs": [
       "receipt:wphx-307-07-wp-query-live-db-fixture"
     ],
-    "manifest_digest": "sha256:96e86fe4f0400e944959516e1a7be9fbe95a067713de14f0497dafcc9f4d3d59"
+    "manifest_digest": "sha256:1896e2689f233beaa48763747e81ede0e7056c071d99c2931174146a8637dfca"
   }
 }

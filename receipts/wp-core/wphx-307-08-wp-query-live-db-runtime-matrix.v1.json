@@ -1,0 +1,77 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-307-08-wp-query-live-db-runtime-matrix",
+  "issue": {
+    "id": "wordpresshx-u98",
+    "external_ref": "WPHX-307.08",
+    "title": "Expand WP_Query live DB runtime matrix"
+  },
+  "recorded_at": "2026-06-24T00:45:00.000Z",
+  "command": "npm run wp:core:wphx-307-wp-query-live-db",
+  "evidence_class": "live_integration_parity",
+  "artifact_scope": "oracle_source_mirror_fixture",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-query-live-db-fixture.mjs",
+      "role": "expanded live DB runner matrix",
+      "sha256": "sha256:120f6f80d6f7efec5580db465e12a883971e08d9fe7f6671e349536f5c724571"
+    },
+    {
+      "path": "manifests/wp-core/wphx-307-07-wp-query-live-db-fixture.v1.json",
+      "role": "refreshed WP_Query live DB SQL/result manifest",
+      "sha256": "sha256:1896e2689f233beaa48763747e81ede0e7056c071d99c2931174146a8637dfca"
+    },
+    {
+      "path": "manifests/ownership/wphx-307-07-wp-query-live-db-fixture.v1.json",
+      "role": "refreshed oracle-source-mirror ownership manifest",
+      "sha256": "sha256:9f2cfc68b88978ac07c0876cf75a8a9b26223ed604b86c3b06aac8fb63f51be7"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-07-wp-query-live-db-fixture.v1.json",
+      "role": "refreshed underlying live DB fixture receipt",
+      "sha256": "sha256:01930e973900a5564cae23f6bb211ef53c84601809ef28eece5713b37d9ef721"
+    },
+    {
+      "path": "manifests/toolchain/wphx-305-09-php-db-client-images.v1.json",
+      "role": "locked PHP DB-client image manifest",
+      "sha256": "sha256:64f49212ed80d88ceb568bf422757ba5f99b6e2392835e8e5f93ed27f6611abc"
+    },
+    {
+      "path": "toolchain.lock.json",
+      "role": "locked MySQL/MariaDB and PHP DB-client image inputs",
+      "sha256": "sha256:9230d83997bb6cc37768adf6b45715721875f7991e0840e2321c18a2c63e5298"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-307.08 progress interpretation",
+      "sha256": "sha256:dec9ab6b048fa007f819cb2215f9673bdd6e0b955781322cce9c3b5855bce64a"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-307-wp-query-live-db",
+    "npm run wp:core:wphx-307-wp-query-live-db:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "oracle_source_mirror",
+    "fixture_cases": 5,
+    "db_runtimes": 2,
+    "php_client_runtimes": 2,
+    "comparisons": 4,
+    "runtime_matrix": [
+      "mysql-8.4:php-8.4-db-client",
+      "mysql-8.4:php-8.5-db-client",
+      "mariadb-11.8:php-8.4-db-client",
+      "mariadb-11.8:php-8.5-db-client"
+    ],
+    "behavior_parity_claimed": false,
+    "remaining_gates": [
+      "haxe_owned_public_php_replacement",
+      "executable_upstream_phpunit_ratchet",
+      "installed_distribution_post_query_behavior"
+    ]
+  }
+}

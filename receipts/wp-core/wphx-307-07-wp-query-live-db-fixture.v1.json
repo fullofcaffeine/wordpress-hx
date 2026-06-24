@@ -11,7 +11,7 @@
     {
       "path": "manifests/wp-core/wphx-307-07-wp-query-live-db-fixture.v1.json",
       "role": "WP_Query live DB SQL/result parity manifest",
-      "sha256": "sha256:96e86fe4f0400e944959516e1a7be9fbe95a067713de14f0497dafcc9f4d3d59"
+      "sha256": "sha256:1896e2689f233beaa48763747e81ede0e7056c071d99c2931174146a8637dfca"
     },
     {
       "path": "manifests/ownership/wphx-307-07-wp-query-live-db-fixture.v1.json",
@@ -23,7 +23,7 @@
     },
     {
       "path": "toolchain.lock.json",
-      "role": "locked MySQL and PHP DB-client image inputs"
+      "role": "locked MySQL/MariaDB and PHP DB-client image inputs"
     }
   ],
   "verification_commands": [
@@ -36,7 +36,7 @@
   "validation_result": {
     "status": "passed",
     "fixture_cases": 5,
-    "db_runtimes": 1,
-    "php_client_runtimes": 1
+    "db_runtimes": 2,
+    "php_client_runtimes": 2
   }
 }

@@ -127,6 +127,14 @@
         "index_digest": "sha256:563602a18ffd5be220968e8508d84c9dcd80fbffe69e28af51572db29e3285b2",
         "linux_amd64_digest": "sha256:94d1a3602540127d4979699ff8f6b6ae3d276a95305b3822c17abf3258995575",
         "linux_arm64_digest": "sha256:b6838bca58d96cdcfb36999bb90c3558a684ef2302430dad1694070cc984312c"
+      },
+      {
+        "id": "mariadb-11.8",
+        "engine": "mariadb",
+        "image": "library/mariadb@sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+        "index_digest": "sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+        "linux_amd64_digest": "sha256:d1f0379f1ef03c24aa465744e3fc3482deded8faca5d5178a458a75a18b2b5db",
+        "linux_arm64_digest": "sha256:d4638c2e594ba5f384b9a05ecd6913b5b16cb2dfa4c45313fcd7823cda1b89e1"
       }
     ],
     "php_clients": [
@@ -139,6 +147,20 @@
         "dockerfile_sha256": "sha256:3debffda6b2155fccd7663b99515bebd384b6791d23758826fcaf1c0d4c988cd",
         "base_image": "php_8_4_cli",
         "base_index_digest": "sha256:966621a53c8e75f062fad4e043ffec507cb793822aee3422110e0127fe53952d",
+        "required_extensions": [
+          "mysqli",
+          "pdo_mysql"
+        ]
+      },
+      {
+        "id": "php-8.5-db-client",
+        "php_minor": "8.5",
+        "image": "wordpresshx/php-db-client:8.5-cli-mysqli-pdo-mysql",
+        "local_reference": "wordpresshx/php-db-client:8.5-cli-mysqli-pdo-mysql",
+        "dockerfile": "docker/php-db-client/8.5/Dockerfile",
+        "dockerfile_sha256": "sha256:096f58ea6810fb308e9a27c2271ad97173f31ecec8ee032693c28c196285ea92",
+        "base_image": "php_8_5_cli",
+        "base_index_digest": "sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
         "required_extensions": [
           "mysqli",
           "pdo_mysql"
@@ -158,8 +180,8 @@
         "reason": "This fixture isolates WP_Query SQL/result behavior. Generic WordPress services around hooks, cache, options, users, post type registration, and taxonomy registration are deterministic stubs while the query classes and wpdb execution remain upstream PHP."
       },
       {
-        "id": "mysql-only-initial-slice",
-        "reason": "WPHX-307.07 starts with the locked MySQL 8.4 runtime. MariaDB and upstream PHPUnit ratchets remain follow-up closure for the posts/query workset."
+        "id": "live-db-matrix-slice",
+        "reason": "WPHX-307.08 expands the live WP_Query slice across the locked MySQL 8.4, MariaDB 11.8, PHP 8.4 DB-client, and PHP 8.5 DB-client matrix. Upstream PHPUnit and installed-distribution ratchets remain follow-up closure for the posts/query workset."
       }
     ]
   },
@@ -180,6 +202,29 @@
         "query": {
           "version": "8.4.10",
           "comment": "MySQL Community Server - GPL"
+        },
+        "initialized": {
+          "created": [
+            "wordpresshx_wpquery_oracle",
+            "wordpresshx_wpquery_candidate"
+          ]
+        }
+      },
+      {
+        "id": "mariadb-11.8",
+        "engine": "mariadb",
+        "image_lock": {
+          "registry": "registry-1.docker.io",
+          "repository": "library/mariadb",
+          "tag": "11.8",
+          "index_digest": "sha256:be1ef4fe5f14589325c08a41c76334097ce66c86264b75e1d28342c742782a61",
+          "media_type": "application/vnd.oci.image.index.v1+json",
+          "linux_amd64_digest": "sha256:d1f0379f1ef03c24aa465744e3fc3482deded8faca5d5178a458a75a18b2b5db",
+          "linux_arm64_digest": "sha256:d4638c2e594ba5f384b9a05ecd6913b5b16cb2dfa4c45313fcd7823cda1b89e1"
+        },
+        "query": {
+          "version": "11.8.8-MariaDB-ubu2404",
+          "comment": "mariadb.org binary distribution"
         },
         "initialized": {
           "created": [
@@ -216,6 +261,49 @@
               "version": "8.4.10",
               "comment": "MySQL Community Server - GPL"
             }
+          },
+          {
+            "db_runtime": "mariadb-11.8",
+            "query": {
+              "version": "11.8.8-MariaDB-ubu2404",
+              "comment": "mariadb.org binary distribution"
+            }
+          }
+        ]
+      },
+      {
+        "id": "php-8.5-db-client",
+        "php_minor": "8.5",
+        "image_lock": {
+          "registry": "local",
+          "repository": "wordpresshx/php-db-client",
+          "tag": "8.5-cli-mysqli-pdo-mysql",
+          "base_image": "php_8_5_cli",
+          "base_index_digest": "sha256:1954ff5cd21f222c992b79d25e403b2600cec829678d5bb7076883f3a44c0d6e",
+          "dockerfile": "docker/php-db-client/8.5/Dockerfile",
+          "dockerfile_sha256": "sha256:096f58ea6810fb308e9a27c2271ad97173f31ecec8ee032693c28c196285ea92",
+          "required_extensions": [
+            "mysqli",
+            "pdo_mysql"
+          ],
+          "build_command": "npm run php:db-client-images",
+          "check_command": "npm run php:db-client-images:check",
+          "owner_issue": "WPHX-305.09"
+        },
+        "query_samples": [
+          {
+            "db_runtime": "mysql-8.4",
+            "query": {
+              "version": "8.4.10",
+              "comment": "MySQL Community Server - GPL"
+            }
+          },
+          {
+            "db_runtime": "mariadb-11.8",
+            "query": {
+              "version": "11.8.8-MariaDB-ubu2404",
+              "comment": "mariadb.org binary distribution"
+            }
           }
         ]
       }
@@ -247,6 +335,84 @@
       "server_info": "8.4.10",
       "case_count": 5,
       "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
+    },
+    {
+      "id": "mysql-8.4:php-8.5-db-client:oracle",
+      "runtime": "mysql-8.4:php-8.5-db-client",
+      "db_runtime": "mysql-8.4",
+      "php_client_runtime": "php-8.5-db-client",
+      "mode": "oracle",
+      "database": "wordpresshx_wpquery_oracle",
+      "command": "docker run --rm --network <network> -v <repo>:/work -w /work wordpresshx/php-db-client:8.5-cli-mysqli-pdo-mysql php build/wp-core/wphx-307-07/probe.php oracle build/wp-core/wphx-307-07/oracle db 3306 root <password> wordpresshx_wpquery_oracle mysql-8.4:php-8.5-db-client",
+      "php_version": "8.5.7",
+      "server_info": "8.4.10",
+      "case_count": 5,
+      "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
+    },
+    {
+      "id": "mysql-8.4:php-8.5-db-client:candidate",
+      "runtime": "mysql-8.4:php-8.5-db-client",
+      "db_runtime": "mysql-8.4",
+      "php_client_runtime": "php-8.5-db-client",
+      "mode": "candidate",
+      "database": "wordpresshx_wpquery_candidate",
+      "command": "docker run --rm --network <network> -v <repo>:/work -w /work wordpresshx/php-db-client:8.5-cli-mysqli-pdo-mysql php build/wp-core/wphx-307-07/probe.php candidate build/wp-core/wphx-307-07/candidate db 3306 root <password> wordpresshx_wpquery_candidate mysql-8.4:php-8.5-db-client",
+      "php_version": "8.5.7",
+      "server_info": "8.4.10",
+      "case_count": 5,
+      "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
+    },
+    {
+      "id": "mariadb-11.8:php-8.4-db-client:oracle",
+      "runtime": "mariadb-11.8:php-8.4-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.4-db-client",
+      "mode": "oracle",
+      "database": "wordpresshx_wpquery_oracle",
+      "command": "docker run --rm --network <network> -v <repo>:/work -w /work wordpresshx/php-db-client:8.4-cli-mysqli-pdo-mysql php build/wp-core/wphx-307-07/probe.php oracle build/wp-core/wphx-307-07/oracle db 3306 root <password> wordpresshx_wpquery_oracle mariadb-11.8:php-8.4-db-client",
+      "php_version": "8.4.22",
+      "server_info": "11.8.8-MariaDB-ubu2404",
+      "case_count": 5,
+      "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
+    },
+    {
+      "id": "mariadb-11.8:php-8.4-db-client:candidate",
+      "runtime": "mariadb-11.8:php-8.4-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.4-db-client",
+      "mode": "candidate",
+      "database": "wordpresshx_wpquery_candidate",
+      "command": "docker run --rm --network <network> -v <repo>:/work -w /work wordpresshx/php-db-client:8.4-cli-mysqli-pdo-mysql php build/wp-core/wphx-307-07/probe.php candidate build/wp-core/wphx-307-07/candidate db 3306 root <password> wordpresshx_wpquery_candidate mariadb-11.8:php-8.4-db-client",
+      "php_version": "8.4.22",
+      "server_info": "11.8.8-MariaDB-ubu2404",
+      "case_count": 5,
+      "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
+    },
+    {
+      "id": "mariadb-11.8:php-8.5-db-client:oracle",
+      "runtime": "mariadb-11.8:php-8.5-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.5-db-client",
+      "mode": "oracle",
+      "database": "wordpresshx_wpquery_oracle",
+      "command": "docker run --rm --network <network> -v <repo>:/work -w /work wordpresshx/php-db-client:8.5-cli-mysqli-pdo-mysql php build/wp-core/wphx-307-07/probe.php oracle build/wp-core/wphx-307-07/oracle db 3306 root <password> wordpresshx_wpquery_oracle mariadb-11.8:php-8.5-db-client",
+      "php_version": "8.5.7",
+      "server_info": "11.8.8-MariaDB-ubu2404",
+      "case_count": 5,
+      "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
+    },
+    {
+      "id": "mariadb-11.8:php-8.5-db-client:candidate",
+      "runtime": "mariadb-11.8:php-8.5-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.5-db-client",
+      "mode": "candidate",
+      "database": "wordpresshx_wpquery_candidate",
+      "command": "docker run --rm --network <network> -v <repo>:/work -w /work wordpresshx/php-db-client:8.5-cli-mysqli-pdo-mysql php build/wp-core/wphx-307-07/probe.php candidate build/wp-core/wphx-307-07/candidate db 3306 root <password> wordpresshx_wpquery_candidate mariadb-11.8:php-8.5-db-client",
+      "php_version": "8.5.7",
+      "server_info": "11.8.8-MariaDB-ubu2404",
+      "case_count": 5,
+      "result_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800"
     }
   ],
   "trace_samples": [
@@ -255,6 +421,2685 @@
       "runtime": "mysql-8.4:php-8.4-db-client",
       "db_runtime": "mysql-8.4",
       "php_client_runtime": "php-8.4-db-client",
+      "result": {
+        "coveredFunctionExists": {
+          "wp_parse_id_list": true,
+          "get_terms": true,
+          "get_post_stati": true
+        },
+        "coveredMethodExists": {
+          "WP_Query::query": true,
+          "WP_Query::get_posts": true,
+          "WP_Meta_Query::get_sql": true,
+          "WP_Tax_Query::get_sql": true,
+          "wpdb::get_col": true
+        },
+        "cases": [
+          {
+            "id": "live-query:published-default",
+            "post_ids": [
+              105,
+              102,
+              101
+            ],
+            "post_count": 3,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY wp_posts.post_date DESC LIMIT 0, 3",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 3,
+              "paged": 0,
+              "orderby": "date",
+              "order": "DESC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:post-in-order",
+            "post_ids": [
+              105,
+              101,
+              102
+            ],
+            "post_count": 3,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND wp_posts.ID IN (101,102,105) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY FIELD(wp_posts.ID,105,101,102) LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [
+                105,
+                101,
+                102
+              ],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "post__in",
+              "order": "",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:search-title-content",
+            "post_ids": [
+              105,
+              101
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND (((wp_posts.post_title LIKE '%Alpha%') OR (wp_posts.post_excerpt LIKE '%Alpha%') OR (wp_posts.post_content LIKE '%Alpha%'))) AND (wp_posts.post_password = '') AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY wp_posts.post_date DESC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "date",
+              "order": "DESC",
+              "fields": "ids",
+              "s": "Alpha",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": false,
+              "is_single": false,
+              "is_search": true,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "wp_search_stopwords",
+                "arg_count": 1
+              },
+              {
+                "hook": "post_search_columns",
+                "arg_count": 3
+              },
+              {
+                "hook": "wp_query_search_exclusion_prefix",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_search_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:meta-key-value",
+            "post_ids": [
+              101,
+              105
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts INNER JOIN wp_postmeta ON ( wp_posts.ID = wp_postmeta.post_id ) WHERE 1=1 AND ( ( wp_postmeta.meta_key = 'wphx_color' AND wp_postmeta.meta_value = 'blue' ) ) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) GROUP BY wp_posts.ID ORDER BY wp_posts.ID ASC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "ID",
+              "order": "ASC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "wphx_color",
+              "meta_value": "blue",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": {
+                "0": {
+                  "key": "wphx_color",
+                  "value": "blue"
+                },
+                "relation": "OR"
+              },
+              "clauses": {
+                "wp_postmeta": {
+                  "key": "wphx_color",
+                  "value": "blue",
+                  "compare": "=",
+                  "compare_key": "=",
+                  "alias": "wp_postmeta",
+                  "cast": "CHAR"
+                }
+              }
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "meta_query_find_compatible_table_alias",
+                "arg_count": 4
+              },
+              {
+                "hook": "get_meta_sql",
+                "arg_count": 6
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:category-taxonomy",
+            "post_ids": [
+              101,
+              105
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id) WHERE 1=1 AND ( wp_term_relationships.term_taxonomy_id IN (70) ) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) GROUP BY wp_posts.ID ORDER BY wp_posts.ID ASC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "ID",
+              "order": "ASC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "7",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": false,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": true,
+              "is_category": true,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [
+                {
+                  "taxonomy": "category",
+                  "terms": [
+                    7
+                  ],
+                  "field": "term_id",
+                  "operator": "IN",
+                  "include_children": true
+                }
+              ],
+              "queried_terms": {
+                "category": {
+                  "terms": [
+                    7
+                  ],
+                  "field": "term_id"
+                }
+              }
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          }
+        ],
+        "php_errors": []
+      }
+    },
+    {
+      "id": "mysql-8.4:php-8.5-db-client:oracle",
+      "runtime": "mysql-8.4:php-8.5-db-client",
+      "db_runtime": "mysql-8.4",
+      "php_client_runtime": "php-8.5-db-client",
+      "result": {
+        "coveredFunctionExists": {
+          "wp_parse_id_list": true,
+          "get_terms": true,
+          "get_post_stati": true
+        },
+        "coveredMethodExists": {
+          "WP_Query::query": true,
+          "WP_Query::get_posts": true,
+          "WP_Meta_Query::get_sql": true,
+          "WP_Tax_Query::get_sql": true,
+          "wpdb::get_col": true
+        },
+        "cases": [
+          {
+            "id": "live-query:published-default",
+            "post_ids": [
+              105,
+              102,
+              101
+            ],
+            "post_count": 3,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY wp_posts.post_date DESC LIMIT 0, 3",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 3,
+              "paged": 0,
+              "orderby": "date",
+              "order": "DESC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:post-in-order",
+            "post_ids": [
+              105,
+              101,
+              102
+            ],
+            "post_count": 3,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND wp_posts.ID IN (101,102,105) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY FIELD(wp_posts.ID,105,101,102) LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [
+                105,
+                101,
+                102
+              ],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "post__in",
+              "order": "",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:search-title-content",
+            "post_ids": [
+              105,
+              101
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND (((wp_posts.post_title LIKE '%Alpha%') OR (wp_posts.post_excerpt LIKE '%Alpha%') OR (wp_posts.post_content LIKE '%Alpha%'))) AND (wp_posts.post_password = '') AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY wp_posts.post_date DESC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "date",
+              "order": "DESC",
+              "fields": "ids",
+              "s": "Alpha",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": false,
+              "is_single": false,
+              "is_search": true,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "wp_search_stopwords",
+                "arg_count": 1
+              },
+              {
+                "hook": "post_search_columns",
+                "arg_count": 3
+              },
+              {
+                "hook": "wp_query_search_exclusion_prefix",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_search_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:meta-key-value",
+            "post_ids": [
+              101,
+              105
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts INNER JOIN wp_postmeta ON ( wp_posts.ID = wp_postmeta.post_id ) WHERE 1=1 AND ( ( wp_postmeta.meta_key = 'wphx_color' AND wp_postmeta.meta_value = 'blue' ) ) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) GROUP BY wp_posts.ID ORDER BY wp_posts.ID ASC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "ID",
+              "order": "ASC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "wphx_color",
+              "meta_value": "blue",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": {
+                "0": {
+                  "key": "wphx_color",
+                  "value": "blue"
+                },
+                "relation": "OR"
+              },
+              "clauses": {
+                "wp_postmeta": {
+                  "key": "wphx_color",
+                  "value": "blue",
+                  "compare": "=",
+                  "compare_key": "=",
+                  "alias": "wp_postmeta",
+                  "cast": "CHAR"
+                }
+              }
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "meta_query_find_compatible_table_alias",
+                "arg_count": 4
+              },
+              {
+                "hook": "get_meta_sql",
+                "arg_count": 6
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:category-taxonomy",
+            "post_ids": [
+              101,
+              105
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id) WHERE 1=1 AND ( wp_term_relationships.term_taxonomy_id IN (70) ) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) GROUP BY wp_posts.ID ORDER BY wp_posts.ID ASC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "ID",
+              "order": "ASC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "7",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": false,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": true,
+              "is_category": true,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [
+                {
+                  "taxonomy": "category",
+                  "terms": [
+                    7
+                  ],
+                  "field": "term_id",
+                  "operator": "IN",
+                  "include_children": true
+                }
+              ],
+              "queried_terms": {
+                "category": {
+                  "terms": [
+                    7
+                  ],
+                  "field": "term_id"
+                }
+              }
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          }
+        ],
+        "php_errors": []
+      }
+    },
+    {
+      "id": "mariadb-11.8:php-8.4-db-client:oracle",
+      "runtime": "mariadb-11.8:php-8.4-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.4-db-client",
+      "result": {
+        "coveredFunctionExists": {
+          "wp_parse_id_list": true,
+          "get_terms": true,
+          "get_post_stati": true
+        },
+        "coveredMethodExists": {
+          "WP_Query::query": true,
+          "WP_Query::get_posts": true,
+          "WP_Meta_Query::get_sql": true,
+          "WP_Tax_Query::get_sql": true,
+          "wpdb::get_col": true
+        },
+        "cases": [
+          {
+            "id": "live-query:published-default",
+            "post_ids": [
+              105,
+              102,
+              101
+            ],
+            "post_count": 3,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY wp_posts.post_date DESC LIMIT 0, 3",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 3,
+              "paged": 0,
+              "orderby": "date",
+              "order": "DESC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:post-in-order",
+            "post_ids": [
+              105,
+              101,
+              102
+            ],
+            "post_count": 3,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND wp_posts.ID IN (101,102,105) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY FIELD(wp_posts.ID,105,101,102) LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [
+                105,
+                101,
+                102
+              ],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "post__in",
+              "order": "",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:search-title-content",
+            "post_ids": [
+              105,
+              101
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts WHERE 1=1 AND (((wp_posts.post_title LIKE '%Alpha%') OR (wp_posts.post_excerpt LIKE '%Alpha%') OR (wp_posts.post_content LIKE '%Alpha%'))) AND (wp_posts.post_password = '') AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) ORDER BY wp_posts.post_date DESC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "date",
+              "order": "DESC",
+              "fields": "ids",
+              "s": "Alpha",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": false,
+              "is_single": false,
+              "is_search": true,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "wp_search_stopwords",
+                "arg_count": 1
+              },
+              {
+                "hook": "post_search_columns",
+                "arg_count": 3
+              },
+              {
+                "hook": "wp_query_search_exclusion_prefix",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_search_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:meta-key-value",
+            "post_ids": [
+              101,
+              105
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts INNER JOIN wp_postmeta ON ( wp_posts.ID = wp_postmeta.post_id ) WHERE 1=1 AND ( ( wp_postmeta.meta_key = 'wphx_color' AND wp_postmeta.meta_value = 'blue' ) ) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) GROUP BY wp_posts.ID ORDER BY wp_posts.ID ASC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "ID",
+              "order": "ASC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "wphx_color",
+              "meta_value": "blue",
+              "cat": "",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": true,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": false,
+              "is_category": false,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [],
+              "queried_terms": []
+            },
+            "meta_query": {
+              "queries": {
+                "0": {
+                  "key": "wphx_color",
+                  "value": "blue"
+                },
+                "relation": "OR"
+              },
+              "clauses": {
+                "wp_postmeta": {
+                  "key": "wphx_color",
+                  "value": "blue",
+                  "compare": "=",
+                  "compare_key": "=",
+                  "alias": "wp_postmeta",
+                  "cast": "CHAR"
+                }
+              }
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "meta_query_find_compatible_table_alias",
+                "arg_count": 4
+              },
+              {
+                "hook": "get_meta_sql",
+                "arg_count": 6
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          },
+          {
+            "id": "live-query:category-taxonomy",
+            "post_ids": [
+              101,
+              105
+            ],
+            "post_count": 2,
+            "found_posts": 0,
+            "max_num_pages": 0,
+            "request": "SELECT wp_posts.ID FROM wp_posts LEFT JOIN wp_term_relationships ON (wp_posts.ID = wp_term_relationships.object_id) WHERE 1=1 AND ( wp_term_relationships.term_taxonomy_id IN (70) ) AND ((wp_posts.post_type = 'post' AND (wp_posts.post_status = 'publish'))) GROUP BY wp_posts.ID ORDER BY wp_posts.ID ASC LIMIT 0, 5",
+            "query_vars": {
+              "p": 0,
+              "post__in": [],
+              "post_type": "post",
+              "posts_per_page": 5,
+              "paged": 0,
+              "orderby": "ID",
+              "order": "ASC",
+              "fields": "ids",
+              "s": "",
+              "meta_key": "",
+              "meta_value": "",
+              "cat": "7",
+              "category__in": [],
+              "no_found_rows": true,
+              "cache_results": false
+            },
+            "flags": {
+              "is_home": false,
+              "is_single": false,
+              "is_search": false,
+              "is_archive": true,
+              "is_category": true,
+              "is_tax": false
+            },
+            "tax_query": {
+              "queries": [
+                {
+                  "taxonomy": "category",
+                  "terms": [
+                    7
+                  ],
+                  "field": "term_id",
+                  "operator": "IN",
+                  "include_children": true
+                }
+              ],
+              "queried_terms": {
+                "category": {
+                  "terms": [
+                    7
+                  ],
+                  "field": "term_id"
+                }
+              }
+            },
+            "meta_query": {
+              "queries": [],
+              "clauses": []
+            },
+            "actions": [
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "pre_get_posts",
+                "arg_count": 1
+              },
+              {
+                "hook": "parse_tax_query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_selection",
+                "arg_count": 1
+              }
+            ],
+            "filters": [
+              {
+                "hook": "wp_allow_query_attachment_by_filename",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_search",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              },
+              {
+                "hook": "posts_where",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_paged",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_where_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_groupby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_join_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_orderby_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_distinct_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_fields_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "post_limits_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_clauses_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_request",
+                "arg_count": 2
+              },
+              {
+                "hook": "posts_pre_query",
+                "arg_count": 2
+              },
+              {
+                "hook": "query",
+                "arg_count": 1
+              }
+            ]
+          }
+        ],
+        "php_errors": []
+      }
+    },
+    {
+      "id": "mariadb-11.8:php-8.5-db-client:oracle",
+      "runtime": "mariadb-11.8:php-8.5-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.5-db-client",
       "result": {
         "coveredFunctionExists": {
           "wp_parse_id_list": true,
@@ -1155,6 +4000,39 @@
       "candidate_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
       "oracle_case_count": 5,
       "candidate_case_count": 5
+    },
+    {
+      "id": "mysql-8.4:php-8.5-db-client",
+      "runtime": "mysql-8.4:php-8.5-db-client",
+      "db_runtime": "mysql-8.4",
+      "php_client_runtime": "php-8.5-db-client",
+      "matches": true,
+      "oracle_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
+      "candidate_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
+      "oracle_case_count": 5,
+      "candidate_case_count": 5
+    },
+    {
+      "id": "mariadb-11.8:php-8.4-db-client",
+      "runtime": "mariadb-11.8:php-8.4-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.4-db-client",
+      "matches": true,
+      "oracle_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
+      "candidate_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
+      "oracle_case_count": 5,
+      "candidate_case_count": 5
+    },
+    {
+      "id": "mariadb-11.8:php-8.5-db-client",
+      "runtime": "mariadb-11.8:php-8.5-db-client",
+      "db_runtime": "mariadb-11.8",
+      "php_client_runtime": "php-8.5-db-client",
+      "matches": true,
+      "oracle_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
+      "candidate_sha256": "sha256:16439f246b2d71c35420f1a477e9b828ac7aee32fa8e745a35d588d53ce86800",
+      "oracle_case_count": 5,
+      "candidate_case_count": 5
     }
   ],
   "remaining_gaps": [
@@ -1169,9 +4047,9 @@
       "detail": "The fixture stubs surrounding WordPress services to isolate query SQL/result parity. Installed WordPress and upstream PHPUnit query suites remain required closure gates."
     },
     {
-      "id": "mariadb-and-php-version-matrix-deferred",
+      "id": "upstream-phpunit-and-installed-distribution-deferred",
       "owner": "WPHX-307",
-      "detail": "This first live WP_Query slice uses MySQL 8.4 with PHP 8.4 DB-client. MariaDB and additional PHP minors are intentionally left for a later matrix expansion."
+      "detail": "The live WP_Query slice now covers the pinned MySQL/MariaDB and PHP DB-client matrix, but executable upstream PHPUnit ratchets and installed WordPress distribution behavior remain follow-up gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-307-07-wp-query-live-db-fixture.v1.json",
@@ -1180,8 +4058,8 @@
     "candidate_kind": "oracle_source_mirror",
     "covered_symbols": 12,
     "fixture_cases": 5,
-    "db_runtimes": 1,
-    "php_client_runtimes": 1,
-    "comparisons": 1
+    "db_runtimes": 2,
+    "php_client_runtimes": 2,
+    "comparisons": 4
   }
 }
