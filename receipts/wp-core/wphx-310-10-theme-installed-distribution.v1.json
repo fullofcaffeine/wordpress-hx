@@ -1,0 +1,60 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-310-10-theme-installed-distribution",
+  "issue": {
+    "id": "wordpresshx-l76.17.9",
+    "external_ref": "WPHX-310.10",
+    "title": "WPHX-310.10 — Add theme installed front-end/admin gate"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "npm run wp:core:wphx-310-theme-installed",
+  "evidence_class": "targeted_semantic_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-310-10-theme-installed-distribution.v1.json",
+      "role": "theme installed-distribution manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-310-10-theme-installed-distribution.v1.json",
+      "role": "theme installed-distribution ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-theme-installed-distribution-gate.mjs",
+      "role": "installed theme HTTP gate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-310-theme-installed",
+    "npm run wp:core:wphx-310-theme-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-310-02-theme-template-adapter-contract-candidate",
+    "receipt:wphx-310-03-theme-support-template-oracle-fixture",
+    "receipt:wphx-310-04-theme-json-global-styles-oracle-fixture",
+    "receipt:wphx-310-05-theme-json-resolver-global-styles-fixture",
+    "receipt:wphx-310-07-widget-sidebar-oracle-fixture",
+    "receipt:wphx-310-08-nav-menu-oracle-fixture",
+    "receipt:wphx-310-09-customizer-manager-setting-oracle-fixture"
+  ],
+  "manifest_sha256": "sha256:a6ac591027414b2ed0e4d674519b4459178fac8b077ea82ba0deebb3f0c4a638",
+  "validation_result": {
+    "status": "passed",
+    "evidence_classes": [
+      "targeted_semantic_parity",
+      "runtime_abi",
+      "live_integration_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "fixture_cases": 8,
+    "http_runs": 2,
+    "public_php_files_are_copied_oracle_source": true,
+    "generated_public_theme_replacement_claimed": false,
+    "haxe_contracts_present": {
+      "theme_template": true
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/theme-installed-distribution",
+  "issue": {
+    "id": "wordpresshx-l76.17.9",
+    "external_ref": "WPHX-310.10",
+    "title": "WPHX-310.10 — Add theme installed front-end/admin gate"
+  },
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "ownership": {
+    "kind": "packaged-distribution-installed-http-gate",
+    "public_contract": "The packaged theme surface must match vanilla through installed-style front-end theme rendering, global styles, nav-menu/sidebar observations, and admin themes/customize/widgets/nav-menu route observations while keeping public PHP replacement claims explicit."
+  },
+  "files": [
+    "tools/wp-core/run-theme-installed-distribution-gate.mjs",
+    "manifests/wp-core/wphx-310-10-theme-installed-distribution.v1.json",
+    "manifests/ownership/wphx-310-10-theme-installed-distribution.v1.json",
+    "receipts/wp-core/wphx-310-10-theme-installed-distribution.v1.json"
+  ],
+  "generated_artifacts": [
+    "manifests/wp-core/wphx-310-10-theme-installed-distribution.v1.json",
+    "manifests/ownership/wphx-310-10-theme-installed-distribution.v1.json",
+    "receipts/wp-core/wphx-310-10-theme-installed-distribution.v1.json"
+  ],
+  "verification": {
+    "commands": [
+      "npm run wp:core:wphx-310-theme-installed",
+      "npm run wp:core:wphx-310-theme-installed:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt": "receipt:wphx-310-10-theme-installed-distribution",
+    "manifest_sha256": "sha256:a6ac591027414b2ed0e4d674519b4459178fac8b077ea82ba0deebb3f0c4a638"
+  },
+  "boundaries": {
+    "haxe_owned_contracts": [
+      "ThemeTemplateAdapterContract"
+    ],
+    "copied_oracle_public_php": [
+      "src/wp-includes/theme.php",
+      "src/wp-includes/template.php",
+      "src/wp-includes/class-wp-theme.php",
+      "src/wp-includes/class-wp-theme-json.php",
+      "src/wp-includes/class-wp-theme-json-resolver.php",
+      "src/wp-includes/global-styles-and-settings.php",
+      "src/wp-includes/class-wp-widget.php",
+      "src/wp-includes/class-wp-widget-factory.php",
+      "src/wp-includes/widgets.php",
+      "src/wp-includes/class-wp-walker.php",
+      "src/wp-includes/class-walker-nav-menu.php",
+      "src/wp-includes/nav-menu.php",
+      "src/wp-includes/nav-menu-template.php",
+      "src/wp-includes/class-wp-customize-manager.php",
+      "src/wp-includes/class-wp-customize-setting.php",
+      "src/wp-includes/class-wp-customize-panel.php",
+      "src/wp-includes/class-wp-customize-section.php",
+      "src/wp-includes/class-wp-customize-control.php",
+      "src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+      "src/wp-includes/customize/class-wp-customize-partial.php"
+    ],
+    "generated_public_php_replacement_claimed": false
+  }
+}

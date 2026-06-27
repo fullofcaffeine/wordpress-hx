@@ -1,0 +1,1527 @@
+{
+  "schema": "wphx.wp-core-theme-installed-distribution.v1",
+  "issue": "WPHX-310.10",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-theme-installed-distribution-gate.mjs",
+  "evidence_classes": [
+    "targeted_semantic_parity",
+    "runtime_abi",
+    "live_integration_parity"
+  ],
+  "artifact_scope": "packaged_distribution",
+  "inputs": {
+    "runner": {
+      "path": "tools/wp-core/run-theme-installed-distribution-gate.mjs",
+      "bytes": 31183,
+      "sha256": "sha256:bdca2d6bc3a35f4eb3f61b0a68dda09f9ede1680b34c3a43ae12739edf38a89e"
+    },
+    "package_json": {
+      "path": "package.json",
+      "bytes": 30901,
+      "sha256": "sha256:ec5e36e297548723db1a864c2f315209e01c8cecf53669d6567ea589eb5475b9"
+    },
+    "prior_manifests": [
+      {
+        "path": "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+        "bytes": 133083,
+        "sha256": "sha256:04de8bdb20ee33e27e112b580c352dabad87049e7569c451dd2eeac3548657d3"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+        "bytes": 18550,
+        "sha256": "sha256:b6cb9b2cffcf14108f7795b139f98fafa7a37934b66e612ada59b44970817aa7"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-03-theme-support-template-oracle-fixture.v1.json",
+        "bytes": 12766,
+        "sha256": "sha256:c3ff260bc55384ef2c2a640036a71d17ba7da37e51d95f79a3eec58d4a37f55f"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-04-theme-json-global-styles-oracle-fixture.v1.json",
+        "bytes": 8059,
+        "sha256": "sha256:6d67a03ee05e531cf972b5ece46ac4d5e728edb01495beb840e0ad89041e3d6f"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+        "bytes": 22359,
+        "sha256": "sha256:506242e93dc0b275364ceffe150fef8b14ae6c7ca2399f46d838523e22c80c51"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-06-theme-customizer-widget-nav-surface.v1.json",
+        "bytes": 114736,
+        "sha256": "sha256:9b6f8a8b037a6568232dc4229e27f2d6b3459dbf852d4f440b75f9e4f11d7e30"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+        "bytes": 14291,
+        "sha256": "sha256:4f6b9034a3b00aeceef79b244f5324879c6a26103f2c0923d455aa6380818379"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-08-nav-menu-oracle-fixture.v1.json",
+        "bytes": 28774,
+        "sha256": "sha256:5ebc9b2119f844eea48586e73ae1b5ed6aaa403eb6c1c3fc4abae35743751f98"
+      },
+      {
+        "path": "manifests/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+        "bytes": 50229,
+        "sha256": "sha256:6eda3de07af419227fe0857f41031a9e68f0ed98c928e9faca1f5832a9a8c51c"
+      }
+    ],
+    "source_files": [
+      {
+        "path": "src/wp-includes/theme.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/theme.php",
+        "bytes": 134631,
+        "sha256": "sha256:74cd43c0b1695eb27baec7fc4b36079f20af77862eedc64776828e87da8a209a"
+      },
+      {
+        "path": "src/wp-includes/template.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/template.php",
+        "bytes": 36824,
+        "sha256": "sha256:578e56453cdf93c67c8f968b7fa53bf9a6f138ad8792e4e36d3bf567ca427be5"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme.php",
+        "bytes": 65761,
+        "sha256": "sha256:ef90d3824a80485a7163e2582ff2c44cc1b8269980e87570f060fe6a82d3f623"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme-json.php",
+        "bytes": 173639,
+        "sha256": "sha256:549d50cd230c2308e9828ea8a4c4ae91e5511184ad96e1365ccd5ad02cb51cb8"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json-resolver.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme-json-resolver.php",
+        "bytes": 35692,
+        "sha256": "sha256:8c1eae3025d000dfe828e76f2630caa54084c619b1bf7d1e627108531b433bbe"
+      },
+      {
+        "path": "src/wp-includes/global-styles-and-settings.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/global-styles-and-settings.php",
+        "bytes": 20780,
+        "sha256": "sha256:45b501595e73a72b29719b141ff27b8c8b926409052f3e6ec6c5e957bdbaddfb"
+      },
+      {
+        "path": "src/wp-includes/class-wp-widget.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-widget.php",
+        "bytes": 18417,
+        "sha256": "sha256:41a1eb7497340c36e11a95b8bd08fb881ad1bbb50c4c6f687e0551e1b17bbc02"
+      },
+      {
+        "path": "src/wp-includes/class-wp-widget-factory.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-widget-factory.php",
+        "bytes": 3347,
+        "sha256": "sha256:e7ec63244377a3a5bbe6821872d1e367f83bc73cc20ddf6d7b4e316b6b3933b6"
+      },
+      {
+        "path": "src/wp-includes/widgets.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/widgets.php",
+        "bytes": 70828,
+        "sha256": "sha256:5e51d83d86226609bfcfe3d4f3dbf6ead978f1018ea13648e8cf7cd27d4b10b6"
+      },
+      {
+        "path": "src/wp-includes/class-wp-walker.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-walker.php",
+        "bytes": 13322,
+        "sha256": "sha256:9ae48531bc60636947cfc163671e354746ee05693169f643ee539660f8665755"
+      },
+      {
+        "path": "src/wp-includes/class-walker-nav-menu.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-walker-nav-menu.php",
+        "bytes": 12044,
+        "sha256": "sha256:8e36fdcdacb40c17e230bd276c3aff69240e04be161991677f4196dffb33b3ae"
+      },
+      {
+        "path": "src/wp-includes/nav-menu.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/nav-menu.php",
+        "bytes": 44269,
+        "sha256": "sha256:ac0b7d23b3839121ca36c39480a6ff5eeca5b22c97ae69b75da74428e69ecadb"
+      },
+      {
+        "path": "src/wp-includes/nav-menu-template.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/nav-menu-template.php",
+        "bytes": 25990,
+        "sha256": "sha256:38b4e201499a218c5bdca55c234d2d2320709a900bc52ca54e8132ca08165061"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-manager.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-manager.php",
+        "bytes": 202881,
+        "sha256": "sha256:a2abf1aa9152a86286e3108e1b7cdad1326388273360189f16928bdcd5c221bb"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-setting.php",
+        "bytes": 29963,
+        "sha256": "sha256:4d890ddb36a5c7a1e233d89a0385a5cfa0ba31bbd16f2f1a7621b4bc879bd685"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-panel.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-panel.php",
+        "bytes": 10710,
+        "sha256": "sha256:c4c300b410769baf6924f91819af56c5c8b37165de7dd16ade67390e27c4f510"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-section.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-section.php",
+        "bytes": 11209,
+        "sha256": "sha256:4468e6cd26e8d98bfa269e9a8cef701f5fea9a5fb5b9cf8f541cd25e7be99e42"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-control.php",
+        "bytes": 26119,
+        "sha256": "sha256:a2aa87526c4ee1deb087209869f605fdebabe0597bf81150ba0f695feaf9c7fa"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "bytes": 13843,
+        "sha256": "sha256:99cb09c063844f87d454edb90006fbe7aa364ed4e78345503fb2a534f4fcaa21"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-partial.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-partial.php",
+        "bytes": 10543,
+        "sha256": "sha256:aa4e6b7ad230107ee323d51531a1f7c14c12dd8886ab20df5d75fec649d17074"
+      }
+    ],
+    "haxe_contracts": [
+      {
+        "path": "build/wp-core/wphx-310-02/haxe/lib/wphx/wp/themes/ThemeTemplateAdapterContract.php",
+        "bytes": 13597,
+        "sha256": "sha256:ee9a9e741b5fcfe67d66fc0aba90e407d1b48fb6c57a70cea65554b30fd0870c"
+      }
+    ]
+  },
+  "installed_entry": {
+    "web_server": "PHP built-in development server",
+    "router": "wphx-theme-installed-router.php",
+    "oracle_root": "build/wp-core/wphx-310-10/oracle-package",
+    "candidate_root": "build/wp-core/wphx-310-10/candidate-package"
+  },
+  "package": {
+    "candidate_files": [
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/index.php",
+        "bytes": 392,
+        "sha256": "sha256:84e6ae28d005ad121ee31c3078167658b81136fa06988088cbb0907ae55980ab"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/Array_hx.php",
+        "bytes": 25987,
+        "sha256": "sha256:85541b117ee4e10fc842caa78aed084979aa5561cc934dcbbf770aa56b7b52d4"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/haxe/Exception.php",
+        "bytes": 3913,
+        "sha256": "sha256:9b93b5c44421cd720928e124d3a92ed0a82e0785bf8fe383343508a0c82fc2e2"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1248,
+        "sha256": "sha256:9fe08304f6fc267231424a61fd632408d7b4207d52f470fbdc28d9e6fecfe75a"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 508,
+        "sha256": "sha256:3698386d389c477062751a439a526e5ea53c4e77849b782ad4a1aef4f37c762f"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/haxe/ValueException.php",
+        "bytes": 1062,
+        "sha256": "sha256:647fad61498740cad91633748bb07a6bbe8ff514aa73d90058c3c069dfd67d21"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_Boot/HxAnon.php",
+        "bytes": 1398,
+        "sha256": "sha256:c6ffb7766fe18cefbb5bc15984e317dcceb39e6ede30e4bd6f5dcfc9415cd69c"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_Boot/HxClass.php",
+        "bytes": 3266,
+        "sha256": "sha256:1d49d8cba3ce19738b81fe8cf644d4265906d307591c9aa6ecbd1d9fcda56af3"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_Boot/HxClosure.php",
+        "bytes": 3162,
+        "sha256": "sha256:a257a7165bf4aff93ecad50df3deaf5d944e038b911b0ccb9b797fa9dfbfa251"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 4438,
+        "sha256": "sha256:c2d75fb17828147656a0c7a0040806959102d6d30ee10f1e247d2c7d8cf14a72"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_Boot/HxEnum.php",
+        "bytes": 1316,
+        "sha256": "sha256:f695164d87501468a0d0b192c96f457c76931ce377075d530173df64bddf19f3"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_Boot/HxString.php",
+        "bytes": 9912,
+        "sha256": "sha256:1e93ea8f6836613e951fd91cd95ec2bb8e56a66cc1f640cf1392077ad769b4e6"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "sha256:80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/php/Boot.php",
+        "bytes": 42682,
+        "sha256": "sha256:9311f59757bd1d9427b50cf91676ebffc9ea499e74e09e80d1103861282a0061"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/Std.php",
+        "bytes": 1131,
+        "sha256": "sha256:2daaabae2bfb53ef829ed29dd9fb54109f02ce941b69c489d41f9e0b2af6eb85"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/wphx/fixtures/wp/core/ThemeTemplateAdapterContractCandidateEntry.php",
+        "bytes": 11312,
+        "sha256": "sha256:46cc2106c4b717a7f2ca81a53065de5561bed1ef5ce1f5c54fd788b729768f7e"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/haxe-theme-template/lib/wphx/wp/themes/ThemeTemplateAdapterContract.php",
+        "bytes": 13597,
+        "sha256": "sha256:ee9a9e741b5fcfe67d66fc0aba90e407d1b48fb6c57a70cea65554b30fd0870c"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-content/themes/wphx-fixture/index.php",
+        "bytes": 29,
+        "sha256": "sha256:653ffe46f4d6597b9dbf965454a44f723740bf853621517493d7af0f9bc72078"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-content/themes/wphx-fixture/parts/header.html",
+        "bytes": 23,
+        "sha256": "sha256:1c3a8c279811e2b3b00f13817c54603c639ad25cb7356f4f629e2d7e39a36dc6"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-content/themes/wphx-fixture/single.php",
+        "bytes": 30,
+        "sha256": "sha256:5ca0c856a9cfea337209b488d413bd18c6102d2494ab3e59189c9f915859f61d"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-content/themes/wphx-fixture/style.css",
+        "bytes": 57,
+        "sha256": "sha256:472503a017f7c6b36c8836197fc731aff11fbf333ecff9e71759d52270588dcd"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-content/themes/wphx-fixture/templates/index.html",
+        "bytes": 67,
+        "sha256": "sha256:a6601de170b87deb56d9e4c0dccbec0fe19596b7742bafea1e8debc56474a50a"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-content/themes/wphx-fixture/theme.json",
+        "bytes": 290,
+        "sha256": "sha256:31f6426217c6eb042d41e34e8c2cac6c4e20c43715e9d1a70781f868163993b4"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-walker-nav-menu.php",
+        "bytes": 12044,
+        "sha256": "sha256:8e36fdcdacb40c17e230bd276c3aff69240e04be161991677f4196dffb33b3ae"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-control.php",
+        "bytes": 26119,
+        "sha256": "sha256:a2aa87526c4ee1deb087209869f605fdebabe0597bf81150ba0f695feaf9c7fa"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-manager.php",
+        "bytes": 202881,
+        "sha256": "sha256:a2abf1aa9152a86286e3108e1b7cdad1326388273360189f16928bdcd5c221bb"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-panel.php",
+        "bytes": 10710,
+        "sha256": "sha256:c4c300b410769baf6924f91819af56c5c8b37165de7dd16ade67390e27c4f510"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-section.php",
+        "bytes": 11209,
+        "sha256": "sha256:4468e6cd26e8d98bfa269e9a8cef701f5fea9a5fb5b9cf8f541cd25e7be99e42"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-setting.php",
+        "bytes": 29963,
+        "sha256": "sha256:4d890ddb36a5c7a1e233d89a0385a5cfa0ba31bbd16f2f1a7621b4bc879bd685"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme-json-resolver.php",
+        "bytes": 35692,
+        "sha256": "sha256:8c1eae3025d000dfe828e76f2630caa54084c619b1bf7d1e627108531b433bbe"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme-json.php",
+        "bytes": 173639,
+        "sha256": "sha256:549d50cd230c2308e9828ea8a4c4ae91e5511184ad96e1365ccd5ad02cb51cb8"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme.php",
+        "bytes": 65761,
+        "sha256": "sha256:ef90d3824a80485a7163e2582ff2c44cc1b8269980e87570f060fe6a82d3f623"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-walker.php",
+        "bytes": 13322,
+        "sha256": "sha256:9ae48531bc60636947cfc163671e354746ee05693169f643ee539660f8665755"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-widget-factory.php",
+        "bytes": 3347,
+        "sha256": "sha256:e7ec63244377a3a5bbe6821872d1e367f83bc73cc20ddf6d7b4e316b6b3933b6"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-widget.php",
+        "bytes": 18417,
+        "sha256": "sha256:41a1eb7497340c36e11a95b8bd08fb881ad1bbb50c4c6f687e0551e1b17bbc02"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/customize/class-wp-customize-partial.php",
+        "bytes": 10543,
+        "sha256": "sha256:aa4e6b7ad230107ee323d51531a1f7c14c12dd8886ab20df5d75fec649d17074"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "bytes": 13843,
+        "sha256": "sha256:99cb09c063844f87d454edb90006fbe7aa364ed4e78345503fb2a534f4fcaa21"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/global-styles-and-settings.php",
+        "bytes": 20780,
+        "sha256": "sha256:45b501595e73a72b29719b141ff27b8c8b926409052f3e6ec6c5e957bdbaddfb"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/nav-menu-template.php",
+        "bytes": 25990,
+        "sha256": "sha256:38b4e201499a218c5bdca55c234d2d2320709a900bc52ca54e8132ca08165061"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/nav-menu.php",
+        "bytes": 44269,
+        "sha256": "sha256:ac0b7d23b3839121ca36c39480a6ff5eeca5b22c97ae69b75da74428e69ecadb"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/template.php",
+        "bytes": 36824,
+        "sha256": "sha256:578e56453cdf93c67c8f968b7fa53bf9a6f138ad8792e4e36d3bf567ca427be5"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/theme.php",
+        "bytes": 134631,
+        "sha256": "sha256:74cd43c0b1695eb27baec7fc4b36079f20af77862eedc64776828e87da8a209a"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/widgets.php",
+        "bytes": 70828,
+        "sha256": "sha256:5e51d83d86226609bfcfe3d4f3dbf6ead978f1018ea13648e8cf7cd27d4b10b6"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wphx-theme-installed-router.php",
+        "bytes": 10730,
+        "sha256": "sha256:027ffb028b0a50a280093c0da3ef6d1c034048ee04968d063985d2d61f1f006a"
+      }
+    ],
+    "public_php_files_are_copied_oracle_source": true,
+    "generated_public_theme_replacement_claimed": false
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "boundary:theme-package",
+        "method": "GET",
+        "path": "/__wphx/package-boundary",
+        "focus": "theme package source files, fixture theme files, and candidate Haxe adapter-contract artifacts are present"
+      },
+      {
+        "id": "front:home-render",
+        "method": "GET",
+        "path": "/",
+        "focus": "front-end theme request observes template include, global styles, nav menu, sidebar widget, and body classes"
+      },
+      {
+        "id": "front:single-render",
+        "method": "GET",
+        "path": "/fixture-post/",
+        "focus": "singular front-end request observes single template, post title, nav menu, widget, and canonical theme state"
+      },
+      {
+        "id": "front:global-styles",
+        "method": "GET",
+        "path": "/__wphx/global-styles",
+        "focus": "installed-style global styles endpoint records theme.json settings, CSS variables, and stylesheet handles"
+      },
+      {
+        "id": "admin:themes-list",
+        "method": "GET",
+        "path": "/wp-admin/themes.php",
+        "focus": "admin themes screen observes active theme, available theme metadata, theme support, and admin hooks"
+      },
+      {
+        "id": "admin:customize",
+        "method": "GET",
+        "path": "/wp-admin/customize.php",
+        "focus": "admin Customizer screen observes settings, controls, sections, changeset UUID, and selective refresh partials"
+      },
+      {
+        "id": "admin:widgets-update",
+        "method": "POST",
+        "path": "/wp-admin/widgets.php?action=update",
+        "body": "sidebar=primary&widget_id=text-2&title=Installed%20Widget&body=Saved%20body",
+        "focus": "admin widgets route mutates deterministic sidebar/widget state and records update hooks"
+      },
+      {
+        "id": "admin:nav-menu-assign",
+        "method": "POST",
+        "path": "/wp-admin/nav-menus.php?action=assign",
+        "body": "location=primary&menu_id=42",
+        "focus": "admin nav menus route assigns deterministic menu location and records menu update hooks"
+      }
+    ],
+    "transport": [
+      "HTTP over PHP built-in server",
+      "installed-style front-end/admin routes",
+      "JSON observations"
+    ]
+  },
+  "lint": {
+    "oracle": [
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wphx-theme-installed-router.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wphx-theme-installed-router.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/theme.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/theme.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/template.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/template.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-theme.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-theme.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-theme-json.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-theme-json.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-theme-json-resolver.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-theme-json-resolver.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/global-styles-and-settings.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/global-styles-and-settings.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-widget.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-widget.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-widget-factory.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-widget-factory.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/widgets.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/widgets.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-walker.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-walker.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-walker-nav-menu.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-walker-nav-menu.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/nav-menu.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/nav-menu.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/nav-menu-template.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/nav-menu-template.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-manager.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-manager.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-setting.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-setting.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-panel.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-panel.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-section.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-section.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-control.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/class-wp-customize-control.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/customize/class-wp-customize-selective-refresh.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/oracle-package/wp-includes/customize/class-wp-customize-partial.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/oracle-package/wp-includes/customize/class-wp-customize-partial.php"
+      }
+    ],
+    "candidate": [
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wphx-theme-installed-router.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wphx-theme-installed-router.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/theme.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/theme.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/template.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/template.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme-json.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme-json.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme-json-resolver.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-theme-json-resolver.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/global-styles-and-settings.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/global-styles-and-settings.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-widget.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-widget.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-widget-factory.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-widget-factory.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/widgets.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/widgets.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-walker.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-walker.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-walker-nav-menu.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-walker-nav-menu.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/nav-menu.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/nav-menu.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/nav-menu-template.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/nav-menu-template.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-manager.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-manager.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-setting.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-setting.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-panel.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-panel.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-section.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-section.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-control.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/class-wp-customize-control.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/customize/class-wp-customize-selective-refresh.php"
+      },
+      {
+        "path": "build/wp-core/wphx-310-10/candidate-package/wp-includes/customize/class-wp-customize-partial.php",
+        "status": "No syntax errors detected in build/wp-core/wphx-310-10/candidate-package/wp-includes/customize/class-wp-customize-partial.php"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "id": "installed-theme:oracle",
+      "mode": "oracle",
+      "command": [
+        "php",
+        "-S",
+        "127.0.0.1:<port>",
+        "wphx-theme-installed-router.php"
+      ],
+      "normalized_sha256": "sha256:7f5ef8ad71559a197cb7520ce69d9abdac4d6d40ef752f26d1111655452ca9e7",
+      "boundary": {
+        "mode": "oracle",
+        "files": {
+          "wp-includes/theme.php": {
+            "present": true,
+            "sha1": "bc76244841828afd310fc7f2ee375bddff363b17"
+          },
+          "wp-includes/template.php": {
+            "present": true,
+            "sha1": "34a1cabc4b03130616c366ff32cc8c0798f103df"
+          },
+          "wp-includes/class-wp-theme.php": {
+            "present": true,
+            "sha1": "b1b6bc33b3c4c6e829b9b7a2121d740a6065860e"
+          },
+          "wp-includes/class-wp-theme-json.php": {
+            "present": true,
+            "sha1": "f42c503ba21cf2740fc6ba251ea812fff98cba11"
+          },
+          "wp-includes/class-wp-theme-json-resolver.php": {
+            "present": true,
+            "sha1": "960fa959a41f87e51f42917c26adc7fab39d4e9f"
+          },
+          "wp-includes/global-styles-and-settings.php": {
+            "present": true,
+            "sha1": "906caae6b255e17fb860426b53ac65f8c5595f10"
+          },
+          "wp-includes/class-wp-widget.php": {
+            "present": true,
+            "sha1": "0035e9add7643de2463f70e8af9b96af8baabe22"
+          },
+          "wp-includes/class-wp-widget-factory.php": {
+            "present": true,
+            "sha1": "7ad9825fdcec8c59cedfc29bc687c3125be4ab5c"
+          },
+          "wp-includes/widgets.php": {
+            "present": true,
+            "sha1": "4be5b275b48454383709c5945ea9bb6a26df85c3"
+          },
+          "wp-includes/class-wp-walker.php": {
+            "present": true,
+            "sha1": "8de3359a8be0f0f763dc0f2172f976ba6ef44630"
+          },
+          "wp-includes/class-walker-nav-menu.php": {
+            "present": true,
+            "sha1": "ef1f6d466006988359a1612891d8237a51c6768f"
+          },
+          "wp-includes/nav-menu.php": {
+            "present": true,
+            "sha1": "3a2d7e88ee1973d1e89ec5f593dff621cdd71ff4"
+          },
+          "wp-includes/nav-menu-template.php": {
+            "present": true,
+            "sha1": "61fad4567765b994181354b1914c649218ebfc52"
+          },
+          "wp-includes/class-wp-customize-manager.php": {
+            "present": true,
+            "sha1": "c584830955e1f23abd0498c088f27ff17b20011e"
+          },
+          "wp-includes/class-wp-customize-setting.php": {
+            "present": true,
+            "sha1": "c5ab5dc498d7782993b2d47cdc2777434ee0fc1f"
+          },
+          "wp-includes/class-wp-customize-panel.php": {
+            "present": true,
+            "sha1": "2c789898b0be12c2030e134046a0734927dab8cc"
+          },
+          "wp-includes/class-wp-customize-section.php": {
+            "present": true,
+            "sha1": "bf4d3e17fe169d20a3fa1a710bf394023d7fa9bc"
+          },
+          "wp-includes/class-wp-customize-control.php": {
+            "present": true,
+            "sha1": "bf1de5c69431efe13ff93c2dc9dbbc6233c33314"
+          },
+          "wp-includes/customize/class-wp-customize-selective-refresh.php": {
+            "present": true,
+            "sha1": "3a1a414d0472c2b4cc91160db193a7d7bdce0449"
+          },
+          "wp-includes/customize/class-wp-customize-partial.php": {
+            "present": true,
+            "sha1": "c520c3172c538ebc123e9065bda39a936a3bf618"
+          }
+        },
+        "theme_files": {
+          "style.css": true,
+          "theme.json": true,
+          "index.php": true,
+          "single.php": true,
+          "templates/index.html": true
+        },
+        "haxe_contracts": {
+          "theme_template": false
+        },
+        "public_php_files_are_copied_oracle_source": true,
+        "generated_public_theme_replacement_claimed": false
+      },
+      "cases": [
+        {
+          "id": "front:home-render",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "home",
+            "status": 200,
+            "theme": {
+              "stylesheet": "wphx-fixture",
+              "name": "WPHX Fixture",
+              "template": "wphx-fixture",
+              "block_theme": true,
+              "theme_supports": [
+                "menus",
+                "widgets",
+                "custom-logo",
+                "title-tag",
+                "wp-block-styles"
+              ]
+            },
+            "template": {
+              "file": "index.php",
+              "output": "template:index"
+            },
+            "global_styles": {
+              "variables": {
+                "--wp--preset--color--fixture-blue": "#123456"
+              },
+              "css": "body{color:var(--wp--preset--color--fixture-blue)}",
+              "handles": [
+                "global-styles",
+                "classic-theme-styles"
+              ]
+            },
+            "nav_menu": {
+              "location": "primary",
+              "menu_id": 42,
+              "items": [
+                "Home",
+                "About"
+              ],
+              "html_sha256": "53783c088000a9eb96e7faa2492815c5083e83fd5c895556a6ab9342dbd3e56b"
+            },
+            "sidebar": {
+              "sidebar": "primary",
+              "widget_ids": [
+                "text-2"
+              ],
+              "html_sha256": "94eb6a90834216be5ad4ebd1268bda13cc91131de8e59e9d64f7ab29c42e9757"
+            },
+            "body_classes": {
+              "0": "home",
+              "2": "theme-wphx-fixture"
+            },
+            "post": null,
+            "actions": [
+              "template_redirect",
+              "dynamic_sidebar_before",
+              "dynamic_sidebar_after"
+            ],
+            "filters": [
+              "template_include",
+              "wp_nav_menu_args",
+              "wp_nav_menu_objects",
+              "widget_title"
+            ],
+            "cache": [
+              "theme:wphx-fixture"
+            ]
+          }
+        },
+        {
+          "id": "front:single-render",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "single",
+            "status": 200,
+            "theme": {
+              "stylesheet": "wphx-fixture",
+              "name": "WPHX Fixture",
+              "template": "wphx-fixture",
+              "block_theme": true,
+              "theme_supports": [
+                "menus",
+                "widgets",
+                "custom-logo",
+                "title-tag",
+                "wp-block-styles"
+              ]
+            },
+            "template": {
+              "file": "single.php",
+              "output": "template:single"
+            },
+            "global_styles": {
+              "variables": {
+                "--wp--preset--color--fixture-blue": "#123456"
+              },
+              "css": "body{color:var(--wp--preset--color--fixture-blue)}",
+              "handles": [
+                "global-styles",
+                "classic-theme-styles"
+              ]
+            },
+            "nav_menu": {
+              "location": "primary",
+              "menu_id": 42,
+              "items": [
+                "Home",
+                "About"
+              ],
+              "html_sha256": "53783c088000a9eb96e7faa2492815c5083e83fd5c895556a6ab9342dbd3e56b"
+            },
+            "sidebar": {
+              "sidebar": "primary",
+              "widget_ids": [
+                "text-2"
+              ],
+              "html_sha256": "94eb6a90834216be5ad4ebd1268bda13cc91131de8e59e9d64f7ab29c42e9757"
+            },
+            "body_classes": {
+              "1": "single",
+              "2": "theme-wphx-fixture"
+            },
+            "post": {
+              "ID": 101,
+              "post_name": "fixture-post",
+              "post_title": "Fixture Post",
+              "template": "single.php",
+              "canonical": "/fixture-post/"
+            },
+            "actions": [
+              "template_redirect",
+              "dynamic_sidebar_before",
+              "dynamic_sidebar_after"
+            ],
+            "filters": [
+              "template_include",
+              "wp_nav_menu_args",
+              "wp_nav_menu_objects",
+              "widget_title"
+            ],
+            "cache": [
+              "theme:wphx-fixture"
+            ]
+          }
+        },
+        {
+          "id": "front:global-styles",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "global-styles",
+            "styles": {
+              "variables": {
+                "--wp--preset--color--fixture-blue": "#123456"
+              },
+              "css": "body{color:var(--wp--preset--color--fixture-blue)}",
+              "handles": [
+                "global-styles",
+                "classic-theme-styles"
+              ]
+            },
+            "theme": "wphx-fixture",
+            "actions": [],
+            "filters": [
+              "wp_theme_json_data_theme"
+            ],
+            "cache": []
+          }
+        },
+        {
+          "id": "admin:themes-list",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "themes-admin",
+            "active": "wphx-fixture",
+            "themes": [
+              {
+                "stylesheet": "wphx-fixture",
+                "name": "WPHX Fixture",
+                "active": true,
+                "block_theme": true
+              }
+            ],
+            "theme_supports": [
+              "menus",
+              "widgets",
+              "custom-logo",
+              "title-tag",
+              "wp-block-styles"
+            ],
+            "actions": [
+              "load-themes.php"
+            ],
+            "filters": [
+              "wp_prepare_themes_for_js"
+            ],
+            "cache": []
+          }
+        },
+        {
+          "id": "admin:customize",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "customize-admin",
+            "changeset_uuid": "11111111-2222-4333-8444-555555555555",
+            "settings": {
+              "blogname": "Fixture Site",
+              "fixture_option": "Fixture Value"
+            },
+            "controls": [
+              "blogname",
+              "fixture_option"
+            ],
+            "sections": [
+              "title_tagline",
+              "fixture_section"
+            ],
+            "partials": {
+              "blogname": {
+                "selector": ".site-title",
+                "settings": [
+                  "blogname"
+                ]
+              }
+            },
+            "actions": [
+              "customize_register",
+              "customize_controls_init"
+            ],
+            "filters": [],
+            "cache": []
+          }
+        },
+        {
+          "id": "admin:widgets-update",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "widgets-admin-update",
+            "sidebar": "primary",
+            "widgets": {
+              "text-2": {
+                "title": "Installed Widget",
+                "body": "Saved body"
+              }
+            },
+            "actions": [
+              "sidebar_admin_setup",
+              "widget_update_callback"
+            ],
+            "filters": [],
+            "cache": [
+              "sidebars_widgets"
+            ]
+          }
+        },
+        {
+          "id": "admin:nav-menu-assign",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "nav-menus-admin-assign",
+            "locations": {
+              "primary": 42
+            },
+            "menu": {
+              "term_id": 42,
+              "name": "Primary Fixture Menu",
+              "slug": "primary-fixture-menu",
+              "items": [
+                {
+                  "id": 100,
+                  "title": "Home",
+                  "url": "/",
+                  "parent": 0
+                },
+                {
+                  "id": 101,
+                  "title": "About",
+                  "url": "/about/",
+                  "parent": 0
+                }
+              ]
+            },
+            "actions": [
+              "wp_update_nav_menu",
+              "customize_save_nav_menus_created_posts"
+            ],
+            "filters": [],
+            "cache": [
+              "theme_mod_nav_menu_locations"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "installed-theme:candidate",
+      "mode": "candidate",
+      "command": [
+        "php",
+        "-S",
+        "127.0.0.1:<port>",
+        "wphx-theme-installed-router.php"
+      ],
+      "normalized_sha256": "sha256:7f5ef8ad71559a197cb7520ce69d9abdac4d6d40ef752f26d1111655452ca9e7",
+      "boundary": {
+        "mode": "candidate",
+        "files": {
+          "wp-includes/theme.php": {
+            "present": true,
+            "sha1": "bc76244841828afd310fc7f2ee375bddff363b17"
+          },
+          "wp-includes/template.php": {
+            "present": true,
+            "sha1": "34a1cabc4b03130616c366ff32cc8c0798f103df"
+          },
+          "wp-includes/class-wp-theme.php": {
+            "present": true,
+            "sha1": "b1b6bc33b3c4c6e829b9b7a2121d740a6065860e"
+          },
+          "wp-includes/class-wp-theme-json.php": {
+            "present": true,
+            "sha1": "f42c503ba21cf2740fc6ba251ea812fff98cba11"
+          },
+          "wp-includes/class-wp-theme-json-resolver.php": {
+            "present": true,
+            "sha1": "960fa959a41f87e51f42917c26adc7fab39d4e9f"
+          },
+          "wp-includes/global-styles-and-settings.php": {
+            "present": true,
+            "sha1": "906caae6b255e17fb860426b53ac65f8c5595f10"
+          },
+          "wp-includes/class-wp-widget.php": {
+            "present": true,
+            "sha1": "0035e9add7643de2463f70e8af9b96af8baabe22"
+          },
+          "wp-includes/class-wp-widget-factory.php": {
+            "present": true,
+            "sha1": "7ad9825fdcec8c59cedfc29bc687c3125be4ab5c"
+          },
+          "wp-includes/widgets.php": {
+            "present": true,
+            "sha1": "4be5b275b48454383709c5945ea9bb6a26df85c3"
+          },
+          "wp-includes/class-wp-walker.php": {
+            "present": true,
+            "sha1": "8de3359a8be0f0f763dc0f2172f976ba6ef44630"
+          },
+          "wp-includes/class-walker-nav-menu.php": {
+            "present": true,
+            "sha1": "ef1f6d466006988359a1612891d8237a51c6768f"
+          },
+          "wp-includes/nav-menu.php": {
+            "present": true,
+            "sha1": "3a2d7e88ee1973d1e89ec5f593dff621cdd71ff4"
+          },
+          "wp-includes/nav-menu-template.php": {
+            "present": true,
+            "sha1": "61fad4567765b994181354b1914c649218ebfc52"
+          },
+          "wp-includes/class-wp-customize-manager.php": {
+            "present": true,
+            "sha1": "c584830955e1f23abd0498c088f27ff17b20011e"
+          },
+          "wp-includes/class-wp-customize-setting.php": {
+            "present": true,
+            "sha1": "c5ab5dc498d7782993b2d47cdc2777434ee0fc1f"
+          },
+          "wp-includes/class-wp-customize-panel.php": {
+            "present": true,
+            "sha1": "2c789898b0be12c2030e134046a0734927dab8cc"
+          },
+          "wp-includes/class-wp-customize-section.php": {
+            "present": true,
+            "sha1": "bf4d3e17fe169d20a3fa1a710bf394023d7fa9bc"
+          },
+          "wp-includes/class-wp-customize-control.php": {
+            "present": true,
+            "sha1": "bf1de5c69431efe13ff93c2dc9dbbc6233c33314"
+          },
+          "wp-includes/customize/class-wp-customize-selective-refresh.php": {
+            "present": true,
+            "sha1": "3a1a414d0472c2b4cc91160db193a7d7bdce0449"
+          },
+          "wp-includes/customize/class-wp-customize-partial.php": {
+            "present": true,
+            "sha1": "c520c3172c538ebc123e9065bda39a936a3bf618"
+          }
+        },
+        "theme_files": {
+          "style.css": true,
+          "theme.json": true,
+          "index.php": true,
+          "single.php": true,
+          "templates/index.html": true
+        },
+        "haxe_contracts": {
+          "theme_template": true
+        },
+        "public_php_files_are_copied_oracle_source": true,
+        "generated_public_theme_replacement_claimed": false
+      },
+      "cases": [
+        {
+          "id": "front:home-render",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "home",
+            "status": 200,
+            "theme": {
+              "stylesheet": "wphx-fixture",
+              "name": "WPHX Fixture",
+              "template": "wphx-fixture",
+              "block_theme": true,
+              "theme_supports": [
+                "menus",
+                "widgets",
+                "custom-logo",
+                "title-tag",
+                "wp-block-styles"
+              ]
+            },
+            "template": {
+              "file": "index.php",
+              "output": "template:index"
+            },
+            "global_styles": {
+              "variables": {
+                "--wp--preset--color--fixture-blue": "#123456"
+              },
+              "css": "body{color:var(--wp--preset--color--fixture-blue)}",
+              "handles": [
+                "global-styles",
+                "classic-theme-styles"
+              ]
+            },
+            "nav_menu": {
+              "location": "primary",
+              "menu_id": 42,
+              "items": [
+                "Home",
+                "About"
+              ],
+              "html_sha256": "53783c088000a9eb96e7faa2492815c5083e83fd5c895556a6ab9342dbd3e56b"
+            },
+            "sidebar": {
+              "sidebar": "primary",
+              "widget_ids": [
+                "text-2"
+              ],
+              "html_sha256": "94eb6a90834216be5ad4ebd1268bda13cc91131de8e59e9d64f7ab29c42e9757"
+            },
+            "body_classes": {
+              "0": "home",
+              "2": "theme-wphx-fixture"
+            },
+            "post": null,
+            "actions": [
+              "template_redirect",
+              "dynamic_sidebar_before",
+              "dynamic_sidebar_after"
+            ],
+            "filters": [
+              "template_include",
+              "wp_nav_menu_args",
+              "wp_nav_menu_objects",
+              "widget_title"
+            ],
+            "cache": [
+              "theme:wphx-fixture"
+            ]
+          }
+        },
+        {
+          "id": "front:single-render",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "single",
+            "status": 200,
+            "theme": {
+              "stylesheet": "wphx-fixture",
+              "name": "WPHX Fixture",
+              "template": "wphx-fixture",
+              "block_theme": true,
+              "theme_supports": [
+                "menus",
+                "widgets",
+                "custom-logo",
+                "title-tag",
+                "wp-block-styles"
+              ]
+            },
+            "template": {
+              "file": "single.php",
+              "output": "template:single"
+            },
+            "global_styles": {
+              "variables": {
+                "--wp--preset--color--fixture-blue": "#123456"
+              },
+              "css": "body{color:var(--wp--preset--color--fixture-blue)}",
+              "handles": [
+                "global-styles",
+                "classic-theme-styles"
+              ]
+            },
+            "nav_menu": {
+              "location": "primary",
+              "menu_id": 42,
+              "items": [
+                "Home",
+                "About"
+              ],
+              "html_sha256": "53783c088000a9eb96e7faa2492815c5083e83fd5c895556a6ab9342dbd3e56b"
+            },
+            "sidebar": {
+              "sidebar": "primary",
+              "widget_ids": [
+                "text-2"
+              ],
+              "html_sha256": "94eb6a90834216be5ad4ebd1268bda13cc91131de8e59e9d64f7ab29c42e9757"
+            },
+            "body_classes": {
+              "1": "single",
+              "2": "theme-wphx-fixture"
+            },
+            "post": {
+              "ID": 101,
+              "post_name": "fixture-post",
+              "post_title": "Fixture Post",
+              "template": "single.php",
+              "canonical": "/fixture-post/"
+            },
+            "actions": [
+              "template_redirect",
+              "dynamic_sidebar_before",
+              "dynamic_sidebar_after"
+            ],
+            "filters": [
+              "template_include",
+              "wp_nav_menu_args",
+              "wp_nav_menu_objects",
+              "widget_title"
+            ],
+            "cache": [
+              "theme:wphx-fixture"
+            ]
+          }
+        },
+        {
+          "id": "front:global-styles",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "global-styles",
+            "styles": {
+              "variables": {
+                "--wp--preset--color--fixture-blue": "#123456"
+              },
+              "css": "body{color:var(--wp--preset--color--fixture-blue)}",
+              "handles": [
+                "global-styles",
+                "classic-theme-styles"
+              ]
+            },
+            "theme": "wphx-fixture",
+            "actions": [],
+            "filters": [
+              "wp_theme_json_data_theme"
+            ],
+            "cache": []
+          }
+        },
+        {
+          "id": "admin:themes-list",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "themes-admin",
+            "active": "wphx-fixture",
+            "themes": [
+              {
+                "stylesheet": "wphx-fixture",
+                "name": "WPHX Fixture",
+                "active": true,
+                "block_theme": true
+              }
+            ],
+            "theme_supports": [
+              "menus",
+              "widgets",
+              "custom-logo",
+              "title-tag",
+              "wp-block-styles"
+            ],
+            "actions": [
+              "load-themes.php"
+            ],
+            "filters": [
+              "wp_prepare_themes_for_js"
+            ],
+            "cache": []
+          }
+        },
+        {
+          "id": "admin:customize",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "customize-admin",
+            "changeset_uuid": "11111111-2222-4333-8444-555555555555",
+            "settings": {
+              "blogname": "Fixture Site",
+              "fixture_option": "Fixture Value"
+            },
+            "controls": [
+              "blogname",
+              "fixture_option"
+            ],
+            "sections": [
+              "title_tagline",
+              "fixture_section"
+            ],
+            "partials": {
+              "blogname": {
+                "selector": ".site-title",
+                "settings": [
+                  "blogname"
+                ]
+              }
+            },
+            "actions": [
+              "customize_register",
+              "customize_controls_init"
+            ],
+            "filters": [],
+            "cache": []
+          }
+        },
+        {
+          "id": "admin:widgets-update",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "widgets-admin-update",
+            "sidebar": "primary",
+            "widgets": {
+              "text-2": {
+                "title": "Installed Widget",
+                "body": "Saved body"
+              }
+            },
+            "actions": [
+              "sidebar_admin_setup",
+              "widget_update_callback"
+            ],
+            "filters": [],
+            "cache": [
+              "sidebars_widgets"
+            ]
+          }
+        },
+        {
+          "id": "admin:nav-menu-assign",
+          "status": 200,
+          "content_type": "application/json",
+          "body": {
+            "route": "nav-menus-admin-assign",
+            "locations": {
+              "primary": 42
+            },
+            "menu": {
+              "term_id": 42,
+              "name": "Primary Fixture Menu",
+              "slug": "primary-fixture-menu",
+              "items": [
+                {
+                  "id": 100,
+                  "title": "Home",
+                  "url": "/",
+                  "parent": 0
+                },
+                {
+                  "id": 101,
+                  "title": "About",
+                  "url": "/about/",
+                  "parent": 0
+                }
+              ]
+            },
+            "actions": [
+              "wp_update_nav_menu",
+              "customize_save_nav_menus_created_posts"
+            ],
+            "filters": [],
+            "cache": [
+              "theme_mod_nav_menu_locations"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "comparison": {
+    "status": "passed",
+    "oracle_sha256": "sha256:7f5ef8ad71559a197cb7520ce69d9abdac4d6d40ef752f26d1111655452ca9e7",
+    "candidate_sha256": "sha256:7f5ef8ad71559a197cb7520ce69d9abdac4d6d40ef752f26d1111655452ca9e7",
+    "candidate_haxe_contracts": {
+      "theme_template": true
+    }
+  },
+  "remaining_gaps": [
+    {
+      "id": "generated-public-theme-php-replacement-deferred",
+      "owner": "WPHX-310/WPHX-322",
+      "detail": "This gate packages copied WordPress public PHP theme/customizer/widget/nav-menu files and Haxe adapter-contract artifacts. It does not replace those public files with generated original-path PHP."
+    },
+    {
+      "id": "full-database-backed-theme-install-deferred",
+      "owner": "WPHX-310/WPHX-700",
+      "detail": "This installed-style HTTP gate uses deterministic router state. Full database-backed installed theme rendering, Customizer UI, widget/nav-menu persistence, and user global styles remain later distribution work."
+    },
+    {
+      "id": "selected-upstream-theme-ratchets-deferred",
+      "owner": "WPHX-310/WPHX-700",
+      "detail": "Selected upstream PHPUnit groups for themes, template hierarchy, theme JSON/global styles, widgets, nav menus, and Customizer behavior remain separate ratchet gates."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-310-10-theme-installed-distribution.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "evidence_classes": [
+      "targeted_semantic_parity",
+      "runtime_abi",
+      "live_integration_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "fixture_cases": 8,
+    "http_runs": 2,
+    "public_php_files_are_copied_oracle_source": true,
+    "generated_public_theme_replacement_claimed": false,
+    "haxe_contracts_present": {
+      "theme_template": true
+    }
+  }
+}
