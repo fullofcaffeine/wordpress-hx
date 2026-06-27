@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rss-widget-helper-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-psk",
+    "external_ref": "WPHX-312.25"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "RSS widget helper behavior",
+    "area": "src/wp-includes/widgets.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/widgets.php in PHP CLI with deterministic SimplePie-like feed/item objects and WordPress escaping/filter/date stubs. It observes wp_widget_rss_output and wp_widget_rss_process helper behavior without WP_Widget_RSS class runtime, installed widget registration, live network feeds, admin form rendering, database-backed widgets, or generated public PHP replacement."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass WP_Widget_RSS class runtime, installed widget registration/rendering, live/recorded feed, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-rss-widget-helper-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-25"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-rss-widget-helper-oracle-fixture",
+      "npm run wp:core:wphx-312-rss-widget-helper-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-25-rss-widget-helper-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:d2b4ee787434f21ca4efcc69a2c8e8d720d53fe877b34033de0ddfacf4df2569"
+  }
+}

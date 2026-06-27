@@ -1,0 +1,436 @@
+{
+  "schema": "wphx.wp-core-rss-widget-helper-oracle-fixture.v1",
+  "issue": "WPHX-312.25",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-rss-widget-helper-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "magpie_display_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-24-magpie-rss-display-helper-oracle-fixture.v1.json",
+      "bytes": 19163,
+      "sha256": "sha256:016d6dbf802a3c4232fcdcd8db8abab553f8a811ec1f369fedd23ae158d5e75b"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-rss-widget-helper-oracle-fixture.mjs",
+      "bytes": 20821,
+      "sha256": "sha256:99ef455c13a2d82b3cf6fcd58a98b3a0e03aae9ad6bab3b53db1bfcb3ff3a29a"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/widgets.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/widgets.php",
+        "bytes": 70828,
+        "sha256": "sha256:5e51d83d86226609bfcfe3d4f3dbf6ead978f1018ea13648e8cf7cd27d4b10b6"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "rss-widget:output-full",
+        "focus": "wp_widget_rss_output item rendering with summary, date, author, link trimming, and item limit"
+      },
+      {
+        "id": "rss-widget:output-empty",
+        "focus": "wp_widget_rss_output empty-feed fallback message and destructor call"
+      },
+      {
+        "id": "rss-widget:output-error-visible",
+        "focus": "wp_widget_rss_output WP_Error branch visible to admin/manage_options"
+      },
+      {
+        "id": "rss-widget:process-success",
+        "focus": "wp_widget_rss_process sanitizes settings, clamps items, fetches feed, normalizes permalink, and destructs"
+      },
+      {
+        "id": "rss-widget:process-error",
+        "focus": "wp_widget_rss_process records feed error when check_feed is enabled"
+      }
+    ],
+    "covered_symbols": [
+      "widgets.php",
+      "wp_widget_rss_output",
+      "wp_widget_rss_process",
+      "fetch_feed",
+      "is_wp_error",
+      "is_admin",
+      "current_user_can",
+      "wp_parse_args",
+      "esc_url",
+      "esc_attr",
+      "esc_html",
+      "__",
+      "sanitize_url",
+      "wp_trim_words",
+      "date_i18n",
+      "get_option",
+      "SimplePie-like get_item_quantity",
+      "SimplePie-like get_items",
+      "SimplePie-like get_permalink",
+      "SimplePie-like __destruct"
+    ],
+    "source_files": [
+      "src/wp-includes/widgets.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "wordPress_stubs": "fetch_feed, SimplePie-like feed/item/author objects, is_wp_error, is_admin, current_user_can, wp_parse_args, esc_url, esc_attr, esc_html, __, sanitize_url, wp_trim_words, date_i18n, and get_option are deterministic local stubs; copied widgets.php remains the executed RSS widget helper source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    },
+    "widget_helper_quirks_observed": [
+      "wp_widget_rss_output trims leading characters until links begin with http before escaping.",
+      "Item counts outside 1..20 are normalized to 10.",
+      "wp_widget_rss_process sanitizes URL and title, records feed errors, and destructs successful feed objects."
+    ]
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-25/oracle",
+    "candidate_root": "build/wp-core/wphx-312-25/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/widgets.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-25/oracle/wp-includes/widgets.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-25/candidate/wp-includes/widgets.php"
+      }
+    ],
+    "probe_lint": {
+      "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-25/oracle/probe.php",
+      "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-25/candidate/probe.php"
+    }
+  },
+  "observations": {
+    "oracle": {
+      "rss-widget:output-full": {
+        "case": "rss-widget:output-full",
+        "output": "<ul><li><a class='rsswidget' href='esc_url:https://example.test/alpha?x=1&amp;y=2'>esc_html:Alpha</a> <span class=\"rss-date\">2026-06-27</span><div class=\"rssSummary\">esc_html:esc_attr:Alpha summary with many fixture words for trimming [&amp;hellip;]</div> <cite>esc_html:Alice </cite></li><li><a class='rsswidget' href='esc_url:https://example.test/beta'>esc_html:</a> <span class=\"rss-date\">2026-06-28</span><div class=\"rssSummary\">esc_html:esc_attr:Beta description</div></li></ul>",
+        "output_sha256": "14a321c9ac20efd87c038cd626613f463f0fa6929a0580e1a22b2ec922aa88d5",
+        "return_value": null,
+        "fetches": [
+          "https://example.test/feed"
+        ],
+        "escape_calls": [
+          [
+            "esc_url",
+            "https://example.test/alpha?x=1&y=2"
+          ],
+          [
+            "esc_html",
+            "Alpha"
+          ],
+          [
+            "esc_attr",
+            "Alpha summary with many fixture words for trimming [...]"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Alpha summary with many fixture words for trimming [&hellip;]"
+          ],
+          [
+            "esc_html",
+            "Alice "
+          ],
+          [
+            "esc_url",
+            "https://example.test/beta"
+          ],
+          [
+            "esc_html",
+            ""
+          ],
+          [
+            "esc_attr",
+            "Beta description"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Beta description"
+          ]
+        ],
+        "option_calls": [
+          "blog_charset",
+          "date_format",
+          "blog_charset",
+          "date_format"
+        ],
+        "destructed_feeds": [
+          "normal",
+          "normal"
+        ]
+      },
+      "rss-widget:output-empty": {
+        "case": "rss-widget:output-empty",
+        "output": "<ul><li>An error has occurred, which probably means the feed is down. Try again later.</li></ul>",
+        "output_sha256": "47cc9cfe6591115fcc1d6226005baa9b5730c930e40887f2ecabd8c6d62b98c0",
+        "return_value": null,
+        "fetches": [
+          "https://example.test/empty"
+        ],
+        "escape_calls": [],
+        "option_calls": [],
+        "destructed_feeds": [
+          "empty",
+          "empty"
+        ]
+      },
+      "rss-widget:output-error-visible": {
+        "case": "rss-widget:output-error-visible",
+        "output": "<p><strong>RSS Error:</strong> esc_html:Fixture feed error</p>",
+        "output_sha256": "d42ec022d6e54a9339380fb1027db67f17c16f5d0359157b71829393092a5611",
+        "return_value": null,
+        "fetches": [
+          "https://example.test/error"
+        ],
+        "escape_calls": [
+          [
+            "esc_html",
+            "Fixture feed error"
+          ]
+        ],
+        "option_calls": [],
+        "destructed_feeds": []
+      },
+      "rss-widget:process-success": {
+        "case": "rss-widget:process-success",
+        "result": {
+          "title": "Fixture Title",
+          "url": "sanitized:https://example.test/feed",
+          "link": "https://example.test/feed-home",
+          "items": 10,
+          "error": false,
+          "show_summary": 1,
+          "show_author": 0,
+          "show_date": 1
+        },
+        "fetches": [
+          "sanitized:https://example.test/feed"
+        ],
+        "escape_calls": [
+          [
+            "esc_url",
+            "/https://example.test/feed-home"
+          ]
+        ],
+        "destructed_feeds": [
+          "normal",
+          "normal"
+        ]
+      },
+      "rss-widget:process-error": {
+        "case": "rss-widget:process-error",
+        "result": {
+          "title": "Error Title",
+          "url": "sanitized:https://example.test/error",
+          "link": "",
+          "items": 10,
+          "error": "Fixture feed error",
+          "show_summary": 0,
+          "show_author": 1,
+          "show_date": 0
+        },
+        "fetches": [
+          "sanitized:https://example.test/error"
+        ],
+        "escape_calls": [],
+        "destructed_feeds": []
+      }
+    },
+    "candidate": {
+      "rss-widget:output-full": {
+        "case": "rss-widget:output-full",
+        "output": "<ul><li><a class='rsswidget' href='esc_url:https://example.test/alpha?x=1&amp;y=2'>esc_html:Alpha</a> <span class=\"rss-date\">2026-06-27</span><div class=\"rssSummary\">esc_html:esc_attr:Alpha summary with many fixture words for trimming [&amp;hellip;]</div> <cite>esc_html:Alice </cite></li><li><a class='rsswidget' href='esc_url:https://example.test/beta'>esc_html:</a> <span class=\"rss-date\">2026-06-28</span><div class=\"rssSummary\">esc_html:esc_attr:Beta description</div></li></ul>",
+        "output_sha256": "14a321c9ac20efd87c038cd626613f463f0fa6929a0580e1a22b2ec922aa88d5",
+        "return_value": null,
+        "fetches": [
+          "https://example.test/feed"
+        ],
+        "escape_calls": [
+          [
+            "esc_url",
+            "https://example.test/alpha?x=1&y=2"
+          ],
+          [
+            "esc_html",
+            "Alpha"
+          ],
+          [
+            "esc_attr",
+            "Alpha summary with many fixture words for trimming [...]"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Alpha summary with many fixture words for trimming [&hellip;]"
+          ],
+          [
+            "esc_html",
+            "Alice "
+          ],
+          [
+            "esc_url",
+            "https://example.test/beta"
+          ],
+          [
+            "esc_html",
+            ""
+          ],
+          [
+            "esc_attr",
+            "Beta description"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Beta description"
+          ]
+        ],
+        "option_calls": [
+          "blog_charset",
+          "date_format",
+          "blog_charset",
+          "date_format"
+        ],
+        "destructed_feeds": [
+          "normal",
+          "normal"
+        ]
+      },
+      "rss-widget:output-empty": {
+        "case": "rss-widget:output-empty",
+        "output": "<ul><li>An error has occurred, which probably means the feed is down. Try again later.</li></ul>",
+        "output_sha256": "47cc9cfe6591115fcc1d6226005baa9b5730c930e40887f2ecabd8c6d62b98c0",
+        "return_value": null,
+        "fetches": [
+          "https://example.test/empty"
+        ],
+        "escape_calls": [],
+        "option_calls": [],
+        "destructed_feeds": [
+          "empty",
+          "empty"
+        ]
+      },
+      "rss-widget:output-error-visible": {
+        "case": "rss-widget:output-error-visible",
+        "output": "<p><strong>RSS Error:</strong> esc_html:Fixture feed error</p>",
+        "output_sha256": "d42ec022d6e54a9339380fb1027db67f17c16f5d0359157b71829393092a5611",
+        "return_value": null,
+        "fetches": [
+          "https://example.test/error"
+        ],
+        "escape_calls": [
+          [
+            "esc_html",
+            "Fixture feed error"
+          ]
+        ],
+        "option_calls": [],
+        "destructed_feeds": []
+      },
+      "rss-widget:process-success": {
+        "case": "rss-widget:process-success",
+        "result": {
+          "title": "Fixture Title",
+          "url": "sanitized:https://example.test/feed",
+          "link": "https://example.test/feed-home",
+          "items": 10,
+          "error": false,
+          "show_summary": 1,
+          "show_author": 0,
+          "show_date": 1
+        },
+        "fetches": [
+          "sanitized:https://example.test/feed"
+        ],
+        "escape_calls": [
+          [
+            "esc_url",
+            "/https://example.test/feed-home"
+          ]
+        ],
+        "destructed_feeds": [
+          "normal",
+          "normal"
+        ]
+      },
+      "rss-widget:process-error": {
+        "case": "rss-widget:process-error",
+        "result": {
+          "title": "Error Title",
+          "url": "sanitized:https://example.test/error",
+          "link": "",
+          "items": 10,
+          "error": "Fixture feed error",
+          "show_summary": 0,
+          "show_author": 1,
+          "show_date": 0
+        },
+        "fetches": [
+          "sanitized:https://example.test/error"
+        ],
+        "escape_calls": [],
+        "destructed_feeds": []
+      }
+    },
+    "match": true,
+    "summary": {
+      "output_full_sha256": "14a321c9ac20efd87c038cd626613f463f0fa6929a0580e1a22b2ec922aa88d5",
+      "output_full_fetches": 1,
+      "output_empty_message_present": true,
+      "output_error_visible": "<p><strong>RSS Error:</strong> esc_html:Fixture feed error</p>",
+      "process_success_items": 10,
+      "process_success_link": "https://example.test/feed-home",
+      "process_error": "Fixture feed error"
+    },
+    "oracle_sha256": "sha256:189fabbc88a9a76be35e86aca1a497bb8cdeb43799279cc34fe51fb567787899",
+    "candidate_sha256": "sha256:189fabbc88a9a76be35e86aca1a497bb8cdeb43799279cc34fe51fb567787899"
+  },
+  "remaining_gaps": [
+    {
+      "id": "wp-widget-rss-class-runtime-not-executed",
+      "owner": "WPHX-312.25",
+      "detail": "The fixture directly exercises shared RSS widget helpers. WP_Widget_RSS class widget/update/form runtime and WP_Widget inheritance remain separate gates."
+    },
+    {
+      "id": "installed-widget-registration-and-admin-form-not-executed",
+      "owner": "WPHX-312.25",
+      "detail": "The fixture does not claim installed widget registration, sidebar rendering, admin form HTML, database-backed widget options, or block/widget editor behavior."
+    },
+    {
+      "id": "live-network-and-public-php-replacement-not-claimed",
+      "owner": "WPHX-312.25",
+      "detail": "The fixture uses deterministic fetch_feed stubs and copied oracle PHP. Live/recorded network feeds and generated original-path PHP replacement remain later gates."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_network_behavior_claimed": false,
+    "wp_widget_rss_class_runtime_claimed": false
+  }
+}

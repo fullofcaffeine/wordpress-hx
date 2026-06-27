@@ -1,0 +1,45 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-25-rss-widget-helper-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-psk",
+    "external_ref": "WPHX-312.25",
+    "title": "WPHX-312.25 - Add RSS widget helper oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+      "role": "RSS widget helper oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle RSS widget helper boundary"
+    },
+    {
+      "path": "tools/wp-core/run-rss-widget-helper-oracle-fixture.mjs",
+      "role": "deterministic PHP CLI oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-rss-widget-helper-oracle-fixture",
+    "npm run wp:core:wphx-312-rss-widget-helper-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-24-magpie-rss-display-helper-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_network_behavior_claimed": false,
+    "wp_widget_rss_class_runtime_claimed": false
+  }
+}
