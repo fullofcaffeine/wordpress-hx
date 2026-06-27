@@ -1,0 +1,605 @@
+{
+  "schema": "wphx.wp-core-http-ixr-client-oracle-fixture.v1",
+  "issue": "WPHX-312.34",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-http-ixr-client-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_cron_mail_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "bytes": 38945,
+      "sha256": "sha256:017e1d13c9f442eb5f02a3c37bb3ab6ba9edc661d9c0c6b87aab429e3d7b325a"
+    },
+    "http_requests_bridge_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+      "bytes": 40232,
+      "sha256": "sha256:21c2e98e5afa2b69f04a98356afa7ef08bd23e909eeeb911afa6622bdcfeea57"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-http-ixr-client-oracle-fixture.mjs",
+      "bytes": 23309,
+      "sha256": "sha256:989b063fa8bdaca2a939244aa3d046acb980c40fc86f1b831edad9f4b6ad7908"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-IXR.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-IXR.php",
+        "bytes": 2616,
+        "sha256": "sha256:df0440a9e8656a4059e7d656d81cacfac142eb6960cea430f6a5a185b6a8ca54"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-ixr-client.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-ixr-client.php",
+        "bytes": 3516,
+        "sha256": "sha256:5496933fce8986c2120073fd3b9605b2895ae524bb566af852397bbde6c34a39"
+      }
+    ],
+    "claimed_source_files": [
+      "src/wp-includes/class-wp-http-ixr-client.php"
+    ],
+    "support_sources": [
+      {
+        "path": "src/wp-includes/IXR/class-IXR-base64.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-base64.php",
+        "bytes": 414,
+        "sha256": "sha256:b6af5e8592b8fe0c367bc30a41ef22551bf4ae199496302d04885169b6c69525"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-client.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-client.php",
+        "bytes": 4749,
+        "sha256": "sha256:5b397dce6855ead746fa820268b8e80ab578057a90e8df4bd95358630378e95d"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-clientmulticall.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-clientmulticall.php",
+        "bytes": 1263,
+        "sha256": "sha256:762e7c5f3146d9508ba4323f6419112d64898714a2c51453fb835e072d8e13b6"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-date.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-date.php",
+        "bytes": 1691,
+        "sha256": "sha256:b2e1772879cf36db6f539d6186c035936d0031afb87f8f3c4c216d16ed13a4d5"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-error.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-error.php",
+        "bytes": 854,
+        "sha256": "sha256:0f7091d217124ee407e0f5c14f5e9a6bb96dc4962041dd8bb68d519e4ab0acaf"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-introspectionserver.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-introspectionserver.php",
+        "bytes": 5366,
+        "sha256": "sha256:d1fd93bb5f882ea1e6a10f41659412bfbf3f23a26c8e94595aae9e525bba7723"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-message.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-message.php",
+        "bytes": 8409,
+        "sha256": "sha256:0b6a1854e5655083eb7b555308ae291921320c9f30812b988cc6f8d7fcaea8f9"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-request.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-request.php",
+        "bytes": 927,
+        "sha256": "sha256:fe2f8ffd6aeb5d3f69d68cf8f456271a2267bfd18e9675731c687e431201fc1d"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-server.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-server.php",
+        "bytes": 6768,
+        "sha256": "sha256:20e64cd2c9696cea901035f04f34c9d21726b2894dfbbf8e45f59b13e8c8fa4e"
+      },
+      {
+        "path": "src/wp-includes/IXR/class-IXR-value.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/IXR/class-IXR-value.php",
+        "bytes": 3790,
+        "sha256": "sha256:e8e3b954b66a2b0f0e17f2e79774cd93c6a10f05b72599194d1d712d983a69c7"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "http-ixr:constructor-url-variants",
+        "focus": "URL, protocol-relative, relative, empty, and explicit server/path constructor parsing"
+      },
+      {
+        "id": "http-ixr:query-success",
+        "focus": "query builds XML body, merges custom and filtered headers, includes timeout, posts, and parses success response"
+      },
+      {
+        "id": "http-ixr:query-timeout-omitted",
+        "focus": "false timeout omits timeout from wp_safe_remote_post args while still parsing success"
+      },
+      {
+        "id": "http-ixr:transport-error",
+        "focus": "WP_Error from wp_safe_remote_post maps to IXR transport error -32300"
+      },
+      {
+        "id": "http-ixr:http-status-error",
+        "focus": "non-200 HTTP status maps to IXR transport error -32301"
+      },
+      {
+        "id": "http-ixr:parse-error",
+        "focus": "malformed XML response maps to IXR parse error -32700"
+      },
+      {
+        "id": "http-ixr:fault-response",
+        "focus": "XML-RPC fault response maps to IXR_Error fault code and string"
+      }
+    ],
+    "covered_symbols": [
+      "WP_HTTP_IXR_Client::__construct",
+      "WP_HTTP_IXR_Client::query",
+      "IXR_Client",
+      "IXR_Request",
+      "IXR_Message",
+      "IXR_Error",
+      "wp_safe_remote_post",
+      "wp_remote_retrieve_response_code",
+      "wp_remote_retrieve_body",
+      "is_wp_error",
+      "wp_http_ixr_client_headers",
+      "xmlrpc_element_limit",
+      "xmlrpc_chunk_parsing_size"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-http-ixr-client.php"
+    ],
+    "support_files": [
+      "src/wp-includes/class-IXR.php"
+    ],
+    "support_paths": [
+      "src/wp-includes/IXR"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-34/probe.php",
+      "sha256": "sha256:1dcc87e58e47c287247157a84942b8308dbd6d0e3e004792a143f8a1dd776a41"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "wp_safe_remote_post, response helpers, WP_Error, translation, and filters are deterministic stubs; copied IXR support classes are executed; copied class-wp-http-ixr-client.php remains the executed public client source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-34/oracle",
+    "candidate_root": "build/wp-core/wphx-312-34/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-IXR.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-34/oracle/wp-includes/class-IXR.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-34/candidate/wp-includes/class-IXR.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-ixr-client.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-34/oracle/wp-includes/class-wp-http-ixr-client.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-34/candidate/wp-includes/class-wp-http-ixr-client.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "http-ixr:constructor-url-variants": {
+        "case": "http-ixr:constructor-url-variants",
+        "clients": {
+          "url": {
+            "scheme": "http",
+            "server": "example.com",
+            "port": false,
+            "path": "/server.php?this-is-needed=true",
+            "timeout": 15
+          },
+          "protocol_relative": {
+            "scheme": "",
+            "server": "example.com",
+            "port": false,
+            "path": "/server.php",
+            "timeout": 15
+          },
+          "relative": {
+            "scheme": "",
+            "server": "",
+            "port": false,
+            "path": "/server.php",
+            "timeout": 15
+          },
+          "empty": {
+            "scheme": "",
+            "server": "",
+            "port": false,
+            "path": "/",
+            "timeout": 15
+          },
+          "explicit": {
+            "scheme": "http",
+            "server": "rpc.example.test",
+            "port": 8080,
+            "path": "/RPC2",
+            "timeout": 7
+          }
+        },
+        "assertions": {
+          "query_string_without_fragment": true,
+          "protocol_relative": true,
+          "relative": true,
+          "empty": true,
+          "explicit": true
+        }
+      },
+      "http-ixr:query-success": {
+        "case": "http-ixr:query-success",
+        "query_result": true,
+        "remote_posts": [
+          {
+            "url": "https://rpc.example.test/xmlrpc.php?token=abc",
+            "headers": {
+              "Content-Type": "text/xml",
+              "X-Custom": "custom",
+              "X-Filtered": "filtered"
+            },
+            "user-agent": "The Incutio XML-RPC PHP Library",
+            "timeout": 12,
+            "timeout_present": true,
+            "body_sha256": "b4e459f6fa085d05aa70941136569308a952b2b6f86ceb0d7e690ccbbda78643",
+            "body_has_method": true,
+            "body_has_int_two": true,
+            "body_has_string_hello": false
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_http_ixr_client_headers",
+            "value": {
+              "Content-Type": "text/xml",
+              "X-Custom": "custom"
+            },
+            "arg_count": 1
+          },
+          {
+            "hook": "xmlrpc_element_limit",
+            "value": 30000,
+            "arg_count": 1
+          },
+          {
+            "hook": "xmlrpc_chunk_parsing_size",
+            "value": 262144,
+            "arg_count": 1
+          }
+        ],
+        "params": [
+          5
+        ],
+        "error": null,
+        "assertions": {
+          "query_true": true,
+          "url": true,
+          "headers": true,
+          "timeout_and_user_agent": true,
+          "body_and_params": true
+        }
+      },
+      "http-ixr:query-timeout-omitted": {
+        "case": "http-ixr:query-timeout-omitted",
+        "query_result": true,
+        "remote_posts": [
+          {
+            "url": "http://rpc.example.test/xmlrpc.php",
+            "headers": {
+              "Content-Type": "text/xml",
+              "X-Filtered": "filtered"
+            },
+            "user-agent": "The Incutio XML-RPC PHP Library",
+            "timeout": null,
+            "timeout_present": false,
+            "body_sha256": "3aa343a3a990d16f50437ebc3bbac654cd87958beb62d51b6b24494d33a21b21",
+            "body_has_method": true,
+            "body_has_int_two": false,
+            "body_has_string_hello": true
+          }
+        ],
+        "assertions": {
+          "query_true": true,
+          "timeout_omitted": true,
+          "string_body": true
+        }
+      },
+      "http-ixr:transport-error": {
+        "case": "http-ixr:transport-error",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": -32300,
+          "message": "transport error: http_request_failed network down"
+        },
+        "assertions": {
+          "query_false": true,
+          "error_code_message": true
+        }
+      },
+      "http-ixr:http-status-error": {
+        "case": "http-ixr:http-status-error",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": -32301,
+          "message": "transport error - HTTP status code was not 200 (503)"
+        },
+        "assertions": {
+          "query_false": true,
+          "error_code_message": true
+        }
+      },
+      "http-ixr:parse-error": {
+        "case": "http-ixr:parse-error",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": -32700,
+          "message": "parse error. not well formed"
+        },
+        "assertions": {
+          "query_false": true,
+          "error_code_message": true
+        }
+      },
+      "http-ixr:fault-response": {
+        "case": "http-ixr:fault-response",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": 500,
+          "message": "app fault"
+        },
+        "message_type": "fault",
+        "assertions": {
+          "query_false": true,
+          "fault_error": true
+        }
+      }
+    },
+    "candidate": {
+      "http-ixr:constructor-url-variants": {
+        "case": "http-ixr:constructor-url-variants",
+        "clients": {
+          "url": {
+            "scheme": "http",
+            "server": "example.com",
+            "port": false,
+            "path": "/server.php?this-is-needed=true",
+            "timeout": 15
+          },
+          "protocol_relative": {
+            "scheme": "",
+            "server": "example.com",
+            "port": false,
+            "path": "/server.php",
+            "timeout": 15
+          },
+          "relative": {
+            "scheme": "",
+            "server": "",
+            "port": false,
+            "path": "/server.php",
+            "timeout": 15
+          },
+          "empty": {
+            "scheme": "",
+            "server": "",
+            "port": false,
+            "path": "/",
+            "timeout": 15
+          },
+          "explicit": {
+            "scheme": "http",
+            "server": "rpc.example.test",
+            "port": 8080,
+            "path": "/RPC2",
+            "timeout": 7
+          }
+        },
+        "assertions": {
+          "query_string_without_fragment": true,
+          "protocol_relative": true,
+          "relative": true,
+          "empty": true,
+          "explicit": true
+        }
+      },
+      "http-ixr:query-success": {
+        "case": "http-ixr:query-success",
+        "query_result": true,
+        "remote_posts": [
+          {
+            "url": "https://rpc.example.test/xmlrpc.php?token=abc",
+            "headers": {
+              "Content-Type": "text/xml",
+              "X-Custom": "custom",
+              "X-Filtered": "filtered"
+            },
+            "user-agent": "The Incutio XML-RPC PHP Library",
+            "timeout": 12,
+            "timeout_present": true,
+            "body_sha256": "b4e459f6fa085d05aa70941136569308a952b2b6f86ceb0d7e690ccbbda78643",
+            "body_has_method": true,
+            "body_has_int_two": true,
+            "body_has_string_hello": false
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_http_ixr_client_headers",
+            "value": {
+              "Content-Type": "text/xml",
+              "X-Custom": "custom"
+            },
+            "arg_count": 1
+          },
+          {
+            "hook": "xmlrpc_element_limit",
+            "value": 30000,
+            "arg_count": 1
+          },
+          {
+            "hook": "xmlrpc_chunk_parsing_size",
+            "value": 262144,
+            "arg_count": 1
+          }
+        ],
+        "params": [
+          5
+        ],
+        "error": null,
+        "assertions": {
+          "query_true": true,
+          "url": true,
+          "headers": true,
+          "timeout_and_user_agent": true,
+          "body_and_params": true
+        }
+      },
+      "http-ixr:query-timeout-omitted": {
+        "case": "http-ixr:query-timeout-omitted",
+        "query_result": true,
+        "remote_posts": [
+          {
+            "url": "http://rpc.example.test/xmlrpc.php",
+            "headers": {
+              "Content-Type": "text/xml",
+              "X-Filtered": "filtered"
+            },
+            "user-agent": "The Incutio XML-RPC PHP Library",
+            "timeout": null,
+            "timeout_present": false,
+            "body_sha256": "3aa343a3a990d16f50437ebc3bbac654cd87958beb62d51b6b24494d33a21b21",
+            "body_has_method": true,
+            "body_has_int_two": false,
+            "body_has_string_hello": true
+          }
+        ],
+        "assertions": {
+          "query_true": true,
+          "timeout_omitted": true,
+          "string_body": true
+        }
+      },
+      "http-ixr:transport-error": {
+        "case": "http-ixr:transport-error",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": -32300,
+          "message": "transport error: http_request_failed network down"
+        },
+        "assertions": {
+          "query_false": true,
+          "error_code_message": true
+        }
+      },
+      "http-ixr:http-status-error": {
+        "case": "http-ixr:http-status-error",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": -32301,
+          "message": "transport error - HTTP status code was not 200 (503)"
+        },
+        "assertions": {
+          "query_false": true,
+          "error_code_message": true
+        }
+      },
+      "http-ixr:parse-error": {
+        "case": "http-ixr:parse-error",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": -32700,
+          "message": "parse error. not well formed"
+        },
+        "assertions": {
+          "query_false": true,
+          "error_code_message": true
+        }
+      },
+      "http-ixr:fault-response": {
+        "case": "http-ixr:fault-response",
+        "query_result": false,
+        "error": {
+          "class": "IXR_Error",
+          "code": 500,
+          "message": "app fault"
+        },
+        "message_type": "fault",
+        "assertions": {
+          "query_false": true,
+          "fault_error": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:1f705351c04509bd9c47a727bc8fe603b1459321efca6df7f070fc7e67d3a5e8",
+    "candidate_sha256": "sha256:1f705351c04509bd9c47a727bc8fe603b1459321efca6df7f070fc7e67d3a5e8",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-xmlrpc-http-transport-not-executed",
+      "owner": "WPHX-312.34",
+      "detail": "The fixture stubs wp_safe_remote_post and response helpers. Live or recorded XML-RPC HTTP transport, DNS/TLS, redirects, timeout enforcement, and WP_Http Requests/cURL/fsockopen routing remain later gates."
+    },
+    {
+      "id": "xmlrpc-server-and-pingback-integration-not-executed",
+      "owner": "WPHX-312.34",
+      "detail": "The fixture covers only the client handoff. wp_xmlrpc_server methods, pingback/comment integration, authentication, database writes, and XML-RPC endpoint routing remain WPHX-318 or later installed distribution work."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.34",
+      "detail": "The fixture uses PHP CLI with deterministic WordPress stubs rather than an installed WordPress distribution, web server, plugin/theme filters, or real XML-RPC endpoint."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.34",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 7,
+    "covered_symbols": 13,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_transport_claimed": false,
+    "xmlrpc_server_behavior_claimed": false
+  }
+}

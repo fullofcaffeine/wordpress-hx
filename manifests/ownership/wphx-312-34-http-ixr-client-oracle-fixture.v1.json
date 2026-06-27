@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-ixr-client-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-5mq",
+    "external_ref": "WPHX-312.34"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_HTTP_IXR_Client XML-RPC HTTP handoff behavior",
+    "area": "src/wp-includes/class-wp-http-ixr-client.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-http-ixr-client.php with copied IXR support classes in isolated PHP CLI probes. It observes constructor URL parsing, XML-RPC request body construction, custom and filtered headers, timeout inclusion and omission, wp_safe_remote_post handoff, WP_Error and non-200 transport failures, malformed XML parse failures, XML-RPC fault mapping, and successful methodResponse parsing without claiming live HTTP transport, XML-RPC server behavior, pingback/comment integration, Requests/cURL/fsockopen behavior, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-http-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded XML-RPC HTTP client transport, pingback/comment integration, WP_Http transport routing, selected upstream XML-RPC PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-ixr-client-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-34-http-ixr-client-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-34"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-ixr-client-oracle-fixture",
+      "npm run wp:core:wphx-312-http-ixr-client-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-34-http-ixr-client-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:a92e619d2a8d0e436d7d87b63e20e65119c47b4e4c43655050c440e1ed003c1c"
+  }
+}
