@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/oembed-provider-registry-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-8sz",
+    "external_ref": "WPHX-312.29"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_oEmbed provider registry and compatibility behavior",
+    "area": "src/wp-includes/class-wp-oembed.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-oembed.php in isolated PHP CLI probes with deterministic WordPress hook/escaping stubs. It observes built-in provider construction, early provider add/remove queues, oembed_providers filtering, provider regex/wildcard matching, __call compatibility access to private parse helpers, and oembed_dataparse newline stripping without claiming live remote fetch, discovery transport, REST controller behavior, installed routing, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-runtime-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded remote oEmbed fetch, REST oEmbed controller behavior, installed post embed routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-oembed-provider-registry-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-29"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-oembed-provider-registry-oracle-fixture",
+      "npm run wp:core:wphx-312-oembed-provider-registry-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-29-oembed-provider-registry-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:db871ca386e1cb664ba9ecf96a99af0f06ddd15882296e18d4239517ef281eb8"
+  }
+}

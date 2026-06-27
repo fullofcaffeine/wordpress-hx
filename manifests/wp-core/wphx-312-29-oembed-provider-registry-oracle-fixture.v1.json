@@ -1,0 +1,361 @@
+{
+  "schema": "wphx.wp-core-oembed-provider-registry-oracle-fixture.v1",
+  "issue": "WPHX-312.29",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-oembed-provider-registry-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "remote_oembed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "bytes": 29193,
+      "sha256": "sha256:3732343ca7f8a0e5a1a6b18d5331953d72fc98e30a7dbc82f91703951c645f52"
+    },
+    "deprecated_oembed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+      "bytes": 11572,
+      "sha256": "sha256:ff1952a8cb6003535d1f49d43015249f8f8cc620c7380502c90ad02f759c7bd3"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-oembed-provider-registry-oracle-fixture.mjs",
+      "bytes": 20576,
+      "sha256": "sha256:b02b9356aacab76805e51b440893f377fe41bed2c9c93e6541936b6923d2773e"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-oembed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-oembed.php",
+        "bytes": 31603,
+        "sha256": "sha256:e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "oembed-registry:constructor-defaults",
+        "focus": "constructor builds built-in providers and registers newline stripping"
+      },
+      {
+        "id": "oembed-registry:early-add-remove-filter",
+        "focus": "early provider add/remove queues are applied before the provider filter and then reset"
+      },
+      {
+        "id": "oembed-registry:provider-matching",
+        "focus": "regex and wildcard providers resolve through get_provider without discovery"
+      },
+      {
+        "id": "oembed-registry:compat-parse-bridge",
+        "focus": "__call exposes private parse helpers and rejects unknown methods"
+      },
+      {
+        "id": "oembed-registry:strip-newlines",
+        "focus": "data2html runs oembed_dataparse and strips newlines while preserving pre content"
+      }
+    ],
+    "covered_symbols": [
+      "class-wp-oembed.php",
+      "WP_oEmbed::__construct",
+      "WP_oEmbed::$providers",
+      "WP_oEmbed::$early_providers",
+      "WP_oEmbed::_add_provider_early",
+      "WP_oEmbed::_remove_provider_early",
+      "WP_oEmbed::get_provider",
+      "WP_oEmbed::__call",
+      "WP_oEmbed::_parse_json",
+      "WP_oEmbed::_parse_xml",
+      "WP_oEmbed::_parse_xml_body",
+      "WP_oEmbed::data2html",
+      "WP_oEmbed::_strip_newlines",
+      "oembed_providers",
+      "oembed_dataparse"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-oembed.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "WordPress hooks, URL helpers, escaping helpers, and home_url are deterministic stubs; copied class-wp-oembed.php remains the executed public class source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-29/oracle",
+    "candidate_root": "build/wp-core/wphx-312-29/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-oembed.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-29/oracle/wp-includes/class-wp-oembed.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-29/candidate/wp-includes/class-wp-oembed.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "oembed-registry:constructor-defaults": {
+        "case": "oembed-registry:constructor-defaults",
+        "provider_count": 59,
+        "has_youtube_watch": true,
+        "has_canva": true,
+        "videopress_provider": {
+          "format": "#https?://videopress\\.com/v/.*#",
+          "provider": "https://public-api.wordpress.com/oembed/?for=https%3A%2F%2Ffixture.example",
+          "regex": true
+        },
+        "early_providers_after_construct": [],
+        "registered_filters": [
+          {
+            "hook": "oembed_dataparse",
+            "priority": 10,
+            "accepted_args": 3,
+            "callback": [
+              "WP_oEmbed",
+              "_strip_newlines"
+            ]
+          }
+        ],
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:early-add-remove-filter": {
+        "case": "oembed-registry:early-add-remove-filter",
+        "early_provider_match": "https://early.example/oembed",
+        "filtered_provider_match": "https://filtered.example/oembed.json",
+        "removed_youtube_match": false,
+        "filter_mutations": [
+          {
+            "hook": "oembed_providers",
+            "had_early": true,
+            "had_removed_youtube": true
+          }
+        ],
+        "early_providers_after_construct": [],
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:provider-matching": {
+        "case": "oembed-registry:provider-matching",
+        "wildcard_match": "https://wild.example/oembed.json",
+        "wildcard_miss": false,
+        "regex_match": "https://regex.example/oembed.json",
+        "regex_miss": false,
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:compat-parse-bridge": {
+        "case": "oembed-registry:compat-parse-bridge",
+        "json_type": "rich",
+        "json_html": "<b>Fixture</b>",
+        "xml_type": "photo",
+        "xml_url": "https://cdn.example/photo.jpg",
+        "xml_doctype_rejected": true,
+        "unknown_method": false,
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:strip-newlines": {
+        "case": "oembed-registry:strip-newlines",
+        "html": "<div>Alpha<span>Beta</span><pre>Keep\nPre</pre>Gamma</div>",
+        "contains_outer_newline": false,
+        "pre_preserved": true,
+        "registered_filters": [
+          {
+            "hook": "oembed_dataparse",
+            "priority": 10,
+            "accepted_args": 3,
+            "callback": [
+              "WP_oEmbed",
+              "_strip_newlines"
+            ]
+          }
+        ],
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      }
+    },
+    "candidate": {
+      "oembed-registry:constructor-defaults": {
+        "case": "oembed-registry:constructor-defaults",
+        "provider_count": 59,
+        "has_youtube_watch": true,
+        "has_canva": true,
+        "videopress_provider": {
+          "format": "#https?://videopress\\.com/v/.*#",
+          "provider": "https://public-api.wordpress.com/oembed/?for=https%3A%2F%2Ffixture.example",
+          "regex": true
+        },
+        "early_providers_after_construct": [],
+        "registered_filters": [
+          {
+            "hook": "oembed_dataparse",
+            "priority": 10,
+            "accepted_args": 3,
+            "callback": [
+              "WP_oEmbed",
+              "_strip_newlines"
+            ]
+          }
+        ],
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:early-add-remove-filter": {
+        "case": "oembed-registry:early-add-remove-filter",
+        "early_provider_match": "https://early.example/oembed",
+        "filtered_provider_match": "https://filtered.example/oembed.json",
+        "removed_youtube_match": false,
+        "filter_mutations": [
+          {
+            "hook": "oembed_providers",
+            "had_early": true,
+            "had_removed_youtube": true
+          }
+        ],
+        "early_providers_after_construct": [],
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:provider-matching": {
+        "case": "oembed-registry:provider-matching",
+        "wildcard_match": "https://wild.example/oembed.json",
+        "wildcard_miss": false,
+        "regex_match": "https://regex.example/oembed.json",
+        "regex_miss": false,
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:compat-parse-bridge": {
+        "case": "oembed-registry:compat-parse-bridge",
+        "json_type": "rich",
+        "json_html": "<b>Fixture</b>",
+        "xml_type": "photo",
+        "xml_url": "https://cdn.example/photo.jpg",
+        "xml_doctype_rejected": true,
+        "unknown_method": false,
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      },
+      "oembed-registry:strip-newlines": {
+        "case": "oembed-registry:strip-newlines",
+        "html": "<div>Alpha<span>Beta</span><pre>Keep\nPre</pre>Gamma</div>",
+        "contains_outer_newline": false,
+        "pre_preserved": true,
+        "registered_filters": [
+          {
+            "hook": "oembed_dataparse",
+            "priority": 10,
+            "accepted_args": 3,
+            "callback": [
+              "WP_oEmbed",
+              "_strip_newlines"
+            ]
+          }
+        ],
+        "assertions": {
+          "constructor_filter_registered": true,
+          "early_queue_reset": true,
+          "provider_lookup_deterministic": true,
+          "compat_bridge_deterministic": true,
+          "newline_strip_deterministic": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:47e99174b0067c94ea88668d07a6e0bd5ac80e899d554efabe80f29aafab8685",
+    "candidate_sha256": "sha256:47e99174b0067c94ea88668d07a6e0bd5ac80e899d554efabe80f29aafab8685"
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-oembed-fetch-discovery-not-executed",
+      "owner": "WPHX-312.29",
+      "detail": "The fixture does not call wp_safe_remote_get or perform live/provider-recorded discovery. Remote fetch and discovery behavior remain covered only by bounded fake-transport fixtures until later live/recorded gates."
+    },
+    {
+      "id": "installed-oembed-routes-not-executed",
+      "owner": "WPHX-312.29",
+      "detail": "The fixture executes WP_oEmbed directly through PHP CLI probes. REST oEmbed controller dispatch, post embed rendering, and browser-observed installed routing remain later gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.29",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 15,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_oembed_fetch_claimed": false
+  }
+}
