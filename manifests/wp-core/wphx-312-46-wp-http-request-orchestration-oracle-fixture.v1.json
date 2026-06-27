@@ -1,0 +1,1262 @@
+{
+  "schema": "wphx.wp-core-wp-http-request-orchestration-oracle-fixture.v1",
+  "issue": "WPHX-312.46",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_helper_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "bytes": 19194,
+      "sha256": "sha256:683c7daea9a2e7ec94bbda8f8a8ebdeae720dcd188493bb447739e46e6f28596"
+    },
+    "http_parser_header_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+      "bytes": 18096,
+      "sha256": "sha256:6927182709ed37aafd247c24dda822bfa55c168436aba1c88cbf3a9cc919b4b3"
+    },
+    "http_api_wrapper_safety_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+      "bytes": 30913,
+      "sha256": "sha256:009028b1aae51334245e584b1a9f5a5e4a2893231e2d3bca98807b7f463f8250"
+    },
+    "http_transport_callback_test_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-45-http-transport-callback-test-oracle-fixture.v1.json",
+      "bytes": 14924,
+      "sha256": "sha256:75a4fc050c79283057c3e06f92ca028ef96928a664327e0227d907e259e28a64"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs",
+      "bytes": 31538,
+      "sha256": "sha256:064e86e2522e7a93b3fea15e4950c1994f0fe05ec0ae3601ed68b4cae583c76d"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-response.php",
+        "bytes": 2977,
+        "sha256": "sha256:6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-cookie.php",
+        "bytes": 7269,
+        "sha256": "sha256:d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-requests-response.php",
+        "bytes": 4243,
+        "sha256": "sha256:0db148a63abbbf8bd2087ae82752574244ed6893f997456caf1aa537646533d1"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-hooks.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-requests-hooks.php",
+        "bytes": 2022,
+        "sha256": "sha256:79856866e8ea82fd98d825cf0405918974957eadecc3a68cd9fe42b924f9a9de"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-proxy.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-proxy.php",
+        "bytes": 5980,
+        "sha256": "sha256:2acfbf49118490c07c53a6f712d7146be41bd729bff43a6bcf960bbf0f2594fb"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "wp-http-request:head-defaults",
+        "focus": "request defaults, filter defaults, HEAD redirection override, hooks, SSL verify path, and response filter"
+      },
+      {
+        "id": "wp-http-request:preempt",
+        "focus": "pre_http_request short-circuits before Requests execution"
+      },
+      {
+        "id": "wp-http-request:invalid-and-blocked",
+        "focus": "invalid URL and external-blocked URL return WP_Error and emit debug actions"
+      },
+      {
+        "id": "wp-http-request:streaming",
+        "focus": "stream filename default, blocking force, writable directory validation, and filename option handoff"
+      },
+      {
+        "id": "wp-http-request:headers-cookies-ssl-post",
+        "focus": "header string parsing, cookie normalization, sslverify=false, body data_format, redirects, and max_bytes"
+      },
+      {
+        "id": "wp-http-request:exception-and-nonblocking",
+        "focus": "Requests exception conversion and nonblocking response shape after dispatch"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Http::request",
+      "WP_Http::block_request",
+      "WP_HTTP_Requests_Hooks",
+      "WP_HTTP_Requests_Response",
+      "WP_HTTP_Proxy",
+      "WP_Http_Cookie",
+      "WpOrg\\Requests\\Requests::request",
+      "WpOrg\\Requests\\Hooks::register",
+      "pre_http_request",
+      "http_request_args",
+      "http_request_timeout",
+      "http_request_redirection_count",
+      "http_request_version",
+      "http_headers_useragent",
+      "http_request_reject_unsafe_urls",
+      "https_ssl_verify",
+      "http_response",
+      "http_api_debug",
+      "wp_kses_bad_protocol",
+      "wp_http_validate_url",
+      "wp_is_writable",
+      "mbstring_binary_safe_encoding",
+      "reset_mbstring_encoding"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-http-response.php",
+      "src/wp-includes/class-wp-http-cookie.php",
+      "src/wp-includes/class-wp-http-requests-response.php",
+      "src/wp-includes/class-wp-http-requests-hooks.php",
+      "src/wp-includes/class-wp-http-proxy.php",
+      "src/wp-includes/class-wp-http.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-46/probe.php",
+      "sha256": "sha256:edcbd75fafae154cde7c873ca35faa54985a34a0d0583c894a04801f3029a1c5"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed orchestration sources; outbound Requests::request records options or throws without network I/O."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-46/oracle",
+    "candidate_root": "build/wp-core/wphx-312-46/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-46/oracle/wp-includes/class-wp-http-response.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-46/candidate/wp-includes/class-wp-http-response.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-46/oracle/wp-includes/class-wp-http-cookie.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-46/candidate/wp-includes/class-wp-http-cookie.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-response.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-46/oracle/wp-includes/class-wp-http-requests-response.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-46/candidate/wp-includes/class-wp-http-requests-response.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-hooks.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-46/oracle/wp-includes/class-wp-http-requests-hooks.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-46/candidate/wp-includes/class-wp-http-requests-hooks.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-proxy.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-46/oracle/wp-includes/class-wp-http-proxy.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-46/candidate/wp-includes/class-wp-http-proxy.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-46/oracle/wp-includes/class-wp-http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-46/candidate/wp-includes/class-wp-http.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "wp-http-request:head-defaults": {
+        "case": "wp-http-request:head-defaults",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 201,
+            "message": "Created"
+          },
+          "cookies": [
+            {
+              "class": "WP_Http_Cookie"
+            }
+          ],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          },
+          "wphx_filtered": true
+        },
+        "request_call": {
+          "url": "https://example.test/head",
+          "headers": [],
+          "data": null,
+          "type": "HEAD",
+          "options": {
+            "timeout": 7,
+            "useragent": "FixtureAgent/1.0",
+            "blocking": true,
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "filename": null,
+            "follow_redirects": false,
+            "redirects": null,
+            "max_bytes": null,
+            "cookies": [],
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "verifyname": null,
+            "data_format": null,
+            "proxy": null
+          }
+        },
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://home.test",
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "HEAD",
+              "timeout": 7,
+              "redirection": 0,
+              "httpversion": "1.1",
+              "user-agent": "FixtureAgent/1.0",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "HEAD",
+                "timeout": 7,
+                "redirection": 0,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 0
+              },
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 201,
+                "message": "Created"
+              },
+              "cookies": [
+                {
+                  "class": "WP_Http_Cookie"
+                }
+              ],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "HEAD",
+                "timeout": 7,
+                "redirection": 0,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 0
+              },
+              "https://example.test/head"
+            ]
+          }
+        ],
+        "assertions": {
+          "head_type": true,
+          "head_disables_redirects": true,
+          "filtered_defaults_flow_to_options": true,
+          "hooks_registered": true,
+          "ssl_verify_path": true,
+          "response_filtered": true
+        }
+      },
+      "wp-http-request:preempt": {
+        "case": "wp-http-request:preempt",
+        "response": {
+          "headers": {
+            "X-Preempt": "yes"
+          },
+          "body": "preempted",
+          "response": {
+            "code": 299,
+            "message": "Preempted"
+          },
+          "cookies": [],
+          "filename": null
+        },
+        "request_call_count": 0,
+        "assertions": {
+          "preempt_response_returned": true,
+          "requests_not_called": true
+        }
+      },
+      "wp-http-request:invalid-and-blocked": {
+        "case": "wp-http-request:invalid-and-blocked",
+        "invalid": {
+          "code": "http_request_failed",
+          "message": "A valid URL was not provided."
+        },
+        "blocked": {
+          "code": "http_request_not_executed",
+          "message": "User has blocked requests through HTTP to the URL: https://blocked.example/path."
+        },
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "http_request_failed",
+                "message": "A valid URL was not provided."
+              },
+              "response",
+              "WpOrg\\Requests\\Requests",
+              {
+                "method": "GET",
+                "timeout": 7,
+                "redirection": 3,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 3
+              },
+              ""
+            ]
+          },
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "http_request_not_executed",
+                "message": "User has blocked requests through HTTP to the URL: https://blocked.example/path."
+              },
+              "response",
+              "WpOrg\\Requests\\Requests",
+              {
+                "method": "GET",
+                "timeout": 7,
+                "redirection": 3,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 3
+              },
+              "https://blocked.example/path"
+            ]
+          }
+        ],
+        "assertions": {
+          "invalid_url_error": true,
+          "blocked_url_error": true,
+          "debug_actions_for_errors": true,
+          "requests_not_called": true
+        }
+      },
+      "wp-http-request:streaming": {
+        "case": "wp-http-request:streaming",
+        "streamed": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 201,
+            "message": "Created"
+          },
+          "cookies": [
+            {
+              "class": "WP_Http_Cookie"
+            }
+          ],
+          "filename": "/tmp/wphx-streams/archive.zip",
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          },
+          "wphx_filtered": true
+        },
+        "stream_call": {
+          "url": "https://example.test/files/archive.zip",
+          "headers": [],
+          "data": null,
+          "type": "GET",
+          "options": {
+            "timeout": 7,
+            "useragent": "FixtureAgent/1.0",
+            "blocking": true,
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "filename": "/tmp/wphx-streams/archive.zip",
+            "follow_redirects": null,
+            "redirects": 3,
+            "max_bytes": null,
+            "cookies": [],
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "verifyname": null,
+            "data_format": null,
+            "proxy": null
+          }
+        },
+        "bad": {
+          "code": "http_request_failed",
+          "message": "Destination directory for file streaming does not exist or is not writable."
+        },
+        "assertions": {
+          "default_filename": true,
+          "stream_forces_blocking": true,
+          "bad_destination_error": true
+        }
+      },
+      "wp-http-request:headers-cookies-ssl-post": {
+        "case": "wp-http-request:headers-cookies-ssl-post",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 201,
+            "message": "Created"
+          },
+          "cookies": [
+            {
+              "class": "WP_Http_Cookie"
+            }
+          ],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          },
+          "wphx_filtered": true
+        },
+        "request_call": {
+          "url": "https://example.test/post",
+          "headers": {
+            "x-one": "1",
+            "x-two": "2"
+          },
+          "data": "payload",
+          "type": "PUT",
+          "options": {
+            "timeout": 7,
+            "useragent": "FixtureAgent/1.0",
+            "blocking": true,
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "filename": null,
+            "follow_redirects": null,
+            "redirects": 2,
+            "max_bytes": 12,
+            "cookies": {
+              "alpha": {
+                "name": "alpha",
+                "value": "beta",
+                "attributes": [],
+                "flags": []
+              }
+            },
+            "verify": false,
+            "verifyname": false,
+            "data_format": "body",
+            "proxy": null
+          }
+        },
+        "assertions": {
+          "headers_parsed": true,
+          "body_and_method": true,
+          "cookies_normalized": true,
+          "ssl_disabled": true,
+          "redirects_and_limit": true
+        }
+      },
+      "wp-http-request:exception-and-nonblocking": {
+        "case": "wp-http-request:exception-and-nonblocking",
+        "error": {
+          "code": "http_request_failed",
+          "message": "fixture transport failure"
+        },
+        "nonblocking": {
+          "headers": [],
+          "body": "",
+          "response": {
+            "code": false,
+            "message": false
+          },
+          "cookies": [],
+          "http_response": null
+        },
+        "request_calls": [
+          {
+            "url": "https://example.test/error",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "timeout": 7,
+              "useragent": "FixtureAgent/1.0",
+              "blocking": true,
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "filename": null,
+              "follow_redirects": null,
+              "redirects": 3,
+              "max_bytes": null,
+              "cookies": [],
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "verifyname": null,
+              "data_format": null,
+              "proxy": null
+            }
+          },
+          {
+            "url": "https://example.test/nonblocking",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "timeout": 7,
+              "useragent": "FixtureAgent/1.0",
+              "blocking": false,
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "filename": null,
+              "follow_redirects": null,
+              "redirects": 3,
+              "max_bytes": null,
+              "cookies": [],
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "verifyname": null,
+              "data_format": null,
+              "proxy": null
+            }
+          }
+        ],
+        "assertions": {
+          "exception_converted": true,
+          "nonblocking_shape": true,
+          "nonblocking_option_sent": true
+        }
+      }
+    },
+    "candidate": {
+      "wp-http-request:head-defaults": {
+        "case": "wp-http-request:head-defaults",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 201,
+            "message": "Created"
+          },
+          "cookies": [
+            {
+              "class": "WP_Http_Cookie"
+            }
+          ],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          },
+          "wphx_filtered": true
+        },
+        "request_call": {
+          "url": "https://example.test/head",
+          "headers": [],
+          "data": null,
+          "type": "HEAD",
+          "options": {
+            "timeout": 7,
+            "useragent": "FixtureAgent/1.0",
+            "blocking": true,
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "filename": null,
+            "follow_redirects": false,
+            "redirects": null,
+            "max_bytes": null,
+            "cookies": [],
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "verifyname": null,
+            "data_format": null,
+            "proxy": null
+          }
+        },
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://home.test",
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "HEAD",
+              "timeout": 7,
+              "redirection": 0,
+              "httpversion": "1.1",
+              "user-agent": "FixtureAgent/1.0",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "HEAD",
+                "timeout": 7,
+                "redirection": 0,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 0
+              },
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://example.test/head"
+            ]
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 201,
+                "message": "Created"
+              },
+              "cookies": [
+                {
+                  "class": "WP_Http_Cookie"
+                }
+              ],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "HEAD",
+                "timeout": 7,
+                "redirection": 0,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 0
+              },
+              "https://example.test/head"
+            ]
+          }
+        ],
+        "assertions": {
+          "head_type": true,
+          "head_disables_redirects": true,
+          "filtered_defaults_flow_to_options": true,
+          "hooks_registered": true,
+          "ssl_verify_path": true,
+          "response_filtered": true
+        }
+      },
+      "wp-http-request:preempt": {
+        "case": "wp-http-request:preempt",
+        "response": {
+          "headers": {
+            "X-Preempt": "yes"
+          },
+          "body": "preempted",
+          "response": {
+            "code": 299,
+            "message": "Preempted"
+          },
+          "cookies": [],
+          "filename": null
+        },
+        "request_call_count": 0,
+        "assertions": {
+          "preempt_response_returned": true,
+          "requests_not_called": true
+        }
+      },
+      "wp-http-request:invalid-and-blocked": {
+        "case": "wp-http-request:invalid-and-blocked",
+        "invalid": {
+          "code": "http_request_failed",
+          "message": "A valid URL was not provided."
+        },
+        "blocked": {
+          "code": "http_request_not_executed",
+          "message": "User has blocked requests through HTTP to the URL: https://blocked.example/path."
+        },
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "http_request_failed",
+                "message": "A valid URL was not provided."
+              },
+              "response",
+              "WpOrg\\Requests\\Requests",
+              {
+                "method": "GET",
+                "timeout": 7,
+                "redirection": 3,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 3
+              },
+              ""
+            ]
+          },
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "http_request_not_executed",
+                "message": "User has blocked requests through HTTP to the URL: https://blocked.example/path."
+              },
+              "response",
+              "WpOrg\\Requests\\Requests",
+              {
+                "method": "GET",
+                "timeout": 7,
+                "redirection": 3,
+                "httpversion": "1.1",
+                "user-agent": "FixtureAgent/1.0",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 3
+              },
+              "https://blocked.example/path"
+            ]
+          }
+        ],
+        "assertions": {
+          "invalid_url_error": true,
+          "blocked_url_error": true,
+          "debug_actions_for_errors": true,
+          "requests_not_called": true
+        }
+      },
+      "wp-http-request:streaming": {
+        "case": "wp-http-request:streaming",
+        "streamed": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 201,
+            "message": "Created"
+          },
+          "cookies": [
+            {
+              "class": "WP_Http_Cookie"
+            }
+          ],
+          "filename": "/tmp/wphx-streams/archive.zip",
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          },
+          "wphx_filtered": true
+        },
+        "stream_call": {
+          "url": "https://example.test/files/archive.zip",
+          "headers": [],
+          "data": null,
+          "type": "GET",
+          "options": {
+            "timeout": 7,
+            "useragent": "FixtureAgent/1.0",
+            "blocking": true,
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "filename": "/tmp/wphx-streams/archive.zip",
+            "follow_redirects": null,
+            "redirects": 3,
+            "max_bytes": null,
+            "cookies": [],
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "verifyname": null,
+            "data_format": null,
+            "proxy": null
+          }
+        },
+        "bad": {
+          "code": "http_request_failed",
+          "message": "Destination directory for file streaming does not exist or is not writable."
+        },
+        "assertions": {
+          "default_filename": true,
+          "stream_forces_blocking": true,
+          "bad_destination_error": true
+        }
+      },
+      "wp-http-request:headers-cookies-ssl-post": {
+        "case": "wp-http-request:headers-cookies-ssl-post",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 201,
+            "message": "Created"
+          },
+          "cookies": [
+            {
+              "class": "WP_Http_Cookie"
+            }
+          ],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          },
+          "wphx_filtered": true
+        },
+        "request_call": {
+          "url": "https://example.test/post",
+          "headers": {
+            "x-one": "1",
+            "x-two": "2"
+          },
+          "data": "payload",
+          "type": "PUT",
+          "options": {
+            "timeout": 7,
+            "useragent": "FixtureAgent/1.0",
+            "blocking": true,
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "filename": null,
+            "follow_redirects": null,
+            "redirects": 2,
+            "max_bytes": 12,
+            "cookies": {
+              "alpha": {
+                "name": "alpha",
+                "value": "beta",
+                "attributes": [],
+                "flags": []
+              }
+            },
+            "verify": false,
+            "verifyname": false,
+            "data_format": "body",
+            "proxy": null
+          }
+        },
+        "assertions": {
+          "headers_parsed": true,
+          "body_and_method": true,
+          "cookies_normalized": true,
+          "ssl_disabled": true,
+          "redirects_and_limit": true
+        }
+      },
+      "wp-http-request:exception-and-nonblocking": {
+        "case": "wp-http-request:exception-and-nonblocking",
+        "error": {
+          "code": "http_request_failed",
+          "message": "fixture transport failure"
+        },
+        "nonblocking": {
+          "headers": [],
+          "body": "",
+          "response": {
+            "code": false,
+            "message": false
+          },
+          "cookies": [],
+          "http_response": null
+        },
+        "request_calls": [
+          {
+            "url": "https://example.test/error",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "timeout": 7,
+              "useragent": "FixtureAgent/1.0",
+              "blocking": true,
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "filename": null,
+              "follow_redirects": null,
+              "redirects": 3,
+              "max_bytes": null,
+              "cookies": [],
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "verifyname": null,
+              "data_format": null,
+              "proxy": null
+            }
+          },
+          {
+            "url": "https://example.test/nonblocking",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "timeout": 7,
+              "useragent": "FixtureAgent/1.0",
+              "blocking": false,
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "filename": null,
+              "follow_redirects": null,
+              "redirects": 3,
+              "max_bytes": null,
+              "cookies": [],
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "verifyname": null,
+              "data_format": null,
+              "proxy": null
+            }
+          }
+        ],
+        "assertions": {
+          "exception_converted": true,
+          "nonblocking_shape": true,
+          "nonblocking_option_sent": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:caa837b1cf8db09ad822a51f163660f98b0ad48f1cdc0624f0ee1d96280d16d8",
+    "candidate_sha256": "sha256:caa837b1cf8db09ad822a51f163660f98b0ad48f1cdc0624f0ee1d96280d16d8",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-requests-network-io-not-executed",
+      "owner": "WPHX-312.46",
+      "detail": "The fixture records WP_Http's Requests handoff and exception conversion through a stubbed Requests::request boundary. It does not perform live network I/O, DNS, TLS, proxy negotiation, redirect following, or transport execution."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.46",
+      "detail": "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.46",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 23,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "transport_execution_claimed": false
+  }
+}

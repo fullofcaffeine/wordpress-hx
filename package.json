@@ -245,6 +245,8 @@
     "wp:core:wphx-312-http-parse-url-shim-oracle-fixture:check": "node tools/wp-core/run-http-parse-url-shim-oracle-fixture.mjs --check",
     "wp:core:wphx-312-http-transport-callback-test-oracle-fixture": "node tools/wp-core/run-http-transport-callback-test-oracle-fixture.mjs",
     "wp:core:wphx-312-http-transport-callback-test-oracle-fixture:check": "node tools/wp-core/run-http-transport-callback-test-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-wp-http-request-orchestration-oracle-fixture": "node tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs",
+    "wp:core:wphx-312-wp-http-request-orchestration-oracle-fixture:check": "node tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs --check",
     "wp:core:wphx-312-feed-cache-transient-oracle-fixture": "node tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs",
     "wp:core:wphx-312-feed-cache-transient-oracle-fixture:check": "node tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs --check",
     "wp:core:wphx-312-simplepie-file-http-oracle-fixture": "node tools/wp-core/run-simplepie-file-http-oracle-fixture.mjs",

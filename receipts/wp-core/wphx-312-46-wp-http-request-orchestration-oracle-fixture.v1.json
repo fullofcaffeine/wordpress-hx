@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-46-wp-http-request-orchestration-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.33",
+    "external_ref": "WPHX-312.46",
+    "title": "WPHX-312.46 - Add WP_Http request orchestration oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "role": "WP_Http request orchestration oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle WP_Http request orchestration boundary"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs",
+      "role": "deterministic PHP CLI oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-wp-http-request-orchestration-oracle-fixture",
+    "npm run wp:core:wphx-312-wp-http-request-orchestration-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-41-wp-http-helper-oracle-fixture",
+    "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture",
+    "receipt:wphx-312-43-http-api-wrapper-safety-oracle-fixture",
+    "receipt:wphx-312-45-http-transport-callback-test-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 23,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "transport_execution_claimed": false
+  }
+}
