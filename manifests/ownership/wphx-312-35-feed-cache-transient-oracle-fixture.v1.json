@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/feed-cache-transient-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-5tf",
+    "external_ref": "WPHX-312.35"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Feed_Cache_Transient site-transient adapter behavior",
+    "area": "src/wp-includes/class-wp-feed-cache-transient.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-feed-cache-transient.php in isolated PHP CLI probes with deterministic site-transient, filter, and SimplePie object stubs. It observes transient name derivation, wp_feed_cache_transient_lifetime filtering, save/load/mtime/touch/unlink behavior, array persistence, SimplePie object data extraction, expiration handoff, and paired transient deletion without claiming live SimplePie feed parsing, remote feed fetching, object-cache backend behavior, multisite cache persistence, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-site-transient-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded feed fetching, SimplePie parser/cache registration, persistent object-cache/multisite behavior, selected upstream feed PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-35"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-feed-cache-transient-oracle-fixture",
+      "npm run wp:core:wphx-312-feed-cache-transient-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-35-feed-cache-transient-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:fd3f951555130f44dff44f28a574101bdc189c360d1bfc1f58302e5dbcdba4db"
+  }
+}

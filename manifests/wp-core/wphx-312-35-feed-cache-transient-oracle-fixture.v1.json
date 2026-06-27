@@ -1,0 +1,516 @@
+{
+  "schema": "wphx.wp-core-feed-cache-transient-oracle-fixture.v1",
+  "issue": "WPHX-312.35",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "remote_feed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "bytes": 29193,
+      "sha256": "sha256:3732343ca7f8a0e5a1a6b18d5331953d72fc98e30a7dbc82f91703951c645f52"
+    },
+    "magpie_fetch_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+      "bytes": 18410,
+      "sha256": "sha256:d47234172d1955dee3a10f09681449f0cd6a6d49e86c9aaeef6b72a9ddec5ab4"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs",
+      "bytes": 19544,
+      "sha256": "sha256:815fdebffc0cc8f5b7fa5dd81ddf1e1ef8e7d7b8ca9ed72964c508d4494a9893"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-feed-cache-transient.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-feed-cache-transient.php",
+        "bytes": 3304,
+        "sha256": "sha256:516553579a3d4afabaf4cc046416fa9edb2ab491ef499fd4a0f073a1acc78c38"
+      }
+    ],
+    "support_sources": [
+      {
+        "path": "src/wp-includes/SimplePie/src/Cache/Base.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/SimplePie/src/Cache/Base.php",
+        "bytes": 1878,
+        "sha256": "sha256:445705018f4a73ae592b98ca2fa3032e2dcc716033294e2501b07649a8d5a8ce"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "feed-cache:constructor-lifetime",
+        "focus": "constructor derives feed/mod transient names and filters lifetime by cache key"
+      },
+      {
+        "id": "feed-cache:save-load-array",
+        "focus": "array data save writes data and mod transients with filtered expiration, then load and mtime read them back"
+      },
+      {
+        "id": "feed-cache:save-simplepie-object",
+        "focus": "saving a SimplePie object extracts only the data property before persistence"
+      },
+      {
+        "id": "feed-cache:touch",
+        "focus": "touch updates only the mod transient with current time and filtered lifetime"
+      },
+      {
+        "id": "feed-cache:unlink",
+        "focus": "unlink deletes both data and mod transients and returns true"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Feed_Cache_Transient::__construct",
+      "WP_Feed_Cache_Transient::save",
+      "WP_Feed_Cache_Transient::load",
+      "WP_Feed_Cache_Transient::mtime",
+      "WP_Feed_Cache_Transient::touch",
+      "WP_Feed_Cache_Transient::unlink",
+      "SimplePie\\Cache\\Base::TYPE_FEED",
+      "SimplePie\\SimplePie",
+      "wp_feed_cache_transient_lifetime",
+      "set_site_transient",
+      "get_site_transient",
+      "delete_site_transient"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-feed-cache-transient.php"
+    ],
+    "support_files": [
+      "src/wp-includes/SimplePie/src/Cache/Base.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-35/probe.php",
+      "sha256": "sha256:771e5ef7b384408da812cdd35fcf27349c5414db11cdecdad9a034747cf3bba4"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "set_site_transient, get_site_transient, delete_site_transient, apply_filters, and a tiny SimplePie object are deterministic stubs; copied class-wp-feed-cache-transient.php remains the executed public feed-cache source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-35/oracle",
+    "candidate_root": "build/wp-core/wphx-312-35/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-feed-cache-transient.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-35/oracle/wp-includes/class-wp-feed-cache-transient.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-35/candidate/wp-includes/class-wp-feed-cache-transient.php"
+      },
+      {
+        "path": "src/wp-includes/SimplePie/src/Cache/Base.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-35/oracle/wp-includes/SimplePie/src/Cache/Base.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-35/candidate/wp-includes/SimplePie/src/Cache/Base.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "feed-cache:constructor-lifetime": {
+        "case": "feed-cache:constructor-lifetime",
+        "state": {
+          "name": "feed_constructor-key",
+          "mod_name": "feed_mod_constructor-key",
+          "lifetime": 321
+        },
+        "filters": [
+          {
+            "hook": "wp_feed_cache_transient_lifetime",
+            "value": 43200,
+            "args": [
+              "constructor-key"
+            ]
+          }
+        ],
+        "assertions": {
+          "names": true,
+          "lifetime_filtered": true,
+          "filter_args": true
+        }
+      },
+      "feed-cache:save-load-array": {
+        "case": "feed-cache:save-load-array",
+        "save": true,
+        "load": {
+          "items": [
+            "alpha",
+            "beta"
+          ],
+          "meta": {
+            "source": "fixture"
+          }
+        },
+        "mtime_is_int": true,
+        "sets": [
+          {
+            "name": "feed_array-key",
+            "value": {
+              "items": [
+                "alpha",
+                "beta"
+              ],
+              "meta": {
+                "source": "fixture"
+              }
+            },
+            "expiration": 222
+          },
+          {
+            "name": "feed_mod_array-key",
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 222
+          }
+        ],
+        "gets": [
+          "feed_array-key",
+          "feed_mod_array-key"
+        ],
+        "transients": {
+          "feed_array-key": {
+            "value": {
+              "items": [
+                "alpha",
+                "beta"
+              ],
+              "meta": {
+                "source": "fixture"
+              }
+            },
+            "expiration": 222
+          },
+          "feed_mod_array-key": {
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 222
+          }
+        },
+        "assertions": {
+          "save_true": true,
+          "load_roundtrip": true,
+          "mtime_timestamp": true,
+          "set_names_expiration": true,
+          "get_order": true
+        }
+      },
+      "feed-cache:save-simplepie-object": {
+        "case": "feed-cache:save-simplepie-object",
+        "save": true,
+        "sets": [
+          {
+            "name": "feed_object-key",
+            "value": {
+              "cached": "from-object",
+              "count": 2
+            },
+            "expiration": 333
+          },
+          {
+            "name": "feed_mod_object-key",
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 333
+          }
+        ],
+        "transients": {
+          "feed_mod_object-key": {
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 333
+          },
+          "feed_object-key": {
+            "value": {
+              "cached": "from-object",
+              "count": 2
+            },
+            "expiration": 333
+          }
+        },
+        "assertions": {
+          "save_true": true,
+          "object_data_extracted": true,
+          "expiration": true
+        }
+      },
+      "feed-cache:touch": {
+        "case": "feed-cache:touch",
+        "touch": true,
+        "sets": [
+          {
+            "name": "feed_mod_touch-key",
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 444
+          }
+        ],
+        "transients": {
+          "feed_mod_touch-key": {
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 444
+          }
+        },
+        "assertions": {
+          "touch_true": true,
+          "only_mod_set": true,
+          "expiration": true
+        }
+      },
+      "feed-cache:unlink": {
+        "case": "feed-cache:unlink",
+        "unlink": true,
+        "deletes": [
+          "feed_unlink-key",
+          "feed_mod_unlink-key"
+        ],
+        "transients_after_unlink": [],
+        "assertions": {
+          "unlink_true": true,
+          "deleted_both": true,
+          "empty_store": true
+        }
+      }
+    },
+    "candidate": {
+      "feed-cache:constructor-lifetime": {
+        "case": "feed-cache:constructor-lifetime",
+        "state": {
+          "name": "feed_constructor-key",
+          "mod_name": "feed_mod_constructor-key",
+          "lifetime": 321
+        },
+        "filters": [
+          {
+            "hook": "wp_feed_cache_transient_lifetime",
+            "value": 43200,
+            "args": [
+              "constructor-key"
+            ]
+          }
+        ],
+        "assertions": {
+          "names": true,
+          "lifetime_filtered": true,
+          "filter_args": true
+        }
+      },
+      "feed-cache:save-load-array": {
+        "case": "feed-cache:save-load-array",
+        "save": true,
+        "load": {
+          "items": [
+            "alpha",
+            "beta"
+          ],
+          "meta": {
+            "source": "fixture"
+          }
+        },
+        "mtime_is_int": true,
+        "sets": [
+          {
+            "name": "feed_array-key",
+            "value": {
+              "items": [
+                "alpha",
+                "beta"
+              ],
+              "meta": {
+                "source": "fixture"
+              }
+            },
+            "expiration": 222
+          },
+          {
+            "name": "feed_mod_array-key",
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 222
+          }
+        ],
+        "gets": [
+          "feed_array-key",
+          "feed_mod_array-key"
+        ],
+        "transients": {
+          "feed_array-key": {
+            "value": {
+              "items": [
+                "alpha",
+                "beta"
+              ],
+              "meta": {
+                "source": "fixture"
+              }
+            },
+            "expiration": 222
+          },
+          "feed_mod_array-key": {
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 222
+          }
+        },
+        "assertions": {
+          "save_true": true,
+          "load_roundtrip": true,
+          "mtime_timestamp": true,
+          "set_names_expiration": true,
+          "get_order": true
+        }
+      },
+      "feed-cache:save-simplepie-object": {
+        "case": "feed-cache:save-simplepie-object",
+        "save": true,
+        "sets": [
+          {
+            "name": "feed_object-key",
+            "value": {
+              "cached": "from-object",
+              "count": 2
+            },
+            "expiration": 333
+          },
+          {
+            "name": "feed_mod_object-key",
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 333
+          }
+        ],
+        "transients": {
+          "feed_mod_object-key": {
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 333
+          },
+          "feed_object-key": {
+            "value": {
+              "cached": "from-object",
+              "count": 2
+            },
+            "expiration": 333
+          }
+        },
+        "assertions": {
+          "save_true": true,
+          "object_data_extracted": true,
+          "expiration": true
+        }
+      },
+      "feed-cache:touch": {
+        "case": "feed-cache:touch",
+        "touch": true,
+        "sets": [
+          {
+            "name": "feed_mod_touch-key",
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 444
+          }
+        ],
+        "transients": {
+          "feed_mod_touch-key": {
+            "value": {
+              "timestamp": "__time__"
+            },
+            "expiration": 444
+          }
+        },
+        "assertions": {
+          "touch_true": true,
+          "only_mod_set": true,
+          "expiration": true
+        }
+      },
+      "feed-cache:unlink": {
+        "case": "feed-cache:unlink",
+        "unlink": true,
+        "deletes": [
+          "feed_unlink-key",
+          "feed_mod_unlink-key"
+        ],
+        "transients_after_unlink": [],
+        "assertions": {
+          "unlink_true": true,
+          "deleted_both": true,
+          "empty_store": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:271d23b9dfd8963076a265016164e60486bd2f1e376859e2b2407f739c48b80a",
+    "candidate_sha256": "sha256:271d23b9dfd8963076a265016164e60486bd2f1e376859e2b2407f739c48b80a",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-simplepie-feed-fetch-and-parse-not-executed",
+      "owner": "WPHX-312.35",
+      "detail": "The fixture exercises the transient cache adapter directly. Remote feed fetching, SimplePie parser state, cache registration from fetch_feed, and feed XML parsing remain later WPHX-312 gates."
+    },
+    {
+      "id": "persistent-object-cache-and-multisite-storage-not-executed",
+      "owner": "WPHX-312.35",
+      "detail": "Site transient functions are deterministic in-memory stubs. Persistent object-cache backends, multisite/global cache behavior, expiration races, and database-backed transients are not claimed."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.35",
+      "detail": "The fixture uses PHP CLI with deterministic stubs rather than an installed WordPress distribution, plugin/theme filters, real feeds, or production cache configuration."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.35",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 12,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_feed_fetch_claimed": false,
+    "persistent_cache_claimed": false
+  }
+}
