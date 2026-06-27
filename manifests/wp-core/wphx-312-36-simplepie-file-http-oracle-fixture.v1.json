@@ -1,0 +1,511 @@
+{
+  "schema": "wphx.wp-core-simplepie-file-http-oracle-fixture.v1",
+  "issue": "WPHX-312.36",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-simplepie-file-http-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "remote_feed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "bytes": 29193,
+      "sha256": "sha256:3732343ca7f8a0e5a1a6b18d5331953d72fc98e30a7dbc82f91703951c645f52"
+    },
+    "http_requests_bridge_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+      "bytes": 40232,
+      "sha256": "sha256:21c2e98e5afa2b69f04a98356afa7ef08bd23e909eeeb911afa6622bdcfeea57"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-simplepie-file-http-oracle-fixture.mjs",
+      "bytes": 20675,
+      "sha256": "sha256:79306aa9e13d57549b93a054e4be6338f52ba1ff90a463400278e0711d027fef"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-simplepie-file.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-simplepie-file.php",
+        "bytes": 3552,
+        "sha256": "sha256:f41391177074bfdadd2264bd916496b1e60ab4aeba5896c46a29defbfefb6ca4"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "simplepie-file:default-useragent",
+        "focus": "remote HTTP request omits user-agent when caller passes SimplePie default"
+      },
+      {
+        "id": "simplepie-file:custom-headers-useragent",
+        "focus": "remote HTTP request includes caller headers and custom user-agent"
+      },
+      {
+        "id": "simplepie-file:repeated-array-headers",
+        "focus": "array-valued response headers normalize to comma-joined strings except content-type last value"
+      },
+      {
+        "id": "simplepie-file:case-dictionary-headers",
+        "focus": "Requests CaseInsensitiveDictionary response headers are converted through getAll before normalization"
+      },
+      {
+        "id": "simplepie-file:wp-error",
+        "focus": "WP_Error transport failure maps to SimplePie-style error and success=false"
+      },
+      {
+        "id": "simplepie-file:non-http-url",
+        "focus": "non-HTTP local URL marks file unsuccessful without issuing a Core HTTP request"
+      }
+    ],
+    "covered_symbols": [
+      "WP_SimplePie_File::__construct",
+      "SimplePie\\File",
+      "SimplePie\\SimplePie::FILE_SOURCE_REMOTE",
+      "SimplePie\\Misc::get_default_useragent",
+      "WpOrg\\Requests\\Utility\\CaseInsensitiveDictionary::getAll",
+      "wp_safe_remote_request",
+      "is_wp_error",
+      "wp_remote_retrieve_headers",
+      "wp_remote_retrieve_body",
+      "wp_remote_retrieve_response_code",
+      "WP_Error::get_error_message"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-simplepie-file.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-36/probe.php",
+      "sha256": "sha256:14928c6f0491ea98eed9517daff0961f7b5f7397cdd027621b5bf5bf96f31d5d"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "SimplePie parent/Misc, Requests CaseInsensitiveDictionary, WP_Error, wp_safe_remote_request, is_wp_error, and wp_remote_retrieve_* helpers are deterministic stubs; copied class-wp-simplepie-file.php remains the executed public feed HTTP adapter source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-36/oracle",
+    "candidate_root": "build/wp-core/wphx-312-36/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-simplepie-file.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-36/oracle/wp-includes/class-wp-simplepie-file.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-36/candidate/wp-includes/class-wp-simplepie-file.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "simplepie-file:default-useragent": {
+        "case": "simplepie-file:default-useragent",
+        "file": {
+          "url": "https://feeds.example/default.xml",
+          "timeout": 7,
+          "redirects": 3,
+          "headers": {
+            "content-type": "application/rss+xml"
+          },
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": "<rss>default</rss>",
+          "status_code": 200,
+          "error": null,
+          "success": null
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/default.xml",
+            "args": {
+              "timeout": 7,
+              "redirection": 3
+            }
+          }
+        ],
+        "assertions": {
+          "request_args": true,
+          "body_status_headers": true,
+          "method_remote": true
+        }
+      },
+      "simplepie-file:custom-headers-useragent": {
+        "case": "simplepie-file:custom-headers-useragent",
+        "file": {
+          "url": "https://feeds.example/custom.xml",
+          "timeout": 11,
+          "redirects": 4,
+          "headers": {
+            "etag": "\"custom-fixture\""
+          },
+          "useragent": "custom-agent/1.0",
+          "method": 1,
+          "body": "<rss>custom</rss>",
+          "status_code": 202,
+          "error": null,
+          "success": null
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/custom.xml",
+            "args": {
+              "timeout": 11,
+              "redirection": 4,
+              "headers": {
+                "Accept": "application/rss+xml"
+              },
+              "user-agent": "custom-agent/1.0"
+            }
+          }
+        ],
+        "assertions": {
+          "request_args": true,
+          "response": true
+        }
+      },
+      "simplepie-file:repeated-array-headers": {
+        "case": "simplepie-file:repeated-array-headers",
+        "file": {
+          "url": "https://feeds.example/repeated.xml",
+          "timeout": 5,
+          "redirects": 2,
+          "headers": {
+            "content-type": "application/atom+xml",
+            "link": "<https://feeds.example/a>; rel=\"self\", <https://feeds.example/b>; rel=\"next\"",
+            "x-cache": "miss, store"
+          },
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": "<feed>repeated</feed>",
+          "status_code": 203,
+          "error": null,
+          "success": null
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/repeated.xml",
+            "args": {
+              "timeout": 5,
+              "redirection": 2
+            }
+          }
+        ],
+        "assertions": {
+          "content_type_last": true,
+          "joined_headers": true,
+          "status_body": true
+        }
+      },
+      "simplepie-file:case-dictionary-headers": {
+        "case": "simplepie-file:case-dictionary-headers",
+        "file": {
+          "url": "https://feeds.example/dictionary.xml",
+          "timeout": 6,
+          "redirects": 1,
+          "headers": {
+            "content-type": "application/xml",
+            "vary": "Accept, User-Agent"
+          },
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": "<feed>dictionary</feed>",
+          "status_code": 204,
+          "error": null,
+          "success": null
+        },
+        "dictionary_get_all": 1,
+        "assertions": {
+          "dictionary_used": true,
+          "normalized_headers": true,
+          "status_body": true
+        }
+      },
+      "simplepie-file:wp-error": {
+        "case": "simplepie-file:wp-error",
+        "file": {
+          "url": "https://feeds.example/error.xml",
+          "timeout": 8,
+          "redirects": 2,
+          "headers": null,
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": null,
+          "status_code": null,
+          "error": "WP HTTP Error: fixture transport failed",
+          "success": false
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/error.xml",
+            "args": {
+              "timeout": 8,
+              "redirection": 2
+            }
+          }
+        ],
+        "assertions": {
+          "error_message": true,
+          "success_false": true,
+          "no_body_or_status": true
+        }
+      },
+      "simplepie-file:non-http-url": {
+        "case": "simplepie-file:non-http-url",
+        "file": {
+          "url": "/tmp/feed.xml",
+          "timeout": 9,
+          "redirects": 6,
+          "headers": {
+            "Accept": "text/xml"
+          },
+          "useragent": "custom-agent/2.0",
+          "method": 1,
+          "body": null,
+          "status_code": null,
+          "error": "",
+          "success": false
+        },
+        "requests": [],
+        "assertions": {
+          "no_request": true,
+          "error_empty_success_false": true,
+          "method_remote": true
+        }
+      }
+    },
+    "candidate": {
+      "simplepie-file:default-useragent": {
+        "case": "simplepie-file:default-useragent",
+        "file": {
+          "url": "https://feeds.example/default.xml",
+          "timeout": 7,
+          "redirects": 3,
+          "headers": {
+            "content-type": "application/rss+xml"
+          },
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": "<rss>default</rss>",
+          "status_code": 200,
+          "error": null,
+          "success": null
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/default.xml",
+            "args": {
+              "timeout": 7,
+              "redirection": 3
+            }
+          }
+        ],
+        "assertions": {
+          "request_args": true,
+          "body_status_headers": true,
+          "method_remote": true
+        }
+      },
+      "simplepie-file:custom-headers-useragent": {
+        "case": "simplepie-file:custom-headers-useragent",
+        "file": {
+          "url": "https://feeds.example/custom.xml",
+          "timeout": 11,
+          "redirects": 4,
+          "headers": {
+            "etag": "\"custom-fixture\""
+          },
+          "useragent": "custom-agent/1.0",
+          "method": 1,
+          "body": "<rss>custom</rss>",
+          "status_code": 202,
+          "error": null,
+          "success": null
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/custom.xml",
+            "args": {
+              "timeout": 11,
+              "redirection": 4,
+              "headers": {
+                "Accept": "application/rss+xml"
+              },
+              "user-agent": "custom-agent/1.0"
+            }
+          }
+        ],
+        "assertions": {
+          "request_args": true,
+          "response": true
+        }
+      },
+      "simplepie-file:repeated-array-headers": {
+        "case": "simplepie-file:repeated-array-headers",
+        "file": {
+          "url": "https://feeds.example/repeated.xml",
+          "timeout": 5,
+          "redirects": 2,
+          "headers": {
+            "content-type": "application/atom+xml",
+            "link": "<https://feeds.example/a>; rel=\"self\", <https://feeds.example/b>; rel=\"next\"",
+            "x-cache": "miss, store"
+          },
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": "<feed>repeated</feed>",
+          "status_code": 203,
+          "error": null,
+          "success": null
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/repeated.xml",
+            "args": {
+              "timeout": 5,
+              "redirection": 2
+            }
+          }
+        ],
+        "assertions": {
+          "content_type_last": true,
+          "joined_headers": true,
+          "status_body": true
+        }
+      },
+      "simplepie-file:case-dictionary-headers": {
+        "case": "simplepie-file:case-dictionary-headers",
+        "file": {
+          "url": "https://feeds.example/dictionary.xml",
+          "timeout": 6,
+          "redirects": 1,
+          "headers": {
+            "content-type": "application/xml",
+            "vary": "Accept, User-Agent"
+          },
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": "<feed>dictionary</feed>",
+          "status_code": 204,
+          "error": null,
+          "success": null
+        },
+        "dictionary_get_all": 1,
+        "assertions": {
+          "dictionary_used": true,
+          "normalized_headers": true,
+          "status_body": true
+        }
+      },
+      "simplepie-file:wp-error": {
+        "case": "simplepie-file:wp-error",
+        "file": {
+          "url": "https://feeds.example/error.xml",
+          "timeout": 8,
+          "redirects": 2,
+          "headers": null,
+          "useragent": "SimplePie/default-fixture",
+          "method": 1,
+          "body": null,
+          "status_code": null,
+          "error": "WP HTTP Error: fixture transport failed",
+          "success": false
+        },
+        "requests": [
+          {
+            "url": "https://feeds.example/error.xml",
+            "args": {
+              "timeout": 8,
+              "redirection": 2
+            }
+          }
+        ],
+        "assertions": {
+          "error_message": true,
+          "success_false": true,
+          "no_body_or_status": true
+        }
+      },
+      "simplepie-file:non-http-url": {
+        "case": "simplepie-file:non-http-url",
+        "file": {
+          "url": "/tmp/feed.xml",
+          "timeout": 9,
+          "redirects": 6,
+          "headers": {
+            "Accept": "text/xml"
+          },
+          "useragent": "custom-agent/2.0",
+          "method": 1,
+          "body": null,
+          "status_code": null,
+          "error": "",
+          "success": false
+        },
+        "requests": [],
+        "assertions": {
+          "no_request": true,
+          "error_empty_success_false": true,
+          "method_remote": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:3e7bf3fb326ab9587536d0f4599077f7d17b048431323ae647275e2b3537232c",
+    "candidate_sha256": "sha256:3e7bf3fb326ab9587536d0f4599077f7d17b048431323ae647275e2b3537232c",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-network-io-not-executed",
+      "owner": "WPHX-312.36",
+      "detail": "The fixture uses deterministic wp_safe_remote_request stubs. Real DNS, TLS, redirects, proxies, streaming, timeout races, and Requests transport behavior remain later WPHX-312 gates."
+    },
+    {
+      "id": "simplepie-parser-and-feed-xml-not-executed",
+      "owner": "WPHX-312.36",
+      "detail": "The fixture observes the WordPress HTTP file adapter only. SimplePie feed parsing, sanitizer registry wiring, cache registration, and feed XML interpretation remain separate gates."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.36",
+      "detail": "The fixture uses PHP CLI with deterministic stubs rather than an installed WordPress distribution, plugin filters, production HTTP configuration, or real remote feed endpoints."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.36",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 11,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_network_io_claimed": false,
+    "simplepie_parser_claimed": false
+  }
+}

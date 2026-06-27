@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/simplepie-file-http-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.23",
+    "external_ref": "WPHX-312.36"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_SimplePie_File WordPress HTTP adapter behavior",
+    "area": "src/wp-includes/class-wp-simplepie-file.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-simplepie-file.php in isolated PHP CLI probes with deterministic SimplePie parent/Misc, Requests header dictionary, WP_Error, and WordPress HTTP helper stubs. It observes remote constructor argument handoff, default user-agent omission, custom user-agent inclusion, successful response body/status/header capture, repeated-header normalization, CaseInsensitiveDictionary conversion, WP_Error failure mapping, and non-HTTP URL failure behavior without claiming live network I/O, SimplePie parser behavior, feed XML parsing, Requests transport/TLS/proxy behavior, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-http-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded feed fetching, SimplePie parser integration, Requests transport/TLS/proxy behavior, selected upstream feed PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-simplepie-file-http-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-36"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-simplepie-file-http-oracle-fixture",
+      "npm run wp:core:wphx-312-simplepie-file-http-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-36-simplepie-file-http-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:6a8ca0fa8e27286aa96fc67daea0bcdd47bc6366a25c313a5b47607205830314"
+  }
+}
