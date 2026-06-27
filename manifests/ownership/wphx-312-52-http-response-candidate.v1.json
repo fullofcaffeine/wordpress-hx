@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-response-candidate",
+  "issue": {
+    "id": "wordpresshx-ldp",
+    "external_ref": "WPHX-312.52"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_HTTP_Response object state behavior",
+    "area": "src/wp-includes/class-wp-http-response.php",
+    "public_contract": "This candidate preserves the WP_HTTP_Response PHP class shell, public properties, AllowDynamicProperties attribute, and absint boundary while delegating constructor-equivalent state initialization, get/set data, get/set headers, single-header replace/append behavior, get/set status, and jsonSerialize data handoff to typed Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-strategy-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass REST dispatch, Requests bridge, installed HTTP routes, selected upstream HTTP/REST PHPUnit, and ecosystem fixtures before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-response-candidate.mjs",
+    "fixtures/wp-core/http-response-candidate.hxml",
+    "src/wphx/wp/http/HttpResponseState.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json",
+    "manifests/ownership/wphx-312-52-http-response-candidate.v1.json",
+    "receipts/wp-core/wphx-312-52-http-response-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json",
+    "manifests/ownership/wphx-312-52-http-response-candidate.v1.json",
+    "receipts/wp-core/wphx-312-52-http-response-candidate.v1.json",
+    "build/wp-core/wphx-312-52"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-response-candidate",
+      "npm run wp:core:wphx-312-http-response-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-52-http-response-candidate"
+    ],
+    "manifest_digest": "sha256:43da1f70925a91b8736ed095c30683e8cf1c568876675688d4064dd8e61f2ea0"
+  }
+}

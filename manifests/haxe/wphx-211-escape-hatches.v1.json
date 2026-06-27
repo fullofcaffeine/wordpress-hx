@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 129,
+  "scanned_file_count": 131,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -28,6 +28,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCronMailFeedEmbedAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProxyCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/MultisiteAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/NativeValueLoweringProofEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/OptionCacheCandidateEntry.hx",
@@ -120,6 +121,7 @@
     "src/wphx/wp/http/HttpCronMailFeedEmbedAdapterContract.hx",
     "src/wphx/wp/http/HttpEncodingStrategy.hx",
     "src/wphx/wp/http/HttpProxyStrategy.hx",
+    "src/wphx/wp/http/HttpResponseState.hx",
     "src/wphx/wp/macros/BindingValidator.hx",
     "src/wphx/wp/multisite/MultisiteAdapterContract.hx",
     "src/wphx/wp/options/PureOptionCache.hx",
@@ -136,7 +138,7 @@
     "src/wphx/wp/themes/ThemeTemplateAdapterContract.hx"
   ],
   "lookback_lines": 6,
-  "occurrence_count": 49,
+  "occurrence_count": 55,
   "occurrences": [
     {
       "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeKernel.hx",
@@ -619,6 +621,66 @@
       "justification": "WPHX-211: PHP empty() semantics are required for content-encoding header checks."
     },
     {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "line": 69,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"{0}->{1}\", object, property);",
+      "source_sha256": "sha256:761b3786cd238a21a810692dfd0d496cf57294aa4561acd2895764dbe0c8bc22",
+      "justification": "WPHX-211: WP_HTTP_Response exposes mutable public PHP properties."
+    },
+    {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "line": 75,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"{0}->{1} = {2}\", object, property, value);",
+      "source_sha256": "sha256:2e9decd1cc9b8e5cd8044d9ba5a0e9b834a9572989e545bcfc825c24f445ec31",
+      "justification": "WPHX-211: public property writes are part of the PHP-visible response ABI."
+    },
+    {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "line": 81,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"isset({0}->{1}[{2}])\", object, property, key);",
+      "source_sha256": "sha256:e75083fec1156926612a510c3f3c6c5dcec72e1a3d46efc9e79eeb31d4e5aa1e",
+      "justification": "WPHX-211: isset on a public PHP array property preserves null-aware header existence semantics."
+    },
+    {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "line": 87,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"{0}->{1}[{2}]\", object, property, key);",
+      "source_sha256": "sha256:c1e02fead9952ef7ea7ac6bf25057925f4e1bfe571c6e4e485ae1e68f049a187",
+      "justification": "WPHX-211: native PHP array indexing preserves associative header keys on public properties."
+    },
+    {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "line": 93,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "php.Syntax.code(\"{0}->{1}[{2}] = {3}\", object, property, key, value);",
+      "source_sha256": "sha256:c38eefc8ec757e3a369cbef0373efa549d98be1094de08955ede111495205065",
+      "justification": "WPHX-211: header mutation must write into the native PHP associative array property."
+    },
+    {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "line": 112,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"absint({0})\", value);",
+      "source_sha256": "sha256:675aeca198f1d980e637dcd7424c7b4762f743f650a980dde03ea40a84e0f772",
+      "justification": "WPHX-211: WP_HTTP_Response status coercion delegates to WordPress absint()."
+    },
+    {
       "path": "src/wphx/wp/macros/BindingValidator.hx",
       "line": 291,
       "kinds": [
@@ -631,7 +693,7 @@
   ],
   "by_kind": {
     "Dynamic": 7,
-    "php.Syntax.code": 42
+    "php.Syntax.code": 48
   },
   "validation_result": {
     "status": "passed",

@@ -233,6 +233,8 @@
     "wp:core:wphx-312-http-ixr-client-oracle-fixture:check": "node tools/wp-core/run-http-ixr-client-oracle-fixture.mjs --check",
     "wp:core:wphx-312-http-response-object-oracle-fixture": "node tools/wp-core/run-http-response-object-oracle-fixture.mjs",
     "wp:core:wphx-312-http-response-object-oracle-fixture:check": "node tools/wp-core/run-http-response-object-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-http-response-candidate": "node tools/wp-core/run-http-response-candidate.mjs",
+    "wp:core:wphx-312-http-response-candidate:check": "node tools/wp-core/run-http-response-candidate.mjs --check",
     "wp:core:wphx-312-http-cookie-object-oracle-fixture": "node tools/wp-core/run-http-cookie-object-oracle-fixture.mjs",
     "wp:core:wphx-312-http-cookie-object-oracle-fixture:check": "node tools/wp-core/run-http-cookie-object-oracle-fixture.mjs --check",
     "wp:core:wphx-312-http-encoding-oracle-fixture": "node tools/wp-core/run-http-encoding-oracle-fixture.mjs",

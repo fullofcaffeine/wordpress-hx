@@ -1,0 +1,50 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-52-http-response-candidate",
+  "issue": {
+    "id": "wordpresshx-ldp",
+    "external_ref": "WPHX-312.52",
+    "title": "WPHX-312.52 - Promote WP_HTTP_Response object state to Haxe candidate"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json",
+      "role": "WP_HTTP_Response Haxe parity candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-52-http-response-candidate.v1.json",
+      "role": "ownership manifest for Haxe-owned HTTP response state behavior"
+    },
+    {
+      "path": "tools/wp-core/run-http-response-candidate.mjs",
+      "role": "deterministic PHP CLI oracle/candidate Haxe runner"
+    },
+    {
+      "path": "src/wphx/wp/http/HttpResponseState.hx",
+      "role": "typed Haxe source for WP_HTTP_Response state behavior"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-http-response-candidate",
+    "npm run wp:core:wphx-312-http-response-candidate:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-38-http-response-object-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "promoted_symbols": 9,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "rest_dispatch_claimed": false,
+    "live_http_claimed": false
+  }
+}
