@@ -1,0 +1,1137 @@
+{
+  "schema": "wphx.wp-core-phpmailer-setup-oracle-fixture.v1",
+  "issue": "WPHX-312.13",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-phpmailer-setup-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_cron_mail_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "bytes": 38945,
+      "sha256": "sha256:017e1d13c9f442eb5f02a3c37bb3ab6ba9edc661d9c0c6b87aab429e3d7b325a"
+    },
+    "privacy_mail_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+      "bytes": 20873,
+      "sha256": "sha256:5c88795e06e49ff2fac68353e9f71ad45e27159c15d9339625fa934834114d35"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-phpmailer-setup-oracle-fixture.mjs",
+      "bytes": 21459,
+      "sha256": "sha256:fc32182fc6b1d80df976ab7dae4d15c1a06ba474923ebf02f7f3434f0dcfbdd6"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/pluggable.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      },
+      {
+        "path": "src/wp-includes/class-wp-phpmailer.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-phpmailer.php",
+        "bytes": 4348,
+        "sha256": "sha256:4033b95890bc5f228381f55c89cb538ac02ad624f2db35758a98cc9b56b8d33d"
+      },
+      {
+        "path": "src/wp-includes/PHPMailer/PHPMailer.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/PHPMailer/PHPMailer.php",
+        "bytes": 194030,
+        "sha256": "sha256:01038c4104554fe7fdb958eb4653883c5cf93af76a3c8797794001c35c1bf553"
+      },
+      {
+        "path": "src/wp-includes/PHPMailer/SMTP.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/PHPMailer/SMTP.php",
+        "bytes": 53628,
+        "sha256": "sha256:f7c8210e4047871f9f0b0639d7387d5574738fb9984f744d58d85378da77c68e"
+      },
+      {
+        "path": "src/wp-includes/PHPMailer/Exception.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/PHPMailer/Exception.php",
+        "bytes": 1256,
+        "sha256": "sha256:22ab858ae438d98f58f41f38ad2191d1b0d59570aebea0463a7948cfae1021b7"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "mail:html-headers-attachments-embeds",
+        "focus": "wp_mail parses From/CC/BCC/Reply-To/custom headers, content type, charset, attachment, embed, and phpmailer_init state without delivery"
+      },
+      {
+        "id": "mail:array-headers-default-from",
+        "focus": "wp_mail handles array recipients/headers, default wordpress@site From, and custom header filtering"
+      },
+      {
+        "id": "mail:embed-args-filter",
+        "focus": "wp_mail_embed_args customizes CID, name, encoding, MIME type, and disposition before addEmbeddedImage"
+      },
+      {
+        "id": "mail:recipient-validation-failure",
+        "focus": "invalid recipients are skipped and PHPMailer failure is surfaced through wp_mail_failed"
+      },
+      {
+        "id": "mail:reuse-clears-state",
+        "focus": "global PHPMailer reuse clears previous recipients, attachments, headers, reply-tos, and embeds between sends"
+      }
+    ],
+    "covered_symbols": [
+      "wp_mail",
+      "PHPMailer\\PHPMailer\\PHPMailer::send",
+      "PHPMailer\\PHPMailer\\PHPMailer::preSend",
+      "PHPMailer\\PHPMailer\\PHPMailer::postSend",
+      "PHPMailer\\PHPMailer\\PHPMailer::addAddress",
+      "PHPMailer\\PHPMailer\\PHPMailer::addCC",
+      "PHPMailer\\PHPMailer\\PHPMailer::addBCC",
+      "PHPMailer\\PHPMailer\\PHPMailer::addReplyTo",
+      "PHPMailer\\PHPMailer\\PHPMailer::addAttachment",
+      "PHPMailer\\PHPMailer\\PHPMailer::addEmbeddedImage",
+      "PHPMailer\\PHPMailer\\PHPMailer::addCustomHeader",
+      "WP_PHPMailer::setLanguage",
+      "wp_mail_embed_args",
+      "phpmailer_init",
+      "wp_mail_succeeded",
+      "wp_mail_failed"
+    ],
+    "source_files": [
+      "src/wp-includes/pluggable.php",
+      "src/wp-includes/class-wp-phpmailer.php",
+      "src/wp-includes/PHPMailer/PHPMailer.php",
+      "src/wp-includes/PHPMailer/SMTP.php",
+      "src/wp-includes/PHPMailer/Exception.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-13/probe.php",
+      "sha256": "sha256:e78d03bcb7bb38d67b6b929f2c8b92281a2b5261a3c0342cd91201c750924d68"
+    },
+    "side_effect_policy": {
+      "php_mail_delivery": false,
+      "smtp_delivery": false,
+      "external_network_io": false,
+      "phpmailer_send_boundary": "WPHX_Test_PHPMailer::postSend returns true after preSend setup"
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-13/oracle",
+    "candidate_root": "build/wp-core/wphx-312-13/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/pluggable.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-13/oracle/wp-includes/pluggable.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-13/candidate/wp-includes/pluggable.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-phpmailer.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-13/oracle/wp-includes/class-wp-phpmailer.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-13/candidate/wp-includes/class-wp-phpmailer.php"
+      },
+      {
+        "path": "src/wp-includes/PHPMailer/PHPMailer.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-13/oracle/wp-includes/PHPMailer/PHPMailer.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-13/candidate/wp-includes/PHPMailer/PHPMailer.php"
+      },
+      {
+        "path": "src/wp-includes/PHPMailer/SMTP.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-13/oracle/wp-includes/PHPMailer/SMTP.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-13/candidate/wp-includes/PHPMailer/SMTP.php"
+      },
+      {
+        "path": "src/wp-includes/PHPMailer/Exception.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-13/oracle/wp-includes/PHPMailer/Exception.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-13/candidate/wp-includes/PHPMailer/Exception.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "html-headers-attachments-embeds": {
+        "case": "html-headers-attachments-embeds",
+        "result": true,
+        "snapshots": [
+          {
+            "from": "filtered@example.test",
+            "from_name": "Filtered Sender",
+            "subject": "Fixture HTML",
+            "body_sha256": "9d97f3fa2e78382fdf73e6fe9a2273faee30211b07c4e2c4a52f141debb3d189",
+            "alt_body_sha256": "888bd8cbfbfb5d8349d9aa24bada51d0532f2125f5d91ba6b7493908d3a22282",
+            "content_type": "multipart/alternative",
+            "charset": "ISO-8859-1",
+            "encoding": "8bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "one@example.test",
+                "name": "Recipient One"
+              },
+              {
+                "email": "two@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [
+              {
+                "email": "copy@example.test",
+                "name": "Copy One"
+              }
+            ],
+            "bcc": [
+              {
+                "email": "hidden@example.test",
+                "name": ""
+              }
+            ],
+            "reply_to": [
+              {
+                "email": "reply@example.test",
+                "name": "Reply Person"
+              }
+            ],
+            "custom_headers": [
+              [
+                "X-Custom",
+                "custom-value"
+              ],
+              [
+                "X-Init",
+                "yes"
+              ]
+            ],
+            "attachments": [
+              {
+                "basename": "report.txt",
+                "name": "report.txt",
+                "encoding": "base64",
+                "type": "text/plain",
+                "disposition": "attachment",
+                "cid": "report.txt"
+              },
+              {
+                "basename": "logo.png",
+                "name": "logo.png",
+                "encoding": "base64",
+                "type": "image/png",
+                "disposition": "inline",
+                "cid": "logo"
+              }
+            ],
+            "message_type": "Content-Type: multipart/mixed;\r\n boundary=\"<generated-boundary>\"\r\nContent-Transfer-Encoding: 8bit\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_embed_args",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "array-headers-default-from": {
+        "case": "array-headers-default-from",
+        "result": true,
+        "snapshots": [
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "Array Headers",
+            "body_sha256": "6ccaa6415b5ee449e3c5c716f57b4608ebe3b780f5aa6b077bc5d8eee5d961f9",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/plain",
+            "charset": "UTF-8",
+            "encoding": "7bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "array-one@example.test",
+                "name": ""
+              },
+              {
+                "email": "array-two@example.test",
+                "name": "Array Two"
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [],
+            "attachments": [],
+            "message_type": "Content-Type: text/plain; charset=UTF-8\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "embed-args-filter": {
+        "case": "embed-args-filter",
+        "result": true,
+        "snapshots": [
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "Embed Args",
+            "body_sha256": "b51885e35c117843d829ea6ba956e911da04577ca6ac05a52f91a775004706b8",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/html",
+            "charset": "UTF-8",
+            "encoding": "8bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "embed@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [],
+            "attachments": [
+              {
+                "basename": "chart.svg",
+                "name": "custom-chart.svg",
+                "encoding": "quoted-printable",
+                "type": "image/svg+xml",
+                "disposition": "inline",
+                "cid": "custom-cid"
+              }
+            ],
+            "message_type": "Content-Type: multipart/related;\r\n boundary=\"<generated-boundary>\"\r\nContent-Transfer-Encoding: 8bit\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_embed_args",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "recipient-validation-failure": {
+        "case": "recipient-validation-failure",
+        "result": false,
+        "snapshots": [],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_failed",
+            "arg_count": 1,
+            "error_code": "wp_mail_failed"
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "reuse-clears-state": {
+        "case": "reuse-clears-state",
+        "result": {
+          "first": true,
+          "second": true
+        },
+        "snapshots": [
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "First",
+            "body_sha256": "6ccaa6415b5ee449e3c5c716f57b4608ebe3b780f5aa6b077bc5d8eee5d961f9",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/plain",
+            "charset": "UTF-8",
+            "encoding": "8bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "first@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [
+              [
+                "X-First",
+                "yes"
+              ]
+            ],
+            "attachments": [
+              {
+                "basename": "report.txt",
+                "name": "report.txt",
+                "encoding": "base64",
+                "type": "text/plain",
+                "disposition": "attachment",
+                "cid": "report.txt"
+              },
+              {
+                "basename": "logo.png",
+                "name": "logo.png",
+                "encoding": "base64",
+                "type": "image/png",
+                "disposition": "inline",
+                "cid": "logo"
+              }
+            ],
+            "message_type": "Content-Type: multipart/mixed;\r\n boundary=\"<generated-boundary>\"\r\nContent-Transfer-Encoding: 8bit\r\n"
+          },
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "Second",
+            "body_sha256": "6ccaa6415b5ee449e3c5c716f57b4608ebe3b780f5aa6b077bc5d8eee5d961f9",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/plain",
+            "charset": "UTF-8",
+            "encoding": "7bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "second@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [],
+            "attachments": [],
+            "message_type": "Content-Type: text/plain; charset=UTF-8\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_embed_args",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      }
+    },
+    "candidate": {
+      "html-headers-attachments-embeds": {
+        "case": "html-headers-attachments-embeds",
+        "result": true,
+        "snapshots": [
+          {
+            "from": "filtered@example.test",
+            "from_name": "Filtered Sender",
+            "subject": "Fixture HTML",
+            "body_sha256": "9d97f3fa2e78382fdf73e6fe9a2273faee30211b07c4e2c4a52f141debb3d189",
+            "alt_body_sha256": "888bd8cbfbfb5d8349d9aa24bada51d0532f2125f5d91ba6b7493908d3a22282",
+            "content_type": "multipart/alternative",
+            "charset": "ISO-8859-1",
+            "encoding": "8bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "one@example.test",
+                "name": "Recipient One"
+              },
+              {
+                "email": "two@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [
+              {
+                "email": "copy@example.test",
+                "name": "Copy One"
+              }
+            ],
+            "bcc": [
+              {
+                "email": "hidden@example.test",
+                "name": ""
+              }
+            ],
+            "reply_to": [
+              {
+                "email": "reply@example.test",
+                "name": "Reply Person"
+              }
+            ],
+            "custom_headers": [
+              [
+                "X-Custom",
+                "custom-value"
+              ],
+              [
+                "X-Init",
+                "yes"
+              ]
+            ],
+            "attachments": [
+              {
+                "basename": "report.txt",
+                "name": "report.txt",
+                "encoding": "base64",
+                "type": "text/plain",
+                "disposition": "attachment",
+                "cid": "report.txt"
+              },
+              {
+                "basename": "logo.png",
+                "name": "logo.png",
+                "encoding": "base64",
+                "type": "image/png",
+                "disposition": "inline",
+                "cid": "logo"
+              }
+            ],
+            "message_type": "Content-Type: multipart/mixed;\r\n boundary=\"<generated-boundary>\"\r\nContent-Transfer-Encoding: 8bit\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_embed_args",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "array-headers-default-from": {
+        "case": "array-headers-default-from",
+        "result": true,
+        "snapshots": [
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "Array Headers",
+            "body_sha256": "6ccaa6415b5ee449e3c5c716f57b4608ebe3b780f5aa6b077bc5d8eee5d961f9",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/plain",
+            "charset": "UTF-8",
+            "encoding": "7bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "array-one@example.test",
+                "name": ""
+              },
+              {
+                "email": "array-two@example.test",
+                "name": "Array Two"
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [],
+            "attachments": [],
+            "message_type": "Content-Type: text/plain; charset=UTF-8\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "embed-args-filter": {
+        "case": "embed-args-filter",
+        "result": true,
+        "snapshots": [
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "Embed Args",
+            "body_sha256": "b51885e35c117843d829ea6ba956e911da04577ca6ac05a52f91a775004706b8",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/html",
+            "charset": "UTF-8",
+            "encoding": "8bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "embed@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [],
+            "attachments": [
+              {
+                "basename": "chart.svg",
+                "name": "custom-chart.svg",
+                "encoding": "quoted-printable",
+                "type": "image/svg+xml",
+                "disposition": "inline",
+                "cid": "custom-cid"
+              }
+            ],
+            "message_type": "Content-Type: multipart/related;\r\n boundary=\"<generated-boundary>\"\r\nContent-Transfer-Encoding: 8bit\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_embed_args",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "recipient-validation-failure": {
+        "case": "recipient-validation-failure",
+        "result": false,
+        "snapshots": [],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_failed",
+            "arg_count": 1,
+            "error_code": "wp_mail_failed"
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      },
+      "reuse-clears-state": {
+        "case": "reuse-clears-state",
+        "result": {
+          "first": true,
+          "second": true
+        },
+        "snapshots": [
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "First",
+            "body_sha256": "6ccaa6415b5ee449e3c5c716f57b4608ebe3b780f5aa6b077bc5d8eee5d961f9",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/plain",
+            "charset": "UTF-8",
+            "encoding": "8bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "first@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [
+              [
+                "X-First",
+                "yes"
+              ]
+            ],
+            "attachments": [
+              {
+                "basename": "report.txt",
+                "name": "report.txt",
+                "encoding": "base64",
+                "type": "text/plain",
+                "disposition": "attachment",
+                "cid": "report.txt"
+              },
+              {
+                "basename": "logo.png",
+                "name": "logo.png",
+                "encoding": "base64",
+                "type": "image/png",
+                "disposition": "inline",
+                "cid": "logo"
+              }
+            ],
+            "message_type": "Content-Type: multipart/mixed;\r\n boundary=\"<generated-boundary>\"\r\nContent-Transfer-Encoding: 8bit\r\n"
+          },
+          {
+            "from": "wordpress@example.test",
+            "from_name": "WordPress",
+            "subject": "Second",
+            "body_sha256": "6ccaa6415b5ee449e3c5c716f57b4608ebe3b780f5aa6b077bc5d8eee5d961f9",
+            "alt_body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "content_type": "text/plain",
+            "charset": "UTF-8",
+            "encoding": "7bit",
+            "mailer": "mail",
+            "to": [
+              {
+                "email": "second@example.test",
+                "name": ""
+              }
+            ],
+            "cc": [],
+            "bcc": [],
+            "reply_to": [],
+            "custom_headers": [],
+            "attachments": [],
+            "message_type": "Content-Type: text/plain; charset=UTF-8\r\n"
+          }
+        ],
+        "actions": [
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "phpmailer_init",
+            "arg_count": 1,
+            "error_code": null
+          },
+          {
+            "hook": "wp_mail_succeeded",
+            "arg_count": 1,
+            "error_code": null
+          }
+        ],
+        "filters": [
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_embed_args",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail",
+            "arg_count": 1
+          },
+          {
+            "hook": "pre_wp_mail",
+            "arg_count": 2
+          },
+          {
+            "hook": "wp_mail_from",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_from_name",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_content_type",
+            "arg_count": 1
+          },
+          {
+            "hook": "wp_mail_charset",
+            "arg_count": 1
+          }
+        ],
+        "php_errors": []
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:aeb7159a81142e7bb905a66dd715270530b1334f939fe35963a5a2a6a45d16c2",
+    "candidate_sha256": "sha256:aeb7159a81142e7bb905a66dd715270530b1334f939fe35963a5a2a6a45d16c2"
+  },
+  "remaining_gaps": [
+    {
+      "id": "real-mail-transport-not-executed",
+      "owner": "WPHX-312.13",
+      "detail": "The fixture records PHPMailer setup through a no-delivery subclass. PHP mail(), SMTP, DNS, TLS, authentication, remote server errors, and operational delivery remain later gates."
+    },
+    {
+      "id": "recovery-and-privacy-installed-mail-not-executed",
+      "owner": "WPHX-312.13",
+      "detail": "The fixture focuses on wp_mail setup primitives. Installed recovery mode mail and database-backed privacy request mail flows remain later distribution gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.13",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 16,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "real_mail_transport_claimed": false
+  }
+}

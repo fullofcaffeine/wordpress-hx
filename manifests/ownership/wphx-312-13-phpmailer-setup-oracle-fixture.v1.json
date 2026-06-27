@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/phpmailer-setup-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.13",
+    "external_ref": "WPHX-312.13"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "wp_mail PHPMailer setup, header, attachment, embed, init-hook, and failure behavior",
+    "area": "src/wp-includes/pluggable.php src/wp-includes/class-wp-phpmailer.php src/wp-includes/PHPMailer/PHPMailer.php src/wp-includes/PHPMailer/SMTP.php src/wp-includes/PHPMailer/Exception.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 pluggable wp_mail, WP_PHPMailer, and PHPMailer source against deterministic hooks and a no-delivery PHPMailer subclass. It observes message setup and failure actions without using PHP mail, SMTP, DNS, or external delivery."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-no-delivery-phpmailer-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass PHPMailer/SMTP/PHP-mail transport, selected upstream PHPUnit, installed distribution, privacy mail, recovery mail, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-phpmailer-setup-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-13"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-phpmailer-setup-oracle-fixture",
+      "npm run wp:core:wphx-312-phpmailer-setup-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-13-phpmailer-setup-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:fcbb4d21f23eefbb1e75e7eb97bb958cbb7d0396a2f574df3f0499c6215a8f09"
+  }
+}

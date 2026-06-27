@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-13-phpmailer-setup-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.13",
+    "external_ref": "WPHX-312.13",
+    "title": "WPHX-312.13 — Add PHPMailer setup oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+      "role": "PHPMailer setup oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle no-delivery mail boundary"
+    },
+    {
+      "path": "tools/wp-core/run-phpmailer-setup-oracle-fixture.mjs",
+      "role": "deterministic oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-phpmailer-setup-oracle-fixture",
+    "npm run wp:core:wphx-312-phpmailer-setup-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-03-http-cron-mail-oracle-fixture",
+    "receipt:wphx-312-07-privacy-request-mail-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 16,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "real_mail_transport_claimed": false
+  }
+}
