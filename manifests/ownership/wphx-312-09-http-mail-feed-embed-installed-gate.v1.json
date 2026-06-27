@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-mail-feed-embed-installed-gate",
+  "issue": {
+    "id": "wordpresshx-l76.18.9",
+    "external_ref": "WPHX-312.09"
+  },
+  "unit": {
+    "kind": "packaged-distribution-installed-http-gate",
+    "name": "HTTP, cron, mail, feed, oEmbed, trackback, and privacy request installed-style observations",
+    "area": "src/wp-includes/http.php src/wp-includes/class-wp-http.php src/wp-includes/class-wp-http-response.php src/wp-includes/class-wp-http-cookie.php src/wp-includes/cron.php src/wp-includes/pluggable.php src/wp-includes/feed.php src/wp-includes/embed.php src/wp-includes/class-wp-oembed.php src/wp-includes/class-wp-embed.php src/wp-includes/class-wp-user-request.php src/wp-includes/user.php src/wp-admin/includes/privacy-tools.php src/wp-trackback.php",
+    "public_contract": "The packaged WPHX-312 surface must match vanilla through deterministic local HTTP package-boundary, fake HTTP transport, cron intent, mail intent, feed XML, oEmbed JSON, trackback, and privacy mail observations while keeping public PHP replacement claims explicit."
+  },
+  "ownership_state": "installed_style_package_gate_with_copied_oracle_php",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-router-observation-gate",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded network parity, real cron spawn/dispatch, mail transport, installed feed/embed rendering, selected upstream tests, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-mail-feed-embed-installed-gate.mjs",
+    "manifests/wp-core/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+    "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+    "receipts/wp-core/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+    "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+    "receipts/wp-core/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+    "build/wp-core/wphx-312-09"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-installed-http",
+      "npm run wp:core:wphx-312-installed-http:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-09-http-mail-feed-embed-installed-gate"
+    ],
+    "manifest_digest": "sha256:d07f7fde8fa0c6574367a3b56e8fdd4735c3b5234bbced76067e4e17280c9e56"
+  }
+}

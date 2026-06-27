@@ -1,0 +1,46 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-09-http-mail-feed-embed-installed-gate",
+  "issue": {
+    "id": "wordpresshx-l76.18.9",
+    "external_ref": "WPHX-312.09",
+    "title": "WPHX-312.09 — Add installed-style HTTP mail feed embed gate"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+      "role": "WPHX-312 installed-style HTTP gate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+      "role": "ownership manifest for WPHX-312 installed-style HTTP package gate"
+    },
+    {
+      "path": "tools/wp-core/run-http-mail-feed-embed-installed-gate.mjs",
+      "role": "installed-style HTTP gate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-installed-http",
+    "npm run wp:core:wphx-312-installed-http:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-03-http-cron-mail-oracle-fixture",
+    "receipt:wphx-312-04-feed-embed-https-oracle-fixture",
+    "receipt:wphx-312-05-ai-http-oracle-fixture",
+    "receipt:wphx-312-06-trackback-oracle-fixture",
+    "receipt:wphx-312-07-privacy-request-mail-oracle-fixture",
+    "receipt:wphx-312-08-remote-fetch-oembed-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 8,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

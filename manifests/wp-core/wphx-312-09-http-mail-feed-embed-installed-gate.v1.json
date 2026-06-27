@@ -1,0 +1,876 @@
+{
+  "schema": "wphx.wp-core-http-mail-feed-embed-installed-gate.v1",
+  "issue": "WPHX-312.09",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-http-mail-feed-embed-installed-gate.mjs",
+  "evidence_classes": [
+    "oracle_package_http",
+    "candidate_package_http"
+  ],
+  "artifact_scope": "installed_style_http_gate",
+  "inputs": {
+    "prior_manifests": [
+      {
+        "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+        "bytes": 67111,
+        "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+        "bytes": 18483,
+        "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+        "bytes": 38945,
+        "sha256": "sha256:017e1d13c9f442eb5f02a3c37bb3ab6ba9edc661d9c0c6b87aab429e3d7b325a"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+        "bytes": 18811,
+        "sha256": "sha256:9005553a3798994fcdc2a4d407e9db2ba4df533138a2da5314c3530197de87d9"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-05-ai-http-oracle-fixture.v1.json",
+        "bytes": 80319,
+        "sha256": "sha256:56d8339fb652af9bd53d9a56b97872e2d3b2077e32c6c34af373cdfccae2d1e5"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-06-trackback-oracle-fixture.v1.json",
+        "bytes": 18405,
+        "sha256": "sha256:9d22549a38d6a42adb90711503b7923fc088635b6cebc372a9531ebd33785531"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+        "bytes": 20873,
+        "sha256": "sha256:5c88795e06e49ff2fac68353e9f71ad45e27159c15d9339625fa934834114d35"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+        "bytes": 29193,
+        "sha256": "sha256:3732343ca7f8a0e5a1a6b18d5331953d72fc98e30a7dbc82f91703951c645f52"
+      }
+    ],
+    "runner": {
+      "path": "tools/wp-core/run-http-mail-feed-embed-installed-gate.mjs",
+      "bytes": 20545,
+      "sha256": "sha256:514af523b91d6ab015f22666d7b6b570704ab6f75727ff3b206a8638b2496913"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/http.php",
+        "bytes": 27255,
+        "sha256": "sha256:7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-response.php",
+        "bytes": 2977,
+        "sha256": "sha256:6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-cookie.php",
+        "bytes": 7269,
+        "sha256": "sha256:d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+      },
+      {
+        "path": "src/wp-includes/cron.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/cron.php",
+        "bytes": 44996,
+        "sha256": "sha256:9a19fc154c01bd6a0adb46aa093c2d85cf42a7e2214c9f80f350f0099aee1e32"
+      },
+      {
+        "path": "src/wp-includes/pluggable.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      },
+      {
+        "path": "src/wp-includes/feed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/feed.php",
+        "bytes": 25189,
+        "sha256": "sha256:db032afed0fbc3b0841d0133b11ee6a7819d0572640aa22aa4f74687a4f28036"
+      },
+      {
+        "path": "src/wp-includes/embed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/embed.php",
+        "bytes": 38906,
+        "sha256": "sha256:2a0f0c6939784b9fdd343a6b0977fb9789127e3417150d5f9da9aa81e0f274b1"
+      },
+      {
+        "path": "src/wp-includes/class-wp-oembed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-oembed.php",
+        "bytes": 31603,
+        "sha256": "sha256:e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+      },
+      {
+        "path": "src/wp-includes/class-wp-embed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-embed.php",
+        "bytes": 15908,
+        "sha256": "sha256:a8359656527313e546b0201afffb29fee092813ebbf557cd3d75b0e0f1a3c18d"
+      },
+      {
+        "path": "src/wp-includes/class-wp-user-request.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-user-request.php",
+        "bytes": 2305,
+        "sha256": "sha256:c4d49a59c41793c2aab4b5c9820bf1d2a4936abf2245858a4168e82a72705230"
+      },
+      {
+        "path": "src/wp-includes/user.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/user.php",
+        "bytes": 178824,
+        "sha256": "sha256:3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+      },
+      {
+        "path": "src/wp-admin/includes/privacy-tools.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/privacy-tools.php",
+        "bytes": 33441,
+        "sha256": "sha256:3a2ee04b7bf10a5a87c2af9db9052240ac6c9e8829e580cacab22728f2124ebb"
+      },
+      {
+        "path": "src/wp-trackback.php",
+        "repo_path": "../wordpress-develop/src/wp-trackback.php",
+        "bytes": 5214,
+        "sha256": "sha256:a32bf25a48af109caf79eaad1b262c2589cdfef1238c1ca65a71fd54514df51f"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "boundary:http-mail-feed-embed-package",
+        "method": "GET",
+        "path": "/__wphx/package-boundary",
+        "focus": "selected WPHX-312 package source files and prior evidence inputs are present"
+      },
+      {
+        "id": "http:fake-transport",
+        "method": "GET",
+        "path": "/__wphx/http?target=https%3A%2F%2Fapi.example.test%2Fpayload",
+        "focus": "installed-style route records deterministic HTTP transport request/response observation"
+      },
+      {
+        "id": "cron:spawn-intent",
+        "method": "POST",
+        "path": "/wp-cron.php?doing_wp_cron=fixture",
+        "body": "hook=wphx_fixture_event&timestamp=1893456000",
+        "focus": "cron route records scheduling and spawn intent without executing real cron loop"
+      },
+      {
+        "id": "mail:dispatch-intent",
+        "method": "POST",
+        "path": "/wp-mail.php",
+        "body": "to=user%40example.test&subject=Fixture&body=Hello",
+        "focus": "mail route records wp_mail-style payload without transport delivery"
+      },
+      {
+        "id": "feed:rss2-output",
+        "method": "GET",
+        "path": "/feed/",
+        "focus": "feed route emits deterministic RSS XML and selected feed headers"
+      },
+      {
+        "id": "oembed:json-output",
+        "method": "GET",
+        "path": "/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fexample.test%2Ffixture-post",
+        "focus": "oEmbed route emits deterministic provider JSON for an installed-style REST URL"
+      },
+      {
+        "id": "trackback:post",
+        "method": "POST",
+        "path": "/wp-trackback.php?tb_id=123",
+        "body": "url=https%3A%2F%2Fsender.example%2Fpost&title=Sender&excerpt=Excerpt&blog_name=Sender%20Blog",
+        "focus": "trackback route records deterministic XML success and comment payload intent"
+      },
+      {
+        "id": "privacy:export-mail",
+        "method": "POST",
+        "path": "/wp-admin/export-personal-data.php?action=send",
+        "body": "request_id=701",
+        "focus": "privacy export route records deterministic export mail payload without real email delivery"
+      }
+    ],
+    "source_files": [
+      "src/wp-includes/http.php",
+      "src/wp-includes/class-wp-http.php",
+      "src/wp-includes/class-wp-http-response.php",
+      "src/wp-includes/class-wp-http-cookie.php",
+      "src/wp-includes/cron.php",
+      "src/wp-includes/pluggable.php",
+      "src/wp-includes/feed.php",
+      "src/wp-includes/embed.php",
+      "src/wp-includes/class-wp-oembed.php",
+      "src/wp-includes/class-wp-embed.php",
+      "src/wp-includes/class-wp-user-request.php",
+      "src/wp-includes/user.php",
+      "src/wp-admin/includes/privacy-tools.php",
+      "src/wp-trackback.php"
+    ],
+    "side_effect_policy": {
+      "live_network_requests": false,
+      "real_cron_spawn_or_dispatch": false,
+      "real_email_delivery": false,
+      "database_backed_writes": false,
+      "feed_template_rendering": false
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "installed_wordpress_behavior_claimed": "focused installed-style local package gate only"
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-09/oracle-package",
+    "candidate_root": "build/wp-core/wphx-312-09/candidate-package",
+    "oracle_files": [
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-admin/includes/privacy-tools.php",
+        "bytes": 33441,
+        "sha256": "sha256:3a2ee04b7bf10a5a87c2af9db9052240ac6c9e8829e580cacab22728f2124ebb"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/class-wp-embed.php",
+        "bytes": 15908,
+        "sha256": "sha256:a8359656527313e546b0201afffb29fee092813ebbf557cd3d75b0e0f1a3c18d"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/class-wp-http-cookie.php",
+        "bytes": 7269,
+        "sha256": "sha256:d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/class-wp-http-response.php",
+        "bytes": 2977,
+        "sha256": "sha256:6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/class-wp-oembed.php",
+        "bytes": 31603,
+        "sha256": "sha256:e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/class-wp-user-request.php",
+        "bytes": 2305,
+        "sha256": "sha256:c4d49a59c41793c2aab4b5c9820bf1d2a4936abf2245858a4168e82a72705230"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/cron.php",
+        "bytes": 44996,
+        "sha256": "sha256:9a19fc154c01bd6a0adb46aa093c2d85cf42a7e2214c9f80f350f0099aee1e32"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/embed.php",
+        "bytes": 38906,
+        "sha256": "sha256:2a0f0c6939784b9fdd343a6b0977fb9789127e3417150d5f9da9aa81e0f274b1"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/feed.php",
+        "bytes": 25189,
+        "sha256": "sha256:db032afed0fbc3b0841d0133b11ee6a7819d0572640aa22aa4f74687a4f28036"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/http.php",
+        "bytes": 27255,
+        "sha256": "sha256:7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-includes/user.php",
+        "bytes": 178824,
+        "sha256": "sha256:3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wp-trackback.php",
+        "bytes": 5214,
+        "sha256": "sha256:a32bf25a48af109caf79eaad1b262c2589cdfef1238c1ca65a71fd54514df51f"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/oracle-package/wphx-http-mail-feed-embed-installed-router.php",
+        "bytes": 4782,
+        "sha256": "sha256:c33315a00a11eef1f7b7defcf3c60c5cc9bf5665cd736605ae4d87d964affa53"
+      }
+    ],
+    "candidate_files": [
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-admin/includes/privacy-tools.php",
+        "bytes": 33441,
+        "sha256": "sha256:3a2ee04b7bf10a5a87c2af9db9052240ac6c9e8829e580cacab22728f2124ebb"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/class-wp-embed.php",
+        "bytes": 15908,
+        "sha256": "sha256:a8359656527313e546b0201afffb29fee092813ebbf557cd3d75b0e0f1a3c18d"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/class-wp-http-cookie.php",
+        "bytes": 7269,
+        "sha256": "sha256:d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/class-wp-http-response.php",
+        "bytes": 2977,
+        "sha256": "sha256:6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/class-wp-oembed.php",
+        "bytes": 31603,
+        "sha256": "sha256:e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/class-wp-user-request.php",
+        "bytes": 2305,
+        "sha256": "sha256:c4d49a59c41793c2aab4b5c9820bf1d2a4936abf2245858a4168e82a72705230"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/cron.php",
+        "bytes": 44996,
+        "sha256": "sha256:9a19fc154c01bd6a0adb46aa093c2d85cf42a7e2214c9f80f350f0099aee1e32"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/embed.php",
+        "bytes": 38906,
+        "sha256": "sha256:2a0f0c6939784b9fdd343a6b0977fb9789127e3417150d5f9da9aa81e0f274b1"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/feed.php",
+        "bytes": 25189,
+        "sha256": "sha256:db032afed0fbc3b0841d0133b11ee6a7819d0572640aa22aa4f74687a4f28036"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/http.php",
+        "bytes": 27255,
+        "sha256": "sha256:7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/pluggable.php",
+        "bytes": 127558,
+        "sha256": "sha256:c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-includes/user.php",
+        "bytes": 178824,
+        "sha256": "sha256:3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wp-trackback.php",
+        "bytes": 5214,
+        "sha256": "sha256:a32bf25a48af109caf79eaad1b262c2589cdfef1238c1ca65a71fd54514df51f"
+      },
+      {
+        "path": "build/wp-core/wphx-312-09/candidate-package/wphx-http-mail-feed-embed-installed-router.php",
+        "bytes": 4782,
+        "sha256": "sha256:c33315a00a11eef1f7b7defcf3c60c5cc9bf5665cd736605ae4d87d964affa53"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "boundary:http-mail-feed-embed-package": {
+        "id": "boundary:http-mail-feed-embed-package",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "boundary:http-mail-feed-embed-package",
+          "mode": "fixture",
+          "package_kind": "installed-style-http-gate",
+          "source_files": [
+            {
+              "path": "wp-includes/http.php",
+              "exists": true,
+              "bytes": 27255,
+              "sha256": "7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+            },
+            {
+              "path": "wp-includes/class-wp-http.php",
+              "exists": true,
+              "bytes": 41648,
+              "sha256": "031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+            },
+            {
+              "path": "wp-includes/class-wp-http-response.php",
+              "exists": true,
+              "bytes": 2977,
+              "sha256": "6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+            },
+            {
+              "path": "wp-includes/class-wp-http-cookie.php",
+              "exists": true,
+              "bytes": 7269,
+              "sha256": "d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+            },
+            {
+              "path": "wp-includes/cron.php",
+              "exists": true,
+              "bytes": 44996,
+              "sha256": "9a19fc154c01bd6a0adb46aa093c2d85cf42a7e2214c9f80f350f0099aee1e32"
+            },
+            {
+              "path": "wp-includes/pluggable.php",
+              "exists": true,
+              "bytes": 127558,
+              "sha256": "c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+            },
+            {
+              "path": "wp-includes/feed.php",
+              "exists": true,
+              "bytes": 25189,
+              "sha256": "db032afed0fbc3b0841d0133b11ee6a7819d0572640aa22aa4f74687a4f28036"
+            },
+            {
+              "path": "wp-includes/embed.php",
+              "exists": true,
+              "bytes": 38906,
+              "sha256": "2a0f0c6939784b9fdd343a6b0977fb9789127e3417150d5f9da9aa81e0f274b1"
+            },
+            {
+              "path": "wp-includes/class-wp-oembed.php",
+              "exists": true,
+              "bytes": 31603,
+              "sha256": "e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+            },
+            {
+              "path": "wp-includes/class-wp-embed.php",
+              "exists": true,
+              "bytes": 15908,
+              "sha256": "a8359656527313e546b0201afffb29fee092813ebbf557cd3d75b0e0f1a3c18d"
+            },
+            {
+              "path": "wp-includes/class-wp-user-request.php",
+              "exists": true,
+              "bytes": 2305,
+              "sha256": "c4d49a59c41793c2aab4b5c9820bf1d2a4936abf2245858a4168e82a72705230"
+            },
+            {
+              "path": "wp-includes/user.php",
+              "exists": true,
+              "bytes": 178824,
+              "sha256": "3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+            },
+            {
+              "path": "wp-admin/includes/privacy-tools.php",
+              "exists": true,
+              "bytes": 33441,
+              "sha256": "3a2ee04b7bf10a5a87c2af9db9052240ac6c9e8829e580cacab22728f2124ebb"
+            },
+            {
+              "path": "wp-trackback.php",
+              "exists": true,
+              "bytes": 5214,
+              "sha256": "a32bf25a48af109caf79eaad1b262c2589cdfef1238c1ca65a71fd54514df51f"
+            }
+          ],
+          "public_php_replacement_claimed": false
+        }
+      },
+      "http:fake-transport": {
+        "id": "http:fake-transport",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "http:fake-transport",
+          "mode": "fixture",
+          "request": {
+            "method": "GET",
+            "url": "https://api.example.test/payload",
+            "timeout": 5,
+            "redirection": 3
+          },
+          "response": {
+            "status": 200,
+            "message": "OK",
+            "headers": {
+              "x-fixture": "transport"
+            },
+            "body_sha256": "7d5fda8014d915636a4655328c17cc77d75ba8da84e4f310782fc2ec3204e7c0"
+          },
+          "network": "fake"
+        }
+      },
+      "cron:spawn-intent": {
+        "id": "cron:spawn-intent",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "cron:spawn-intent",
+          "mode": "fixture",
+          "doing_wp_cron": "fixture",
+          "event": {
+            "hook": "wphx_fixture_event",
+            "timestamp": 1893456000,
+            "schedule": false
+          },
+          "spawned": false,
+          "lock": "fixture-cron-lock"
+        }
+      },
+      "mail:dispatch-intent": {
+        "id": "mail:dispatch-intent",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "mail:dispatch-intent",
+          "mode": "fixture",
+          "mail": {
+            "to": "user@example.test",
+            "subject": "Fixture",
+            "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+            "headers": [
+              "X-WPHX-Fixture: mail"
+            ]
+          },
+          "delivered": false
+        }
+      },
+      "feed:rss2-output": {
+        "id": "feed:rss2-output",
+        "status": 200,
+        "headers": {
+          "content-type": "application/xml; charset=UTF-8",
+          "x-wphx-feed": "rss2"
+        },
+        "body": {
+          "kind": "text",
+          "sha256": "sha256:807f75f80b85a3a5c68a14107086fb80358c9da8904edb52d08583b34d232488",
+          "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\"><channel><title>Fixture Feed</title><link>https://example.test/</link><item><title>Installed Feed Item</title><guid>urn:wphx:312:09</guid></item></channel></rss>"
+        }
+      },
+      "oembed:json-output": {
+        "id": "oembed:json-output",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "oembed:json-output",
+          "mode": "fixture",
+          "url": "https://example.test/fixture-post",
+          "type": "rich",
+          "html": "<iframe src=\"https://example.test/embed/fixture-post\"></iframe>",
+          "provider_name": "Fixture Provider",
+          "width": 640,
+          "height": 360
+        }
+      },
+      "trackback:post": {
+        "id": "trackback:post",
+        "status": 200,
+        "headers": {
+          "content-type": "application/xml; charset=UTF-8",
+          "x-wphx-trackback-comment-sha256": "b96ba29738334455c65e923e866885c688451b526aa8df25a5ba12b46abe90d4"
+        },
+        "body": {
+          "kind": "text",
+          "sha256": "sha256:c2851e475610a71fc197ac76290c8942ba48a561b9e5127f63bc60319f16a09b",
+          "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?><response><error>0</error></response>"
+        }
+      },
+      "privacy:export-mail": {
+        "id": "privacy:export-mail",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "privacy:export-mail",
+          "mode": "fixture",
+          "request_id": 701,
+          "mail": {
+            "to": "export-user@example.test",
+            "subject": "[Fixture Site] Personal Data Export",
+            "link": "https://example.test/wp-content/uploads/wp-personal-data-file.zip"
+          },
+          "delivered": false
+        }
+      }
+    },
+    "candidate": {
+      "boundary:http-mail-feed-embed-package": {
+        "id": "boundary:http-mail-feed-embed-package",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "boundary:http-mail-feed-embed-package",
+          "mode": "fixture",
+          "package_kind": "installed-style-http-gate",
+          "source_files": [
+            {
+              "path": "wp-includes/http.php",
+              "exists": true,
+              "bytes": 27255,
+              "sha256": "7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+            },
+            {
+              "path": "wp-includes/class-wp-http.php",
+              "exists": true,
+              "bytes": 41648,
+              "sha256": "031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+            },
+            {
+              "path": "wp-includes/class-wp-http-response.php",
+              "exists": true,
+              "bytes": 2977,
+              "sha256": "6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+            },
+            {
+              "path": "wp-includes/class-wp-http-cookie.php",
+              "exists": true,
+              "bytes": 7269,
+              "sha256": "d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+            },
+            {
+              "path": "wp-includes/cron.php",
+              "exists": true,
+              "bytes": 44996,
+              "sha256": "9a19fc154c01bd6a0adb46aa093c2d85cf42a7e2214c9f80f350f0099aee1e32"
+            },
+            {
+              "path": "wp-includes/pluggable.php",
+              "exists": true,
+              "bytes": 127558,
+              "sha256": "c50d95cc208711745a7a8931584155169b50c8d91473a5e731ac22efb3fa30db"
+            },
+            {
+              "path": "wp-includes/feed.php",
+              "exists": true,
+              "bytes": 25189,
+              "sha256": "db032afed0fbc3b0841d0133b11ee6a7819d0572640aa22aa4f74687a4f28036"
+            },
+            {
+              "path": "wp-includes/embed.php",
+              "exists": true,
+              "bytes": 38906,
+              "sha256": "2a0f0c6939784b9fdd343a6b0977fb9789127e3417150d5f9da9aa81e0f274b1"
+            },
+            {
+              "path": "wp-includes/class-wp-oembed.php",
+              "exists": true,
+              "bytes": 31603,
+              "sha256": "e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+            },
+            {
+              "path": "wp-includes/class-wp-embed.php",
+              "exists": true,
+              "bytes": 15908,
+              "sha256": "a8359656527313e546b0201afffb29fee092813ebbf557cd3d75b0e0f1a3c18d"
+            },
+            {
+              "path": "wp-includes/class-wp-user-request.php",
+              "exists": true,
+              "bytes": 2305,
+              "sha256": "c4d49a59c41793c2aab4b5c9820bf1d2a4936abf2245858a4168e82a72705230"
+            },
+            {
+              "path": "wp-includes/user.php",
+              "exists": true,
+              "bytes": 178824,
+              "sha256": "3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+            },
+            {
+              "path": "wp-admin/includes/privacy-tools.php",
+              "exists": true,
+              "bytes": 33441,
+              "sha256": "3a2ee04b7bf10a5a87c2af9db9052240ac6c9e8829e580cacab22728f2124ebb"
+            },
+            {
+              "path": "wp-trackback.php",
+              "exists": true,
+              "bytes": 5214,
+              "sha256": "a32bf25a48af109caf79eaad1b262c2589cdfef1238c1ca65a71fd54514df51f"
+            }
+          ],
+          "public_php_replacement_claimed": false
+        }
+      },
+      "http:fake-transport": {
+        "id": "http:fake-transport",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "http:fake-transport",
+          "mode": "fixture",
+          "request": {
+            "method": "GET",
+            "url": "https://api.example.test/payload",
+            "timeout": 5,
+            "redirection": 3
+          },
+          "response": {
+            "status": 200,
+            "message": "OK",
+            "headers": {
+              "x-fixture": "transport"
+            },
+            "body_sha256": "7d5fda8014d915636a4655328c17cc77d75ba8da84e4f310782fc2ec3204e7c0"
+          },
+          "network": "fake"
+        }
+      },
+      "cron:spawn-intent": {
+        "id": "cron:spawn-intent",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "cron:spawn-intent",
+          "mode": "fixture",
+          "doing_wp_cron": "fixture",
+          "event": {
+            "hook": "wphx_fixture_event",
+            "timestamp": 1893456000,
+            "schedule": false
+          },
+          "spawned": false,
+          "lock": "fixture-cron-lock"
+        }
+      },
+      "mail:dispatch-intent": {
+        "id": "mail:dispatch-intent",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "mail:dispatch-intent",
+          "mode": "fixture",
+          "mail": {
+            "to": "user@example.test",
+            "subject": "Fixture",
+            "message_sha256": "185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969",
+            "headers": [
+              "X-WPHX-Fixture: mail"
+            ]
+          },
+          "delivered": false
+        }
+      },
+      "feed:rss2-output": {
+        "id": "feed:rss2-output",
+        "status": 200,
+        "headers": {
+          "content-type": "application/xml; charset=UTF-8",
+          "x-wphx-feed": "rss2"
+        },
+        "body": {
+          "kind": "text",
+          "sha256": "sha256:807f75f80b85a3a5c68a14107086fb80358c9da8904edb52d08583b34d232488",
+          "text": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rss version=\"2.0\"><channel><title>Fixture Feed</title><link>https://example.test/</link><item><title>Installed Feed Item</title><guid>urn:wphx:312:09</guid></item></channel></rss>"
+        }
+      },
+      "oembed:json-output": {
+        "id": "oembed:json-output",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "oembed:json-output",
+          "mode": "fixture",
+          "url": "https://example.test/fixture-post",
+          "type": "rich",
+          "html": "<iframe src=\"https://example.test/embed/fixture-post\"></iframe>",
+          "provider_name": "Fixture Provider",
+          "width": 640,
+          "height": 360
+        }
+      },
+      "trackback:post": {
+        "id": "trackback:post",
+        "status": 200,
+        "headers": {
+          "content-type": "application/xml; charset=UTF-8",
+          "x-wphx-trackback-comment-sha256": "b96ba29738334455c65e923e866885c688451b526aa8df25a5ba12b46abe90d4"
+        },
+        "body": {
+          "kind": "text",
+          "sha256": "sha256:c2851e475610a71fc197ac76290c8942ba48a561b9e5127f63bc60319f16a09b",
+          "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?><response><error>0</error></response>"
+        }
+      },
+      "privacy:export-mail": {
+        "id": "privacy:export-mail",
+        "status": 200,
+        "headers": {
+          "content-type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "case": "privacy:export-mail",
+          "mode": "fixture",
+          "request_id": 701,
+          "mail": {
+            "to": "export-user@example.test",
+            "subject": "[Fixture Site] Personal Data Export",
+            "link": "https://example.test/wp-content/uploads/wp-personal-data-file.zip"
+          },
+          "delivered": false
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:10c0962d6a28e90d2ced1b48247ac4e8e17213f8e0574b681fbf08d2ace0480d",
+    "candidate_sha256": "sha256:10c0962d6a28e90d2ced1b48247ac4e8e17213f8e0574b681fbf08d2ace0480d"
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-or-recorded-network-parity-not-executed",
+      "owner": "WPHX-312.09",
+      "detail": "The gate serves deterministic local fake HTTP observations. Live HTTP, TLS, redirects, provider availability, and recorded-network replay remain later gates."
+    },
+    {
+      "id": "real-cron-and-mail-transports-not-executed",
+      "owner": "WPHX-312.09",
+      "detail": "Cron and mail routes record intent only. Real cron spawn/dispatch locks, PHPMailer/SMTP transport, and operational delivery remain later gates."
+    },
+    {
+      "id": "database-backed-installed-state-not-executed",
+      "owner": "WPHX-312.09",
+      "detail": "Trackback and privacy routes use deterministic request state. Real comments/user-request tables, admin list tables, status transitions, and plugin side effects remain later distribution work."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.09",
+      "detail": "The gate compares copied oracle PHP package roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 8,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}
