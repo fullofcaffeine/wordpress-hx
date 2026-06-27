@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-proxy-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-x2x",
+    "external_ref": "WPHX-312.32"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_HTTP_Proxy constants, bypass, and filter behavior",
+    "area": "src/wp-includes/class-wp-http-proxy.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-http-proxy.php in isolated PHP CLI probes with deterministic site option and pre_http_send_through_proxy filter stubs. It observes proxy enablement constants, authentication accessors/header output, malformed URL pass-through, localhost/site URL bypass, exact and wildcard WP_PROXY_BYPASS_HOSTS matching, and filter override behavior without claiming live HTTP transport routing, Requests/cURL/fsockopen proxy integration, TLS/proxy negotiation, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-http-proxy-runtime-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass Requests/cURL/fsockopen proxy integration, recorded/live HTTP transport behavior, TLS/proxy negotiation, installed distribution routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-proxy-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-32-http-proxy-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-32"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-proxy-oracle-fixture",
+      "npm run wp:core:wphx-312-http-proxy-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-32-http-proxy-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:f532ee66c44a8006a21392629e5bd177ef46a6785d3350ebf34ec1f42fed9529"
+  }
+}
