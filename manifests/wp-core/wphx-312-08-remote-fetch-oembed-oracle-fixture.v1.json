@@ -1,0 +1,908 @@
+{
+  "schema": "wphx.wp-core-remote-fetch-oembed-oracle-fixture.v1",
+  "issue": "WPHX-312.08",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-remote-fetch-oembed-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "privacy_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+      "bytes": 20873,
+      "sha256": "sha256:5c88795e06e49ff2fac68353e9f71ad45e27159c15d9339625fa934834114d35"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-remote-fetch-oembed-oracle-fixture.mjs",
+      "bytes": 25355,
+      "sha256": "sha256:5f265654833d8e0da3b746fa762e936ab69ebf62e921b7a8dc7aebbc1d45340c"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/feed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/feed.php",
+        "bytes": 25189,
+        "sha256": "sha256:db032afed0fbc3b0841d0133b11ee6a7819d0572640aa22aa4f74687a4f28036"
+      },
+      {
+        "path": "src/wp-includes/class-wp-feed-cache-transient.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-feed-cache-transient.php",
+        "bytes": 3304,
+        "sha256": "sha256:516553579a3d4afabaf4cc046416fa9edb2ab491ef499fd4a0f073a1acc78c38"
+      },
+      {
+        "path": "src/wp-includes/class-wp-simplepie-file.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-simplepie-file.php",
+        "bytes": 3552,
+        "sha256": "sha256:f41391177074bfdadd2264bd916496b1e60ab4aeba5896c46a29defbfefb6ca4"
+      },
+      {
+        "path": "src/wp-includes/class-wp-simplepie-sanitize-kses.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-simplepie-sanitize-kses.php",
+        "bytes": 1910,
+        "sha256": "sha256:9d2575c139f2e85b0c505623e2ef887b02c93b1d30dbc23312b9603e48f155ca"
+      },
+      {
+        "path": "src/wp-includes/class-wp-oembed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-oembed.php",
+        "bytes": 31603,
+        "sha256": "sha256:e393199542d6a35d421a9966beb6e169a8495dbeafcfe11924a86346ad2ad43b"
+      },
+      {
+        "path": "src/wp-includes/embed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/embed.php",
+        "bytes": 38906,
+        "sha256": "sha256:2a0f0c6939784b9fdd343a6b0977fb9789127e3417150d5f9da9aa81e0f274b1"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "feed:fetch-success",
+        "focus": "fetch_feed configures SimplePie registry/cache/file classes and records a successful fake remote feed URL"
+      },
+      {
+        "id": "feed:fetch-error",
+        "focus": "fetch_feed converts SimplePie errors into WP_Error(simplepie-error)"
+      },
+      {
+        "id": "feed:remote-file",
+        "focus": "WP_SimplePie_File reads fake HTTP status, body, and repeated headers through Core HTTP helpers"
+      },
+      {
+        "id": "oembed:known-provider-json",
+        "focus": "known provider fetch builds provider URL, retrieves JSON, converts rich payload to HTML, and runs result filters"
+      },
+      {
+        "id": "oembed:discover-json",
+        "focus": "provider discovery reads fake HTML link tags then fetches discovered JSON oEmbed data"
+      },
+      {
+        "id": "oembed:xml-fallback",
+        "focus": "JSON 501 not-implemented response falls through to XML provider parsing"
+      }
+    ],
+    "covered_symbols": [
+      "fetch_feed",
+      "WP_Feed_Cache_Transient::__construct",
+      "WP_Feed_Cache_Transient::save",
+      "WP_Feed_Cache_Transient::load",
+      "WP_SimplePie_File::__construct",
+      "wp_safe_remote_request",
+      "wp_oembed_add_provider",
+      "_wp_oembed_get_object",
+      "wp_oembed_get",
+      "WP_oEmbed::get_provider",
+      "WP_oEmbed::get_data",
+      "WP_oEmbed::get_html",
+      "WP_oEmbed::discover",
+      "WP_oEmbed::fetch",
+      "WP_oEmbed::_fetch_with_format",
+      "WP_oEmbed::data2html",
+      "oembed_remote_get_args",
+      "oembed_fetch_url",
+      "oembed_result",
+      "oembed_dataparse"
+    ],
+    "source_files": [
+      "src/wp-includes/feed.php",
+      "src/wp-includes/class-wp-feed-cache-transient.php",
+      "src/wp-includes/class-wp-simplepie-file.php",
+      "src/wp-includes/class-wp-simplepie-sanitize-kses.php",
+      "src/wp-includes/class-wp-oembed.php",
+      "src/wp-includes/embed.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-08/probe.php",
+      "sha256": "sha256:8db2ad9d01172a70a7d02496e9cdcec59aaddd947664e9abbbc6da686232c34b"
+    },
+    "side_effect_policy": {
+      "live_network_requests": false,
+      "installed_embed_rendering": false,
+      "feed_template_rendering": false,
+      "persistent_cache_writes": false
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-08/oracle",
+    "candidate_root": "build/wp-core/wphx-312-08/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/feed.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-08/oracle/wp-includes/feed.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-08/candidate/wp-includes/feed.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-feed-cache-transient.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-08/oracle/wp-includes/class-wp-feed-cache-transient.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-08/candidate/wp-includes/class-wp-feed-cache-transient.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-simplepie-file.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-08/oracle/wp-includes/class-wp-simplepie-file.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-08/candidate/wp-includes/class-wp-simplepie-file.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-simplepie-sanitize-kses.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-08/oracle/wp-includes/class-wp-simplepie-sanitize-kses.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-08/candidate/wp-includes/class-wp-simplepie-sanitize-kses.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-oembed.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-08/oracle/wp-includes/class-wp-oembed.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-08/candidate/wp-includes/class-wp-oembed.php"
+      },
+      {
+        "path": "src/wp-includes/embed.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-08/oracle/wp-includes/embed.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-08/candidate/wp-includes/embed.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "feed-fetch-success": {
+        "case": "feed-fetch-success",
+        "summary": {
+          "class": "SimplePie\\SimplePie",
+          "error": null,
+          "feed_url": "https://feeds.example/feed-success.xml",
+          "cache_duration": 321,
+          "output_encoding": "UTF-8"
+        },
+        "http": [],
+        "filters": [
+          {
+            "hook": "wp_feed_cache_transient_lifetime",
+            "value_type": "integer",
+            "arg_count": 1
+          }
+        ],
+        "actions": [
+          {
+            "hook": "wp_feed_options",
+            "arg_count": 2
+          }
+        ],
+        "simplepie_init": [
+          {
+            "feed_url": "https://feeds.example/feed-success.xml",
+            "cache_location": "wp_transient",
+            "cache_duration": 321,
+            "registry": [
+              {
+                "class": "SimplePie\\Sanitize",
+                "implementation": "WP_SimplePie_Sanitize_KSES",
+                "override": true
+              },
+              {
+                "class": "SimplePie\\File",
+                "implementation": "WP_SimplePie_File",
+                "override": true
+              }
+            ]
+          }
+        ],
+        "transients": [],
+        "simplepie_cache_registered": [
+          {
+            "scheme": "wp_transient",
+            "class": "WP_Feed_Cache_Transient"
+          }
+        ],
+        "php_errors": []
+      },
+      "feed-fetch-error": {
+        "case": "feed-fetch-error",
+        "summary": {
+          "wp_error": "simplepie-error",
+          "message": "fixture feed error"
+        },
+        "http": [],
+        "filters": [
+          {
+            "hook": "wp_feed_cache_transient_lifetime",
+            "value_type": "integer",
+            "arg_count": 1
+          }
+        ],
+        "actions": [
+          {
+            "hook": "wp_feed_options",
+            "arg_count": 2
+          }
+        ],
+        "simplepie_init": [
+          {
+            "feed_url": "https://feeds.example/error.xml",
+            "cache_location": "wp_transient",
+            "cache_duration": 321,
+            "registry": [
+              {
+                "class": "SimplePie\\Sanitize",
+                "implementation": "WP_SimplePie_Sanitize_KSES",
+                "override": true
+              },
+              {
+                "class": "SimplePie\\File",
+                "implementation": "WP_SimplePie_File",
+                "override": true
+              }
+            ]
+          }
+        ],
+        "transients": [],
+        "simplepie_cache_registered": [
+          {
+            "scheme": "wp_transient",
+            "class": "WP_Feed_Cache_Transient"
+          }
+        ],
+        "php_errors": []
+      },
+      "feed-remote-file": {
+        "case": "feed-remote-file",
+        "summary": {
+          "success": null,
+          "status_code": 200,
+          "body_sha256": "66a07d3037325b30528fdd724cf34a98ac7dd52b98005cc2dfe2cbc82c58766f",
+          "headers": {
+            "content-type": "text/xml",
+            "x-feed": "one, two"
+          }
+        },
+        "http": [
+          {
+            "method": "request",
+            "url": "https://feeds.example/feed-success.xml",
+            "args": {
+              "timeout": 5,
+              "redirection": 2,
+              "headers": {
+                "Accept": "application/rss+xml"
+              },
+              "user-agent": "custom-agent"
+            }
+          }
+        ],
+        "filters": [],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      },
+      "oembed-known-provider-json": {
+        "case": "oembed-known-provider-json",
+        "summary": {
+          "html": "<iframe src=\"https://embed.example/rich\"></iframe>",
+          "html_sha256": "21e704c294a393ac652dec93dd1e6700be79872c2580a8d6d1d941e0e40b2e07"
+        },
+        "http": [
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=400&maxheight=225&url=https%253A%252F%252Fknown.example%252Fpost%252F1&dnt=1&format=json",
+            "args": []
+          }
+        ],
+        "filters": [
+          {
+            "hook": "oembed_providers",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "pre_oembed_result",
+            "value_type": "NULL",
+            "arg_count": 2
+          },
+          {
+            "hook": "embed_defaults",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_fetch_url",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_dataparse",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_result",
+            "value_type": "string",
+            "arg_count": 2
+          }
+        ],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      },
+      "oembed-discover-json": {
+        "case": "oembed-discover-json",
+        "summary": {
+          "provider": "https://provider.example/oembed",
+          "html": "<iframe src=\"https://embed.example/rich\"></iframe>",
+          "html_sha256": "21e704c294a393ac652dec93dd1e6700be79872c2580a8d6d1d941e0e40b2e07"
+        },
+        "http": [
+          {
+            "method": "get",
+            "url": "https://discover.example/post",
+            "args": {
+              "limit_response_size": 153600
+            }
+          },
+          {
+            "method": "get",
+            "url": "https://discover.example/post",
+            "args": {
+              "limit_response_size": 153600
+            }
+          },
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=300&maxheight=150&url=https%253A%252F%252Fdiscover.example%252Fpost&dnt=1&format=json",
+            "args": []
+          }
+        ],
+        "filters": [
+          {
+            "hook": "oembed_providers",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_linktypes",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "pre_oembed_result",
+            "value_type": "NULL",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_linktypes",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "embed_defaults",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_fetch_url",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_dataparse",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_result",
+            "value_type": "string",
+            "arg_count": 2
+          }
+        ],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      },
+      "oembed-xml-fallback": {
+        "case": "oembed-xml-fallback",
+        "summary": {
+          "html": "<a href=\"https://known.example/post/2\"><img src=\"https://cdn.example/photo.jpg\" alt=\"Fixture Photo\" width=\"320\" height=\"180\" /></a>",
+          "html_sha256": "41608eecc2cf53f4ae26c7dc8b2038342fac3ceaa374ea16f08628fea3b58872"
+        },
+        "http": [
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=320&maxheight=180&url=https%253A%252F%252Fknown.example%252Fpost%252F2&dnt=1&format=json",
+            "args": []
+          },
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=320&maxheight=180&url=https%253A%252F%252Fknown.example%252Fpost%252F2&dnt=1&format=xml",
+            "args": []
+          }
+        ],
+        "filters": [
+          {
+            "hook": "oembed_providers",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "pre_oembed_result",
+            "value_type": "NULL",
+            "arg_count": 2
+          },
+          {
+            "hook": "embed_defaults",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_fetch_url",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_dataparse",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_result",
+            "value_type": "string",
+            "arg_count": 2
+          }
+        ],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      }
+    },
+    "candidate": {
+      "feed-fetch-success": {
+        "case": "feed-fetch-success",
+        "summary": {
+          "class": "SimplePie\\SimplePie",
+          "error": null,
+          "feed_url": "https://feeds.example/feed-success.xml",
+          "cache_duration": 321,
+          "output_encoding": "UTF-8"
+        },
+        "http": [],
+        "filters": [
+          {
+            "hook": "wp_feed_cache_transient_lifetime",
+            "value_type": "integer",
+            "arg_count": 1
+          }
+        ],
+        "actions": [
+          {
+            "hook": "wp_feed_options",
+            "arg_count": 2
+          }
+        ],
+        "simplepie_init": [
+          {
+            "feed_url": "https://feeds.example/feed-success.xml",
+            "cache_location": "wp_transient",
+            "cache_duration": 321,
+            "registry": [
+              {
+                "class": "SimplePie\\Sanitize",
+                "implementation": "WP_SimplePie_Sanitize_KSES",
+                "override": true
+              },
+              {
+                "class": "SimplePie\\File",
+                "implementation": "WP_SimplePie_File",
+                "override": true
+              }
+            ]
+          }
+        ],
+        "transients": [],
+        "simplepie_cache_registered": [
+          {
+            "scheme": "wp_transient",
+            "class": "WP_Feed_Cache_Transient"
+          }
+        ],
+        "php_errors": []
+      },
+      "feed-fetch-error": {
+        "case": "feed-fetch-error",
+        "summary": {
+          "wp_error": "simplepie-error",
+          "message": "fixture feed error"
+        },
+        "http": [],
+        "filters": [
+          {
+            "hook": "wp_feed_cache_transient_lifetime",
+            "value_type": "integer",
+            "arg_count": 1
+          }
+        ],
+        "actions": [
+          {
+            "hook": "wp_feed_options",
+            "arg_count": 2
+          }
+        ],
+        "simplepie_init": [
+          {
+            "feed_url": "https://feeds.example/error.xml",
+            "cache_location": "wp_transient",
+            "cache_duration": 321,
+            "registry": [
+              {
+                "class": "SimplePie\\Sanitize",
+                "implementation": "WP_SimplePie_Sanitize_KSES",
+                "override": true
+              },
+              {
+                "class": "SimplePie\\File",
+                "implementation": "WP_SimplePie_File",
+                "override": true
+              }
+            ]
+          }
+        ],
+        "transients": [],
+        "simplepie_cache_registered": [
+          {
+            "scheme": "wp_transient",
+            "class": "WP_Feed_Cache_Transient"
+          }
+        ],
+        "php_errors": []
+      },
+      "feed-remote-file": {
+        "case": "feed-remote-file",
+        "summary": {
+          "success": null,
+          "status_code": 200,
+          "body_sha256": "66a07d3037325b30528fdd724cf34a98ac7dd52b98005cc2dfe2cbc82c58766f",
+          "headers": {
+            "content-type": "text/xml",
+            "x-feed": "one, two"
+          }
+        },
+        "http": [
+          {
+            "method": "request",
+            "url": "https://feeds.example/feed-success.xml",
+            "args": {
+              "timeout": 5,
+              "redirection": 2,
+              "headers": {
+                "Accept": "application/rss+xml"
+              },
+              "user-agent": "custom-agent"
+            }
+          }
+        ],
+        "filters": [],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      },
+      "oembed-known-provider-json": {
+        "case": "oembed-known-provider-json",
+        "summary": {
+          "html": "<iframe src=\"https://embed.example/rich\"></iframe>",
+          "html_sha256": "21e704c294a393ac652dec93dd1e6700be79872c2580a8d6d1d941e0e40b2e07"
+        },
+        "http": [
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=400&maxheight=225&url=https%253A%252F%252Fknown.example%252Fpost%252F1&dnt=1&format=json",
+            "args": []
+          }
+        ],
+        "filters": [
+          {
+            "hook": "oembed_providers",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "pre_oembed_result",
+            "value_type": "NULL",
+            "arg_count": 2
+          },
+          {
+            "hook": "embed_defaults",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_fetch_url",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_dataparse",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_result",
+            "value_type": "string",
+            "arg_count": 2
+          }
+        ],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      },
+      "oembed-discover-json": {
+        "case": "oembed-discover-json",
+        "summary": {
+          "provider": "https://provider.example/oembed",
+          "html": "<iframe src=\"https://embed.example/rich\"></iframe>",
+          "html_sha256": "21e704c294a393ac652dec93dd1e6700be79872c2580a8d6d1d941e0e40b2e07"
+        },
+        "http": [
+          {
+            "method": "get",
+            "url": "https://discover.example/post",
+            "args": {
+              "limit_response_size": 153600
+            }
+          },
+          {
+            "method": "get",
+            "url": "https://discover.example/post",
+            "args": {
+              "limit_response_size": 153600
+            }
+          },
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=300&maxheight=150&url=https%253A%252F%252Fdiscover.example%252Fpost&dnt=1&format=json",
+            "args": []
+          }
+        ],
+        "filters": [
+          {
+            "hook": "oembed_providers",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_linktypes",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "pre_oembed_result",
+            "value_type": "NULL",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_linktypes",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "embed_defaults",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_fetch_url",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_dataparse",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_result",
+            "value_type": "string",
+            "arg_count": 2
+          }
+        ],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      },
+      "oembed-xml-fallback": {
+        "case": "oembed-xml-fallback",
+        "summary": {
+          "html": "<a href=\"https://known.example/post/2\"><img src=\"https://cdn.example/photo.jpg\" alt=\"Fixture Photo\" width=\"320\" height=\"180\" /></a>",
+          "html_sha256": "41608eecc2cf53f4ae26c7dc8b2038342fac3ceaa374ea16f08628fea3b58872"
+        },
+        "http": [
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=320&maxheight=180&url=https%253A%252F%252Fknown.example%252Fpost%252F2&dnt=1&format=json",
+            "args": []
+          },
+          {
+            "method": "get",
+            "url": "https://provider.example/oembed?maxwidth=320&maxheight=180&url=https%253A%252F%252Fknown.example%252Fpost%252F2&dnt=1&format=xml",
+            "args": []
+          }
+        ],
+        "filters": [
+          {
+            "hook": "oembed_providers",
+            "value_type": "array",
+            "arg_count": 0
+          },
+          {
+            "hook": "pre_oembed_result",
+            "value_type": "NULL",
+            "arg_count": 2
+          },
+          {
+            "hook": "embed_defaults",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_fetch_url",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_remote_get_args",
+            "value_type": "array",
+            "arg_count": 1
+          },
+          {
+            "hook": "oembed_dataparse",
+            "value_type": "string",
+            "arg_count": 2
+          },
+          {
+            "hook": "oembed_result",
+            "value_type": "string",
+            "arg_count": 2
+          }
+        ],
+        "actions": [],
+        "simplepie_init": [],
+        "transients": [],
+        "simplepie_cache_registered": [],
+        "php_errors": []
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:f4c6637d9b250e3017180e1b886dd3c5069ad50391f9aebf69863414e29360b9",
+    "candidate_sha256": "sha256:f4c6637d9b250e3017180e1b886dd3c5069ad50391f9aebf69863414e29360b9"
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-network-requests-not-executed",
+      "owner": "WPHX-312.08",
+      "detail": "The fixture uses deterministic fake wp_safe_remote_request/wp_safe_remote_get responses. Live HTTP, TLS, redirects, provider availability, and recorded-network replay remain later gates."
+    },
+    {
+      "id": "installed-feed-oembed-rendering-not-executed",
+      "owner": "WPHX-312.08",
+      "detail": "The fixture calls helper/API functions in process. Installed feed templates, post embed rendering, REST oEmbed controller dispatch, and shortcode integration remain later distribution work."
+    },
+    {
+      "id": "full-simplepie-stack-not-executed",
+      "owner": "WPHX-312.08",
+      "detail": "The fixture stubs SimplePie internals to observe WordPress wrapper behavior. Full SimplePie parsing/cache/network behavior remains vendor/reference scope."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.08",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

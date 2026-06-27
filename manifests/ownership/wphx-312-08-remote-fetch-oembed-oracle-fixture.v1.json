@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/remote-fetch-oembed-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.8",
+    "external_ref": "WPHX-312.08"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "remote feed fetch, SimplePie wrapper, and oEmbed HTTP discovery/fetch behavior",
+    "area": "src/wp-includes/feed.php src/wp-includes/class-wp-feed-cache-transient.php src/wp-includes/class-wp-simplepie-file.php src/wp-includes/class-wp-simplepie-sanitize-kses.php src/wp-includes/class-wp-oembed.php src/wp-includes/embed.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 feed and oEmbed source against deterministic SimplePie and HTTP stubs. It does not perform live network requests, installed embed rendering, feed template rendering, upstream PHPUnit parity, or generated public PHP replacement."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed/oEmbed rendering, live-network or recorded-network parity, selected upstream tests, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-remote-fetch-oembed-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-08"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-remote-fetch-oembed-oracle-fixture",
+      "npm run wp:core:wphx-312-remote-fetch-oembed-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-08-remote-fetch-oembed-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:3732343ca7f8a0e5a1a6b18d5331953d72fc98e30a7dbc82f91703951c645f52"
+  }
+}
