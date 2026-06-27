@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/magpie-rss-fetch-cache-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-ri4",
+    "external_ref": "WPHX-312.23"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "MagpieRSS fetch and transient cache behavior",
+    "area": "src/wp-includes/rss.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/rss.php in PHP CLI with deterministic WordPress HTTP and transient stubs. It observes reachable _fetch_remote_file, fetch_rss, and RSSCache transient behavior without live network, widgets, installed feed routes, broad display helpers, or generated public PHP replacement."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP, transient cache, feed display/widget/routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-magpie-rss-fetch-cache-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-23"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-magpie-rss-fetch-cache-oracle-fixture",
+      "npm run wp:core:wphx-312-magpie-rss-fetch-cache-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-23-magpie-rss-fetch-cache-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:d47234172d1955dee3a10f09681449f0cd6a6d49e86c9aaeef6b72a9ddec5ab4"
+  }
+}

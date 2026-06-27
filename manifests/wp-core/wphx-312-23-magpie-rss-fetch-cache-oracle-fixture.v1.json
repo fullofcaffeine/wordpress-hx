@@ -1,0 +1,593 @@
+{
+  "schema": "wphx.wp-core-magpie-rss-fetch-cache-oracle-fixture.v1",
+  "issue": "WPHX-312.23",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-magpie-rss-fetch-cache-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "parser_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-22-magpie-rss-parser-oracle-fixture.v1.json",
+      "bytes": 10444,
+      "sha256": "sha256:b36b31626503361676872a352f6a903151cb5e25862f5bafbd8a9ebd3c4d1b8a"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-magpie-rss-fetch-cache-oracle-fixture.mjs",
+      "bytes": 21135,
+      "sha256": "sha256:6a324945c49465b12ae087676dbad9b3ace1008bed81ce3dd1dca7c5fa195344"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/rss.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/rss.php",
+        "bytes": 23203,
+        "sha256": "sha256:fcb3b96531a3688acf02a57c226c4245401a9943e6981c14ff76f976c951c0b2"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "magpie:fetch-remote-success",
+        "focus": "_fetch_remote_file converts WP HTTP success into Snoopy-style headers/body/status"
+      },
+      {
+        "id": "magpie:fetch-remote-error",
+        "focus": "_fetch_remote_file converts WP_Error into Snoopy-compatible 500/error shape"
+      },
+      {
+        "id": "magpie:fetch-cache-off-success",
+        "focus": "fetch_rss with MAGPIE_CACHE_ON disabled fetches and parses without transient writes"
+      },
+      {
+        "id": "magpie:fetch-cache-miss-success",
+        "focus": "fetch_rss cache miss fetches remote feed, parses it, and stores the RSS object in a transient"
+      },
+      {
+        "id": "magpie:fetch-cache-hit",
+        "focus": "fetch_rss cache hit returns the cached object with from_cache and no remote call"
+      },
+      {
+        "id": "magpie:rsscache-transients",
+        "focus": "RSSCache set/get/check_cache maps URLs to rss_ md5 transient keys"
+      }
+    ],
+    "covered_symbols": [
+      "rss.php",
+      "fetch_rss",
+      "_fetch_remote_file",
+      "_response_to_rss",
+      "wp_safe_remote_request",
+      "wp_remote_retrieve_headers",
+      "wp_remote_retrieve_response_code",
+      "wp_remote_retrieve_body",
+      "is_wp_error",
+      "RSSCache",
+      "RSSCache::set",
+      "RSSCache::get",
+      "RSSCache::check_cache",
+      "RSSCache::file_name",
+      "set_transient",
+      "get_transient",
+      "MAGPIE_CACHE_ON",
+      "MAGPIE_CACHE_DIR",
+      "MAGPIE_CACHE_AGE",
+      "MAGPIE_FETCH_TIME_OUT"
+    ],
+    "source_files": [
+      "src/wp-includes/rss.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "transients_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "wordPress_stubs": "wp_safe_remote_request, wp_remote_retrieve_headers, wp_remote_retrieve_response_code, wp_remote_retrieve_body, is_wp_error, set_transient, get_transient, _deprecated_file, do_action, and wp_trigger_error are deterministic local stubs; copied rss.php remains the executed fetch/cache source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    },
+    "unreachable_legacy_branch_note": "fetch_rss still contains a STALE/304 conditional-fetch branch from legacy Magpie, but WordPress 7.0 RSSCache::check_cache only returns HIT or MISS against transients. This fixture records the reachable transient-backed behavior and does not synthesize a STALE state."
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-23/oracle",
+    "candidate_root": "build/wp-core/wphx-312-23/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/rss.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-23/oracle/wp-includes/rss.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-23/candidate/wp-includes/rss.php"
+      }
+    ],
+    "probe_lint": {
+      "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-23/oracle/probe.php",
+      "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-23/candidate/probe.php"
+    }
+  },
+  "observations": {
+    "oracle": {
+      "magpie:fetch-remote-success": {
+        "case": "magpie:fetch-remote-success",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "response_code": 200,
+          "headers": [
+            "etag: \"fetch-etag\"",
+            "last-modified: Sat, 27 Jun 2026 00:00:00 GMT",
+            "x-multi: first",
+            "x-multi: second"
+          ],
+          "body_sha256": "1340bdd05419cdfe4c2fe6dc80f13ede535d2f1a3defc8a7ffed548d8d769513"
+        },
+        "remote_requests": [
+          {
+            "url": "https://example.test/feed",
+            "headers": {
+              "X-Fixture": "1"
+            },
+            "timeout": 2
+          }
+        ]
+      },
+      "magpie:fetch-remote-error": {
+        "case": "magpie:fetch-remote-error",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "response": {
+          "status": 500,
+          "response_code": 500,
+          "error": "Fixture failure\n"
+        },
+        "remote_requests": [
+          {
+            "url": "https://example.test/error",
+            "headers": "",
+            "timeout": 2
+          }
+        ]
+      },
+      "magpie:fetch-cache-off-success": {
+        "case": "magpie:fetch-cache-off-success",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "magpie_cache_on": 0,
+        "item_count": 1,
+        "channel_title": "Fetch Fixture RSS",
+        "etag": "\"fetch-etag\"",
+        "last_modified": "Sat, 27 Jun 2026 00:00:00 GMT",
+        "remote_requests": [
+          {
+            "url": "https://example.test/feed",
+            "headers": "",
+            "timeout": 2
+          }
+        ],
+        "set_transients": [],
+        "get_transients": []
+      },
+      "magpie:fetch-cache-miss-success": {
+        "case": "magpie:fetch-cache-miss-success",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "magpie_cache_on": 1,
+        "cache_key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+        "item_count": 1,
+        "channel_title": "Fetch Fixture RSS",
+        "etag": "\"fetch-etag\"",
+        "last_modified": "Sat, 27 Jun 2026 00:00:00 GMT",
+        "remote_requests": [
+          {
+            "url": "https://example.test/feed",
+            "headers": [],
+            "timeout": 2
+          }
+        ],
+        "set_transients": [
+          {
+            "key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+            "expiration": 123,
+            "is_object": true,
+            "item_count": 1,
+            "etag": "\"fetch-etag\""
+          }
+        ],
+        "get_transients": [
+          "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3"
+        ],
+        "stored_item_count": 1
+      },
+      "magpie:fetch-cache-hit": {
+        "case": "magpie:fetch-cache-hit",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "cache_key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+        "from_cache": 1,
+        "channel_title": "Cached Fixture RSS",
+        "item_count": 1,
+        "remote_request_count": 0,
+        "set_transients": [],
+        "get_transients": [
+          "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+          "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3"
+        ]
+      },
+      "magpie:rsscache-transients": {
+        "case": "magpie:rsscache-transients",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "file_name": "f710268bd13647cd88bf9eadb6361cc1",
+        "set_key": "rss_f710268bd13647cd88bf9eadb6361cc1",
+        "expected_key": "rss_f710268bd13647cd88bf9eadb6361cc1",
+        "status_before": "MISS",
+        "status_after": "HIT",
+        "stored_title": "Stored item",
+        "set_transients": [
+          {
+            "key": "rss_f710268bd13647cd88bf9eadb6361cc1",
+            "expiration": 123,
+            "is_object": true,
+            "item_count": 1,
+            "etag": null
+          }
+        ],
+        "get_transients": [
+          "rss_f710268bd13647cd88bf9eadb6361cc1",
+          "rss_f710268bd13647cd88bf9eadb6361cc1",
+          "rss_f710268bd13647cd88bf9eadb6361cc1"
+        ]
+      }
+    },
+    "candidate": {
+      "magpie:fetch-remote-success": {
+        "case": "magpie:fetch-remote-success",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "response_code": 200,
+          "headers": [
+            "etag: \"fetch-etag\"",
+            "last-modified: Sat, 27 Jun 2026 00:00:00 GMT",
+            "x-multi: first",
+            "x-multi: second"
+          ],
+          "body_sha256": "1340bdd05419cdfe4c2fe6dc80f13ede535d2f1a3defc8a7ffed548d8d769513"
+        },
+        "remote_requests": [
+          {
+            "url": "https://example.test/feed",
+            "headers": {
+              "X-Fixture": "1"
+            },
+            "timeout": 2
+          }
+        ]
+      },
+      "magpie:fetch-remote-error": {
+        "case": "magpie:fetch-remote-error",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "response": {
+          "status": 500,
+          "response_code": 500,
+          "error": "Fixture failure\n"
+        },
+        "remote_requests": [
+          {
+            "url": "https://example.test/error",
+            "headers": "",
+            "timeout": 2
+          }
+        ]
+      },
+      "magpie:fetch-cache-off-success": {
+        "case": "magpie:fetch-cache-off-success",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "magpie_cache_on": 0,
+        "item_count": 1,
+        "channel_title": "Fetch Fixture RSS",
+        "etag": "\"fetch-etag\"",
+        "last_modified": "Sat, 27 Jun 2026 00:00:00 GMT",
+        "remote_requests": [
+          {
+            "url": "https://example.test/feed",
+            "headers": "",
+            "timeout": 2
+          }
+        ],
+        "set_transients": [],
+        "get_transients": []
+      },
+      "magpie:fetch-cache-miss-success": {
+        "case": "magpie:fetch-cache-miss-success",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "magpie_cache_on": 1,
+        "cache_key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+        "item_count": 1,
+        "channel_title": "Fetch Fixture RSS",
+        "etag": "\"fetch-etag\"",
+        "last_modified": "Sat, 27 Jun 2026 00:00:00 GMT",
+        "remote_requests": [
+          {
+            "url": "https://example.test/feed",
+            "headers": [],
+            "timeout": 2
+          }
+        ],
+        "set_transients": [
+          {
+            "key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+            "expiration": 123,
+            "is_object": true,
+            "item_count": 1,
+            "etag": "\"fetch-etag\""
+          }
+        ],
+        "get_transients": [
+          "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3"
+        ],
+        "stored_item_count": 1
+      },
+      "magpie:fetch-cache-hit": {
+        "case": "magpie:fetch-cache-hit",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "cache_key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+        "from_cache": 1,
+        "channel_title": "Cached Fixture RSS",
+        "item_count": 1,
+        "remote_request_count": 0,
+        "set_transients": [],
+        "get_transients": [
+          "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+          "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3"
+        ]
+      },
+      "magpie:rsscache-transients": {
+        "case": "magpie:rsscache-transients",
+        "include_side_effects": {
+          "deprecated": [
+            [
+              "rss.php",
+              "3.0.0",
+              "wp-includes/class-simplepie.php"
+            ]
+          ],
+          "actions": [
+            {
+              "hook": "load_feed_engine",
+              "args": []
+            }
+          ]
+        },
+        "file_name": "f710268bd13647cd88bf9eadb6361cc1",
+        "set_key": "rss_f710268bd13647cd88bf9eadb6361cc1",
+        "expected_key": "rss_f710268bd13647cd88bf9eadb6361cc1",
+        "status_before": "MISS",
+        "status_after": "HIT",
+        "stored_title": "Stored item",
+        "set_transients": [
+          {
+            "key": "rss_f710268bd13647cd88bf9eadb6361cc1",
+            "expiration": 123,
+            "is_object": true,
+            "item_count": 1,
+            "etag": null
+          }
+        ],
+        "get_transients": [
+          "rss_f710268bd13647cd88bf9eadb6361cc1",
+          "rss_f710268bd13647cd88bf9eadb6361cc1",
+          "rss_f710268bd13647cd88bf9eadb6361cc1"
+        ]
+      }
+    },
+    "match": true,
+    "summary": {
+      "remote_header_count": 4,
+      "remote_error": "Fixture failure\n",
+      "cache_off_item_count": 1,
+      "cache_miss_set_key": "rss_c5bb1ecfc4303bb7f6f0aa1e32f637f3",
+      "cache_hit_from_cache": 1,
+      "rsscache_statuses": [
+        "MISS",
+        "HIT"
+      ]
+    },
+    "oracle_sha256": "sha256:c226834e02710f23244f3a39555f17f71492e6ed22b1a1272a563936cf6ca1cb",
+    "candidate_sha256": "sha256:c226834e02710f23244f3a39555f17f71492e6ed22b1a1272a563936cf6ca1cb"
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-network-conditional-fetch-not-executed",
+      "owner": "WPHX-312.23",
+      "detail": "The fixture uses deterministic HTTP stubs. It does not perform live network I/O, recorded external HTTP replay, or an artificial STALE/304 branch because WordPress 7.0 transient-backed RSSCache exposes only HIT/MISS from check_cache."
+    },
+    {
+      "id": "feed-display-widget-routes-not-executed",
+      "owner": "WPHX-312.23",
+      "detail": "The fixture does not claim wp_rss/get_rss display output, widgets, installed feed routes, admin screens, or database-backed feed behavior."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.23",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_network_behavior_claimed": false,
+    "display_widget_route_behavior_claimed": false
+  }
+}
