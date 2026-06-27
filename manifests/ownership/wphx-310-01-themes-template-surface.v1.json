@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/themes-template-surface",
+  "issue": {
+    "id": "wordpresshx-l76.17.1",
+    "external_ref": "WPHX-310.01"
+  },
+  "unit": {
+    "kind": "source_surface_inventory",
+    "name": "themes, theme JSON, template hierarchy, customizer, widgets, nav menus",
+    "area": "wp-includes theme APIs, theme.json/global styles, template hierarchy, customizer, widgets/nav menus, theme admin surfaces",
+    "public_contract": "This inventory maps the WPHX-310 source, distribution, ABI, test, and handoff surface. It does not claim Haxe runtime ownership or generated public PHP replacement."
+  },
+  "ownership_state": "inventory_only",
+  "ownership_axes": {
+    "semantic_owner": "upstream_wordpress_oracle",
+    "adapter_contract_owner": "not_claimed",
+    "emission_strategy": "not_claimed",
+    "execution_provider": "not_claimed",
+    "compatibility_evidence": "surface_inventory"
+  },
+  "owned_paths": [
+    "tools/wp-core/run-themes-template-surface.mjs",
+    "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+    "manifests/ownership/wphx-310-01-themes-template-surface.v1.json",
+    "receipts/wp-core/wphx-310-01-themes-template-surface.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+    "manifests/ownership/wphx-310-01-themes-template-surface.v1.json",
+    "receipts/wp-core/wphx-310-01-themes-template-surface.v1.json"
+  ],
+  "verification": {
+    "commands": [
+      "npm run wp:core:wphx-310-themes-template-surface",
+      "npm run wp:core:wphx-310-themes-template-surface:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-310-01-themes-template-surface"
+    ],
+    "manifest_digest": "sha256:04de8bdb20ee33e27e112b580c352dabad87049e7569c451dd2eeac3548657d3"
+  }
+}

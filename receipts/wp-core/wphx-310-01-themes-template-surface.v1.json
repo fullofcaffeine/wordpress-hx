@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-310-01-themes-template-surface",
+  "issue": {
+    "id": "wordpresshx-l76.17.1",
+    "external_ref": "WPHX-310.01",
+    "title": "WPHX-310.01 — Inventory themes/theme JSON/template hierarchy surface"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+      "role": "themes/theme-json/template hierarchy surface manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-310-01-themes-template-surface.v1.json",
+      "role": "themes/template surface ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-themes-template-surface.mjs",
+      "role": "deterministic surface inventory generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-310-themes-template-surface",
+    "npm run wp:core:wphx-310-themes-template-surface:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-322-php-first-party-manifest-closure",
+    "receipt:wphx-309-domain-closure"
+  ],
+  "manifest_sha256": "sha256:04de8bdb20ee33e27e112b580c352dabad87049e7569c451dd2eeac3548657d3",
+  "validation_result": {
+    "status": "passed",
+    "source_files": 127,
+    "distribution_artifacts": 152,
+    "abi_entries": 1786,
+    "upstream_tests": 141,
+    "behavior_parity_claimed": false
+  }
+}
