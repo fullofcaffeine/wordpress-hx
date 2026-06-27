@@ -1,0 +1,2518 @@
+{
+  "schema": "wphx.wp-core-wp-http-request-proxy-safety-oracle-fixture.v1",
+  "issue": "WPHX-312.49",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_proxy_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+      "bytes": 25219,
+      "sha256": "sha256:f532ee66c44a8006a21392629e5bd177ef46a6785d3350ebf34ec1f42fed9529"
+    },
+    "http_api_wrapper_safety_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+      "bytes": 30913,
+      "sha256": "sha256:009028b1aae51334245e584b1a9f5a5e4a2893231e2d3bca98807b7f463f8250"
+    },
+    "http_request_orchestration_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "bytes": 42321,
+      "sha256": "sha256:2696a82cbe51c1f2aea7f3e2654e0a0e57a8a7de7716801b37fc68423adfd3a3"
+    },
+    "http_block_request_policy_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-47-wp-http-block-request-policy-oracle-fixture.v1.json",
+      "bytes": 11156,
+      "sha256": "sha256:eef15d3ae46b9e7da0e4335df6f697c02a5df2349911ecc726f81666732aabf1"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs",
+      "bytes": 31029,
+      "sha256": "sha256:334f6f401ae58e51e6c7b0e954f9d8d7d76bb78b38bbb807fc64f9c6711f5774"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-response.php",
+        "bytes": 2977,
+        "sha256": "sha256:6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-cookie.php",
+        "bytes": 7269,
+        "sha256": "sha256:d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-requests-response.php",
+        "bytes": 4243,
+        "sha256": "sha256:0db148a63abbbf8bd2087ae82752574244ed6893f997456caf1aa537646533d1"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-hooks.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-requests-hooks.php",
+        "bytes": 2022,
+        "sha256": "sha256:79856866e8ea82fd98d825cf0405918974957eadecc3a68cd9fe42b924f9a9de"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-proxy.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-proxy.php",
+        "bytes": 5980,
+        "sha256": "sha256:2acfbf49118490c07c53a6f712d7146be41bd729bff43a6bcf960bbf0f2594fb"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "wp-http-request-safety:reject-safe-filter",
+        "focus": "http_request_reject_unsafe_urls enables validation, safe URL survives, and redirect validation hooks are registered"
+      },
+      {
+        "id": "wp-http-request-safety:reject-unsafe-filter",
+        "focus": "unsafe URL rejected before Requests execution when reject_unsafe_urls is enabled by filter"
+      },
+      {
+        "id": "wp-http-request-safety:bad-protocol-strip",
+        "focus": "wp_kses_bad_protocol strips disallowed protocol and yields valid-URL WP_Error before Requests execution"
+      },
+      {
+        "id": "wp-http-request-proxy:auth-handoff",
+        "focus": "configured proxy with authentication becomes a Requests Proxy\\Http option with address and credentials"
+      },
+      {
+        "id": "wp-http-request-proxy:bypass-hosts",
+        "focus": "site host and WP_PROXY_BYPASS_HOSTS wildcard hosts bypass proxy option handoff"
+      },
+      {
+        "id": "wp-http-request-proxy:pre-filter-overrides",
+        "focus": "pre_http_send_through_proxy false/true overrides proxy option handoff for specific URLs"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Http::request",
+      "WP_HTTP_Proxy::send_through_proxy",
+      "WP_HTTP_Requests_Hooks",
+      "WP_HTTP_Requests_Response",
+      "WpOrg\\Requests\\Requests::request",
+      "WpOrg\\Requests\\Proxy\\Http",
+      "http_request_reject_unsafe_urls",
+      "pre_http_send_through_proxy",
+      "requests.before_redirect",
+      "WP_Http::browser_redirect_compatibility",
+      "WP_Http::validate_redirects",
+      "wp_http_validate_url",
+      "wp_kses_bad_protocol",
+      "WP_PROXY_HOST",
+      "WP_PROXY_PORT",
+      "WP_PROXY_USERNAME",
+      "WP_PROXY_PASSWORD",
+      "WP_PROXY_BYPASS_HOSTS"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-http-response.php",
+      "src/wp-includes/class-wp-http-cookie.php",
+      "src/wp-includes/class-wp-http-requests-response.php",
+      "src/wp-includes/class-wp-http-requests-hooks.php",
+      "src/wp-includes/class-wp-http-proxy.php",
+      "src/wp-includes/class-wp-http.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-49/probe.php",
+      "sha256": "sha256:6dc31dcda76524f5377a0d399e87947b486dbf2c4146f2dca4f16ada648d16fb"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "Requests classes, selected WordPress globals, hook dispatch, URL validation, site URL, proxy constants, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed request proxy/safety sources; outbound Requests::request records options without network I/O."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-49/oracle",
+    "candidate_root": "build/wp-core/wphx-312-49/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-49/oracle/wp-includes/class-wp-http-response.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-49/candidate/wp-includes/class-wp-http-response.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-49/oracle/wp-includes/class-wp-http-cookie.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-49/candidate/wp-includes/class-wp-http-cookie.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-response.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-49/oracle/wp-includes/class-wp-http-requests-response.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-49/candidate/wp-includes/class-wp-http-requests-response.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-hooks.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-49/oracle/wp-includes/class-wp-http-requests-hooks.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-49/candidate/wp-includes/class-wp-http-requests-hooks.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-proxy.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-49/oracle/wp-includes/class-wp-http-proxy.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-49/candidate/wp-includes/class-wp-http-proxy.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-49/oracle/wp-includes/class-wp-http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-49/candidate/wp-includes/class-wp-http.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "wp-http-request-safety:reject-safe-filter": {
+        "case": "wp-http-request-safety:reject-safe-filter",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 200,
+            "message": "OK"
+          },
+          "cookies": [],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          }
+        },
+        "request_call": {
+          "url": "https://valid.example/resource",
+          "headers": [],
+          "data": null,
+          "type": "GET",
+          "options": {
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              },
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::validate_redirects",
+                "priority": 0
+              }
+            ],
+            "proxy": null,
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          }
+        },
+        "validate_url_calls": [
+          "https://valid.example/resource"
+        ],
+        "bad_protocol_calls": [
+          {
+            "url": "https://valid.example/resource",
+            "allowed": [
+              "http",
+              "https",
+              "ssl"
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": true
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": true,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": true,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": true,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://valid.example/resource"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": true,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://valid.example/resource"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          }
+        ],
+        "assertions": {
+          "validation_filter_enabled": true,
+          "safe_url_validated_and_called": true,
+          "bad_protocol_allowlist_applied": true,
+          "redirect_validation_hook_registered": true
+        }
+      },
+      "wp-http-request-safety:reject-unsafe-filter": {
+        "case": "wp-http-request-safety:reject-unsafe-filter",
+        "error": {
+          "code": "http_request_failed",
+          "message": "A valid URL was not provided."
+        },
+        "validate_url_calls": [
+          "https://blocked.example/resource"
+        ],
+        "bad_protocol_calls": [],
+        "request_call_count": 0,
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "http_request_failed",
+                "message": "A valid URL was not provided."
+              },
+              "response",
+              "WpOrg\\Requests\\Requests",
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": true,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              false
+            ]
+          }
+        ],
+        "assertions": {
+          "unsafe_url_validated": true,
+          "unsafe_error_before_requests": true,
+          "no_bad_protocol_after_failed_validation": true
+        }
+      },
+      "wp-http-request-safety:bad-protocol-strip": {
+        "case": "wp-http-request-safety:bad-protocol-strip",
+        "error": {
+          "code": "http_request_failed",
+          "message": "A valid URL was not provided."
+        },
+        "bad_protocol_calls": [
+          {
+            "url": "ftp://valid.example/file",
+            "allowed": [
+              "http",
+              "https",
+              "ssl"
+            ]
+          }
+        ],
+        "request_call_count": 0,
+        "assertions": {
+          "bad_protocol_checked": true,
+          "bad_protocol_error_before_requests": true
+        }
+      },
+      "wp-http-request-proxy:auth-handoff": {
+        "case": "wp-http-request-proxy:auth-handoff",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 200,
+            "message": "OK"
+          },
+          "cookies": [],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          }
+        },
+        "request_call": {
+          "url": "https://external.example.test/path",
+          "headers": [],
+          "data": null,
+          "type": "GET",
+          "options": {
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "proxy": {
+              "class": "WpOrg\\Requests\\Proxy\\Http",
+              "address": "proxy.example.test:8080",
+              "use_authentication": true,
+              "user": "proxy-user",
+              "pass": "proxy-pass"
+            },
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          }
+        },
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://external.example.test/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "pre_http_send_through_proxy",
+            "value": null,
+            "args": [
+              "https://external.example.test/path",
+              {
+                "scheme": "https",
+                "host": "external.example.test",
+                "path": "/path"
+              },
+              {
+                "scheme": "https",
+                "host": "site.example.test"
+              }
+            ],
+            "return": null
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://external.example.test/path"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          }
+        ],
+        "assertions": {
+          "proxy_object_handoff": true,
+          "proxy_filter_observed": true
+        }
+      },
+      "wp-http-request-proxy:bypass-hosts": {
+        "case": "wp-http-request-proxy:bypass-hosts",
+        "responses": [
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          },
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          },
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          }
+        ],
+        "request_calls": [
+          {
+            "url": "https://site.example.test/wp-json/",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": null,
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          },
+          {
+            "url": "https://downloads.wordpress.org/plugin.zip",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": null,
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          },
+          {
+            "url": "https://external.example.test/path",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": {
+                "class": "WpOrg\\Requests\\Proxy\\Http",
+                "address": "proxy.example.test:8080",
+                "use_authentication": false,
+                "user": "",
+                "pass": ""
+              },
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          }
+        ],
+        "assertions": {
+          "site_host_bypasses_proxy": true,
+          "wildcard_host_bypasses_proxy": true,
+          "external_uses_proxy": true
+        }
+      },
+      "wp-http-request-proxy:pre-filter-overrides": {
+        "case": "wp-http-request-proxy:pre-filter-overrides",
+        "responses": [
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          },
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          }
+        ],
+        "request_calls": [
+          {
+            "url": "https://force-bypass.example/path",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": null,
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          },
+          {
+            "url": "https://force-proxy.example/path",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": {
+                "class": "WpOrg\\Requests\\Proxy\\Http",
+                "address": "proxy.example.test:8080",
+                "use_authentication": false,
+                "user": "",
+                "pass": ""
+              },
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-bypass.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "pre_http_send_through_proxy",
+            "value": null,
+            "args": [
+              "https://force-bypass.example/path",
+              {
+                "scheme": "https",
+                "host": "force-bypass.example",
+                "path": "/path"
+              },
+              {
+                "scheme": "https",
+                "host": "site.example.test"
+              }
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-bypass.example/path"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          },
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-proxy.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "pre_http_send_through_proxy",
+            "value": null,
+            "args": [
+              "https://force-proxy.example/path",
+              {
+                "scheme": "https",
+                "host": "force-proxy.example",
+                "path": "/path"
+              },
+              {
+                "scheme": "https",
+                "host": "site.example.test"
+              }
+            ],
+            "return": true
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-proxy.example/path"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          }
+        ],
+        "assertions": {
+          "filter_false_bypasses_proxy": true,
+          "filter_true_uses_proxy": true,
+          "filter_returns_recorded": true
+        }
+      }
+    },
+    "candidate": {
+      "wp-http-request-safety:reject-safe-filter": {
+        "case": "wp-http-request-safety:reject-safe-filter",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 200,
+            "message": "OK"
+          },
+          "cookies": [],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          }
+        },
+        "request_call": {
+          "url": "https://valid.example/resource",
+          "headers": [],
+          "data": null,
+          "type": "GET",
+          "options": {
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              },
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::validate_redirects",
+                "priority": 0
+              }
+            ],
+            "proxy": null,
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          }
+        },
+        "validate_url_calls": [
+          "https://valid.example/resource"
+        ],
+        "bad_protocol_calls": [
+          {
+            "url": "https://valid.example/resource",
+            "allowed": [
+              "http",
+              "https",
+              "ssl"
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": true
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": true,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": true,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": true,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://valid.example/resource"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://valid.example/resource"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": true,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://valid.example/resource"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          }
+        ],
+        "assertions": {
+          "validation_filter_enabled": true,
+          "safe_url_validated_and_called": true,
+          "bad_protocol_allowlist_applied": true,
+          "redirect_validation_hook_registered": true
+        }
+      },
+      "wp-http-request-safety:reject-unsafe-filter": {
+        "case": "wp-http-request-safety:reject-unsafe-filter",
+        "error": {
+          "code": "http_request_failed",
+          "message": "A valid URL was not provided."
+        },
+        "validate_url_calls": [
+          "https://blocked.example/resource"
+        ],
+        "bad_protocol_calls": [],
+        "request_call_count": 0,
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "http_request_failed",
+                "message": "A valid URL was not provided."
+              },
+              "response",
+              "WpOrg\\Requests\\Requests",
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": true,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              false
+            ]
+          }
+        ],
+        "assertions": {
+          "unsafe_url_validated": true,
+          "unsafe_error_before_requests": true,
+          "no_bad_protocol_after_failed_validation": true
+        }
+      },
+      "wp-http-request-safety:bad-protocol-strip": {
+        "case": "wp-http-request-safety:bad-protocol-strip",
+        "error": {
+          "code": "http_request_failed",
+          "message": "A valid URL was not provided."
+        },
+        "bad_protocol_calls": [
+          {
+            "url": "ftp://valid.example/file",
+            "allowed": [
+              "http",
+              "https",
+              "ssl"
+            ]
+          }
+        ],
+        "request_call_count": 0,
+        "assertions": {
+          "bad_protocol_checked": true,
+          "bad_protocol_error_before_requests": true
+        }
+      },
+      "wp-http-request-proxy:auth-handoff": {
+        "case": "wp-http-request-proxy:auth-handoff",
+        "response": {
+          "headers": {
+            "x-fixture": "yes"
+          },
+          "body": "fixture body",
+          "response": {
+            "code": 200,
+            "message": "OK"
+          },
+          "cookies": [],
+          "filename": null,
+          "http_response": {
+            "class": "WP_HTTP_Requests_Response"
+          }
+        },
+        "request_call": {
+          "url": "https://external.example.test/path",
+          "headers": [],
+          "data": null,
+          "type": "GET",
+          "options": {
+            "hooks_class": "WP_HTTP_Requests_Hooks",
+            "hook_registrations": [
+              {
+                "hook": "requests.before_redirect",
+                "callback": "WP_Http::browser_redirect_compatibility",
+                "priority": 0
+              }
+            ],
+            "proxy": {
+              "class": "WpOrg\\Requests\\Proxy\\Http",
+              "address": "proxy.example.test:8080",
+              "use_authentication": true,
+              "user": "proxy-user",
+              "pass": "proxy-pass"
+            },
+            "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          }
+        },
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://external.example.test/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://external.example.test/path"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "pre_http_send_through_proxy",
+            "value": null,
+            "args": [
+              "https://external.example.test/path",
+              {
+                "scheme": "https",
+                "host": "external.example.test",
+                "path": "/path"
+              },
+              {
+                "scheme": "https",
+                "host": "site.example.test"
+              }
+            ],
+            "return": null
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://external.example.test/path"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          }
+        ],
+        "assertions": {
+          "proxy_object_handoff": true,
+          "proxy_filter_observed": true
+        }
+      },
+      "wp-http-request-proxy:bypass-hosts": {
+        "case": "wp-http-request-proxy:bypass-hosts",
+        "responses": [
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          },
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          },
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          }
+        ],
+        "request_calls": [
+          {
+            "url": "https://site.example.test/wp-json/",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": null,
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          },
+          {
+            "url": "https://downloads.wordpress.org/plugin.zip",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": null,
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          },
+          {
+            "url": "https://external.example.test/path",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": {
+                "class": "WpOrg\\Requests\\Proxy\\Http",
+                "address": "proxy.example.test:8080",
+                "use_authentication": false,
+                "user": "",
+                "pass": ""
+              },
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          }
+        ],
+        "assertions": {
+          "site_host_bypasses_proxy": true,
+          "wildcard_host_bypasses_proxy": true,
+          "external_uses_proxy": true
+        }
+      },
+      "wp-http-request-proxy:pre-filter-overrides": {
+        "case": "wp-http-request-proxy:pre-filter-overrides",
+        "responses": [
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          },
+          {
+            "headers": {
+              "x-fixture": "yes"
+            },
+            "body": "fixture body",
+            "response": {
+              "code": 200,
+              "message": "OK"
+            },
+            "cookies": [],
+            "filename": null,
+            "http_response": {
+              "class": "WP_HTTP_Requests_Response"
+            }
+          }
+        ],
+        "request_calls": [
+          {
+            "url": "https://force-bypass.example/path",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": null,
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          },
+          {
+            "url": "https://force-proxy.example/path",
+            "headers": [],
+            "data": null,
+            "type": "GET",
+            "options": {
+              "hooks_class": "WP_HTTP_Requests_Hooks",
+              "hook_registrations": [
+                {
+                  "hook": "requests.before_redirect",
+                  "callback": "WP_Http::browser_redirect_compatibility",
+                  "priority": 0
+                }
+              ],
+              "proxy": {
+                "class": "WpOrg\\Requests\\Proxy\\Http",
+                "address": "proxy.example.test:8080",
+                "use_authentication": false,
+                "user": "",
+                "pass": ""
+              },
+              "verify": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+            }
+          }
+        ],
+        "filters": [
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-bypass.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://force-bypass.example/path"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "pre_http_send_through_proxy",
+            "value": null,
+            "args": [
+              "https://force-bypass.example/path",
+              {
+                "scheme": "https",
+                "host": "force-bypass.example",
+                "path": "/path"
+              },
+              {
+                "scheme": "https",
+                "host": "site.example.test"
+              }
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-bypass.example/path"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          },
+          {
+            "hook": "http_request_timeout",
+            "value": 5,
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_redirection_count",
+            "value": 5,
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": 5
+          },
+          {
+            "hook": "http_request_version",
+            "value": "1.0",
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": "1.0"
+          },
+          {
+            "hook": "http_headers_useragent",
+            "value": "WordPress/7.0-fixture; https://site.example.test",
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": "WordPress/7.0-fixture; https://site.example.test"
+          },
+          {
+            "hook": "http_request_reject_unsafe_urls",
+            "value": false,
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "http_request_args",
+            "value": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            },
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": {
+              "method": "GET",
+              "timeout": 5,
+              "redirection": 5,
+              "httpversion": "1.0",
+              "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+              "reject_unsafe_urls": false,
+              "blocking": true,
+              "headers": [],
+              "cookies": [],
+              "body": null,
+              "compress": false,
+              "decompress": true,
+              "sslverify": true,
+              "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+              "stream": false,
+              "filename": null,
+              "limit_response_size": null
+            }
+          },
+          {
+            "hook": "pre_http_request",
+            "value": false,
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-proxy.example/path"
+            ],
+            "return": false
+          },
+          {
+            "hook": "https_ssl_verify",
+            "value": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+            "args": [
+              "https://force-proxy.example/path"
+            ],
+            "return": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt"
+          },
+          {
+            "hook": "pre_http_send_through_proxy",
+            "value": null,
+            "args": [
+              "https://force-proxy.example/path",
+              {
+                "scheme": "https",
+                "host": "force-proxy.example",
+                "path": "/path"
+              },
+              {
+                "scheme": "https",
+                "host": "site.example.test"
+              }
+            ],
+            "return": true
+          },
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            },
+            "args": [
+              {
+                "method": "GET",
+                "timeout": 5,
+                "redirection": 5,
+                "httpversion": "1.0",
+                "user-agent": "WordPress/7.0-fixture; https://site.example.test",
+                "reject_unsafe_urls": false,
+                "blocking": true,
+                "headers": [],
+                "cookies": [],
+                "body": null,
+                "compress": false,
+                "decompress": true,
+                "sslverify": true,
+                "sslcertificates": "<ABSPATH>/wp-includes/certificates/ca-bundle.crt",
+                "stream": false,
+                "filename": null,
+                "limit_response_size": null,
+                "_redirection": 5
+              },
+              "https://force-proxy.example/path"
+            ],
+            "return": {
+              "headers": {
+                "x-fixture": "yes"
+              },
+              "body": "fixture body",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null,
+              "http_response": {
+                "class": "WP_HTTP_Requests_Response"
+              }
+            }
+          }
+        ],
+        "assertions": {
+          "filter_false_bypasses_proxy": true,
+          "filter_true_uses_proxy": true,
+          "filter_returns_recorded": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:99a46a44609167cb4b855072fbbd7def38eed9be39d8ce92531f0e1c1fe06d6e",
+    "candidate_sha256": "sha256:99a46a44609167cb4b855072fbbd7def38eed9be39d8ce92531f0e1c1fe06d6e",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-requests-network-and-proxy-io-not-executed",
+      "owner": "WPHX-312.49",
+      "detail": "The fixture records WP_Http's Requests and proxy option handoff through a stubbed Requests::request boundary. It does not perform live network I/O, DNS, TLS, proxy negotiation, redirect following, or transport execution."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.49",
+      "detail": "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.49",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 18,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "proxy_negotiation_claimed": false,
+    "transport_execution_claimed": false
+  }
+}

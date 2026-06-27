@@ -1,0 +1,50 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-49-wp-http-request-proxy-safety-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.36",
+    "external_ref": "WPHX-312.49",
+    "title": "WPHX-312.49 - Add WP_Http request proxy/safety option oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+      "role": "WP_Http request proxy/safety oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle WP_Http request proxy/safety boundary"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs",
+      "role": "deterministic PHP CLI oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture",
+    "npm run wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-32-http-proxy-oracle-fixture",
+    "receipt:wphx-312-43-http-api-wrapper-safety-oracle-fixture",
+    "receipt:wphx-312-46-wp-http-request-orchestration-oracle-fixture",
+    "receipt:wphx-312-47-wp-http-block-request-policy-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 18,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "proxy_negotiation_claimed": false,
+    "transport_execution_claimed": false
+  }
+}

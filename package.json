@@ -247,6 +247,8 @@
     "wp:core:wphx-312-http-transport-callback-test-oracle-fixture:check": "node tools/wp-core/run-http-transport-callback-test-oracle-fixture.mjs --check",
     "wp:core:wphx-312-wp-http-request-orchestration-oracle-fixture": "node tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs",
     "wp:core:wphx-312-wp-http-request-orchestration-oracle-fixture:check": "node tools/wp-core/run-wp-http-request-orchestration-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture": "node tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs",
+    "wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture:check": "node tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs --check",
     "wp:core:wphx-312-wp-http-block-request-policy-oracle-fixture": "node tools/wp-core/run-wp-http-block-request-policy-oracle-fixture.mjs",
     "wp:core:wphx-312-wp-http-block-request-policy-oracle-fixture:check": "node tools/wp-core/run-wp-http-block-request-policy-oracle-fixture.mjs --check",
     "wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture": "node tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs",

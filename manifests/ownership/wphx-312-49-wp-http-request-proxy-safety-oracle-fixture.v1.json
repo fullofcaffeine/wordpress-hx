@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-request-proxy-safety-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.36",
+    "external_ref": "WPHX-312.49"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Http request proxy/safety option behavior",
+    "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Proxy, WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Response, and WP_Http_Cookie support",
+    "public_contract": "This fixture executes copied WordPress 7.0 WP_Http request proxy and URL-safety option branches in isolated PHP CLI probes. It observes reject_unsafe_urls filtering, URL validation, bad-protocol stripping, redirect validation hook registration, proxy option/auth handoff, proxy bypass hosts, and pre_http_send_through_proxy overrides through a deterministic Requests boundary without claiming live Requests network I/O, real DNS/proxy/TLS behavior, transport execution, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-requests-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy/safety, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-49"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture",
+      "npm run wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-49-wp-http-request-proxy-safety-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:d9dbaa28eafda9304b97ae4f3c9cc879fca9fa8833fc1f7060a474d72da35629"
+  }
+}
