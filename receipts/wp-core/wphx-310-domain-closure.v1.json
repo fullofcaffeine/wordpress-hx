@@ -1,0 +1,106 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-310-domain-closure",
+  "issue": {
+    "id": "wordpresshx-l76.17",
+    "external_ref": "WPHX-310",
+    "title": "WPHX-310 \u2014 Themes, theme JSON, template hierarchy"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "domain closure audit over WPHX-310.01 through WPHX-310.11 receipts",
+  "evidence_class": "domain_closure",
+  "artifact_scope": "mixed: source_inventory, adapter_contract, oracle_source_mirror, packaged_distribution, upstream_suite_parity",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "receipts/wp-core/wphx-310-01-themes-template-surface.v1.json",
+      "role": "theme/template source, distribution, ABI, and upstream test surface inventory",
+      "sha256": "sha256:9ab5398f09e582780ffc1d1f47c7e19b578a62b1b1d212fc478ed357d881a53a"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "role": "typed Haxe theme/template adapter-contract evidence",
+      "sha256": "sha256:9350358b2e4b3446cb6019e8a6d87de03aee233c87be034afc258547ecaac831"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-03-theme-support-template-oracle-fixture.v1.json",
+      "role": "deterministic theme support and classic template oracle-source-mirror evidence",
+      "sha256": "sha256:240b28e2d659208423caf33d11620692a29b73d73b5ef45b2ce5a1a80dbbe91e"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-04-theme-json-global-styles-oracle-fixture.v1.json",
+      "role": "deterministic WP_Theme_JSON and global styles oracle-source-mirror evidence",
+      "sha256": "sha256:3bdee71e3184d0b232990e243dddca84f513aa5c8f5075cdcd79e2d508c1e044"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+      "role": "deterministic WP_Theme_JSON_Resolver and global-styles wrapper evidence",
+      "sha256": "sha256:11afe2570c31bde17dfb5735ce9d119f3261544ac8228e9792445510cb2b2dc1"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-06-theme-customizer-widget-nav-surface.v1.json",
+      "role": "customizer, widget, nav-menu, and admin-theme narrowed surface inventory",
+      "sha256": "sha256:ec2e00ca5dc18fec60e2d852fa4c8b41ff41b01418dfc02d0484d2474869f4bf"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+      "role": "deterministic widget/sidebar registry and rendering oracle-source-mirror evidence",
+      "sha256": "sha256:48f63ade18f32e90c48257da42b91d9c03be2b97185cd816a5251567d471499f"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-08-nav-menu-oracle-fixture.v1.json",
+      "role": "deterministic nav-menu lookup, rendering, and walker oracle-source-mirror evidence",
+      "sha256": "sha256:6f7c644e6c8c44140e00ea62340dc52524e39cdb80e14385f32e2df21e689402"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+      "role": "deterministic Customizer manager, settings, controls, and selective-refresh evidence",
+      "sha256": "sha256:0473e2b03cb19817e82dcb199c1717cda379cce15a73498bfce884615394fc56"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-10-theme-installed-distribution.v1.json",
+      "role": "installed-style theme front-end and admin HTTP gate evidence",
+      "sha256": "sha256:70b1b328e0af7bdd3f4fba7c65bac412ba2f2b87a2903fe90c1e997389ff3a11"
+    },
+    {
+      "path": "receipts/wp-core/wphx-310-11-theme-upstream-phpunit-ratchet.v1.json",
+      "role": "selected upstream theme/template/theme-json/widget/nav-menu/customizer pass/pass evidence",
+      "sha256": "sha256:89c553ddad30bb6bfc3f3fa37c4b5c81e19f574ab578425a31d32f87df3744da"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-310 closure interpretation",
+      "sha256": "sha256:3b46c702dafa3ef690c955a1668b0218fbad59c5d74f006821f53946defcfb5b"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-310-theme-installed:check",
+    "npm run upstream:phpunit-ratchet:provision:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "surface_inventory": true,
+    "haxe_adapter_contracts": [
+      "ThemeTemplateAdapterContract"
+    ],
+    "fixtures_cover": [
+      "theme support and classic template hierarchy observations",
+      "WP_Theme_JSON migration, presets, stylesheet, merge, and sanitization observations",
+      "WP_Theme_JSON_Resolver, global styles/settings wrappers, theme.json metadata, and cache observations",
+      "customizer, widget/sidebar, nav-menu, and admin-theme narrowed surface inventory",
+      "widget/sidebar registration, dynamic_sidebar, and direct widget rendering observations",
+      "nav-menu location/name lookup, menu object resolution, rendering, depth, and walker observations",
+      "Customizer manager bootstrap, registry, post value, validation, object JSON, and selective-refresh observations",
+      "installed-style front-end and admin theme/package observations",
+      "selected upstream theme/template/theme-json/block-template/widget/nav-menu/Customizer pass/pass classifications"
+    ],
+    "remaining_gaps": [
+      "Generated public PHP replacement for theme.php, class-wp-theme.php, class-wp-theme-json.php, class-wp-theme-json-resolver.php, template.php, block-template.php, customize, nav-menu, and widget files is not claimed.",
+      "Full database-backed installed theme, Customizer, widget, nav-menu, user global-styles CPT, and browser Customizer behavior remains later distribution work.",
+      "Full upstream theme suite parity and ecosystem plugin/theme corpus coverage are not claimed.",
+      "This closes the WPHX-310 source-domain evidence slice, not the whole WordPress theme subsystem."
+    ]
+  }
+}
