@@ -1,0 +1,1008 @@
+{
+  "schema": "wphx.wp-core-http-requests-bridge-oracle-fixture.v1",
+  "issue": "WPHX-312.33",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-http-requests-bridge-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_cron_mail_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "bytes": 38945,
+      "sha256": "sha256:017e1d13c9f442eb5f02a3c37bb3ab6ba9edc661d9c0c6b87aab429e3d7b325a"
+    },
+    "http_proxy_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+      "bytes": 25219,
+      "sha256": "sha256:f532ee66c44a8006a21392629e5bd177ef46a6785d3350ebf34ec1f42fed9529"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-http-requests-bridge-oracle-fixture.mjs",
+      "bytes": 23725,
+      "sha256": "sha256:74433d5d67c1a54f0f7c6c93a54ec6b2ef0ae02c2141aea80fc08f32361db9ab"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-response.php",
+        "bytes": 2977,
+        "sha256": "sha256:6d2a98f222a7b45812cc549b7f32f330aa9389f5ef0d4870987a64c0ae4d4895"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-cookie.php",
+        "bytes": 7269,
+        "sha256": "sha256:d0b26c3bbd217273eb1b5074519194b804f47bd5712a8472bfd3bb5210d25607"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-requests-response.php",
+        "bytes": 4243,
+        "sha256": "sha256:0db148a63abbbf8bd2087ae82752574244ed6893f997456caf1aa537646533d1"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-hooks.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http-requests-hooks.php",
+        "bytes": 2022,
+        "sha256": "sha256:79856866e8ea82fd98d825cf0405918974957eadecc3a68cd9fe42b924f9a9de"
+      }
+    ],
+    "claimed_source_files": [
+      "src/wp-includes/class-wp-http-requests-response.php",
+      "src/wp-includes/class-wp-http-requests-hooks.php"
+    ],
+    "support_sources": [
+      {
+        "path": "src/wp-includes/Requests/library/Requests.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/library/Requests.php",
+        "bytes": 261,
+        "sha256": "sha256:397c790baa73fc768dbe7a3c2473180d0468a4bfcd6b1f58ea1b6ff31eea2e39"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Auth.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Auth.php",
+        "bytes": 860,
+        "sha256": "sha256:55ff2df53f03e60ec04f264ebb82d190e84867fdba28df4bd67d31921f895960"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Auth/Basic.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Auth/Basic.php",
+        "bytes": 2541,
+        "sha256": "sha256:ab1c5a7a4ddb93747fbdf8d3bb50e93fa77a38762a22ed5226ca85e1fa8dfa54"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Autoload.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Autoload.php",
+        "bytes": 9335,
+        "sha256": "sha256:e5eb035b64d0fd4b6b30f582c207955dd426c4faabf3695b83be09482febb514"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Capability.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Capability.php",
+        "bytes": 652,
+        "sha256": "sha256:0d7c9dc6d64eeb226b77af8248775ed3903af655ffffd6796d14704e0f68802b"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Cookie.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Cookie.php",
+        "bytes": 15389,
+        "sha256": "sha256:0ad287a5fdda8700eb3117c6637cdc60069a895fb780b8296ac8c809b756baf4"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Cookie/Jar.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Cookie/Jar.php",
+        "bytes": 4363,
+        "sha256": "sha256:1a7e0424bffb20752ee8b8dc807bab6bf8d02257e31f23989e72f7da54e3252f"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception.php",
+        "bytes": 1114,
+        "sha256": "sha256:442a7f6f0c2f8b7b06149dc5f0aeba4eef946f84b7f2ad8907bb621d7d281066"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/ArgumentCount.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/ArgumentCount.php",
+        "bytes": 1460,
+        "sha256": "sha256:a6632c1a12b579783b3b3abe7f0d45d79b3c295d139146faecdd35c6622709b4"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http.php",
+        "bytes": 1542,
+        "sha256": "sha256:6d9dc436afb2a8658a0c8d8a89aac2c92fee66190579e1f7a625621a5ebd3ec9"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status304.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status304.php",
+        "bytes": 460,
+        "sha256": "sha256:d542d2012c80a832a11179e9de5f2e579f91d99f4db8a4d79aab61ff7cd538e4"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status305.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status305.php",
+        "bytes": 451,
+        "sha256": "sha256:e1309028d5881c1574e46df1e599854c7f4cc4c1c9f1e4a041ac7f6dd4bb9eb9"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status306.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status306.php",
+        "bytes": 460,
+        "sha256": "sha256:ecc19b8458bc7c8d0cc69fab293c265ad41efed11f4b9366c10d40468267ab0d"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status400.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status400.php",
+        "bytes": 457,
+        "sha256": "sha256:66c435f25e14672f05694e29369366bd250ed373527aaa36b7b3bf29ed1b1a89"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status401.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status401.php",
+        "bytes": 460,
+        "sha256": "sha256:e74cca6cef841a444c6fd368398e72615f3decb5dcd8e6b0f4152ce44a7a5fd3"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status402.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status402.php",
+        "bytes": 472,
+        "sha256": "sha256:43c6d092f6f3724fc02eaccc03dade942b6eb521ce1fc84747b557f51eea0133"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status403.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status403.php",
+        "bytes": 451,
+        "sha256": "sha256:2c54292073012c2a4ce855e3bfa6f24aa252e6dae9c27aacd352e408d1aa5409"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status404.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status404.php",
+        "bytes": 451,
+        "sha256": "sha256:699b6626f7d05cbf609a9b7d01190be70c8247eaf7ea0f9a76fb43e8a85a52a2"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status405.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status405.php",
+        "bytes": 478,
+        "sha256": "sha256:bd8027b14eeeebe6c09a8dc7a2e6369649312e2de9e1dc10cb109288df97e33d"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status406.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status406.php",
+        "bytes": 466,
+        "sha256": "sha256:6a17029352c63b5ac0f3500d2c9ca1148ab9f29c981db5b9dc3948249b4de625"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status407.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status407.php",
+        "bytes": 511,
+        "sha256": "sha256:f70a269a2fab6df136f81679e0c1acd404e114b729226ea6ee1e567c58d1b63b"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status408.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status408.php",
+        "bytes": 469,
+        "sha256": "sha256:e31fc6ed62d86dd9bc9818b2953532c8f1ab552fe29e943260633a04caf97f8e"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status409.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status409.php",
+        "bytes": 448,
+        "sha256": "sha256:c1bd72ee2ba72bbb2f9b90e63799cff0a57a7d22400429203e8fef76df0f54ef"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status410.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status410.php",
+        "bytes": 436,
+        "sha256": "sha256:74287f0d729910f25eb742ef2a528ff5fd34847c95f02139eef1fd66fd0564c8"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status411.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status411.php",
+        "bytes": 469,
+        "sha256": "sha256:f48d82b8a6bbe29b5944b9ae43b86d2dfc9b00822786f72a03fd6b43675a744e"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status412.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status412.php",
+        "bytes": 481,
+        "sha256": "sha256:c9b3f2cc9e8bef48a7ec2eb3512e73aa4173d09ee8f836145ee4d4ffdb352dbe"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status413.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status413.php",
+        "bytes": 496,
+        "sha256": "sha256:ba21191df92298b3f5e696d5bd2304de126e7079a58aafc07abaf57f08e068b3"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status414.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status414.php",
+        "bytes": 487,
+        "sha256": "sha256:48e76a04e4b68d923bad98c60a5780f29e5742c9612969eaa85e99178fa3bfbf"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status415.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status415.php",
+        "bytes": 490,
+        "sha256": "sha256:5d37e1066f55b124202131f99cd1f1a6f0c652505ce8eccc3254e54afe45441b"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status416.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status416.php",
+        "bytes": 517,
+        "sha256": "sha256:5431ab8de0fd2a9bf5dbd002d0b800917e0dfa8ddf76621b3539de69db5da62c"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status417.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status417.php",
+        "bytes": 478,
+        "sha256": "sha256:4663bdded00c5d37fbd496ea9eb02fc7c9d269e025af5d51b6b787a522e0a0f6"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status418.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status418.php",
+        "bytes": 556,
+        "sha256": "sha256:d35d01decab8de5009630211257f4d3dfa910e28bbe137565546380819d3631f"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status428.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status428.php",
+        "bytes": 583,
+        "sha256": "sha256:6fa34afab1cbb4894e9dd4caaa27467ba7ff59470f656d27f23f03e2aa7abb1e"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status429.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status429.php",
+        "bytes": 627,
+        "sha256": "sha256:48ecac2d984be99bc448d43c4e9bcf495c2a3ca0fa4659a7fdacc21d2ca91879"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status431.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status431.php",
+        "bytes": 613,
+        "sha256": "sha256:c0856154f2f7cb350baaa171e45c16300164fadd5ab846c6cde097b621d06e81"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status500.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status500.php",
+        "bytes": 487,
+        "sha256": "sha256:22b93daa63b7a3c20c0aa5d4d6ebe5b5c717bc351c165adf02db0628418a49f0"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status501.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status501.php",
+        "bytes": 469,
+        "sha256": "sha256:92db81b9a7cdb04693e6088b4532bde4a193c17cb749a6c244b53232a06966b3"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status502.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status502.php",
+        "bytes": 457,
+        "sha256": "sha256:5cc5893df1b8a91a3911cc4307ce4cd584aed6c065502e1744c452a3200365b4"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status503.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status503.php",
+        "bytes": 481,
+        "sha256": "sha256:f4e92ac83b2c0ef4c596fd18affe8ece10836d578ba8ca9df8a3e84f68152a26"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status504.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status504.php",
+        "bytes": 469,
+        "sha256": "sha256:c0a3a1426f32a29a418c82c6f3e2694b8fe84ec83db93b2618a3f210db039753"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status505.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status505.php",
+        "bytes": 502,
+        "sha256": "sha256:181d699d679ae8619048865d1dc58222e0b725820bda79881f0ba00c361b2d84"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/Status511.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/Status511.php",
+        "bytes": 613,
+        "sha256": "sha256:6969ddf7b24ed27cf8906e55d7f0e60417f08d942b8999f8bff43d0d72f73f66"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Http/StatusUnknown.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Http/StatusUnknown.php",
+        "bytes": 970,
+        "sha256": "sha256:19864167b648019581dd7906046f6dcce64dd87c09f0fb5d60016348db954eb1"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/InvalidArgument.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/InvalidArgument.php",
+        "bytes": 1106,
+        "sha256": "sha256:e07fece0cd8cb70aaacb9f6aea251041cd5706a711122bf947c24242d780da3b"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Transport.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Transport.php",
+        "bytes": 244,
+        "sha256": "sha256:050498aedbbbcd3c24eb0457371aee9a061f41bd9829844a9cea4c9d82229ed5"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Exception/Transport/Curl.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Exception/Transport/Curl.php",
+        "bytes": 1397,
+        "sha256": "sha256:3e4e73c24d32a8abc038964a4c76aaf187b96698eaed47815be4d5d27bddcb3c"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/HookManager.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/HookManager.php",
+        "bytes": 709,
+        "sha256": "sha256:4b09da68b4f523dd9d36f047117e0c1fd442c6aebc8e4cc3632e5ac1a04ff317"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Hooks.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Hooks.php",
+        "bytes": 3032,
+        "sha256": "sha256:213c04c2e16e7d34ba62b286898c8c217b44ec258e21ccb60171338c366db8dd"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/IdnaEncoder.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/IdnaEncoder.php",
+        "bytes": 12447,
+        "sha256": "sha256:087fc47d99874d4c656bc40769bfc32006f0b87099cc4bce18b07a58eea97eed"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Ipv6.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Ipv6.php",
+        "bytes": 5643,
+        "sha256": "sha256:cd22791b14895b1e9bb2c28953e65c400c6433109bbeeea925cbab650075c582"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Iri.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Iri.php",
+        "bytes": 29726,
+        "sha256": "sha256:d35e4ad341edb5fd287385388606831ced33627cc34425d3d69adf80b554800f"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Port.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Port.php",
+        "bytes": 1505,
+        "sha256": "sha256:eab02dc614d84eb8e874ec743d1ede48cbac7df8f7841b664f6e97995e8d883c"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Proxy.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Proxy.php",
+        "bytes": 867,
+        "sha256": "sha256:251c12ecb0eccb1ae9b3f54a7b7a568401704c94ce05a8a1ac0443b5c71dfed0"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Proxy/Http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Proxy/Http.php",
+        "bytes": 4217,
+        "sha256": "sha256:4219fb6f79e9bf6cb6ccad40140ca7e58fe7929284a5f32f6a6e49967c8e6ec2"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Requests.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Requests.php",
+        "bytes": 34001,
+        "sha256": "sha256:f5a143e79c81ba99a86791d574110e9f52d350017b70726ca464d05dc04862f6"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Response.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Response.php",
+        "bytes": 4281,
+        "sha256": "sha256:e1293dcac689d3a371c88328f3d6761555c56a15702d090ad08a8d2e3cf844eb"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Response/Headers.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Response/Headers.php",
+        "bytes": 3110,
+        "sha256": "sha256:c1be9741793086b9c2dbec4c96ab9898543f04db020c174e1052bfd669be645f"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Session.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Session.php",
+        "bytes": 9107,
+        "sha256": "sha256:df02979845a014eb85364a07254d9592baa49ded3814f15238d0b3c32f24b6be"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Ssl.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Ssl.php",
+        "bytes": 5425,
+        "sha256": "sha256:d9a3dc1bdde30ec56cdeeddfcd685f29b75ef496f1a9669a800ccfb1d2fd1202"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Transport.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Transport.php",
+        "bytes": 1544,
+        "sha256": "sha256:ca39e25d43c50f81514d2f441f492e3fa412f932c587ba579eb5d95d91f3096b"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Transport/Curl.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Transport/Curl.php",
+        "bytes": 19878,
+        "sha256": "sha256:2d10f26c919ba6d1b20b6a3fbfaa81db4ef2b44871fe46392be00b70793f7997"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Transport/Fsockopen.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Transport/Fsockopen.php",
+        "bytes": 16079,
+        "sha256": "sha256:670f86a367a1e28e28cf5014378931f700febad061a76edae11497680ebbbbac"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Utility/CaseInsensitiveDictionary.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Utility/CaseInsensitiveDictionary.php",
+        "bytes": 2651,
+        "sha256": "sha256:535b92168bd6777c0c5df093ad0f5b260ec8d171dba1423e7440805ae6cd4d7e"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Utility/FilteredIterator.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Utility/FilteredIterator.php",
+        "bytes": 2176,
+        "sha256": "sha256:c818f40e00f338557fbc458e90c6f32d80e3690a8ec844ef3761b2ea32a5c1f0"
+      },
+      {
+        "path": "src/wp-includes/Requests/src/Utility/InputValidator.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/Requests/src/Utility/InputValidator.php",
+        "bytes": 2512,
+        "sha256": "sha256:ddbe22b3f5ed77f3dd522cac31404298cee44a61b9acc30d449c1edd0577c4e1"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "requests-bridge:headers-status-body",
+        "focus": "response wrapper preserves object identity and converts headers, status, and body"
+      },
+      {
+        "id": "requests-bridge:mutations-to-array",
+        "focus": "set_headers, header replace/append, set_status, set_data, and to_array shape mutate the wrapped response"
+      },
+      {
+        "id": "requests-bridge:cookies",
+        "focus": "Requests cookies convert into WP_Http_Cookie values with decoded value and host-only metadata"
+      },
+      {
+        "id": "requests-bridge:hooks-parent-and-actions",
+        "focus": "registered Requests callbacks run and requests-* WordPress actions receive parameters, request data, and URL"
+      },
+      {
+        "id": "requests-bridge:curl-backcompat-action",
+        "focus": "curl.before_send dispatch forwards http_api_curl compatibility action and still emits requests-curl.before_send"
+      }
+    ],
+    "covered_symbols": [
+      "WP_HTTP_Requests_Response::__construct",
+      "WP_HTTP_Requests_Response::get_response_object",
+      "WP_HTTP_Requests_Response::get_headers",
+      "WP_HTTP_Requests_Response::set_headers",
+      "WP_HTTP_Requests_Response::header",
+      "WP_HTTP_Requests_Response::get_status",
+      "WP_HTTP_Requests_Response::set_status",
+      "WP_HTTP_Requests_Response::get_data",
+      "WP_HTTP_Requests_Response::set_data",
+      "WP_HTTP_Requests_Response::get_cookies",
+      "WP_HTTP_Requests_Response::to_array",
+      "WP_HTTP_Requests_Hooks::__construct",
+      "WP_HTTP_Requests_Hooks::dispatch",
+      "WpOrg\\Requests\\Response",
+      "WpOrg\\Requests\\Response\\Headers",
+      "WpOrg\\Requests\\Cookie",
+      "WpOrg\\Requests\\Hooks",
+      "WP_Http_Cookie",
+      "http_api_curl",
+      "requests-{$hook}"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-http-requests-response.php",
+      "src/wp-includes/class-wp-http-requests-hooks.php"
+    ],
+    "support_files": [
+      "src/wp-includes/class-wp-http-response.php",
+      "src/wp-includes/class-wp-http-cookie.php"
+    ],
+    "support_paths": [
+      "src/wp-includes/Requests"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-33/probe.php",
+      "sha256": "sha256:a05f94b4343927521c43aeb00eecb19f54cdb3e3beec67d8b5d9a6ae70abf51b"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "get_status_header_desc, absint, and do_action_ref_array are deterministic stubs; copied Requests support classes are executed through their upstream autoloader; copied HTTP bridge classes remain the executed public source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-33/oracle",
+    "candidate_root": "build/wp-core/wphx-312-33/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-http-response.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-33/oracle/wp-includes/class-wp-http-response.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-33/candidate/wp-includes/class-wp-http-response.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-cookie.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-33/oracle/wp-includes/class-wp-http-cookie.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-33/candidate/wp-includes/class-wp-http-cookie.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-response.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-33/oracle/wp-includes/class-wp-http-requests-response.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-33/candidate/wp-includes/class-wp-http-requests-response.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http-requests-hooks.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-33/oracle/wp-includes/class-wp-http-requests-hooks.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-33/candidate/wp-includes/class-wp-http-requests-hooks.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "requests-bridge:headers-status-body": {
+        "case": "requests-bridge:headers-status-body",
+        "same_object": true,
+        "headers": {
+          "class": "WpOrg\\Requests\\Utility\\CaseInsensitiveDictionary",
+          "all": {
+            "content-type": "text/plain",
+            "x-multi": [
+              "one",
+              "two"
+            ]
+          }
+        },
+        "status": 201,
+        "body": "original-body",
+        "filename": "/tmp/download.txt",
+        "assertions": {
+          "same_object": true,
+          "content_type_case_insensitive": true,
+          "single_header_scalar": true,
+          "repeated_header_array": true,
+          "status_body_filename": true
+        }
+      },
+      "requests-bridge:mutations-to-array": {
+        "case": "requests-bridge:mutations-to-array",
+        "array": {
+          "headers": {
+            "class": "WpOrg\\Requests\\Utility\\CaseInsensitiveDictionary",
+            "all": {
+              "x-set": [
+                "alpha",
+                "beta"
+              ],
+              "x-replace": "second"
+            }
+          },
+          "body": "mutated-body",
+          "response": {
+            "code": 202,
+            "message": "Accepted"
+          },
+          "cookies": [],
+          "filename": "saved.bin"
+        },
+        "wrapped_headers": {
+          "x-set": [
+            "alpha",
+            "beta"
+          ],
+          "x-replace": [
+            "second"
+          ]
+        },
+        "assertions": {
+          "append_preserved": true,
+          "replace_removed_previous": true,
+          "status_absint": true,
+          "body_filename": true
+        }
+      },
+      "requests-bridge:cookies": {
+        "case": "requests-bridge:cookies",
+        "cookies": [
+          {
+            "class": "WP_Http_Cookie",
+            "name": "session",
+            "value": "value encoded",
+            "expires": 1893553445,
+            "path": "/account",
+            "domain": "example.test",
+            "host_only": false
+          },
+          {
+            "class": "WP_Http_Cookie",
+            "name": "pref",
+            "value": "plain",
+            "expires": null,
+            "path": "/",
+            "domain": "site.example.test",
+            "host_only": true
+          }
+        ],
+        "array_cookies": [
+          {
+            "class": "WP_Http_Cookie",
+            "name": "session",
+            "value": "value encoded",
+            "expires": 1893553445,
+            "path": "/account",
+            "domain": "example.test",
+            "host_only": false
+          },
+          {
+            "class": "WP_Http_Cookie",
+            "name": "pref",
+            "value": "plain",
+            "expires": null,
+            "path": "/",
+            "domain": "site.example.test",
+            "host_only": true
+          }
+        ],
+        "assertions": {
+          "two_cookies": true,
+          "decoded_value": true,
+          "domain_normalized_and_path": true,
+          "host_only_false_preserved": true,
+          "host_only_true_preserved": true
+        }
+      },
+      "requests-bridge:hooks-parent-and-actions": {
+        "case": "requests-bridge:hooks-parent-and-actions",
+        "dispatch_result": true,
+        "headers_after_parent": {
+          "Accept": "application/json",
+          "X-Parent": "ran"
+        },
+        "parent_callbacks": [
+          {
+            "url": "https://api.example.test/data",
+            "type": "POST",
+            "timeout": 3
+          }
+        ],
+        "actions": [
+          {
+            "hook": "requests-requests.before_request",
+            "args": [
+              "https://api.example.test/data",
+              {
+                "Accept": "application/json",
+                "X-Parent": "ran"
+              },
+              "payload",
+              "POST",
+              {
+                "timeout": 3
+              }
+            ],
+            "extra": [
+              {
+                "method": "POST",
+                "timeout": 3,
+                "headers": {
+                  "Accept": "application/json"
+                }
+              },
+              "https://api.example.test/data"
+            ]
+          }
+        ],
+        "assertions": {
+          "parent_result_true": true,
+          "parent_callback_ran": true,
+          "requests_action_forwarded": true,
+          "request_and_url_extra": true
+        }
+      },
+      "requests-bridge:curl-backcompat-action": {
+        "case": "requests-bridge:curl-backcompat-action",
+        "dispatch_result": false,
+        "actions": [
+          {
+            "hook": "http_api_curl",
+            "args": [
+              {
+                "id": "curl-handle",
+                "class": "stdClass"
+              },
+              {
+                "method": "GET",
+                "timeout": 9
+              },
+              "https://api.example.test/curl"
+            ],
+            "extra": []
+          },
+          {
+            "hook": "requests-curl.before_send",
+            "args": [
+              {
+                "id": "curl-handle",
+                "class": "stdClass"
+              }
+            ],
+            "extra": [
+              {
+                "method": "GET",
+                "timeout": 9
+              },
+              "https://api.example.test/curl"
+            ]
+          }
+        ],
+        "assertions": {
+          "parent_result_false_without_registered_callback": true,
+          "curl_backcompat_action": true,
+          "curl_action_receives_request_url": true,
+          "requests_curl_action_forwarded": true
+        }
+      }
+    },
+    "candidate": {
+      "requests-bridge:headers-status-body": {
+        "case": "requests-bridge:headers-status-body",
+        "same_object": true,
+        "headers": {
+          "class": "WpOrg\\Requests\\Utility\\CaseInsensitiveDictionary",
+          "all": {
+            "content-type": "text/plain",
+            "x-multi": [
+              "one",
+              "two"
+            ]
+          }
+        },
+        "status": 201,
+        "body": "original-body",
+        "filename": "/tmp/download.txt",
+        "assertions": {
+          "same_object": true,
+          "content_type_case_insensitive": true,
+          "single_header_scalar": true,
+          "repeated_header_array": true,
+          "status_body_filename": true
+        }
+      },
+      "requests-bridge:mutations-to-array": {
+        "case": "requests-bridge:mutations-to-array",
+        "array": {
+          "headers": {
+            "class": "WpOrg\\Requests\\Utility\\CaseInsensitiveDictionary",
+            "all": {
+              "x-set": [
+                "alpha",
+                "beta"
+              ],
+              "x-replace": "second"
+            }
+          },
+          "body": "mutated-body",
+          "response": {
+            "code": 202,
+            "message": "Accepted"
+          },
+          "cookies": [],
+          "filename": "saved.bin"
+        },
+        "wrapped_headers": {
+          "x-set": [
+            "alpha",
+            "beta"
+          ],
+          "x-replace": [
+            "second"
+          ]
+        },
+        "assertions": {
+          "append_preserved": true,
+          "replace_removed_previous": true,
+          "status_absint": true,
+          "body_filename": true
+        }
+      },
+      "requests-bridge:cookies": {
+        "case": "requests-bridge:cookies",
+        "cookies": [
+          {
+            "class": "WP_Http_Cookie",
+            "name": "session",
+            "value": "value encoded",
+            "expires": 1893553445,
+            "path": "/account",
+            "domain": "example.test",
+            "host_only": false
+          },
+          {
+            "class": "WP_Http_Cookie",
+            "name": "pref",
+            "value": "plain",
+            "expires": null,
+            "path": "/",
+            "domain": "site.example.test",
+            "host_only": true
+          }
+        ],
+        "array_cookies": [
+          {
+            "class": "WP_Http_Cookie",
+            "name": "session",
+            "value": "value encoded",
+            "expires": 1893553445,
+            "path": "/account",
+            "domain": "example.test",
+            "host_only": false
+          },
+          {
+            "class": "WP_Http_Cookie",
+            "name": "pref",
+            "value": "plain",
+            "expires": null,
+            "path": "/",
+            "domain": "site.example.test",
+            "host_only": true
+          }
+        ],
+        "assertions": {
+          "two_cookies": true,
+          "decoded_value": true,
+          "domain_normalized_and_path": true,
+          "host_only_false_preserved": true,
+          "host_only_true_preserved": true
+        }
+      },
+      "requests-bridge:hooks-parent-and-actions": {
+        "case": "requests-bridge:hooks-parent-and-actions",
+        "dispatch_result": true,
+        "headers_after_parent": {
+          "Accept": "application/json",
+          "X-Parent": "ran"
+        },
+        "parent_callbacks": [
+          {
+            "url": "https://api.example.test/data",
+            "type": "POST",
+            "timeout": 3
+          }
+        ],
+        "actions": [
+          {
+            "hook": "requests-requests.before_request",
+            "args": [
+              "https://api.example.test/data",
+              {
+                "Accept": "application/json",
+                "X-Parent": "ran"
+              },
+              "payload",
+              "POST",
+              {
+                "timeout": 3
+              }
+            ],
+            "extra": [
+              {
+                "method": "POST",
+                "timeout": 3,
+                "headers": {
+                  "Accept": "application/json"
+                }
+              },
+              "https://api.example.test/data"
+            ]
+          }
+        ],
+        "assertions": {
+          "parent_result_true": true,
+          "parent_callback_ran": true,
+          "requests_action_forwarded": true,
+          "request_and_url_extra": true
+        }
+      },
+      "requests-bridge:curl-backcompat-action": {
+        "case": "requests-bridge:curl-backcompat-action",
+        "dispatch_result": false,
+        "actions": [
+          {
+            "hook": "http_api_curl",
+            "args": [
+              {
+                "id": "curl-handle",
+                "class": "stdClass"
+              },
+              {
+                "method": "GET",
+                "timeout": 9
+              },
+              "https://api.example.test/curl"
+            ],
+            "extra": []
+          },
+          {
+            "hook": "requests-curl.before_send",
+            "args": [
+              {
+                "id": "curl-handle",
+                "class": "stdClass"
+              }
+            ],
+            "extra": [
+              {
+                "method": "GET",
+                "timeout": 9
+              },
+              "https://api.example.test/curl"
+            ]
+          }
+        ],
+        "assertions": {
+          "parent_result_false_without_registered_callback": true,
+          "curl_backcompat_action": true,
+          "curl_action_receives_request_url": true,
+          "requests_curl_action_forwarded": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:34db801776176067d13f742442f10538c5d8fb09b7d626f5fbfd10e044aad181",
+    "candidate_sha256": "sha256:34db801776176067d13f742442f10538c5d8fb09b7d626f5fbfd10e044aad181",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-http-transport-routing-not-executed",
+      "owner": "WPHX-312.33",
+      "detail": "The fixture instantiates bridge classes directly. WP_Http::request routing, Requests::request network execution, transport selection, redirect validation, and response parsing from live/recorded traffic remain later WPHX-312 gates."
+    },
+    {
+      "id": "proxy-tls-and-network-errors-not-executed",
+      "owner": "WPHX-312.33",
+      "detail": "Requests support classes are real copied sources, but cURL/fsockopen proxy behavior, TLS validation, DNS/socket failures, timeout enforcement, and HTTP error mapping are not executed."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.33",
+      "detail": "The fixture uses PHP CLI with deterministic WordPress stubs rather than an installed WordPress distribution, plugin/theme action callbacks, or real package-boundary HTTP routes."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.33",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_transport_claimed": false
+  }
+}

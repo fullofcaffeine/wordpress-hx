@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-requests-bridge-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-c86",
+    "external_ref": "WPHX-312.33"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_HTTP_Requests_Response and WP_HTTP_Requests_Hooks bridge behavior",
+    "area": "src/wp-includes/class-wp-http-requests-response.php; src/wp-includes/class-wp-http-requests-hooks.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 HTTP Requests bridge classes in isolated PHP CLI probes with real copied Requests support classes. It observes response object wrapping, case-insensitive header conversion, repeated header preservation, status/body/header mutation, cookie conversion into WP_Http_Cookie, to_array shape, parent Requests hook dispatch, requests-* WordPress action forwarding, and curl.before_send/http_api_curl compatibility without claiming live HTTP transport routing, Requests network I/O, redirect validation, proxy/TLS negotiation, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-real-requests-support-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass WP_Http request routing, Requests redirect validation, proxy/TLS negotiation, recorded/live HTTP transport behavior, selected upstream PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-requests-bridge-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-33"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-requests-bridge-oracle-fixture",
+      "npm run wp:core:wphx-312-http-requests-bridge-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-33-http-requests-bridge-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:21c2e98e5afa2b69f04a98356afa7ef08bd23e909eeeb911afa6622bdcfeea57"
+  }
+}

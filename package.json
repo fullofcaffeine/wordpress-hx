@@ -225,6 +225,8 @@
     "wp:core:wphx-312-http-cron-mail-oracle-fixture:check": "node tools/wp-core/run-http-cron-mail-oracle-fixture.mjs --check",
     "wp:core:wphx-312-http-proxy-oracle-fixture": "node tools/wp-core/run-http-proxy-oracle-fixture.mjs",
     "wp:core:wphx-312-http-proxy-oracle-fixture:check": "node tools/wp-core/run-http-proxy-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-http-requests-bridge-oracle-fixture": "node tools/wp-core/run-http-requests-bridge-oracle-fixture.mjs",
+    "wp:core:wphx-312-http-requests-bridge-oracle-fixture:check": "node tools/wp-core/run-http-requests-bridge-oracle-fixture.mjs --check",
     "wp:core:wphx-312-cron-dispatch-lock-oracle-fixture": "node tools/wp-core/run-cron-dispatch-lock-oracle-fixture.mjs",
     "wp:core:wphx-312-cron-dispatch-lock-oracle-fixture:check": "node tools/wp-core/run-cron-dispatch-lock-oracle-fixture.mjs --check",
     "wp:core:wphx-312-phpmailer-setup-oracle-fixture": "node tools/wp-core/run-phpmailer-setup-oracle-fixture.mjs",
