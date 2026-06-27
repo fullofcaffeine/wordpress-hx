@@ -15,12 +15,12 @@
     {
       "path": "manifests/operations/wphx-700-09-phpunit-ratchet-env.v1.json",
       "role": "executable upstream PHPUnit ratchet environment manifest",
-      "sha256": "sha256:bc4c52e40cb87a0b9a66138757102b2edce1a67cee6cb01fab8eba1e662a074e"
+      "sha256": "sha256:81d64b3b2db9f17b570dfd0d9b3fa473b26cb95d6641e40e57b936ac89cb245a"
     },
     {
       "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
       "role": "runtime ratchet report produced by WPHX-700.05 runner",
-      "sha256": "sha256:6c1d3d3aab9c66c5ca2724ed37d516b41f19ebcda912f862bbdfa40cbc835989"
+      "sha256": "sha256:817fb8dae4ece21189fe2b5f022c78cbc0178877961b2dc36aac42c7287b3168"
     }
   ],
   "verification_commands": [
@@ -33,7 +33,7 @@
     "environment_ready": true,
     "vanilla_candidate_roots_distinct": true,
     "isolated_databases": true,
-    "ratchet_runs_executed": 22,
+    "ratchet_runs_executed": 34,
     "all_classifications_parity_pass": true,
     "rejects_new_vanilla_pass_candidate_fail": true
   }

@@ -1,0 +1,107 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-310-11-theme-upstream-phpunit-ratchet",
+  "issue": {
+    "id": "wordpresshx-l76.17.10",
+    "external_ref": "WPHX-310.11",
+    "title": "WPHX-310.11 \u2014 Add selected theme upstream PHPUnit ratchet scope"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "npm run upstream:phpunit-ratchet:provision",
+  "evidence_class": "upstream_suite_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": true,
+  "artifacts": [
+    {
+      "path": "tests/upstream/phpunit/groups.json",
+      "role": "selected upstream theme/template/theme-json/widget/nav-menu/customizer PHPUnit ratchet groups",
+      "sha256": "sha256:abbc99ffc1c787dda274d04287a6f2696afc0b23a81cdddf3ce09328e227c699"
+    },
+    {
+      "path": "manifests/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
+      "role": "refreshed upstream PHPUnit ratchet manifest with WPHX-310 groups",
+      "sha256": "sha256:efbb409325d04a71d42e32ec404efb41c05d1660d04975a2fa01e2d53fcb523d"
+    },
+    {
+      "path": "manifests/operations/wphx-700-09-phpunit-ratchet-env.v1.json",
+      "role": "provisioned executable upstream PHPUnit ratchet manifest with WPHX-310 pass/pass classifications",
+      "sha256": "sha256:81d64b3b2db9f17b570dfd0d9b3fa473b26cb95d6641e40e57b936ac89cb245a"
+    },
+    {
+      "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
+      "role": "runtime ratchet report with six WPHX-310 groups classified parity_pass",
+      "sha256": "sha256:817fb8dae4ece21189fe2b5f022c78cbc0178877961b2dc36aac42c7287b3168"
+    },
+    {
+      "path": "receipts/operations/wphx-700-09-phpunit-ratchet-env.v1.json",
+      "role": "refreshed provisioned upstream PHPUnit ratchet environment receipt",
+      "sha256": "sha256:82e595a94f4136436a35a23891cc96986f319bd0f6c3c8a98c36e75201842fc6"
+    },
+    {
+      "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet-provisioned.v1.json",
+      "role": "refreshed provisioned upstream PHPUnit ratchet receipt",
+      "sha256": "sha256:3576c186bde6960804a076539cc32c574c55264a951c395142bda7ad902d8214"
+    },
+    {
+      "path": "docs/operations/upstream-phpunit-ratchet.md",
+      "role": "expanded ratchet scope documentation",
+      "sha256": "sha256:86bbcd5f085cebc77b5ece6a64496acbde2fe851d4ec18d379842a7fce75e45f"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-310.11 progress interpretation",
+      "sha256": "sha256:7219c8f2f8c9543bb06a76540103f021cc4c038e3be5b55a9b7d5755e5e7b5cb"
+    }
+  ],
+  "verification_commands": [
+    "npm run upstream:phpunit-ratchet",
+    "npm run upstream:phpunit-ratchet:check",
+    "npm run upstream:phpunit-ratchet:provision",
+    "npm run upstream:phpunit-ratchet:provision:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "environment_ready": true,
+    "selected_wphx_310_group_count": 6,
+    "selected_wphx_310_test_file_count": 57,
+    "ratchet_runs_executed": 34,
+    "wphx_310_groups": {
+      "theme_template_core": {
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      "theme_json_global_styles": {
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      "block_template_core": {
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      "widgets_core": {
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      "nav_menu_core": {
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      "customizer_core": {
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      }
+    },
+    "rejects_new_vanilla_pass_candidate_fail": true,
+    "behavior_parity_claimed": true,
+    "generated_public_theme_replacement_claimed": false,
+    "remaining_gate": "Replace copied public PHP with generated original-path adapters and broaden installed database-backed theme, Customizer, widget, nav-menu, and ecosystem coverage before claiming full theme subsystem parity."
+  }
+}

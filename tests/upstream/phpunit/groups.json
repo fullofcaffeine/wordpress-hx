@@ -206,6 +206,101 @@
         "tests/phpunit/tests/template.php",
         "tests/phpunit/tests/general/template.php"
       ]
+    },
+    {
+      "id": "theme-template-core",
+      "owner": "WPHX-310",
+      "files": [
+        "tests/phpunit/tests/theme.php",
+        "tests/phpunit/tests/theme/autoloadThemeMods.php",
+        "tests/phpunit/tests/theme/base.php",
+        "tests/phpunit/tests/theme/customHeader.php",
+        "tests/phpunit/tests/theme/getThemeStarterContent.php",
+        "tests/phpunit/tests/theme/support.php",
+        "tests/phpunit/tests/theme/themeDir.php",
+        "tests/phpunit/tests/theme/wpTheme.php",
+        "tests/phpunit/tests/option/themeMods.php",
+        "tests/phpunit/tests/admin/themeBodyClass.php",
+        "tests/phpunit/tests/template.php",
+        "tests/phpunit/tests/general/template.php"
+      ]
+    },
+    {
+      "id": "theme-json-global-styles",
+      "owner": "WPHX-310",
+      "files": [
+        "tests/phpunit/tests/theme/wpThemeJson.php",
+        "tests/phpunit/tests/theme/wpThemeJsonResolver.php",
+        "tests/phpunit/tests/theme/wpThemeJsonSchema.php",
+        "tests/phpunit/tests/theme/wpThemeHasThemeJson.php",
+        "tests/phpunit/tests/theme/wpGetGlobalStylesheet.php",
+        "tests/phpunit/tests/theme/wpAddGlobalStylesForBlocks.php",
+        "tests/phpunit/tests/theme/wpEnqueueStoredStyles.php",
+        "tests/phpunit/tests/theme/wpGetBlockCssSelector.php"
+      ]
+    },
+    {
+      "id": "block-template-core",
+      "owner": "WPHX-310",
+      "filter": "Tests_Block_Template|Tests_Block_Template_Utils|Tests_Block_Templates_wpBlockTemplatesRegistry|Tests_Block_Templates_BuildBlockTemplateResultFromFile|Tests_Block_Templates_BuildBlockTemplateResultFromPost|Tests_Block_Templates_GetTemplate_Hierarchy|Tests_Block_Templates_InjectIgnoredHookedBlocksMetadataAttributes",
+      "files": [
+        "tests/phpunit/tests/block-template.php",
+        "tests/phpunit/tests/block-template-utils.php",
+        "tests/phpunit/tests/block-templates/WpBlockTemplatesRegistry.php",
+        "tests/phpunit/tests/block-templates/base.php",
+        "tests/phpunit/tests/block-templates/buildBlockTemplateResultFromFile.php",
+        "tests/phpunit/tests/block-templates/buildBlockTemplateResultFromPost.php",
+        "tests/phpunit/tests/block-templates/getTemplateHierarchy.php",
+        "tests/phpunit/tests/block-templates/injectIgnoredHookedBlocksMetadataAttributes.php"
+      ]
+    },
+    {
+      "id": "widgets-core",
+      "owner": "WPHX-310",
+      "files": [
+        "tests/phpunit/tests/widgets.php",
+        "tests/phpunit/tests/widgets/wpBlockThemeRegisterClassicSidebar.php",
+        "tests/phpunit/tests/widgets/wpWidgetCustomHtml.php",
+        "tests/phpunit/tests/widgets/wpWidgetMedia.php",
+        "tests/phpunit/tests/widgets/wpWidgetMediaAudio.php",
+        "tests/phpunit/tests/widgets/wpWidgetMediaGallery.php",
+        "tests/phpunit/tests/widgets/wpWidgetMediaImage.php",
+        "tests/phpunit/tests/widgets/wpWidgetMediaVideo.php",
+        "tests/phpunit/tests/widgets/wpWidgetRss.php",
+        "tests/phpunit/tests/widgets/wpWidgetText.php"
+      ]
+    },
+    {
+      "id": "nav-menu-core",
+      "owner": "WPHX-310",
+      "filter": "Tests_Nav_Menu_Theme_Change|Tests_Menu_Walker_Nav_Menu|Tests_Menu_Walker_Nav_Menu_Edit|Tests_Menu_wpNavMenu|Tests_Post_Nav_Menu",
+      "files": [
+        "tests/phpunit/tests/menu/nav-menu.php",
+        "tests/phpunit/tests/menu/walker-nav-menu.php",
+        "tests/phpunit/tests/menu/walker-nav-menu-edit.php",
+        "tests/phpunit/tests/menu/wp-nav-menu.php",
+        "tests/phpunit/tests/post/nav-menu.php"
+      ]
+    },
+    {
+      "id": "customizer-core",
+      "owner": "WPHX-310",
+      "files": [
+        "tests/phpunit/tests/customize/manager.php",
+        "tests/phpunit/tests/customize/setting.php",
+        "tests/phpunit/tests/customize/control.php",
+        "tests/phpunit/tests/customize/panel.php",
+        "tests/phpunit/tests/customize/section.php",
+        "tests/phpunit/tests/customize/partial.php",
+        "tests/phpunit/tests/customize/selective-refresh.php",
+        "tests/phpunit/tests/customize/selective-refresh-ajax.php",
+        "tests/phpunit/tests/customize/widgets.php",
+        "tests/phpunit/tests/customize/nav-menus.php",
+        "tests/phpunit/tests/customize/nav-menu-setting.php",
+        "tests/phpunit/tests/customize/nav-menu-item-setting.php",
+        "tests/phpunit/tests/customize/custom-css-setting.php",
+        "tests/phpunit/tests/customize/media-control.php"
+      ]
     }
   ]
 }

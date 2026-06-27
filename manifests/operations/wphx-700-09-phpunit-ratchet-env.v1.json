@@ -19,8 +19,8 @@
     },
     "groups": {
       "path": "tests/upstream/phpunit/groups.json",
-      "bytes": 8850,
-      "sha256": "sha256:885aa25a36eb284221fde052f6aaa466d2cad6e7b31ee5e4f05b1ac803a80392"
+      "bytes": 13268,
+      "sha256": "sha256:abbc99ffc1c787dda274d04287a6f2696afc0b23a81cdddf3ce09328e227c699"
     },
     "known_deltas": {
       "path": "tests/upstream/phpunit/known-deltas.json",
@@ -113,7 +113,7 @@
   },
   "ratchet_report": {
     "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
-    "sha256": "sha256:6c1d3d3aab9c66c5ca2724ed37d516b41f19ebcda912f862bbdfa40cbc835989",
+    "sha256": "sha256:817fb8dae4ece21189fe2b5f022c78cbc0178877961b2dc36aac42c7287b3168",
     "status": "passed",
     "classifications": [
       {
@@ -192,6 +192,48 @@
         "vanilla_status": "pass",
         "candidate_status": "pass",
         "classification": "parity_pass"
+      },
+      {
+        "group": "theme-template-core",
+        "owner": "WPHX-310",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      {
+        "group": "theme-json-global-styles",
+        "owner": "WPHX-310",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      {
+        "group": "block-template-core",
+        "owner": "WPHX-310",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      {
+        "group": "widgets-core",
+        "owner": "WPHX-310",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      {
+        "group": "nav-menu-core",
+        "owner": "WPHX-310",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
+      },
+      {
+        "group": "customizer-core",
+        "owner": "WPHX-310",
+        "vanilla_status": "pass",
+        "candidate_status": "pass",
+        "classification": "parity_pass"
       }
     ]
   },
@@ -200,7 +242,7 @@
     "environment_ready": true,
     "vanilla_candidate_roots_distinct": true,
     "isolated_databases": true,
-    "ratchet_runs_executed": 22,
+    "ratchet_runs_executed": 34,
     "all_classifications_parity_pass": true,
     "rejects_new_vanilla_pass_candidate_fail": true
   }
