@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rss-block-renderer-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-hc3",
+    "external_ref": "WPHX-312.27"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "core/rss block server renderer behavior",
+    "area": "src/wp-includes/blocks/rss.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/blocks/rss.php in PHP CLI with deterministic feed, block wrapper, escaping, date, option, action, and registration stubs. It observes render_block_core_rss and register_block_core_rss behavior without installed block editor behavior, client-side block rendering, live network feeds, database-backed feeds, full block registry integration, or generated public PHP replacement."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed block registry/rendering, editor/client behavior, live/recorded feed, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-rss-block-renderer-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-27"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-rss-block-renderer-oracle-fixture",
+      "npm run wp:core:wphx-312-rss-block-renderer-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-27-rss-block-renderer-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:007c48ad803a85d2163c026ed8a2c03184988f0de112a0fddd09ae54faef77a9"
+  }
+}

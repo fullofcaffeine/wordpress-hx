@@ -1,0 +1,482 @@
+{
+  "schema": "wphx.wp-core-rss-block-renderer-oracle-fixture.v1",
+  "issue": "WPHX-312.27",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-rss-block-renderer-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "wp_widget_rss_class_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+      "bytes": 20911,
+      "sha256": "sha256:69b88b1e43cea40088c3cd5a04aec12733f88444149a98ca12929a21e59ca4c9"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-rss-block-renderer-oracle-fixture.mjs",
+      "bytes": 20524,
+      "sha256": "sha256:af0ea9bc4a46b2c504f5a3e721fa244e18a9025a3a8751c589dfbc1dcdab9639"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/blocks/rss.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/blocks/rss.php",
+        "bytes": 4609,
+        "sha256": "sha256:31cb092ad3a6fccfb307591087ee641ab0f18efcc8744049303fc8bab9767d72"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "rss-block:self-feed-guard",
+        "focus": "homepage/self-feed guard returns a placeholder and avoids fetch_feed"
+      },
+      {
+        "id": "rss-block:error-placeholder",
+        "focus": "WP_Error fetch result returns an RSS Error placeholder with escaped message"
+      },
+      {
+        "id": "rss-block:empty-placeholder",
+        "focus": "empty feed returns the feed-down placeholder"
+      },
+      {
+        "id": "rss-block:render-full",
+        "focus": "linked item rendering with target/rel, date, author, excerpt, grid classes, and wrapper attributes"
+      },
+      {
+        "id": "rss-block:registration",
+        "focus": "add_action hook and register_block_type_from_metadata render callback registration"
+      }
+    ],
+    "covered_symbols": [
+      "blocks/rss.php",
+      "render_block_core_rss",
+      "register_block_core_rss",
+      "fetch_feed",
+      "is_wp_error",
+      "untrailingslashit",
+      "site_url",
+      "home_url",
+      "esc_html",
+      "esc_attr",
+      "esc_url",
+      "__",
+      "get_option",
+      "date_i18n",
+      "wp_trim_words",
+      "get_block_wrapper_attributes",
+      "register_block_type_from_metadata",
+      "add_action",
+      "HOUR_IN_SECONDS",
+      "SimplePie-like get_item_quantity",
+      "SimplePie-like get_items"
+    ],
+    "source_files": [
+      "src/wp-includes/blocks/rss.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "wordPress_stubs": "fetch_feed, SimplePie-like feed/item/author objects, is_wp_error, untrailingslashit, site_url, home_url, escaping, translation, get_option, date_i18n, wp_trim_words, get_block_wrapper_attributes, register_block_type_from_metadata, and add_action are deterministic local stubs; copied blocks/rss.php remains the executed RSS block renderer source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    },
+    "renderer_quirks_observed": [
+      "Self-home feed URLs return the explicit loop-prevention placeholder before fetch_feed.",
+      "openInNewTab and rel attributes are appended directly to rendered item links after rel escaping.",
+      "date output applies gmt_offset in HOUR_IN_SECONDS before date_i18n formatting.",
+      "grid, date, author, and excerpt attributes contribute wrapper classes through get_block_wrapper_attributes."
+    ]
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-27/oracle",
+    "candidate_root": "build/wp-core/wphx-312-27/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/blocks/rss.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-27/oracle/wp-includes/blocks/rss.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-27/candidate/wp-includes/blocks/rss.php"
+      }
+    ],
+    "probe_lint": {
+      "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-27/oracle/probe.php",
+      "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-27/candidate/probe.php"
+    }
+  },
+  "observations": {
+    "oracle": {
+      "rss-block:self-feed-guard": {
+        "case": "rss-block:self-feed-guard",
+        "output": "<div class=\"components-placeholder\"><div class=\"notice notice-error\">Adding an RSS feed to this site’s homepage is not supported, as it could lead to a loop that slows down your site. Try using another block, like the <strong>Latest Posts</strong> block, to list posts from the site.</div></div>",
+        "output_sha256": "e1d164ea25ec1d2e8d28dbdc8d62094c2699a2725c98408febc3d252917fcae3",
+        "fetches": [],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [],
+        "option_calls": [],
+        "wrapper_calls": []
+      },
+      "rss-block:error-placeholder": {
+        "case": "rss-block:error-placeholder",
+        "output": "<div class=\"components-placeholder\"><div class=\"notice notice-error\"><strong>RSS Error:</strong> esc_html:Fixture feed error</div></div>",
+        "output_sha256": "c709dc366885715dc6230ede3588f6ef3ddb1a0258d10e1da1db98efd267bf51",
+        "fetches": [
+          "https://example.test/error"
+        ],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [
+          [
+            "esc_html",
+            "Fixture feed error"
+          ]
+        ],
+        "option_calls": [],
+        "wrapper_calls": []
+      },
+      "rss-block:empty-placeholder": {
+        "case": "rss-block:empty-placeholder",
+        "output": "<div class=\"components-placeholder\"><div class=\"notice notice-error\">An error has occurred, which probably means the feed is down. Try again later.</div></div>",
+        "output_sha256": "d58e82c00fb284bb5c0f11b9a41a5620389a4f964ef5c033c5718d3a56a2bb41",
+        "fetches": [
+          "https://example.test/empty"
+        ],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [],
+        "option_calls": [],
+        "wrapper_calls": []
+      },
+      "rss-block:render-full": {
+        "case": "rss-block:render-full",
+        "output": "<ul class=\"esc_attr:wp-block-rss is-grid columns-3 has-dates has-authors has-excerpts\"><li class='wp-block-rss__item'><div class='wp-block-rss__item-title'><a href='esc_url:https://example.test/alpha?x=1&amp;y=2' target=\"_blank\" rel=\"esc_attr:nofollow noopener\">esc_html:Alpha</a></div><time datetime=\"esc_attr:2026-06-27T02:00:00+00:00\" class=\"wp-block-rss__item-publish-date\">esc_html:2026-06-27</time> <span class=\"wp-block-rss__item-author\">by esc_html:Alice </span><div class=\"wp-block-rss__item-excerpt\">esc_html:esc_attr:Alpha summary with enough words to [&amp;amp;hellip;]</div></li><li class='wp-block-rss__item'><div class='wp-block-rss__item-title'><a href='esc_url:' target=\"_blank\" rel=\"esc_attr:nofollow noopener\">esc_html:</a></div><div class=\"wp-block-rss__item-excerpt\">esc_html:esc_attr:Beta description with no title or [&amp;amp;hellip;]</div></li></ul>",
+        "output_sha256": "093f7b410dfdf29cd9f7af2c247b5298b96520a082097caf38730b0609a6bc30",
+        "fetches": [
+          "https://example.test/feed"
+        ],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [
+          [
+            "esc_attr",
+            "nofollow noopener"
+          ],
+          [
+            "esc_html",
+            "Alpha"
+          ],
+          [
+            "esc_url",
+            "https://example.test/alpha?x=1&y=2"
+          ],
+          [
+            "esc_attr",
+            "2026-06-27T02:00:00+00:00"
+          ],
+          [
+            "esc_html",
+            "2026-06-27"
+          ],
+          [
+            "esc_html",
+            "Alice "
+          ],
+          [
+            "esc_attr",
+            "Alpha summary with enough words to [&hellip;]"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Alpha summary with enough words to [&amp;hellip;]"
+          ],
+          [
+            "esc_html",
+            ""
+          ],
+          [
+            "esc_url",
+            ""
+          ],
+          [
+            "esc_attr",
+            "Beta description with no title or [&hellip;]"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Beta description with no title or [&amp;hellip;]"
+          ],
+          [
+            "esc_attr",
+            "wp-block-rss is-grid columns-3 has-dates has-authors has-excerpts"
+          ]
+        ],
+        "option_calls": [
+          "gmt_offset",
+          "date_format",
+          "blog_charset",
+          "blog_charset"
+        ],
+        "wrapper_calls": [
+          {
+            "class": "is-grid columns-3 has-dates has-authors has-excerpts"
+          }
+        ]
+      },
+      "rss-block:registration": {
+        "case": "rss-block:registration",
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [
+          {
+            "path": "wp-includes/blocks/rss",
+            "args": {
+              "render_callback": "render_block_core_rss"
+            }
+          }
+        ],
+        "return_value": null
+      }
+    },
+    "candidate": {
+      "rss-block:self-feed-guard": {
+        "case": "rss-block:self-feed-guard",
+        "output": "<div class=\"components-placeholder\"><div class=\"notice notice-error\">Adding an RSS feed to this site’s homepage is not supported, as it could lead to a loop that slows down your site. Try using another block, like the <strong>Latest Posts</strong> block, to list posts from the site.</div></div>",
+        "output_sha256": "e1d164ea25ec1d2e8d28dbdc8d62094c2699a2725c98408febc3d252917fcae3",
+        "fetches": [],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [],
+        "option_calls": [],
+        "wrapper_calls": []
+      },
+      "rss-block:error-placeholder": {
+        "case": "rss-block:error-placeholder",
+        "output": "<div class=\"components-placeholder\"><div class=\"notice notice-error\"><strong>RSS Error:</strong> esc_html:Fixture feed error</div></div>",
+        "output_sha256": "c709dc366885715dc6230ede3588f6ef3ddb1a0258d10e1da1db98efd267bf51",
+        "fetches": [
+          "https://example.test/error"
+        ],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [
+          [
+            "esc_html",
+            "Fixture feed error"
+          ]
+        ],
+        "option_calls": [],
+        "wrapper_calls": []
+      },
+      "rss-block:empty-placeholder": {
+        "case": "rss-block:empty-placeholder",
+        "output": "<div class=\"components-placeholder\"><div class=\"notice notice-error\">An error has occurred, which probably means the feed is down. Try again later.</div></div>",
+        "output_sha256": "d58e82c00fb284bb5c0f11b9a41a5620389a4f964ef5c033c5718d3a56a2bb41",
+        "fetches": [
+          "https://example.test/empty"
+        ],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [],
+        "option_calls": [],
+        "wrapper_calls": []
+      },
+      "rss-block:render-full": {
+        "case": "rss-block:render-full",
+        "output": "<ul class=\"esc_attr:wp-block-rss is-grid columns-3 has-dates has-authors has-excerpts\"><li class='wp-block-rss__item'><div class='wp-block-rss__item-title'><a href='esc_url:https://example.test/alpha?x=1&amp;y=2' target=\"_blank\" rel=\"esc_attr:nofollow noopener\">esc_html:Alpha</a></div><time datetime=\"esc_attr:2026-06-27T02:00:00+00:00\" class=\"wp-block-rss__item-publish-date\">esc_html:2026-06-27</time> <span class=\"wp-block-rss__item-author\">by esc_html:Alice </span><div class=\"wp-block-rss__item-excerpt\">esc_html:esc_attr:Alpha summary with enough words to [&amp;amp;hellip;]</div></li><li class='wp-block-rss__item'><div class='wp-block-rss__item-title'><a href='esc_url:' target=\"_blank\" rel=\"esc_attr:nofollow noopener\">esc_html:</a></div><div class=\"wp-block-rss__item-excerpt\">esc_html:esc_attr:Beta description with no title or [&amp;amp;hellip;]</div></li></ul>",
+        "output_sha256": "093f7b410dfdf29cd9f7af2c247b5298b96520a082097caf38730b0609a6bc30",
+        "fetches": [
+          "https://example.test/feed"
+        ],
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [],
+        "escape_calls": [
+          [
+            "esc_attr",
+            "nofollow noopener"
+          ],
+          [
+            "esc_html",
+            "Alpha"
+          ],
+          [
+            "esc_url",
+            "https://example.test/alpha?x=1&y=2"
+          ],
+          [
+            "esc_attr",
+            "2026-06-27T02:00:00+00:00"
+          ],
+          [
+            "esc_html",
+            "2026-06-27"
+          ],
+          [
+            "esc_html",
+            "Alice "
+          ],
+          [
+            "esc_attr",
+            "Alpha summary with enough words to [&hellip;]"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Alpha summary with enough words to [&amp;hellip;]"
+          ],
+          [
+            "esc_html",
+            ""
+          ],
+          [
+            "esc_url",
+            ""
+          ],
+          [
+            "esc_attr",
+            "Beta description with no title or [&hellip;]"
+          ],
+          [
+            "esc_html",
+            "esc_attr:Beta description with no title or [&amp;hellip;]"
+          ],
+          [
+            "esc_attr",
+            "wp-block-rss is-grid columns-3 has-dates has-authors has-excerpts"
+          ]
+        ],
+        "option_calls": [
+          "gmt_offset",
+          "date_format",
+          "blog_charset",
+          "blog_charset"
+        ],
+        "wrapper_calls": [
+          {
+            "class": "is-grid columns-3 has-dates has-authors has-excerpts"
+          }
+        ]
+      },
+      "rss-block:registration": {
+        "case": "rss-block:registration",
+        "actions": [
+          {
+            "hook": "init",
+            "callback": "register_block_core_rss"
+          }
+        ],
+        "registrations": [
+          {
+            "path": "wp-includes/blocks/rss",
+            "args": {
+              "render_callback": "render_block_core_rss"
+            }
+          }
+        ],
+        "return_value": null
+      }
+    },
+    "match": true,
+    "summary": {
+      "self_guard_fetch_count": 0,
+      "error_placeholder": "<div class=\"components-placeholder\"><div class=\"notice notice-error\"><strong>RSS Error:</strong> esc_html:Fixture feed error</div></div>",
+      "empty_placeholder_present": true,
+      "render_full_sha256": "093f7b410dfdf29cd9f7af2c247b5298b96520a082097caf38730b0609a6bc30",
+      "render_full_wrapper_class": "is-grid columns-3 has-dates has-authors has-excerpts",
+      "registration_hook": "init",
+      "registration_callback": "render_block_core_rss"
+    },
+    "oracle_sha256": "sha256:44b2558cc4c028183c53264559d8304324cb5121b780f61a60fb0b333b7d71e7",
+    "candidate_sha256": "sha256:44b2558cc4c028183c53264559d8304324cb5121b780f61a60fb0b333b7d71e7"
+  },
+  "remaining_gaps": [
+    {
+      "id": "installed-block-registry-editor-not-executed",
+      "owner": "WPHX-312.27",
+      "detail": "The fixture executes the copied server renderer directly. Installed block registry integration, editor/client rendering, block metadata loading, and asset behavior remain later gates."
+    },
+    {
+      "id": "live-network-and-database-feeds-not-executed",
+      "owner": "WPHX-312.27",
+      "detail": "The fixture uses deterministic fetch_feed and feed object stubs. Live/recorded network feeds and database-backed feed state remain outside this claim."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.27",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 21,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_network_behavior_claimed": false,
+    "client_side_block_behavior_claimed": false
+  }
+}
