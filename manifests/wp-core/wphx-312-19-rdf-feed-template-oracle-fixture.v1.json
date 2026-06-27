@@ -1,0 +1,342 @@
+{
+  "schema": "wphx.wp-core-rdf-feed-template-oracle-fixture.v1",
+  "issue": "WPHX-312.19",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-rdf-feed-template-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "http_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "rss2_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-15-rss2-feed-template-oracle-fixture.v1.json",
+      "bytes": 33544,
+      "sha256": "sha256:c1d990a1a709c47727b7f35809c992fbc009f4730e8cfda3cd9ef8fc9ba0736f"
+    },
+    "atom_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-16-atom-feed-template-oracle-fixture.v1.json",
+      "bytes": 33464,
+      "sha256": "sha256:2649da6144e501cb697422afda710df34b8bdd84725b7864bc2a2118ab09b8e1"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-rdf-feed-template-oracle-fixture.mjs",
+      "bytes": 18556,
+      "sha256": "sha256:fb29c4a91e400e1d54dad6de4e842d17226676bcd4eea1f089e983b41b988dad"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/feed-rdf.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/feed-rdf.php",
+        "bytes": 2668,
+        "sha256": "sha256:da3b03eb0e15fa0985b00744f5bdd45d105ea8b474e4098c9266fa35554597f7"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "rdf:full-content",
+        "path": "/wp-includes/feed-rdf.php?case=full",
+        "focus": "RDF channel metadata, namespaces, update filters, full content, categories, item hook output, and two-pass loop"
+      },
+      {
+        "id": "rdf:excerpt-option",
+        "path": "/wp-includes/feed-rdf.php?case=excerpt",
+        "focus": "rss_use_excerpt omits content:encoded while retaining description output"
+      },
+      {
+        "id": "rdf:multi-post",
+        "path": "/wp-includes/feed-rdf.php?case=multi",
+        "focus": "multiple posts appear in the channel rdf:Seq and item body after rewind_posts"
+      },
+      {
+        "id": "rdf:filtered-updates",
+        "path": "/wp-includes/feed-rdf.php?case=filtered",
+        "focus": "rss_update_period and rss_update_frequency filters affect RDF syndication metadata"
+      },
+      {
+        "id": "rdf:empty-content",
+        "path": "/wp-includes/feed-rdf.php?case=empty-content",
+        "focus": "empty content feed branch still emits content:encoded with deterministic empty payload"
+      }
+    ],
+    "covered_symbols": [
+      "feed-rdf.php",
+      "feed_content_type",
+      "rss_tag_pre",
+      "rdf_ns",
+      "rdf_header",
+      "wp_title_rss",
+      "bloginfo_rss",
+      "get_feed_build_date",
+      "rss_update_period",
+      "rss_update_frequency",
+      "have_posts",
+      "the_post",
+      "rewind_posts",
+      "the_permalink_rss",
+      "the_title_rss",
+      "the_author",
+      "mysql2date",
+      "the_category_rss",
+      "the_excerpt_rss",
+      "the_content_feed",
+      "rdf_item"
+    ],
+    "source_files": [
+      "src/wp-includes/feed-rdf.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_builtin_server": true,
+      "auto_prepend_stub": "rdf-prepend.php supplies deterministic feed-loop functions; copied feed-rdf.php remains the executed template."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-19/oracle",
+    "candidate_root": "build/wp-core/wphx-312-19/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/feed-rdf.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-19/oracle/wp-includes/feed-rdf.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-19/candidate/wp-includes/feed-rdf.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "rdf:full-content": {
+        "case": "rdf:full-content",
+        "request_path": "/wp-includes/feed-rdf.php?case=full",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:c0f34fffb245b568e145426150123292006ed081c448d419e123c5217dd66ea7",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Alpha rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:excerpt-option": {
+        "case": "rdf:excerpt-option",
+        "request_path": "/wp-includes/feed-rdf.php?case=excerpt",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:4d084690e16ef914b58ae75d2b0165bfc9c149b407e6e8742817b6d292e67c90",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": false,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:multi-post": {
+        "case": "rdf:multi-post",
+        "request_path": "/wp-includes/feed-rdf.php?case=multi",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:a0f95fc88fa896367061e5c4b496d6ecc75d72a876c0e1b485ae9cf34958acda",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/beta-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Alpha rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n<item rdf:about=\"https://example.test/posts/beta-rdf\">\n\t<title>Beta RDF</title>\n\t<link>https://example.test/posts/beta-rdf</link>\n\n\t<dc:creator><![CDATA[Second Author]]></dc:creator>\n\t<dc:date>2026-06-02T02:03:04Z</dc:date>\n\t\t<dc:subject>Second Category</dc:subject>\n\n\t\t\t<description><![CDATA[Beta rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Beta rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"202\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 2,
+        "sequence_count": 2,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": true,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:filtered-updates": {
+        "case": "rdf:filtered-updates",
+        "request_path": "/wp-includes/feed-rdf.php?case=filtered",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:cea040b747f4dd9b6f191aa110313e70d43b28ba4f1c04647f54aee0d8c550ef",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tweekly\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t5\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Alpha rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": true,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:empty-content": {
+        "case": "rdf:empty-content",
+        "request_path": "/wp-includes/feed-rdf.php?case=empty-content",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:769c1b9d2b7ea550fbe3aefd349b0849f1a19f4499f7e1fa46c0f42decbabe3e",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": true
+      }
+    },
+    "candidate": {
+      "rdf:full-content": {
+        "case": "rdf:full-content",
+        "request_path": "/wp-includes/feed-rdf.php?case=full",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:c0f34fffb245b568e145426150123292006ed081c448d419e123c5217dd66ea7",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Alpha rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:excerpt-option": {
+        "case": "rdf:excerpt-option",
+        "request_path": "/wp-includes/feed-rdf.php?case=excerpt",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:4d084690e16ef914b58ae75d2b0165bfc9c149b407e6e8742817b6d292e67c90",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": false,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:multi-post": {
+        "case": "rdf:multi-post",
+        "request_path": "/wp-includes/feed-rdf.php?case=multi",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:a0f95fc88fa896367061e5c4b496d6ecc75d72a876c0e1b485ae9cf34958acda",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/beta-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Alpha rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n<item rdf:about=\"https://example.test/posts/beta-rdf\">\n\t<title>Beta RDF</title>\n\t<link>https://example.test/posts/beta-rdf</link>\n\n\t<dc:creator><![CDATA[Second Author]]></dc:creator>\n\t<dc:date>2026-06-02T02:03:04Z</dc:date>\n\t\t<dc:subject>Second Category</dc:subject>\n\n\t\t\t<description><![CDATA[Beta rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Beta rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"202\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 2,
+        "sequence_count": 2,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": true,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:filtered-updates": {
+        "case": "rdf:filtered-updates",
+        "request_path": "/wp-includes/feed-rdf.php?case=filtered",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:cea040b747f4dd9b6f191aa110313e70d43b28ba4f1c04647f54aee0d8c550ef",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tweekly\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t5\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[<p>Alpha rdf content</p>]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": true,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": false
+      },
+      "rdf:empty-content": {
+        "case": "rdf:empty-content",
+        "request_path": "/wp-includes/feed-rdf.php?case=empty-content",
+        "status": 200,
+        "content_type": "application/rdf+xml; charset=UTF-8",
+        "body_sha256": "sha256:769c1b9d2b7ea550fbe3aefd349b0849f1a19f4499f7e1fa46c0f42decbabe3e",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- rss_tag_pre:rdf -->\n<rdf:RDF\n\txmlns=\"http://purl.org/rss/1.0/\"\n\txmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n\txmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n\txmlns:sy=\"http://purl.org/rss/1.0/modules/syndication/\"\n\txmlns:admin=\"http://webns.net/mvcb/\"\n\txmlns:content=\"http://purl.org/rss/1.0/modules/content/\"\n\txmlns:fixture=\"https://fixture.example/rdf\">\n<channel rdf:about=\"https://example.test\">\n\t<title>Fixture RDF &amp; Title</title>\n\t<link>https://example.test</link>\n\t<description>Fixture RDF description</description>\n\t<dc:date>2026-06-27T00:00:00Z\t</dc:date>\n\t<sy:updatePeriod>\n\tdaily\t</sy:updatePeriod>\n\t<sy:updateFrequency>\n\t2\t</sy:updateFrequency>\n\t<sy:updateBase>2000-01-01T12:00+00:00</sy:updateBase>\n\t\t<fixture:head>rdf</fixture:head>\n\t<items>\n\t\t<rdf:Seq>\n\t\t\t\t\t<rdf:li rdf:resource=\"https://example.test/posts/alpha-rdf\"/>\n\t\t\t\t</rdf:Seq>\n\t</items>\n</channel>\n<item rdf:about=\"https://example.test/posts/alpha-rdf\">\n\t<title>Alpha &amp; RDF</title>\n\t<link>https://example.test/posts/alpha-rdf</link>\n\n\t<dc:creator><![CDATA[Fixture Author]]></dc:creator>\n\t<dc:date>2026-06-01T01:02:03Z</dc:date>\n\t\t<dc:subject>News &amp; Updates</dc:subject>\n\t<dc:subject>Haxe &lt;Compiler&gt;</dc:subject>\n\n\t\t\t<description><![CDATA[Alpha rdf excerpt]]></description>\n\t\t<content:encoded><![CDATA[]]></content:encoded>\n\t\n\t\t<fixture:item marker=\"101\" />\n</item>\n</rdf:RDF>\n",
+        "item_count": 1,
+        "sequence_count": 1,
+        "has_fixture_namespace": true,
+        "has_header_action_output": true,
+        "has_item_action_output": true,
+        "has_content_encoded": true,
+        "has_filtered_updates": false,
+        "has_two_pass_multi_output": false,
+        "has_category_output": true,
+        "has_empty_content_payload": true
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:23eb86af484241c63cbb8d510e94e3c790ef4ff66242ded223ec467fdf6a1985",
+    "candidate_sha256": "sha256:23eb86af484241c63cbb8d510e94e3c790ef4ff66242ded223ec467fdf6a1985"
+  },
+  "remaining_gaps": [
+    {
+      "id": "installed-rdf-feed-routing-not-executed",
+      "owner": "WPHX-312.19",
+      "detail": "The fixture executes the RDF template directly through a local PHP server. do_feed_rdf routing, query resolution, canonical URL behavior, and browser-observed installed routing remain later gates."
+    },
+    {
+      "id": "database-backed-post-loop-not-executed",
+      "owner": "WPHX-312.19",
+      "detail": "The fixture stubs the post loop, rewind_posts, categories, dates, excerpts, and content. Database-backed WP_Query, taxonomy, post cache, and content filter behavior remain covered by other domains or later integration gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.19",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 21,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "database_backed_feed_loop_claimed": false
+  }
+}

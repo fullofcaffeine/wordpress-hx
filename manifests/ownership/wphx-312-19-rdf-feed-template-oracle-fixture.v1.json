@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/rdf-feed-template-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.19",
+    "external_ref": "WPHX-312.19"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "RDF feed template output behavior",
+    "area": "src/wp-includes/feed-rdf.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/feed-rdf.php through PHP's built-in HTTP server with a deterministic auto-prepended feed-loop stub. It observes content-type headers and RDF XML output without database-backed WP_Query, installed feed routing, or live network behavior."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed WP_Query/post/category behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-rdf-feed-template-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-19"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-rdf-feed-template-oracle-fixture",
+      "npm run wp:core:wphx-312-rdf-feed-template-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-19-rdf-feed-template-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:3ba96872934a64ceb2a6814daca0f5ed9dc908d5427187819a36424670016021"
+  }
+}
