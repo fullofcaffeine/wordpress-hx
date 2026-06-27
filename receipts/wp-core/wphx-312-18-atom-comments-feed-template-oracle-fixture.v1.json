@@ -1,0 +1,46 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-18-atom-comments-feed-template-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.18",
+    "external_ref": "WPHX-312.18",
+    "title": "WPHX-312.18 - Add Atom comments feed template oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-18-atom-comments-feed-template-oracle-fixture.v1.json",
+      "role": "Atom comments feed template oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-18-atom-comments-feed-template-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle Atom comments feed template boundary"
+    },
+    {
+      "path": "tools/wp-core/run-atom-comments-feed-template-oracle-fixture.mjs",
+      "role": "deterministic HTTP-observed oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-atom-comments-feed-template-oracle-fixture",
+    "npm run wp:core:wphx-312-atom-comments-feed-template-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-15-rss2-feed-template-oracle-fixture",
+    "receipt:wphx-312-16-atom-feed-template-oracle-fixture",
+    "receipt:wphx-312-17-rss2-comments-feed-template-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 25,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "database_backed_comment_loop_claimed": false
+  }
+}

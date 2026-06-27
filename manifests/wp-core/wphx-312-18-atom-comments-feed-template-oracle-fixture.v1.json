@@ -1,0 +1,391 @@
+{
+  "schema": "wphx.wp-core-atom-comments-feed-template-oracle-fixture.v1",
+  "issue": "WPHX-312.18",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-atom-comments-feed-template-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "http_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "rss2_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-15-rss2-feed-template-oracle-fixture.v1.json",
+      "bytes": 33544,
+      "sha256": "sha256:c1d990a1a709c47727b7f35809c992fbc009f4730e8cfda3cd9ef8fc9ba0736f"
+    },
+    "atom_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-16-atom-feed-template-oracle-fixture.v1.json",
+      "bytes": 33464,
+      "sha256": "sha256:2649da6144e501cb697422afda710df34b8bdd84725b7864bc2a2118ab09b8e1"
+    },
+    "rss2_comments_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-17-rss2-comments-feed-template-oracle-fixture.v1.json",
+      "bytes": 29734,
+      "sha256": "sha256:e6844bc0bbb6e057b3fb9217ee2939b49c66f38eaba1612592f05a20266e0ca0"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-atom-comments-feed-template-oracle-fixture.mjs",
+      "bytes": 21754,
+      "sha256": "sha256:96a1b1cba82e318264ecb455205e2a3522513dbdd6f527a6a331776846b759e0"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/feed-atom-comments.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/feed-atom-comments.php",
+        "bytes": 5504,
+        "sha256": "sha256:726ec80a75978f1eb0b63aa98bb9e55282739e2c47b8756d9475c07de9681165"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "atom-comments:default",
+        "path": "/wp-includes/feed-atom-comments.php?case=default",
+        "focus": "default site comments feed title, Atom metadata links, namespace actions, top-level threading, and entry hook output"
+      },
+      {
+        "id": "atom-comments:singular",
+        "path": "/wp-includes/feed-atom-comments.php?case=singular",
+        "focus": "singular comments feed title, self/alternate post comment links, and By-author entry title branch"
+      },
+      {
+        "id": "atom-comments:search",
+        "path": "/wp-includes/feed-atom-comments.php?case=search",
+        "focus": "search comments feed title and search comments feed self/id links"
+      },
+      {
+        "id": "atom-comments:protected",
+        "path": "/wp-includes/feed-atom-comments.php?case=protected",
+        "focus": "protected comment branch emits password form content inside Atom CDATA"
+      },
+      {
+        "id": "atom-comments:threaded",
+        "path": "/wp-includes/feed-atom-comments.php?case=threaded",
+        "focus": "reply comment branch resolves parent comment GUID/link and renders multiple entries"
+      }
+    ],
+    "covered_symbols": [
+      "feed-atom-comments.php",
+      "feed_content_type",
+      "rss_tag_pre",
+      "atom_ns",
+      "atom_comments_ns",
+      "is_singular",
+      "is_search",
+      "get_bloginfo_rss",
+      "get_wp_title_rss",
+      "comments_atom_head",
+      "have_comments",
+      "the_comment",
+      "get_post",
+      "the_title_rss",
+      "the_title_rss filter",
+      "get_comment_author_rss",
+      "comment_link",
+      "comment_author_rss",
+      "get_comment_author_url",
+      "comment_guid",
+      "post_password_required",
+      "comment_text",
+      "get_comment",
+      "get_comment_link",
+      "comment_atom_entry"
+    ],
+    "source_files": [
+      "src/wp-includes/feed-atom-comments.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_builtin_server": true,
+      "auto_prepend_stub": "atom-comments-prepend.php supplies deterministic comment-loop functions; copied feed-atom-comments.php remains the executed template."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-18/oracle",
+    "candidate_root": "build/wp-core/wphx-312-18/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/feed-atom-comments.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-18/oracle/wp-includes/feed-atom-comments.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-18/candidate/wp-includes/feed-atom-comments.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "atom-comments:default": {
+        "case": "atom-comments:default",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=default",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:ec179dbcdb02e6d1b71e9d1258bd44f2244c4fa6e3cc2db4d518226272940685",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments for Fixture Site Comments\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/comments/feed/atom/\" />\n\t<id>https://example.test/comments/feed/atom/</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": false,
+        "has_default_self_link": true,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": false,
+        "has_comment_content": true
+      },
+      "atom-comments:singular": {
+        "case": "atom-comments:singular",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=singular",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:2c7dc6dfbcd074b456ce7e6ece5fbe6b8157e403616e971693f299732509761d",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments on Alpha &amp; Commented\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test/posts/alpha#comments\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/posts/alpha/comments/feed/atom\" />\n\t<id>https://example.test/posts/alpha/comments/feed/atom</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tBy: Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": true,
+        "has_default_self_link": false,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": false,
+        "has_comment_content": true
+      },
+      "atom-comments:search": {
+        "case": "atom-comments:search",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=search",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:aedb40aa26e74d76d7e64a48a314fcaa653171d05f11c79b9ad0424cdea8fe4e",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments for Fixture Site searching on haxe ports\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test?s=haxe ports\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/search/comments/feed/atom?s=haxe%20ports\" />\n\t<id>https://example.test/search/comments/feed/atom?s=haxe%20ports</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": true,
+        "has_singular_title": false,
+        "has_default_self_link": false,
+        "has_search_self_link": true,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": false,
+        "has_comment_content": true
+      },
+      "atom-comments:protected": {
+        "case": "atom-comments:protected",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=protected",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:e33e51d2fadb915473cfafc870779ca6e201f47558ca3adb193201f31f8e6c30",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments on Alpha &amp; Commented\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test/posts/alpha#comments\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/posts/alpha/comments/feed/atom\" />\n\t<id>https://example.test/posts/alpha/comments/feed/atom</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tBy: Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<form>Password</form>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": true,
+        "has_default_self_link": false,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": true,
+        "has_comment_content": false
+      },
+      "atom-comments:threaded": {
+        "case": "atom-comments:threaded",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=threaded",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:bf380ae8f5aa38835dd804345648eed3b4ad57d4a98744fba96eab061d44e829",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments for Fixture Site Comments\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/comments/feed/atom/\" />\n\t<id>https://example.test/comments/feed/atom/</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Bob Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/502\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Bob Author</name>\n\t\t\t\n\t\t</author>\n\n\t\t<id>comment-guid-502</id>\n\t\t<updated>2026-06-02T04:05:06Z</updated>\n\t\t<published>2026-06-02T04:05:06Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/502\"><![CDATA[<p>Bob reply html</p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"comment-guid-501\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"502:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 2,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": false,
+        "has_default_self_link": true,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": true,
+        "has_password_form": false,
+        "has_comment_content": true
+      }
+    },
+    "candidate": {
+      "atom-comments:default": {
+        "case": "atom-comments:default",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=default",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:ec179dbcdb02e6d1b71e9d1258bd44f2244c4fa6e3cc2db4d518226272940685",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments for Fixture Site Comments\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/comments/feed/atom/\" />\n\t<id>https://example.test/comments/feed/atom/</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": false,
+        "has_default_self_link": true,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": false,
+        "has_comment_content": true
+      },
+      "atom-comments:singular": {
+        "case": "atom-comments:singular",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=singular",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:2c7dc6dfbcd074b456ce7e6ece5fbe6b8157e403616e971693f299732509761d",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments on Alpha &amp; Commented\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test/posts/alpha#comments\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/posts/alpha/comments/feed/atom\" />\n\t<id>https://example.test/posts/alpha/comments/feed/atom</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tBy: Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": true,
+        "has_default_self_link": false,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": false,
+        "has_comment_content": true
+      },
+      "atom-comments:search": {
+        "case": "atom-comments:search",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=search",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:aedb40aa26e74d76d7e64a48a314fcaa653171d05f11c79b9ad0424cdea8fe4e",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments for Fixture Site searching on haxe ports\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test?s=haxe ports\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/search/comments/feed/atom?s=haxe%20ports\" />\n\t<id>https://example.test/search/comments/feed/atom?s=haxe%20ports</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": true,
+        "has_singular_title": false,
+        "has_default_self_link": false,
+        "has_search_self_link": true,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": false,
+        "has_comment_content": true
+      },
+      "atom-comments:protected": {
+        "case": "atom-comments:protected",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=protected",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:e33e51d2fadb915473cfafc870779ca6e201f47558ca3adb193201f31f8e6c30",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments on Alpha &amp; Commented\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test/posts/alpha#comments\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/posts/alpha/comments/feed/atom\" />\n\t<id>https://example.test/posts/alpha/comments/feed/atom</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tBy: Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<form>Password</form>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 1,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": true,
+        "has_default_self_link": false,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": false,
+        "has_password_form": true,
+        "has_comment_content": false
+      },
+      "atom-comments:threaded": {
+        "case": "atom-comments:threaded",
+        "request_path": "/wp-includes/feed-atom-comments.php?case=threaded",
+        "status": 200,
+        "content_type": "application/atom+xml; charset=UTF-8",
+        "body_sha256": "sha256:bf380ae8f5aa38835dd804345648eed3b4ad57d4a98744fba96eab061d44e829",
+        "body": "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n<!-- rss_tag_pre:atom-comments -->\n<feed\n\txmlns=\"http://www.w3.org/2005/Atom\"\n\txml:lang=\"en-US\"\n\txmlns:thr=\"http://purl.org/syndication/thread/1.0\"\n\txmlns:fixture=\"https://fixture.example/atom-comments\"\n\txmlns:commentsfixture=\"https://fixture.example/atom-comments/ns\">\n\t<title type=\"text\">\n\tComments for Fixture Site Comments\t</title>\n\t<subtitle type=\"text\">Fixture comments feed</subtitle>\n\n\t<updated>2026-06-27T00:00:00Z</updated>\n\n\t<link rel=\"alternate\" type=\"text/html\" href=\"https://example.test\" />\n\t<link rel=\"self\" type=\"application/atom+xml\" href=\"https://example.test/comments/feed/atom/\" />\n\t<id>https://example.test/comments/feed/atom/</id>\n\t<fixture:head>comments</fixture:head>\n\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Alice & Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Alice & Author</name>\n\t\t\t<uri>https://authors.example.test/alice</uri>\n\t\t</author>\n\n\t\t<id>comment-guid-501</id>\n\t\t<updated>2026-06-01T03:04:05Z</updated>\n\t\t<published>2026-06-01T03:04:05Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/501\"><![CDATA[<p>Alice <strong>html</strong></p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"post-guid-101\" href=\"https://example.test/posts/alpha\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"501:101\" />\n\t</entry>\n\t\t<entry>\n\t\t<title>\n\t\tComment on Filtered Alpha & Commented by Bob Author\t\t</title>\n\t\t<link rel=\"alternate\" href=\"https://example.test/comments/502\" type=\"text/html\" />\n\n\t\t<author>\n\t\t\t<name>Bob Author</name>\n\t\t\t\n\t\t</author>\n\n\t\t<id>comment-guid-502</id>\n\t\t<updated>2026-06-02T04:05:06Z</updated>\n\t\t<published>2026-06-02T04:05:06Z</published>\n\n\t\t\t\t\t<content type=\"html\" xml:base=\"https://example.test/comments/502\"><![CDATA[<p>Bob reply html</p>]]></content>\n\t\t\n\t\t\t\t\t<thr:in-reply-to ref=\"comment-guid-501\" href=\"https://example.test/comments/501\" type=\"text/html\" />\n\t\t\t\t\t<fixture:entry marker=\"502:101\" />\n\t</entry>\n\t</feed>\n",
+        "entry_count": 2,
+        "has_fixture_namespace": true,
+        "has_comments_namespace": true,
+        "has_head_action_output": true,
+        "has_entry_action_output": true,
+        "has_search_title": false,
+        "has_singular_title": false,
+        "has_default_self_link": true,
+        "has_search_self_link": false,
+        "has_author_uri": true,
+        "has_top_level_thread_ref": true,
+        "has_parent_thread_ref": true,
+        "has_password_form": false,
+        "has_comment_content": true
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:b63f6643ebad08490fc7ce35a442e336556abae49cbb7b87f72aaac607b81b38",
+    "candidate_sha256": "sha256:b63f6643ebad08490fc7ce35a442e336556abae49cbb7b87f72aaac607b81b38"
+  },
+  "remaining_gaps": [
+    {
+      "id": "installed-comments-feed-routing-not-executed",
+      "owner": "WPHX-312.18",
+      "detail": "The fixture executes the Atom comments template directly through a local PHP server. do_feed_atom_comments routing, query resolution, canonical URL behavior, and browser-observed installed routing remain later gates."
+    },
+    {
+      "id": "database-backed-comment-post-loop-not-executed",
+      "owner": "WPHX-312.18",
+      "detail": "The fixture stubs comments, posts, title/search/singular state, protected-post checks, dates, and content. Database-backed comment, post, password, taxonomy, and cache behavior remain covered by other domains or later integration gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.18",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-18-atom-comments-feed-template-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 25,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "database_backed_comment_loop_claimed": false
+  }
+}
