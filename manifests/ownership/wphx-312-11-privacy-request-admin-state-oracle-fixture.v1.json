@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/privacy-request-admin-state-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.11",
+    "external_ref": "WPHX-312.11"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "privacy request admin-management state handoff behavior",
+    "area": "src/wp-includes/class-wp-user-request.php src/wp-includes/user.php src/wp-admin/includes/privacy-tools.php src/wp-admin/includes/class-wp-privacy-requests-table.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 privacy request state and privacy request table source against deterministic post, metadata, query, cache, mail, and admin-notice stubs. It observes the request-management state that feeds admin list tables, but it does not claim broad WPHX-315 admin list-table ownership or full rendered admin screen parity."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-admin-state-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed privacy request management, broad WPHX-315 admin list-table, selected upstream tests, real mail/DB side-effect, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-privacy-request-admin-state-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-11"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-privacy-request-admin-state-oracle-fixture",
+      "npm run wp:core:wphx-312-privacy-request-admin-state-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-11-privacy-request-admin-state-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:b944b01a6370bfc9e980411cde0513b82f6a8765d89cfdfcd4c661d9d0377688"
+  }
+}

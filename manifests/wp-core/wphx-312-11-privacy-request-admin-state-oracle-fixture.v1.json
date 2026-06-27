@@ -1,0 +1,801 @@
+{
+  "schema": "wphx.wp-core-privacy-request-admin-state-oracle-fixture.v1",
+  "issue": "WPHX-312.11",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-privacy-request-admin-state-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "privacy_mail_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+      "bytes": 20873,
+      "sha256": "sha256:5c88795e06e49ff2fac68353e9f71ad45e27159c15d9339625fa934834114d35"
+    },
+    "installed_gate_manifest": {
+      "path": "manifests/wp-core/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+      "bytes": 33734,
+      "sha256": "sha256:d07f7fde8fa0c6574367a3b56e8fdd4735c3b5234bbced76067e4e17280c9e56"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-privacy-request-admin-state-oracle-fixture.mjs",
+      "bytes": 33443,
+      "sha256": "sha256:e156b2d89820dd5f53a7e0dba5bcc449af67dd77a9b97c7f731d937e90286f8a"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-user-request.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-user-request.php",
+        "bytes": 2305,
+        "sha256": "sha256:c4d49a59c41793c2aab4b5c9820bf1d2a4936abf2245858a4168e82a72705230"
+      },
+      {
+        "path": "src/wp-includes/user.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/user.php",
+        "bytes": 178824,
+        "sha256": "sha256:3394b3ce03a8f5ca9ba28af276bb1a22b87d77a2fb031b467991d3ec4e241387"
+      },
+      {
+        "path": "src/wp-admin/includes/privacy-tools.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/privacy-tools.php",
+        "bytes": 33441,
+        "sha256": "sha256:3a2ee04b7bf10a5a87c2af9db9052240ac6c9e8829e580cacab22728f2124ebb"
+      },
+      {
+        "path": "src/wp-admin/includes/class-wp-privacy-requests-table.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/class-wp-privacy-requests-table.php",
+        "bytes": 14791,
+        "sha256": "sha256:0ef4318ef1c1b06cd36d64935089aad486853d1f3989e4f753e106568931a5cd"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "privacy-admin:request-object-normalization",
+        "focus": "WP_User_Request normalizes post fields, metadata timestamps, request data, and action descriptions"
+      },
+      {
+        "id": "privacy-admin:table-counts-columns",
+        "focus": "privacy request table exposes columns, admin URL, sortable columns, bulk actions, and status counts for export requests"
+      },
+      {
+        "id": "privacy-admin:prepare-items-filter-sort",
+        "focus": "privacy request table builds filtered/sorted WP_Query args and maps posts to user request objects"
+      },
+      {
+        "id": "privacy-admin:bulk-complete",
+        "focus": "bulk complete marks selected requests completed and records completion timestamp/update side effects"
+      },
+      {
+        "id": "privacy-admin:bulk-resend-delete",
+        "focus": "bulk resend regenerates confirmation mail state and bulk delete records success/failure notices"
+      }
+    ],
+    "covered_symbols": [
+      "WP_User_Request::__construct",
+      "wp_get_user_request",
+      "wp_user_request_action_description",
+      "wp_send_user_request",
+      "wp_generate_user_request_key",
+      "_wp_privacy_resend_request",
+      "_wp_privacy_completed_request",
+      "WP_Privacy_Requests_Table::get_columns",
+      "WP_Privacy_Requests_Table::get_admin_url",
+      "WP_Privacy_Requests_Table::get_sortable_columns",
+      "WP_Privacy_Requests_Table::get_request_counts",
+      "WP_Privacy_Requests_Table::get_bulk_actions",
+      "WP_Privacy_Requests_Table::prepare_items",
+      "WP_Privacy_Requests_Table::process_bulk_action",
+      "WP_Privacy_Requests_Table::column_status",
+      "WP_Privacy_Requests_Table::column_cb",
+      "WP_Privacy_Requests_Table::column_email",
+      "WP_Query",
+      "wp_update_post",
+      "wp_delete_post"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-user-request.php",
+      "src/wp-includes/user.php",
+      "src/wp-admin/includes/privacy-tools.php",
+      "src/wp-admin/includes/class-wp-privacy-requests-table.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-11/probe.php",
+      "sha256": "sha256:24c9fbf5ae45aedd6bc0dd1523c6a8a7852afdc131c3ba4e7c16b71eb7fc313f"
+    },
+    "side_effect_policy": {
+      "real_email_delivery": false,
+      "real_database_writes": false,
+      "installed_admin_routing": false,
+      "full_wp_list_table_rendering": false
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false,
+      "admin_list_table_domain_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-11/oracle",
+    "candidate_root": "build/wp-core/wphx-312-11/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-user-request.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-11/oracle/wp-includes/class-wp-user-request.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-11/candidate/wp-includes/class-wp-user-request.php"
+      },
+      {
+        "path": "src/wp-includes/user.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-11/oracle/wp-includes/user.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-11/candidate/wp-includes/user.php"
+      },
+      {
+        "path": "src/wp-admin/includes/privacy-tools.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-11/oracle/wp-admin/includes/privacy-tools.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-11/candidate/wp-admin/includes/privacy-tools.php"
+      },
+      {
+        "path": "src/wp-admin/includes/class-wp-privacy-requests-table.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-11/oracle/wp-admin/includes/class-wp-privacy-requests-table.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-11/candidate/wp-admin/includes/class-wp-privacy-requests-table.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "request-object-normalization": {
+        "case": "request-object-normalization",
+        "result": {
+          "request": {
+            "ID": 802,
+            "user_id": 0,
+            "email": "confirmed-export@example.test",
+            "action_name": "export_personal_data",
+            "status": "request-confirmed",
+            "created_timestamp": 1780398000,
+            "modified_timestamp": 1780398600,
+            "confirmed_timestamp": 1780400000,
+            "completed_timestamp": 0,
+            "request_data": {
+              "origin": "admin"
+            },
+            "confirm_key": "stored-confirm-key"
+          },
+          "descriptions": {
+            "export": "Export Personal Data",
+            "erase": "Erase Personal Data",
+            "custom": "Confirm the \"custom_action\" action"
+          }
+        },
+        "php_errors": []
+      },
+      "table-counts-columns": {
+        "case": "table-counts-columns",
+        "result": {
+          "columns": {
+            "cb": "<input type=\"checkbox\" />",
+            "email": "Requester",
+            "status": "Status",
+            "created_timestamp": "Requested",
+            "next_steps": "Next steps"
+          },
+          "admin_url": "https://example.test/wp-admin/export-personal-data.php",
+          "sortable_columns": {
+            "email": "requester",
+            "created_timestamp": [
+              "requested",
+              false
+            ]
+          },
+          "default_primary_column": "email",
+          "bulk_actions": {
+            "resend": "Resend confirmation requests",
+            "complete": "Mark requests as completed",
+            "delete": "Delete requests"
+          },
+          "counts": {
+            "request-pending": 1,
+            "request-confirmed": 1,
+            "request-failed": 0,
+            "request-completed": 1
+          }
+        },
+        "php_errors": []
+      },
+      "prepare-items-filter-sort": {
+        "case": "prepare-items-filter-sort",
+        "result": {
+          "prepared": {
+            "items": [
+              {
+                "ID": 802,
+                "user_id": 0,
+                "email": "confirmed-export@example.test",
+                "action_name": "export_personal_data",
+                "status": "request-confirmed",
+                "created_timestamp": 1780398000,
+                "modified_timestamp": 1780398600,
+                "confirmed_timestamp": 1780400000,
+                "completed_timestamp": 0,
+                "request_data": {
+                  "origin": "admin"
+                },
+                "confirm_key": "stored-confirm-key"
+              }
+            ],
+            "pagination": {
+              "total_items": 1,
+              "per_page": 2
+            }
+          },
+          "last_query_args": {
+            "post_type": "user_request",
+            "post_name__in": [
+              "export_personal_data"
+            ],
+            "posts_per_page": 2,
+            "offset": 0,
+            "post_status": "request-confirmed",
+            "s": "confirmed",
+            "orderby": "post_title",
+            "order": "ASC"
+          },
+          "status_column": "<span class=\"status-label status-request-confirmed\">Confirmed<span class=\"status-date\">2026/06/27 at 2026/06/27</span></span>",
+          "created_column": "2026/06/27 at 2026/06/27",
+          "checkbox_column_sha256": "5100ed236d8ac8a9b921d9c735cf88165671371a38d5055b4f8961b9437e7952",
+          "email_column_sha256": "6180c4938b228235b2c1baa66fe667d95bbbf919748169ed44d02e9a2c67e319"
+        },
+        "php_errors": []
+      },
+      "bulk-complete": {
+        "case": "bulk-complete",
+        "result": {
+          "post_statuses": {
+            "802": "request-completed",
+            "805": "request-completed"
+          },
+          "side_effects": {
+            "post_updates": [
+              {
+                "ID": 802,
+                "post_status": "request-completed"
+              },
+              {
+                "ID": 805,
+                "post_status": "request-completed"
+              }
+            ],
+            "post_deletes": [],
+            "meta_updates": [
+              {
+                "post_id": 802,
+                "key": "_wp_user_request_completed_timestamp",
+                "value": "dynamic:completed_timestamp"
+              },
+              {
+                "post_id": 805,
+                "key": "_wp_user_request_completed_timestamp",
+                "value": "dynamic:completed_timestamp"
+              }
+            ],
+            "settings_errors": [
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "2 requests marked as complete.",
+                "type": "success"
+              }
+            ],
+            "mail": [],
+            "actions": [
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              }
+            ],
+            "filters": [],
+            "queries": []
+          }
+        },
+        "php_errors": []
+      },
+      "bulk-resend-delete": {
+        "case": "bulk-resend-delete",
+        "result": {
+          "post_statuses": {
+            "801": "request-pending",
+            "804": false
+          },
+          "resend_side_effects": {
+            "post_updates": [
+              {
+                "ID": 801,
+                "post_status": "request-pending",
+                "post_password": "hash:fixture-confirm-key"
+              }
+            ],
+            "post_deletes": [],
+            "meta_updates": [],
+            "settings_errors": [
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 confirmation request re-sent successfully.",
+                "type": "success"
+              }
+            ],
+            "mail": [
+              {
+                "to": "pending-export@example.test",
+                "subject": "[Fixture & Site] Confirm Action: Export Personal Data",
+                "headers": "",
+                "message_sha256": "90aef44203299aa647a1f815e9922f07a553ab0ccd58878c0ddcde6fc84f932a"
+              }
+            ],
+            "actions": [
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              }
+            ],
+            "filters": [
+              {
+                "hook": "user_request_action_description",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_subject",
+                "value_type": "string",
+                "arg_count": 2
+              },
+              {
+                "hook": "user_request_action_email_content",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_headers",
+                "value_type": "string",
+                "arg_count": 4
+              }
+            ],
+            "queries": []
+          },
+          "combined_side_effects": {
+            "post_updates": [
+              {
+                "ID": 801,
+                "post_status": "request-pending",
+                "post_password": "hash:fixture-confirm-key"
+              }
+            ],
+            "post_deletes": [
+              {
+                "post_id": 804,
+                "force_delete": true,
+                "existed": true
+              },
+              {
+                "post_id": 999,
+                "force_delete": true,
+                "existed": false
+              }
+            ],
+            "meta_updates": [],
+            "settings_errors": [
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 confirmation request re-sent successfully.",
+                "type": "success"
+              },
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 request failed to delete.",
+                "type": "error"
+              },
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 request deleted successfully.",
+                "type": "success"
+              }
+            ],
+            "mail": [
+              {
+                "to": "pending-export@example.test",
+                "subject": "[Fixture & Site] Confirm Action: Export Personal Data",
+                "headers": "",
+                "message_sha256": "90aef44203299aa647a1f815e9922f07a553ab0ccd58878c0ddcde6fc84f932a"
+              }
+            ],
+            "actions": [
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              },
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              }
+            ],
+            "filters": [
+              {
+                "hook": "user_request_action_description",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_subject",
+                "value_type": "string",
+                "arg_count": 2
+              },
+              {
+                "hook": "user_request_action_email_content",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_headers",
+                "value_type": "string",
+                "arg_count": 4
+              }
+            ],
+            "queries": []
+          }
+        },
+        "php_errors": []
+      }
+    },
+    "candidate": {
+      "request-object-normalization": {
+        "case": "request-object-normalization",
+        "result": {
+          "request": {
+            "ID": 802,
+            "user_id": 0,
+            "email": "confirmed-export@example.test",
+            "action_name": "export_personal_data",
+            "status": "request-confirmed",
+            "created_timestamp": 1780398000,
+            "modified_timestamp": 1780398600,
+            "confirmed_timestamp": 1780400000,
+            "completed_timestamp": 0,
+            "request_data": {
+              "origin": "admin"
+            },
+            "confirm_key": "stored-confirm-key"
+          },
+          "descriptions": {
+            "export": "Export Personal Data",
+            "erase": "Erase Personal Data",
+            "custom": "Confirm the \"custom_action\" action"
+          }
+        },
+        "php_errors": []
+      },
+      "table-counts-columns": {
+        "case": "table-counts-columns",
+        "result": {
+          "columns": {
+            "cb": "<input type=\"checkbox\" />",
+            "email": "Requester",
+            "status": "Status",
+            "created_timestamp": "Requested",
+            "next_steps": "Next steps"
+          },
+          "admin_url": "https://example.test/wp-admin/export-personal-data.php",
+          "sortable_columns": {
+            "email": "requester",
+            "created_timestamp": [
+              "requested",
+              false
+            ]
+          },
+          "default_primary_column": "email",
+          "bulk_actions": {
+            "resend": "Resend confirmation requests",
+            "complete": "Mark requests as completed",
+            "delete": "Delete requests"
+          },
+          "counts": {
+            "request-pending": 1,
+            "request-confirmed": 1,
+            "request-failed": 0,
+            "request-completed": 1
+          }
+        },
+        "php_errors": []
+      },
+      "prepare-items-filter-sort": {
+        "case": "prepare-items-filter-sort",
+        "result": {
+          "prepared": {
+            "items": [
+              {
+                "ID": 802,
+                "user_id": 0,
+                "email": "confirmed-export@example.test",
+                "action_name": "export_personal_data",
+                "status": "request-confirmed",
+                "created_timestamp": 1780398000,
+                "modified_timestamp": 1780398600,
+                "confirmed_timestamp": 1780400000,
+                "completed_timestamp": 0,
+                "request_data": {
+                  "origin": "admin"
+                },
+                "confirm_key": "stored-confirm-key"
+              }
+            ],
+            "pagination": {
+              "total_items": 1,
+              "per_page": 2
+            }
+          },
+          "last_query_args": {
+            "post_type": "user_request",
+            "post_name__in": [
+              "export_personal_data"
+            ],
+            "posts_per_page": 2,
+            "offset": 0,
+            "post_status": "request-confirmed",
+            "s": "confirmed",
+            "orderby": "post_title",
+            "order": "ASC"
+          },
+          "status_column": "<span class=\"status-label status-request-confirmed\">Confirmed<span class=\"status-date\">2026/06/27 at 2026/06/27</span></span>",
+          "created_column": "2026/06/27 at 2026/06/27",
+          "checkbox_column_sha256": "5100ed236d8ac8a9b921d9c735cf88165671371a38d5055b4f8961b9437e7952",
+          "email_column_sha256": "6180c4938b228235b2c1baa66fe667d95bbbf919748169ed44d02e9a2c67e319"
+        },
+        "php_errors": []
+      },
+      "bulk-complete": {
+        "case": "bulk-complete",
+        "result": {
+          "post_statuses": {
+            "802": "request-completed",
+            "805": "request-completed"
+          },
+          "side_effects": {
+            "post_updates": [
+              {
+                "ID": 802,
+                "post_status": "request-completed"
+              },
+              {
+                "ID": 805,
+                "post_status": "request-completed"
+              }
+            ],
+            "post_deletes": [],
+            "meta_updates": [
+              {
+                "post_id": 802,
+                "key": "_wp_user_request_completed_timestamp",
+                "value": "dynamic:completed_timestamp"
+              },
+              {
+                "post_id": 805,
+                "key": "_wp_user_request_completed_timestamp",
+                "value": "dynamic:completed_timestamp"
+              }
+            ],
+            "settings_errors": [
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "2 requests marked as complete.",
+                "type": "success"
+              }
+            ],
+            "mail": [],
+            "actions": [
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              }
+            ],
+            "filters": [],
+            "queries": []
+          }
+        },
+        "php_errors": []
+      },
+      "bulk-resend-delete": {
+        "case": "bulk-resend-delete",
+        "result": {
+          "post_statuses": {
+            "801": "request-pending",
+            "804": false
+          },
+          "resend_side_effects": {
+            "post_updates": [
+              {
+                "ID": 801,
+                "post_status": "request-pending",
+                "post_password": "hash:fixture-confirm-key"
+              }
+            ],
+            "post_deletes": [],
+            "meta_updates": [],
+            "settings_errors": [
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 confirmation request re-sent successfully.",
+                "type": "success"
+              }
+            ],
+            "mail": [
+              {
+                "to": "pending-export@example.test",
+                "subject": "[Fixture & Site] Confirm Action: Export Personal Data",
+                "headers": "",
+                "message_sha256": "90aef44203299aa647a1f815e9922f07a553ab0ccd58878c0ddcde6fc84f932a"
+              }
+            ],
+            "actions": [
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              }
+            ],
+            "filters": [
+              {
+                "hook": "user_request_action_description",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_subject",
+                "value_type": "string",
+                "arg_count": 2
+              },
+              {
+                "hook": "user_request_action_email_content",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_headers",
+                "value_type": "string",
+                "arg_count": 4
+              }
+            ],
+            "queries": []
+          },
+          "combined_side_effects": {
+            "post_updates": [
+              {
+                "ID": 801,
+                "post_status": "request-pending",
+                "post_password": "hash:fixture-confirm-key"
+              }
+            ],
+            "post_deletes": [
+              {
+                "post_id": 804,
+                "force_delete": true,
+                "existed": true
+              },
+              {
+                "post_id": 999,
+                "force_delete": true,
+                "existed": false
+              }
+            ],
+            "meta_updates": [],
+            "settings_errors": [
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 confirmation request re-sent successfully.",
+                "type": "success"
+              },
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 request failed to delete.",
+                "type": "error"
+              },
+              {
+                "setting": "bulk_action",
+                "code": "bulk_action",
+                "message": "1 request deleted successfully.",
+                "type": "success"
+              }
+            ],
+            "mail": [
+              {
+                "to": "pending-export@example.test",
+                "subject": "[Fixture & Site] Confirm Action: Export Personal Data",
+                "headers": "",
+                "message_sha256": "90aef44203299aa647a1f815e9922f07a553ab0ccd58878c0ddcde6fc84f932a"
+              }
+            ],
+            "actions": [
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              },
+              {
+                "check_admin_referer": "bulk-privacy_requests"
+              }
+            ],
+            "filters": [
+              {
+                "hook": "user_request_action_description",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_subject",
+                "value_type": "string",
+                "arg_count": 2
+              },
+              {
+                "hook": "user_request_action_email_content",
+                "value_type": "string",
+                "arg_count": 1
+              },
+              {
+                "hook": "user_request_action_email_headers",
+                "value_type": "string",
+                "arg_count": 4
+              }
+            ],
+            "queries": []
+          }
+        },
+        "php_errors": []
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:1fcb93e764390e887127010eb489a072fd22f0e88ffd416e75a484a31694182c",
+    "candidate_sha256": "sha256:1fcb93e764390e887127010eb489a072fd22f0e88ffd416e75a484a31694182c"
+  },
+  "remaining_gaps": [
+    {
+      "id": "admin-list-table-rendering-not-claimed",
+      "owner": "WPHX-315",
+      "detail": "This fixture observes privacy request table state and selected column outputs through a harness subclass. Full WP_List_Table rendering, screen options, admin page chrome, and broad admin screen ownership remain WPHX-315 work."
+    },
+    {
+      "id": "installed-privacy-management-routing-not-executed",
+      "owner": "WPHX-312.11",
+      "detail": "The fixture bypasses browser/admin routing, nonce creation, capability checks, and request submission forms. Installed privacy management routes remain later distribution work."
+    },
+    {
+      "id": "real-mail-and-database-side-effects-not-executed",
+      "owner": "WPHX-312.11",
+      "detail": "Mail delivery, database writes, cache persistence, and post deletion are deterministic in-process observations, not live operational side effects."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.11",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "admin_list_table_domain_claimed": false
+  }
+}
