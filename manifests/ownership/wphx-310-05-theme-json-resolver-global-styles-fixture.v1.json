@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/theme-json-resolver-global-styles-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.17.5",
+    "external_ref": "WPHX-310.05"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Theme_JSON_Resolver and global styles/settings wrapper behavior",
+    "area": "src/wp-includes/class-wp-theme-json-schema.php src/wp-includes/class-wp-theme-json.php src/wp-includes/class-wp-theme-json-data.php src/wp-includes/class-wp-theme-json-resolver.php src/wp-includes/global-styles-and-settings.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 WP_Theme_JSON_Resolver and global styles/settings wrapper source against deterministic core/theme fixture files while requiring prior WPHX-310 surface, adapter-contract, theme support/template, and WP_Theme_JSON evidence. It does not claim generated public PHP replacement, installed theme rendering/admin parity, customizer/widget/nav-menu parity, or full upstream PHPUnit coverage."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass customizer/widget/nav-menu, installed front-end/admin, selected upstream PHPUnit, and full theme JSON/global styles gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-theme-json-resolver-global-styles-fixture.mjs",
+    "manifests/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+    "manifests/ownership/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+    "receipts/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+    "manifests/ownership/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+    "receipts/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+    "build/wp-core/wphx-310-05"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-310-theme-json-resolver-global-styles",
+      "npm run wp:core:wphx-310-theme-json-resolver-global-styles:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-310-05-theme-json-resolver-global-styles-fixture"
+    ],
+    "manifest_digest": "sha256:506242e93dc0b275364ceffe150fef8b14ae6c7ca2399f46d838523e22c80c51"
+  }
+}

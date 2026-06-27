@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-310-05-theme-json-resolver-global-styles-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.17.5",
+    "external_ref": "WPHX-310.05",
+    "title": "WPHX-310.05 — Add theme JSON resolver/global styles wrapper fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+      "role": "theme JSON resolver/global styles wrapper oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle resolver/global-styles boundary"
+    },
+    {
+      "path": "tools/wp-core/run-theme-json-resolver-global-styles-fixture.mjs",
+      "role": "deterministic oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-310-theme-json-resolver-global-styles",
+    "npm run wp:core:wphx-310-theme-json-resolver-global-styles:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-310-01-themes-template-surface",
+    "receipt:wphx-310-02-theme-template-adapter-contract-candidate",
+    "receipt:wphx-310-03-theme-support-template-oracle-fixture",
+    "receipt:wphx-310-04-theme-json-global-styles-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 12,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

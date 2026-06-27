@@ -205,6 +205,8 @@
     "wp:core:wphx-310-theme-support-template-oracle-fixture:check": "node tools/wp-core/run-theme-support-template-oracle-fixture.mjs --check",
     "wp:core:wphx-310-theme-json-global-styles-oracle-fixture": "node tools/wp-core/run-theme-json-global-styles-oracle-fixture.mjs",
     "wp:core:wphx-310-theme-json-global-styles-oracle-fixture:check": "node tools/wp-core/run-theme-json-global-styles-oracle-fixture.mjs --check",
+    "wp:core:wphx-310-theme-json-resolver-global-styles": "node tools/wp-core/run-theme-json-resolver-global-styles-fixture.mjs",
+    "wp:core:wphx-310-theme-json-resolver-global-styles:check": "node tools/wp-core/run-theme-json-resolver-global-styles-fixture.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",

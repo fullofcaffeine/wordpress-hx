@@ -1,0 +1,726 @@
+{
+  "schema": "wphx.wp-core-theme-json-resolver-global-styles-fixture.v1",
+  "issue": "WPHX-310.05",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-theme-json-resolver-global-styles-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+      "bytes": 133083,
+      "sha256": "sha256:04de8bdb20ee33e27e112b580c352dabad87049e7569c451dd2eeac3548657d3"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "bytes": 18550,
+      "sha256": "sha256:b6cb9b2cffcf14108f7795b139f98fafa7a37934b66e612ada59b44970817aa7"
+    },
+    "theme_support_template_fixture": {
+      "path": "manifests/wp-core/wphx-310-03-theme-support-template-oracle-fixture.v1.json",
+      "bytes": 12766,
+      "sha256": "sha256:c3ff260bc55384ef2c2a640036a71d17ba7da37e51d95f79a3eec58d4a37f55f"
+    },
+    "theme_json_fixture": {
+      "path": "manifests/wp-core/wphx-310-04-theme-json-global-styles-oracle-fixture.v1.json",
+      "bytes": 8059,
+      "sha256": "sha256:6d67a03ee05e531cf972b5ece46ac4d5e728edb01495beb840e0ad89041e3d6f"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-theme-json-resolver-global-styles-fixture.mjs",
+      "bytes": 28560,
+      "sha256": "sha256:aece7f2839ce12ba56985822ca05baff0b2a8e90f3a1f8ff80597a0f54eec2f9"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-theme-json-schema.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme-json-schema.php",
+        "bytes": 7367,
+        "sha256": "sha256:367fc9d2f13ce136f1334e0e8e0da063812f437c46a0734ad0a76423ba3b35c7"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme-json.php",
+        "bytes": 173639,
+        "sha256": "sha256:549d50cd230c2308e9828ea8a4c4ae91e5511184ad96e1365ccd5ad02cb51cb8"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json-data.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme-json-data.php",
+        "bytes": 1809,
+        "sha256": "sha256:235d92ab6a7b610f52541a2d973ff256b21760cc8ec3bd4675d5c831d9b4debe"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json-resolver.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-theme-json-resolver.php",
+        "bytes": 35692,
+        "sha256": "sha256:8c1eae3025d000dfe828e76f2630caa54084c619b1bf7d1e627108531b433bbe"
+      },
+      {
+        "path": "src/wp-includes/global-styles-and-settings.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/global-styles-and-settings.php",
+        "bytes": 20780,
+        "sha256": "sha256:45b501595e73a72b29719b141ff27b8c8b926409052f3e6ec6c5e957bdbaddfb"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "resolver:core-theme-merge",
+        "focus": "core and active theme theme.json data merge through WP_Theme_JSON_Resolver"
+      },
+      {
+        "id": "resolver:block-style-variation-partials",
+        "focus": "styles/*.json block variation partials are discovered and injected into theme data"
+      },
+      {
+        "id": "wrappers:global-settings-cache",
+        "focus": "wp_get_global_settings origin=base uses the theme_json cache key"
+      },
+      {
+        "id": "wrappers:global-styles-and-stylesheet",
+        "focus": "global styles and stylesheet wrappers expose merged theme data"
+      },
+      {
+        "id": "wrappers:theme-json-support-and-template-parts-cache",
+        "focus": "theme.json support and template-part metadata wrappers cache and return theme.json state"
+      },
+      {
+        "id": "resolver:theme-file-uri-resolution-and-clean",
+        "focus": "file:./ URLs resolve to theme URIs and wp_clean_theme_json_cache clears wrapper keys"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Theme_JSON_Resolver::get_core_data",
+      "WP_Theme_JSON_Resolver::get_theme_data",
+      "WP_Theme_JSON_Resolver::get_style_variations",
+      "WP_Theme_JSON_Resolver::get_merged_data",
+      "WP_Theme_JSON_Resolver::resolve_theme_file_uris",
+      "WP_Theme_JSON_Resolver::clean_cached_data",
+      "wp_get_global_settings",
+      "wp_get_global_styles",
+      "wp_get_global_stylesheet",
+      "wp_theme_has_theme_json",
+      "wp_get_theme_data_template_parts",
+      "wp_clean_theme_json_cache"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-theme-json-schema.php",
+      "src/wp-includes/class-wp-theme-json.php",
+      "src/wp-includes/class-wp-theme-json-data.php",
+      "src/wp-includes/class-wp-theme-json-resolver.php",
+      "src/wp-includes/global-styles-and-settings.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-310-05/probe.php",
+      "sha256": "sha256:5affda2000c0d2b6feb3ecbf27c256950c7b1d3db05fb3be67c64a3236f02a94"
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-310-05/oracle",
+    "candidate_root": "build/wp-core/wphx-310-05/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-theme-json-schema.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-05/oracle/wp-includes/class-wp-theme-json-schema.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-05/candidate/wp-includes/class-wp-theme-json-schema.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-05/oracle/wp-includes/class-wp-theme-json.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-05/candidate/wp-includes/class-wp-theme-json.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json-data.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-05/oracle/wp-includes/class-wp-theme-json-data.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-05/candidate/wp-includes/class-wp-theme-json-data.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-theme-json-resolver.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-05/oracle/wp-includes/class-wp-theme-json-resolver.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-05/candidate/wp-includes/class-wp-theme-json-resolver.php"
+      },
+      {
+        "path": "src/wp-includes/global-styles-and-settings.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-05/oracle/wp-includes/global-styles-and-settings.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-05/candidate/wp-includes/global-styles-and-settings.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "cases": {
+        "resolver:block-style-variation-partials": {
+          "variation_titles": [
+            "Soft Paragraph"
+          ],
+          "registered_batches": 3,
+          "paragraph_variation_keys": [
+            "quiet"
+          ]
+        },
+        "resolver:core-theme-merge": {
+          "core_palette_slugs": [
+            "core-black",
+            "core-white"
+          ],
+          "theme_palette_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ],
+          "merged_text": "var(--wp--preset--color--brand-blue)",
+          "patterns": [
+            "wphx/hero",
+            "wphx/card-grid"
+          ]
+        },
+        "resolver:theme-file-uri-resolution-and-clean": {
+          "resolved_targets": [
+            "styles.background.backgroundImage.url"
+          ],
+          "resolved_hrefs": [
+            "https://example.test/wp-content/themes/wphx-theme/assets/hero.jpg"
+          ],
+          "deleted_keys": [
+            "wp_get_global_stylesheet",
+            "wp_get_global_styles_svg_filters",
+            "wp_get_global_settings_custom",
+            "wp_get_global_settings_theme",
+            "wp_get_global_styles_custom_css",
+            "wp_get_theme_data_template_parts"
+          ],
+          "after_clean_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ]
+        },
+        "wrappers:global-settings-cache": {
+          "first_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ],
+          "second_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ],
+          "cache_gets": 2,
+          "cache_sets": 1,
+          "cache_hits": 1
+        },
+        "wrappers:global-styles-and-stylesheet": {
+          "resolved_text": "#0055aa",
+          "has_brand_variable": true,
+          "has_accent_class": true,
+          "cached_stylesheet_hit": true,
+          "cached_stylesheet_sha256": "b0b945bacdadedd271107583b6f344c5e7920784c9a998374867215e95a5418f"
+        },
+        "wrappers:theme-json-support-and-template-parts-cache": {
+          "theme_has_json": [
+            true,
+            true
+          ],
+          "template_part_names": [
+            "header"
+          ],
+          "template_parts_cache_hit": true
+        }
+      },
+      "filters": [
+        {
+          "hook": "wp_theme_json_data_default",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_theme",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_default",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_blocks",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_theme",
+          "arg_count": 1
+        },
+        {
+          "hook": "theme_file_path",
+          "arg_count": 2
+        },
+        {
+          "hook": "wp_theme_json_data_blocks",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_user",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_user",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_default",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_blocks",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_theme",
+          "arg_count": 1
+        }
+      ],
+      "cache_ops": [
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme",
+          "hit": true
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet",
+          "hit": true
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts",
+          "hit": true
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_styles_svg_filters"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_custom"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_styles_custom_css"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme"
+        }
+      ],
+      "registered_variations": [
+        [
+          {
+            "title": "Soft Paragraph",
+            "slug": "soft",
+            "blockTypes": [
+              "core/paragraph"
+            ]
+          }
+        ],
+        [
+          {
+            "title": "Soft Paragraph",
+            "slug": "soft",
+            "blockTypes": [
+              "core/paragraph"
+            ]
+          }
+        ],
+        [
+          {
+            "title": "Soft Paragraph",
+            "slug": "soft",
+            "blockTypes": [
+              "core/paragraph"
+            ]
+          }
+        ]
+      ],
+      "php_errors": []
+    },
+    "candidate": {
+      "cases": {
+        "resolver:block-style-variation-partials": {
+          "variation_titles": [
+            "Soft Paragraph"
+          ],
+          "registered_batches": 3,
+          "paragraph_variation_keys": [
+            "quiet"
+          ]
+        },
+        "resolver:core-theme-merge": {
+          "core_palette_slugs": [
+            "core-black",
+            "core-white"
+          ],
+          "theme_palette_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ],
+          "merged_text": "var(--wp--preset--color--brand-blue)",
+          "patterns": [
+            "wphx/hero",
+            "wphx/card-grid"
+          ]
+        },
+        "resolver:theme-file-uri-resolution-and-clean": {
+          "resolved_targets": [
+            "styles.background.backgroundImage.url"
+          ],
+          "resolved_hrefs": [
+            "https://example.test/wp-content/themes/wphx-theme/assets/hero.jpg"
+          ],
+          "deleted_keys": [
+            "wp_get_global_stylesheet",
+            "wp_get_global_styles_svg_filters",
+            "wp_get_global_settings_custom",
+            "wp_get_global_settings_theme",
+            "wp_get_global_styles_custom_css",
+            "wp_get_theme_data_template_parts"
+          ],
+          "after_clean_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ]
+        },
+        "wrappers:global-settings-cache": {
+          "first_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ],
+          "second_slugs": [
+            "brand-blue",
+            "accent-gold"
+          ],
+          "cache_gets": 2,
+          "cache_sets": 1,
+          "cache_hits": 1
+        },
+        "wrappers:global-styles-and-stylesheet": {
+          "resolved_text": "#0055aa",
+          "has_brand_variable": true,
+          "has_accent_class": true,
+          "cached_stylesheet_hit": true,
+          "cached_stylesheet_sha256": "b0b945bacdadedd271107583b6f344c5e7920784c9a998374867215e95a5418f"
+        },
+        "wrappers:theme-json-support-and-template-parts-cache": {
+          "theme_has_json": [
+            true,
+            true
+          ],
+          "template_part_names": [
+            "header"
+          ],
+          "template_parts_cache_hit": true
+        }
+      },
+      "filters": [
+        {
+          "hook": "wp_theme_json_data_default",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_theme",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_default",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_blocks",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_theme",
+          "arg_count": 1
+        },
+        {
+          "hook": "theme_file_path",
+          "arg_count": 2
+        },
+        {
+          "hook": "wp_theme_json_data_blocks",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_user",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_user",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_get_style_nodes",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_default",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_blocks",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_theme_json_data_theme",
+          "arg_count": 1
+        }
+      ],
+      "cache_ops": [
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme",
+          "hit": true
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet",
+          "hit": true
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts",
+          "hit": true
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_stylesheet"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_styles_svg_filters"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_custom"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_global_styles_custom_css"
+        },
+        {
+          "op": "delete",
+          "group": "theme_json",
+          "key": "wp_get_theme_data_template_parts"
+        },
+        {
+          "op": "get",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme",
+          "hit": false
+        },
+        {
+          "op": "set",
+          "group": "theme_json",
+          "key": "wp_get_global_settings_theme"
+        }
+      ],
+      "registered_variations": [
+        [
+          {
+            "title": "Soft Paragraph",
+            "slug": "soft",
+            "blockTypes": [
+              "core/paragraph"
+            ]
+          }
+        ],
+        [
+          {
+            "title": "Soft Paragraph",
+            "slug": "soft",
+            "blockTypes": [
+              "core/paragraph"
+            ]
+          }
+        ],
+        [
+          {
+            "title": "Soft Paragraph",
+            "slug": "soft",
+            "blockTypes": [
+              "core/paragraph"
+            ]
+          }
+        ]
+      ],
+      "php_errors": []
+    },
+    "match": true,
+    "oracle_sha256": "sha256:08171eda7176787132663a6d344897be198725bca33a1efbf73c5e019197dd84",
+    "candidate_sha256": "sha256:08171eda7176787132663a6d344897be198725bca33a1efbf73c5e019197dd84"
+  },
+  "remaining_gaps": [
+    {
+      "id": "installed-theme-rendering-and-admin-not-executed",
+      "owner": "WPHX-310.05",
+      "detail": "The fixture executes resolver and wrapper PHP against deterministic in-process files. Installed front-end rendering, block theme admin screens, customizer transactions, nav-menu/widget admin, and REST global styles controllers remain later WPHX-310 gates."
+    },
+    {
+      "id": "global-styles-user-cpt-path-is-empty",
+      "owner": "WPHX-310.05",
+      "detail": "The user global styles custom-post-type query path is stubbed to no rows to keep the fixture deterministic. DB-backed user global styles mutation remains a later installed/distribution gate."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-310.05",
+      "detail": "WP_Theme_JSON_Resolver and global styles/settings PHP files are copied oracle source in this fixture; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-310-05-theme-json-resolver-global-styles-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 12,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}
