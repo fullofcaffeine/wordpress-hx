@@ -221,6 +221,8 @@
     "wp:core:wphx-312-http-cron-mail-feed-embed-surface:check": "node tools/wp-core/run-http-cron-mail-feed-embed-surface.mjs --check",
     "wp:core:wphx-312-http-cron-mail-feed-embed-adapter-contract-candidate": "node tools/wp-core/run-http-cron-mail-feed-embed-adapter-contract-candidate.mjs",
     "wp:core:wphx-312-http-cron-mail-feed-embed-adapter-contract-candidate:check": "node tools/wp-core/run-http-cron-mail-feed-embed-adapter-contract-candidate.mjs --check",
+    "wp:core:wphx-312-http-cron-mail-oracle-fixture": "node tools/wp-core/run-http-cron-mail-oracle-fixture.mjs",
+    "wp:core:wphx-312-http-cron-mail-oracle-fixture:check": "node tools/wp-core/run-http-cron-mail-oracle-fixture.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",

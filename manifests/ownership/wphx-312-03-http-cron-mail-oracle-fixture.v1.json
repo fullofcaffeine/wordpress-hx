@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-cron-mail-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.3",
+    "external_ref": "WPHX-312.03"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "HTTP response helpers, cron scheduling helpers, and wp_mail pre-send filter behavior",
+    "area": "src/wp-includes/class-wp-http-cookie.php src/wp-includes/class-wp-http-encoding.php src/wp-includes/class-wp-http-response.php src/wp-includes/class-wp-http.php src/wp-includes/http.php src/wp-includes/cron.php src/wp-includes/pluggable.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 HTTP, cron, and pluggable mail source against deterministic in-process hooks/options. It does not perform live network I/O, spawn real cron, construct PHPMailer, deliver mail, claim generated public PHP replacement, feed rendering parity, embed/oEmbed parity, installed behavior, or upstream PHPUnit parity."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live-network-off HTTP, cron spawn, mail transport, feed/embed/oEmbed, installed distribution, and selected upstream PHPUnit gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-cron-mail-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-03"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-cron-mail-oracle-fixture",
+      "npm run wp:core:wphx-312-http-cron-mail-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-03-http-cron-mail-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:017e1d13c9f442eb5f02a3c37bb3ab6ba9edc661d9c0c6b87aab429e3d7b325a"
+  }
+}
