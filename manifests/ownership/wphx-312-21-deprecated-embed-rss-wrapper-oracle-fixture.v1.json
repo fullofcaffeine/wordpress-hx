@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/deprecated-embed-rss-wrapper-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.21",
+    "external_ref": "WPHX-312.21"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "Deprecated embed and RSS wrapper handoff behavior",
+    "area": "src/wp-includes/embed-template.php src/wp-includes/rss-functions.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/embed-template.php and wp-includes/rss-functions.php through PHP's built-in HTTP server with deterministic required-file stubs. It observes deprecation calls and ABSPATH/WPINC require handoffs without claiming the full embed template, MagpieRSS, installed routing, or SimplePie behavior."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-required-file-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real theme-compat/embed.php, rss.php/MagpieRSS, installed embed/feed routing, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-deprecated-embed-rss-wrapper-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-21"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-deprecated-embed-rss-wrapper-oracle-fixture",
+      "npm run wp:core:wphx-312-deprecated-embed-rss-wrapper-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:0e7faa73050194eb331b5ec8cd69297a77fe0953ddff7509d34c4de537a07855"
+  }
+}

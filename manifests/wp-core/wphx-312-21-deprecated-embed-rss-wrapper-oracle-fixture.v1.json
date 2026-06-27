@@ -1,0 +1,257 @@
+{
+  "schema": "wphx.wp-core-deprecated-embed-rss-wrapper-oracle-fixture.v1",
+  "issue": "WPHX-312.21",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-deprecated-embed-rss-wrapper-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "http_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "feed_embed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+      "bytes": 18811,
+      "sha256": "sha256:9005553a3798994fcdc2a4d407e9db2ba4df533138a2da5314c3530197de87d9"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-deprecated-embed-rss-wrapper-oracle-fixture.mjs",
+      "bytes": 15008,
+      "sha256": "sha256:82b49de963ce346e03501ab8ed1316864b7fe9c43f35194b0a4e6d5c8c0424bb"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/embed-template.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/embed-template.php",
+        "bytes": 338,
+        "sha256": "sha256:5bedb63acacb3a3fa7c2d27a144ddc7b08ff84b00c84941b36911acedd33a5e8"
+      },
+      {
+        "path": "src/wp-includes/rss-functions.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/rss-functions.php",
+        "bytes": 255,
+        "sha256": "sha256:831880b7e8d307ce67f19f7477f4de3c2ad19320d94246bba31c6b708ac3742f"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "embed-template:default",
+        "path": "/wp-includes/embed-template.php?case=default",
+        "focus": "deprecated embed-template wrapper reports the replacement and requires theme-compat/embed.php"
+      },
+      {
+        "id": "embed-template:custom",
+        "path": "/wp-includes/embed-template.php?case=custom",
+        "focus": "query state is passed through to the required theme-compat embed boundary"
+      },
+      {
+        "id": "rss-functions:default",
+        "path": "/wp-includes/rss-functions.php?case=default",
+        "focus": "deprecated rss-functions wrapper reports the replacement and require_once loads rss.php"
+      },
+      {
+        "id": "rss-functions:custom",
+        "path": "/wp-includes/rss-functions.php?case=custom",
+        "focus": "query state is passed through to the required rss.php boundary"
+      }
+    ],
+    "covered_symbols": [
+      "embed-template.php",
+      "rss-functions.php",
+      "_deprecated_file",
+      "basename(__FILE__)",
+      "ABSPATH",
+      "WPINC",
+      "require",
+      "require_once",
+      "theme-compat/embed.php handoff",
+      "rss.php handoff"
+    ],
+    "source_files": [
+      "src/wp-includes/embed-template.php",
+      "src/wp-includes/rss-functions.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_builtin_server": true,
+      "required_file_stubs": "theme-compat/embed.php and rss.php are deterministic stubs; copied embed-template.php and rss-functions.php remain the executed public wrappers."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-21/oracle",
+    "candidate_root": "build/wp-core/wphx-312-21/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/embed-template.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-21/oracle/wp-includes/embed-template.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-21/candidate/wp-includes/embed-template.php"
+      },
+      {
+        "path": "src/wp-includes/rss-functions.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-21/oracle/wp-includes/rss-functions.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-21/candidate/wp-includes/rss-functions.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "embed-template:default": {
+        "case": "embed-template:default",
+        "request_path": "/wp-includes/embed-template.php?case=default",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:a37f4e877d9d78808980f9ffd11af98dc8f93445b1c0f5ee3229ff5e76cf3745",
+        "body": "<!-- deprecated:embed-template.php:4.5.0:wp-includes/theme-compat/embed.php -->\n<section data-boundary=\"theme-compat/embed.php\" data-case=\"default\">embed boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      },
+      "embed-template:custom": {
+        "case": "embed-template:custom",
+        "request_path": "/wp-includes/embed-template.php?case=custom",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:e7b6de030539d8ade9c9ab5bf0d6e11c3807b93d833ccf70b19d8cdf55d36181",
+        "body": "<!-- deprecated:embed-template.php:4.5.0:wp-includes/theme-compat/embed.php -->\n<section data-boundary=\"theme-compat/embed.php\" data-case=\"custom\">embed boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      },
+      "rss-functions:default": {
+        "case": "rss-functions:default",
+        "request_path": "/wp-includes/rss-functions.php?case=default",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:cf88a79cf3d14e3a230c6af74a9eaaff7cdab407d63651e14256f6ba4fb64581",
+        "body": "<!-- deprecated:rss-functions.php:2.1.0:wp-includes/rss.php -->\n<section data-boundary=\"rss.php\" data-case=\"default\">rss boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      },
+      "rss-functions:custom": {
+        "case": "rss-functions:custom",
+        "request_path": "/wp-includes/rss-functions.php?case=custom",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:8afb8146a97a89b55ff74995a23b2c5a89cb0d5001f0a48800d076624bbefde3",
+        "body": "<!-- deprecated:rss-functions.php:2.1.0:wp-includes/rss.php -->\n<section data-boundary=\"rss.php\" data-case=\"custom\">rss boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      }
+    },
+    "candidate": {
+      "embed-template:default": {
+        "case": "embed-template:default",
+        "request_path": "/wp-includes/embed-template.php?case=default",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:a37f4e877d9d78808980f9ffd11af98dc8f93445b1c0f5ee3229ff5e76cf3745",
+        "body": "<!-- deprecated:embed-template.php:4.5.0:wp-includes/theme-compat/embed.php -->\n<section data-boundary=\"theme-compat/embed.php\" data-case=\"default\">embed boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      },
+      "embed-template:custom": {
+        "case": "embed-template:custom",
+        "request_path": "/wp-includes/embed-template.php?case=custom",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:e7b6de030539d8ade9c9ab5bf0d6e11c3807b93d833ccf70b19d8cdf55d36181",
+        "body": "<!-- deprecated:embed-template.php:4.5.0:wp-includes/theme-compat/embed.php -->\n<section data-boundary=\"theme-compat/embed.php\" data-case=\"custom\">embed boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      },
+      "rss-functions:default": {
+        "case": "rss-functions:default",
+        "request_path": "/wp-includes/rss-functions.php?case=default",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:cf88a79cf3d14e3a230c6af74a9eaaff7cdab407d63651e14256f6ba4fb64581",
+        "body": "<!-- deprecated:rss-functions.php:2.1.0:wp-includes/rss.php -->\n<section data-boundary=\"rss.php\" data-case=\"default\">rss boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      },
+      "rss-functions:custom": {
+        "case": "rss-functions:custom",
+        "request_path": "/wp-includes/rss-functions.php?case=custom",
+        "status": 200,
+        "content_type": "text/html; charset=UTF-8",
+        "body_sha256": "sha256:8afb8146a97a89b55ff74995a23b2c5a89cb0d5001f0a48800d076624bbefde3",
+        "body": "<!-- deprecated:rss-functions.php:2.1.0:wp-includes/rss.php -->\n<section data-boundary=\"rss.php\" data-case=\"custom\">rss boundary loaded</section>",
+        "has_deprecated_marker": true,
+        "has_expected_deprecated_file": true,
+        "has_required_boundary": true,
+        "has_case_passthrough": true,
+        "exited_before_require": false
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:4a63e3de14e7f342fe097e7a7150e1f11d143098c1d677a791cb424238d1b112",
+    "candidate_sha256": "sha256:4a63e3de14e7f342fe097e7a7150e1f11d143098c1d677a791cb424238d1b112"
+  },
+  "remaining_gaps": [
+    {
+      "id": "real-required-files-not-executed",
+      "owner": "WPHX-312.21",
+      "detail": "The fixture stubs theme-compat/embed.php and rss.php. Full embed template rendering and MagpieRSS/SimplePie behavior remain separate gates."
+    },
+    {
+      "id": "installed-routing-not-executed",
+      "owner": "WPHX-312.21",
+      "detail": "The fixture executes the wrappers directly through a local PHP server. Installed embed routing, feed routing, template-loader behavior, and browser-observed routing remain later gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.21",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 4,
+    "covered_symbols": 10,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "real_required_files_claimed": false
+  }
+}
