@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-parser-header-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.29",
+    "external_ref": "WPHX-312.42"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Http parser, header, cookie-header, chunk decoding, and parse-url helper behavior",
+    "area": "src/wp-includes/class-wp-http.php src/wp-includes/class-wp-http-cookie.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-http.php and class-wp-http-cookie.php in isolated PHP CLI probes with deterministic WordPress and Requests autoload stubs. It observes processResponse, processHeaders, buildCookieHeader, chunkTransferDecode, and the deprecated parse_url wrapper without claiming live HTTP transport, Requests network I/O, redirect following, proxy/TLS behavior, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, raw HTTP response parsing, Requests integration, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-parser-header-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-42"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-parser-header-oracle-fixture",
+      "npm run wp:core:wphx-312-wp-http-parser-header-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:6927182709ed37aafd247c24dda822bfa55c168436aba1c88cbf3a9cc919b4b3"
+  }
+}
