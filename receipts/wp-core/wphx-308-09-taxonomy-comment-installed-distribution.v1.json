@@ -1,0 +1,58 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-308-09-taxonomy-comment-installed-distribution",
+  "issue": {
+    "id": "wordpresshx-l76.15.2",
+    "external_ref": "WPHX-308.09",
+    "title": "WPHX-308.09 — Add installed-distribution taxonomy/comment behavior gate"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "npm run wp:core:wphx-308-taxonomy-comment-installed",
+  "evidence_class": "targeted_semantic_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+      "role": "taxonomy/comment installed-distribution manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+      "role": "taxonomy/comment installed-distribution ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-taxonomy-comment-installed-distribution-gate.mjs",
+      "role": "installed taxonomy/comment HTTP gate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-308-taxonomy-comment-installed",
+    "npm run wp:core:wphx-308-taxonomy-comment-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-308-02-taxonomy-comment-adapter-contract-candidate",
+    "receipt:wphx-308-03-taxonomy-comment-crud-fixture",
+    "receipt:wphx-308-04-taxonomy-comment-count-cache-fixture",
+    "receipt:wphx-308-05-taxonomy-comment-query-state-fixture",
+    "receipt:wphx-308-08-taxonomy-comment-live-db-runtime-matrix"
+  ],
+  "manifest_sha256": "sha256:b283b52a7d349b9bd96130f066913ebc1f391131f9841ab0130b1505ddd24eb4",
+  "validation_result": {
+    "status": "passed",
+    "evidence_classes": [
+      "targeted_semantic_parity",
+      "runtime_abi",
+      "live_integration_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "fixture_cases": 10,
+    "http_runs": 2,
+    "public_php_files_are_copied_oracle_source": true,
+    "generated_public_taxonomy_comment_replacement_claimed": false,
+    "haxe_contracts_present": {
+      "taxonomy_comment": true
+    }
+  }
+}

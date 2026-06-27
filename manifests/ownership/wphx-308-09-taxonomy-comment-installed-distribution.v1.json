@@ -1,0 +1,54 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/taxonomy-comment-installed-distribution",
+  "issue": {
+    "id": "wordpresshx-l76.15.2",
+    "external_ref": "WPHX-308.09",
+    "title": "WPHX-308.09 — Add installed-distribution taxonomy/comment behavior gate"
+  },
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "ownership": {
+    "kind": "packaged-distribution-installed-http-gate",
+    "public_contract": "The packaged taxonomy/comment surface must match vanilla through installed-style HTTP taxonomy registration, term CRUD/meta/object assignment, comment moderation/meta, front taxonomy query, and comment query cases while keeping public PHP replacement claims explicit."
+  },
+  "files": [
+    "tools/wp-core/run-taxonomy-comment-installed-distribution-gate.mjs",
+    "manifests/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+    "manifests/ownership/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+    "receipts/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json"
+  ],
+  "generated_artifacts": [
+    "manifests/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+    "manifests/ownership/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+    "receipts/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json"
+  ],
+  "verification": {
+    "commands": [
+      "npm run wp:core:wphx-308-taxonomy-comment-installed",
+      "npm run wp:core:wphx-308-taxonomy-comment-installed:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt": "receipt:wphx-308-09-taxonomy-comment-installed-distribution",
+    "manifest_sha256": "sha256:b283b52a7d349b9bd96130f066913ebc1f391131f9841ab0130b1505ddd24eb4"
+  },
+  "boundaries": {
+    "haxe_owned_contracts": [
+      "TaxonomyCommentAdapterContract"
+    ],
+    "copied_oracle_public_php": [
+      "src/wp-includes/taxonomy.php",
+      "src/wp-includes/class-wp-taxonomy.php",
+      "src/wp-includes/class-wp-term.php",
+      "src/wp-includes/class-wp-term-query.php",
+      "src/wp-includes/class-wp-tax-query.php",
+      "src/wp-includes/comment.php",
+      "src/wp-includes/class-wp-comment.php",
+      "src/wp-includes/class-wp-comment-query.php",
+      "src/wp-includes/meta.php",
+      "src/wp-includes/class-wp-meta-query.php",
+      "src/wp-includes/class-wp-date-query.php"
+    ],
+    "generated_public_php_replacement_claimed": false
+  }
+}

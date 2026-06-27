@@ -185,6 +185,8 @@
     "wp:core:wphx-308-taxonomy-comment-query-state:check": "node tools/wp-core/run-taxonomy-comment-query-state-fixture.mjs --check",
     "wp:core:wphx-308-taxonomy-comment-live-db": "npm run php:db-client-images && node tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs",
     "wp:core:wphx-308-taxonomy-comment-live-db:check": "npm run php:db-client-images:check && node tools/wp-core/run-taxonomy-comment-live-db-fixture.mjs --check",
+    "wp:core:wphx-308-taxonomy-comment-installed": "node tools/wp-core/run-taxonomy-comment-installed-distribution-gate.mjs",
+    "wp:core:wphx-308-taxonomy-comment-installed:check": "node tools/wp-core/run-taxonomy-comment-installed-distribution-gate.mjs --check",
     "wp:core:wphx-309-routing-template-surface": "node tools/wp-core/run-routing-template-surface.mjs",
     "wp:core:wphx-309-routing-template-surface:check": "node tools/wp-core/run-routing-template-surface.mjs --check",
     "wp:core:wphx-309-routing-template-adapter-contract-candidate": "node tools/wp-core/run-routing-template-adapter-contract-candidate.mjs",

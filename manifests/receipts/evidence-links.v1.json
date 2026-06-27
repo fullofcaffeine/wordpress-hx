@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 165,
+  "closed_task_count": 167,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -1124,6 +1124,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-308",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-308-domain-closure.v1.json",
+          "sha256": "379317bc1f65af0b046975afa9e1e6aa6dfebcafb6eefe19fb4d4b919618287f",
+          "id": "receipt:wphx-308-domain-closure"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-308.01",
       "receipts": [
         {
@@ -1200,6 +1210,16 @@
           "path": "receipts/wp-core/wphx-308-08-taxonomy-comment-live-db-runtime-matrix.v1.json",
           "sha256": "20b750066ad55dd5372e63206c09086606371d7eb9cdb9757fceb904faba277f",
           "id": "receipt:wphx-308-08-taxonomy-comment-live-db-runtime-matrix"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-308.09",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+          "sha256": "f221d6736ac555e5acdc747e09791e34468777916d24357725664ba75febb5e1",
+          "id": "receipt:wphx-308-09-taxonomy-comment-installed-distribution"
         }
       ]
     },

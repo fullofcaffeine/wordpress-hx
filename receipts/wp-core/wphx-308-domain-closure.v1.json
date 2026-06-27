@@ -1,0 +1,99 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-308-domain-closure",
+  "issue": {
+    "id": "wordpresshx-l76.15",
+    "external_ref": "WPHX-308",
+    "title": "WPHX-308 — Taxonomy, terms, comments"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "domain closure audit over WPHX-308.01 through WPHX-308.09 receipts",
+  "evidence_class": "domain_closure",
+  "artifact_scope": "mixed: source_inventory, adapter_contract, oracle_source_mirror, live_integration, packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "receipts/wp-core/wphx-308-01-taxonomy-comments-surface.v1.json",
+      "role": "taxonomy/comment source, distribution, ABI, and upstream test surface inventory",
+      "sha256": "sha256:2546371c76c48c1bd6bb2a8fcaef511868b91af98cf1a700f34a98a078247217"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-02-taxonomy-comment-adapter-contract-candidate.v1.json",
+      "role": "typed Haxe taxonomy/comment adapter-contract evidence",
+      "sha256": "sha256:611e3f98003334750def0b8750d3547fc659fd9c00a9d16d6447d4623b618a44"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-03-taxonomy-comment-crud-fixture.v1.json",
+      "role": "deterministic taxonomy/comment CRUD and moderation oracle-source-mirror evidence",
+      "sha256": "sha256:8526cd11cf72a1c49f0774a64fb32f86a58eaee3e3976370fbad0747afbe0a70"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-04-taxonomy-comment-count-cache-fixture.v1.json",
+      "role": "taxonomy/comment count and cache invalidation evidence",
+      "sha256": "sha256:8394fddeef116a35731afc2904679bdbbf4ba455898e9cbff1fdaf7e1346e831"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-05-taxonomy-comment-query-state-fixture.v1.json",
+      "role": "WP_Term_Query and WP_Comment_Query query-state evidence",
+      "sha256": "sha256:c02d2a9e4fcb79b1e9672b24b1e5165f985eb2efb74e909d13e742f06db6f182"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-06-taxonomy-comment-live-db-fixture.v1.json",
+      "role": "live taxonomy/comment SQL/result evidence over real wpdb",
+      "sha256": "sha256:d9c9a1c3bc1ba752691ec5971c9116ffcb1fb3ef5bed09f7a71555b1c06632a6"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-07-taxonomy-comment-upstream-phpunit-ratchet-groups.v1.json",
+      "role": "selected upstream taxonomy/comment PHPUnit ratchet group scope",
+      "sha256": "sha256:619dc1ea10454223d672bb7da89931ad1f48fa0f6f995cf0e43edb74a2060277"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-08-taxonomy-comment-live-db-runtime-matrix.v1.json",
+      "role": "taxonomy/comment live DB runtime matrix evidence",
+      "sha256": "sha256:20b750066ad55dd5372e63206c09086606371d7eb9cdb9757fceb904faba277f"
+    },
+    {
+      "path": "receipts/wp-core/wphx-308-09-taxonomy-comment-installed-distribution.v1.json",
+      "role": "installed-distribution taxonomy/comment HTTP gate evidence",
+      "sha256": "sha256:f221d6736ac555e5acdc747e09791e34468777916d24357725664ba75febb5e1"
+    },
+    {
+      "path": "receipts/operations/wphx-700-10-rest-phpunit-filtered-ratchet.v1.json",
+      "role": "provisioned selected upstream PHPUnit ratchet with all selected groups pass/pass",
+      "sha256": "sha256:e1756b156cdf4f8f3fa767e51a6bc488bb83d6bee0dbb1e2450e77bd03127ab6"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-308 closure interpretation",
+      "sha256": "sha256:4bb557d2d7dc0e9c20b769071706743ad580c626e138ee54551b005c07489ed7"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-308-taxonomy-comment-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "surface_inventory": true,
+    "haxe_adapter_contracts": [
+      "TaxonomyCommentAdapterContract"
+    ],
+    "fixtures_cover": [
+      "taxonomy registration intent",
+      "term CRUD/meta/hierarchy intent",
+      "object-term relationships and counts",
+      "term and comment cache invalidation",
+      "comment insert/status/moderation/meta intent",
+      "WP_Term_Query and WP_Comment_Query query state",
+      "live SQL/result matrix",
+      "selected upstream PHPUnit pass/pass classifications",
+      "installed-style packaged HTTP behavior"
+    ],
+    "remaining_gaps": [
+      "Generated public PHP replacement for wp-includes/taxonomy.php, comment.php, WP_Term_Query, and WP_Comment_Query is not claimed.",
+      "Full database-backed installed taxonomy/comment behavior is deferred to later distribution work.",
+      "This closes the WPHX-308 source-domain evidence slice, not the whole WordPress taxonomy/comment subsystem."
+    ]
+  }
+}
