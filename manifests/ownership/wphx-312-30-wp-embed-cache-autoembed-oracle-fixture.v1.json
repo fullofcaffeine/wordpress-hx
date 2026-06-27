@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-embed-cache-autoembed-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-1to",
+    "external_ref": "WPHX-312.30"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Embed cache, shortcode, and autoembed behavior",
+    "area": "src/wp-includes/class-wp-embed.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-wp-embed.php in isolated PHP CLI probes with deterministic hooks, shortcodes, post/meta, object-cache, WP_Query, KSES, and wp_oembed_get stubs. It observes constructor registrations, shortcode cache hits, remote-success cache writes, unknown fallback handling, autoembed replacement, cache_oembed priming, delete_oembed_caches, and find_oembed_post_id without claiming live oEmbed network/discovery, installed editor/admin Ajax, REST controller behavior, browser rendering, database-backed storage, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-runtime-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded oEmbed fetch, database-backed post/meta cache storage, installed editor/admin Ajax, REST oEmbed controller behavior, browser rendering, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-embed-cache-autoembed-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-30"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-embed-cache-autoembed-oracle-fixture",
+      "npm run wp:core:wphx-312-wp-embed-cache-autoembed-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-30-wp-embed-cache-autoembed-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:167c7f44c2001a1692b08120dbb5aa9b97173070ee27da85fa06524ea62d2acf"
+  }
+}
