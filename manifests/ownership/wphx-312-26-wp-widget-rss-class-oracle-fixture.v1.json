@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-widget-rss-class-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-yyr",
+    "external_ref": "WPHX-312.26"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Widget_RSS class wrapper behavior",
+    "area": "src/wp-includes/widgets/class-wp-widget-rss.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/widgets/class-wp-widget-rss.php in PHP CLI with deterministic WP_Widget, feed, escaping, filter, and RSS widget helper stubs. It observes WP_Widget_RSS constructor, widget guard/title/delegation behavior, update delegation, and form defaulting without installed widget registration/sidebar rendering, helper internals already covered by WPHX-312.25, admin form helper HTML, live network feeds, database-backed widgets, or generated public PHP replacement."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed widget registration/sidebar rendering, real WP_Widget base/runtime, live/recorded feed, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-widget-rss-class-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-26"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-widget-rss-class-oracle-fixture",
+      "npm run wp:core:wphx-312-wp-widget-rss-class-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-26-wp-widget-rss-class-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:69b88b1e43cea40088c3cd5a04aec12733f88444149a98ca12929a21e59ca4c9"
+  }
+}

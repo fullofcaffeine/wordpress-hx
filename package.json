@@ -251,6 +251,8 @@
     "wp:core:wphx-312-magpie-rss-display-helper-oracle-fixture:check": "node tools/wp-core/run-magpie-rss-display-helper-oracle-fixture.mjs --check",
     "wp:core:wphx-312-rss-widget-helper-oracle-fixture": "node tools/wp-core/run-rss-widget-helper-oracle-fixture.mjs",
     "wp:core:wphx-312-rss-widget-helper-oracle-fixture:check": "node tools/wp-core/run-rss-widget-helper-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-wp-widget-rss-class-oracle-fixture": "node tools/wp-core/run-wp-widget-rss-class-oracle-fixture.mjs",
+    "wp:core:wphx-312-wp-widget-rss-class-oracle-fixture:check": "node tools/wp-core/run-wp-widget-rss-class-oracle-fixture.mjs --check",
     "wp:core:wphx-312-feed-embed-https-oracle-fixture": "node tools/wp-core/run-feed-embed-https-oracle-fixture.mjs",
     "wp:core:wphx-312-feed-embed-https-oracle-fixture:check": "node tools/wp-core/run-feed-embed-https-oracle-fixture.mjs --check",
     "wp:core:wphx-312-ai-http-oracle-fixture": "node tools/wp-core/run-ai-http-oracle-fixture.mjs",
