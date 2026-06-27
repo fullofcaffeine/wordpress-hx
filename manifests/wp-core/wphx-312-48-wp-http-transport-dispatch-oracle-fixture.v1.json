@@ -1,0 +1,624 @@
+{
+  "schema": "wphx.wp-core-wp-http-transport-dispatch-oracle-fixture.v1",
+  "issue": "WPHX-312.48",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_transport_callback_test_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-45-http-transport-callback-test-oracle-fixture.v1.json",
+      "bytes": 14924,
+      "sha256": "sha256:75a4fc050c79283057c3e06f92ca028ef96928a664327e0227d907e259e28a64"
+    },
+    "http_request_orchestration_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "bytes": 42321,
+      "sha256": "sha256:2696a82cbe51c1f2aea7f3e2654e0a0e57a8a7de7716801b37fc68423adfd3a3"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs",
+      "bytes": 21025,
+      "sha256": "sha256:7ce71a77b04c11b7face3acc3cd5b7698f7ce0c6e8f5d977bb162efed2b0aac5"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "wp-http-transport:default-curl",
+        "focus": "default curl-first transport selection"
+      },
+      {
+        "id": "wp-http-transport:streams-fallback",
+        "focus": "streams fallback when curl test fails"
+      },
+      {
+        "id": "wp-http-transport:deprecated-order-filter",
+        "focus": "http_api_transports deprecated filter can reorder transport checks"
+      },
+      {
+        "id": "wp-http-transport:no-transport",
+        "focus": "no available transport returns false"
+      },
+      {
+        "id": "wp-http-transport:dispatch-success",
+        "focus": "private dispatch invokes selected transport, debug action, and response filter"
+      },
+      {
+        "id": "wp-http-transport:dispatch-error",
+        "focus": "private dispatch returns WP_Error for no transport and preserves transport WP_Error"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Http::_get_first_available_transport",
+      "WP_Http::_dispatch_request",
+      "http_api_transports",
+      "apply_filters_deprecated",
+      "http_api_debug",
+      "http_response",
+      "WP_Http_Curl::test",
+      "WP_Http_Streams::test",
+      "WP_Http_Curl::request",
+      "WP_Http_Streams::request",
+      "WP_Error"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-http.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-48/probe.php",
+      "sha256": "sha256:24e5df3891b0a10daa5fdc5243abf0973a781dfe583c91492f8bebb4f584d666"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "Requests Autoload/Requests, WP_Error, hooks, filters, and WP_Http_Curl/WP_Http_Streams are deterministic local stubs. Copied WP_Http remains the executed selection/dispatch source; no socket, cURL, or Requests network I/O is performed."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-48/oracle",
+    "candidate_root": "build/wp-core/wphx-312-48/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-48/oracle/wp-includes/class-wp-http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-48/candidate/wp-includes/class-wp-http.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "wp-http-transport:default-curl": {
+        "case": "wp-http-transport:default-curl",
+        "selected": "WP_Http_Curl",
+        "tests": [
+          {
+            "class": "WP_Http_Curl",
+            "args": [],
+            "url": "https://example.test/"
+          }
+        ],
+        "deprecated_filters": [
+          {
+            "hook": "http_api_transports",
+            "args": [
+              [
+                "curl",
+                "streams"
+              ],
+              [],
+              "https://example.test/"
+            ],
+            "version": "6.4.0"
+          }
+        ],
+        "assertions": {
+          "selected_curl": true,
+          "only_curl_tested": true
+        }
+      },
+      "wp-http-transport:streams-fallback": {
+        "case": "wp-http-transport:streams-fallback",
+        "selected": "WP_Http_Streams",
+        "tests": [
+          {
+            "class": "WP_Http_Curl",
+            "args": {
+              "disable_curl": true
+            },
+            "url": "https://example.test/"
+          },
+          {
+            "class": "WP_Http_Streams",
+            "args": {
+              "disable_curl": true
+            },
+            "url": "https://example.test/"
+          }
+        ],
+        "assertions": {
+          "selected_streams": true,
+          "curl_then_streams_tested": true
+        }
+      },
+      "wp-http-transport:deprecated-order-filter": {
+        "case": "wp-http-transport:deprecated-order-filter",
+        "selected": "WP_Http_Streams",
+        "tests": [
+          {
+            "class": "WP_Http_Streams",
+            "args": {
+              "order": [
+                "streams",
+                "curl"
+              ]
+            },
+            "url": "https://example.test/"
+          }
+        ],
+        "deprecated_filters": [
+          {
+            "hook": "http_api_transports",
+            "args": [
+              [
+                "curl",
+                "streams"
+              ],
+              {
+                "order": [
+                  "streams",
+                  "curl"
+                ]
+              },
+              "https://example.test/"
+            ],
+            "version": "6.4.0"
+          }
+        ],
+        "assertions": {
+          "selected_streams_from_filter": true,
+          "deprecated_filter_recorded": true
+        }
+      },
+      "wp-http-transport:no-transport": {
+        "case": "wp-http-transport:no-transport",
+        "selected": false,
+        "tests": [
+          {
+            "class": "WP_Http_Curl",
+            "args": {
+              "disable_curl": true,
+              "disable_streams": true
+            },
+            "url": "https://example.test/"
+          },
+          {
+            "class": "WP_Http_Streams",
+            "args": {
+              "disable_curl": true,
+              "disable_streams": true
+            },
+            "url": "https://example.test/"
+          }
+        ],
+        "assertions": {
+          "selected_false": true,
+          "both_tested": true
+        }
+      },
+      "wp-http-transport:dispatch-success": {
+        "case": "wp-http-transport:dispatch-success",
+        "response": {
+          "headers": {
+            "x-transport": "curl"
+          },
+          "body": "curl:https://example.test/dispatch",
+          "response": {
+            "code": 200,
+            "message": "OK"
+          },
+          "cookies": [],
+          "filename": null,
+          "filtered": true
+        },
+        "requests": [
+          {
+            "class": "WP_Http_Curl",
+            "url": "https://example.test/dispatch",
+            "args": {
+              "method": "GET"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "headers": {
+                  "x-transport": "curl"
+                },
+                "body": "curl:https://example.test/dispatch",
+                "response": {
+                  "code": 200,
+                  "message": "OK"
+                },
+                "cookies": [],
+                "filename": null
+              },
+              "response",
+              "WP_Http_Curl",
+              {
+                "method": "GET"
+              },
+              "https://example.test/dispatch"
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-transport": "curl"
+              },
+              "body": "curl:https://example.test/dispatch",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null
+            },
+            "args": [
+              {
+                "method": "GET"
+              },
+              "https://example.test/dispatch"
+            ]
+          }
+        ],
+        "constructs": {
+          "curl": 1,
+          "streams": 0
+        },
+        "assertions": {
+          "response_filtered": true,
+          "debug_action": true,
+          "transport_constructed_once": true
+        }
+      },
+      "wp-http-transport:dispatch-error": {
+        "case": "wp-http-transport:dispatch-error",
+        "no_transport": {
+          "code": "http_failure",
+          "message": "There are no HTTP transports available which can complete the requested request."
+        },
+        "transport_error": {
+          "code": "transport_failed",
+          "message": "transport failure"
+        },
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "transport_failed",
+                "message": "transport failure"
+              },
+              "response",
+              "WP_Http_Curl",
+              {
+                "return_transport_error": true
+              },
+              "https://example.test/error"
+            ]
+          }
+        ],
+        "assertions": {
+          "no_transport_error": true,
+          "transport_error_preserved": true,
+          "debug_action_for_transport_error": true
+        }
+      }
+    },
+    "candidate": {
+      "wp-http-transport:default-curl": {
+        "case": "wp-http-transport:default-curl",
+        "selected": "WP_Http_Curl",
+        "tests": [
+          {
+            "class": "WP_Http_Curl",
+            "args": [],
+            "url": "https://example.test/"
+          }
+        ],
+        "deprecated_filters": [
+          {
+            "hook": "http_api_transports",
+            "args": [
+              [
+                "curl",
+                "streams"
+              ],
+              [],
+              "https://example.test/"
+            ],
+            "version": "6.4.0"
+          }
+        ],
+        "assertions": {
+          "selected_curl": true,
+          "only_curl_tested": true
+        }
+      },
+      "wp-http-transport:streams-fallback": {
+        "case": "wp-http-transport:streams-fallback",
+        "selected": "WP_Http_Streams",
+        "tests": [
+          {
+            "class": "WP_Http_Curl",
+            "args": {
+              "disable_curl": true
+            },
+            "url": "https://example.test/"
+          },
+          {
+            "class": "WP_Http_Streams",
+            "args": {
+              "disable_curl": true
+            },
+            "url": "https://example.test/"
+          }
+        ],
+        "assertions": {
+          "selected_streams": true,
+          "curl_then_streams_tested": true
+        }
+      },
+      "wp-http-transport:deprecated-order-filter": {
+        "case": "wp-http-transport:deprecated-order-filter",
+        "selected": "WP_Http_Streams",
+        "tests": [
+          {
+            "class": "WP_Http_Streams",
+            "args": {
+              "order": [
+                "streams",
+                "curl"
+              ]
+            },
+            "url": "https://example.test/"
+          }
+        ],
+        "deprecated_filters": [
+          {
+            "hook": "http_api_transports",
+            "args": [
+              [
+                "curl",
+                "streams"
+              ],
+              {
+                "order": [
+                  "streams",
+                  "curl"
+                ]
+              },
+              "https://example.test/"
+            ],
+            "version": "6.4.0"
+          }
+        ],
+        "assertions": {
+          "selected_streams_from_filter": true,
+          "deprecated_filter_recorded": true
+        }
+      },
+      "wp-http-transport:no-transport": {
+        "case": "wp-http-transport:no-transport",
+        "selected": false,
+        "tests": [
+          {
+            "class": "WP_Http_Curl",
+            "args": {
+              "disable_curl": true,
+              "disable_streams": true
+            },
+            "url": "https://example.test/"
+          },
+          {
+            "class": "WP_Http_Streams",
+            "args": {
+              "disable_curl": true,
+              "disable_streams": true
+            },
+            "url": "https://example.test/"
+          }
+        ],
+        "assertions": {
+          "selected_false": true,
+          "both_tested": true
+        }
+      },
+      "wp-http-transport:dispatch-success": {
+        "case": "wp-http-transport:dispatch-success",
+        "response": {
+          "headers": {
+            "x-transport": "curl"
+          },
+          "body": "curl:https://example.test/dispatch",
+          "response": {
+            "code": 200,
+            "message": "OK"
+          },
+          "cookies": [],
+          "filename": null,
+          "filtered": true
+        },
+        "requests": [
+          {
+            "class": "WP_Http_Curl",
+            "url": "https://example.test/dispatch",
+            "args": {
+              "method": "GET"
+            }
+          }
+        ],
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "headers": {
+                  "x-transport": "curl"
+                },
+                "body": "curl:https://example.test/dispatch",
+                "response": {
+                  "code": 200,
+                  "message": "OK"
+                },
+                "cookies": [],
+                "filename": null
+              },
+              "response",
+              "WP_Http_Curl",
+              {
+                "method": "GET"
+              },
+              "https://example.test/dispatch"
+            ]
+          }
+        ],
+        "filters": [
+          {
+            "hook": "http_response",
+            "value": {
+              "headers": {
+                "x-transport": "curl"
+              },
+              "body": "curl:https://example.test/dispatch",
+              "response": {
+                "code": 200,
+                "message": "OK"
+              },
+              "cookies": [],
+              "filename": null
+            },
+            "args": [
+              {
+                "method": "GET"
+              },
+              "https://example.test/dispatch"
+            ]
+          }
+        ],
+        "constructs": {
+          "curl": 1,
+          "streams": 0
+        },
+        "assertions": {
+          "response_filtered": true,
+          "debug_action": true,
+          "transport_constructed_once": true
+        }
+      },
+      "wp-http-transport:dispatch-error": {
+        "case": "wp-http-transport:dispatch-error",
+        "no_transport": {
+          "code": "http_failure",
+          "message": "There are no HTTP transports available which can complete the requested request."
+        },
+        "transport_error": {
+          "code": "transport_failed",
+          "message": "transport failure"
+        },
+        "actions": [
+          {
+            "hook": "http_api_debug",
+            "args": [
+              {
+                "wp_error": "transport_failed",
+                "message": "transport failure"
+              },
+              "response",
+              "WP_Http_Curl",
+              {
+                "return_transport_error": true
+              },
+              "https://example.test/error"
+            ]
+          }
+        ],
+        "assertions": {
+          "no_transport_error": true,
+          "transport_error_preserved": true,
+          "debug_action_for_transport_error": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:eadbe23fe2f21c9abcfb75fb543b606a7b23709813f4f12ee39314b0e3d8caac",
+    "candidate_sha256": "sha256:eadbe23fe2f21c9abcfb75fb543b606a7b23709813f4f12ee39314b0e3d8caac",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-http-transport-not-executed",
+      "owner": "WPHX-312.48",
+      "detail": "The fixture observes deprecated selection and dispatch control flow through fake transports. It does not execute live cURL/streams, socket I/O, Requests network I/O, DNS, proxy, TLS, or redirects."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.48",
+      "detail": "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem callers that directly use deprecated transport APIs."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.48",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 11,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_claimed": false,
+    "socket_or_curl_execution_claimed": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-transport-dispatch-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.35",
+    "external_ref": "WPHX-312.48"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "WP_Http deprecated transport selection and dispatch behavior",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::_get_first_available_transport WP_Http::_dispatch_request",
+    "public_contract": "This fixture executes copied WordPress 7.0 deprecated transport selection and dispatch logic in isolated PHP CLI probes with deterministic fake cURL/streams transports. It observes default selection, streams fallback, deprecated transport ordering filter behavior, no-transport failure, dispatch debug action, response filtering, and WP_Error preservation without claiming live HTTP transport, socket/cURL execution, Requests network I/O, DNS/TLS/proxy behavior, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-deterministic-fake-transport-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass deprecated transport dispatch, selected upstream HTTP PHPUnit, installed distribution, and live/recorded transport gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-48"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture",
+      "npm run wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-48-wp-http-transport-dispatch-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:5284ddf77049eb20e26dff8399f0d3e956b85c8074b3d240eeab75d2a6aaa237"
+  }
+}
