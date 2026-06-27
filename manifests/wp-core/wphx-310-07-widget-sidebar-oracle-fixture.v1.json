@@ -1,0 +1,470 @@
+{
+  "schema": "wphx.wp-core-widget-sidebar-oracle-fixture.v1",
+  "issue": "WPHX-310.07",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-widget-sidebar-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+      "bytes": 133083,
+      "sha256": "sha256:04de8bdb20ee33e27e112b580c352dabad87049e7569c451dd2eeac3548657d3"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "bytes": 18550,
+      "sha256": "sha256:b6cb9b2cffcf14108f7795b139f98fafa7a37934b66e612ada59b44970817aa7"
+    },
+    "widget_surface_manifest": {
+      "path": "manifests/wp-core/wphx-310-06-theme-customizer-widget-nav-surface.v1.json",
+      "bytes": 114736,
+      "sha256": "sha256:9b6f8a8b037a6568232dc4229e27f2d6b3459dbf852d4f440b75f9e4f11d7e30"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-widget-sidebar-oracle-fixture.mjs",
+      "bytes": 19596,
+      "sha256": "sha256:781741e85d85932588e9a65387703ac5a13a942a208d84336c8ddc4b03458cf1"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-widget.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-widget.php",
+        "bytes": 18417,
+        "sha256": "sha256:41a1eb7497340c36e11a95b8bd08fb881ad1bbb50c4c6f687e0551e1b17bbc02"
+      },
+      {
+        "path": "src/wp-includes/class-wp-widget-factory.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-widget-factory.php",
+        "bytes": 3347,
+        "sha256": "sha256:e7ec63244377a3a5bbe6821872d1e367f83bc73cc20ddf6d7b4e316b6b3933b6"
+      },
+      {
+        "path": "src/wp-includes/widgets.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/widgets.php",
+        "bytes": 70828,
+        "sha256": "sha256:5e51d83d86226609bfcfe3d4f3dbf6ead978f1018ea13648e8cf7cd27d4b10b6"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "sidebar:registration",
+        "focus": "register_sidebar stores parsed sidebar args, adds widget theme support, and fires register_sidebar"
+      },
+      {
+        "id": "widget:factory-registration",
+        "focus": "WP_Widget_Factory registers a WP_Widget subclass and populates widget/control/update globals"
+      },
+      {
+        "id": "sidebars-widgets:active-state",
+        "focus": "wp_get_sidebars_widgets strips array_version and is_active_sidebar reflects populated/empty sidebars"
+      },
+      {
+        "id": "dynamic-sidebar:render-hooks",
+        "focus": "dynamic_sidebar renders widget wrapper/title/body output and fires expected hooks/filters"
+      },
+      {
+        "id": "dynamic-sidebar:empty",
+        "focus": "empty sidebars fire before/after hooks with has_widgets=false and return filtered false"
+      },
+      {
+        "id": "the-widget:direct-render",
+        "focus": "the_widget renders a registered WP_Widget instance outside sidebar assignment"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Widget::__construct",
+      "WP_Widget::_register",
+      "WP_Widget::display_callback",
+      "WP_Widget::get_settings",
+      "WP_Widget_Factory::register",
+      "WP_Widget_Factory::_register_widgets",
+      "register_sidebar",
+      "register_widget",
+      "wp_register_sidebar_widget",
+      "wp_register_widget_control",
+      "wp_get_sidebars_widgets",
+      "is_active_sidebar",
+      "dynamic_sidebar",
+      "the_widget",
+      "_get_widget_id_base"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-widget.php",
+      "src/wp-includes/class-wp-widget-factory.php",
+      "src/wp-includes/widgets.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-310-07/probe.php",
+      "sha256": "sha256:376a91becb7d7ae0cbe285bc194fe27c3bd6d069631c3d17fd46799c089152a9"
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-310-07/oracle",
+    "candidate_root": "build/wp-core/wphx-310-07/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-widget.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-07/oracle/wp-includes/class-wp-widget.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-07/candidate/wp-includes/class-wp-widget.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-widget-factory.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-07/oracle/wp-includes/class-wp-widget-factory.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-07/candidate/wp-includes/class-wp-widget-factory.php"
+      },
+      {
+        "path": "src/wp-includes/widgets.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-07/oracle/wp-includes/widgets.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-07/candidate/wp-includes/widgets.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "cases": {
+        "dynamic-sidebar:empty": {
+          "result": false,
+          "output": ""
+        },
+        "dynamic-sidebar:render-hooks": {
+          "result": true,
+          "has_aside": true,
+          "has_widget_wrapper": true,
+          "has_title": true,
+          "has_body": true,
+          "sha256": "e55f398ae67d7c546d375349afe1599e90adcc24191147a357b988a95b55862a"
+        },
+        "sidebar:registration": {
+          "sidebar_id": "fixture-sidebar",
+          "empty_sidebar_id": "empty-sidebar",
+          "registered_sidebars": [
+            "fixture-sidebar",
+            "empty-sidebar"
+          ],
+          "fixture_show_in_rest": true,
+          "theme_support_widgets": true
+        },
+        "sidebars-widgets:active-state": {
+          "sidebar_keys": [
+            "fixture-sidebar",
+            "empty-sidebar"
+          ],
+          "array_version_present": false,
+          "active_fixture": true,
+          "active_empty": false
+        },
+        "the-widget:direct-render": {
+          "has_direct_title": true,
+          "has_direct_body": true,
+          "has_direct_wrapper": true,
+          "sha256": "56d745985c56d74fe1e3340d50fe84c41cd93114f5f6cf9c46f349bcad102cfa"
+        },
+        "widget:factory-registration": {
+          "factory_widget_classes": {
+            "WPHX_Widget": "WPHX_Widget"
+          },
+          "registered_widget_ids": [
+            "wphx_widget-2"
+          ],
+          "control_ids": [
+            "wphx_widget-2"
+          ],
+          "update_ids": [
+            "wphx_widget"
+          ],
+          "id_base": "wphx_widget"
+        }
+      },
+      "actions": [
+        {
+          "hook": "register_sidebar",
+          "arg_count": 1
+        },
+        {
+          "hook": "register_sidebar",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_register_sidebar_widget",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_before",
+          "arg_count": 2
+        },
+        {
+          "hook": "dynamic_sidebar",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_after",
+          "arg_count": 2
+        },
+        {
+          "hook": "dynamic_sidebar_before",
+          "arg_count": 2
+        },
+        {
+          "hook": "dynamic_sidebar_after",
+          "arg_count": 2
+        },
+        {
+          "hook": "the_widget",
+          "arg_count": 3
+        }
+      ],
+      "filters": [
+        {
+          "hook": "register_sidebar_defaults",
+          "arg_count": 1
+        },
+        {
+          "hook": "register_sidebar_defaults",
+          "arg_count": 1
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "is_active_sidebar",
+          "arg_count": 2
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "is_active_sidebar",
+          "arg_count": 2
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_params",
+          "arg_count": 1
+        },
+        {
+          "hook": "widget_display_callback",
+          "arg_count": 3
+        },
+        {
+          "hook": "dynamic_sidebar_has_widgets",
+          "arg_count": 2
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_has_widgets",
+          "arg_count": 2
+        },
+        {
+          "hook": "widget_display_callback",
+          "arg_count": 3
+        }
+      ],
+      "php_errors": []
+    },
+    "candidate": {
+      "cases": {
+        "dynamic-sidebar:empty": {
+          "result": false,
+          "output": ""
+        },
+        "dynamic-sidebar:render-hooks": {
+          "result": true,
+          "has_aside": true,
+          "has_widget_wrapper": true,
+          "has_title": true,
+          "has_body": true,
+          "sha256": "e55f398ae67d7c546d375349afe1599e90adcc24191147a357b988a95b55862a"
+        },
+        "sidebar:registration": {
+          "sidebar_id": "fixture-sidebar",
+          "empty_sidebar_id": "empty-sidebar",
+          "registered_sidebars": [
+            "fixture-sidebar",
+            "empty-sidebar"
+          ],
+          "fixture_show_in_rest": true,
+          "theme_support_widgets": true
+        },
+        "sidebars-widgets:active-state": {
+          "sidebar_keys": [
+            "fixture-sidebar",
+            "empty-sidebar"
+          ],
+          "array_version_present": false,
+          "active_fixture": true,
+          "active_empty": false
+        },
+        "the-widget:direct-render": {
+          "has_direct_title": true,
+          "has_direct_body": true,
+          "has_direct_wrapper": true,
+          "sha256": "56d745985c56d74fe1e3340d50fe84c41cd93114f5f6cf9c46f349bcad102cfa"
+        },
+        "widget:factory-registration": {
+          "factory_widget_classes": {
+            "WPHX_Widget": "WPHX_Widget"
+          },
+          "registered_widget_ids": [
+            "wphx_widget-2"
+          ],
+          "control_ids": [
+            "wphx_widget-2"
+          ],
+          "update_ids": [
+            "wphx_widget"
+          ],
+          "id_base": "wphx_widget"
+        }
+      },
+      "actions": [
+        {
+          "hook": "register_sidebar",
+          "arg_count": 1
+        },
+        {
+          "hook": "register_sidebar",
+          "arg_count": 1
+        },
+        {
+          "hook": "wp_register_sidebar_widget",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_before",
+          "arg_count": 2
+        },
+        {
+          "hook": "dynamic_sidebar",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_after",
+          "arg_count": 2
+        },
+        {
+          "hook": "dynamic_sidebar_before",
+          "arg_count": 2
+        },
+        {
+          "hook": "dynamic_sidebar_after",
+          "arg_count": 2
+        },
+        {
+          "hook": "the_widget",
+          "arg_count": 3
+        }
+      ],
+      "filters": [
+        {
+          "hook": "register_sidebar_defaults",
+          "arg_count": 1
+        },
+        {
+          "hook": "register_sidebar_defaults",
+          "arg_count": 1
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "is_active_sidebar",
+          "arg_count": 2
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "is_active_sidebar",
+          "arg_count": 2
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_params",
+          "arg_count": 1
+        },
+        {
+          "hook": "widget_display_callback",
+          "arg_count": 3
+        },
+        {
+          "hook": "dynamic_sidebar_has_widgets",
+          "arg_count": 2
+        },
+        {
+          "hook": "sidebars_widgets",
+          "arg_count": 1
+        },
+        {
+          "hook": "dynamic_sidebar_has_widgets",
+          "arg_count": 2
+        },
+        {
+          "hook": "widget_display_callback",
+          "arg_count": 3
+        }
+      ],
+      "php_errors": []
+    },
+    "match": true,
+    "oracle_sha256": "sha256:68b665ae8ec8b5ea84f36d6ace6ad4d51303cd04838afa5d297951f2604f87cf",
+    "candidate_sha256": "sha256:68b665ae8ec8b5ea84f36d6ace6ad4d51303cd04838afa5d297951f2604f87cf"
+  },
+  "remaining_gaps": [
+    {
+      "id": "bundled-default-and-block-widgets-not-executed",
+      "owner": "WPHX-310.07",
+      "detail": "The fixture executes a custom WP_Widget subclass through core registry and sidebar APIs. Bundled default widgets, block widget bridge files, and widget REST controllers remain later WPHX-310 or WPHX-314 gates."
+    },
+    {
+      "id": "widget-admin-installed-behavior-not-executed",
+      "owner": "WPHX-310.07",
+      "detail": "widgets.php admin screens, Customizer widget controls, nonce/capability checks, and installed front-end/admin rendering remain later gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-310.07",
+      "detail": "Widget/sidebar PHP files are copied oracle source in this fixture; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 15,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

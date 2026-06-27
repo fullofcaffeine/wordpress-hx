@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/widget-sidebar-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.17.7",
+    "external_ref": "WPHX-310.07"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "Widget/sidebar registry and dynamic_sidebar behavior",
+    "area": "src/wp-includes/class-wp-widget.php src/wp-includes/class-wp-widget-factory.php src/wp-includes/widgets.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 widget and sidebar source against deterministic in-process options, hooks, and a custom WP_Widget subclass. It does not claim generated public PHP replacement, bundled default widget parity, block widget REST parity, widget admin screen parity, or installed rendering parity."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass bundled widget, widget admin, block widget REST, installed theme rendering/admin, and selected upstream widget PHPUnit gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-widget-sidebar-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-310-07-widget-sidebar-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-310-07-widget-sidebar-oracle-fixture.v1.json",
+    "build/wp-core/wphx-310-07"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-310-widget-sidebar-oracle-fixture",
+      "npm run wp:core:wphx-310-widget-sidebar-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-310-07-widget-sidebar-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:4f6b9034a3b00aeceef79b244f5324879c6a26103f2c0923d455aa6380818379"
+  }
+}
