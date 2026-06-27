@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/deprecated-oembed-wrapper-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-1te",
+    "external_ref": "WPHX-312.28"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "Deprecated oEmbed wrapper handoff behavior",
+    "area": "src/wp-includes/class-oembed.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/class-oembed.php in isolated PHP CLI probes with a deterministic class-wp-oembed.php required-file stub. It observes deprecation metadata, basename(__FILE__) handoff, ABSPATH/WPINC require_once resolution, WP_oEmbed class handoff, and include/require_once idempotency without claiming WP_oEmbed provider internals or installed oEmbed routes."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-required-file-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real WP_oEmbed provider internals, REST oEmbed controller behavior, installed oEmbed routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-deprecated-oembed-wrapper-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-28"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-deprecated-oembed-wrapper-oracle-fixture",
+      "npm run wp:core:wphx-312-deprecated-oembed-wrapper-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-28-deprecated-oembed-wrapper-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:ff1952a8cb6003535d1f49d43015249f8f8cc620c7380502c90ad02f759c7bd3"
+  }
+}

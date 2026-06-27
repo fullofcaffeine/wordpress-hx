@@ -1,0 +1,46 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-28-deprecated-oembed-wrapper-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-1te",
+    "external_ref": "WPHX-312.28",
+    "title": "WPHX-312.28 - Add deprecated oEmbed wrapper oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+      "role": "deprecated oEmbed wrapper oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle deprecated oEmbed wrapper boundary"
+    },
+    {
+      "path": "tools/wp-core/run-deprecated-oembed-wrapper-oracle-fixture.mjs",
+      "role": "deterministic PHP CLI oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-deprecated-oembed-wrapper-oracle-fixture",
+    "npm run wp:core:wphx-312-deprecated-oembed-wrapper-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-04-feed-embed-https-oracle-fixture",
+    "receipt:wphx-312-08-remote-fetch-oembed-oracle-fixture",
+    "receipt:wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 3,
+    "covered_symbols": 8,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "real_wp_oembed_provider_claimed": false
+  }
+}

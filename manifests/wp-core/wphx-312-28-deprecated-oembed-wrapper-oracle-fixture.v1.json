@@ -1,0 +1,337 @@
+{
+  "schema": "wphx.wp-core-deprecated-oembed-wrapper-oracle-fixture.v1",
+  "issue": "WPHX-312.28",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-deprecated-oembed-wrapper-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "feed_embed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+      "bytes": 18811,
+      "sha256": "sha256:9005553a3798994fcdc2a4d407e9db2ba4df533138a2da5314c3530197de87d9"
+    },
+    "remote_oembed_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "bytes": 29193,
+      "sha256": "sha256:3732343ca7f8a0e5a1a6b18d5331953d72fc98e30a7dbc82f91703951c645f52"
+    },
+    "deprecated_wrapper_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+      "bytes": 11854,
+      "sha256": "sha256:0e7faa73050194eb331b5ec8cd69297a77fe0953ddff7509d34c4de537a07855"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-deprecated-oembed-wrapper-oracle-fixture.mjs",
+      "bytes": 14668,
+      "sha256": "sha256:5e34c6b1dc96c9be1326761ba1d764aa7a13f110d5446cb205b12c0baeb79160"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-oembed.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-oembed.php",
+        "bytes": 401,
+        "sha256": "sha256:a8fde550b396868e5ece83b7cdc0884a970e8104481b431d54df4559c615bf53"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "deprecated-oembed:single-include",
+        "focus": "include wrapper once and record one deprecation plus one class handoff"
+      },
+      {
+        "id": "deprecated-oembed:double-include",
+        "focus": "include wrapper twice and observe require_once idempotency for class-wp-oembed.php"
+      },
+      {
+        "id": "deprecated-oembed:require-once-wrapper",
+        "focus": "require_once wrapper twice and observe wrapper-level idempotency"
+      }
+    ],
+    "covered_symbols": [
+      "class-oembed.php",
+      "_deprecated_file",
+      "basename(__FILE__)",
+      "ABSPATH",
+      "WPINC",
+      "require_once",
+      "class-wp-oembed.php handoff",
+      "WP_oEmbed"
+    ],
+    "source_files": [
+      "src/wp-includes/class-oembed.php"
+    ],
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "required_file_stubs": "class-wp-oembed.php is a deterministic stub; copied class-oembed.php remains the executed public deprecated wrapper."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-28/oracle",
+    "candidate_root": "build/wp-core/wphx-312-28/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-oembed.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-28/oracle/wp-includes/class-oembed.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-28/candidate/wp-includes/class-oembed.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "deprecated-oembed:single-include": {
+        "case": "deprecated-oembed:single-include",
+        "deprecated": [
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          }
+        ],
+        "required_files": [
+          {
+            "file": "wp-includes/class-wp-oembed.php",
+            "count": 1
+          }
+        ],
+        "required_counts": {
+          "wp-includes/class-wp-oembed.php": 1
+        },
+        "class_exists": true,
+        "class_fixture_loaded": true,
+        "constants": {
+          "ABSPATH": "fixture-root/",
+          "WPINC": "wp-includes"
+        },
+        "deprecated_count": 1,
+        "required_file_count": 1,
+        "has_expected_deprecated_file": true,
+        "has_expected_required_file": true,
+        "class_handoff_idempotent": true,
+        "wrapper_deprecation_count_matches": true
+      },
+      "deprecated-oembed:double-include": {
+        "case": "deprecated-oembed:double-include",
+        "deprecated": [
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          },
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          }
+        ],
+        "required_files": [
+          {
+            "file": "wp-includes/class-wp-oembed.php",
+            "count": 1
+          }
+        ],
+        "required_counts": {
+          "wp-includes/class-wp-oembed.php": 1
+        },
+        "class_exists": true,
+        "class_fixture_loaded": true,
+        "constants": {
+          "ABSPATH": "fixture-root/",
+          "WPINC": "wp-includes"
+        },
+        "deprecated_count": 2,
+        "required_file_count": 1,
+        "has_expected_deprecated_file": true,
+        "has_expected_required_file": true,
+        "class_handoff_idempotent": true,
+        "wrapper_deprecation_count_matches": true
+      },
+      "deprecated-oembed:require-once-wrapper": {
+        "case": "deprecated-oembed:require-once-wrapper",
+        "deprecated": [
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          }
+        ],
+        "required_files": [
+          {
+            "file": "wp-includes/class-wp-oembed.php",
+            "count": 1
+          }
+        ],
+        "required_counts": {
+          "wp-includes/class-wp-oembed.php": 1
+        },
+        "class_exists": true,
+        "class_fixture_loaded": true,
+        "constants": {
+          "ABSPATH": "fixture-root/",
+          "WPINC": "wp-includes"
+        },
+        "deprecated_count": 1,
+        "required_file_count": 1,
+        "has_expected_deprecated_file": true,
+        "has_expected_required_file": true,
+        "class_handoff_idempotent": true,
+        "wrapper_deprecation_count_matches": true
+      }
+    },
+    "candidate": {
+      "deprecated-oembed:single-include": {
+        "case": "deprecated-oembed:single-include",
+        "deprecated": [
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          }
+        ],
+        "required_files": [
+          {
+            "file": "wp-includes/class-wp-oembed.php",
+            "count": 1
+          }
+        ],
+        "required_counts": {
+          "wp-includes/class-wp-oembed.php": 1
+        },
+        "class_exists": true,
+        "class_fixture_loaded": true,
+        "constants": {
+          "ABSPATH": "fixture-root/",
+          "WPINC": "wp-includes"
+        },
+        "deprecated_count": 1,
+        "required_file_count": 1,
+        "has_expected_deprecated_file": true,
+        "has_expected_required_file": true,
+        "class_handoff_idempotent": true,
+        "wrapper_deprecation_count_matches": true
+      },
+      "deprecated-oembed:double-include": {
+        "case": "deprecated-oembed:double-include",
+        "deprecated": [
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          },
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          }
+        ],
+        "required_files": [
+          {
+            "file": "wp-includes/class-wp-oembed.php",
+            "count": 1
+          }
+        ],
+        "required_counts": {
+          "wp-includes/class-wp-oembed.php": 1
+        },
+        "class_exists": true,
+        "class_fixture_loaded": true,
+        "constants": {
+          "ABSPATH": "fixture-root/",
+          "WPINC": "wp-includes"
+        },
+        "deprecated_count": 2,
+        "required_file_count": 1,
+        "has_expected_deprecated_file": true,
+        "has_expected_required_file": true,
+        "class_handoff_idempotent": true,
+        "wrapper_deprecation_count_matches": true
+      },
+      "deprecated-oembed:require-once-wrapper": {
+        "case": "deprecated-oembed:require-once-wrapper",
+        "deprecated": [
+          {
+            "file": "class-oembed.php",
+            "version": "5.3.0",
+            "replacement": "wp-includes/class-wp-oembed.php"
+          }
+        ],
+        "required_files": [
+          {
+            "file": "wp-includes/class-wp-oembed.php",
+            "count": 1
+          }
+        ],
+        "required_counts": {
+          "wp-includes/class-wp-oembed.php": 1
+        },
+        "class_exists": true,
+        "class_fixture_loaded": true,
+        "constants": {
+          "ABSPATH": "fixture-root/",
+          "WPINC": "wp-includes"
+        },
+        "deprecated_count": 1,
+        "required_file_count": 1,
+        "has_expected_deprecated_file": true,
+        "has_expected_required_file": true,
+        "class_handoff_idempotent": true,
+        "wrapper_deprecation_count_matches": true
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:b01c32c5f717b941ed3bc2a2f3212fc5c200f8b01b229fa25cb10abfec501904",
+    "candidate_sha256": "sha256:b01c32c5f717b941ed3bc2a2f3212fc5c200f8b01b229fa25cb10abfec501904"
+  },
+  "remaining_gaps": [
+    {
+      "id": "real-wp-oembed-provider-not-executed",
+      "owner": "WPHX-312.28",
+      "detail": "The fixture stubs class-wp-oembed.php. Full WP_oEmbed provider registration, discovery, cache, data2html, and fetch behavior remain separate WPHX-312 gates."
+    },
+    {
+      "id": "installed-oembed-routes-not-executed",
+      "owner": "WPHX-312.28",
+      "detail": "The fixture executes the deprecated wrapper directly through PHP CLI probes. Installed REST oEmbed controller behavior, post embed rendering, and browser-observed routing remain later gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.28",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 3,
+    "covered_symbols": 8,
+    "observations_match": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "real_wp_oembed_provider_claimed": false
+  }
+}
