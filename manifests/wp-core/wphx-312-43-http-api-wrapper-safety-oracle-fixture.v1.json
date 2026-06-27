@@ -1,0 +1,1045 @@
+{
+  "schema": "wphx.wp-core-http-api-wrapper-safety-oracle-fixture.v1",
+  "issue": "WPHX-312.43",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-http-api-wrapper-safety-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_core_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "bytes": 38945,
+      "sha256": "sha256:017e1d13c9f442eb5f02a3c37bb3ab6ba9edc661d9c0c6b87aab429e3d7b325a"
+    },
+    "http_helper_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "bytes": 19194,
+      "sha256": "sha256:683c7daea9a2e7ec94bbda8f8a8ebdeae720dcd188493bb447739e46e6f28596"
+    },
+    "http_parser_header_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+      "bytes": 18096,
+      "sha256": "sha256:6927182709ed37aafd247c24dda822bfa55c168436aba1c88cbf3a9cc919b4b3"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-http-api-wrapper-safety-oracle-fixture.mjs",
+      "bytes": 25994,
+      "sha256": "sha256:0ee592537b51a1e0553ba5760fff8b90799257d8b2a99564baa18acf5af6bebf"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/http.php",
+        "bytes": 27255,
+        "sha256": "sha256:7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "http-api:request-wrappers",
+        "focus": "safe and unsafe wp_remote_* wrappers reuse one WP_Http object and hand off method/reject_unsafe_urls state"
+      },
+      {
+        "id": "http-api:supports",
+        "focus": "wp_http_supports normalizes numeric capabilities and injects ssl for https/ssl URLs"
+      },
+      {
+        "id": "http-api:origins",
+        "focus": "origin helpers apply filters, derive admin/home origins, and authorize allowed origins"
+      },
+      {
+        "id": "http-api:validate-url",
+        "focus": "wp_http_validate_url protocol, userinfo, malformed host, same-host port, local-IP filter, and safe-port filter behavior"
+      },
+      {
+        "id": "http-api:allowed-hosts",
+        "focus": "allowed_http_request_hosts and ms_allowed_http_request_hosts bridge redirect/network/database domain allowances"
+      }
+    ],
+    "covered_symbols": [
+      "_wp_http_get_object",
+      "wp_safe_remote_request",
+      "wp_safe_remote_get",
+      "wp_safe_remote_post",
+      "wp_safe_remote_head",
+      "wp_remote_request",
+      "wp_remote_get",
+      "wp_remote_post",
+      "wp_remote_head",
+      "wp_http_supports",
+      "get_http_origin",
+      "get_allowed_http_origins",
+      "is_allowed_http_origin",
+      "wp_http_validate_url",
+      "allowed_http_request_hosts",
+      "ms_allowed_http_request_hosts",
+      "WpOrg\\Requests\\Requests::has_capabilities",
+      "WP_Http::request",
+      "WP_Http::get",
+      "WP_Http::post",
+      "WP_Http::head",
+      "http_origin",
+      "allowed_http_origins",
+      "allowed_http_origin",
+      "http_request_host_is_external",
+      "http_allowed_safe_ports"
+    ],
+    "source_files": [
+      "src/wp-includes/http.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-43/probe.php",
+      "sha256": "sha256:80e3d0bb75ecccd4bf8a61bd0b7f74f8a028b0cbbda83e1a1416bf7081072798"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "WP_Http, Requests::has_capabilities, WP_Error, wp_parse_args, is_wp_error, apply_filters, wp_kses_bad_protocol, get_option, admin_url, home_url, wp_validate_redirect, get_network, and wpdb are deterministic local stubs; copied http.php remains the executed public HTTP API helper source."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-43/oracle",
+    "candidate_root": "build/wp-core/wphx-312-43/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-43/oracle/wp-includes/http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-43/candidate/wp-includes/http.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "http-api:request-wrappers": {
+        "case": "http-api:request-wrappers",
+        "returns": [
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "request",
+              "url": "https://api.example/request",
+              "args": {
+                "timeout": 7,
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "get",
+              "url": "https://api.example/get",
+              "args": {
+                "headers": {
+                  "X-Test": "1"
+                },
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "post",
+              "url": "https://api.example/post",
+              "args": {
+                "body": "payload",
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "head",
+              "url": "https://api.example/head",
+              "args": {
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "request",
+              "url": "https://api.example/raw",
+              "args": {
+                "timeout": 3
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "get",
+              "url": "https://api.example/raw-get",
+              "args": []
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "post",
+              "url": "https://api.example/raw-post",
+              "args": []
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "head",
+              "url": "https://api.example/raw-head",
+              "args": []
+            }
+          }
+        ],
+        "calls": [
+          {
+            "instance_id": 1,
+            "method": "request",
+            "url": "https://api.example/request",
+            "args": {
+              "timeout": 7,
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "get",
+            "url": "https://api.example/get",
+            "args": {
+              "headers": {
+                "X-Test": "1"
+              },
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "post",
+            "url": "https://api.example/post",
+            "args": {
+              "body": "payload",
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "head",
+            "url": "https://api.example/head",
+            "args": {
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "request",
+            "url": "https://api.example/raw",
+            "args": {
+              "timeout": 3
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "get",
+            "url": "https://api.example/raw-get",
+            "args": []
+          },
+          {
+            "instance_id": 1,
+            "method": "post",
+            "url": "https://api.example/raw-post",
+            "args": []
+          },
+          {
+            "instance_id": 1,
+            "method": "head",
+            "url": "https://api.example/raw-head",
+            "args": []
+          }
+        ],
+        "instances": 1,
+        "assertions": {
+          "single_http_object": true,
+          "methods": true,
+          "safe_rejects_unsafe": true,
+          "unsafe_does_not_inject_reject": true
+        },
+        "filters": []
+      },
+      "http-api:supports": {
+        "case": "http-api:supports",
+        "supports": {
+          "numeric_https": true,
+          "auto_ssl": true,
+          "unsupported": false
+        },
+        "capability_calls": [
+          {
+            "ssl": true,
+            "streams": true
+          },
+          {
+            "blocking": true,
+            "ssl": true
+          },
+          {
+            "unsupported": true
+          }
+        ],
+        "assertions": {
+          "return_values": true,
+          "numeric_normalized": true,
+          "ssl_injected": true
+        },
+        "filters": []
+      },
+      "http-api:origins": {
+        "case": "http-api:origins",
+        "http_origin": "https://filtered-origin.example",
+        "allowed_origins": [
+          "http://admin.example",
+          "https://admin.example",
+          "http://home.example",
+          "https://home.example",
+          "https://filtered-origin.example",
+          "https://extra.example"
+        ],
+        "is_allowed": {
+          "filtered": "https://filtered-origin.example",
+          "admin_http": "http://admin.example",
+          "blocked_override": "https://override.example",
+          "default_from_server": "https://filtered-origin.example"
+        },
+        "assertions": {
+          "origin_filtered": true,
+          "allowed_contains_admin_home_and_filter": true,
+          "allowed_results": true
+        },
+        "filters": [
+          {
+            "hook": "http_origin",
+            "value": "https://custom.example",
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "https://filtered-origin.example",
+            "args": [
+              "https://filtered-origin.example"
+            ]
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "http://admin.example",
+            "args": [
+              "http://admin.example"
+            ]
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "",
+            "args": [
+              "https://blocked.example"
+            ]
+          },
+          {
+            "hook": "http_origin",
+            "value": "https://custom.example",
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "https://filtered-origin.example",
+            "args": [
+              null
+            ]
+          }
+        ]
+      },
+      "http-api:validate-url": {
+        "case": "http-api:validate-url",
+        "validation": {
+          "empty": false,
+          "numeric": false,
+          "ftp_protocol": false,
+          "userinfo": false,
+          "bad_host_chars": false,
+          "same_home_port": "https://home.example:8443/safe",
+          "same_home_other_port": false,
+          "local_ip_blocked": false,
+          "local_ip_allowed_by_filter": "http://192.168.0.1/allow-local",
+          "public_ip_safe_port": "http://198.51.100.10:8080/path",
+          "public_ip_custom_port": "http://198.51.100.10:81/path"
+        },
+        "assertions": {
+          "invalid_inputs": true,
+          "same_home_port": true,
+          "local_ip_filter": true,
+          "safe_port_filter": true
+        },
+        "filters": [
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "home.example",
+              "https://home.example:8443/safe"
+            ]
+          },
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "home.example",
+              "https://home.example:9443/unsafe"
+            ]
+          },
+          {
+            "hook": "http_request_host_is_external",
+            "value": false,
+            "args": [
+              "192.168.0.1",
+              "http://192.168.0.1/blocked"
+            ]
+          },
+          {
+            "hook": "http_request_host_is_external",
+            "value": false,
+            "args": [
+              "192.168.0.1",
+              "http://192.168.0.1/allow-local"
+            ]
+          },
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "198.51.100.10",
+              "http://198.51.100.10:8080/path"
+            ]
+          },
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "198.51.100.10",
+              "http://198.51.100.10:81/path"
+            ]
+          }
+        ]
+      },
+      "http-api:allowed-hosts": {
+        "case": "http-api:allowed-hosts",
+        "allowed_http_request_hosts": {
+          "initial_true": true,
+          "redirect_allowed": true,
+          "redirect_blocked": false
+        },
+        "ms_allowed": {
+          "initial_true": true,
+          "network_domain": true,
+          "db_allowed_first": true,
+          "db_allowed_cached": true,
+          "db_blocked": false
+        },
+        "redirect_checks": [
+          "http://redirect.example",
+          "http://blocked.example"
+        ],
+        "wpdb_queries": [
+          {
+            "type": "prepare",
+            "query": "SELECT domain FROM wp_blogs WHERE domain = %s LIMIT 1",
+            "host": "site.example"
+          },
+          {
+            "type": "get_var",
+            "query": "prepared:site.example"
+          },
+          {
+            "type": "prepare",
+            "query": "SELECT domain FROM wp_blogs WHERE domain = %s LIMIT 1",
+            "host": "missing.example"
+          },
+          {
+            "type": "get_var",
+            "query": "prepared:missing.example"
+          }
+        ],
+        "assertions": {
+          "allowed_http_hosts": true,
+          "ms_allowed_results": true,
+          "db_cache_reused": true
+        },
+        "filters": []
+      }
+    },
+    "candidate": {
+      "http-api:request-wrappers": {
+        "case": "http-api:request-wrappers",
+        "returns": [
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "request",
+              "url": "https://api.example/request",
+              "args": {
+                "timeout": 7,
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "get",
+              "url": "https://api.example/get",
+              "args": {
+                "headers": {
+                  "X-Test": "1"
+                },
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "post",
+              "url": "https://api.example/post",
+              "args": {
+                "body": "payload",
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "head",
+              "url": "https://api.example/head",
+              "args": {
+                "reject_unsafe_urls": true
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "request",
+              "url": "https://api.example/raw",
+              "args": {
+                "timeout": 3
+              }
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "get",
+              "url": "https://api.example/raw-get",
+              "args": []
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "post",
+              "url": "https://api.example/raw-post",
+              "args": []
+            }
+          },
+          {
+            "fixture_http_call": {
+              "instance_id": 1,
+              "method": "head",
+              "url": "https://api.example/raw-head",
+              "args": []
+            }
+          }
+        ],
+        "calls": [
+          {
+            "instance_id": 1,
+            "method": "request",
+            "url": "https://api.example/request",
+            "args": {
+              "timeout": 7,
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "get",
+            "url": "https://api.example/get",
+            "args": {
+              "headers": {
+                "X-Test": "1"
+              },
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "post",
+            "url": "https://api.example/post",
+            "args": {
+              "body": "payload",
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "head",
+            "url": "https://api.example/head",
+            "args": {
+              "reject_unsafe_urls": true
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "request",
+            "url": "https://api.example/raw",
+            "args": {
+              "timeout": 3
+            }
+          },
+          {
+            "instance_id": 1,
+            "method": "get",
+            "url": "https://api.example/raw-get",
+            "args": []
+          },
+          {
+            "instance_id": 1,
+            "method": "post",
+            "url": "https://api.example/raw-post",
+            "args": []
+          },
+          {
+            "instance_id": 1,
+            "method": "head",
+            "url": "https://api.example/raw-head",
+            "args": []
+          }
+        ],
+        "instances": 1,
+        "assertions": {
+          "single_http_object": true,
+          "methods": true,
+          "safe_rejects_unsafe": true,
+          "unsafe_does_not_inject_reject": true
+        },
+        "filters": []
+      },
+      "http-api:supports": {
+        "case": "http-api:supports",
+        "supports": {
+          "numeric_https": true,
+          "auto_ssl": true,
+          "unsupported": false
+        },
+        "capability_calls": [
+          {
+            "ssl": true,
+            "streams": true
+          },
+          {
+            "blocking": true,
+            "ssl": true
+          },
+          {
+            "unsupported": true
+          }
+        ],
+        "assertions": {
+          "return_values": true,
+          "numeric_normalized": true,
+          "ssl_injected": true
+        },
+        "filters": []
+      },
+      "http-api:origins": {
+        "case": "http-api:origins",
+        "http_origin": "https://filtered-origin.example",
+        "allowed_origins": [
+          "http://admin.example",
+          "https://admin.example",
+          "http://home.example",
+          "https://home.example",
+          "https://filtered-origin.example",
+          "https://extra.example"
+        ],
+        "is_allowed": {
+          "filtered": "https://filtered-origin.example",
+          "admin_http": "http://admin.example",
+          "blocked_override": "https://override.example",
+          "default_from_server": "https://filtered-origin.example"
+        },
+        "assertions": {
+          "origin_filtered": true,
+          "allowed_contains_admin_home_and_filter": true,
+          "allowed_results": true
+        },
+        "filters": [
+          {
+            "hook": "http_origin",
+            "value": "https://custom.example",
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "https://filtered-origin.example",
+            "args": [
+              "https://filtered-origin.example"
+            ]
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "http://admin.example",
+            "args": [
+              "http://admin.example"
+            ]
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "",
+            "args": [
+              "https://blocked.example"
+            ]
+          },
+          {
+            "hook": "http_origin",
+            "value": "https://custom.example",
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origins",
+            "value": [
+              "http://admin.example",
+              "https://admin.example",
+              "http://home.example",
+              "https://home.example"
+            ],
+            "args": []
+          },
+          {
+            "hook": "allowed_http_origin",
+            "value": "https://filtered-origin.example",
+            "args": [
+              null
+            ]
+          }
+        ]
+      },
+      "http-api:validate-url": {
+        "case": "http-api:validate-url",
+        "validation": {
+          "empty": false,
+          "numeric": false,
+          "ftp_protocol": false,
+          "userinfo": false,
+          "bad_host_chars": false,
+          "same_home_port": "https://home.example:8443/safe",
+          "same_home_other_port": false,
+          "local_ip_blocked": false,
+          "local_ip_allowed_by_filter": "http://192.168.0.1/allow-local",
+          "public_ip_safe_port": "http://198.51.100.10:8080/path",
+          "public_ip_custom_port": "http://198.51.100.10:81/path"
+        },
+        "assertions": {
+          "invalid_inputs": true,
+          "same_home_port": true,
+          "local_ip_filter": true,
+          "safe_port_filter": true
+        },
+        "filters": [
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "home.example",
+              "https://home.example:8443/safe"
+            ]
+          },
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "home.example",
+              "https://home.example:9443/unsafe"
+            ]
+          },
+          {
+            "hook": "http_request_host_is_external",
+            "value": false,
+            "args": [
+              "192.168.0.1",
+              "http://192.168.0.1/blocked"
+            ]
+          },
+          {
+            "hook": "http_request_host_is_external",
+            "value": false,
+            "args": [
+              "192.168.0.1",
+              "http://192.168.0.1/allow-local"
+            ]
+          },
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "198.51.100.10",
+              "http://198.51.100.10:8080/path"
+            ]
+          },
+          {
+            "hook": "http_allowed_safe_ports",
+            "value": [
+              80,
+              443,
+              8080
+            ],
+            "args": [
+              "198.51.100.10",
+              "http://198.51.100.10:81/path"
+            ]
+          }
+        ]
+      },
+      "http-api:allowed-hosts": {
+        "case": "http-api:allowed-hosts",
+        "allowed_http_request_hosts": {
+          "initial_true": true,
+          "redirect_allowed": true,
+          "redirect_blocked": false
+        },
+        "ms_allowed": {
+          "initial_true": true,
+          "network_domain": true,
+          "db_allowed_first": true,
+          "db_allowed_cached": true,
+          "db_blocked": false
+        },
+        "redirect_checks": [
+          "http://redirect.example",
+          "http://blocked.example"
+        ],
+        "wpdb_queries": [
+          {
+            "type": "prepare",
+            "query": "SELECT domain FROM wp_blogs WHERE domain = %s LIMIT 1",
+            "host": "site.example"
+          },
+          {
+            "type": "get_var",
+            "query": "prepared:site.example"
+          },
+          {
+            "type": "prepare",
+            "query": "SELECT domain FROM wp_blogs WHERE domain = %s LIMIT 1",
+            "host": "missing.example"
+          },
+          {
+            "type": "get_var",
+            "query": "prepared:missing.example"
+          }
+        ],
+        "assertions": {
+          "allowed_http_hosts": true,
+          "ms_allowed_results": true,
+          "db_cache_reused": true
+        },
+        "filters": []
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:6bee2f2010a5a7bb6f6ffaedfb398a208c001955225c80f7790c00d452b9ae77",
+    "candidate_sha256": "sha256:6bee2f2010a5a7bb6f6ffaedfb398a208c001955225c80f7790c00d452b9ae77",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-http-transport-not-executed",
+      "owner": "WPHX-312.43",
+      "detail": "The fixture observes public HTTP API wrappers with a deterministic WP_Http stub. Live Requests transport, cURL/streams behavior, network I/O, timeout races, proxy/TLS behavior, and response streaming remain later WPHX-312 gates."
+    },
+    {
+      "id": "dns-and-ssrf-runtime-not-executed",
+      "owner": "WPHX-312.43",
+      "detail": "The fixture avoids external DNS and uses numeric hosts or stubs for deterministic SSRF safety branches. Controlled DNS and installed-network SSRF parity remain later gates."
+    },
+    {
+      "id": "cors-header-emission-not-executed",
+      "owner": "WPHX-312.43",
+      "detail": "Origin authorization helpers are observed, but send_origin_headers is not executed because it emits real headers and can exit on OPTIONS requests."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.43",
+      "detail": "The fixture uses PHP CLI with deterministic stubs rather than an installed WordPress distribution, real multisite database state, or ecosystem HTTP callers."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.43",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 26,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_claimed": false,
+    "requests_network_io_claimed": false,
+    "cors_header_emission_claimed": false
+  }
+}

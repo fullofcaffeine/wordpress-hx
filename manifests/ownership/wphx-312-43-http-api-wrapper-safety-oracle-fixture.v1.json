@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-api-wrapper-safety-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.30",
+    "external_ref": "WPHX-312.43"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "HTTP API request wrapper, capability, origin, and safe URL helper behavior",
+    "area": "src/wp-includes/http.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/http.php in isolated PHP CLI probes with deterministic WP_Http, Requests capability, option, filter, redirect, network, and wpdb stubs. It observes safe and unsafe request wrapper handoff, wp_http_supports capability shaping, HTTP origin helpers, wp_http_validate_url safety branches, allowed_http_request_hosts, and ms_allowed_http_request_hosts without claiming live HTTP transport, Requests network I/O, DNS behavior beyond deterministic numeric/stubbed paths, CORS header emission, proxy/TLS behavior, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-http-and-wordpress-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, SSRF validation with controlled DNS, CORS/header behavior, multisite installed behavior, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-api-wrapper-safety-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-43"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-api-wrapper-safety-oracle-fixture",
+      "npm run wp:core:wphx-312-http-api-wrapper-safety-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-43-http-api-wrapper-safety-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:009028b1aae51334245e584b1a9f5a5e4a2893231e2d3bca98807b7f463f8250"
+  }
+}
