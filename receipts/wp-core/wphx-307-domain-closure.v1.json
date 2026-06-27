@@ -1,0 +1,101 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-307-domain-closure",
+  "issue": {
+    "id": "wordpresshx-l76.14",
+    "external_ref": "WPHX-307",
+    "title": "WPHX-307 — Posts, metadata, revisions, WP_Query"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "domain closure audit over WPHX-307.01 through WPHX-307.12 receipts",
+  "evidence_class": "domain_closure",
+  "artifact_scope": "mixed: source_inventory, adapter_contract, oracle_source_mirror, live_integration, packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "receipts/wp-core/wphx-307-01-posts-query-surface.v1.json",
+      "role": "posts/query source, distribution, ABI, and upstream test surface inventory",
+      "sha256": "sha256:8bb063eed296fcbe20dade23d22a12d15041576d0bf477e53666d741932b6615"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-02-posts-query-adapter-contract-candidate.v1.json",
+      "role": "typed Haxe posts/query adapter-contract evidence",
+      "sha256": "sha256:8f3cf9a12b7f4663724851534b3adb2b936e8d7abc84d24e47caeab9e0f4e69a"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-03-post-crud-status-adapter-contract-candidate.v1.json",
+      "role": "typed Haxe post CRUD/status adapter-contract evidence",
+      "sha256": "sha256:b3a404bed208bd5ba83653719bdcb7fe4a00e43101bdae974bbccce930e2bd66"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-04-post-meta-cache-adapter-contract-candidate.v1.json",
+      "role": "typed Haxe post metadata/cache adapter-contract evidence",
+      "sha256": "sha256:34c40a66e3e928318ddc810405203cacf632693c876073bafd67983596caeeb7"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-05-post-revision-adapter-contract-candidate.v1.json",
+      "role": "typed Haxe post revision adapter-contract evidence",
+      "sha256": "sha256:9ea8451be02d943dde75337638fa2684b892336fd75c6126d8d07df86ba8941c"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-06-wp-query-runtime-fixture.v1.json",
+      "role": "deterministic WP_Query runtime ABI/query-state evidence",
+      "sha256": "sha256:7695f6c7ca15c2b8f21309489138817435798b6b36b876bb700edb3d57a7ba16"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-07-wp-query-live-db-fixture.v1.json",
+      "role": "live WP_Query SQL/result evidence over real wpdb",
+      "sha256": "sha256:01930e973900a5564cae23f6bb211ef53c84601809ef28eece5713b37d9ef721"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-08-wp-query-live-db-runtime-matrix.v1.json",
+      "role": "WP_Query live DB runtime matrix evidence",
+      "sha256": "sha256:38d36accaf3568c5948c174d40abc59f39b40f90e02cce3ee3d1fc2e518a9dfe"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-11-posts-query-upstream-phpunit-executable.v1.json",
+      "role": "provisioned upstream posts/query/meta/revisions PHPUnit pass/pass evidence",
+      "sha256": "sha256:356c398846c61dc1c0cb6ae1a9b1321e92cf175b2f2812a4f577f172df5ee3e4"
+    },
+    {
+      "path": "receipts/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json",
+      "role": "installed-distribution posts/query HTTP gate evidence",
+      "sha256": "sha256:1e1ac2bf10534e185d58cf57f980ad041b9bc7affff482e9cb51fcfc2819bd91"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-307 closure interpretation",
+      "sha256": "sha256:0b1b221a0d3de0e260eda7a7bc38cba1ecc6cd80d065dc23a5967ec8817bfd72"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-307-posts-query-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "surface_inventory": true,
+    "haxe_adapter_contracts": [
+      "PostsQueryAdapterContract",
+      "PostCrudStatusAdapterContract",
+      "PostMetaCacheAdapterContract",
+      "PostRevisionAdapterContract"
+    ],
+    "fixtures_cover": [
+      "post CRUD/status intent",
+      "post metadata/cache intent",
+      "post revisions/autosaves intent",
+      "WP_Query runtime ABI/query state",
+      "live SQL/result matrix",
+      "hooks/cache observations",
+      "selected upstream PHPUnit pass/pass classifications",
+      "installed-style packaged HTTP behavior"
+    ],
+    "remaining_gaps": [
+      "Generated public PHP replacement for wp-includes/post.php and WP_Query is not claimed.",
+      "Full database-backed installed post/content behavior is deferred to later distribution work.",
+      "This closes the WPHX-307 source-domain evidence slice, not the whole WordPress posts subsystem."
+    ]
+  }
+}

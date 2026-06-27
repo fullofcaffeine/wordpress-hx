@@ -1,0 +1,53 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/posts-query-installed-distribution",
+  "issue": {
+    "id": "wordpresshx-l76.14.2",
+    "external_ref": "WPHX-307.12",
+    "title": "WPHX-307.12 — Add installed-distribution posts/query behavior gate"
+  },
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "ownership": {
+    "kind": "packaged-distribution-installed-http-gate",
+    "public_contract": "The packaged posts/query surface must match vanilla through installed-style HTTP post insert, post meta, revision/autosave, front-end search, meta query, and single post cases while keeping public PHP replacement claims explicit."
+  },
+  "files": [
+    "tools/wp-core/run-posts-query-installed-distribution-gate.mjs",
+    "manifests/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json",
+    "manifests/ownership/wphx-307-12-posts-query-installed-distribution.v1.json",
+    "receipts/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json"
+  ],
+  "generated_artifacts": [
+    "manifests/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json",
+    "manifests/ownership/wphx-307-12-posts-query-installed-distribution.v1.json",
+    "receipts/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json"
+  ],
+  "verification": {
+    "commands": [
+      "npm run wp:core:wphx-307-posts-query-installed",
+      "npm run wp:core:wphx-307-posts-query-installed:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt": "receipt:wphx-307-12-posts-query-installed-distribution",
+    "manifest_sha256": "sha256:79cd5c4e3fcd1672ade572b2dc1588698eab6d00b13e9666aa5bb838b1ff1aea"
+  },
+  "boundaries": {
+    "haxe_owned_contracts": [
+      "PostsQueryAdapterContract",
+      "PostCrudStatusAdapterContract",
+      "PostMetaCacheAdapterContract",
+      "PostRevisionAdapterContract"
+    ],
+    "copied_oracle_public_php": [
+      "src/wp-includes/post.php",
+      "src/wp-includes/class-wp-post.php",
+      "src/wp-includes/class-wp-query.php",
+      "src/wp-includes/meta.php",
+      "src/wp-includes/revision.php",
+      "src/wp-includes/class-wp-meta-query.php",
+      "src/wp-includes/class-wp-tax-query.php"
+    ],
+    "generated_public_php_replacement_claimed": false
+  }
+}

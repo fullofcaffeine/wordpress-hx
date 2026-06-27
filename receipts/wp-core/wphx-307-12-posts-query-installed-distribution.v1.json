@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-307-12-posts-query-installed-distribution",
+  "issue": {
+    "id": "wordpresshx-l76.14.2",
+    "external_ref": "WPHX-307.12",
+    "title": "WPHX-307.12 — Add installed-distribution posts/query behavior gate"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "command": "npm run wp:core:wphx-307-posts-query-installed",
+  "evidence_class": "targeted_semantic_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json",
+      "role": "posts/query installed-distribution manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-307-12-posts-query-installed-distribution.v1.json",
+      "role": "posts/query installed-distribution ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-posts-query-installed-distribution-gate.mjs",
+      "role": "installed posts/query HTTP gate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-307-posts-query-installed",
+    "npm run wp:core:wphx-307-posts-query-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-307-02-posts-query-adapter-contract-candidate",
+    "receipt:wphx-307-03-post-crud-status-adapter-contract-candidate",
+    "receipt:wphx-307-04-post-meta-cache-adapter-contract-candidate",
+    "receipt:wphx-307-05-post-revision-adapter-contract-candidate",
+    "receipt:wphx-307-11-posts-query-upstream-phpunit-executable"
+  ],
+  "manifest_sha256": "sha256:79cd5c4e3fcd1672ade572b2dc1588698eab6d00b13e9666aa5bb838b1ff1aea",
+  "validation_result": {
+    "status": "passed",
+    "evidence_classes": [
+      "targeted_semantic_parity",
+      "runtime_abi",
+      "live_integration_parity"
+    ],
+    "artifact_scope": "packaged_distribution",
+    "fixture_cases": 7,
+    "http_runs": 2,
+    "public_php_files_are_copied_oracle_source": true,
+    "generated_public_posts_replacement_claimed": false,
+    "haxe_contracts_present": {
+      "posts_query": true,
+      "post_crud_status": true,
+      "post_meta_cache": true,
+      "post_revision": true
+    }
+  }
+}

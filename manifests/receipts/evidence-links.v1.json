@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 163,
+  "closed_task_count": 165,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -1014,6 +1014,36 @@
       ]
     },
     {
+      "external_ref": "WPHX-307",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-307-01-posts-query-surface.v1.json",
+          "sha256": "8bb063eed296fcbe20dade23d22a12d15041576d0bf477e53666d741932b6615",
+          "id": "receipt:wphx-307-01-posts-query-surface"
+        },
+        {
+          "path": "receipts/wp-core/wphx-307-02-posts-query-adapter-contract-candidate.v1.json",
+          "sha256": "8f3cf9a12b7f4663724851534b3adb2b936e8d7abc84d24e47caeab9e0f4e69a",
+          "id": "receipt:wphx-307-02-posts-query-adapter-contract-candidate"
+        },
+        {
+          "path": "receipts/wp-core/wphx-307-03-post-crud-status-adapter-contract-candidate.v1.json",
+          "sha256": "b3a404bed208bd5ba83653719bdcb7fe4a00e43101bdae974bbccce930e2bd66",
+          "id": "receipt:wphx-307-03-post-crud-status-adapter-contract-candidate"
+        },
+        {
+          "path": "receipts/wp-core/wphx-307-04-post-meta-cache-adapter-contract-candidate.v1.json",
+          "sha256": "34c40a66e3e928318ddc810405203cacf632693c876073bafd67983596caeeb7",
+          "id": "receipt:wphx-307-04-post-meta-cache-adapter-contract-candidate"
+        },
+        {
+          "path": "receipts/wp-core/wphx-307-domain-closure.v1.json",
+          "sha256": "d954bf64eedeb8270aa9307a0fd299089ebc51f1671c4c968f4647f4de2b0743",
+          "id": "receipt:wphx-307-domain-closure"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-307.05",
       "receipts": [
         {
@@ -1080,6 +1110,16 @@
           "path": "receipts/wp-core/wphx-307-11-posts-query-upstream-phpunit-executable.v1.json",
           "sha256": "356c398846c61dc1c0cb6ae1a9b1321e92cf175b2f2812a4f577f172df5ee3e4",
           "id": "receipt:wphx-307-11-posts-query-upstream-phpunit-executable"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-307.12",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-307-12-posts-query-installed-distribution.v1.json",
+          "sha256": "1e1ac2bf10534e185d58cf57f980ad041b9bc7affff482e9cb51fcfc2819bd91",
+          "id": "receipt:wphx-307-12-posts-query-installed-distribution"
         }
       ]
     },
