@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/customizer-manager-setting-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-2po",
+    "external_ref": "WPHX-310.09"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "Customizer manager, settings, controls, panels, sections, and selective refresh behavior",
+    "area": "src/wp-includes/class-wp-customize-manager.php src/wp-includes/class-wp-customize-setting.php src/wp-includes/class-wp-customize-panel.php src/wp-includes/class-wp-customize-section.php src/wp-includes/class-wp-customize-control.php src/wp-includes/customize/class-wp-customize-color-control.php src/wp-includes/customize/class-wp-customize-media-control.php src/wp-includes/customize/class-wp-customize-upload-control.php src/wp-includes/customize/class-wp-customize-image-control.php src/wp-includes/customize/class-wp-customize-background-image-control.php src/wp-includes/customize/class-wp-customize-background-position-control.php src/wp-includes/customize/class-wp-customize-cropped-image-control.php src/wp-includes/customize/class-wp-customize-site-icon-control.php src/wp-includes/customize/class-wp-customize-header-image-control.php src/wp-includes/customize/class-wp-customize-theme-control.php src/wp-includes/customize/class-wp-customize-code-editor-control.php src/wp-includes/customize/class-wp-customize-date-time-control.php src/wp-includes/customize/class-wp-widget-area-customize-control.php src/wp-includes/customize/class-wp-widget-form-customize-control.php src/wp-includes/customize/class-wp-sidebar-block-editor-control.php src/wp-includes/customize/class-wp-customize-nav-menu-control.php src/wp-includes/customize/class-wp-customize-nav-menu-item-control.php src/wp-includes/customize/class-wp-customize-nav-menu-location-control.php src/wp-includes/customize/class-wp-customize-nav-menu-name-control.php src/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php src/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php src/wp-includes/customize/class-wp-customize-nav-menus-panel.php src/wp-includes/customize/class-wp-customize-themes-panel.php src/wp-includes/customize/class-wp-customize-themes-section.php src/wp-includes/customize/class-wp-customize-sidebar-section.php src/wp-includes/customize/class-wp-customize-nav-menu-section.php src/wp-includes/customize/class-wp-customize-custom-css-setting.php src/wp-includes/customize/class-wp-customize-filter-setting.php src/wp-includes/customize/class-wp-customize-header-image-setting.php src/wp-includes/customize/class-wp-customize-background-image-setting.php src/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php src/wp-includes/customize/class-wp-customize-nav-menu-setting.php src/wp-includes/customize/class-wp-customize-selective-refresh.php src/wp-includes/customize/class-wp-customize-partial.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 Customizer source against deterministic in-process options, theme mods, capabilities, hooks, and customized request data. It does not claim generated public PHP replacement, full changeset transaction parity, Customizer admin UI parity, database-backed installed behavior, or upstream parity."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass full changeset persistence, Customizer admin UI, selective-refresh request handling, installed behavior, and selected upstream Customizer PHPUnit gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-customizer-manager-setting-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+    "build/wp-core/wphx-310-09"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-310-customizer-manager-setting-oracle-fixture",
+      "npm run wp:core:wphx-310-customizer-manager-setting-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-310-09-customizer-manager-setting-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:6eda3de07af419227fe0857f41031a9e68f0ed98c928e9faca1f5832a9a8c51c"
+  }
+}

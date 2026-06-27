@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-310-09-customizer-manager-setting-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-2po",
+    "external_ref": "WPHX-310.09",
+    "title": "WPHX-310.09 — Add customizer manager/settings oracle fixture"
+  },
+  "recorded_at": "2026-06-27T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+      "role": "customizer manager/settings oracle-source-mirror fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+      "role": "ownership manifest for copied-oracle Customizer boundary"
+    },
+    {
+      "path": "tools/wp-core/run-customizer-manager-setting-oracle-fixture.mjs",
+      "role": "deterministic oracle/candidate fixture generator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-310-customizer-manager-setting-oracle-fixture",
+    "npm run wp:core:wphx-310-customizer-manager-setting-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-310-01-themes-template-surface",
+    "receipt:wphx-310-02-theme-template-adapter-contract-candidate",
+    "receipt:wphx-310-06-theme-customizer-widget-nav-surface",
+    "receipt:wphx-310-07-widget-sidebar-oracle-fixture",
+    "receipt:wphx-310-08-nav-menu-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

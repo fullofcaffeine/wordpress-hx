@@ -1,0 +1,1095 @@
+{
+  "schema": "wphx.wp-core-customizer-manager-setting-oracle-fixture.v1",
+  "issue": "WPHX-310.09",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-customizer-manager-setting-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-310-01-themes-template-surface.v1.json",
+      "bytes": 133083,
+      "sha256": "sha256:04de8bdb20ee33e27e112b580c352dabad87049e7569c451dd2eeac3548657d3"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "bytes": 18550,
+      "sha256": "sha256:b6cb9b2cffcf14108f7795b139f98fafa7a37934b66e612ada59b44970817aa7"
+    },
+    "customizer_surface_manifest": {
+      "path": "manifests/wp-core/wphx-310-06-theme-customizer-widget-nav-surface.v1.json",
+      "bytes": 114736,
+      "sha256": "sha256:9b6f8a8b037a6568232dc4229e27f2d6b3459dbf852d4f440b75f9e4f11d7e30"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-customizer-manager-setting-oracle-fixture.mjs",
+      "bytes": 31274,
+      "sha256": "sha256:785da29295562a237e74af50c077920d41b20d25aaededcfd44683c426ea3134"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-customize-manager.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-manager.php",
+        "bytes": 202881,
+        "sha256": "sha256:a2abf1aa9152a86286e3108e1b7cdad1326388273360189f16928bdcd5c221bb"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-setting.php",
+        "bytes": 29963,
+        "sha256": "sha256:4d890ddb36a5c7a1e233d89a0385a5cfa0ba31bbd16f2f1a7621b4bc879bd685"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-panel.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-panel.php",
+        "bytes": 10710,
+        "sha256": "sha256:c4c300b410769baf6924f91819af56c5c8b37165de7dd16ade67390e27c4f510"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-section.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-section.php",
+        "bytes": 11209,
+        "sha256": "sha256:4468e6cd26e8d98bfa269e9a8cef701f5fea9a5fb5b9cf8f541cd25e7be99e42"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-customize-control.php",
+        "bytes": 26119,
+        "sha256": "sha256:a2aa87526c4ee1deb087209869f605fdebabe0597bf81150ba0f695feaf9c7fa"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-color-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-color-control.php",
+        "bytes": 3209,
+        "sha256": "sha256:f5572594b833d700775ed2d6e0a33b2b37e1b6d0ed74ff201092a49af9bd8957"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-media-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-media-control.php",
+        "bytes": 9466,
+        "sha256": "sha256:967ea412810ae7ff236e39df040ce37af7577f35c41c966fdd46c703fce9c4b4"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-upload-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-upload-control.php",
+        "bytes": 1197,
+        "sha256": "sha256:b92fffbb6fdd0320cb2a18a9ae342f9dae512c02787e5b2c74ca8a8444e85805"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-image-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-image-control.php",
+        "bytes": 1211,
+        "sha256": "sha256:7518716f32e9a61bad4e3147b36d5d38f9c12efa19c803723a0620ba35ec60ce"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-image-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-background-image-control.php",
+        "bytes": 1284,
+        "sha256": "sha256:cad5ac81c7cfebbf614c3e5ec5a8d58972a400a6f53f86b091ec0c5335b63bb4"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-position-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-background-position-control.php",
+        "bytes": 3032,
+        "sha256": "sha256:0b58e6d333f2c9ca78fc4f5727f6938576158c3034535897912e0c7429763525"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-cropped-image-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-cropped-image-control.php",
+        "bytes": 1459,
+        "sha256": "sha256:54a6edf492b8ce8c923901e4e79020d50fc6b4d3b9dd34d5df97cacf9839d896"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-site-icon-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-site-icon-control.php",
+        "bytes": 5163,
+        "sha256": "sha256:332d6feda684a2c0fa0c5fc185c598b4d320d4b4de78f8b9f4ceba65a5484300"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-header-image-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-header-image-control.php",
+        "bytes": 8313,
+        "sha256": "sha256:aa19b68968812a1aa37b83850ea0bdcaa1c0d751514d585eb61bd076dfab7fad"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-theme-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-theme-control.php",
+        "bytes": 11889,
+        "sha256": "sha256:d71f6b0b561248e6d8d7844aceb0b8019f075a8104c8bbf5430a195369efc55a"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-code-editor-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-code-editor-control.php",
+        "bytes": 2317,
+        "sha256": "sha256:4b81784a0a2cfa8c94982c9673a473accd359a01241f944ebb897c6f93519d9d"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-date-time-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-date-time-control.php",
+        "bytes": 9446,
+        "sha256": "sha256:87ae2ba5dc4040b41feed9bd4889d354a0b1c0ac0d58ec508ce4d35f780a7244"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-widget-area-customize-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-widget-area-customize-control.php",
+        "bytes": 1719,
+        "sha256": "sha256:41b6cbe29c8444f966f2575b424dcae77c5da517637576ae50e6d6fbd664ef53"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-widget-form-customize-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-widget-form-customize-control.php",
+        "bytes": 2646,
+        "sha256": "sha256:549f10c7e269ea5919a0ca6389b273e6b09fabff2ccb2bbe106eabd3ba6ae0f4"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-sidebar-block-editor-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-sidebar-block-editor-control.php",
+        "bytes": 686,
+        "sha256": "sha256:23bbb362d70cb4f11acb5b811a63e85138bf4f8a93b6cf3601628c302f9c78f9"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-control.php",
+        "bytes": 2128,
+        "sha256": "sha256:0051e729307bd1a9c6d9bbcb98e34704ac5e67715315753c948d537cd0eb3975"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-item-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-item-control.php",
+        "bytes": 8157,
+        "sha256": "sha256:3196235075f67a680c4a6473874e850a8a23cbb780f373c26c6504a0efb669de"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-location-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-location-control.php",
+        "bytes": 2299,
+        "sha256": "sha256:be3a7a55b122ee12fbd02319ba0e59b0c90e48f080c95eb4c246f28a59551a74"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-name-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-name-control.php",
+        "bytes": 1131,
+        "sha256": "sha256:4e7466018dcb5fbd09729a8b0543215086877c0f69f43e09eed7017f28a94ef6"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php",
+        "bytes": 2817,
+        "sha256": "sha256:b921e1db51a7e51affc585b1d385f9b6dec0ec27ad30a00b6ea83d96f71c98e1"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php",
+        "bytes": 1122,
+        "sha256": "sha256:bea73e889f6d9549ed697cf3ff223395d537cec2fce37106ed8e572855c7bd1f"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menus-panel.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menus-panel.php",
+        "bytes": 3309,
+        "sha256": "sha256:9ec8c90f3cc34346fe8c88e894c642387be123e65284bec796b03b3fd5835999"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-themes-panel.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-themes-panel.php",
+        "bytes": 3385,
+        "sha256": "sha256:b42b78f191e447c528211dfb3b909c99e00a9d9ab1e68784fb775199130bb14d"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-themes-section.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-themes-section.php",
+        "bytes": 6955,
+        "sha256": "sha256:5a4be2ffba784d971a4b673a5a0a13bb93ba6078f5b1beb8df47210f9ee09235"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-sidebar-section.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-sidebar-section.php",
+        "bytes": 1059,
+        "sha256": "sha256:0cd74a4ddeb9251788a2588fbefb586c87da1d6b320263f60fe64070f2430523"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-section.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-section.php",
+        "bytes": 716,
+        "sha256": "sha256:8a094a80d492272b228d233ea44bea38031268ca1c1f742a1161eb0f26ddb1b7"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-custom-css-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-custom-css-setting.php",
+        "bytes": 7693,
+        "sha256": "sha256:d0552a8b841953749cd422e9ec46070cda44ef4737902c4cac1d2ef3f426f0f9"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-filter-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-filter-setting.php",
+        "bytes": 733,
+        "sha256": "sha256:8ced4c4100bf20b1820cae29ce2bb6e1aad0d3b39de6c59ef117beab42dde745"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-header-image-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-header-image-setting.php",
+        "bytes": 1838,
+        "sha256": "sha256:91dd71276f9a1b580b665e5ce8e2b97e4f425514f15e8e44d9c9e8c7f9099156"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-image-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-background-image-setting.php",
+        "bytes": 782,
+        "sha256": "sha256:26d81702d9e91d0d605f119dc83e8e211b853437d2c9b52083098e719e5571f9"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php",
+        "bytes": 28075,
+        "sha256": "sha256:0a871dcc2601d3b4e62f0fc845b77cfd2d76a7f5ef59c68a83e866cc8f9193ca"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+        "bytes": 19128,
+        "sha256": "sha256:7ccfed9452aafdded56adb55fde6a38306a06fb4e74584cb5350a216d61c52b8"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "bytes": 13843,
+        "sha256": "sha256:99cb09c063844f87d454edb90006fbe7aa364ed4e78345503fb2a534f4fcaa21"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-partial.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/customize/class-wp-customize-partial.php",
+        "bytes": 10543,
+        "sha256": "sha256:aa4e6b7ad230107ee323d51531a1f7c14c12dd8886ab20df5d75fec649d17074"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "manager:bootstrap",
+        "focus": "manager construction, component filtering, changeset UUID, selective refresh, and bootstrap hooks"
+      },
+      {
+        "id": "registry:add-get-remove",
+        "focus": "settings, panels, sections, and controls are registered, retrievable, and removable"
+      },
+      {
+        "id": "settings:post-value-sanitize",
+        "focus": "incoming customized payload and set_post_value flow through validation, sanitization, and hooks"
+      },
+      {
+        "id": "settings:validate-values",
+        "focus": "validate_setting_values reports true, WP_Error invalidity, and unrecognized setting errors"
+      },
+      {
+        "id": "objects:json-and-capabilities",
+        "focus": "setting/control/panel/section JSON and capability checks preserve labels, links, and active filters"
+      },
+      {
+        "id": "selective-refresh:partial",
+        "focus": "selective refresh partial registration, JSON export, render callback, capability checks, and removal"
+      }
+    ],
+    "covered_symbols": [
+      "WP_Customize_Manager::__construct",
+      "WP_Customize_Manager::add_setting",
+      "WP_Customize_Manager::get_setting",
+      "WP_Customize_Manager::add_panel",
+      "WP_Customize_Manager::add_section",
+      "WP_Customize_Manager::add_control",
+      "WP_Customize_Manager::unsanitized_post_values",
+      "WP_Customize_Manager::post_value",
+      "WP_Customize_Manager::set_post_value",
+      "WP_Customize_Manager::validate_setting_values",
+      "WP_Customize_Setting::value",
+      "WP_Customize_Setting::post_value",
+      "WP_Customize_Setting::json",
+      "WP_Customize_Control::json",
+      "WP_Customize_Control::get_link",
+      "WP_Customize_Panel::json",
+      "WP_Customize_Section::json",
+      "WP_Customize_Selective_Refresh::add_partial",
+      "WP_Customize_Partial::json",
+      "WP_Customize_Partial::render"
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-customize-manager.php",
+      "src/wp-includes/class-wp-customize-setting.php",
+      "src/wp-includes/class-wp-customize-panel.php",
+      "src/wp-includes/class-wp-customize-section.php",
+      "src/wp-includes/class-wp-customize-control.php",
+      "src/wp-includes/customize/class-wp-customize-color-control.php",
+      "src/wp-includes/customize/class-wp-customize-media-control.php",
+      "src/wp-includes/customize/class-wp-customize-upload-control.php",
+      "src/wp-includes/customize/class-wp-customize-image-control.php",
+      "src/wp-includes/customize/class-wp-customize-background-image-control.php",
+      "src/wp-includes/customize/class-wp-customize-background-position-control.php",
+      "src/wp-includes/customize/class-wp-customize-cropped-image-control.php",
+      "src/wp-includes/customize/class-wp-customize-site-icon-control.php",
+      "src/wp-includes/customize/class-wp-customize-header-image-control.php",
+      "src/wp-includes/customize/class-wp-customize-theme-control.php",
+      "src/wp-includes/customize/class-wp-customize-code-editor-control.php",
+      "src/wp-includes/customize/class-wp-customize-date-time-control.php",
+      "src/wp-includes/customize/class-wp-widget-area-customize-control.php",
+      "src/wp-includes/customize/class-wp-widget-form-customize-control.php",
+      "src/wp-includes/customize/class-wp-sidebar-block-editor-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-item-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-location-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-name-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menus-panel.php",
+      "src/wp-includes/customize/class-wp-customize-themes-panel.php",
+      "src/wp-includes/customize/class-wp-customize-themes-section.php",
+      "src/wp-includes/customize/class-wp-customize-sidebar-section.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-section.php",
+      "src/wp-includes/customize/class-wp-customize-custom-css-setting.php",
+      "src/wp-includes/customize/class-wp-customize-filter-setting.php",
+      "src/wp-includes/customize/class-wp-customize-header-image-setting.php",
+      "src/wp-includes/customize/class-wp-customize-background-image-setting.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php",
+      "src/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+      "src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+      "src/wp-includes/customize/class-wp-customize-partial.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-310-09/probe.php",
+      "sha256": "sha256:b18c6cc4b0ebd71289533e06152a8d194f53fc2554db1cba41ba2873dc2ccf85"
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-310-02-theme-template-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-310-09/oracle",
+    "candidate_root": "build/wp-core/wphx-310-09/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-customize-manager.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/class-wp-customize-manager.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/class-wp-customize-manager.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/class-wp-customize-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/class-wp-customize-setting.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-panel.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/class-wp-customize-panel.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/class-wp-customize-panel.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-section.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/class-wp-customize-section.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/class-wp-customize-section.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-customize-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/class-wp-customize-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/class-wp-customize-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-color-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-color-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-color-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-media-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-media-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-media-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-upload-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-upload-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-upload-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-image-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-image-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-image-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-image-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-background-image-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-background-image-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-position-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-background-position-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-background-position-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-cropped-image-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-cropped-image-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-cropped-image-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-site-icon-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-site-icon-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-site-icon-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-header-image-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-header-image-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-header-image-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-theme-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-theme-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-theme-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-code-editor-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-code-editor-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-code-editor-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-date-time-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-date-time-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-date-time-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-widget-area-customize-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-widget-area-customize-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-widget-area-customize-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-widget-form-customize-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-widget-form-customize-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-widget-form-customize-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-sidebar-block-editor-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-sidebar-block-editor-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-sidebar-block-editor-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-item-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-item-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-item-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-location-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-location-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-location-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-name-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-name-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-name-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-locations-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-auto-add-control.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menus-panel.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menus-panel.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menus-panel.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-themes-panel.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-themes-panel.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-themes-panel.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-themes-section.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-themes-section.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-themes-section.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-sidebar-section.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-sidebar-section.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-sidebar-section.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-section.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-section.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-section.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-custom-css-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-custom-css-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-custom-css-setting.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-filter-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-filter-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-filter-setting.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-header-image-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-header-image-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-header-image-setting.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-image-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-background-image-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-background-image-setting.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-item-setting.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-nav-menu-setting.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-nav-menu-setting.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-selective-refresh.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-selective-refresh.php"
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-partial.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-310-09/oracle/wp-includes/customize/class-wp-customize-partial.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-310-09/candidate/wp-includes/customize/class-wp-customize-partial.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "cases": {
+        "manager:bootstrap": {
+          "changeset_uuid": "11111111-2222-4333-8444-555555555555",
+          "branching": false,
+          "is_theme_active": true,
+          "stylesheet": "fixture-theme",
+          "has_selective_refresh": true,
+          "has_widgets_component": false,
+          "has_nav_menus_component": false,
+          "customize_preview_hook_registered": true,
+          "setup_theme_hook_registered": true
+        },
+        "objects:json-and-capabilities": {
+          "control_json": {
+            "type": "select",
+            "active": true,
+            "section": "fixture_section",
+            "label": "Fixture Label",
+            "settings": {
+              "default": "fixture_option"
+            },
+            "content_has_select": true,
+            "content_has_link": true
+          },
+          "panel_json": {
+            "title": "Fixture Panel",
+            "active": true,
+            "priority": 20
+          },
+          "section_json": {
+            "title": "Fixture Section",
+            "active": true,
+            "panel": "fixture_panel",
+            "customizeAction": "Customizing &#9656; Fixture Panel"
+          },
+          "capabilities": {
+            "setting": true,
+            "control": true,
+            "panel": true,
+            "section": true
+          }
+        },
+        "registry:add-get-remove": {
+          "snapshot": {
+            "setting_ids_before_remove": [
+              "fixture_option",
+              "fixture_bad",
+              "fixture_nested[child]",
+              "fixture_mod"
+            ],
+            "panel_title": "Fixture Panel",
+            "section_panel": "fixture_panel",
+            "control_section": "fixture_section",
+            "control_setting_id": "fixture_option",
+            "nested_value": "stored child",
+            "theme_mod_value": "stored mod"
+          },
+          "removed": {
+            "control_removed": true,
+            "section_removed": true,
+            "panel_removed": true
+          }
+        },
+        "selective-refresh:partial": {
+          "partial_json": {
+            "settings": [
+              "fixture_option"
+            ],
+            "primarySetting": "fixture_option",
+            "selector": ".fixture",
+            "type": "default",
+            "fallbackRefresh": false,
+            "containerInclusive": true
+          },
+          "rendered": "<span class=\"partial\">Rendered Fixture</span>",
+          "capabilities": true,
+          "count_before_remove": 1,
+          "count_after_remove": 0
+        },
+        "settings:post-value-sanitize": {
+          "post_before_set": "POSTED VALUE",
+          "post_after_set": "SET VALUE",
+          "unsanitized_keys": [
+            "fixture_option",
+            "fixture_bad"
+          ],
+          "setting_json": {
+            "value": "stored option",
+            "transport": "postMessage",
+            "dirty": true,
+            "type": "option"
+          },
+          "post_value_set_action_count": 1
+        },
+        "settings:validate-values": {
+          "fixture_option": true,
+          "fixture_bad_error_codes": [
+            "fixture_invalid"
+          ],
+          "unknown_error_codes": [
+            "unrecognized"
+          ]
+        }
+      },
+      "actions": [
+        {
+          "hook": "customize_post_value_set_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_post_value_set",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_render_control",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_control_fixture_option",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_panel",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_panel_fixture_panel",
+          "arg_count": 0
+        },
+        {
+          "hook": "customize_render_section",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_section_fixture_section",
+          "arg_count": 0
+        }
+      ],
+      "filters": [
+        {
+          "hook": "customize_loaded_components",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_partial_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_partial_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_sanitize_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_sanitize_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_sanitize_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_validate_fixture_bad",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_control_active",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_panel_active",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_section_active",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_partial_render",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_partial_render_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_changeset_branching",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_sanitize_js_fixture_option",
+          "arg_count": 2
+        }
+      ],
+      "php_errors": []
+    },
+    "candidate": {
+      "cases": {
+        "manager:bootstrap": {
+          "changeset_uuid": "11111111-2222-4333-8444-555555555555",
+          "branching": false,
+          "is_theme_active": true,
+          "stylesheet": "fixture-theme",
+          "has_selective_refresh": true,
+          "has_widgets_component": false,
+          "has_nav_menus_component": false,
+          "customize_preview_hook_registered": true,
+          "setup_theme_hook_registered": true
+        },
+        "objects:json-and-capabilities": {
+          "control_json": {
+            "type": "select",
+            "active": true,
+            "section": "fixture_section",
+            "label": "Fixture Label",
+            "settings": {
+              "default": "fixture_option"
+            },
+            "content_has_select": true,
+            "content_has_link": true
+          },
+          "panel_json": {
+            "title": "Fixture Panel",
+            "active": true,
+            "priority": 20
+          },
+          "section_json": {
+            "title": "Fixture Section",
+            "active": true,
+            "panel": "fixture_panel",
+            "customizeAction": "Customizing &#9656; Fixture Panel"
+          },
+          "capabilities": {
+            "setting": true,
+            "control": true,
+            "panel": true,
+            "section": true
+          }
+        },
+        "registry:add-get-remove": {
+          "snapshot": {
+            "setting_ids_before_remove": [
+              "fixture_option",
+              "fixture_bad",
+              "fixture_nested[child]",
+              "fixture_mod"
+            ],
+            "panel_title": "Fixture Panel",
+            "section_panel": "fixture_panel",
+            "control_section": "fixture_section",
+            "control_setting_id": "fixture_option",
+            "nested_value": "stored child",
+            "theme_mod_value": "stored mod"
+          },
+          "removed": {
+            "control_removed": true,
+            "section_removed": true,
+            "panel_removed": true
+          }
+        },
+        "selective-refresh:partial": {
+          "partial_json": {
+            "settings": [
+              "fixture_option"
+            ],
+            "primarySetting": "fixture_option",
+            "selector": ".fixture",
+            "type": "default",
+            "fallbackRefresh": false,
+            "containerInclusive": true
+          },
+          "rendered": "<span class=\"partial\">Rendered Fixture</span>",
+          "capabilities": true,
+          "count_before_remove": 1,
+          "count_after_remove": 0
+        },
+        "settings:post-value-sanitize": {
+          "post_before_set": "POSTED VALUE",
+          "post_after_set": "SET VALUE",
+          "unsanitized_keys": [
+            "fixture_option",
+            "fixture_bad"
+          ],
+          "setting_json": {
+            "value": "stored option",
+            "transport": "postMessage",
+            "dirty": true,
+            "type": "option"
+          },
+          "post_value_set_action_count": 1
+        },
+        "settings:validate-values": {
+          "fixture_option": true,
+          "fixture_bad_error_codes": [
+            "fixture_invalid"
+          ],
+          "unknown_error_codes": [
+            "unrecognized"
+          ]
+        }
+      },
+      "actions": [
+        {
+          "hook": "customize_post_value_set_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_post_value_set",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_render_control",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_control_fixture_option",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_panel",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_panel_fixture_panel",
+          "arg_count": 0
+        },
+        {
+          "hook": "customize_render_section",
+          "arg_count": 1
+        },
+        {
+          "hook": "customize_render_section_fixture_section",
+          "arg_count": 0
+        }
+      ],
+      "filters": [
+        {
+          "hook": "customize_loaded_components",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_setting_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_setting_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_dynamic_partial_args",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_dynamic_partial_class",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_sanitize_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_sanitize_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_validate_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_sanitize_fixture_option",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_validate_fixture_bad",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_control_active",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_panel_active",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_section_active",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_partial_render",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_partial_render_fixture_option",
+          "arg_count": 3
+        },
+        {
+          "hook": "customize_changeset_branching",
+          "arg_count": 2
+        },
+        {
+          "hook": "customize_sanitize_js_fixture_option",
+          "arg_count": 2
+        }
+      ],
+      "php_errors": []
+    },
+    "match": true,
+    "oracle_sha256": "sha256:a88d2d8f159da99f57dcf5c73e13a687eb6819c46aba38ac96cce05ca3321f90",
+    "candidate_sha256": "sha256:a88d2d8f159da99f57dcf5c73e13a687eb6819c46aba38ac96cce05ca3321f90"
+  },
+  "remaining_gaps": [
+    {
+      "id": "changeset-persistence-not-executed",
+      "owner": "WPHX-310.09",
+      "detail": "The fixture covers in-process customized payload and setting validation flow. save_changeset_post, autosaves, locking, scheduled publication, and post/revision persistence remain later gates."
+    },
+    {
+      "id": "customizer-ui-and-request-handling-not-executed",
+      "owner": "WPHX-310.09",
+      "detail": "Customizer controls UI requests, nonce refresh, themes loading, selective-refresh AJAX rendering, widgets/nav-menus component behavior, and browser-admin interaction remain later gates."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-310.09",
+      "detail": "Customizer PHP files are copied oracle source in this fixture; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-310-09-customizer-manager-setting-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 20,
+    "observations_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

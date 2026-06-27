@@ -213,6 +213,8 @@
     "wp:core:wphx-310-widget-sidebar-oracle-fixture:check": "node tools/wp-core/run-widget-sidebar-oracle-fixture.mjs --check",
     "wp:core:wphx-310-nav-menu-oracle-fixture": "node tools/wp-core/run-nav-menu-oracle-fixture.mjs",
     "wp:core:wphx-310-nav-menu-oracle-fixture:check": "node tools/wp-core/run-nav-menu-oracle-fixture.mjs --check",
+    "wp:core:wphx-310-customizer-manager-setting-oracle-fixture": "node tools/wp-core/run-customizer-manager-setting-oracle-fixture.mjs",
+    "wp:core:wphx-310-customizer-manager-setting-oracle-fixture:check": "node tools/wp-core/run-customizer-manager-setting-oracle-fixture.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
