@@ -1,0 +1,397 @@
+{
+  "schema": "wphx.wp-core-http-parse-url-shim-oracle-fixture.v1",
+  "issue": "WPHX-312.44",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-http-parse-url-shim-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_source_mirror",
+    "candidate_package_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "fixture",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "http_api_wrapper_safety_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+      "bytes": 30913,
+      "sha256": "sha256:009028b1aae51334245e584b1a9f5a5e4a2893231e2d3bca98807b7f463f8250"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-http-parse-url-shim-oracle-fixture.mjs",
+      "bytes": 18764,
+      "sha256": "sha256:af8c1e40890dcffc30b5965436aeb6e32422476bea46e6b89239a99f3323651e"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/http.php",
+        "bytes": 27255,
+        "sha256": "sha256:7a63a77f4756080479635163a819db92f3367d9d45df3964eedac1e477c3b552"
+      },
+      {
+        "path": "src/wp-includes/class-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-http.php",
+        "bytes": 367,
+        "sha256": "sha256:0882fa684a028543f18568149920e7ed12e1a47fd646e5bf8f08c97ebed5d239"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "http-parse-url:absolute-and-components",
+        "focus": "absolute URL parsing and PHP_URL_* component extraction"
+      },
+      {
+        "id": "http-parse-url:relative-and-schemeless",
+        "focus": "schemeless and root-relative placeholder normalization with query-colon behavior"
+      },
+      {
+        "id": "http-parse-url:component-helper",
+        "focus": "_get_component_from_parsed_url_array success, missing, false, and whole-array behavior"
+      },
+      {
+        "id": "http-parse-url:constant-translation",
+        "focus": "_wp_translate_php_url_constant_to_key maps known constants and rejects invalid constants"
+      },
+      {
+        "id": "class-http:deprecated-wrapper",
+        "focus": "class-http.php records deprecation and requires class-wp-http.php exactly once"
+      }
+    ],
+    "covered_symbols": [
+      "wp_parse_url",
+      "_get_component_from_parsed_url_array",
+      "_wp_translate_php_url_constant_to_key",
+      "class-http.php",
+      "_deprecated_file",
+      "WP_Http",
+      "WpOrg\\Requests\\Autoload",
+      "WpOrg\\Requests\\Requests"
+    ],
+    "source_files": [
+      "src/wp-includes/http.php",
+      "src/wp-includes/class-http.php",
+      "src/wp-includes/class-wp-http.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-44/probe.php",
+      "sha256": "sha256:73fb24534d5e319a5d290bf76af9ac4624ad0451b4276d70355ba992905c68b4"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "Requests Autoload/Requests and _deprecated_file are deterministic structural stubs; copied http.php, class-http.php, and class-wp-http.php remain the executed public HTTP parse-url/shim sources."
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "copied_oracle_public_php": true,
+      "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "installed_wordpress_behavior_claimed": false
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-44/oracle",
+    "candidate_root": "build/wp-core/wphx-312-44/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-44/oracle/wp-includes/http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-44/candidate/wp-includes/http.php"
+      },
+      {
+        "path": "src/wp-includes/class-http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-44/oracle/wp-includes/class-http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-44/candidate/wp-includes/class-http.php"
+      },
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-44/oracle/wp-includes/class-wp-http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-44/candidate/wp-includes/class-wp-http.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "http-parse-url:absolute-and-components": {
+        "case": "http-parse-url:absolute-and-components",
+        "all": {
+          "scheme": "https",
+          "host": "example.test",
+          "port": 8443,
+          "user": "user",
+          "pass": "pass",
+          "path": "/path/file.php",
+          "query": "x=1",
+          "fragment": "frag"
+        },
+        "components": {
+          "scheme": "https",
+          "host": "example.test",
+          "port": 8443,
+          "user": "user",
+          "pass": "pass",
+          "path": "/path/file.php",
+          "query": "x=1",
+          "fragment": "frag"
+        },
+        "assertions": {
+          "all_parts": true,
+          "components": true
+        }
+      },
+      "http-parse-url:relative-and-schemeless": {
+        "case": "http-parse-url:relative-and-schemeless",
+        "schemeless": {
+          "host": "cdn.example.test",
+          "path": "/lib.js",
+          "query": "ver=1"
+        },
+        "root_relative": {
+          "path": "/wp-admin/admin.php",
+          "query": "page=a:b&x=1"
+        },
+        "root_components": {
+          "scheme": null,
+          "host": null,
+          "path": "/wp-admin/admin.php",
+          "query": "page=a:b&x=1"
+        },
+        "parse_failure": false,
+        "assertions": {
+          "schemeless_removes_placeholder_scheme": true,
+          "root_relative_removes_placeholder_scheme_host": true,
+          "components_missing_are_null": true,
+          "parse_failure_false": true
+        }
+      },
+      "http-parse-url:component-helper": {
+        "case": "http-parse-url:component-helper",
+        "helper": {
+          "all": {
+            "scheme": "https",
+            "host": "example.test",
+            "path": "/index.php"
+          },
+          "host": "example.test",
+          "missing_query": null,
+          "false_parts": null,
+          "invalid_component": null
+        },
+        "assertions": {
+          "all": true,
+          "host": true,
+          "missing_and_false_null": true
+        }
+      },
+      "http-parse-url:constant-translation": {
+        "case": "http-parse-url:constant-translation",
+        "translations": {
+          "0": "scheme",
+          "1": "host",
+          "2": "port",
+          "3": "user",
+          "4": "pass",
+          "5": "path",
+          "6": "query",
+          "7": "fragment",
+          "invalid": false
+        },
+        "assertions": {
+          "known_constants": true
+        }
+      },
+      "class-http:deprecated-wrapper": {
+        "case": "class-http:deprecated-wrapper",
+        "deprecated_files": [
+          {
+            "file": "class-http.php",
+            "version": "5.9.0",
+            "replacement": "wp-includes/class-wp-http.php"
+          }
+        ],
+        "class_exists": true,
+        "deprecated_after_second_require_once": [
+          {
+            "file": "class-http.php",
+            "version": "5.9.0",
+            "replacement": "wp-includes/class-wp-http.php"
+          }
+        ],
+        "assertions": {
+          "deprecated_recorded": true,
+          "class_loaded": true,
+          "require_once_idempotent": true
+        }
+      }
+    },
+    "candidate": {
+      "http-parse-url:absolute-and-components": {
+        "case": "http-parse-url:absolute-and-components",
+        "all": {
+          "scheme": "https",
+          "host": "example.test",
+          "port": 8443,
+          "user": "user",
+          "pass": "pass",
+          "path": "/path/file.php",
+          "query": "x=1",
+          "fragment": "frag"
+        },
+        "components": {
+          "scheme": "https",
+          "host": "example.test",
+          "port": 8443,
+          "user": "user",
+          "pass": "pass",
+          "path": "/path/file.php",
+          "query": "x=1",
+          "fragment": "frag"
+        },
+        "assertions": {
+          "all_parts": true,
+          "components": true
+        }
+      },
+      "http-parse-url:relative-and-schemeless": {
+        "case": "http-parse-url:relative-and-schemeless",
+        "schemeless": {
+          "host": "cdn.example.test",
+          "path": "/lib.js",
+          "query": "ver=1"
+        },
+        "root_relative": {
+          "path": "/wp-admin/admin.php",
+          "query": "page=a:b&x=1"
+        },
+        "root_components": {
+          "scheme": null,
+          "host": null,
+          "path": "/wp-admin/admin.php",
+          "query": "page=a:b&x=1"
+        },
+        "parse_failure": false,
+        "assertions": {
+          "schemeless_removes_placeholder_scheme": true,
+          "root_relative_removes_placeholder_scheme_host": true,
+          "components_missing_are_null": true,
+          "parse_failure_false": true
+        }
+      },
+      "http-parse-url:component-helper": {
+        "case": "http-parse-url:component-helper",
+        "helper": {
+          "all": {
+            "scheme": "https",
+            "host": "example.test",
+            "path": "/index.php"
+          },
+          "host": "example.test",
+          "missing_query": null,
+          "false_parts": null,
+          "invalid_component": null
+        },
+        "assertions": {
+          "all": true,
+          "host": true,
+          "missing_and_false_null": true
+        }
+      },
+      "http-parse-url:constant-translation": {
+        "case": "http-parse-url:constant-translation",
+        "translations": {
+          "0": "scheme",
+          "1": "host",
+          "2": "port",
+          "3": "user",
+          "4": "pass",
+          "5": "path",
+          "6": "query",
+          "7": "fragment",
+          "invalid": false
+        },
+        "assertions": {
+          "known_constants": true
+        }
+      },
+      "class-http:deprecated-wrapper": {
+        "case": "class-http:deprecated-wrapper",
+        "deprecated_files": [
+          {
+            "file": "class-http.php",
+            "version": "5.9.0",
+            "replacement": "wp-includes/class-wp-http.php"
+          }
+        ],
+        "class_exists": true,
+        "deprecated_after_second_require_once": [
+          {
+            "file": "class-http.php",
+            "version": "5.9.0",
+            "replacement": "wp-includes/class-wp-http.php"
+          }
+        ],
+        "assertions": {
+          "deprecated_recorded": true,
+          "class_loaded": true,
+          "require_once_idempotent": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:fa2e4423ab02837356c5be815f80e0cc3b6448594de4a64399091ae346fd4f43",
+    "candidate_sha256": "sha256:fa2e4423ab02837356c5be815f80e0cc3b6448594de4a64399091ae346fd4f43",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "live-http-transport-not-executed",
+      "owner": "WPHX-312.44",
+      "detail": "The fixture observes URL parsing helpers and the deprecated class shim in isolation. Live HTTP transport, Requests network behavior, proxy/TLS behavior, and response streaming remain later WPHX-312 gates."
+    },
+    {
+      "id": "url-safety-validation-not-executed",
+      "owner": "WPHX-312.44",
+      "detail": "wp_http_validate_url and SSRF safety behavior are covered by WPHX-312.43; this fixture only observes parse_url compatibility helpers."
+    },
+    {
+      "id": "installed-distribution-behavior-not-executed",
+      "owner": "WPHX-312.44",
+      "detail": "The fixture uses PHP CLI with deterministic stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.44",
+      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 5,
+    "covered_symbols": 8,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_claimed": false,
+    "requests_network_io_claimed": false
+  }
+}

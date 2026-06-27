@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-parse-url-shim-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-l76.18.31",
+    "external_ref": "WPHX-312.44"
+  },
+  "unit": {
+    "kind": "oracle_source_mirror_fixture",
+    "name": "HTTP parse-url helper and deprecated class-http shim behavior",
+    "area": "src/wp-includes/http.php src/wp-includes/class-http.php src/wp-includes/class-wp-http.php",
+    "public_contract": "This fixture executes copied WordPress 7.0 wp-includes/http.php, class-http.php, and class-wp-http.php in isolated PHP CLI probes with deterministic Requests autoload and deprecation stubs. It observes wp_parse_url, _get_component_from_parsed_url_array, _wp_translate_php_url_constant_to_key, and class-http.php's deprecated handoff without claiming live HTTP transport, Requests network I/O, URL safety validation, CORS header emission, installed distribution behavior, or generated public PHP ownership."
+  },
+  "ownership_state": "oracle_mirror_behavior_fixture",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-oracle-public-php-with-stubbed-requests-and-deprecation-boundary",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass URL parsing, compatibility shim, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-http-parse-url-shim-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+    "build/wp-core/wphx-312-44"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-parse-url-shim-oracle-fixture",
+      "npm run wp:core:wphx-312-http-parse-url-shim-oracle-fixture:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-44-http-parse-url-shim-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:e1f9be64506e08d5be4bd9742fabb562f6a2bdbed993781cb754fc65a50f6e71"
+  }
+}
