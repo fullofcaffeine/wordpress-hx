@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 135,
+  "scanned_file_count": 137,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -29,6 +29,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCronMailFeedEmbedAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpIpAddressCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProxyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/MultisiteAdapterContractCandidateEntry.hx",
@@ -124,6 +125,7 @@
     "src/wphx/wp/http/HttpCookieStrategy.hx",
     "src/wphx/wp/http/HttpCronMailFeedEmbedAdapterContract.hx",
     "src/wphx/wp/http/HttpEncodingStrategy.hx",
+    "src/wphx/wp/http/HttpIpAddress.hx",
     "src/wphx/wp/http/HttpProxyStrategy.hx",
     "src/wphx/wp/http/HttpResponseState.hx",
     "src/wphx/wp/macros/BindingValidator.hx",
@@ -142,7 +144,7 @@
     "src/wphx/wp/themes/ThemeTemplateAdapterContract.hx"
   ],
   "lookback_lines": 6,
-  "occurrence_count": 70,
+  "occurrence_count": 71,
   "occurrences": [
     {
       "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeKernel.hx",
@@ -775,6 +777,16 @@
       "justification": "WPHX-211: PHP empty() semantics are required for content-encoding header checks."
     },
     {
+      "path": "src/wphx/wp/http/HttpIpAddress.hx",
+      "line": 48,
+      "kinds": [
+        "php.Syntax.code"
+      ],
+      "source": "return php.Syntax.code(\"1 === preg_match({0}, {1})\", pattern, value);",
+      "source_sha256": "sha256:a0ff63f42f571a7f3fb29b01f0e81c20d0ab1213e4a9105f508615bf6334bc5c",
+      "justification": "WPHX-211: WordPress' IPv6 helper uses PHP PCRE subroutine/backreference syntax that Haxe EReg does not model."
+    },
+    {
       "path": "src/wphx/wp/http/HttpResponseState.hx",
       "line": 69,
       "kinds": [
@@ -847,7 +859,7 @@
   ],
   "by_kind": {
     "Dynamic": 8,
-    "php.Syntax.code": 62
+    "php.Syntax.code": 63
   },
   "validation_result": {
     "status": "passed",

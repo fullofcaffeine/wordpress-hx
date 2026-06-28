@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-ip-address-candidate",
+  "issue": {
+    "id": "wordpresshx-0qj",
+    "external_ref": "WPHX-312.55"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http IP address helper",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::is_ip_address",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell while delegating the IPv4 regex-shape, IPv6 PCRE, and bracket/space trim decisions to module-level Haxe source with a narrow PHP PCRE boundary for upstream-compatible regex behavior."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass the broader WP_Http helper, upstream HTTP PHPUnit, installed distribution, ecosystem HTTP helper, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-ip-address-candidate.mjs",
+    "fixtures/wp-core/http-ip-address-candidate.hxml",
+    "src/wphx/wp/http/HttpIpAddress.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpIpAddressCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+    "manifests/ownership/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+    "receipts/wp-core/wphx-312-55-wp-http-ip-address-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+    "manifests/ownership/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+    "receipts/wp-core/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+    "build/wp-core/wphx-312-55"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-ip-address-candidate",
+      "npm run wp:core:wphx-312-wp-http-ip-address-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-55-wp-http-ip-address-candidate"
+    ],
+    "manifest_digest": "sha256:798637902b2a32f36a30d032c0dcb9b810c8a1ffd33ecd19a3e8a8628d11ae5e"
+  }
+}
