@@ -275,6 +275,8 @@
     "wp:core:wphx-312-wp-http-transport-selection-candidate:check": "node tools/wp-core/run-wp-http-transport-selection-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-safety-options-candidate": "node tools/wp-core/run-wp-http-request-safety-options-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-safety-options-candidate:check": "node tools/wp-core/run-wp-http-request-safety-options-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-request-unsafe-url-validation-candidate": "node tools/wp-core/run-wp-http-request-unsafe-url-validation-candidate.mjs",
+    "wp:core:wphx-312-wp-http-request-unsafe-url-validation-candidate:check": "node tools/wp-core/run-wp-http-request-unsafe-url-validation-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-method-options-candidate": "node tools/wp-core/run-wp-http-request-method-options-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-method-options-candidate:check": "node tools/wp-core/run-wp-http-request-method-options-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-head-redirection-default-candidate": "node tools/wp-core/run-wp-http-request-head-redirection-default-candidate.mjs",
