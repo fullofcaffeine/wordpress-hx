@@ -293,6 +293,8 @@
     "wp:core:wphx-312-wp-http-request-blocked-request-candidate:check": "node tools/wp-core/run-wp-http-request-blocked-request-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-preemptive-response-candidate": "node tools/wp-core/run-wp-http-request-preemptive-response-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-preemptive-response-candidate:check": "node tools/wp-core/run-wp-http-request-preemptive-response-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-request-header-parsing-candidate": "node tools/wp-core/run-wp-http-request-header-parsing-candidate.mjs",
+    "wp:core:wphx-312-wp-http-request-header-parsing-candidate:check": "node tools/wp-core/run-wp-http-request-header-parsing-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-absolute-url-candidate": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
     "wp:core:wphx-312-wp-http-absolute-url-candidate:check": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-redirect-orchestration-candidate": "node tools/wp-core/run-wp-http-redirect-orchestration-candidate.mjs",
