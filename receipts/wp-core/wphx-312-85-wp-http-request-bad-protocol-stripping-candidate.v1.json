@@ -1,0 +1,57 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-85-wp-http-request-bad-protocol-stripping-candidate",
+  "issue": {
+    "id": "wordpresshx-ffd",
+    "external_ref": "WPHX-312.85",
+    "title": "WPHX-312.85 - Promote WP_Http request bad-protocol stripping decision to Haxe candidate"
+  },
+  "recorded_at": "2026-06-28T05:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-85-wp-http-request-bad-protocol-stripping-candidate.v1.json",
+      "role": "WP_Http request bad-protocol stripping Haxe candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-85-wp-http-request-bad-protocol-stripping-candidate.v1.json",
+      "role": "ownership manifest for WP_Http request bad-protocol stripping Haxe candidate"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-request-bad-protocol-stripping-candidate.mjs",
+      "role": "deterministic PHP CLI oracle/candidate Haxe fixture generator"
+    },
+    {
+      "path": "fixtures/wp-core/http-request-bad-protocol-stripping-candidate.hxml",
+      "role": "Haxe compile target for request bad-protocol stripping candidate"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-32-http-proxy-oracle-fixture",
+    "receipt:wphx-312-43-http-api-wrapper-safety-oracle-fixture",
+    "receipt:wphx-312-46-wp-http-request-orchestration-oracle-fixture",
+    "receipt:wphx-312-47-wp-http-block-request-policy-oracle-fixture",
+    "receipt:wphx-312-49-wp-http-request-proxy-safety-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 6,
+    "covered_symbols": 18,
+    "promoted_symbols": 1,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "full_request_bad_protocol_stripping_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "proxy_negotiation_claimed": false,
+    "transport_execution_claimed": false
+  }
+}
