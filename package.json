@@ -297,6 +297,8 @@
     "wp:core:wphx-312-wp-http-request-stream-blocking-candidate:check": "node tools/wp-core/run-wp-http-request-stream-blocking-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-stream-filename-options-candidate": "node tools/wp-core/run-wp-http-request-stream-filename-options-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-stream-filename-options-candidate:check": "node tools/wp-core/run-wp-http-request-stream-filename-options-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-request-stream-default-filename-candidate": "node tools/wp-core/run-wp-http-request-stream-default-filename-candidate.mjs",
+    "wp:core:wphx-312-wp-http-request-stream-default-filename-candidate:check": "node tools/wp-core/run-wp-http-request-stream-default-filename-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-stream-destination-error-candidate": "node tools/wp-core/run-wp-http-request-stream-destination-error-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-stream-destination-error-candidate:check": "node tools/wp-core/run-wp-http-request-stream-destination-error-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-invalid-url-candidate": "node tools/wp-core/run-wp-http-request-invalid-url-candidate.mjs",

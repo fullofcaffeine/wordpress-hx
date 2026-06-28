@@ -1,0 +1,55 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-88-wp-http-request-stream-default-filename-candidate",
+  "issue": {
+    "id": "wordpresshx-liz",
+    "external_ref": "WPHX-312.88",
+    "title": "WPHX-312.88 - Promote WP_Http request stream default-filename decision to Haxe candidate"
+  },
+  "recorded_at": "2026-06-28T08:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-88-wp-http-request-stream-default-filename-candidate.v1.json",
+      "role": "WP_Http request stream default-filename Haxe candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-88-wp-http-request-stream-default-filename-candidate.v1.json",
+      "role": "ownership manifest for WP_Http request stream default-filename Haxe candidate"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-request-stream-default-filename-candidate.mjs",
+      "role": "deterministic PHP CLI oracle/candidate Haxe fixture generator"
+    },
+    {
+      "path": "fixtures/wp-core/http-request-stream-default-filename-candidate.hxml",
+      "role": "Haxe compile target for request stream default-filename candidate"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-wp-http-request-stream-default-filename-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-stream-default-filename-candidate:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-46-wp-http-request-orchestration-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 1,
+    "covered_symbols": 7,
+    "promoted_symbols": 1,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "full_request_orchestration_claimed": false,
+    "stream_default_filename_decision_claimed": true,
+    "temp_dir_or_basename_semantics_claimed": false,
+    "streaming_file_io_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "transport_execution_claimed": false
+  }
+}
