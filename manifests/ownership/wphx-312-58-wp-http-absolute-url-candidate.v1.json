@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-absolute-url-candidate",
+  "issue": {
+    "id": "wordpresshx-a7v",
+    "external_ref": "WPHX-312.58"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http absolute URL helper",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::make_absolute_url",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell and wp_parse_url parse/failure behavior while delegating URL assembly and relative-path normalization to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
+    "fixtures/wp-core/http-absolute-url-candidate.hxml",
+    "src/wphx/wp/http/HttpAbsoluteUrl.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+    "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+    "receipts/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+    "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+    "receipts/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+    "build/wp-core/wphx-312-58"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-absolute-url-candidate",
+      "npm run wp:core:wphx-312-wp-http-absolute-url-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-58-wp-http-absolute-url-candidate"
+    ],
+    "manifest_digest": "sha256:98bd57195cd7a46be7d60fdf3ee4654409129928e27da7f4c4da2292512ab8ca"
+  }
+}
