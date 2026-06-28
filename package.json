@@ -279,6 +279,8 @@
     "wp:core:wphx-312-wp-http-request-unsafe-url-validation-candidate:check": "node tools/wp-core/run-wp-http-request-unsafe-url-validation-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate": "node tools/wp-core/run-wp-http-request-bad-protocol-stripping-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate:check": "node tools/wp-core/run-wp-http-request-bad-protocol-stripping-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-request-redirection-copy-candidate": "node tools/wp-core/run-wp-http-request-redirection-copy-candidate.mjs",
+    "wp:core:wphx-312-wp-http-request-redirection-copy-candidate:check": "node tools/wp-core/run-wp-http-request-redirection-copy-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-method-options-candidate": "node tools/wp-core/run-wp-http-request-method-options-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-method-options-candidate:check": "node tools/wp-core/run-wp-http-request-method-options-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-head-redirection-default-candidate": "node tools/wp-core/run-wp-http-request-head-redirection-default-candidate.mjs",
