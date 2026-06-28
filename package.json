@@ -279,6 +279,8 @@
     "wp:core:wphx-312-wp-http-request-method-options-candidate:check": "node tools/wp-core/run-wp-http-request-method-options-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-redirect-options-candidate": "node tools/wp-core/run-wp-http-request-redirect-options-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-redirect-options-candidate:check": "node tools/wp-core/run-wp-http-request-redirect-options-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-request-ssl-options-candidate": "node tools/wp-core/run-wp-http-request-ssl-options-candidate.mjs",
+    "wp:core:wphx-312-wp-http-request-ssl-options-candidate:check": "node tools/wp-core/run-wp-http-request-ssl-options-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-absolute-url-candidate": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
     "wp:core:wphx-312-wp-http-absolute-url-candidate:check": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-redirect-orchestration-candidate": "node tools/wp-core/run-wp-http-redirect-orchestration-candidate.mjs",
