@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-request-proxy-authentication-candidate",
+  "issue": {
+    "id": "wordpresshx-pv8",
+    "external_ref": "WPHX-312.79"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http request proxy authentication decision",
+    "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Proxy, WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Response, and WP_Http_Cookie support",
+    "public_contract": "This candidate promotes only the WP_Http::request decision that WP_HTTP_Proxy::use_authentication true enables authentication properties and credential handoff on the already-created Requests proxy object. PHP still owns public request ABI, proxy enable/send-through policy, proxy constants, host/bypass matching, username/password values, native WpOrg Requests Proxy Http object construction, Requests dispatch, debug/error handling, and native arrays/objects."
+  },
+  "ownership_state": "haxe_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-public-php-shell-calling-generated-haxe",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy authentication, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-request-proxy-authentication-candidate.mjs",
+    "manifests/wp-core/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+    "manifests/ownership/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+    "receipts/wp-core/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+    "manifests/ownership/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+    "receipts/wp-core/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+    "build/wp-core/wphx-312-79"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate",
+      "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-79-wp-http-request-proxy-authentication-candidate"
+    ],
+    "manifest_digest": "sha256:9c2b0668014be8fe7b80821c04a86cfea4d8ca2f79eb730a5eeab1cd878ad4ed"
+  }
+}

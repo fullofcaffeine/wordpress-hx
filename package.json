@@ -297,6 +297,8 @@
     "wp:core:wphx-312-wp-http-request-header-parsing-candidate:check": "node tools/wp-core/run-wp-http-request-header-parsing-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-request-proxy-options-candidate": "node tools/wp-core/run-wp-http-request-proxy-options-candidate.mjs",
     "wp:core:wphx-312-wp-http-request-proxy-options-candidate:check": "node tools/wp-core/run-wp-http-request-proxy-options-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-request-proxy-authentication-candidate": "node tools/wp-core/run-wp-http-request-proxy-authentication-candidate.mjs",
+    "wp:core:wphx-312-wp-http-request-proxy-authentication-candidate:check": "node tools/wp-core/run-wp-http-request-proxy-authentication-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-absolute-url-candidate": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
     "wp:core:wphx-312-wp-http-absolute-url-candidate:check": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-redirect-orchestration-candidate": "node tools/wp-core/run-wp-http-redirect-orchestration-candidate.mjs",
