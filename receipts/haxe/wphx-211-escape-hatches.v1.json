@@ -6,8 +6,8 @@
   "command": "npm run haxe:escape-hatches",
   "status": "passed",
   "manifest": "manifests/haxe/wphx-211-escape-hatches.v1.json",
-  "manifest_sha256": "sha256:43c6b74c7951d4000eebbd0f151d47604f9a693f2befc8f86b98a037bde434f0",
-  "scanned_file_count": 185,
+  "manifest_sha256": "sha256:d3101852479d0676c23cccda9dbfb2b7f85e8eadd9ab23c8a38d01ef356166b4",
+  "scanned_file_count": 187,
   "occurrence_count": 74,
   "by_kind": {
     "Dynamic": 8,
