@@ -1,0 +1,199 @@
+{
+  "schema": "wphx.wp-core-wp-http-redirect-validation-candidate.v1",
+  "issue": "WPHX-312.57",
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "generator": "tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
+  "evidence_classes": [
+    "haxe_source",
+    "generated_php_candidate",
+    "oracle_source_mirror",
+    "php_cli_observed_fixture"
+  ],
+  "artifact_scope": "haxe_parity_candidate",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 67111,
+      "sha256": "sha256:f58b69dfb30aa93304254828e280e67763b9ab8745c1dfaacced1e6f297f934d"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 18483,
+      "sha256": "sha256:5937e6ffe97967ed96e2a2c993cada3904d9ac36a91f74debc9c3a9d9e567d82"
+    },
+    "helper_oracle_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "bytes": 19194,
+      "sha256": "sha256:683c7daea9a2e7ec94bbda8f8a8ebdeae720dcd188493bb447739e46e6f28596"
+    },
+    "runner": {
+      "path": "tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
+      "bytes": 16772,
+      "sha256": "sha256:fb91ee2f9886ad95e5187e2b2471d717119533b6ac29fe2ae16109884021b2ad"
+    },
+    "haxe_sources": [
+      {
+        "path": "fixtures/wp-core/http-redirect-validation-candidate.hxml",
+        "bytes": 134,
+        "sha256": "sha256:f4e0b8a357b79ef83ea4ce8acf3345e812c4deec2f6cc3dfe2124c38bdf519d6"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRedirectValidation.hx",
+        "bytes": 117,
+        "sha256": "sha256:e79d8442e5d954dc596ffd98fd2afa1cf07b8ce04f5d7b6de94d5cbf03788a86"
+      },
+      {
+        "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRedirectValidationCandidateEntry.hx",
+        "bytes": 211,
+        "sha256": "sha256:89026c41c38645f23e209b8db7f7cf47d4c4fb8a8e029b13ae43edb060b4223e"
+      }
+    ],
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-http.php",
+        "bytes": 41648,
+        "sha256": "sha256:031eca4a468d625c82fe75b732a791ae4331fa63b5b243ffbee71930e64152ee"
+      }
+    ]
+  },
+  "candidate": {
+    "hxml": "fixtures/wp-core/http-redirect-validation-candidate.hxml",
+    "haxe_output": "build/wp-core/wphx-312-57/haxe",
+    "compiled_php_files": [
+      "build/wp-core/wphx-312-57/haxe/index.php",
+      "build/wp-core/wphx-312-57/haxe/lib/Array_hx.php",
+      "build/wp-core/wphx-312-57/haxe/lib/Std.php",
+      "build/wp-core/wphx-312-57/haxe/lib/haxe/Exception.php",
+      "build/wp-core/wphx-312-57/haxe/lib/haxe/ValueException.php",
+      "build/wp-core/wphx-312-57/haxe/lib/haxe/iterators/ArrayIterator.php",
+      "build/wp-core/wphx-312-57/haxe/lib/haxe/iterators/ArrayKeyValueIterator.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/Boot.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_Boot/HxAnon.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_Boot/HxClass.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_Boot/HxClosure.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_Boot/HxDynamicStr.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_Boot/HxEnum.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_Boot/HxString.php",
+      "build/wp-core/wphx-312-57/haxe/lib/php/_polyfills.php",
+      "build/wp-core/wphx-312-57/haxe/lib/wphx/fixtures/wp/core/HttpRedirectValidationCandidateEntry.php",
+      "build/wp-core/wphx-312-57/haxe/lib/wphx/wp/http/_HttpRedirectValidation/HttpRedirectValidation_Fields_.php"
+    ],
+    "promoted_symbols": [
+      "WP_Http::validate_redirects failure decision"
+    ],
+    "public_shell_policy": {
+      "public_php_replacement_claimed": false,
+      "public_php_abi_preserved": true,
+      "shell_body_ownership": "temporary candidate shell preserves the WP_Http public static method ABI, WordPress URL validation, translation, and Requests exception construction while delegating the bounded failure decision to generated Haxe PHP",
+      "native_boundaries": [
+        "wp_http_validate_url",
+        "__ translation",
+        "WpOrg\\Requests\\Exception"
+      ]
+    }
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "wp-http:validate-redirects",
+        "focus": "redirect validation accepts safe URLs and throws the Requests exception/type for invalid URLs"
+      }
+    ],
+    "source_files": [
+      "src/wp-includes/class-wp-http.php"
+    ],
+    "probe": {
+      "path": "build/wp-core/wphx-312-57/probe.php",
+      "sha256": "sha256:f8a00221cde8cdcfbf4c55d383d94275caa0a00253eb4a7dcb0cdd6e9d90415e"
+    },
+    "side_effect_policy": {
+      "external_network_io": false,
+      "database_io": false,
+      "live_installed_wordpress": false,
+      "php_cli": true,
+      "runtime_stubs": "Requests Autoload/Requests/Exception, __, and wp_http_validate_url are deterministic local stubs. No HTTP request is dispatched."
+    }
+  },
+  "build": {
+    "oracle_root": "build/wp-core/wphx-312-57/oracle",
+    "candidate_root": "build/wp-core/wphx-312-57/candidate",
+    "php_lint": [
+      {
+        "path": "src/wp-includes/class-wp-http.php",
+        "oracle_lint": "No syntax errors detected in build/wp-core/wphx-312-57/oracle/wp-includes/class-wp-http.php",
+        "candidate_lint": "No syntax errors detected in build/wp-core/wphx-312-57/candidate/wp-includes/class-wp-http.php"
+      }
+    ]
+  },
+  "observations": {
+    "oracle": {
+      "wp-http:validate-redirects": {
+        "case": "wp-http:validate-redirects",
+        "valid": "no-throw",
+        "error": {
+          "class": "WpOrg\\Requests\\Exception",
+          "message": "A valid URL was not provided.",
+          "type": "wp_http.redirect_failed_validation"
+        },
+        "assertions": {
+          "valid_no_throw": true,
+          "invalid_exception": true
+        }
+      }
+    },
+    "candidate": {
+      "wp-http:validate-redirects": {
+        "case": "wp-http:validate-redirects",
+        "valid": "no-throw",
+        "error": {
+          "class": "WpOrg\\Requests\\Exception",
+          "message": "A valid URL was not provided.",
+          "type": "wp_http.redirect_failed_validation"
+        },
+        "assertions": {
+          "valid_no_throw": true,
+          "invalid_exception": true
+        }
+      }
+    },
+    "match": true,
+    "oracle_sha256": "sha256:a96d9e26bacecd0a7bceafa605ea9851bda80e45e10e22705d56176bbfec406f",
+    "candidate_sha256": "sha256:a96d9e26bacecd0a7bceafa605ea9851bda80e45e10e22705d56176bbfec406f",
+    "assertions_pass": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "broader-redirect-helpers-not-promoted",
+      "owner": "WPHX-312.57",
+      "detail": "This candidate promotes only the validate_redirects failure branch decision. browser redirect compatibility, make_absolute_url, handle_redirects, cookie filtering, and remote redirect orchestration remain owned by their separate fixtures or future candidates."
+    },
+    {
+      "id": "url-validation-exception-boundaries-preserved",
+      "owner": "WPHX-312.57",
+      "detail": "The candidate intentionally keeps wp_http_validate_url, translation, and Requests exception construction in PHP because these are public WordPress/Requests compatibility boundaries."
+    },
+    {
+      "id": "live-http-transport-not-executed",
+      "owner": "WPHX-312.57",
+      "detail": "The fixture observes redirect validation helper behavior only. It does not execute WP_Http::request, Requests network I/O, DNS, proxy, TLS, redirect following, or transport execution."
+    },
+    {
+      "id": "durable-public-php-adapter-not-yet-generated",
+      "owner": "WPHX-312.57",
+      "detail": "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 1,
+    "promoted_symbols": 1,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_claimed": false,
+    "dns_resolution_claimed": false
+  }
+}

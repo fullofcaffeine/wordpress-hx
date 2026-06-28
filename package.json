@@ -265,6 +265,8 @@
     "wp:core:wphx-312-wp-http-ip-address-candidate:check": "node tools/wp-core/run-wp-http-ip-address-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-redirect-compatibility-candidate": "node tools/wp-core/run-wp-http-redirect-compatibility-candidate.mjs",
     "wp:core:wphx-312-wp-http-redirect-compatibility-candidate:check": "node tools/wp-core/run-wp-http-redirect-compatibility-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-redirect-validation-candidate": "node tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
+    "wp:core:wphx-312-wp-http-redirect-validation-candidate:check": "node tools/wp-core/run-wp-http-redirect-validation-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture": "node tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs",
     "wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture:check": "node tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs --check",
     "wp:core:wphx-312-feed-cache-transient-oracle-fixture": "node tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs",

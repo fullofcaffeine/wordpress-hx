@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-redirect-validation-candidate",
+  "issue": {
+    "id": "wordpresshx-9ny",
+    "external_ref": "WPHX-312.57"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http redirect validation failure decision",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::validate_redirects",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell, wp_http_validate_url, translation, and Requests exception ABI while delegating the validated/failed branch decision to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
+    "fixtures/wp-core/http-redirect-validation-candidate.hxml",
+    "src/wphx/wp/http/HttpRedirectValidation.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRedirectValidationCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+    "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+    "receipts/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+    "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+    "receipts/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+    "build/wp-core/wphx-312-57"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-redirect-validation-candidate",
+      "npm run wp:core:wphx-312-wp-http-redirect-validation-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-57-wp-http-redirect-validation-candidate"
+    ],
+    "manifest_digest": "sha256:1a1212803fb6d624ef3bb27051125a252eea5c74e775df177cd9af7db08aeca7"
+  }
+}
