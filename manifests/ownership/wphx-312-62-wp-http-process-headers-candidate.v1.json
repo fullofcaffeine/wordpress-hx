@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-process-headers-candidate",
+  "issue": {
+    "id": "wordpresshx-0aw",
+    "external_ref": "WPHX-312.62"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http processHeaders line decisions",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::processHeaders",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell, public static method ABI, native arrays, duplicate-header accumulation, Set-Cookie conversion, and return shape while delegating scalar header/status line decisions to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, cookie/header, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-process-headers-candidate.mjs",
+    "fixtures/wp-core/http-process-headers-candidate.hxml",
+    "src/wphx/wp/http/HttpProcessHeaders.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProcessHeadersCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+    "manifests/ownership/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+    "receipts/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+    "manifests/ownership/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+    "receipts/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+    "build/wp-core/wphx-312-62"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-process-headers-candidate",
+      "npm run wp:core:wphx-312-wp-http-process-headers-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-62-wp-http-process-headers-candidate"
+    ],
+    "manifest_digest": "sha256:fc9964a6844e0341993db326a1808b32852d4334eb9937682f8060a1d2bb222e"
+  }
+}
