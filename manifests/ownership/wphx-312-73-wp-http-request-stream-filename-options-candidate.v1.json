@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-request-stream-filename-options-candidate",
+  "issue": {
+    "id": "wordpresshx-24b",
+    "external_ref": "WPHX-312.73"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http request stream filename options decision",
+    "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Proxy, WP_HTTP_Response, and WP_Http_Cookie support",
+    "public_contract": "This candidate promotes only the WP_Http::request decision that stream=true sets the Requests filename option from the already-resolved parsed filename. PHP still owns public WP_Http::request ABI, request defaults and filters, stream filename defaulting, writable-directory validation, forced blocking behavior, header/cookie/redirect/SSL/max_bytes/data_format handoff, Requests dispatch, response filtering, and native arrays/objects."
+  },
+  "ownership_state": "haxe_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-public-php-shell-calling-generated-haxe",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-request-stream-filename-options-candidate.mjs",
+    "manifests/wp-core/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+    "manifests/ownership/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+    "receipts/wp-core/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+    "manifests/ownership/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+    "receipts/wp-core/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+    "build/wp-core/wphx-312-73"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-request-stream-filename-options-candidate",
+      "npm run wp:core:wphx-312-wp-http-request-stream-filename-options-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-73-wp-http-request-stream-filename-options-candidate"
+    ],
+    "manifest_digest": "sha256:023000e228de2dcc2a50d5b090731d334074402e9e16bb1dbb62a3da6fc01cd9"
+  }
+}
