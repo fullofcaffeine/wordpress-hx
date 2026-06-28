@@ -259,6 +259,8 @@
     "wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture:check": "node tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs --check",
     "wp:core:wphx-312-wp-http-block-request-policy-oracle-fixture": "node tools/wp-core/run-wp-http-block-request-policy-oracle-fixture.mjs",
     "wp:core:wphx-312-wp-http-block-request-policy-oracle-fixture:check": "node tools/wp-core/run-wp-http-block-request-policy-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-wp-http-process-response-candidate": "node tools/wp-core/run-wp-http-process-response-candidate.mjs",
+    "wp:core:wphx-312-wp-http-process-response-candidate:check": "node tools/wp-core/run-wp-http-process-response-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-absolute-url-candidate": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
     "wp:core:wphx-312-wp-http-absolute-url-candidate:check": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-redirect-orchestration-candidate": "node tools/wp-core/run-wp-http-redirect-orchestration-candidate.mjs",

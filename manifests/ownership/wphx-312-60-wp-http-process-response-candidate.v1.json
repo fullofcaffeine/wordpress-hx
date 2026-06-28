@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-process-response-candidate",
+  "issue": {
+    "id": "wordpresshx-7zu",
+    "external_ref": "WPHX-312.60"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http processResponse split decisions",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::processResponse",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell, public static method ABI, and native associative array return shape while delegating the response header/body string split decisions to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-process-response-candidate.mjs",
+    "fixtures/wp-core/http-process-response-candidate.hxml",
+    "src/wphx/wp/http/HttpProcessResponse.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProcessResponseCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json",
+    "manifests/ownership/wphx-312-60-wp-http-process-response-candidate.v1.json",
+    "receipts/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json",
+    "manifests/ownership/wphx-312-60-wp-http-process-response-candidate.v1.json",
+    "receipts/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json",
+    "build/wp-core/wphx-312-60"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-process-response-candidate",
+      "npm run wp:core:wphx-312-wp-http-process-response-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-60-wp-http-process-response-candidate"
+    ],
+    "manifest_digest": "sha256:2ab533c9bdfb3640661753b1e241a8e6f534a4cdbabad4c0a04e7658edbe70cb"
+  }
+}

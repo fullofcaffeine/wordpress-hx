@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-60-wp-http-process-response-candidate",
+  "issue": {
+    "id": "wordpresshx-7zu",
+    "external_ref": "WPHX-312.60",
+    "title": "WPHX-312.60 - Promote WP_Http processResponse split decisions to Haxe candidate"
+  },
+  "recorded_at": "2026-06-28T02:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json",
+      "role": "WP_Http processResponse Haxe parity candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-60-wp-http-process-response-candidate.v1.json",
+      "role": "ownership manifest for Haxe-owned WP_Http processResponse split decisions"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-process-response-candidate.mjs",
+      "role": "deterministic PHP CLI oracle/candidate Haxe runner"
+    },
+    {
+      "path": "src/wphx/wp/http/HttpProcessResponse.hx",
+      "role": "module-level Haxe source for WP_Http::processResponse split decisions"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-wp-http-process-response-candidate",
+    "npm run wp:core:wphx-312-wp-http-process-response-candidate:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 1,
+    "promoted_symbols": 3,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": false,
+    "installed_wordpress_behavior_claimed": false,
+    "live_http_claimed": false
+  }
+}
