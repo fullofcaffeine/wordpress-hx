@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-cookie-header-assembly-candidate",
+  "issue": {
+    "id": "wordpresshx-qx7",
+    "external_ref": "WPHX-312.63"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http buildCookieHeader assembly",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::buildCookieHeader",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell, public static method ABI, by-reference request array mutation, scalar cookie upgrading, WP_Http_Cookie methods, and wp_http_cookie_value filter timing while delegating the final Cookie header separator assembly to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, cookie/header, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-cookie-header-assembly-candidate.mjs",
+    "fixtures/wp-core/http-cookie-header-assembly-candidate.hxml",
+    "src/wphx/wp/http/HttpCookieHeaderAssembly.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieHeaderAssemblyCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+    "manifests/ownership/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+    "receipts/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+    "manifests/ownership/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+    "receipts/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+    "build/wp-core/wphx-312-63"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-cookie-header-assembly-candidate",
+      "npm run wp:core:wphx-312-wp-http-cookie-header-assembly-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-63-wp-http-cookie-header-assembly-candidate"
+    ],
+    "manifest_digest": "sha256:1ca419b809fdfd610c24f8e708bbb195e69d5c7e143e550b7443ab2bf9c38756"
+  }
+}

@@ -265,6 +265,8 @@
     "wp:core:wphx-312-wp-http-chunk-transfer-decode-candidate:check": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-process-headers-candidate": "node tools/wp-core/run-wp-http-process-headers-candidate.mjs",
     "wp:core:wphx-312-wp-http-process-headers-candidate:check": "node tools/wp-core/run-wp-http-process-headers-candidate.mjs --check",
+    "wp:core:wphx-312-wp-http-cookie-header-assembly-candidate": "node tools/wp-core/run-wp-http-cookie-header-assembly-candidate.mjs",
+    "wp:core:wphx-312-wp-http-cookie-header-assembly-candidate:check": "node tools/wp-core/run-wp-http-cookie-header-assembly-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-absolute-url-candidate": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
     "wp:core:wphx-312-wp-http-absolute-url-candidate:check": "node tools/wp-core/run-wp-http-absolute-url-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-redirect-orchestration-candidate": "node tools/wp-core/run-wp-http-redirect-orchestration-candidate.mjs",
