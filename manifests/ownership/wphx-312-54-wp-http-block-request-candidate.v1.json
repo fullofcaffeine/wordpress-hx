@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-block-request-candidate",
+  "issue": {
+    "id": "wordpresshx-ubd",
+    "external_ref": "WPHX-312.54"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http external request blocking policy",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::block_request",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell and native WP_HTTP_BLOCK_EXTERNAL, WP_ACCESSIBLE_HOSTS, parse_url, get_option('siteurl'), and block_local_requests filter boundaries while delegating local-host/site-host detection plus exact and wildcard accessible-host policy decisions to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-policy-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass external request blocking, selected upstream HTTP PHPUnit, installed distribution, ecosystem HTTP policy, and live/recorded transport gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-block-request-candidate.mjs",
+    "fixtures/wp-core/http-block-request-candidate.hxml",
+    "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpBlockRequestCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
+    "manifests/ownership/wphx-312-54-wp-http-block-request-candidate.v1.json",
+    "receipts/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
+    "manifests/ownership/wphx-312-54-wp-http-block-request-candidate.v1.json",
+    "receipts/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
+    "build/wp-core/wphx-312-54"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-block-request-candidate",
+      "npm run wp:core:wphx-312-wp-http-block-request-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-54-wp-http-block-request-candidate"
+    ],
+    "manifest_digest": "sha256:af6c75af1a8e1d186f3656c52b01d975bb15ebd8d81b73eee370ae155e903380"
+  }
+}

@@ -259,6 +259,8 @@
     "wp:core:wphx-312-wp-http-request-proxy-safety-oracle-fixture:check": "node tools/wp-core/run-wp-http-request-proxy-safety-oracle-fixture.mjs --check",
     "wp:core:wphx-312-wp-http-block-request-policy-oracle-fixture": "node tools/wp-core/run-wp-http-block-request-policy-oracle-fixture.mjs",
     "wp:core:wphx-312-wp-http-block-request-policy-oracle-fixture:check": "node tools/wp-core/run-wp-http-block-request-policy-oracle-fixture.mjs --check",
+    "wp:core:wphx-312-wp-http-block-request-candidate": "node tools/wp-core/run-wp-http-block-request-candidate.mjs",
+    "wp:core:wphx-312-wp-http-block-request-candidate:check": "node tools/wp-core/run-wp-http-block-request-candidate.mjs --check",
     "wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture": "node tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs",
     "wp:core:wphx-312-wp-http-transport-dispatch-oracle-fixture:check": "node tools/wp-core/run-wp-http-transport-dispatch-oracle-fixture.mjs --check",
     "wp:core:wphx-312-feed-cache-transient-oracle-fixture": "node tools/wp-core/run-feed-cache-transient-oracle-fixture.mjs",
