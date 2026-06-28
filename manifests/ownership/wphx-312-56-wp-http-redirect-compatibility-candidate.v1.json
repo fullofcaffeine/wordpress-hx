@@ -1,0 +1,47 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-redirect-compatibility-candidate",
+  "issue": {
+    "id": "wordpresshx-ayz",
+    "external_ref": "WPHX-312.56"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http browser redirect compatibility helper",
+    "area": "src/wp-includes/class-wp-http.php WP_Http::browser_redirect_compatibility",
+    "public_contract": "This candidate preserves the WP_Http PHP class shell, by-reference Requests options mutation, and native Requests::GET constant while delegating the 302 browser-compatibility decision to module-level Haxe source."
+  },
+  "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
+    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-redirect-compatibility-candidate.mjs",
+    "fixtures/wp-core/http-redirect-compatibility-candidate.hxml",
+    "src/wphx/wp/http/HttpRedirectCompatibility.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRedirectCompatibilityCandidateEntry.hx",
+    "manifests/wp-core/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+    "manifests/ownership/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+    "receipts/wp-core/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+    "manifests/ownership/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+    "receipts/wp-core/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+    "build/wp-core/wphx-312-56"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-redirect-compatibility-candidate",
+      "npm run wp:core:wphx-312-wp-http-redirect-compatibility-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-56-wp-http-redirect-compatibility-candidate"
+    ],
+    "manifest_digest": "sha256:a7855fba405b68a2436e5c5aa2ca34b690f9497b541565ba4a1aea817da0b827"
+  }
+}

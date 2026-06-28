@@ -1,0 +1,4 @@
+-cp src
+-cp fixtures/wp-core/src
+-main wphx.fixtures.wp.core.HttpRedirectCompatibilityCandidateEntry
+-php build/wp-core/wphx-312-56/haxe
