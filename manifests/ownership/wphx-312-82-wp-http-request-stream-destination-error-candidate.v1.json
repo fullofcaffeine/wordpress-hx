@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wp-http-request-stream-destination-error-candidate",
+  "issue": {
+    "id": "wordpresshx-loq",
+    "external_ref": "WPHX-312.82"
+  },
+  "unit": {
+    "kind": "haxe_parity_candidate",
+    "name": "WP_Http request stream destination error decision",
+    "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Proxy, WP_HTTP_Response, and WP_Http_Cookie support",
+    "public_contract": "This candidate promotes only the WP_Http::request decision that a PHP-owned stream destination writability check failure returns the streaming destination WP_Error before Requests dispatch. PHP still owns public WP_Http::request ABI, request defaults and filters, stream filename defaulting, dirname/wp_is_writable evaluation, WP_Error construction, translation, http_api_debug timing/payload, forced blocking behavior, header/cookie/redirect/SSL/max_bytes/data_format handoff, Requests dispatch, response filtering, and native arrays/objects."
+  },
+  "ownership_state": "haxe_candidate_with_public_php_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-public-php-shell-calling-generated-haxe",
+    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wp-http-request-stream-destination-error-candidate.mjs",
+    "manifests/wp-core/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+    "manifests/ownership/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+    "receipts/wp-core/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+    "manifests/ownership/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+    "receipts/wp-core/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+    "build/wp-core/wphx-312-82"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-wp-http-request-stream-destination-error-candidate",
+      "npm run wp:core:wphx-312-wp-http-request-stream-destination-error-candidate:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-82-wp-http-request-stream-destination-error-candidate"
+    ],
+    "manifest_digest": "sha256:29120d91a204d16fbaa6790ae474d7109aa7a45070a2b60cb2a4d2cdfcf12268"
+  }
+}
