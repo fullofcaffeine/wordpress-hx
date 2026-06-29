@@ -1,0 +1,3 @@
+-cp fixtures/wphx-php/src
+-main wphx.fixtures.php.bootstrap.BootstrapImplEntry
+-php build/wphx-php/bootstrap-error-handler/stock/haxe

@@ -47,8 +47,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/conditional-global-class-smoke/generated/wphx-php-emission.v1.json",
-        "bytes": 1120,
-        "sha256": "sha256:84648e7d7a06ac4eca4deecccf3523c4c350ba7198e6d0b8f2d0161f184c4b90"
+        "bytes": 1169,
+        "sha256": "sha256:258530f2cd133dbf13fcf51e763b4550c980969723cbac62609a64e8756c5667"
       }
     },
     {
@@ -62,13 +62,14 @@
       ],
       "hxml": "fixtures/wphx-php/f1-facade.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wp-includes/plugin.php",
-      "bytes": 660,
-      "sha256": "sha256:afdbd37ab2a80ba13c3d94b593c5b550ae1cc9a0dcb3014e786c2723ca020621",
+      "bytes": 754,
+      "sha256": "sha256:9c5910bf84dac14bf5f326f5c0def82db53bf21dce9ea3ff47d9779b955c926f",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
         "if (!defined('WPHX_F1_FACADE_BOOTSTRAPPED'))",
         "spl_autoload_register(function ($class)",
+        "define('HAXE_CUSTOM_ERROR_HANDLER', true);",
         "if (!function_exists('add_filter'))",
         "function add_filter($hook_name, $callback, $priority = 10, $accepted_args = 1)"
       ],
@@ -84,8 +85,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wphx-php-emission.v1.json",
-        "bytes": 567,
-        "sha256": "sha256:cedac8177c52e98fb302dd4155c26c6a4411909298d6c475a5fd5dbcc0928eed"
+        "bytes": 616,
+        "sha256": "sha256:ca460a1b62eb20615f22538b88d48e0178732e2d32b06850f1915bd7683e1128"
       }
     },
     {
@@ -100,8 +101,8 @@
       ],
       "hxml": "fixtures/wphx-php/f4-public-class.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wp-includes/class-wphx-public-class.php",
-      "bytes": 1768,
-      "sha256": "sha256:7dff10437fb1f0b90e5b43da37cdc8b904022e43b184db19fcd4224013d0d492",
+      "bytes": 1862,
+      "sha256": "sha256:2459e0b90b9f5e9315ac027971d439cf35c5276ae64764912975464085310f52",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -134,8 +135,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wphx-php-emission.v1.json",
-        "bytes": 1175,
-        "sha256": "sha256:917aa1e5794da48002ac18b19301d7b88353713b67a45ac033f8004ce4b55c33"
+        "bytes": 1224,
+        "sha256": "sha256:82e5009a44d2a0d2d670d37a57458ebe1cbe7818d77af7f2045d01c6714d7825"
       }
     },
     {
@@ -174,8 +175,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/by-reference-global-function/generated/wphx-php-emission.v1.json",
-        "bytes": 586,
-        "sha256": "sha256:3b6ee3a0438fcbf56bc5c10472001591a7db48f2a6ef2a5d22a75b88f04ae5d5"
+        "bytes": 635,
+        "sha256": "sha256:351aa64d50443b88d2ea255db49f15608c4855bf8837d724c98b5ed5fa6e3a48"
       }
     },
     {
@@ -188,8 +189,8 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-parser-helpers.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 1358,
-      "sha256": "sha256:60f8f2515a51576f6d1389ae5536b68e64eb60e3673772a1c326f1217a9525e1",
+      "bytes": 1452,
+      "sha256": "sha256:06fc1f5e2ba32487a7f72d03dedae230323130684e2c72649e3309aba85bb179",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -216,8 +217,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 589,
-        "sha256": "sha256:6b56c20645b214e00f99793ad7ba8e62b70f099b21b5282075dc5ebb766f6d8f"
+        "bytes": 638,
+        "sha256": "sha256:75a4ee121989c745e76834fbee5f296ff9cad9827c0d17b7de459db47116b657"
       }
     },
     {
@@ -232,8 +233,8 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-build-cookie-header.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 1085,
-      "sha256": "sha256:ef6a9a54372c025848c956eb26f5b164c9a7209af66f531b587ddc056a6e95ac",
+      "bytes": 1179,
+      "sha256": "sha256:d9e336a76a6a441974eea7e93c3a577993b15dfe995420026bcb56b4579e0fa0",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -262,8 +263,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 891,
-        "sha256": "sha256:3fc8891d037e3c1a698f98f2e4c17f675de9cf508c6f61d8fb5a86110256f5d8"
+        "bytes": 940,
+        "sha256": "sha256:f04afb16f20c386ca93c84baa09a9887567f77a1ace75e490f1f0ae67892de19"
       }
     },
     {
@@ -277,8 +278,8 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-process-headers.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 2314,
-      "sha256": "sha256:63b78d82a7f7ba8088d789db06da8f2bfc4c5b6fb3eb73867391f7fa4f415754",
+      "bytes": 2408,
+      "sha256": "sha256:d7fe37c13aba1d13c43a9fda2a5345e0bf4a9b918b66ec3e4e12b835cbcad0e9",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -304,8 +305,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 1005,
-        "sha256": "sha256:a2d7f077abe960467630294083ac487faf893b2bfba6a65a9df548a1ac0b30d6"
+        "bytes": 1054,
+        "sha256": "sha256:96f9b50d168602ee6668c6a356ab1785eedc5072924a7a477613243977ae803b"
       }
     }
   ],

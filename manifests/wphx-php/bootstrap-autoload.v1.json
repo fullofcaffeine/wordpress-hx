@@ -12,18 +12,19 @@
     "haxe_lib": "build/wphx-php/bootstrap-autoload/haxe/lib",
     "shell_a": {
       "path": "build/wphx-php/bootstrap-autoload/generated/wp-includes/wphx-bootstrap-a.php",
-      "sha256": "2bf5a16570e76eddd03a51f0673b28cde22d233c0df01ec84b99287b21c9c181",
+      "sha256": "3d0d6a426634606f58b68582c6a713c774d3727fe17ee63e8a80226d09189cf7",
       "exact_patterns": [
         "if (!defined('WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED'))",
         "set_include_path(get_include_path() . PATH_SEPARATOR . $wphx_haxe_lib);",
         "spl_autoload_register(function ($class)",
+        "define('HAXE_CUSTOM_ERROR_HANDLER', true);",
         "\\php\\Boot::__hx__init();",
         "function wphx_bootstrap_probe_a($label = 'a')"
       ]
     },
     "shell_b": {
       "path": "build/wphx-php/bootstrap-autoload/generated/wp-includes/wphx-bootstrap-b.php",
-      "sha256": "e4830ef44d12b8eb7d65c214a4e0088a24be7ace36e28c3852423049880670b6",
+      "sha256": "f565d49a8e8d2ca321603dd390d315700267e61a61a8edda2a885df3a099ecd6",
       "exact_patterns": [
         "if (!defined('WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED'))",
         "function wphx_bootstrap_probe_b($label = 'b')"
@@ -31,7 +32,7 @@
     },
     "emission_manifest": {
       "path": "build/wphx-php/bootstrap-autoload/generated/wphx-php-emission.v1.json",
-      "sha256": "1642dbd2ca41638a72a577d6b690dc27bbbce96dcde01d6d0a35ecb1d4a0f9af",
+      "sha256": "5223ff18ded665e22c6989c1401d524207ff9f49eeb241b71d9a7d9782ad45c0",
       "unsupported_empty": true,
       "declarations": [
         "wp-includes/wphx-bootstrap-a.php:global-function:wphx_bootstrap_probe_a",

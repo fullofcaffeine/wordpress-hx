@@ -17,7 +17,7 @@
   },
   "emission_manifest": {
     "path": "build/wphx-php/pluggable-timing/generated/wphx-php-emission.v1.json",
-    "sha256": "ade174d814ae31e67d116ae56bcbf0a19c75c28faeefb90d4063fc8759c867a3",
+    "sha256": "a9ec4f748119d6adf925497d6b7c92a525b51953b5f9f24100e1010f2216ca99",
     "unsupported_empty": true,
     "declarations": [
       "global-function:wphx_pluggable_token",

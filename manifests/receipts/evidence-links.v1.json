@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 293,
+  "closed_task_count": 294,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -2853,7 +2853,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-bootstrap-autoload-probe.v1.json",
-          "sha256": "86136ea49593dc4605a21b838177f467aae3bbdacba82ae595b8dfc25301d790",
+          "sha256": "bfbaae8fbb6e94506363ec773152313045427e99576545126ecb5fcf22c531df",
           "id": "receipt:wphx-comp-php-bootstrap-autoload-probe"
         }
       ]
@@ -2863,8 +2863,18 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-bootstrap-error-handler-probe.v1.json",
-          "sha256": "29a2289ec39a66fa9a4db19b2aff8f363304b45b3cd2309ee0dbe86db978b6a5",
+          "sha256": "aef886aa9f3a16796be48242c28c5e16f52f886c7e8be7869ad97180d32fcab4",
           "id": "receipt:wphx-comp-php-bootstrap-error-handler-probe"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-BOOTSTRAP-NONTHROWING-PROFILE",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-bootstrap-nonthrowing-profile.v1.json",
+          "sha256": "c11ddf4fc5ffd355d0e7fe1ae1cc7dd0333b04b059362036ab4257d41931d83a",
+          "id": "receipt:wphx-comp-php-bootstrap-nonthrowing-profile"
         }
       ]
     },
@@ -2873,7 +2883,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-conditionals.v1.json",
-          "sha256": "1cb67ccfbdde7e15211bf6da713e543606ef3c32770f631bec2ace9ad2ae48e6",
+          "sha256": "bc86391ae67753573dadadcd6d06afead1b10ad139e99b1ea72ce3b79c0340f1",
           "id": "receipt:wphx-comp-php-conditionals"
         }
       ]
@@ -2913,7 +2923,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "680e6f6539359339556948998314dc665f292ed41fd21f516b01e2ae12a24947",
+          "sha256": "dbd9986c9fbbb0f08209a16fcf6965c9bcb0afb17942f0cdff0994fbd5de4abf",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]
@@ -2973,7 +2983,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-06-wp-http-build-cookie-header.v1.json",
-          "sha256": "76bcb4c0cac270a8528404bc5e321a460f256f41081f69a9f89ddb14921f500b",
+          "sha256": "705d1397da8df2fa05207ab811836251bb0114aa48e64c089dc0b0d02eff8fe9",
           "id": "receipt:wphx-comp-php-06-wp-http-build-cookie-header"
         }
       ]
@@ -2983,7 +2993,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-07-wp-http-process-headers.v1.json",
-          "sha256": "f99b8eb0d1fde353c9b259e6e8ff8e88f5c584ef97e3ca148b5d3f0bf3b7f26f",
+          "sha256": "33f7064ab4fcae0b462b52465f994b97e27d31af74b530dc29c123b266f929eb",
           "id": "receipt:wphx-comp-php-07-wp-http-process-headers"
         }
       ]

@@ -26,7 +26,7 @@
     "npm run wphx:php:bootstrap-autoload",
     "npm run wphx:php:bootstrap-autoload:check"
   ],
-  "manifest_sha256": "918bfc98902cecd385a4cc890553b42994c384cb21e1dfe2b8c4c43dad2e578f",
+  "manifest_sha256": "d8f86589524647a5bac1bdde8bdbec1749b1c233ef0ec4d7d8d2791bdcf3e923",
   "validation_result": {
     "status": "passed",
     "haxe_lib_path_appended_once": true,

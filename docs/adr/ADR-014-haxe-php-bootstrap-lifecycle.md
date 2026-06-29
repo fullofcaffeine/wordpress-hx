@@ -59,11 +59,11 @@ For broad distribution profiles, bootstrap should eventually move from repeated 
 
 WordPress-compatible public shells must not silently turn warnings, notices, or deprecations into exceptions.
 
-`wordpresshx-l7k` proves the stock Haxe PHP default is unsafe for broad WordPress request lifecycle: when no prior PHP error handler exists, default bootstrap installs a throwing handler, mutates `error_reporting`, and converts an unsuppressed PHP include warning into `ErrorException`. The same probe proves that defining `HAXE_CUSTOM_ERROR_HANDLER` as true before Haxe runtime initialization prevents that handler from being installed and preserves ordinary PHP warning return behavior. The preferred release/parity policy is therefore to define `HAXE_CUSTOM_ERROR_HANDLER` before `php.Boot::__hx__init()`, or to use a documented equivalent if the stock target gains a cleaner option.
+`wordpresshx-l7k` proves the stock Haxe PHP default is unsafe for broad WordPress request lifecycle: when no prior PHP error handler exists, stock bootstrap installs a throwing handler, mutates `error_reporting`, and converts an unsuppressed PHP include warning into `ErrorException`. The same probe proves that defining `HAXE_CUSTOM_ERROR_HANDLER` as true before Haxe runtime initialization prevents that handler from being installed and preserves ordinary PHP warning return behavior.
 
-Bounded candidate fixtures that use the current bootstrap must list warning/notice behavior as a non-claim when it is outside the tested boundary. `wordpresshx-9h2` tracks emitting the non-throwing policy as a WPHX PHP profile/bootstrap option.
+`wordpresshx-9h2` implements that policy for the WPHX PHP WordPress profile: generated bootstrap blocks now define `HAXE_CUSTOM_ERROR_HANDLER` before `php.Boot::__hx__init()` unless `-D wphx_php_bootstrap_error_handler=stock` is selected for an explicit stock-control/debug fixture. Bounded candidate fixtures that opt into stock behavior must list warning/notice behavior as a non-claim when it is outside the tested boundary.
 
-Implemented evidence: `wordpresshx-l7k` records the warning/error-handler proof in `manifests/wphx-php/bootstrap-error-handler.v1.json` and `receipts/compiler/wphx-comp-php-bootstrap-error-handler-probe.v1.json`.
+Implemented evidence: `wordpresshx-l7k` and `wordpresshx-9h2` record the warning/error-handler proof and emitted-profile proof in `manifests/wphx-php/bootstrap-error-handler.v1.json` and `receipts/compiler/wphx-comp-php-bootstrap-error-handler-probe.v1.json`.
 
 ## Include Path And Autoloading
 
@@ -116,7 +116,7 @@ Before a WPHX-generated public shell moves beyond bounded helper/candidate owner
 
 - `wordpresshx-ade` / `WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE`: closed for the first shared-bootstrap-constant fixture; future profile-wide/multiple-constant work should create a narrower follow-up when needed.
 - `wordpresshx-l7k` / `WPHX-COMP-PHP-BOOTSTRAP-ERROR-HANDLER-PROBE`: closed; proves the non-throwing policy must be selected before broad WordPress public-shell claims.
-- `wordpresshx-9h2` / `WPHX-COMP-PHP-BOOTSTRAP-NONTHROWING-PROFILE`: emit the non-throwing bootstrap policy through a WPHX PHP profile option.
+- `wordpresshx-9h2` / `WPHX-COMP-PHP-BOOTSTRAP-NONTHROWING-PROFILE`: closed; emits the non-throwing bootstrap policy through the default WPHX PHP WordPress profile and keeps `stock` as an explicit control.
 - `wordpresshx-o71` / `WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE`: stack traces, source maps, and debug/parity/release profile behavior through a WPHX shell into stock Haxe PHP implementation code.
 
 ## Non-Claims

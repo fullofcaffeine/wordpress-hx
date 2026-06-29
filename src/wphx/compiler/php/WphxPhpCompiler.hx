@@ -124,6 +124,7 @@ private typedef EmissionManifest =
 	final schema:String;
 	final generator:String;
 	final output_profile:String;
+	final bootstrap_error_handler_policy:String;
 	final files:Array<EmissionManifestFile>;
 	final core_ir_features:Array<String>;
 	final unsupported:Array<String>;
@@ -430,6 +431,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 
 	function emitHaxeBootstrap(constant:String):String
 	{
+		final nonThrowingPolicy = emitNonThrowingHaxeBootstrap();
 		return "if (!defined('"
 			+ constant
 			+ "')) {\n"
@@ -444,8 +446,31 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			+ "\t\t\tinclude_once $file;\n"
 			+ "\t\t}\n"
 			+ "\t});\n"
+			+ (nonThrowingPolicy ? "\tif (!defined('HAXE_CUSTOM_ERROR_HANDLER')) {\n" + "\t\tdefine('HAXE_CUSTOM_ERROR_HANDLER', true);\n" + "\t}\n" : "")
 			+ "\t\\php\\Boot::__hx__init();\n"
 			+ "}";
+	}
+
+	function emitNonThrowingHaxeBootstrap():Bool
+	{
+		return switch (bootstrapErrorHandlerPolicy())
+		{
+			case "stock": false;
+			case "wordpress", "nonthrowing": true;
+			case value:
+				reportUnsupported("unsupported wphx_php_bootstrap_error_handler policy: " + value);
+				true;
+		}
+	}
+
+	function bootstrapErrorHandlerPolicy():String
+	{
+		final requested = Context.definedValue("wphx_php_bootstrap_error_handler");
+		if (requested != null && StringTools.trim(requested) != "")
+		{
+			return StringTools.trim(requested);
+		}
+		return outputProfile() == "wordpress" ? "wordpress" : "stock";
 	}
 
 	function emitClass(pending:AdapterClass):String
@@ -1217,12 +1242,18 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		final manifest:EmissionManifest = {
 			schema: "wphx.php-emission.v1",
 			generator: "wphx.compiler.php.WphxPhpCompiler",
-			output_profile: Context.definedValue("wphx_php_profile") ?? "wordpress",
+			output_profile: outputProfile(),
+			bootstrap_error_handler_policy: bootstrapErrorHandlerPolicy(),
 			files: generated,
 			core_ir_features: coreIrFeatures,
 			unsupported: unsupported
 		};
 		return Json.stringify(manifest, null, "  ") + "\n";
+	}
+
+	function outputProfile():String
+	{
+		return Context.definedValue("wphx_php_profile") ?? "wordpress";
 	}
 
 	function manifestPath():String

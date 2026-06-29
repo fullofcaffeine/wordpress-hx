@@ -48,8 +48,8 @@
     ],
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-comp-php-07/generated/wphx-php-emission.v1.json",
-      "bytes": 1005,
-      "sha256": "sha256:a2d7f077abe960467630294083ac487faf893b2bfba6a65a9df548a1ac0b30d6"
+      "bytes": 1054,
+      "sha256": "sha256:96f9b50d168602ee6668c6a356ab1785eedc5072924a7a477613243977ae803b"
     }
   },
   "validation_result": {

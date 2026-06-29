@@ -1,29 +1,29 @@
 {
   "schema": "wphx.compiler-runtime-receipt.v1",
-  "id": "receipt:wphx-comp-php-bootstrap-error-handler-probe",
-  "issue": "WPHX-COMP-PHP-BOOTSTRAP-ERROR-HANDLER-PROBE",
+  "id": "receipt:wphx-comp-php-bootstrap-nonthrowing-profile",
+  "issue": "WPHX-COMP-PHP-BOOTSTRAP-NONTHROWING-PROFILE",
   "recorded_at": "2026-06-29T00:00:00.000Z",
   "status": "passed",
   "artifacts": [
     {
       "path": "manifests/wphx-php/bootstrap-error-handler.v1.json",
-      "role": "bootstrap warning/error-handler probe manifest"
+      "role": "bootstrap warning/error-handler emitted-profile manifest"
     },
     {
-      "path": "receipts/compiler/wphx-comp-php-bootstrap-error-handler-probe.v1.json",
-      "role": "compiler runtime bootstrap receipt"
+      "path": "receipts/compiler/wphx-comp-php-bootstrap-nonthrowing-profile.v1.json",
+      "role": "compiler runtime bootstrap emitted-profile receipt"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP bootstrap policy implementation"
     },
     {
       "path": "fixtures/wphx-php/bootstrap-error-handler.hxml",
-      "role": "WPHX PHP public-shell fixture"
+      "role": "WPHX PHP WordPress-profile public-shell fixture"
     },
     {
       "path": "fixtures/wphx-php/bootstrap-error-handler-stock.hxml",
       "role": "WPHX PHP stock-control public-shell fixture"
-    },
-    {
-      "path": "fixtures/wphx-php/bootstrap-error-handler-stock-impl.hxml",
-      "role": "stock-control Haxe PHP implementation fixture"
     },
     {
       "path": "fixtures/wphx-php/bootstrap-error-handler-impl.hxml",

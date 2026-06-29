@@ -59,6 +59,7 @@ const exactPatterns = {
     "if (!defined('WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED'))",
     "set_include_path(get_include_path() . PATH_SEPARATOR . $wphx_haxe_lib);",
     "spl_autoload_register(function ($class)",
+    "define('HAXE_CUSTOM_ERROR_HANDLER', true);",
     "\\php\\Boot::__hx__init();",
     "function wphx_bootstrap_probe_a($label = 'a')"
   ],

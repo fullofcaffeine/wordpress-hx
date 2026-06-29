@@ -26,7 +26,7 @@
     "npm run wphx:php:pluggable-timing",
     "npm run wphx:php:pluggable-timing:check"
   ],
-  "manifest_sha256": "5feeecfa2cfcdbe1568ac735343a1a05cdce6273d5936279c11f1f10457bc0dd",
+  "manifest_sha256": "f154cad24a19ab747e6b4db2dea9381540730bb77bc06c5c5c3ea8dd4a3f1d3e",
   "claims": [
     "WPHX PHP emits pluggable-style guarded global declarations at an original wp-includes/pluggable.php load point.",
     "function_exists is false before normal load and true after require.",
