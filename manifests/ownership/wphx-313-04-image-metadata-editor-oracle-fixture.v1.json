@@ -1,0 +1,50 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/image-metadata-editor-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-dno",
+    "external_ref": "WPHX-313.04"
+  },
+  "unit": {
+    "kind": "oracle_candidate_fixture",
+    "name": "image metadata helpers and editor selection behavior",
+    "area": "wp-includes/media.php wp-admin/includes/image.php",
+    "public_contract": "This slice observes upstream WordPress image metadata/editor behavior in mirrored oracle/candidate roots using public hook-level fake editor injection. It does not claim Haxe-owned runtime behavior, native image-library execution, or public PHP ABI replacement."
+  },
+  "ownership_state": "bridge_shell",
+  "ownership_axes": {
+    "semantic_owner": "upstream_oracle_observed",
+    "adapter_contract_owner": "haxe_typed_prior_candidate",
+    "emission_strategy": "copied_oracle_php_fixture",
+    "execution_provider": "upstream_php_oracle_with_hook_test_double",
+    "compatibility_evidence": "oracle_candidate_behavior"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "copied_oracle_source_fixture",
+    "removal_gate": "Replace candidate copied PHP with Haxe-owned/generated image metadata helpers or original-path Adapter IR output, then rerun this oracle fixture with equal behavior."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-image-metadata-editor-oracle-fixture.mjs",
+    "manifests/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+    "manifests/ownership/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+    "build/wp-core/wphx-313-04"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-313-image-metadata-editor-oracle-fixture",
+      "npm run wp:core:wphx-313-image-metadata-editor-oracle-fixture:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-313-04-image-metadata-editor-oracle-fixture"
+    ],
+    "manifest_digest": "sha256:c57871ef3b895c5c16b76d20440582ab526b90c2d104f9b5224254a6908bdd40"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-313-04-image-metadata-editor-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-dno",
+    "external_ref": "WPHX-313.04",
+    "title": "WPHX-313.04 - Add image metadata/editor oracle fixture"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+      "role": "image metadata/editor oracle/candidate fixture manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+      "role": "ownership manifest for image metadata/editor bridge fixture"
+    },
+    {
+      "path": "tools/wp-core/run-image-metadata-editor-oracle-fixture.mjs",
+      "role": "deterministic oracle/candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-313-image-metadata-editor-oracle-fixture",
+    "npm run wp:core:wphx-313-image-metadata-editor-oracle-fixture:check"
+  ],
+  "related_receipts": [
+    "receipt:wphx-313-01-media-filesystem-upload-surface",
+    "receipt:wphx-313-02-media-upload-adapter-contract-candidate",
+    "receipt:wphx-313-03-media-upload-validation-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 14,
+    "covered_symbols": 12,
+    "oracle_php_errors": 2,
+    "candidate_php_errors": 2
+  },
+  "manifest_sha256": "sha256:c57871ef3b895c5c16b76d20440582ab526b90c2d104f9b5224254a6908bdd40",
+  "ownership_sha256": "sha256:7ac3fe0593d16ca79d260c7f09650d24937a7e41bb9eb062f805037b9eca8f76"
+}

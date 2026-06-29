@@ -1,0 +1,1187 @@
+{
+  "schema": "wphx.wp-core-image-metadata-editor-oracle-fixture.v1",
+  "issue": "WPHX-313.04",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wp-core/run-image-metadata-editor-oracle-fixture.mjs",
+  "evidence_classes": [
+    "oracle_candidate_behavior",
+    "copied_oracle_source",
+    "hook_injected_test_double"
+  ],
+  "artifact_scope": "helper",
+  "inputs": {
+    "surface_manifest": {
+      "path": "manifests/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json",
+      "bytes": 65832,
+      "sha256": "sha256:69fc7e4719ba45ccbea0c7e7d52cf2af1927cf485f48f69f81bbfa126df6fec6"
+    },
+    "adapter_contract_manifest": {
+      "path": "manifests/wp-core/wphx-313-02-media-upload-adapter-contract-candidate.v1.json",
+      "bytes": 17570,
+      "sha256": "sha256:7250386baab3609f4557b783208fec0085dd0a90a0a07e2f7b5815984c4e13b7"
+    },
+    "upload_validation_fixture_manifest": {
+      "path": "manifests/wp-core/wphx-313-03-media-upload-validation-oracle-fixture.v1.json",
+      "bytes": 21763,
+      "sha256": "sha256:6269b9b5a8d7ddfd28d36cab276ce7913696714052ca366d5d290e3894c289d7"
+    },
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/class-wp-error.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-error.php",
+        "bytes": 7502,
+        "sha256": "sha256:fe0e54bcb095f3ebb6493cbd558f927234e1bff3f643b2ca00f7e2d74309400c"
+      },
+      {
+        "path": "src/wp-includes/class-wp-image-editor.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-image-editor.php",
+        "bytes": 17418,
+        "sha256": "sha256:831de08c859d866f367c5a4a92215a7cac2ab39101a18063ed7a5f37f043af2b"
+      },
+      {
+        "path": "src/wp-includes/class-wp-image-editor-gd.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-image-editor-gd.php",
+        "bytes": 20705,
+        "sha256": "sha256:73ae13d5b8da6cf38996c5defb78b4b0a7bfafcf2c93ac4e4f808486cf280931"
+      },
+      {
+        "path": "src/wp-includes/class-wp-image-editor-imagick.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-image-editor-imagick.php",
+        "bytes": 36977,
+        "sha256": "sha256:fa0f91e91a56965eccc9aadc3d8978ff47d8f34c72c99e758ebcff3731bf3fac"
+      },
+      {
+        "path": "src/wp-includes/class-avif-info.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-avif-info.php",
+        "bytes": 30008,
+        "sha256": "sha256:ac2268407c70c54a4a9f9de8a01d4343801358acbe30a1b8ecbb39265fdfea56"
+      },
+      {
+        "path": "src/wp-includes/compat.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/compat.php",
+        "bytes": 16063,
+        "sha256": "sha256:3b87e422b612fdf23d26e600552aa1f0444c8db49b2d079538a9e460db0a4025"
+      },
+      {
+        "path": "src/wp-includes/utf8.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/utf8.php",
+        "bytes": 7260,
+        "sha256": "sha256:f06764a8f214a4e3d71cbac4ea5af4d9edeaf07701cfe09436c251a4042db0d7"
+      },
+      {
+        "path": "src/wp-includes/formatting.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/formatting.php",
+        "bytes": 354690,
+        "sha256": "sha256:922d8ce082d25d3375dae336feec1b13288df46e15c9c2dcac013c8cc2c44648"
+      },
+      {
+        "path": "src/wp-includes/functions.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/functions.php",
+        "bytes": 290326,
+        "sha256": "sha256:1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+      },
+      {
+        "path": "src/wp-includes/media.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/media.php",
+        "bytes": 223794,
+        "sha256": "sha256:e4bd57220f36ded7dabcb2d869c0e3874f034b79d9dea36dcbdb89201b050663"
+      },
+      {
+        "path": "src/wp-admin/includes/image.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/image.php",
+        "bytes": 45171,
+        "sha256": "sha256:54ea3386fe9ecbefc2e88dc4e95d4de35f2a5a4109e2676bf9538c057a83e16d"
+      }
+    ],
+    "runner": {
+      "path": "tools/wp-core/run-image-metadata-editor-oracle-fixture.mjs",
+      "bytes": 29778,
+      "sha256": "sha256:ac00f93070164dbf0cd4866dc82832674fce0d1a5e06c8de648b1b42b7358fee"
+    }
+  },
+  "fixture": {
+    "copied_source_policy": "Oracle and candidate roots both mirror the same locked upstream WordPress PHP source. This is bridge evidence for image metadata/editor behavior and does not claim Haxe-owned public PHP replacement.",
+    "fake_editor_policy": "The fake editor is injected only through the public wp_image_editors filter so WordPress still owns editor selection, method checks, WP_Error propagation, image_make_intermediate_size return shaping, and metadata helper control flow.",
+    "upstream_reference_commit": "26b68024931348d267b70e2a29910e1320d0094f",
+    "source_files": [
+      "src/wp-includes/class-wp-error.php",
+      "src/wp-includes/class-wp-image-editor.php",
+      "src/wp-includes/class-wp-image-editor-gd.php",
+      "src/wp-includes/class-wp-image-editor-imagick.php",
+      "src/wp-includes/class-avif-info.php",
+      "src/wp-includes/compat.php",
+      "src/wp-includes/utf8.php",
+      "src/wp-includes/formatting.php",
+      "src/wp-includes/functions.php",
+      "src/wp-includes/media.php",
+      "src/wp-admin/includes/image.php"
+    ],
+    "covered_symbols": [
+      "wp_get_image_editor",
+      "_wp_image_editor_choose",
+      "wp_image_editor_supports",
+      "wp_get_image_editor_output_format",
+      "image_resize_dimensions",
+      "image_make_intermediate_size",
+      "wp_get_registered_image_subsizes",
+      "wp_get_missing_image_subsizes",
+      "wp_update_image_subsizes",
+      "wp_generate_attachment_metadata",
+      "wp_read_image_metadata",
+      "file_is_displayable_image"
+    ],
+    "cases": [
+      {
+        "id": "editor:no-implementation",
+        "focus": "wp_get_image_editor returns image_no_editor when no implementation is available"
+      },
+      {
+        "id": "editor:selects-filtered-fake",
+        "focus": "wp_get_image_editor honors wp_image_editors selection and loads the chosen implementation"
+      },
+      {
+        "id": "editor:method-requirement",
+        "focus": "wp_image_editor_supports enforces requested editor methods"
+      },
+      {
+        "id": "editor:output-format-default-heic",
+        "focus": "wp_get_image_editor_output_format preserves default HEIC/HEIF conversion mapping"
+      },
+      {
+        "id": "resize-dimensions:soft-and-crop",
+        "focus": "image_resize_dimensions soft-resize/crop geometry and filter calls"
+      },
+      {
+        "id": "intermediate:success",
+        "focus": "image_make_intermediate_size delegates resize/save and removes path from returned metadata"
+      },
+      {
+        "id": "intermediate:resize-error",
+        "focus": "image_make_intermediate_size returns false when editor resize returns WP_Error"
+      },
+      {
+        "id": "metadata:missing-image-subsizes",
+        "focus": "wp_get_missing_image_subsizes compares attachment metadata with registered sub-sizes"
+      },
+      {
+        "id": "metadata:non-image-missing",
+        "focus": "wp_get_missing_image_subsizes returns empty for non-image attachments"
+      },
+      {
+        "id": "metadata:update-invalid-attachment",
+        "focus": "wp_update_image_subsizes invalid_attachment error path"
+      },
+      {
+        "id": "metadata:update-no-missing",
+        "focus": "wp_update_image_subsizes returns existing metadata when all possible sizes exist"
+      },
+      {
+        "id": "metadata:generate-non-image-file",
+        "focus": "wp_generate_attachment_metadata returns filesize-only metadata for non-image local files"
+      },
+      {
+        "id": "metadata:read-missing-image",
+        "focus": "wp_read_image_metadata returns false for missing files"
+      },
+      {
+        "id": "metadata:displayable-text-file",
+        "focus": "file_is_displayable_image returns false for a non-image file"
+      }
+    ],
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "handwritten_php_shells_added": false,
+      "adapter_contract_owner": "haxe_typed_prior_candidate",
+      "semantic_owner": "upstream_php_oracle_observed",
+      "native_image_library_claimed": false,
+      "installed_media_claimed": false,
+      "removal_gate": "Promote the covered image metadata/editor decisions to generated original-path PHP adapters or Haxe-owned helpers, keep the fake editor only as a hook-level provider fixture, and rerun these probes against generated candidate artifacts."
+    }
+  },
+  "runs": {
+    "oracle": {
+      "mode": "$MODE",
+      "cases": {
+        "editor:method-requirement": {
+          "supports_resize_save": true,
+          "supports_missing_method": false,
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "mime_type": "image/jpeg",
+                "methods": [
+                  "resize",
+                  "save"
+                ]
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "test",
+              "args": {
+                "mime_type": "image/jpeg",
+                "methods": [
+                  "method_that_does_not_exist"
+                ]
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            }
+          ],
+          "filters": [
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            }
+          ]
+        },
+        "editor:no-implementation": {
+          "result": {
+            "wp_error": true,
+            "codes": [
+              "image_no_editor"
+            ],
+            "messages": [
+              "No editor could be selected."
+            ]
+          },
+          "filters": [
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            },
+            {
+              "hook": "do_action:wp_error_added",
+              "arg_count": 4
+            }
+          ]
+        },
+        "editor:output-format-default-heic": {
+          "result": {
+            "image/heic": "image/jpeg",
+            "image/heif": "image/jpeg",
+            "image/heic-sequence": "image/jpeg",
+            "image/heif-sequence": "image/jpeg"
+          },
+          "filters": [
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            }
+          ]
+        },
+        "editor:selects-filtered-fake": {
+          "result": {
+            "object_class": "WPHX_313_04_Fake_Image_Editor"
+          },
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "mime_type": "image/jpeg",
+                "path": "$ROOT/wp-content/uploads/sample.jpg"
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "__construct",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "load",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            }
+          ],
+          "filters": [
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            }
+          ]
+        },
+        "intermediate:resize-error": {
+          "result": false,
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "path": "$ROOT/wp-content/uploads/sample.jpg",
+                "mime_type": "image/jpeg"
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "__construct",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "load",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "resize",
+              "width": 150,
+              "height": 100,
+              "crop": false
+            }
+          ],
+          "filters": [
+            {
+              "hook": "mime_types",
+              "arg_count": 1
+            },
+            {
+              "hook": "upload_mimes",
+              "arg_count": 2
+            },
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            },
+            {
+              "hook": "do_action:wp_error_added",
+              "arg_count": 4
+            }
+          ]
+        },
+        "intermediate:success": {
+          "result": {
+            "file": "generated-sample.jpg",
+            "width": 150,
+            "height": 100,
+            "mime-type": "image/jpeg",
+            "filesize": 17
+          },
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "path": "$ROOT/wp-content/uploads/sample.jpg",
+                "mime_type": "image/jpeg"
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "__construct",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "load",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "resize",
+              "width": 150,
+              "height": 100,
+              "crop": [
+                "left",
+                "top"
+              ]
+            },
+            {
+              "method": "save",
+              "destfilename": null,
+              "mime_type": null
+            }
+          ],
+          "filters": [
+            {
+              "hook": "mime_types",
+              "arg_count": 1
+            },
+            {
+              "hook": "upload_mimes",
+              "arg_count": 2
+            },
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            }
+          ]
+        },
+        "metadata:displayable-text-file": {
+          "result": false,
+          "filters": [
+            {
+              "hook": "file_is_displayable_image",
+              "arg_count": 2
+            }
+          ]
+        },
+        "metadata:generate-non-image-file": {
+          "result": {
+            "filesize": 11
+          },
+          "filters": [
+            {
+              "hook": "pre_wp_filesize",
+              "arg_count": 2
+            },
+            {
+              "hook": "wp_filesize",
+              "arg_count": 2
+            },
+            {
+              "hook": "wp_generate_attachment_metadata",
+              "arg_count": 3
+            }
+          ]
+        },
+        "metadata:missing-image-subsizes": {
+          "result": {
+            "medium": {
+              "width": 300,
+              "height": 300,
+              "crop": false
+            },
+            "medium_large": {
+              "width": 768,
+              "height": 0,
+              "crop": false
+            },
+            "large": {
+              "width": 1024,
+              "height": 1024,
+              "crop": false
+            }
+          },
+          "filters": [
+            {
+              "hook": "intermediate_image_sizes",
+              "arg_count": 1
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_get_missing_image_subsizes",
+              "arg_count": 3
+            }
+          ]
+        },
+        "metadata:non-image-missing": {
+          "result": [],
+          "filters": []
+        },
+        "metadata:read-missing-image": {
+          "result": false,
+          "filters": []
+        },
+        "metadata:update-invalid-attachment": {
+          "result": {
+            "wp_error": true,
+            "codes": [
+              "invalid_attachment"
+            ],
+            "messages": [
+              "The attached file cannot be found."
+            ]
+          },
+          "filters": [
+            {
+              "hook": "do_action:wp_error_added",
+              "arg_count": 4
+            }
+          ]
+        },
+        "metadata:update-no-missing": {
+          "result": {
+            "width": 1200,
+            "height": 800,
+            "file": "complete.jpg",
+            "sizes": {
+              "thumbnail": {
+                "file": "complete-150x150.jpg",
+                "width": 150,
+                "height": 150
+              },
+              "medium": {
+                "file": "complete-300x200.jpg",
+                "width": 300,
+                "height": 200
+              },
+              "medium_large": {
+                "file": "complete-768x512.jpg",
+                "width": 768,
+                "height": 512
+              },
+              "large": {
+                "file": "complete-1024x683.jpg",
+                "width": 1024,
+                "height": 683
+              }
+            }
+          },
+          "filters": [
+            {
+              "hook": "intermediate_image_sizes",
+              "arg_count": 1
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_get_missing_image_subsizes",
+              "arg_count": 3
+            }
+          ]
+        },
+        "resize-dimensions:soft-and-crop": {
+          "soft": [
+            0,
+            0,
+            0,
+            0,
+            300,
+            200,
+            1200,
+            800
+          ],
+          "crop": [
+            0,
+            0,
+            0,
+            0,
+            300,
+            300,
+            800,
+            800
+          ],
+          "too_large": false,
+          "filters": [
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            }
+          ]
+        }
+      },
+      "php_errors": [
+        {
+          "errno": 8,
+          "message": "getimagesize(): Error reading from build/wp-core/wphx-313-04/oracle/tmp/not-image.txt!",
+          "file": "media.php",
+          "line": 5749
+        },
+        {
+          "errno": 8,
+          "message": "exif_imagetype(): Error reading from build/wp-core/wphx-313-04/oracle/tmp/not-image.txt!",
+          "file": "functions.php",
+          "line": 3352
+        }
+      ]
+    },
+    "candidate": {
+      "mode": "$MODE",
+      "cases": {
+        "editor:method-requirement": {
+          "supports_resize_save": true,
+          "supports_missing_method": false,
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "mime_type": "image/jpeg",
+                "methods": [
+                  "resize",
+                  "save"
+                ]
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "test",
+              "args": {
+                "mime_type": "image/jpeg",
+                "methods": [
+                  "method_that_does_not_exist"
+                ]
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            }
+          ],
+          "filters": [
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            }
+          ]
+        },
+        "editor:no-implementation": {
+          "result": {
+            "wp_error": true,
+            "codes": [
+              "image_no_editor"
+            ],
+            "messages": [
+              "No editor could be selected."
+            ]
+          },
+          "filters": [
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            },
+            {
+              "hook": "do_action:wp_error_added",
+              "arg_count": 4
+            }
+          ]
+        },
+        "editor:output-format-default-heic": {
+          "result": {
+            "image/heic": "image/jpeg",
+            "image/heif": "image/jpeg",
+            "image/heic-sequence": "image/jpeg",
+            "image/heif-sequence": "image/jpeg"
+          },
+          "filters": [
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            }
+          ]
+        },
+        "editor:selects-filtered-fake": {
+          "result": {
+            "object_class": "WPHX_313_04_Fake_Image_Editor"
+          },
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "mime_type": "image/jpeg",
+                "path": "$ROOT/wp-content/uploads/sample.jpg"
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "__construct",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "load",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            }
+          ],
+          "filters": [
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            }
+          ]
+        },
+        "intermediate:resize-error": {
+          "result": false,
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "path": "$ROOT/wp-content/uploads/sample.jpg",
+                "mime_type": "image/jpeg"
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "__construct",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "load",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "resize",
+              "width": 150,
+              "height": 100,
+              "crop": false
+            }
+          ],
+          "filters": [
+            {
+              "hook": "mime_types",
+              "arg_count": 1
+            },
+            {
+              "hook": "upload_mimes",
+              "arg_count": 2
+            },
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            },
+            {
+              "hook": "do_action:wp_error_added",
+              "arg_count": 4
+            }
+          ]
+        },
+        "intermediate:success": {
+          "result": {
+            "file": "generated-sample.jpg",
+            "width": 150,
+            "height": 100,
+            "mime-type": "image/jpeg",
+            "filesize": 17
+          },
+          "calls": [
+            {
+              "method": "test",
+              "args": {
+                "path": "$ROOT/wp-content/uploads/sample.jpg",
+                "mime_type": "image/jpeg"
+              }
+            },
+            {
+              "method": "supports_mime_type",
+              "mime_type": "image/jpeg"
+            },
+            {
+              "method": "__construct",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "load",
+              "file": "$ROOT/wp-content/uploads/sample.jpg"
+            },
+            {
+              "method": "resize",
+              "width": 150,
+              "height": 100,
+              "crop": [
+                "left",
+                "top"
+              ]
+            },
+            {
+              "method": "save",
+              "destfilename": null,
+              "mime_type": null
+            }
+          ],
+          "filters": [
+            {
+              "hook": "mime_types",
+              "arg_count": 1
+            },
+            {
+              "hook": "upload_mimes",
+              "arg_count": 2
+            },
+            {
+              "hook": "image_editor_output_format",
+              "arg_count": 3
+            },
+            {
+              "hook": "wp_image_editors",
+              "arg_count": 1
+            }
+          ]
+        },
+        "metadata:displayable-text-file": {
+          "result": false,
+          "filters": [
+            {
+              "hook": "file_is_displayable_image",
+              "arg_count": 2
+            }
+          ]
+        },
+        "metadata:generate-non-image-file": {
+          "result": {
+            "filesize": 11
+          },
+          "filters": [
+            {
+              "hook": "pre_wp_filesize",
+              "arg_count": 2
+            },
+            {
+              "hook": "wp_filesize",
+              "arg_count": 2
+            },
+            {
+              "hook": "wp_generate_attachment_metadata",
+              "arg_count": 3
+            }
+          ]
+        },
+        "metadata:missing-image-subsizes": {
+          "result": {
+            "medium": {
+              "width": 300,
+              "height": 300,
+              "crop": false
+            },
+            "medium_large": {
+              "width": 768,
+              "height": 0,
+              "crop": false
+            },
+            "large": {
+              "width": 1024,
+              "height": 1024,
+              "crop": false
+            }
+          },
+          "filters": [
+            {
+              "hook": "intermediate_image_sizes",
+              "arg_count": 1
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_get_missing_image_subsizes",
+              "arg_count": 3
+            }
+          ]
+        },
+        "metadata:non-image-missing": {
+          "result": [],
+          "filters": []
+        },
+        "metadata:read-missing-image": {
+          "result": false,
+          "filters": []
+        },
+        "metadata:update-invalid-attachment": {
+          "result": {
+            "wp_error": true,
+            "codes": [
+              "invalid_attachment"
+            ],
+            "messages": [
+              "The attached file cannot be found."
+            ]
+          },
+          "filters": [
+            {
+              "hook": "do_action:wp_error_added",
+              "arg_count": 4
+            }
+          ]
+        },
+        "metadata:update-no-missing": {
+          "result": {
+            "width": 1200,
+            "height": 800,
+            "file": "complete.jpg",
+            "sizes": {
+              "thumbnail": {
+                "file": "complete-150x150.jpg",
+                "width": 150,
+                "height": 150
+              },
+              "medium": {
+                "file": "complete-300x200.jpg",
+                "width": 300,
+                "height": 200
+              },
+              "medium_large": {
+                "file": "complete-768x512.jpg",
+                "width": 768,
+                "height": 512
+              },
+              "large": {
+                "file": "complete-1024x683.jpg",
+                "width": 1024,
+                "height": 683
+              }
+            }
+          },
+          "filters": [
+            {
+              "hook": "intermediate_image_sizes",
+              "arg_count": 1
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_get_missing_image_subsizes",
+              "arg_count": 3
+            }
+          ]
+        },
+        "resize-dimensions:soft-and-crop": {
+          "soft": [
+            0,
+            0,
+            0,
+            0,
+            300,
+            200,
+            1200,
+            800
+          ],
+          "crop": [
+            0,
+            0,
+            0,
+            0,
+            300,
+            300,
+            800,
+            800
+          ],
+          "too_large": false,
+          "filters": [
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "wp_constrain_dimensions",
+              "arg_count": 5
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            },
+            {
+              "hook": "image_resize_dimensions",
+              "arg_count": 6
+            }
+          ]
+        }
+      },
+      "php_errors": [
+        {
+          "errno": 8,
+          "message": "getimagesize(): Error reading from build/wp-core/wphx-313-04/candidate/tmp/not-image.txt!",
+          "file": "media.php",
+          "line": 5749
+        },
+        {
+          "errno": 8,
+          "message": "exif_imagetype(): Error reading from build/wp-core/wphx-313-04/candidate/tmp/not-image.txt!",
+          "file": "functions.php",
+          "line": 3352
+        }
+      ]
+    },
+    "match": true,
+    "normalized_output_sha256": {
+      "oracle": "sha256:635c8b78964978c7d8a05070c9c9110086bdbcee8cff1a6f6033a5e7950c3909",
+      "candidate": "sha256:95b6f6e97409992029b2b34ad78fc4e9829b60911262ae07691d6c2d5b9f2fcd"
+    }
+  },
+  "remaining_gaps": [
+    {
+      "id": "native-image-library-execution-not-covered",
+      "owner": "WPHX-313.04",
+      "detail": "The fixture injects a fake editor through wp_image_editors. It does not claim GD, Imagick, AVIF/HEIC decoding, EXIF/IPTC extraction on real images, PDF previews, or real image file writes."
+    },
+    {
+      "id": "subsize-generation-not-owned",
+      "owner": "WPHX-313.04",
+      "detail": "The fixture observes missing-subsize decisions and image_make_intermediate_size return shaping. It does not claim durable Haxe ownership of _wp_make_subsizes, real editor resize behavior, or installed media regeneration."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-313.04",
+      "detail": "Candidate behavior still comes from copied upstream PHP. Generated original-path public PHP adapter ownership is not claimed."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 14,
+    "covered_symbols": 12,
+    "oracle_php_errors": 2,
+    "candidate_php_errors": 2
+  }
+}
