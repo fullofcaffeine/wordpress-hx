@@ -1,0 +1,129 @@
+{
+  "schema": "wphx.wphx-php-bootstrap-autoload.v1",
+  "issue": "WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE",
+  "evidence_class": "runtime_bootstrap_probe",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "runner": "tools/wphx-php/run-bootstrap-autoload.mjs",
+  "hxml": {
+    "implementation": "fixtures/wphx-php/bootstrap-autoload-impl.hxml",
+    "public_shell": "fixtures/wphx-php/bootstrap-autoload.hxml"
+  },
+  "artifacts": {
+    "haxe_lib": "build/wphx-php/bootstrap-autoload/haxe/lib",
+    "shell_a": {
+      "path": "build/wphx-php/bootstrap-autoload/generated/wp-includes/wphx-bootstrap-a.php",
+      "sha256": "2bf5a16570e76eddd03a51f0673b28cde22d233c0df01ec84b99287b21c9c181",
+      "exact_patterns": [
+        "if (!defined('WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED'))",
+        "set_include_path(get_include_path() . PATH_SEPARATOR . $wphx_haxe_lib);",
+        "spl_autoload_register(function ($class)",
+        "\\php\\Boot::__hx__init();",
+        "function wphx_bootstrap_probe_a($label = 'a')"
+      ]
+    },
+    "shell_b": {
+      "path": "build/wphx-php/bootstrap-autoload/generated/wp-includes/wphx-bootstrap-b.php",
+      "sha256": "e4830ef44d12b8eb7d65c214a4e0088a24be7ace36e28c3852423049880670b6",
+      "exact_patterns": [
+        "if (!defined('WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED'))",
+        "function wphx_bootstrap_probe_b($label = 'b')"
+      ]
+    },
+    "emission_manifest": {
+      "path": "build/wphx-php/bootstrap-autoload/generated/wphx-php-emission.v1.json",
+      "sha256": "1642dbd2ca41638a72a577d6b690dc27bbbce96dcde01d6d0a35ecb1d4a0f9af",
+      "unsupported_empty": true,
+      "declarations": [
+        "wp-includes/wphx-bootstrap-a.php:global-function:wphx_bootstrap_probe_a",
+        "wp-includes/wphx-bootstrap-b.php:global-function:wphx_bootstrap_probe_b"
+      ]
+    }
+  },
+  "observations": {
+    "states": [
+      {
+        "label": "before",
+        "haxeLibPathCount": 0,
+        "autoloaderCount": 1,
+        "autoloaderKinds": [
+          "closure"
+        ],
+        "bootstrapConstantDefined": false,
+        "bootClassExists": false,
+        "bootInitExists": false,
+        "functionAExists": false,
+        "functionBExists": false
+      },
+      {
+        "label": "after_shell_a",
+        "haxeLibPathCount": 1,
+        "autoloaderCount": 2,
+        "autoloaderKinds": [
+          "closure",
+          "closure"
+        ],
+        "bootstrapConstantDefined": true,
+        "bootClassExists": true,
+        "bootInitExists": true,
+        "functionAExists": true,
+        "functionBExists": false
+      },
+      {
+        "label": "after_shell_a_second_require",
+        "haxeLibPathCount": 1,
+        "autoloaderCount": 2,
+        "autoloaderKinds": [
+          "closure",
+          "closure"
+        ],
+        "bootstrapConstantDefined": true,
+        "bootClassExists": true,
+        "bootInitExists": true,
+        "functionAExists": true,
+        "functionBExists": false
+      },
+      {
+        "label": "after_shell_b",
+        "haxeLibPathCount": 1,
+        "autoloaderCount": 2,
+        "autoloaderKinds": [
+          "closure",
+          "closure"
+        ],
+        "bootstrapConstantDefined": true,
+        "bootClassExists": true,
+        "bootInitExists": true,
+        "functionAExists": true,
+        "functionBExists": true
+      }
+    ],
+    "callA": "boot:first:1",
+    "callB": "boot:second:2",
+    "snapshot": [
+      "first",
+      "second"
+    ]
+  },
+  "validation_result": {
+    "status": "passed",
+    "haxe_lib_path_appended_once": true,
+    "repeated_require_idempotent": true,
+    "shared_bootstrap_constant_idempotent_across_shells": true,
+    "autoloader_appended_after_existing_loader": true,
+    "php_boot_loaded_after_bootstrap": true,
+    "implementation_delegation_worked": true
+  },
+  "claims": [
+    "The current WPHX per-shell Haxe bootstrap appends the Haxe library path once when two original-path shells share one bootstrap constant.",
+    "Repeated require of the first shell does not duplicate the Haxe library path or SPL autoloader.",
+    "A second original-path shell with the same bootstrap constant does not duplicate the Haxe library path or SPL autoloader.",
+    "The generated Haxe autoloader is appended after an existing probe autoloader.",
+    "php\\\\Boot is available after bootstrap and public shell calls delegate into stock Haxe PHP implementation code."
+  ],
+  "non_claims": [
+    "This fixture does not prove behavior for multiple different bootstrap constants or profiles.",
+    "This fixture does not prove Haxe PHP warning/error-handler compatibility.",
+    "This fixture does not prove stack-trace or source-map behavior.",
+    "This fixture does not claim broad WordPress distribution bootstrap ownership."
+  ]
+}

@@ -75,6 +75,8 @@ Before broad distribution claims, `wordpresshx-ade` must prove:
 - multiple generated files that need Haxe implementation classes share a safe bootstrap plan rather than registering conflicting loaders;
 - `php.Boot::__hx__init()` is reachable only after the path/autoloader setup it needs.
 
+Implemented evidence: `wordpresshx-ade` records the first minimized shared-constant proof in `manifests/wphx-php/bootstrap-autoload.v1.json` and `receipts/compiler/wphx-comp-php-bootstrap-autoload-probe.v1.json`. That fixture proves append-once include-path behavior, appended SPL autoloader order after an existing probe autoloader, repeated `require` safety, shared-bootstrap-constant idempotence across two original-path shells, `php.Boot` availability after bootstrap, and delegation into stock Haxe PHP implementation code. It does not prove multiple different bootstrap constants or profile-wide shared bootstrap helpers.
+
 ## Stack Traces And Source Maps
 
 Debuggability is part of the product surface. Generated public PHP should remain readable enough for operators, and stack traces should identify both the original WordPress-facing file and the Haxe implementation source when the failure crosses that boundary.
@@ -110,7 +112,7 @@ Before a WPHX-generated public shell moves beyond bounded helper/candidate owner
 
 ## Follow-Up Gates
 
-- `wordpresshx-ade` / `WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE`: include path, autoload order, repeated bootstrap, and multi-shell idempotence.
+- `wordpresshx-ade` / `WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE`: closed for the first shared-bootstrap-constant fixture; future profile-wide/multiple-constant work should create a narrower follow-up when needed.
 - `wordpresshx-l7k` / `WPHX-COMP-PHP-BOOTSTRAP-ERROR-HANDLER-PROBE`: warning/notice/error-handler behavior with and without `HAXE_CUSTOM_ERROR_HANDLER`.
 - `wordpresshx-o71` / `WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE`: stack traces, source maps, and debug/parity/release profile behavior through a WPHX shell into stock Haxe PHP implementation code.
 

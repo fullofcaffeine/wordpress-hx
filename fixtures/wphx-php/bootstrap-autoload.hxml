@@ -1,0 +1,8 @@
+-cp ../haxe.compilerdev.reference/reflaxe/src
+-cp src
+-cp fixtures/wphx-php/src
+-main wphx.fixtures.compiler.php.bootstrap.BootstrapShellEntry
+-D wphx_php_output=build/wphx-php/bootstrap-autoload/generated
+-D wphx_php_manifest=build/wphx-php/bootstrap-autoload/generated/wphx-php-emission.v1.json
+-D wphx_php_profile=wordpress
+--macro wphx.compiler.php.CompilerInit.Start()

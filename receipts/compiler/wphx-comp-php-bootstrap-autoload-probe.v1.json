@@ -1,0 +1,52 @@
+{
+  "schema": "wphx.compiler-runtime-receipt.v1",
+  "id": "receipt:wphx-comp-php-bootstrap-autoload-probe",
+  "issue": "WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE",
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "status": "passed",
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/bootstrap-autoload.v1.json",
+      "role": "bootstrap include-path/autoload probe manifest"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-bootstrap-autoload-probe.v1.json",
+      "role": "compiler runtime bootstrap receipt"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/BootstrapShellSurface.hx",
+      "role": "typed WPHX public shell surface"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+      "role": "stock Haxe PHP implementation kernel"
+    }
+  ],
+  "commands": [
+    "npm run wphx:php:bootstrap-autoload",
+    "npm run wphx:php:bootstrap-autoload:check"
+  ],
+  "manifest_sha256": "918bfc98902cecd385a4cc890553b42994c384cb21e1dfe2b8c4c43dad2e578f",
+  "validation_result": {
+    "status": "passed",
+    "haxe_lib_path_appended_once": true,
+    "repeated_require_idempotent": true,
+    "shared_bootstrap_constant_idempotent_across_shells": true,
+    "autoloader_appended_after_existing_loader": true,
+    "php_boot_loaded_after_bootstrap": true,
+    "implementation_delegation_worked": true
+  },
+  "claims": [
+    "The current WPHX per-shell Haxe bootstrap appends the Haxe library path once when two original-path shells share one bootstrap constant.",
+    "Repeated require of the first shell does not duplicate the Haxe library path or SPL autoloader.",
+    "A second original-path shell with the same bootstrap constant does not duplicate the Haxe library path or SPL autoloader.",
+    "The generated Haxe autoloader is appended after an existing probe autoloader.",
+    "php\\\\Boot is available after bootstrap and public shell calls delegate into stock Haxe PHP implementation code."
+  ],
+  "non_claims": [
+    "This fixture does not prove behavior for multiple different bootstrap constants or profiles.",
+    "This fixture does not prove Haxe PHP warning/error-handler compatibility.",
+    "This fixture does not prove stack-trace or source-map behavior.",
+    "This fixture does not claim broad WordPress distribution bootstrap ownership."
+  ]
+}

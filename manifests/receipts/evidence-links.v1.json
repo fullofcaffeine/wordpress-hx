@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 291,
+  "closed_task_count": 292,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "9f4e2519b5504c9bda6430318d1877cc56cf43bf0199d74dd6eebef52a6cce3c",
+          "sha256": "acb12384ddc656acb5c71e54525e54dd4a33443d4e69efcfada61bef43dc49e1",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -2845,6 +2845,16 @@
           "path": "receipts/compiler/wphx-comp-php-bootstrap-adr.v1.json",
           "sha256": "a5d096e71414f582f0be7330a20d15fe116ca5964b3d58008314258941aef035",
           "id": "receipt:wphx-comp-php-bootstrap-adr"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-bootstrap-autoload-probe.v1.json",
+          "sha256": "86136ea49593dc4605a21b838177f467aae3bbdacba82ae595b8dfc25301d790",
+          "id": "receipt:wphx-comp-php-bootstrap-autoload-probe"
         }
       ]
     },

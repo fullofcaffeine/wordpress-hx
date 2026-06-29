@@ -30,6 +30,8 @@
     "wphx:php:public-shell-snapshots:check": "node tools/wphx-php/run-public-shell-snapshots.mjs --check",
     "wphx:php:pluggable-timing": "node tools/wphx-php/run-pluggable-timing.mjs",
     "wphx:php:pluggable-timing:check": "node tools/wphx-php/run-pluggable-timing.mjs --check",
+    "wphx:php:bootstrap-autoload": "node tools/wphx-php/run-bootstrap-autoload.mjs",
+    "wphx:php:bootstrap-autoload:check": "node tools/wphx-php/run-bootstrap-autoload.mjs --check",
     "wphx:php:wp-http-chunk-transfer-decode": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs",
     "wphx:php:wp-http-chunk-transfer-decode:check": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs --check",
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
