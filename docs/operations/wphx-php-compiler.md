@@ -41,6 +41,8 @@ npm run wphx:php:bootstrap-autoload
 npm run wphx:php:bootstrap-autoload:check
 npm run wphx:php:bootstrap-error-handler
 npm run wphx:php:bootstrap-error-handler:check
+npm run wphx:php:bootstrap-debug
+npm run wphx:php:bootstrap-debug:check
 npm run wphx:php:wp-http-parser-helpers
 npm run wphx:php:wp-http-parser-helpers:check
 npm run wphx:php:wp-http-chunk-transfer-decode
@@ -159,6 +161,15 @@ npm run wphx:php:bootstrap-error-handler:check
 
 It emits `build/wphx-php/bootstrap-error-handler/generated/wp-includes/wphx-bootstrap-a.php` and `build/wphx-php/bootstrap-error-handler/generated/wp-includes/wphx-bootstrap-b.php`, lints both files, and runs isolated PHP modes against the first shell. The default WPHX WordPress profile now emits `HAXE_CUSTOM_ERROR_HANDLER=true` before `php.Boot::__hx__init()`, avoids installing Haxe's throwing error handler, preserves `error_reporting`, preserves an existing PHP error handler, and keeps ordinary PHP warning return behavior. The runner also compiles a stock-control shell with `-D wphx_php_bootstrap_error_handler=stock`, proving the explicit control still installs stock Haxe's throwing handler, mutates `error_reporting`, and converts an unsuppressed include warning into `ErrorException`. Evidence is recorded in `manifests/wphx-php/bootstrap-error-handler.v1.json` and `receipts/compiler/wphx-comp-php-bootstrap-error-handler-probe.v1.json`.
 
+The bootstrap debug/source-map fixture compiles one stock Haxe PHP implementation plus one WPHX original-path public shell in debug, parity, and release variants:
+
+```bash
+npm run wphx:php:bootstrap-debug
+npm run wphx:php:bootstrap-debug:check
+```
+
+It emits `wp-includes/wphx-bootstrap-debug.php`, triggers a controlled `haxe\ValueException` through the public shell into `BootstrapKernel.fail`, and records normalized PHP `Throwable` frames. Debug and parity profiles emit `BootstrapKernel.php.map` and inline Haxe source-position comments. Release omits the `.map` file while still preserving stack frames and inline source-position comments in this bounded fixture. Evidence is recorded in `manifests/wphx-php/bootstrap-debug.v1.json` and `receipts/compiler/wphx-comp-php-bootstrap-debug-probe.v1.json`. This proves the first WPHX shell-to-stock-Haxe debug gate; it does not claim packaged operator-facing stack-frame rewriting or mixed PHP/HTML template mapping.
+
 ## Adapter IR
 
 The WPHX PHP compiler now uses an Adapter IR before printing PHP:
@@ -172,7 +183,7 @@ typed Haxe source and metadata
 
 The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
 
-This IR is deliberately narrower than a full PHP backend. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters, the remaining stack-trace/source-map probe, and include-time side-effect/script nodes.
+This IR is deliberately narrower than a full PHP backend. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters and include-time side-effect/script nodes.
 
 `WPHX-COMP-PHP.06` adds the first generated `WP_Http::buildCookieHeader( &$r )` original-path shell. It is a WordPress profile pressure gate over native PHP array mutation, scalar cookie upgrading, `WP_Http_Cookie` object preservation, filter timing, and helper delegation. `WPHX-COMP-PHP-CORE-IR-NATIVE-ARRAYS` keeps the same public-shell behavior while moving the native-array body through reusable PHP-core IR nodes. This is still not arbitrary Haxe expression lowering or a complete PHP backend.
 

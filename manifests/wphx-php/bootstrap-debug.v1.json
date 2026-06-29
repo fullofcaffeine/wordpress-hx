@@ -1,0 +1,451 @@
+{
+  "schema": "wphx.wphx-php-bootstrap-debug.v1",
+  "issue": "WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE",
+  "evidence_class": "runtime_bootstrap_debug_probe",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "runner": "tools/wphx-php/run-bootstrap-debug.mjs",
+  "fixture": {
+    "haxe_source": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+    "shell_source": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/BootstrapDebugShellSurface.hx",
+    "public_function": "wphx_bootstrap_debug_fail"
+  },
+  "profiles": [
+    {
+      "id": "debug",
+      "hxml": {
+        "impl": "fixtures/wphx-php/bootstrap-debug-impl-debug.hxml",
+        "shell": "fixtures/wphx-php/bootstrap-debug-shell-debug.hxml"
+      },
+      "source_maps_expected": true,
+      "artifacts": {
+        "shell": {
+          "path": "build/wphx-php/bootstrap-debug/debug/generated/wp-includes/wphx-bootstrap-debug.php",
+          "sha256": "41e067ef1ce218f1da40d8b13f54ebb398981fa24441353fe854c2bc2f83cc0a"
+        },
+        "haxe_file": {
+          "path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+          "sha256": "adcb8356b7b16998c03cfc3eccc7929e5aa06c6f14fc7289c575c060618a72ab"
+        },
+        "bootstrap_source_map": {
+          "path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php.map",
+          "sha256": "323baf469461eef6011772b6cc443c9b6df0f55e2fba7be720b262d0acbeef64",
+          "source_count": 1,
+          "sources": [
+            "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx"
+          ]
+        },
+        "source_map_count": 25,
+        "probe": {
+          "path": "build/wphx-php/bootstrap-debug/debug/probe.php",
+          "sha256": "3944605bdf20f218b13c08559bb009cb36c9f70036b25f2cd80b3e615c357439"
+        },
+        "emission_manifest": {
+          "path": "build/wphx-php/bootstrap-debug/debug/generated/wphx-php-emission.v1.json",
+          "sha256": "ed4f916b8ce4fe46920870ae51f7e26ce3631510031d12ccc77738eba92d71da",
+          "bootstrap_error_handler_policy": "wordpress",
+          "unsupported_empty": true
+        }
+      },
+      "runtime": {
+        "exception": {
+          "class": "haxe\\ValueException",
+          "message": "WPHX-BOOTSTRAP-DEBUG:CORE",
+          "file": "build/wphx-php/bootstrap-debug/debug/haxe/lib/haxe/Exception.php",
+          "line": 77,
+          "trace": [
+            {
+              "file": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+              "line": 31,
+              "function": "thrown",
+              "class": "haxe\\Exception",
+              "type": "::"
+            },
+            {
+              "file": "build/wphx-php/bootstrap-debug/debug/generated/wp-includes/wphx-bootstrap-debug.php",
+              "line": 21,
+              "function": "fail",
+              "class": "wphx\\fixtures\\php\\bootstrap\\BootstrapKernel",
+              "type": "::"
+            },
+            {
+              "file": "build/wphx-php/bootstrap-debug/debug/probe.php",
+              "line": 10,
+              "function": "wphx_bootstrap_debug_fail",
+              "class": null,
+              "type": null
+            }
+          ]
+        }
+      },
+      "source_positions": {
+        "haxe_comment_map_count": 5,
+        "haxe_comment_map_for_kernel": [
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 28,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 26,
+            "haxe_characters": "3-41",
+            "generated_comment_sha256": "ae4307fd5f35267495e9c0640ee84c82c00fa93295f8f49399891c681589b468"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 30,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 27,
+            "haxe_characters": "3-8",
+            "generated_comment_sha256": "f88eef36426877a8379721e200a533df5f8cf33ed6f4ff79a49acc5d32b5872b"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 40,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 15,
+            "haxe_characters": "3-20",
+            "generated_comment_sha256": "5d4e438e9cc00814ff260fd41192cb8b6e7fed05ed6dd20ac78d077103fb2fc2"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 43,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 16,
+            "haxe_characters": "3-46",
+            "generated_comment_sha256": "0696509e8e3cf0afe891ec28e37232c45a2800ab04262a81c140787da50bc69f"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 51,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 21,
+            "haxe_characters": "10-31",
+            "generated_comment_sha256": "9e05f7a705e280d5255979bcf6278a800c6a16243792119a4e86f3337de5d930"
+          }
+        ],
+        "resolved_user_haxe_trace_frame": {
+          "kind": "haxe-source-comment",
+          "generated_path": "build/wphx-php/bootstrap-debug/debug/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+          "generated_line": 31,
+          "generated_comment_line": 30,
+          "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+          "haxe_line": 27,
+          "haxe_characters": "3-8"
+        },
+        "resolved_shell_trace_frame": {
+          "kind": "wphx-original-path-shell",
+          "generated_path": "build/wphx-php/bootstrap-debug/debug/generated/wp-includes/wphx-bootstrap-debug.php",
+          "distribution_path": "wp-includes/wphx-bootstrap-debug.php",
+          "generated_line": 21,
+          "function_line": 19,
+          "haxe_shell_source": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/BootstrapDebugShellSurface.hx"
+        }
+      },
+      "validation_result": {
+        "exception_message_matches": true,
+        "user_haxe_trace_frame_present": true,
+        "user_haxe_trace_frame_maps_to_haxe_source": true,
+        "shell_trace_frame_present": true,
+        "shell_trace_frame_is_original_path_adapter": true,
+        "source_map_presence_matches_profile": true,
+        "emission_manifest_unsupported_empty": true
+      }
+    },
+    {
+      "id": "parity",
+      "hxml": {
+        "impl": "fixtures/wphx-php/bootstrap-debug-impl-parity.hxml",
+        "shell": "fixtures/wphx-php/bootstrap-debug-shell-parity.hxml"
+      },
+      "source_maps_expected": true,
+      "artifacts": {
+        "shell": {
+          "path": "build/wphx-php/bootstrap-debug/parity/generated/wp-includes/wphx-bootstrap-debug.php",
+          "sha256": "41e067ef1ce218f1da40d8b13f54ebb398981fa24441353fe854c2bc2f83cc0a"
+        },
+        "haxe_file": {
+          "path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+          "sha256": "1b53f0e1916bf0289b6de2a680f2160bd474c9b50a9640a602698acfbdfd9809"
+        },
+        "bootstrap_source_map": {
+          "path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php.map",
+          "sha256": "71e1f4eb9588de1f1d877636aac1ed8157ff8779d43a3f32c1be4e471439e4d2",
+          "source_count": 1,
+          "sources": [
+            "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx"
+          ]
+        },
+        "source_map_count": 25,
+        "probe": {
+          "path": "build/wphx-php/bootstrap-debug/parity/probe.php",
+          "sha256": "3944605bdf20f218b13c08559bb009cb36c9f70036b25f2cd80b3e615c357439"
+        },
+        "emission_manifest": {
+          "path": "build/wphx-php/bootstrap-debug/parity/generated/wphx-php-emission.v1.json",
+          "sha256": "ed4f916b8ce4fe46920870ae51f7e26ce3631510031d12ccc77738eba92d71da",
+          "bootstrap_error_handler_policy": "wordpress",
+          "unsupported_empty": true
+        }
+      },
+      "runtime": {
+        "exception": {
+          "class": "haxe\\ValueException",
+          "message": "WPHX-BOOTSTRAP-DEBUG:CORE",
+          "file": "build/wphx-php/bootstrap-debug/parity/haxe/lib/haxe/Exception.php",
+          "line": 76,
+          "trace": [
+            {
+              "file": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+              "line": 30,
+              "function": "thrown",
+              "class": "haxe\\Exception",
+              "type": "::"
+            },
+            {
+              "file": "build/wphx-php/bootstrap-debug/parity/generated/wp-includes/wphx-bootstrap-debug.php",
+              "line": 21,
+              "function": "fail",
+              "class": "wphx\\fixtures\\php\\bootstrap\\BootstrapKernel",
+              "type": "::"
+            },
+            {
+              "file": "build/wphx-php/bootstrap-debug/parity/probe.php",
+              "line": 10,
+              "function": "wphx_bootstrap_debug_fail",
+              "class": null,
+              "type": null
+            }
+          ]
+        }
+      },
+      "source_positions": {
+        "haxe_comment_map_count": 5,
+        "haxe_comment_map_for_kernel": [
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 27,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 26,
+            "haxe_characters": "3-41",
+            "generated_comment_sha256": "ae4307fd5f35267495e9c0640ee84c82c00fa93295f8f49399891c681589b468"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 29,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 27,
+            "haxe_characters": "3-8",
+            "generated_comment_sha256": "f88eef36426877a8379721e200a533df5f8cf33ed6f4ff79a49acc5d32b5872b"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 39,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 15,
+            "haxe_characters": "3-20",
+            "generated_comment_sha256": "5d4e438e9cc00814ff260fd41192cb8b6e7fed05ed6dd20ac78d077103fb2fc2"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 42,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 16,
+            "haxe_characters": "3-46",
+            "generated_comment_sha256": "0696509e8e3cf0afe891ec28e37232c45a2800ab04262a81c140787da50bc69f"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 50,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 21,
+            "haxe_characters": "10-31",
+            "generated_comment_sha256": "9e05f7a705e280d5255979bcf6278a800c6a16243792119a4e86f3337de5d930"
+          }
+        ],
+        "resolved_user_haxe_trace_frame": {
+          "kind": "haxe-source-comment",
+          "generated_path": "build/wphx-php/bootstrap-debug/parity/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+          "generated_line": 30,
+          "generated_comment_line": 29,
+          "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+          "haxe_line": 27,
+          "haxe_characters": "3-8"
+        },
+        "resolved_shell_trace_frame": {
+          "kind": "wphx-original-path-shell",
+          "generated_path": "build/wphx-php/bootstrap-debug/parity/generated/wp-includes/wphx-bootstrap-debug.php",
+          "distribution_path": "wp-includes/wphx-bootstrap-debug.php",
+          "generated_line": 21,
+          "function_line": 19,
+          "haxe_shell_source": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/BootstrapDebugShellSurface.hx"
+        }
+      },
+      "validation_result": {
+        "exception_message_matches": true,
+        "user_haxe_trace_frame_present": true,
+        "user_haxe_trace_frame_maps_to_haxe_source": true,
+        "shell_trace_frame_present": true,
+        "shell_trace_frame_is_original_path_adapter": true,
+        "source_map_presence_matches_profile": true,
+        "emission_manifest_unsupported_empty": true
+      }
+    },
+    {
+      "id": "release",
+      "hxml": {
+        "impl": "fixtures/wphx-php/bootstrap-debug-impl-release.hxml",
+        "shell": "fixtures/wphx-php/bootstrap-debug-shell-release.hxml"
+      },
+      "source_maps_expected": false,
+      "artifacts": {
+        "shell": {
+          "path": "build/wphx-php/bootstrap-debug/release/generated/wp-includes/wphx-bootstrap-debug.php",
+          "sha256": "41e067ef1ce218f1da40d8b13f54ebb398981fa24441353fe854c2bc2f83cc0a"
+        },
+        "haxe_file": {
+          "path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+          "sha256": "1b53f0e1916bf0289b6de2a680f2160bd474c9b50a9640a602698acfbdfd9809"
+        },
+        "bootstrap_source_map": null,
+        "source_map_count": 0,
+        "probe": {
+          "path": "build/wphx-php/bootstrap-debug/release/probe.php",
+          "sha256": "3944605bdf20f218b13c08559bb009cb36c9f70036b25f2cd80b3e615c357439"
+        },
+        "emission_manifest": {
+          "path": "build/wphx-php/bootstrap-debug/release/generated/wphx-php-emission.v1.json",
+          "sha256": "ed4f916b8ce4fe46920870ae51f7e26ce3631510031d12ccc77738eba92d71da",
+          "bootstrap_error_handler_policy": "wordpress",
+          "unsupported_empty": true
+        }
+      },
+      "runtime": {
+        "exception": {
+          "class": "haxe\\ValueException",
+          "message": "WPHX-BOOTSTRAP-DEBUG:CORE",
+          "file": "build/wphx-php/bootstrap-debug/release/haxe/lib/haxe/Exception.php",
+          "line": 76,
+          "trace": [
+            {
+              "file": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+              "line": 30,
+              "function": "thrown",
+              "class": "haxe\\Exception",
+              "type": "::"
+            },
+            {
+              "file": "build/wphx-php/bootstrap-debug/release/generated/wp-includes/wphx-bootstrap-debug.php",
+              "line": 21,
+              "function": "fail",
+              "class": "wphx\\fixtures\\php\\bootstrap\\BootstrapKernel",
+              "type": "::"
+            },
+            {
+              "file": "build/wphx-php/bootstrap-debug/release/probe.php",
+              "line": 10,
+              "function": "wphx_bootstrap_debug_fail",
+              "class": null,
+              "type": null
+            }
+          ]
+        }
+      },
+      "source_positions": {
+        "haxe_comment_map_count": 5,
+        "haxe_comment_map_for_kernel": [
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 27,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 26,
+            "haxe_characters": "3-41",
+            "generated_comment_sha256": "ae4307fd5f35267495e9c0640ee84c82c00fa93295f8f49399891c681589b468"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 29,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 27,
+            "haxe_characters": "3-8",
+            "generated_comment_sha256": "f88eef36426877a8379721e200a533df5f8cf33ed6f4ff79a49acc5d32b5872b"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 39,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 15,
+            "haxe_characters": "3-20",
+            "generated_comment_sha256": "5d4e438e9cc00814ff260fd41192cb8b6e7fed05ed6dd20ac78d077103fb2fc2"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 42,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 16,
+            "haxe_characters": "3-46",
+            "generated_comment_sha256": "0696509e8e3cf0afe891ec28e37232c45a2800ab04262a81c140787da50bc69f"
+          },
+          {
+            "generated_path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+            "generated_line": 50,
+            "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+            "haxe_line": 21,
+            "haxe_characters": "10-31",
+            "generated_comment_sha256": "9e05f7a705e280d5255979bcf6278a800c6a16243792119a4e86f3337de5d930"
+          }
+        ],
+        "resolved_user_haxe_trace_frame": {
+          "kind": "haxe-source-comment",
+          "generated_path": "build/wphx-php/bootstrap-debug/release/haxe/lib/wphx/fixtures/php/bootstrap/BootstrapKernel.php",
+          "generated_line": 30,
+          "generated_comment_line": 29,
+          "haxe_path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+          "haxe_line": 27,
+          "haxe_characters": "3-8"
+        },
+        "resolved_shell_trace_frame": {
+          "kind": "wphx-original-path-shell",
+          "generated_path": "build/wphx-php/bootstrap-debug/release/generated/wp-includes/wphx-bootstrap-debug.php",
+          "distribution_path": "wp-includes/wphx-bootstrap-debug.php",
+          "generated_line": 21,
+          "function_line": 19,
+          "haxe_shell_source": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/BootstrapDebugShellSurface.hx"
+        }
+      },
+      "validation_result": {
+        "exception_message_matches": true,
+        "user_haxe_trace_frame_present": true,
+        "user_haxe_trace_frame_maps_to_haxe_source": true,
+        "shell_trace_frame_present": true,
+        "shell_trace_frame_is_original_path_adapter": true,
+        "source_map_presence_matches_profile": true,
+        "emission_manifest_unsupported_empty": true
+      }
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "debug_profile_has_source_map": true,
+    "parity_profile_has_source_map": true,
+    "release_profile_omits_source_map": true,
+    "all_profiles_map_user_haxe_frame_from_comments": true,
+    "all_profiles_preserve_original_path_shell_frame": true,
+    "all_profiles_have_empty_unsupported_manifests": true
+  },
+  "policy_result": {
+    "debug": "debug profile keeps .map files and inline Haxe source-position comments for stock Haxe PHP implementation frames",
+    "parity": "parity profile keeps .map files and inline Haxe source-position comments for differential evidence",
+    "release": "release profile omits .map files but still keeps Haxe-generated inline source-position comments in this bounded fixture",
+    "shell_frames": "WPHX original-path public shell frames remain visible as wp-includes/wphx-bootstrap-debug.php and map to the typed shell source by manifest policy"
+  },
+  "claims": [
+    "A controlled exception through a WPHX original-path public shell reaches stock Haxe PHP implementation code in debug, parity, and release profiles.",
+    "Debug and parity profiles emit BootstrapKernel.php.map for the Haxe implementation file.",
+    "Release omits BootstrapKernel.php.map while preserving PHP stack frames and inline Haxe source-position comments in this fixture.",
+    "The PHP stack includes both the stock Haxe PHP implementation frame and the WPHX original-path public shell frame.",
+    "Paths in the recorded runtime and source-map evidence are normalized for deterministic receipts."
+  ],
+  "non_claims": [
+    "This fixture does not prove operator-facing stack-frame rewriting in a packaged WordPress distribution.",
+    "This fixture does not remove Haxe runtime frames from PHP Throwable output.",
+    "This fixture does not prove mixed PHP/HTML template source mapping."
+  ]
+}

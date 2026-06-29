@@ -1,0 +1,7 @@
+-cp fixtures/wphx-php/src
+-D wphx-profile=release
+-D no-traces
+-D analyzer-optimize
+-dce full
+-main wphx.fixtures.php.bootstrap.BootstrapImplEntry
+-php build/wphx-php/bootstrap-debug/release/haxe

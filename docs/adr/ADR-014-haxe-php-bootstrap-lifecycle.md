@@ -83,13 +83,16 @@ Implemented evidence: `wordpresshx-ade` records the first minimized shared-const
 
 Debuggability is part of the product surface. Generated public PHP should remain readable enough for operators, and stack traces should identify both the original WordPress-facing file and the Haxe implementation source when the failure crosses that boundary.
 
-Before broad distribution claims, `wordpresshx-o71` must prove or update policy for:
+`wordpresshx-o71` adds the first minimized WPHX bootstrap debug probe. It triggers a controlled `haxe\ValueException` through a WPHX original-path public shell into stock Haxe PHP implementation code across debug, parity, and release profiles. The probe records that:
 
-- stack frames through a WPHX original-path public adapter into stock Haxe PHP implementation code;
-- debug and parity profile source-map/source-position behavior;
-- release profile behavior when source maps and oracle traces are removed;
-- normalized local paths so receipts do not embed machine-specific workspace paths;
-- whether Haxe runtime frames are acceptable, hidden, or mapped in operator-facing diagnostics.
+- PHP `Throwable` traces include both the WPHX original-path public adapter frame and the stock Haxe PHP implementation frame;
+- debug and parity profiles emit `BootstrapKernel.php.map` and preserve inline Haxe source-position comments;
+- release omits `BootstrapKernel.php.map` while preserving PHP stack frames and inline Haxe source-position comments in this bounded fixture;
+- runtime paths and source-map paths are normalized so receipts do not embed machine-specific workspace paths.
+
+Implemented evidence: `wordpresshx-o71` records the stack-trace/source-map proof in `manifests/wphx-php/bootstrap-debug.v1.json` and `receipts/compiler/wphx-comp-php-bootstrap-debug-probe.v1.json`.
+
+This closes the first bootstrap debug gate for bounded WPHX public shells. It does not claim operator-facing stack-frame rewriting, removal of Haxe runtime frames from PHP `Throwable` output, packaged-distribution stack-trace UX, or mixed PHP/HTML template source mapping.
 
 ## Required Gates Before Broadening
 
@@ -117,7 +120,7 @@ Before a WPHX-generated public shell moves beyond bounded helper/candidate owner
 - `wordpresshx-ade` / `WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE`: closed for the first shared-bootstrap-constant fixture; future profile-wide/multiple-constant work should create a narrower follow-up when needed.
 - `wordpresshx-l7k` / `WPHX-COMP-PHP-BOOTSTRAP-ERROR-HANDLER-PROBE`: closed; proves the non-throwing policy must be selected before broad WordPress public-shell claims.
 - `wordpresshx-9h2` / `WPHX-COMP-PHP-BOOTSTRAP-NONTHROWING-PROFILE`: closed; emits the non-throwing bootstrap policy through the default WPHX PHP WordPress profile and keeps `stock` as an explicit control.
-- `wordpresshx-o71` / `WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE`: stack traces, source maps, and debug/parity/release profile behavior through a WPHX shell into stock Haxe PHP implementation code.
+- `wordpresshx-o71` / `WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE`: closed for the first WPHX shell into stock Haxe PHP implementation stack-trace/source-map probe; future packaged-distribution stack UX should use a narrower follow-up.
 
 ## Non-Claims
 

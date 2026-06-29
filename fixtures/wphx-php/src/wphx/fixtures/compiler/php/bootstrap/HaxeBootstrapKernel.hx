@@ -8,4 +8,5 @@ extern class HaxeBootstrapKernel
 {
 	static function mark(label:String):String;
 	static function snapshot():String;
+	static function fail(label:String):String;
 }

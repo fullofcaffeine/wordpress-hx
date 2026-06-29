@@ -1,0 +1,7 @@
+-cp fixtures/wphx-php/src
+-lib sourcemap
+-D source-map
+-D wphx-profile=debug
+-debug
+-main wphx.fixtures.php.bootstrap.BootstrapImplEntry
+-php build/wphx-php/bootstrap-debug/debug/haxe

@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.compiler-runtime-receipt.v1",
+  "id": "receipt:wphx-comp-php-bootstrap-debug-probe",
+  "issue": "WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE",
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "status": "passed",
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/bootstrap-debug.v1.json",
+      "role": "bootstrap stack-trace/source-map probe manifest"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-bootstrap-debug-probe.v1.json",
+      "role": "compiler runtime bootstrap debug receipt"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapKernel.hx",
+      "role": "stock Haxe PHP implementation fixture source"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/BootstrapDebugShellSurface.hx",
+      "role": "WPHX original-path public shell fixture source"
+    },
+    {
+      "path": "tools/wphx-php/run-bootstrap-debug.mjs",
+      "role": "bootstrap debug probe runner"
+    }
+  ],
+  "commands": [
+    "npm run wphx:php:bootstrap-debug",
+    "npm run wphx:php:bootstrap-debug:check"
+  ],
+  "manifest_sha256": "c9d6f19e540a147c2709fa510acd6651591f58ac590bed0fc8915d9516485e17",
+  "validation_result": {
+    "status": "passed",
+    "debug_profile_has_source_map": true,
+    "parity_profile_has_source_map": true,
+    "release_profile_omits_source_map": true,
+    "all_profiles_map_user_haxe_frame_from_comments": true,
+    "all_profiles_preserve_original_path_shell_frame": true,
+    "all_profiles_have_empty_unsupported_manifests": true
+  },
+  "policy_result": {
+    "debug": "debug profile keeps .map files and inline Haxe source-position comments for stock Haxe PHP implementation frames",
+    "parity": "parity profile keeps .map files and inline Haxe source-position comments for differential evidence",
+    "release": "release profile omits .map files but still keeps Haxe-generated inline source-position comments in this bounded fixture",
+    "shell_frames": "WPHX original-path public shell frames remain visible as wp-includes/wphx-bootstrap-debug.php and map to the typed shell source by manifest policy"
+  },
+  "claims": [
+    "A controlled exception through a WPHX original-path public shell reaches stock Haxe PHP implementation code in debug, parity, and release profiles.",
+    "Debug and parity profiles emit BootstrapKernel.php.map for the Haxe implementation file.",
+    "Release omits BootstrapKernel.php.map while preserving PHP stack frames and inline Haxe source-position comments in this fixture.",
+    "The PHP stack includes both the stock Haxe PHP implementation frame and the WPHX original-path public shell frame.",
+    "Paths in the recorded runtime and source-map evidence are normalized for deterministic receipts."
+  ],
+  "non_claims": [
+    "This fixture does not prove operator-facing stack-frame rewriting in a packaged WordPress distribution.",
+    "This fixture does not remove Haxe runtime frames from PHP Throwable output.",
+    "This fixture does not prove mixed PHP/HTML template source mapping."
+  ]
+}

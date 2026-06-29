@@ -1,0 +1,6 @@
+-cp fixtures/wphx-php/src
+-lib sourcemap
+-D source-map
+-D wphx-profile=parity
+-main wphx.fixtures.php.bootstrap.BootstrapImplEntry
+-php build/wphx-php/bootstrap-debug/parity/haxe

@@ -20,4 +20,10 @@ class BootstrapKernel
 	{
 		return Json.stringify(calls);
 	}
+
+	public static function fail(label:String):String
+	{
+		final decorated = label.toUpperCase();
+		throw "WPHX-BOOTSTRAP-DEBUG:" + decorated;
+	}
 }
