@@ -4,6 +4,14 @@
 
 The compiler is a Haxe/Reflaxe module under `src/wphx/compiler/php`. It uses Reflaxe manual output so emitted file paths can be WordPress distribution paths such as `wp-includes/*.php`, not merely Haxe package paths. Reflaxe is loaded through the explicit classpath recorded in `toolchain.lock.json` and `upstream.lock.json`.
 
+The current strategy, accepted after oracle review on 2026-06-29, is intentionally hybrid:
+
+- stock Haxe PHP emits private Haxe implementation classes and remains the reference for stdlib/runtime behavior;
+- WPHX PHP emits bounded WordPress original-path public adapter files;
+- typed Haxe source, metadata, manifests, and future adapter IR are the durable asset, not generated PHP strings.
+
+Do not assume stock Haxe PHP can directly generate public WordPress Core files with the ABI, file topology, reference behavior, warning behavior, stack traces, and include timing modern WordPress requires. Public WordPress files must pass WPHX public-shell gates. Conversely, do not expand WPHX PHP into a full backend unless minimized evidence shows the hybrid cannot preserve required behavior.
+
 ## Current Invocation
 
 ```bash

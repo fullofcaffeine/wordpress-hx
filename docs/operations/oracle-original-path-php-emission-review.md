@@ -1,6 +1,91 @@
 # Oracle Review: Original-Path PHP Emission Strategy
 
-This document is the reproducible prompt bundle for asking the external architecture reviewer, the oracle, to review the WordPressHX PHP emission strategy. WordPress and Gutenberg remain the behavior oracles; "the oracle" here means the GPT 5.5 Pro architecture reviewer described in `AGENTS.md`.
+This document records the prompt bundle and response summary for the external architecture reviewer, the oracle, reviewing the WordPressHX PHP emission strategy. WordPress and Gutenberg remain the behavior oracles; "the oracle" here means the GPT 5.5 Pro architecture reviewer described in `AGENTS.md`.
+
+## Response Summary
+
+The oracle answered on 2026-06-29 and recommended a hybrid strategy:
+
+```text
+typed Haxe implementation modules
+  -> stock Haxe PHP output for private implementation classes
+  -> WPHX PHP emitter for original-path WordPress public adapter files
+  -> deterministic manifests, ABI checks, reflection probes, behavior probes, and receipts
+```
+
+Accepted interpretation:
+
+- Stock Haxe PHP is the implementation emitter. It is not assumed to be good enough for public WordPress distribution files.
+- WPHX PHP is the bounded WordPress original-path public adapter emitter. It owns file topology, declarations, references, native PHP arrays, conditional declarations, reflection-visible ABI, and load/include effects only where WordPress compatibility requires them.
+- The portable long-term asset is Haxe-owned semantics plus typed adapter contracts, not PHP text. This keeps future Go/Rust/WASM/custom-target profiles viable because PHP-specific ecosystem compatibility stays isolated at the adapter layer.
+- Do not fork `genphp7.ml` now.
+- Do not expand WPHX PHP into a full `reflaxe.php` backend now.
+- Escalate only when minimized evidence proves that stock Haxe PHP plus bounded WPHX adapters cannot preserve required semantics, or when WPHX starts reimplementing a backend accidentally.
+
+The oracle specifically treated the newer protected-method and by-reference-parameter evidence as support for continuing the current path, not as evidence for whole-file `WP_Http` ownership or a broader PHP backend.
+
+## Accepted Follow-Up
+
+Beads follow-up created from the response:
+
+- `WPHX-COMP-PHP-ADAPTER-IR-ADR`: define WPHX PHP adapter IR and scope.
+- `WPHX-COMP-PHP-SNAPSHOTS`: add WPHX-generated public-shell snapshot/AST contracts.
+- `WPHX-COMP-PHP-BOOTSTRAP-ADR`: document Haxe PHP runtime bootstrap in the WordPress lifecycle.
+- `WPHX-COMP-PHP.06`: generate `WP_Http::buildCookieHeader( &$r )` with native array mutation.
+- `WPHX-COMP-PHP.07`: generate `WP_Http::processHeaders` with native header/cookie arrays.
+- `WPHX-COMP-PHP-CONDITIONALS`: prove conditional declaration and pluggable load timing.
+- `WPHX-COMP-PHP-INCLUDE-SIDE-EFFECTS`: prove include-time side effects before mixed templates.
+- `WPHX-COMP-PHP-SHELL-RETIREMENT`: define copied/JS-patched shell retirement states.
+
+Default sequence for the next Core slices:
+
+1. Keep grouped `WP_Http` parser-helper emission moving.
+2. Promote `processHeaders` from bridge evidence to WPHX-emitted adapter.
+3. Promote `buildCookieHeader( &$r )` after by-reference and native-array mutation gates pass.
+4. Add a conditional declaration/pluggable load-timing fixture.
+5. Add a smaller include side-effect/include-return fixture before mixed PHP/HTML templates.
+
+The oracle explicitly warned not to attempt full `WP_Http::request` or broad mixed-template ownership until these gates exist.
+
+## Escalation Criteria
+
+Use stock Haxe PHP improvements when the blocker is generic private implementation lowering: `php.Ref<T>`, by-reference returns, normal native PHP array lowering in implementation classes, generic source maps, or runtime bootstrap options that benefit non-WordPress Haxe PHP users.
+
+Use WPHX PHP emitter features when the blocker is WordPress public ABI or file shape: original paths, global functions, public class/interface/trait identity, visibility/reflection, conditional declarations, PHP-native references, globals/superglobals, include-time side effects, and public-shell manifests.
+
+Consider a stock Haxe PHP fork only when all conditions hold:
+
+- a minimized generic fixture proves the stock target cannot emit a required PHP semantic;
+- ordinary Haxe, `php.*`, macros, and WPHX adapters cannot preserve behavior safely;
+- a shell/linker solution changes behavior, stack traces, references, load timing, or overhead unacceptably;
+- the issue is generic to procedural PHP/public PHP ABI, not one WordPress call site;
+- compiler-level tests cover the change;
+- the fork delta is small, pinned, documented, and reversible.
+
+Consider a broader `reflaxe.php`/custom PHP target only if WPHX is becoming a backend accidentally. Red flags include broad expression lowering, runtime/stdlib duplication, arbitrary script emission into caller scope, template semantics without a file-segment model, and maintaining backend-scale snapshots without a declared target architecture.
+
+## Durable Public-Shell Gates
+
+A copied, transformed, or JS-patched shell can support candidate evidence, but not a durable public PHP ownership claim. Durable claims require generated original-path files from typed Haxe source, typed metadata, ABI manifests, linker plans, WPHX PHP compiler output, or documented backend improvements.
+
+Before replacing a bridge shell with a durable generated public shell, require:
+
+- generated original-path file, emission manifest, input hashes, oracle hashes, output hash, unsupported construct list, ownership manifest, and receipt;
+- static ABI comparison for claimed symbols, including names, visibility, parameters, defaults, references, variadics, returns, properties, constants, and conditional declaration segment;
+- runtime ABI probes using PHP reflection and repeated include/require behavior;
+- behavior probes against locked WordPress source for success, malformed, false/null/empty, warning/deprecation, native array key, filter timing, object identity, and reference mutation cases;
+- bootstrap/debug probes for include path, autoload order, repeated bootstrap, `php.Boot::__hx__init()`, Haxe error handling, source maps, warnings/notices, and stack traces before broadening generated shells;
+- packaged-distribution checks for durable Core claims.
+
+## Risk Summary
+
+| Risk | Exposure | Mitigation |
+| --- | --- | --- |
+| Compatibility | High: WordPress ABI includes references, globals, arrays, includes, warnings, stack traces, and templates. | Keep leaf/helper slices with static ABI, reflection, behavior, generated-shape, and packaged gates. |
+| Maintenance | Medium-high: stock Haxe PHP and WPHX PHP both exist. | Keep WPHX bounded to original-path adapters and delegate implementation/stdlib behavior to stock Haxe PHP. |
+| Ecosystem | High: plugins/themes reflect, subclass, hook, predefine, and inspect original files. | Require plugin/drop-in, reflection, declaration-timing, and native-mutation fixtures before durable claims. |
+| Debugging | Medium: Haxe bootstrap can alter include path, autoload, errors, and traces. | Add bootstrap/source-map/stack-trace ADR and fixtures before broad distribution claims. |
+| Sequencing | High: temporary shells can become permanent. | Enforce ownership states and retirement gates; JS-patched shells remain bridge evidence only. |
 
 ## Review Goal
 

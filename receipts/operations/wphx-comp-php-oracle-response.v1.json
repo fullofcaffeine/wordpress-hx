@@ -1,0 +1,63 @@
+{
+  "schema": "wphx.operations-receipt.v1",
+  "id": "receipt:wphx-comp-php-oracle-response",
+  "issue": {
+    "id": "wordpresshx-mu5",
+    "external_ref": "WPHX-COMP-PHP-ORACLE-RESPONSE",
+    "title": "Record oracle response for original-path PHP emission strategy"
+  },
+  "recorded_at": "2026-06-29T00:00:00Z",
+  "status": "captured",
+  "artifacts": [
+    {
+      "path": "docs/operations/oracle-original-path-php-emission-review.md",
+      "role": "oracle response summary, escalation criteria, gates, and follow-up task list"
+    },
+    {
+      "path": "docs/adr/ADR-001-php-emission-architecture.md",
+      "role": "amended PHP emission architecture naming WPHX PHP as the original-path adapter emitter"
+    },
+    {
+      "path": "docs/adr/ADR-003-test-architecture-and-snapshots.md",
+      "role": "amended snapshot policy for WPHX-generated public shells"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "operations documentation for the hybrid stock-Haxe-PHP plus WPHX-public-adapter strategy"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program progress rollup and next compiler-pressure gates"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "root agent rule clarifying stock Haxe PHP versus WPHX public adapter responsibility"
+    },
+    {
+      "path": "docs/operations/agent-instructions.md",
+      "role": "operations agent instruction mirror for the same compiler boundary"
+    }
+  ],
+  "follow_up_issues": [
+    "WPHX-COMP-PHP-ADAPTER-IR-ADR",
+    "WPHX-COMP-PHP-SNAPSHOTS",
+    "WPHX-COMP-PHP-BOOTSTRAP-ADR",
+    "WPHX-COMP-PHP.06",
+    "WPHX-COMP-PHP.07",
+    "WPHX-COMP-PHP-CONDITIONALS",
+    "WPHX-COMP-PHP-INCLUDE-SIDE-EFFECTS",
+    "WPHX-COMP-PHP-SHELL-RETIREMENT"
+  ],
+  "claims": [
+    "The oracle response recommends continuing the hybrid strategy for the next Core slices.",
+    "Stock Haxe PHP is recorded as the private implementation emitter, not as sufficient public WordPress file emission by itself.",
+    "WPHX PHP is recorded as the bounded WordPress original-path public adapter emitter.",
+    "No Haxe PHP generator fork or broad reflaxe.php target is justified yet.",
+    "Future target compatibility is preserved by treating Haxe-owned semantics and typed adapter contracts as the durable assets rather than generated PHP text."
+  ],
+  "non_claims": [
+    "This receipt does not implement the adapter IR ADR, bootstrap ADR, shell snapshot lane, processHeaders generation, buildCookieHeader generation, conditional declarations, include side effects, or shell retirement policy.",
+    "This receipt does not claim whole-file WP_Http ownership.",
+    "This receipt does not prove stock Haxe PHP is sufficient for modern WordPress public PHP files."
+  ]
+}

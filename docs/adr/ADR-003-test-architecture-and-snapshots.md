@@ -4,6 +4,8 @@ Status: Accepted
 
 Date: 2026-06-21
 
+Amended: 2026-06-29 for WPHX-generated public-shell snapshots.
+
 ## Context
 
 WordPressHX is a complete WordPress port to Haxe. Its tests must protect two different surfaces:
@@ -92,6 +94,20 @@ The standard generated-PHP contract pipeline is:
 7. optionally run a runtime smoke check.
 
 Do not snapshot whole generated WordPress files as routine review artifacts until their churn is proven low. Prefer AST-selected method excerpts and contracts.
+
+WPHX-generated public adapter files have their own generated-shape contract lane. Stock Haxe PHP lowering snapshots protect private implementation output; they do not prove that WPHX PHP emitted the public WordPress shell shape needed by plugins, themes, reflection, load timing, or stack traces.
+
+Add selected exact or AST-normalized contracts for WPHX public-shell fixtures before durable claims broaden. Required shell-shape classes include:
+
+- global function shell;
+- public class/interface shell;
+- protected method shell;
+- by-reference parameter shell;
+- conditional declaration shell;
+- native PHP array mutation shell;
+- include/top-level side-effect shell.
+
+These snapshots are still shape evidence, not behavior parity. They must be paired with static ABI, runtime reflection, oracle/candidate behavior, and ownership receipts before a public PHP boundary is durable.
 
 ## Behavior Authority
 

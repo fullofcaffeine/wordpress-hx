@@ -31,3 +31,7 @@ Some high-impact architecture decisions are prepared for a second-pass GPT 5.5 P
 Prompt bundles:
 
 - [Original-path PHP emission strategy](oracle-original-path-php-emission-review.md)
+
+Accepted response:
+
+- The 2026-06-29 original-path PHP emission response keeps the hybrid strategy: stock Haxe PHP is the private implementation emitter; WPHX PHP is the bounded WordPress original-path public adapter emitter. The response does not recommend a stock PHP generator fork or broad `reflaxe.php` target yet.
