@@ -1,0 +1,426 @@
+{
+  "schema": "wphx.wp-core-image-filesystem-adapter-contract-candidate.v1",
+  "issue": "WPHX-313.06",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wp-core/run-image-filesystem-adapter-contract-candidate.mjs",
+  "evidence_classes": [
+    "targeted_semantic_parity",
+    "generated_shape"
+  ],
+  "artifact_scope": "helper",
+  "inputs": {
+    "prior_manifests": [
+      {
+        "path": "manifests/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json",
+        "bytes": 65832,
+        "sha256": "sha256:69fc7e4719ba45ccbea0c7e7d52cf2af1927cf485f48f69f81bbfa126df6fec6"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-02-media-upload-adapter-contract-candidate.v1.json",
+        "bytes": 17570,
+        "sha256": "sha256:7250386baab3609f4557b783208fec0085dd0a90a0a07e2f7b5815984c4e13b7"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+        "bytes": 34800,
+        "sha256": "sha256:c57871ef3b895c5c16b76d20440582ab526b90c2d104f9b5224254a6908bdd40"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-05-filesystem-credentials-oracle-fixture.v1.json",
+        "bytes": 29741,
+        "sha256": "sha256:df16d12504a9f04552e569fa23492ba190fb74294bb7f29029fe2dc3ed1464f9"
+      }
+    ],
+    "toolchain_lock": {
+      "path": "toolchain.lock.json",
+      "bytes": 7785,
+      "sha256": "sha256:bd3b78a748f224f7d4bc654098ee29a22f2c186ff392b352abd64f349f9eef9c"
+    },
+    "hxml": {
+      "path": "fixtures/wp-core/image-filesystem-adapter-contract-candidate.hxml",
+      "bytes": 142,
+      "sha256": "sha256:2b34d36d1257097913d90c750ff78ce0ca661e1181ae969f41e3428acccb56d3"
+    },
+    "haxe_sources": [
+      {
+        "path": "fixtures/wp-core/image-filesystem-adapter-contract-candidate.hxml",
+        "bytes": 142,
+        "sha256": "sha256:2b34d36d1257097913d90c750ff78ce0ca661e1181ae969f41e3428acccb56d3"
+      },
+      {
+        "path": "src/wphx/wp/media/ImageFilesystemAdapterContract.hx",
+        "bytes": 7477,
+        "sha256": "sha256:cc6c5e56e630c9c5cb221028598796f05441a986f469e3764fa9f8a52d13c0e7"
+      },
+      {
+        "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.hx",
+        "bytes": 4300,
+        "sha256": "sha256:82e176172aeb70d4edd3bf9cc0aaf7d5f2de079a0b533e12077ee0249c276d90"
+      }
+    ]
+  },
+  "fixture": {
+    "candidate_kind": "haxe_image_filesystem_adapter_contract_candidate",
+    "promoted_contracts": [
+      "image editor selection intent for no implementation, MIME rejection, missing methods, output fallback, load error, and selected routes",
+      "intermediate image size intent for no requested size, no editor, resize error, save error, and ready metadata routes",
+      "missing subsize and metadata update intent for non-image, all-registered, missing, too-large, invalid attachment, create, return existing, and make missing routes",
+      "filesystem credential request intent for filter short-circuit, direct, password credentials, SSH key credentials, form output, and error form routes",
+      "filesystem method intent for forced, direct file-owner, direct relaxed, SSH2, FTP extension, FTP sockets, and unavailable routes",
+      "direct local filesystem I/O intent for write, read, copy, move, delete, dirlist, and reject routes"
+    ],
+    "upstream_reference_functions": [
+      "wp_get_image_editor",
+      "_wp_image_editor_choose",
+      "image_make_intermediate_size",
+      "wp_get_missing_image_subsizes",
+      "wp_update_image_subsizes",
+      "request_filesystem_credentials",
+      "get_filesystem_method",
+      "WP_Filesystem",
+      "WP_Filesystem_Direct"
+    ],
+    "expected_observations": {
+      "editor:none": "editor_no_implementation",
+      "editor:mime": "editor_unsupported_mime",
+      "editor:method": "editor_missing_method",
+      "editor:output": "editor_output_fallback",
+      "editor:load": "editor_load_error",
+      "editor:selected": "editor_selected",
+      "intermediate:no-size": "intermediate_no_size",
+      "intermediate:no-editor": "intermediate_no_editor",
+      "intermediate:resize-error": "intermediate_resize_error",
+      "intermediate:save-error": "intermediate_save_error",
+      "intermediate:ready": "intermediate_metadata_ready",
+      "subsizes:non-image": "subsizes_non_image",
+      "subsizes:all": "subsizes_all_registered",
+      "subsizes:missing": "subsizes_missing_some",
+      "subsizes:too-large": "subsizes_skip_too_large",
+      "metadata:invalid": "metadata_invalid_attachment",
+      "metadata:create": "metadata_create_from_file",
+      "metadata:return": "metadata_return_existing",
+      "metadata:missing": "metadata_make_missing",
+      "credentials:filtered": "filesystem_credentials_filtered",
+      "credentials:direct": "filesystem_credentials_direct",
+      "credentials:password": "filesystem_credentials_accept_password",
+      "credentials:ssh": "filesystem_credentials_accept_ssh_keys",
+      "credentials:form": "filesystem_credentials_form",
+      "credentials:error": "filesystem_credentials_error_form",
+      "method:forced": "filesystem_method_forced",
+      "method:owner": "filesystem_method_direct_file_owner",
+      "method:relaxed": "filesystem_method_direct_relaxed",
+      "method:ssh2": "filesystem_method_ssh2",
+      "method:ftpext": "filesystem_method_ftpext",
+      "method:ftpsockets": "filesystem_method_ftpsockets",
+      "method:unavailable": "filesystem_method_unavailable",
+      "io:write": "direct_io_write",
+      "io:read": "direct_io_read",
+      "io:copy": "direct_io_copy",
+      "io:copy-reject": "direct_io_reject",
+      "io:move-overwrite": "direct_io_move",
+      "io:delete": "direct_io_delete",
+      "io:dirlist": "direct_io_dirlist",
+      "io:unknown": "direct_io_reject"
+    },
+    "public_abi_policy": {
+      "public_php_replacement_claimed": false,
+      "handwritten_php_shells_added": false,
+      "adapter_contract_owner": "haxe_typed",
+      "semantic_owner": "haxe",
+      "native_image_provider_claimed": false,
+      "remote_filesystem_transport_claimed": false,
+      "removal_gate": "Install through typed Adapter IR/original-path generation and run differential PHP image metadata/editor, filesystem credentials, direct filesystem, remote transport, updater/admin, and installed media fixtures before claiming public PHP ABI ownership."
+    },
+    "source_escape_audits": [
+      {
+        "path": "src/wphx/wp/media/ImageFilesystemAdapterContract.hx",
+        "contains_dynamic": false,
+        "contains_untyped": false,
+        "contains_cast": false,
+        "contains_php_syntax_code": false,
+        "contains_raw_javascript": false
+      },
+      {
+        "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.hx",
+        "contains_dynamic": false,
+        "contains_untyped": false,
+        "contains_cast": false,
+        "contains_php_syntax_code": false,
+        "contains_raw_javascript": false
+      }
+    ]
+  },
+  "toolchain": {
+    "haxe_version": "4.3.7",
+    "locked_haxe_version": "4.3.7",
+    "php_cli_profile": "8.4"
+  },
+  "build": {
+    "generated_file_hash_policy": "normalize_haxe_std_source_map_paths",
+    "generated_haxe_files": [
+      {
+        "path": "index.php",
+        "bytes": 396,
+        "sha256": "088da0cb41bc68b26e3dbdb9fbb9cbb8e343a7ff4813e0ced24e2766a39cb8bf"
+      },
+      {
+        "path": "lib/Array_hx.php",
+        "bytes": 22828,
+        "sha256": "32c90a3a4abe627e47449eb18915fdefb8183d786653e6e07bd3d4b4388f0d39"
+      },
+      {
+        "path": "lib/haxe/Exception.php",
+        "bytes": 3562,
+        "sha256": "316e56175b8f42282044b6c41c8dabc43ed717529be60aa7b6197545b700c63f"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayIterator.php",
+        "bytes": 1140,
+        "sha256": "6b5f7004e25a72bdfb6651c9e792c2e5ab3f1532a5ca070b45daec3f9fa5273c"
+      },
+      {
+        "path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "bytes": 481,
+        "sha256": "03388d4a73896cff3ebf578ae5cb8e65288f6bc7f211d4fb5c90068a31819012"
+      },
+      {
+        "path": "lib/haxe/ValueException.php",
+        "bytes": 1008,
+        "sha256": "38feb416f5ef92c9e3869b45b2339751be4bce751d8354230c5b558a310e3858"
+      },
+      {
+        "path": "lib/php/_Boot/HxAnon.php",
+        "bytes": 1182,
+        "sha256": "ba3e39829863ad05fe6deea1c94410d53456c0286580044eb2c7f9b272961706"
+      },
+      {
+        "path": "lib/php/_Boot/HxClass.php",
+        "bytes": 2861,
+        "sha256": "74af3a5ecc7de5d684262d23601f5421418a377aec56bb67accb6ede288ccf5a"
+      },
+      {
+        "path": "lib/php/_Boot/HxClosure.php",
+        "bytes": 2757,
+        "sha256": "4b0b18483c8b6844ac785a4a8771d2891a2786ba7b5135010f4c5adfca0b05fb"
+      },
+      {
+        "path": "lib/php/_Boot/HxDynamicStr.php",
+        "bytes": 3952,
+        "sha256": "721523ea64f02298bc95c91eff8785e48e28fd85280d0bcde1850a887d13aa00"
+      },
+      {
+        "path": "lib/php/_Boot/HxEnum.php",
+        "bytes": 1181,
+        "sha256": "f52cbeca2116dc45c9bdb9502dc5e64575c4f8014145b85bafcc827bd98d2e0a"
+      },
+      {
+        "path": "lib/php/_Boot/HxString.php",
+        "bytes": 8211,
+        "sha256": "d729c50f86111a4ea769ea7102aadda87ab914abd07f7539b7e847ef194cc82b"
+      },
+      {
+        "path": "lib/php/_polyfills.php",
+        "bytes": 2272,
+        "sha256": "80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237"
+      },
+      {
+        "path": "lib/php/Boot.php",
+        "bytes": 36175,
+        "sha256": "d06ed1e404e568d996bbb5a4af6b58d200be9ee8c66cc4538d04e414042081a9"
+      },
+      {
+        "path": "lib/Std.php",
+        "bytes": 1104,
+        "sha256": "fff3bd412e47aae2dc7c32d9d9ee1db47348ab0b6601aa26ccaee25ba12b71ea"
+      },
+      {
+        "path": "lib/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.php",
+        "bytes": 12320,
+        "sha256": "4f6949ea1ba4236aa780432743074a8a33202254451052a1ebd11d15a9c7777f"
+      },
+      {
+        "path": "lib/wphx/wp/media/_ImageFilesystemAdapterContract/ImageFilesystemAdapterContract_Fields_.php",
+        "bytes": 18700,
+        "sha256": "e330fd759ca3999e302f77982af925d2a2531a9c2a108dd161ca37cb054187eb"
+      }
+    ],
+    "php_lint": [
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/index.php",
+        "relative_path": "index.php",
+        "sha256": "sha256:088da0cb41bc68b26e3dbdb9fbb9cbb8e343a7ff4813e0ced24e2766a39cb8bf",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/index.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/Array_hx.php",
+        "relative_path": "lib/Array_hx.php",
+        "sha256": "sha256:32c90a3a4abe627e47449eb18915fdefb8183d786653e6e07bd3d4b4388f0d39",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/Array_hx.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/haxe/Exception.php",
+        "relative_path": "lib/haxe/Exception.php",
+        "sha256": "sha256:316e56175b8f42282044b6c41c8dabc43ed717529be60aa7b6197545b700c63f",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/haxe/Exception.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/haxe/iterators/ArrayIterator.php",
+        "relative_path": "lib/haxe/iterators/ArrayIterator.php",
+        "sha256": "sha256:6b5f7004e25a72bdfb6651c9e792c2e5ab3f1532a5ca070b45daec3f9fa5273c",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/haxe/iterators/ArrayIterator.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "relative_path": "lib/haxe/iterators/ArrayKeyValueIterator.php",
+        "sha256": "sha256:03388d4a73896cff3ebf578ae5cb8e65288f6bc7f211d4fb5c90068a31819012",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/haxe/iterators/ArrayKeyValueIterator.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/haxe/ValueException.php",
+        "relative_path": "lib/haxe/ValueException.php",
+        "sha256": "sha256:38feb416f5ef92c9e3869b45b2339751be4bce751d8354230c5b558a310e3858",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/haxe/ValueException.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxAnon.php",
+        "relative_path": "lib/php/_Boot/HxAnon.php",
+        "sha256": "sha256:ba3e39829863ad05fe6deea1c94410d53456c0286580044eb2c7f9b272961706",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxAnon.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxClass.php",
+        "relative_path": "lib/php/_Boot/HxClass.php",
+        "sha256": "sha256:74af3a5ecc7de5d684262d23601f5421418a377aec56bb67accb6ede288ccf5a",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxClass.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxClosure.php",
+        "relative_path": "lib/php/_Boot/HxClosure.php",
+        "sha256": "sha256:4b0b18483c8b6844ac785a4a8771d2891a2786ba7b5135010f4c5adfca0b05fb",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxClosure.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxDynamicStr.php",
+        "relative_path": "lib/php/_Boot/HxDynamicStr.php",
+        "sha256": "sha256:721523ea64f02298bc95c91eff8785e48e28fd85280d0bcde1850a887d13aa00",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxDynamicStr.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxEnum.php",
+        "relative_path": "lib/php/_Boot/HxEnum.php",
+        "sha256": "sha256:f52cbeca2116dc45c9bdb9502dc5e64575c4f8014145b85bafcc827bd98d2e0a",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxEnum.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxString.php",
+        "relative_path": "lib/php/_Boot/HxString.php",
+        "sha256": "sha256:d729c50f86111a4ea769ea7102aadda87ab914abd07f7539b7e847ef194cc82b",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_Boot/HxString.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/_polyfills.php",
+        "relative_path": "lib/php/_polyfills.php",
+        "sha256": "sha256:80f6c2172d93b501328e2c4fa131b81a186ff850e6a437e9068f9e842a6b3237",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/_polyfills.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/php/Boot.php",
+        "relative_path": "lib/php/Boot.php",
+        "sha256": "sha256:d06ed1e404e568d996bbb5a4af6b58d200be9ee8c66cc4538d04e414042081a9",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/php/Boot.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/Std.php",
+        "relative_path": "lib/Std.php",
+        "sha256": "sha256:fff3bd412e47aae2dc7c32d9d9ee1db47348ab0b6601aa26ccaee25ba12b71ea",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/Std.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.php",
+        "relative_path": "lib/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.php",
+        "sha256": "sha256:4f6949ea1ba4236aa780432743074a8a33202254451052a1ebd11d15a9c7777f",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.php"
+      },
+      {
+        "path": "build/wp-core/wphx-313-06/haxe/lib/wphx/wp/media/_ImageFilesystemAdapterContract/ImageFilesystemAdapterContract_Fields_.php",
+        "relative_path": "lib/wphx/wp/media/_ImageFilesystemAdapterContract/ImageFilesystemAdapterContract_Fields_.php",
+        "sha256": "sha256:e330fd759ca3999e302f77982af925d2a2531a9c2a108dd161ca37cb054187eb",
+        "php_lint": "No syntax errors detected in build/wp-core/wphx-313-06/haxe/lib/wphx/wp/media/_ImageFilesystemAdapterContract/ImageFilesystemAdapterContract_Fields_.php"
+      }
+    ]
+  },
+  "run": {
+    "command": "php build/wp-core/wphx-313-06/haxe/index.php",
+    "raw_output_sha256": "sha256:6b2d6acdf7b4f832c2a68d24b608e470816c9f282e2f5fd9dc663d5c4af4d886",
+    "observations": {
+      "editor:none": "editor_no_implementation",
+      "editor:mime": "editor_unsupported_mime",
+      "editor:method": "editor_missing_method",
+      "editor:output": "editor_output_fallback",
+      "editor:load": "editor_load_error",
+      "editor:selected": "editor_selected",
+      "intermediate:no-size": "intermediate_no_size",
+      "intermediate:no-editor": "intermediate_no_editor",
+      "intermediate:resize-error": "intermediate_resize_error",
+      "intermediate:save-error": "intermediate_save_error",
+      "intermediate:ready": "intermediate_metadata_ready",
+      "subsizes:non-image": "subsizes_non_image",
+      "subsizes:all": "subsizes_all_registered",
+      "subsizes:missing": "subsizes_missing_some",
+      "subsizes:too-large": "subsizes_skip_too_large",
+      "metadata:invalid": "metadata_invalid_attachment",
+      "metadata:create": "metadata_create_from_file",
+      "metadata:return": "metadata_return_existing",
+      "metadata:missing": "metadata_make_missing",
+      "credentials:filtered": "filesystem_credentials_filtered",
+      "credentials:direct": "filesystem_credentials_direct",
+      "credentials:password": "filesystem_credentials_accept_password",
+      "credentials:ssh": "filesystem_credentials_accept_ssh_keys",
+      "credentials:form": "filesystem_credentials_form",
+      "credentials:error": "filesystem_credentials_error_form",
+      "method:forced": "filesystem_method_forced",
+      "method:owner": "filesystem_method_direct_file_owner",
+      "method:relaxed": "filesystem_method_direct_relaxed",
+      "method:ssh2": "filesystem_method_ssh2",
+      "method:ftpext": "filesystem_method_ftpext",
+      "method:ftpsockets": "filesystem_method_ftpsockets",
+      "method:unavailable": "filesystem_method_unavailable",
+      "io:write": "direct_io_write",
+      "io:read": "direct_io_read",
+      "io:copy": "direct_io_copy",
+      "io:copy-reject": "direct_io_reject",
+      "io:move-overwrite": "direct_io_move",
+      "io:delete": "direct_io_delete",
+      "io:dirlist": "direct_io_dirlist",
+      "io:unknown": "direct_io_reject"
+    },
+    "matches_expected": true
+  },
+  "remaining_gaps": [
+    {
+      "id": "php-authored-fixtures-still-authoritative",
+      "owner": "WPHX-313.06",
+      "detail": "The WPHX-313.04 and WPHX-313.05 PHP oracle fixtures remain the behavior authority. This Haxe candidate has not replaced copied oracle PHP or original WordPress public files."
+    },
+    {
+      "id": "native-providers-and-installed-flows-not-covered",
+      "owner": "WPHX-313.06",
+      "detail": "Native image libraries, EXIF/IPTC parsing, remote FTP/SSH transports, admin/updater orchestration, REST/admin uploads, multisite quotas, and installed media behavior remain unclaimed."
+    },
+    {
+      "id": "public-php-adapter-not-yet-generated",
+      "owner": "WPHX-313.06",
+      "detail": "No original-path image, media, filesystem, updater, REST attachment, or admin upload adapter is claimed in this slice."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_image_filesystem_adapter_contract_candidate",
+    "promoted_contracts": 6,
+    "runtime_runs": 1,
+    "observation_count": 40,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

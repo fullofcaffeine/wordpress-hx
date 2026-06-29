@@ -433,6 +433,8 @@
     "wp:core:wphx-313-image-metadata-editor-oracle-fixture:check": "node tools/wp-core/run-image-metadata-editor-oracle-fixture.mjs --check",
     "wp:core:wphx-313-filesystem-credentials-oracle-fixture": "node tools/wp-core/run-filesystem-credentials-oracle-fixture.mjs",
     "wp:core:wphx-313-filesystem-credentials-oracle-fixture:check": "node tools/wp-core/run-filesystem-credentials-oracle-fixture.mjs --check",
+    "wp:core:wphx-313-image-filesystem-adapter-contract-candidate": "node tools/wp-core/run-image-filesystem-adapter-contract-candidate.mjs",
+    "wp:core:wphx-313-image-filesystem-adapter-contract-candidate:check": "node tools/wp-core/run-image-filesystem-adapter-contract-candidate.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",

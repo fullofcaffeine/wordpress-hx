@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-313-06-image-filesystem-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.19.5",
+    "external_ref": "WPHX-313.06",
+    "title": "WPHX-313.06 - Add image/filesystem adapter-contract candidate"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+      "role": "image/filesystem Haxe semantic/adapter-contract candidate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+      "role": "ownership manifest for image/filesystem Haxe candidate"
+    },
+    {
+      "path": "src/wphx/wp/media/ImageFilesystemAdapterContract.hx",
+      "role": "typed Haxe image/filesystem semantic and adapter-contract model"
+    },
+    {
+      "path": "tools/wp-core/run-image-filesystem-adapter-contract-candidate.mjs",
+      "role": "candidate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-313-image-filesystem-adapter-contract-candidate",
+    "npm run wp:core:wphx-313-image-filesystem-adapter-contract-candidate:check",
+    "npm run haxe:escape-hatches:check",
+    "npm run receipts:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-313-01-media-filesystem-upload-surface",
+    "receipt:wphx-313-02-media-upload-adapter-contract-candidate",
+    "receipt:wphx-313-04-image-metadata-editor-oracle-fixture",
+    "receipt:wphx-313-05-filesystem-credentials-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "candidate_kind": "haxe_image_filesystem_adapter_contract_candidate",
+    "promoted_contracts": 6,
+    "runtime_runs": 1,
+    "observation_count": 40,
+    "source_escape_audit_passed": true,
+    "public_php_replacement_claimed": false
+  }
+}

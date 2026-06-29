@@ -1,0 +1,55 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/image-filesystem-adapter-contract-candidate",
+  "issue": {
+    "id": "wordpresshx-l76.19.5",
+    "external_ref": "WPHX-313.06"
+  },
+  "unit": {
+    "kind": "haxe_adapter_contract",
+    "name": "image metadata/editor and filesystem credentials/direct I/O decisions",
+    "area": "wp-includes/media.php wp-admin/includes/image.php wp-admin/includes/file.php wp-admin/includes/class-wp-filesystem-direct.php",
+    "public_contract": "Haxe owns a typed adapter-contract decision model for WPHX-313 image metadata/editor and filesystem credential/direct I/O branches. Public PHP ABI replacement, native image libraries, remote filesystem transports, updater/admin orchestration, and installed media behavior are not claimed in this slice."
+  },
+  "ownership_state": "haxe_parity_candidate",
+  "ownership_axes": {
+    "semantic_owner": "haxe",
+    "adapter_contract_owner": "haxe_typed",
+    "emission_strategy": "stock_haxe_php_private_impl",
+    "execution_provider": "haxe_php",
+    "compatibility_evidence": "targeted_semantic_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "adapter-contract-candidate-without-public-php-installation",
+    "removal_gate": "Install these decisions through typed Adapter IR/original-path generation and pass PHP-authored image metadata/editor, filesystem credentials, direct filesystem, remote transport, updater/admin, and installed media fixtures before claiming public PHP ABI ownership."
+  },
+  "owned_paths": [
+    "fixtures/wp-core/image-filesystem-adapter-contract-candidate.hxml",
+    "src/wphx/wp/media/ImageFilesystemAdapterContract.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/ImageFilesystemAdapterContractCandidateEntry.hx",
+    "tools/wp-core/run-image-filesystem-adapter-contract-candidate.mjs",
+    "manifests/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+    "manifests/ownership/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+    "manifests/ownership/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+    "build/wp-core/wphx-313-06"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-313-image-filesystem-adapter-contract-candidate",
+      "npm run wp:core:wphx-313-image-filesystem-adapter-contract-candidate:check",
+      "npm run haxe:escape-hatches:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-313-06-image-filesystem-adapter-contract-candidate"
+    ],
+    "manifest_digest": "sha256:0bf8e4bff91b6d4ce26f16fc78ec7e9573a941cd0af367c24ad6d9bd67fce04e"
+  },
+  "notes": "This is a PHP-hosted Haxe candidate with module-level Haxe functions. It adds no native provider, no handwritten production PHP shell, and no public WordPress file replacement."
+}

@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 302,
+  "closed_task_count": 303,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -2620,6 +2620,16 @@
           "path": "receipts/wp-core/wphx-313-05-filesystem-credentials-oracle-fixture.v1.json",
           "sha256": "5b334347c64a0f6a9cf390d3a2b29f99797cb56657ae36851d950c6c86fa339e",
           "id": "receipt:wphx-313-05-filesystem-credentials-oracle-fixture"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-313.06",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+          "sha256": "cfd4070e1492d91caa8cb4b6f7464ce89074f6103b21cadb061a1e1898452e78",
+          "id": "receipt:wphx-313-06-image-filesystem-adapter-contract-candidate"
         }
       ]
     },
