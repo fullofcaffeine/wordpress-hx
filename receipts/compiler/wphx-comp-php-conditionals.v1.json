@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.compiler-receipt.v1",
+  "id": "receipt:wphx-comp-php-conditionals",
+  "issue": "WPHX-COMP-PHP-CONDITIONALS",
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "status": "passed",
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/pluggable-timing.v1.json",
+      "role": "pluggable timing manifest"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-conditionals.v1.json",
+      "role": "compiler fixture receipt"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/pluggable/PluggableSurface.hx",
+      "role": "typed Haxe pluggable surface"
+    },
+    {
+      "path": "fixtures/wphx-php/pluggable-timing.hxml",
+      "role": "WPHX PHP pluggable timing hxml"
+    }
+  ],
+  "commands": [
+    "npm run wphx:php:pluggable-timing",
+    "npm run wphx:php:pluggable-timing:check"
+  ],
+  "manifest_sha256": "5feeecfa2cfcdbe1568ac735343a1a05cdce6273d5936279c11f1f10457bc0dd",
+  "claims": [
+    "WPHX PHP emits pluggable-style guarded global declarations at an original wp-includes/pluggable.php load point.",
+    "function_exists is false before normal load and true after require.",
+    "A repeated require of the generated shell is safe because each generated function is guarded.",
+    "A pre-defined function wins over the generated guarded declaration while neighboring generated declarations still load.",
+    "Reflection-visible parameter defaults and by-reference/variadic flags match the minimized fixture ABI."
+  ],
+  "non_claims": [
+    "This fixture does not claim WordPress Core pluggable.php ownership.",
+    "This fixture does not claim all WordPress pluggable functions or authentication/session behavior.",
+    "This fixture does not claim arbitrary include-return or direct file-scope script emission."
+  ]
+}

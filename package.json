@@ -28,6 +28,8 @@
     "wphx:php:wp-http-process-headers:check": "node tools/wphx-php/run-wp-http-process-headers.mjs --check",
     "wphx:php:public-shell-snapshots": "node tools/wphx-php/run-public-shell-snapshots.mjs",
     "wphx:php:public-shell-snapshots:check": "node tools/wphx-php/run-public-shell-snapshots.mjs --check",
+    "wphx:php:pluggable-timing": "node tools/wphx-php/run-pluggable-timing.mjs",
+    "wphx:php:pluggable-timing:check": "node tools/wphx-php/run-pluggable-timing.mjs --check",
     "wphx:php:wp-http-chunk-transfer-decode": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs",
     "wphx:php:wp-http-chunk-transfer-decode:check": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs --check",
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",

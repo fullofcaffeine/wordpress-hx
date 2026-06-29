@@ -33,6 +33,8 @@ npm run wphx:php:wp-http-process-headers
 npm run wphx:php:wp-http-process-headers:check
 npm run wphx:php:public-shell-snapshots
 npm run wphx:php:public-shell-snapshots:check
+npm run wphx:php:pluggable-timing
+npm run wphx:php:pluggable-timing:check
 npm run wphx:php:wp-http-parser-helpers
 npm run wphx:php:wp-http-parser-helpers:check
 npm run wphx:php:wp-http-chunk-transfer-decode
@@ -119,6 +121,16 @@ npm run wphx:php:public-shell-snapshots:check
 
 It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, and empty unsupported manifests for global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, and top-level bootstrap side effects. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner. Arbitrary include-return and direct file-scope script emission remain tracked separately by the include side-effect fixture work.
 
+The pluggable timing fixture compiles a minimized original-path guarded global-function file:
+
+```bash
+haxe fixtures/wphx-php/pluggable-timing.hxml
+npm run wphx:php:pluggable-timing
+npm run wphx:php:pluggable-timing:check
+```
+
+It emits `build/wphx-php/pluggable-timing/generated/wp-includes/pluggable.php`, lints that PHP, verifies exact `function_exists` guards, verifies `function_exists` before/after `require`, proves repeated `require` safety, proves a pre-defined function wins over the generated guarded declaration while a neighboring generated declaration still loads, checks reflection-visible defaults and reference/variadic flags, and records `manifests/wphx-php/pluggable-timing.v1.json` plus `receipts/compiler/wphx-comp-php-conditionals.v1.json`. This is a WPHX conditional-declaration/load-timing gate; it does not claim WordPress Core `pluggable.php` ownership.
+
 ## Adapter IR
 
 The WPHX PHP compiler now uses an Adapter IR before printing PHP:
@@ -132,7 +144,7 @@ typed Haxe source and metadata
 
 The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
 
-This IR is deliberately narrower than a full PHP backend. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters, then conditional declaration segments and include-time side-effect/script nodes.
+This IR is deliberately narrower than a full PHP backend. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters, a bootstrap lifecycle ADR, and include-time side-effect/script nodes.
 
 `WPHX-COMP-PHP.06` adds the first generated `WP_Http::buildCookieHeader( &$r )` original-path shell. It is a WordPress profile pressure gate over native PHP array mutation, scalar cookie upgrading, `WP_Http_Cookie` object preservation, filter timing, and helper delegation. `WPHX-COMP-PHP-CORE-IR-NATIVE-ARRAYS` keeps the same public-shell behavior while moving the native-array body through reusable PHP-core IR nodes. This is still not arbitrary Haxe expression lowering or a complete PHP backend.
 

@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 289,
+  "closed_task_count": 290,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -2835,6 +2835,16 @@
           "path": "receipts/operations/wphx-comp-php-adapter-ir-adr.v1.json",
           "sha256": "e06abe10701bcd571ad12490efa8cf4693201f132c31d68431cc39636e9285b3",
           "id": "receipt:wphx-comp-php-adapter-ir-adr"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-CONDITIONALS",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-conditionals.v1.json",
+          "sha256": "1cb67ccfbdde7e15211bf6da713e543606ef3c32770f631bec2ace9ad2ae48e6",
+          "id": "receipt:wphx-comp-php-conditionals"
         }
       ]
     },
