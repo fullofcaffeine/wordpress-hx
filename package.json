@@ -14,6 +14,8 @@
     "generated-php:lowering-snapshots:check": "node tools/generated-php/run-lowering-snapshots.mjs --check",
     "wphx:php:smoke": "node tools/wphx-php/run-smoke.mjs",
     "wphx:php:smoke:check": "node tools/wphx-php/run-smoke.mjs --check",
+    "wphx:php:f1": "node tools/wphx-php/run-f1-facade.mjs",
+    "wphx:php:f1:check": "node tools/wphx-php/run-f1-facade.mjs --check",
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "security:kses-corpus": "node tools/security/run-kses-security-corpus.mjs",

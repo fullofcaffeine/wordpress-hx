@@ -37,6 +37,7 @@ private typedef PendingFunction =
 	final file:String;
 	final phpName:String;
 	final guarded:Bool;
+	final haxeBootstrap:Null<String>;
 	final haxeModule:String;
 	final field:ClassField;
 	final expr:TypedExpr;
@@ -47,6 +48,7 @@ private typedef PendingClass =
 	final file:String;
 	final phpName:String;
 	final guarded:Bool;
+	final haxeBootstrap:Null<String>;
 	final classType:ClassType;
 }
 
@@ -154,9 +156,11 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 
 		final byPath = new Map<String, Array<String>>();
 		final declarationsByPath = new Map<String, Array<EmissionDeclaration>>();
+		final haxeBootstrapsByPath = new Map<String, String>();
 
 		for (pending in functions)
 		{
+			rememberHaxeBootstrap(haxeBootstrapsByPath, pending.file, pending.haxeBootstrap);
 			appendFilePart(byPath, declarationsByPath, pending.file, emitFunction(pending), {
 				kind: "global-function",
 				name: pending.phpName,
@@ -168,6 +172,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 
 		for (pending in classes)
 		{
+			rememberHaxeBootstrap(haxeBootstrapsByPath, pending.file, pending.haxeBootstrap);
 			appendFilePart(byPath, declarationsByPath, pending.file, emitClass(pending), {
 				kind: "class",
 				name: pending.phpName,
@@ -185,9 +190,11 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		{
 			final parts = byPath.get(path);
 			final declarations = declarationsByPath.get(path);
+			final prologue = haxeBootstrapsByPath.exists(path) ? [emitHaxeBootstrap(haxeBootstrapsByPath.get(path))] : [];
+			final contentParts = prologue.concat(parts);
 			files.push({
 				path: path,
-				content: "<?php\n" + parts.join("\n\n") + "\n",
+				content: "<?php\n" + contentParts.join("\n\n") + "\n",
 				declarations: declarations == null ? [] : declarations
 			});
 		}
@@ -204,6 +211,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				file: classFile,
 				phpName: className,
 				guarded: hasMetadata(classType.meta.get(), "wp.ifMissing"),
+				haxeBootstrap: metadataString(classType.meta.get(), "wp.haxeBootstrap"),
 				classType: classType
 			});
 		}
@@ -231,6 +239,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				file: file,
 				phpName: phpName,
 				guarded: hasMetadata(field.meta.get(), "wp.ifMissing"),
+				haxeBootstrap: metadataString(field.meta.get(), "wp.haxeBootstrap") ?? metadataString(classType.meta.get(), "wp.haxeBootstrap"),
 				haxeModule: classType.module,
 				field: field,
 				expr: expr
@@ -249,6 +258,26 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			return decl;
 		}
 		return "if (!function_exists('" + pending.phpName + "')) {\n" + indent(decl) + "\n}";
+	}
+
+	function emitHaxeBootstrap(constant:String):String
+	{
+		return "if (!defined('"
+			+ constant
+			+ "')) {\n"
+			+ "\tdefine('"
+			+ constant
+			+ "', true);\n"
+			+ "\t$wphx_haxe_lib = dirname(__DIR__, 2) . '/haxe/lib';\n"
+			+ "\tset_include_path(get_include_path() . PATH_SEPARATOR . $wphx_haxe_lib);\n"
+			+ "\tspl_autoload_register(function ($class) {\n"
+			+ "\t\t$file = stream_resolve_include_path(str_replace('\\\\', '/', $class) . '.php');\n"
+			+ "\t\tif ($file) {\n"
+			+ "\t\t\tinclude_once $file;\n"
+			+ "\t\t}\n"
+			+ "\t});\n"
+			+ "\t\\php\\Boot::__hx__init();\n"
+			+ "}";
 	}
 
 	function emitClass(pending:PendingClass):String
@@ -478,6 +507,20 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		}
 		byPath.get(path).push(content);
 		declarationsByPath.get(path).push(declaration);
+	}
+
+	function rememberHaxeBootstrap(haxeBootstrapsByPath:Map<String, String>, path:String, constant:Null<String>):Void
+	{
+		if (constant == null)
+		{
+			return;
+		}
+		if (haxeBootstrapsByPath.exists(path) && haxeBootstrapsByPath.get(path) != constant)
+		{
+			reportUnsupported("multiple Haxe bootstrap constants for " + path);
+			return;
+		}
+		haxeBootstrapsByPath.set(path, constant);
 	}
 
 	function manifestJson(files:Array<GeneratedPhpFile>):String
