@@ -1,0 +1,3806 @@
+{
+  "schema": "wphx.wp_core.block_hooks_insertion_oracle_fixture.v1",
+  "issue": {
+    "id": "wordpresshx-96t",
+    "external_ref": "WPHX-314.06",
+    "title": "WPHX-314.06 - Add block hooks insertion oracle fixture"
+  },
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": {
+    "path": "tools/wp-core/run-block-hooks-insertion-oracle-fixture.mjs",
+    "sha256": "sha256:52958adf211f2e40bce8abdd09318c37468609bddb24536c4f47c692b48379d7",
+    "check_command": "npm run wp:core:wphx-314-block-hooks-insertion-oracle-fixture:check"
+  },
+  "evidence_class": "copied_oracle_candidate_php_fixture",
+  "artifact_scope": {
+    "domain": "blocks_hooks_insertion",
+    "public_php_replacement_claimed": false,
+    "haxe_runtime_logic_claimed": false,
+    "installed_block_parity_claimed": false,
+    "upstream_phpunit_pass_pass_claimed": false,
+    "browser_gutenberg_ownership_claimed": false
+  },
+  "inputs": {
+    "upstream_root": "../wordpress-develop",
+    "source_files": [
+      {
+        "path": "src/wp-includes/class-wp-block-parser-block.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-parser-block.php",
+        "bytes": 2555,
+        "sha256": "sha256:7e21f483cf0c9deddd2144e026842bf906c72983908f7bd163c0716e8f6f325e"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-parser-frame.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-parser-frame.php",
+        "bytes": 1994,
+        "sha256": "sha256:3a66c88fa2397a842884908d83d1d03e5cb9cfb23fbb6d3cdf573bcd1520f0ae"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-parser.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-parser.php",
+        "bytes": 11520,
+        "sha256": "sha256:dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-type.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-type.php",
+        "bytes": 17233,
+        "sha256": "sha256:55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-type-registry.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-type-registry.php",
+        "bytes": 5030,
+        "sha256": "sha256:b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+      },
+      {
+        "path": "src/wp-includes/blocks.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/blocks.php",
+        "bytes": 119442,
+        "sha256": "sha256:b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+      }
+    ],
+    "prior_evidence": [
+      {
+        "path": "manifests/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+        "bytes": 136288,
+        "sha256": "sha256:5041e65e848fa3246be418e78f44c7ae041144d7807cb49808dc0264f4e1dac4"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-02-blocks-interactivity-adapter-contract-candidate.v1.json",
+        "bytes": 20704,
+        "sha256": "sha256:455098435d2e51efb9a9a7e4ccec1e79c0b0619f7bea9b5fc9711bbea6105730"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-03-block-parser-render-oracle-fixture.v1.json",
+        "bytes": 18515,
+        "sha256": "sha256:daa984fef6c448b8f5d24c718b1e6b7e4a19a54542b2e011e1ae68d3a669d10e"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-04-block-supports-bindings-oracle-fixture.v1.json",
+        "bytes": 52295,
+        "sha256": "sha256:12b652f06a3594d3c2a1c5c7b8aebb85cd79dbb6c4f008b4f1f1db98588e3068"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+        "bytes": 31390,
+        "sha256": "sha256:b85257f718f02e9909b86acc8259ad294eaa44a71e1469f8a04961cc038f8909"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "block-hooks:registry-map",
+        "focus": "registered block_hooks grouped by anchor and relative position"
+      },
+      {
+        "id": "block-hooks:direct-insert-filter-ignore",
+        "focus": "direct insert_hooked_blocks filters, suppression, and ignoredHookedBlocks skip"
+      },
+      {
+        "id": "block-hooks:combined-insert-metadata",
+        "focus": "combined insertion and metadata update callback"
+      },
+      {
+        "id": "block-hooks:content-traversal-positions",
+        "focus": "before, after, first_child, and last_child insertion during content traversal"
+      },
+      {
+        "id": "block-hooks:single-instance-suppression",
+        "focus": "supports.multiple=false suppression across repeated anchors and pre-existing content"
+      },
+      {
+        "id": "block-hooks:post-object-wrapper-meta",
+        "focus": "post-object wrapper, post meta ignored hooks, root ignored hook reference, and classic content handling"
+      }
+    ],
+    "covered_symbols": [
+      "get_hooked_blocks",
+      "insert_hooked_blocks",
+      "set_ignored_hooked_blocks_metadata",
+      "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+      "apply_block_hooks_to_content",
+      "apply_block_hooks_to_content_from_post_object",
+      "make_before_block_visitor",
+      "make_after_block_visitor",
+      "traverse_and_serialize_blocks",
+      "parse_blocks",
+      "serialize_block",
+      "serialize_blocks",
+      "get_comment_delimited_block_content",
+      "remove_serialized_parent_block",
+      "extract_serialized_parent_block",
+      "has_block",
+      "block_has_support",
+      "WP_Block_Type",
+      "WP_Block_Type_Registry"
+    ],
+    "deterministic_boundaries": [
+      "WordPress 7.0 PHP block parser, block type registry, and blocks.php sources are mirrored into oracle and candidate roots.",
+      "A minimal deterministic filter system is provided so apply_block_hooks_to_content can exercise its own temporary suppression filters.",
+      "Template-part theme injection, post lookup, post meta lookup, JSON, schema validation, and translation are deterministic stubs.",
+      "The fixture observes serialized block markup and parsed metadata rather than replacing WordPress hook insertion logic."
+    ]
+  },
+  "runs": {
+    "oracle": {
+      "label": "oracle",
+      "root": "build/wp-core/wphx-314-06/oracle",
+      "php_version": "8.4.7",
+      "source_files": [
+        {
+          "path": "build/wp-core/wphx-314-06/oracle/wp-includes/class-wp-block-parser-block.php",
+          "bytes": 2555,
+          "sha256": "sha256:7e21f483cf0c9deddd2144e026842bf906c72983908f7bd163c0716e8f6f325e"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/oracle/wp-includes/class-wp-block-parser-frame.php",
+          "bytes": 1994,
+          "sha256": "sha256:3a66c88fa2397a842884908d83d1d03e5cb9cfb23fbb6d3cdf573bcd1520f0ae"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/oracle/wp-includes/class-wp-block-parser.php",
+          "bytes": 11520,
+          "sha256": "sha256:dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/oracle/wp-includes/class-wp-block-type.php",
+          "bytes": 17233,
+          "sha256": "sha256:55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/oracle/wp-includes/class-wp-block-type-registry.php",
+          "bytes": 5030,
+          "sha256": "sha256:b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/oracle/wp-includes/blocks.php",
+          "bytes": 119442,
+          "sha256": "sha256:b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+        }
+      ],
+      "probe": {
+        "path": "build/wp-core/wphx-314-06/oracle/probe.php",
+        "bytes": 11756,
+        "sha256": "sha256:80d27ec60af68d1e941cc1af0cfe996826986a6082ae6ed45b4e6ecf72f5121e"
+      },
+      "observations": [
+        {
+          "id": "block-hooks:registry-map",
+          "focus": "registered block_hooks grouped by anchor and relative position",
+          "observation": {
+            "case": "block-hooks:registry-map",
+            "output": {
+              "core/paragraph": {
+                "before": [
+                  "wphx/before"
+                ],
+                "after": [
+                  "wphx/after",
+                  "wphx/single"
+                ]
+              },
+              "core/group": {
+                "first_child": [
+                  "wphx/first"
+                ],
+                "last_child": [
+                  "wphx/last"
+                ]
+              },
+              "core/post-content": {
+                "first_child": [
+                  "wphx/root-first"
+                ],
+                "last_child": [
+                  "wphx/root-last"
+                ]
+              }
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/group",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/post-content",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/freeform",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "before"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/before",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/after",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              }
+            ],
+            "actions": [],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:direct-insert-filter-ignore",
+          "focus": "direct insert_hooked_blocks filters, suppression, and ignoredHookedBlocks skip",
+          "observation": {
+            "case": "block-hooks:direct-insert-filter-ignore",
+            "output": {
+              "inserted": "<!-- wp:wphx/before {\"source\":\"generic-filter\",\"specific\":\"wphx/before\"} /--><!-- wp:wphx/filter-added {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-added\"} /-->",
+              "meta": "",
+              "anchor": {
+                "blockName": "core/paragraph",
+                "attrs": {
+                  "metadata": {
+                    "ignoredHookedBlocks": {
+                      "0": "wphx/ignored",
+                      "1": "wphx/before",
+                      "3": "wphx/filter-added"
+                    }
+                  }
+                },
+                "innerBlocks": [],
+                "innerHTML": "<p>Anchor</p>",
+                "innerContent": [
+                  "<p>Anchor</p>"
+                ]
+              }
+            },
+            "filters": [
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before",
+                  "wphx/ignored",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/ignored",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-added",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before",
+                  "wphx/ignored",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/ignored",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-added",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              }
+            ],
+            "actions": [],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:combined-insert-metadata",
+          "focus": "combined insertion and metadata update callback",
+          "observation": {
+            "case": "block-hooks:combined-insert-metadata",
+            "output": {
+              "combined": "<!-- wp:wphx/after {\"source\":\"generic-filter\",\"specific\":\"wphx/after\"} /-->",
+              "anchor": {
+                "blockName": "core/paragraph",
+                "attrs": {
+                  "metadata": {
+                    "ignoredHookedBlocks": [
+                      "wphx/after"
+                    ]
+                  }
+                },
+                "innerBlocks": [],
+                "innerHTML": "<p>Anchor</p>",
+                "innerContent": [
+                  "<p>Anchor</p>"
+                ]
+              }
+            },
+            "filters": [
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              }
+            ],
+            "actions": [],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:content-traversal-positions",
+          "focus": "before, after, first_child, and last_child insertion during content traversal",
+          "observation": {
+            "case": "block-hooks:content-traversal-positions",
+            "output": {
+              "content": "<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:wphx/first {\"source\":\"generic-filter\",\"specific\":\"wphx/first\"} /--><!-- wp:wphx/before {\"source\":\"generic-filter\",\"specific\":\"wphx/before\"} /--><!-- wp:paragraph --><p>One</p><!-- /wp:paragraph --><!-- wp:wphx/after {\"source\":\"generic-filter\",\"specific\":\"wphx/after\"} /--><!-- wp:wphx/single {\"source\":\"generic-filter\",\"specific\":\"wphx/single\"} /--><!-- wp:wphx/filter-after {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-after\"} /--><!-- wp:wphx/before {\"source\":\"generic-filter\",\"specific\":\"wphx/before\"} /--><!-- wp:paragraph --><p>Two</p><!-- /wp:paragraph --><!-- wp:wphx/after {\"source\":\"generic-filter\",\"specific\":\"wphx/after\"} /--><!-- wp:wphx/filter-after {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-after\"} /--><!-- wp:wphx/last {\"source\":\"generic-filter\",\"specific\":\"wphx/last\"} /--></div><!-- /wp:group --><!-- wp:wphx/filter-after {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-after\"} /-->"
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/group",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/post-content",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/freeform",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "before"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/before",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/after",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-after",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/first"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/first",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/first",
+                "value": {
+                  "blockName": "wphx/first",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/single",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-after",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-after",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/last"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/last",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/last",
+                "value": {
+                  "blockName": "wphx/last",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              }
+            ],
+            "actions": [
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:single-instance-suppression",
+          "focus": "supports.multiple=false suppression across repeated anchors and pre-existing content",
+          "observation": {
+            "case": "block-hooks:single-instance-suppression",
+            "output": {
+              "without_existing": "<!-- wp:paragraph --><p>One</p><!-- /wp:paragraph --><!-- wp:wphx/single {\"source\":\"generic-filter\",\"specific\":\"wphx/single\"} /--><!-- wp:paragraph --><p>Two</p><!-- /wp:paragraph -->",
+              "with_existing": "<!-- wp:paragraph --><p>One</p><!-- /wp:paragraph --><!-- wp:wphx/single /--><!-- wp:paragraph --><p>Two</p><!-- /wp:paragraph -->"
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/single",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              }
+            ],
+            "actions": [
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              },
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:post-object-wrapper-meta",
+          "focus": "post-object wrapper, post meta ignored hooks, root ignored hook reference, and classic content handling",
+          "observation": {
+            "case": "block-hooks:post-object-wrapper-meta",
+            "output": {
+              "content": "<!-- wp:wphx/root-first {\"source\":\"generic-filter\",\"specific\":\"wphx/root-first\"} /-->Classic text",
+              "ignored_at_root": [
+                "wphx/root-last",
+                "wphx/root-first"
+              ]
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/group",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/post-content",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/freeform",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "before"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/before",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/after",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-first"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-first",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-first"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-first",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-last"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-last",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-last"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-last",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              }
+            ],
+            "actions": [
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 3
+              },
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              }
+            ],
+            "wrong": []
+          }
+        }
+      ],
+      "output_sha256": "sha256:2e0f696581cd3ebe40e2c7c9560c820c44a25f306d1015fe4a807a9311a09b69"
+    },
+    "candidate": {
+      "label": "candidate",
+      "root": "build/wp-core/wphx-314-06/candidate",
+      "php_version": "8.4.7",
+      "source_files": [
+        {
+          "path": "build/wp-core/wphx-314-06/candidate/wp-includes/class-wp-block-parser-block.php",
+          "bytes": 2555,
+          "sha256": "sha256:7e21f483cf0c9deddd2144e026842bf906c72983908f7bd163c0716e8f6f325e"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/candidate/wp-includes/class-wp-block-parser-frame.php",
+          "bytes": 1994,
+          "sha256": "sha256:3a66c88fa2397a842884908d83d1d03e5cb9cfb23fbb6d3cdf573bcd1520f0ae"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/candidate/wp-includes/class-wp-block-parser.php",
+          "bytes": 11520,
+          "sha256": "sha256:dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/candidate/wp-includes/class-wp-block-type.php",
+          "bytes": 17233,
+          "sha256": "sha256:55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/candidate/wp-includes/class-wp-block-type-registry.php",
+          "bytes": 5030,
+          "sha256": "sha256:b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+        },
+        {
+          "path": "build/wp-core/wphx-314-06/candidate/wp-includes/blocks.php",
+          "bytes": 119442,
+          "sha256": "sha256:b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+        }
+      ],
+      "probe": {
+        "path": "build/wp-core/wphx-314-06/candidate/probe.php",
+        "bytes": 11756,
+        "sha256": "sha256:80d27ec60af68d1e941cc1af0cfe996826986a6082ae6ed45b4e6ecf72f5121e"
+      },
+      "observations": [
+        {
+          "id": "block-hooks:registry-map",
+          "focus": "registered block_hooks grouped by anchor and relative position",
+          "observation": {
+            "case": "block-hooks:registry-map",
+            "output": {
+              "core/paragraph": {
+                "before": [
+                  "wphx/before"
+                ],
+                "after": [
+                  "wphx/after",
+                  "wphx/single"
+                ]
+              },
+              "core/group": {
+                "first_child": [
+                  "wphx/first"
+                ],
+                "last_child": [
+                  "wphx/last"
+                ]
+              },
+              "core/post-content": {
+                "first_child": [
+                  "wphx/root-first"
+                ],
+                "last_child": [
+                  "wphx/root-last"
+                ]
+              }
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/group",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/post-content",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/freeform",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "before"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/before",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/after",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              }
+            ],
+            "actions": [],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:direct-insert-filter-ignore",
+          "focus": "direct insert_hooked_blocks filters, suppression, and ignoredHookedBlocks skip",
+          "observation": {
+            "case": "block-hooks:direct-insert-filter-ignore",
+            "output": {
+              "inserted": "<!-- wp:wphx/before {\"source\":\"generic-filter\",\"specific\":\"wphx/before\"} /--><!-- wp:wphx/filter-added {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-added\"} /-->",
+              "meta": "",
+              "anchor": {
+                "blockName": "core/paragraph",
+                "attrs": {
+                  "metadata": {
+                    "ignoredHookedBlocks": {
+                      "0": "wphx/ignored",
+                      "1": "wphx/before",
+                      "3": "wphx/filter-added"
+                    }
+                  }
+                },
+                "innerBlocks": [],
+                "innerHTML": "<p>Anchor</p>",
+                "innerContent": [
+                  "<p>Anchor</p>"
+                ]
+              }
+            },
+            "filters": [
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before",
+                  "wphx/ignored",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/ignored",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-added",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before",
+                  "wphx/ignored",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/ignored",
+                "value": {
+                  "blockName": "wphx/ignored",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-added",
+                "value": {
+                  "blockName": "wphx/filter-added",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              }
+            ],
+            "actions": [],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:combined-insert-metadata",
+          "focus": "combined insertion and metadata update callback",
+          "observation": {
+            "case": "block-hooks:combined-insert-metadata",
+            "output": {
+              "combined": "<!-- wp:wphx/after {\"source\":\"generic-filter\",\"specific\":\"wphx/after\"} /-->",
+              "anchor": {
+                "blockName": "core/paragraph",
+                "attrs": {
+                  "metadata": {
+                    "ignoredHookedBlocks": [
+                      "wphx/after"
+                    ]
+                  }
+                },
+                "innerBlocks": [],
+                "innerHTML": "<p>Anchor</p>",
+                "innerContent": [
+                  "<p>Anchor</p>"
+                ]
+              }
+            },
+            "filters": [
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/suppress"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/suppress",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/suppress",
+                "value": null,
+                "arg_count": 5
+              }
+            ],
+            "actions": [],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:content-traversal-positions",
+          "focus": "before, after, first_child, and last_child insertion during content traversal",
+          "observation": {
+            "case": "block-hooks:content-traversal-positions",
+            "output": {
+              "content": "<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:wphx/first {\"source\":\"generic-filter\",\"specific\":\"wphx/first\"} /--><!-- wp:wphx/before {\"source\":\"generic-filter\",\"specific\":\"wphx/before\"} /--><!-- wp:paragraph --><p>One</p><!-- /wp:paragraph --><!-- wp:wphx/after {\"source\":\"generic-filter\",\"specific\":\"wphx/after\"} /--><!-- wp:wphx/single {\"source\":\"generic-filter\",\"specific\":\"wphx/single\"} /--><!-- wp:wphx/filter-after {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-after\"} /--><!-- wp:wphx/before {\"source\":\"generic-filter\",\"specific\":\"wphx/before\"} /--><!-- wp:paragraph --><p>Two</p><!-- /wp:paragraph --><!-- wp:wphx/after {\"source\":\"generic-filter\",\"specific\":\"wphx/after\"} /--><!-- wp:wphx/filter-after {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-after\"} /--><!-- wp:wphx/last {\"source\":\"generic-filter\",\"specific\":\"wphx/last\"} /--></div><!-- /wp:group --><!-- wp:wphx/filter-after {\"source\":\"generic-filter\",\"specific\":\"wphx/filter-after\"} /-->"
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/group",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/post-content",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/freeform",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "before"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/before",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/after",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-after",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/first"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/first",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/first",
+                "value": {
+                  "blockName": "wphx/first",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/single",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-after",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/before"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/before",
+                "value": {
+                  "blockName": "wphx/before",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/after",
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/after",
+                "value": {
+                  "blockName": "wphx/after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/filter-after",
+                "value": {
+                  "blockName": "wphx/filter-after",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/last"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/last",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/last",
+                "value": {
+                  "blockName": "wphx/last",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              }
+            ],
+            "actions": [
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:single-instance-suppression",
+          "focus": "supports.multiple=false suppression across repeated anchors and pre-existing content",
+          "observation": {
+            "case": "block-hooks:single-instance-suppression",
+            "output": {
+              "without_existing": "<!-- wp:paragraph --><p>One</p><!-- /wp:paragraph --><!-- wp:wphx/single {\"source\":\"generic-filter\",\"specific\":\"wphx/single\"} /--><!-- wp:paragraph --><p>Two</p><!-- /wp:paragraph -->",
+              "with_existing": "<!-- wp:paragraph --><p>One</p><!-- /wp:paragraph --><!-- wp:wphx/single /--><!-- wp:paragraph --><p>Two</p><!-- /wp:paragraph -->"
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/single",
+                "value": {
+                  "blockName": "wphx/single",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/single"
+                ],
+                "arg_count": 4
+              }
+            ],
+            "actions": [
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              },
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-hooks:post-object-wrapper-meta",
+          "focus": "post-object wrapper, post meta ignored hooks, root ignored hook reference, and classic content handling",
+          "observation": {
+            "case": "block-hooks:post-object-wrapper-meta",
+            "output": {
+              "content": "<!-- wp:wphx/root-first {\"source\":\"generic-filter\",\"specific\":\"wphx/root-first\"} /-->Classic text",
+              "ignored_at_root": [
+                "wphx/root-last",
+                "wphx/root-first"
+              ]
+            },
+            "filters": [
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/paragraph",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/group",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/post-content",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "core/freeform",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "before"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/before",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/after",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/group": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/paragraph": "after"
+                  },
+                  "supports": {
+                    "multiple": false
+                  },
+                  "name": "wphx/single",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "first_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-first",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "register_block_type_args",
+                "value": {
+                  "render_callback": null,
+                  "block_hooks": {
+                    "core/post-content": "last_child"
+                  },
+                  "supports": {
+                    "multiple": true
+                  },
+                  "name": "wphx/root-last",
+                  "attributes": {
+                    "lock": {
+                      "type": "object"
+                    },
+                    "metadata": {
+                      "type": "object"
+                    }
+                  }
+                },
+                "arg_count": 2
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-first"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-first",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-first"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-first",
+                "value": {
+                  "blockName": "wphx/root-first",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-last"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-last",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerHTML": "",
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_types",
+                "value": [
+                  "wphx/root-last"
+                ],
+                "arg_count": 4
+              },
+              {
+                "hook": "hooked_block",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": [],
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "hooked_block_wphx/root-last",
+                "value": {
+                  "blockName": "wphx/root-last",
+                  "attrs": {
+                    "source": "generic-filter"
+                  },
+                  "innerBlocks": [],
+                  "innerContent": []
+                },
+                "arg_count": 5
+              },
+              {
+                "hook": "block_parser_class",
+                "value": "WP_Block_Parser",
+                "arg_count": 1
+              }
+            ],
+            "actions": [
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 3
+              },
+              {
+                "action": "add_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000,
+                "accepted_args": 1
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              },
+              {
+                "action": "remove_filter",
+                "hook": "hooked_block_types",
+                "priority": 9223372036854776000
+              }
+            ],
+            "wrong": []
+          }
+        }
+      ],
+      "output_sha256": "sha256:2e0f696581cd3ebe40e2c7c9560c820c44a25f306d1015fe4a807a9311a09b69"
+    },
+    "comparable_sha256": "sha256:a71032c3a787cbf4e265a5ca6b12dca331a0499fc88f37c07aac9ec350cd2b41"
+  },
+  "remaining_gaps": [
+    "Haxe-owned runtime implementation for block hooks insertion is not claimed.",
+    "Generated original-path public PHP adapter replacement is not claimed.",
+    "Installed block rendering, selected upstream PHPUnit pass/pass, REST response insertion, template/theme integration, editor/browser, and Gutenberg package ownership remain later gates.",
+    "Full style engine/global styles/layout/HTML API/interactivity ownership remains outside this fixture."
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-314-06-block-hooks-insertion-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "case_count": 6,
+    "covered_symbol_count": 19,
+    "source_file_count": 6,
+    "oracle_candidate_match": true,
+    "public_php_replacement_claimed": false
+  }
+}
