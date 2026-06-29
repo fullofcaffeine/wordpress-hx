@@ -10,6 +10,8 @@ The current strategy, accepted after oracle review on 2026-06-29 and formalized 
 - WPHX PHP emits bounded WordPress original-path public adapter files;
 - typed Haxe source, metadata, Adapter IR, and manifests are the durable asset, not generated PHP strings.
 
+When WPHX public adapters bootstrap stock Haxe PHP implementation classes, that bootstrap is governed by [ADR-014](../adr/ADR-014-haxe-php-bootstrap-lifecycle.md). It is request-state behavior, not invisible plumbing: include path mutation, SPL autoloaders, `php.Boot::__hx__init()`, mbstring encoding, error handling, source maps, and stack traces need explicit evidence before broad distribution claims.
+
 Do not assume stock Haxe PHP can directly generate public WordPress Core files with the ABI, file topology, reference behavior, warning behavior, stack traces, and include timing modern WordPress requires. Public WordPress files must pass WPHX public-shell gates. Conversely, do not expand WPHX PHP into a full backend unless minimized evidence shows the hybrid cannot preserve required behavior.
 
 Use the native Haxe PHP generator and `std/php` sources in `../haxe.compilerdev.reference/haxe` as an implementation oracle for generic, borrowable lowering/runtime behavior when useful. That reference can guide what to reuse or adapt; WordPress public ABI, original path topology, declaration timing, and ecosystem-visible behavior still require WordPress oracle fixtures and WPHX public-shell evidence.
@@ -156,7 +158,7 @@ The initial metadata contract is intentionally small:
 - `@:wp.global("function_name")` emits a module-level Haxe function as a global PHP function.
 - `@:native("Class_Name")` emits an annotated Haxe class with that public PHP class name.
 - `@:wp.ifMissing` wraps generated functions/classes in `function_exists` or `class_exists(..., false)` guards.
-- `@:wp.haxeBootstrap("CONSTANT_NAME")` emits a guarded stock Haxe PHP runtime bootstrap for facade shells that delegate to Haxe-generated implementation classes.
+- `@:wp.haxeBootstrap("CONSTANT_NAME")` emits a guarded stock Haxe PHP runtime bootstrap for facade shells that delegate to Haxe-generated implementation classes. ADR-014 makes this acceptable for bounded fixtures and leaf candidates, but broad public-shell distribution claims still require include-path/autoload, warning/error-handler, and stack-trace/source-map probes.
 - `@:wp.order(n)` orders multiple declarations that share one generated PHP file.
 - `@:wp.const` emits a static field as a PHP class constant.
 - `@:wp.byRef` emits a PHP `&$parameter` for reference-visible ABI boundaries.

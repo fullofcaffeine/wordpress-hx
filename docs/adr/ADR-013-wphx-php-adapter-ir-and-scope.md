@@ -109,4 +109,4 @@ This ADR does not claim:
 
 ## Supersession
 
-This ADR refines ADR-001 and ADR-003. It may be superseded by a later custom-target ADR only after minimized evidence shows the Adapter IR approach cannot preserve required public behavior or is already maintaining backend-scale semantics.
+This ADR refines ADR-001 and ADR-003. ADR-014 refines the Haxe PHP runtime bootstrap lifecycle for Adapter IR files that delegate into stock Haxe PHP implementation classes. This ADR may be superseded by a later custom-target ADR only after minimized evidence shows the Adapter IR approach cannot preserve required public behavior or is already maintaining backend-scale semantics.

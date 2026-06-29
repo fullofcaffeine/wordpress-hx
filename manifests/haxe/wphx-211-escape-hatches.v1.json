@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 237,
+  "scanned_file_count": 239,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -136,6 +136,8 @@
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F4PublicInterface.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/HaxeClassKernel.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/HaxeFacadeKernel.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/pluggable/PluggableEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/pluggable/PluggableSurface.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpChunkTransferDecode.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieHeaderAssembly.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",

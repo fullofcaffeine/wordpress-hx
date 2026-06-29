@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 290,
+  "closed_task_count": 291,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "7989d856015307607d18eab9aaeef46b427753205626f9d49ba0f14e300771de",
+          "sha256": "9f4e2519b5504c9bda6430318d1877cc56cf43bf0199d74dd6eebef52a6cce3c",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -2835,6 +2835,16 @@
           "path": "receipts/operations/wphx-comp-php-adapter-ir-adr.v1.json",
           "sha256": "e06abe10701bcd571ad12490efa8cf4693201f132c31d68431cc39636e9285b3",
           "id": "receipt:wphx-comp-php-adapter-ir-adr"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-BOOTSTRAP-ADR",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-bootstrap-adr.v1.json",
+          "sha256": "a5d096e71414f582f0be7330a20d15fe116ca5964b3d58008314258941aef035",
+          "id": "receipt:wphx-comp-php-bootstrap-adr"
         }
       ]
     },

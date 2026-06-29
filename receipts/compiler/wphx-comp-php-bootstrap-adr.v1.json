@@ -1,0 +1,48 @@
+{
+  "schema": "wphx.compiler-policy-receipt.v1",
+  "id": "receipt:wphx-comp-php-bootstrap-adr",
+  "issue": "WPHX-COMP-PHP-BOOTSTRAP-ADR",
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "status": "accepted",
+  "artifacts": [
+    {
+      "path": "docs/adr/ADR-014-haxe-php-bootstrap-lifecycle.md",
+      "role": "accepted Haxe PHP bootstrap lifecycle ADR"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations link to ADR-014"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "progress rollup for compiler-pressure bootstrap policy"
+    }
+  ],
+  "follow_up_gates": [
+    {
+      "bead": "wordpresshx-ade",
+      "external_ref": "WPHX-COMP-PHP-BOOTSTRAP-AUTOLOAD-PROBE",
+      "scope": "include path, SPL autoload order, repeated bootstrap, and multi-shell idempotence"
+    },
+    {
+      "bead": "wordpresshx-l7k",
+      "external_ref": "WPHX-COMP-PHP-BOOTSTRAP-ERROR-HANDLER-PROBE",
+      "scope": "warning, notice, error-handler, and HAXE_CUSTOM_ERROR_HANDLER behavior"
+    },
+    {
+      "bead": "wordpresshx-o71",
+      "external_ref": "WPHX-COMP-PHP-BOOTSTRAP-DEBUG-PROBE",
+      "scope": "stack traces, source maps, and debug/parity/release profile behavior"
+    }
+  ],
+  "claims": [
+    "ADR-014 treats stock Haxe PHP bootstrap as observable WordPress request-state behavior.",
+    "Broad WPHX public-shell distribution claims are blocked on include-path/autoload, warning/error-handler, and stack-trace/source-map probes.",
+    "Current per-shell bootstrap blocks remain acceptable for bounded fixtures and leaf candidates when their non-claims are recorded."
+  ],
+  "non_claims": [
+    "This receipt does not prove runtime bootstrap behavior.",
+    "This receipt does not claim WordPress Core distribution bootstrap safety.",
+    "This receipt does not claim the stock Haxe PHP error handler is WordPress-compatible by default."
+  ]
+}
