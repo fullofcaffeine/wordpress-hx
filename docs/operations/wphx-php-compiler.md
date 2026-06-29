@@ -31,6 +31,8 @@ npm run wphx:php:wp-http-build-cookie-header
 npm run wphx:php:wp-http-build-cookie-header:check
 npm run wphx:php:wp-http-process-headers
 npm run wphx:php:wp-http-process-headers:check
+npm run wphx:php:public-shell-snapshots
+npm run wphx:php:public-shell-snapshots:check
 npm run wphx:php:wp-http-parser-helpers
 npm run wphx:php:wp-http-parser-helpers:check
 npm run wphx:php:wp-http-chunk-transfer-decode
@@ -107,6 +109,15 @@ haxe fixtures/wphx-php/wp-http-parser-helpers.hxml
 ```
 
 The runner emits `build/wp-core/wphx-312-60/generated/wp-includes/class-wp-http.php` with `WP_Http::processResponse`, `WP_Http::chunkTransferDecode`, and protected `WP_Http::parse_url`, lints that PHP, runs oracle/candidate probes for all three helper cases, and verifies the WPHX PHP manifest records `class:WP_Http` with no unsupported constructs. This is the current model for replacing copied or JS-patched PHP shells with compiler-emitted original-path adapters while keeping stock Haxe PHP responsible for runtime implementation classes and stdlib behavior.
+
+The public-shell snapshot lane compiles representative WPHX PHP fixtures twice from clean roots:
+
+```bash
+npm run wphx:php:public-shell-snapshots
+npm run wphx:php:public-shell-snapshots:check
+```
+
+It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, and empty unsupported manifests for global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, and top-level bootstrap side effects. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner. Arbitrary include-return and direct file-scope script emission remain tracked separately by the include side-effect fixture work.
 
 ## Adapter IR
 

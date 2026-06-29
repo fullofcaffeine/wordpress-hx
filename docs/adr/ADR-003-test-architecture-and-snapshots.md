@@ -109,6 +109,8 @@ Add selected exact or AST-normalized contracts for WPHX public-shell fixtures be
 
 These snapshots are still shape evidence, not behavior parity. They must be paired with static ABI, runtime reflection, oracle/candidate behavior, and ownership receipts before a public PHP boundary is durable.
 
+Implemented 2026-06-29 by `npm run wphx:php:public-shell-snapshots`, which writes `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The first lane covers current generated global-function, public class/interface, protected-method, by-reference-parameter, conditional-declaration, native-array-mutation, and top-level-bootstrap shell shapes. Arbitrary include-return and direct file-scope script emission are still excluded from that claim and remain a separate fixture gate.
+
 ## Behavior Authority
 
 Use this hierarchy for behavior parity:

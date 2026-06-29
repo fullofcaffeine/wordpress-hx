@@ -1,0 +1,341 @@
+{
+  "schema": "wphx.wphx-php-public-shell-snapshots.v1",
+  "issue": "WPHX-COMP-PHP-SNAPSHOTS",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wphx-php/run-public-shell-snapshots.mjs",
+  "evidence_class": "generated_shape",
+  "artifact_scope": "minimized_fixture_and_linked_candidate",
+  "scope": "WPHX PHP public adapter shell generated-shape snapshots. These prove deterministic source shape, php -l validity, exact selected shell excerpts, and AST-normalized declarations; they do not prove WordPress behavior parity.",
+  "cases": [
+    {
+      "id": "conditional-global-class-smoke",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "global_function",
+        "public_class",
+        "conditional_declaration"
+      ],
+      "hxml": "fixtures/wphx-php/smoke.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/conditional-global-class-smoke/generated/wp-includes/wphx-smoke.php",
+      "bytes": 557,
+      "sha256": "sha256:92d73e4c3a0bfc3e34932f88a5a9b134abe6e7e8e0a5bd0c20cb25e88a300fbe",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "if (!function_exists('wphx_smoke_add'))",
+        "function wphx_smoke_add($a, $b)",
+        "if (!class_exists('WPHX_Smoke_Counter', false))",
+        "class WPHX_Smoke_Counter"
+      ],
+      "ast_contract": {
+        "functions": [
+          "wphx_smoke_add",
+          "wphx_smoke_greeting"
+        ],
+        "classes": [
+          "WPHX_Smoke_Counter"
+        ],
+        "interfaces": [],
+        "methods": [
+          "__construct",
+          "increment",
+          "label"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/conditional-global-class-smoke/generated/wphx-php-emission.v1.json",
+        "bytes": 1120,
+        "sha256": "sha256:84648e7d7a06ac4eca4deecccf3523c4c350ba7198e6d0b8f2d0161f184c4b90"
+      }
+    },
+    {
+      "id": "facade-global-function",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "global_function",
+        "conditional_declaration",
+        "top_level_bootstrap_side_effect"
+      ],
+      "hxml": "fixtures/wphx-php/f1-facade.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wp-includes/plugin.php",
+      "bytes": 660,
+      "sha256": "sha256:afdbd37ab2a80ba13c3d94b593c5b550ae1cc9a0dcb3014e786c2723ca020621",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "if (!defined('WPHX_F1_FACADE_BOOTSTRAPPED'))",
+        "spl_autoload_register(function ($class)",
+        "if (!function_exists('add_filter'))",
+        "function add_filter($hook_name, $callback, $priority = 10, $accepted_args = 1)"
+      ],
+      "ast_contract": {
+        "functions": [
+          "add_filter"
+        ],
+        "classes": [],
+        "interfaces": [],
+        "methods": [],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wphx-php-emission.v1.json",
+        "bytes": 567,
+        "sha256": "sha256:cedac8177c52e98fb302dd4155c26c6a4411909298d6c475a5fd5dbcc0928eed"
+      }
+    },
+    {
+      "id": "public-interface-class",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "public_interface",
+        "public_class",
+        "conditional_declaration",
+        "top_level_bootstrap_side_effect"
+      ],
+      "hxml": "fixtures/wphx-php/f4-public-class.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wp-includes/class-wphx-public-class.php",
+      "bytes": 1768,
+      "sha256": "sha256:7dff10437fb1f0b90e5b43da37cdc8b904022e43b184db19fcd4224013d0d492",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "interface WPHX_Public_Interface",
+        "class WPHX_Public_Base",
+        "class WPHX_Public_Class extends WPHX_Public_Base implements WPHX_Public_Interface",
+        "public static function factory($name)",
+        "public function __construct($name, $meta = [])"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [
+          "WPHX_Public_Base",
+          "WPHX_Public_Class"
+        ],
+        "interfaces": [
+          "WPHX_Public_Interface"
+        ],
+        "methods": [
+          "__construct",
+          "__construct",
+          "base_label",
+          "describe",
+          "describe",
+          "factory",
+          "get_meta"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wphx-php-emission.v1.json",
+        "bytes": 1175,
+        "sha256": "sha256:917aa1e5794da48002ac18b19301d7b88353713b67a45ac033f8004ce4b55c33"
+      }
+    },
+    {
+      "id": "by-reference-global-function",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "global_function",
+        "by_reference_parameter",
+        "conditional_declaration"
+      ],
+      "hxml": "fixtures/wphx-php/byref-arg.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/by-reference-global-function/generated/wp-includes/wphx-byref.php",
+      "bytes": 160,
+      "sha256": "sha256:d235fafb2ce63cb9d8e9eecfc1b09206d5e65a44adecd3f9aca0bc1d84b2fbcf",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "if (!function_exists('wphx_byref_append'))",
+        "function wphx_byref_append(&$value, $suffix = '-ref')"
+      ],
+      "ast_contract": {
+        "functions": [
+          "wphx_byref_append"
+        ],
+        "classes": [],
+        "interfaces": [],
+        "methods": [],
+        "protected_methods": [],
+        "by_reference_parameters": [
+          {
+            "function": "wphx_byref_append",
+            "parameter": "value"
+          }
+        ]
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/by-reference-global-function/generated/wphx-php-emission.v1.json",
+        "bytes": 586,
+        "sha256": "sha256:3b6ee3a0438fcbf56bc5c10472001591a7db48f2a6ef2a5d22a75b88f04ae5d5"
+      }
+    },
+    {
+      "id": "protected-method-shell",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "public_class",
+        "protected_method"
+      ],
+      "hxml": "fixtures/wphx-php/wp-http-parser-helpers.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wp-includes/class-wp-http.php",
+      "bytes": 1358,
+      "sha256": "sha256:60f8f2515a51576f6d1389ae5536b68e64eb60e3673772a1c326f1217a9525e1",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "class WP_Http",
+        "protected static function parse_url($url)",
+        "public static function processResponse($response)",
+        "public static function chunkTransferDecode($body)"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [
+          "WP_Http"
+        ],
+        "interfaces": [],
+        "methods": [
+          "chunkTransferDecode",
+          "parse_url",
+          "processResponse"
+        ],
+        "protected_methods": [
+          "parse_url"
+        ],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wphx-php-emission.v1.json",
+        "bytes": 589,
+        "sha256": "sha256:6b56c20645b214e00f99793ad7ba8e62b70f099b21b5282075dc5ebb766f6d8f"
+      }
+    },
+    {
+      "id": "native-array-mutation-shell",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "linked_candidate",
+      "shell_shapes": [
+        "public_class",
+        "by_reference_parameter",
+        "native_array_mutation",
+        "top_level_bootstrap_side_effect"
+      ],
+      "hxml": "fixtures/wphx-php/wp-http-build-cookie-header.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wp-includes/class-wp-http.php",
+      "bytes": 1085,
+      "sha256": "sha256:ef6a9a54372c025848c956eb26f5b164c9a7209af66f531b587ddc056a6e95ac",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "public static function buildCookieHeader(&$r)",
+        "$r['cookies'][ $name ] = new WP_Http_Cookie(",
+        "$r['headers']['cookie'] = $cookies_header;",
+        "foreach ( (array) $r['cookies'] as $cookie )"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [
+          "WP_Http"
+        ],
+        "interfaces": [],
+        "methods": [
+          "buildCookieHeader"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": [
+          {
+            "method": "buildCookieHeader",
+            "parameter": "r",
+            "owner": "WP_Http"
+          }
+        ]
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wphx-php-emission.v1.json",
+        "bytes": 891,
+        "sha256": "sha256:3fc8891d037e3c1a698f98f2e4c17f675de9cf508c6f61d8fb5a86110256f5d8"
+      }
+    },
+    {
+      "id": "native-header-cookie-array-shell",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "linked_candidate",
+      "shell_shapes": [
+        "public_class",
+        "native_array_mutation",
+        "top_level_bootstrap_side_effect"
+      ],
+      "hxml": "fixtures/wphx-php/wp-http-process-headers.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wp-includes/class-wp-http.php",
+      "bytes": 2314,
+      "sha256": "sha256:63b78d82a7f7ba8088d789db06da8f2bfc4c5b6fb3eb73867391f7fa4f415754",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "public static function processHeaders($headers, $url = '')",
+        "$headers = array_splice( $headers, $i );",
+        "$newheaders[ $key ][] = $value;",
+        "$cookies[] = new WP_Http_Cookie( $value, $url );",
+        "'response' => $response",
+        "'headers'  => $newheaders",
+        "'cookies'  => $cookies"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [
+          "WP_Http"
+        ],
+        "interfaces": [],
+        "methods": [
+          "processHeaders"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wphx-php-emission.v1.json",
+        "bytes": 1005,
+        "sha256": "sha256:a2d7f077abe960467630294083ac487faf893b2bfba6a65a9df548a1ac0b30d6"
+      }
+    }
+  ],
+  "shell_shape_coverage": {
+    "global_function": true,
+    "public_class": true,
+    "public_interface": true,
+    "protected_method": true,
+    "by_reference_parameter": true,
+    "conditional_declaration": true,
+    "native_array_mutation": true,
+    "top_level_bootstrap_side_effect": true,
+    "include_return_or_direct_file_scope_script": false
+  },
+  "pending_shell_shape_gaps": [
+    {
+      "shape": "include_return_or_direct_file_scope_script",
+      "issue": "WPHX original-path include side-effect fixture before templates",
+      "bead": "wordpresshx-zut",
+      "reason": "The current WPHX PHP public-shell emitter proves top-level Haxe bootstrap side effects, but arbitrary original-path include return values and direct file-scope script emission remain a separate admitted feature."
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "clean_compile_passes": 2,
+    "case_count": 7,
+    "all_selected_outputs_byte_stable": true,
+    "php_lint_passed": true,
+    "exact_contracts_passed": true,
+    "ast_contracts_passed": true,
+    "unsupported_empty": true
+  }
+}

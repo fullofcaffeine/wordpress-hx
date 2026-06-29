@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-public-shell-snapshots",
+  "issue": "WPHX-COMP-PHP-SNAPSHOTS",
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "status": "passed",
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
+      "role": "WPHX PHP public-shell generated-shape snapshot manifest"
+    },
+    {
+      "path": "tools/wphx-php/run-public-shell-snapshots.mjs",
+      "role": "deterministic WPHX PHP public-shell snapshot runner"
+    }
+  ],
+  "commands": [
+    "npm run wphx:php:public-shell-snapshots",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "manifest_sha256": "sha256:d87335c696613c9d418afc8ae3e478e3f85ee2200b3015d559a25c0712667c23",
+  "validation_result": {
+    "status": "passed",
+    "clean_compile_passes": 2,
+    "case_count": 7,
+    "all_selected_outputs_byte_stable": true,
+    "php_lint_passed": true,
+    "exact_contracts_passed": true,
+    "ast_contracts_passed": true,
+    "unsupported_empty": true
+  },
+  "claims": [
+    "WPHX PHP public-shell generated shapes are compiled twice from clean roots and checked for byte stability.",
+    "The snapshot lane covers current generated global function, public class/interface, protected method, by-reference parameter, conditional declaration, native array mutation, and top-level bootstrap side-effect shell shapes.",
+    "Selected exact PHP excerpts and AST-normalized declarations are checked without treating generated shape as behavior parity."
+  ],
+  "non_claims": [
+    "This does not prove WordPress behavior parity.",
+    "This does not claim arbitrary include-return or direct file-scope script emission; that remains tracked by the include side-effect fixture task.",
+    "This does not claim whole-file WP_Http ownership or broad template ownership."
+  ]
+}
