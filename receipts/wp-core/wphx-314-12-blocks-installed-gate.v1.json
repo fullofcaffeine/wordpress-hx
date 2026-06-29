@@ -1,0 +1,43 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-314-12-blocks-installed-gate",
+  "issue": {
+    "id": "wordpresshx-l76.20.6",
+    "external_ref": "WPHX-314.12",
+    "title": "WPHX-314.12 - Add installed-style block rendering gate"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "command": "npm run wp:core:wphx-314-blocks-installed",
+  "evidence_class": "installed_style_http_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": true,
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-314-12-blocks-installed-gate.v1.json",
+      "role": "blocks/interactivity installed-style HTTP gate manifest",
+      "sha256": "sha256:35bc50ec75395f4e297c3066fcab147e211c0dc79efba1023514c621b3cbe0c4"
+    },
+    {
+      "path": "manifests/ownership/wphx-314-12-blocks-installed-gate.v1.json",
+      "role": "ownership manifest for blocks/interactivity installed-style gate"
+    },
+    {
+      "path": "tools/wp-core/run-blocks-installed-gate.mjs",
+      "role": "installed-style blocks/interactivity gate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-314-blocks-installed",
+    "npm run wp:core:wphx-314-blocks-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "cases": 7,
+    "source_file_count": 14,
+    "oracle_candidate_match": true,
+    "behavior_parity_claimed": true,
+    "public_php_replacement_claimed": false
+  }
+}

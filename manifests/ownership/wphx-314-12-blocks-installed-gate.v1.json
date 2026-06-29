@@ -1,0 +1,51 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/blocks-installed-gate",
+  "issue": {
+    "id": "wordpresshx-l76.20.6",
+    "external_ref": "WPHX-314.12"
+  },
+  "unit": {
+    "kind": "packaged-distribution-installed-http-gate",
+    "name": "blocks, supports, style engine, core renderers, hooks, and interactivity installed-style gate",
+    "area": "wp-includes/blocks.php wp-includes/class-wp-block*.php wp-includes/block-supports.php wp-includes/style-engine wp-includes/html-api wp-includes/interactivity-api wp-includes/blocks",
+    "public_contract": "The packaged blocks/interactivity surface must match vanilla through installed-style package boundary, front-end block rendering, supports/wrapper attributes, block hooks/pattern intent, style engine output, selected core renderer output, and interactivity directive observations while keeping public PHP replacement claims explicit."
+  },
+  "ownership_state": "packaged_distribution_candidate",
+  "ownership_axes": {
+    "semantic_owner": "wordpress_oracle_bridge",
+    "adapter_contract_owner": "haxe_typed_for_selected_decisions",
+    "emission_strategy": "copied_upstream_public_php_with_deterministic_router",
+    "execution_provider": "php_cli_builtin_server",
+    "compatibility_evidence": "installed_style_http_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "copied-upstream-package-with-deterministic-installed-router",
+    "removal_gate": "Replace copied public PHP with generated original-path blocks/interactivity adapters and rerun this gate plus provisioned upstream PHPUnit, browser/editor/Gutenberg package, database-backed installed block rendering, and ecosystem fixtures before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-blocks-installed-gate.mjs",
+    "manifests/wp-core/wphx-314-12-blocks-installed-gate.v1.json",
+    "manifests/ownership/wphx-314-12-blocks-installed-gate.v1.json",
+    "receipts/wp-core/wphx-314-12-blocks-installed-gate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-314-12-blocks-installed-gate.v1.json",
+    "manifests/ownership/wphx-314-12-blocks-installed-gate.v1.json",
+    "receipts/wp-core/wphx-314-12-blocks-installed-gate.v1.json",
+    "build/wp-core/wphx-314-12"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-314-blocks-installed",
+      "npm run wp:core:wphx-314-blocks-installed:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-314-12-blocks-installed-gate"
+    ],
+    "manifest_digest": "sha256:35bc50ec75395f4e297c3066fcab147e211c0dc79efba1023514c621b3cbe0c4"
+  },
+  "notes": "This gate proves installed-style package routing and deterministic observations only. It does not perform full database-backed block editor behavior, browser/Gutenberg package execution, upstream PHPUnit pass/pass, or durable generated original-path PHP replacement."
+}

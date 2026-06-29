@@ -1,0 +1,930 @@
+{
+  "schema": "wphx.wp-core-blocks-installed-gate.v1",
+  "issue": "WPHX-314.12",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wp-core/run-blocks-installed-gate.mjs",
+  "evidence_class": "installed_style_http_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": true,
+  "inputs": {
+    "prior_inputs": [
+      {
+        "path": "manifests/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+        "bytes": 136288,
+        "sha256": "sha256:5041e65e848fa3246be418e78f44c7ae041144d7807cb49808dc0264f4e1dac4"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-02-blocks-interactivity-adapter-contract-candidate.v1.json",
+        "bytes": 20704,
+        "sha256": "sha256:455098435d2e51efb9a9a7e4ccec1e79c0b0619f7bea9b5fc9711bbea6105730"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-03-block-parser-render-oracle-fixture.v1.json",
+        "bytes": 18515,
+        "sha256": "sha256:daa984fef6c448b8f5d24c718b1e6b7e4a19a54542b2e011e1ae68d3a669d10e"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-04-block-supports-bindings-oracle-fixture.v1.json",
+        "bytes": 52295,
+        "sha256": "sha256:12b652f06a3594d3c2a1c5c7b8aebb85cd79dbb6c4f008b4f1f1db98588e3068"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+        "bytes": 31390,
+        "sha256": "sha256:b85257f718f02e9909b86acc8259ad294eaa44a71e1469f8a04961cc038f8909"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-06-block-hooks-insertion-oracle-fixture.v1.json",
+        "bytes": 123116,
+        "sha256": "sha256:05410625baa63bc48b4305ad3d2dc16add6c716be8061fa64cb1f1893f23e34c"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-07-style-engine-oracle-fixture.v1.json",
+        "bytes": 19044,
+        "sha256": "sha256:3d69a85ab6d9ac9beb7293eb6e59bd876092235f2ad6d8fbc9c05c0b9e56ca14"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-08-html-api-tag-processor-oracle-fixture.v1.json",
+        "bytes": 22298,
+        "sha256": "sha256:9dcc250262e51e32204da78652a2702bd4df2394845c73041385df11332736c9"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-09-interactivity-api-oracle-fixture.v1.json",
+        "bytes": 35054,
+        "sha256": "sha256:14704dbf04b1510f0cdf89fbd35d148365cf325b8700024b2157c18290008f6e"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-10-core-block-renderer-oracle-fixture.v1.json",
+        "bytes": 30581,
+        "sha256": "sha256:6dc5501e1712f3d6813d5e387ccecc69a1397ee70d596e5b7c2e87411fcdd178"
+      },
+      {
+        "path": "receipts/wp-core/wphx-314-11-blocks-interactivity-upstream-phpunit-ratchet-groups.v1.json",
+        "bytes": 2981,
+        "sha256": "sha256:0cc127bbcab89abfcd667234669cf9ee65721dec6ab9465e4e251ba1c0fce915"
+      }
+    ],
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/blocks.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/blocks.php",
+        "bytes": 119442,
+        "sha256": "sha256:b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block.php",
+        "bytes": 24720,
+        "sha256": "sha256:108a02be5d2b0df9411c5b7b5fb02dd0c489a74ee2361c124e66498f5ecc285e"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-list.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-list.php",
+        "bytes": 4713,
+        "sha256": "sha256:0d27514f494f2e9cc8cefcf7ecbddd398eee9bbcb5145514a2c472934bf8f156"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-parser.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-parser.php",
+        "bytes": 11520,
+        "sha256": "sha256:dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-supports.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-supports.php",
+        "bytes": 6551,
+        "sha256": "sha256:ea2d81f7287aebf87861ea1641a191679256b68317a5a6ac7cfb8d3513e836b5"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-type.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-type.php",
+        "bytes": 17233,
+        "sha256": "sha256:55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-type-registry.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-type-registry.php",
+        "bytes": 5030,
+        "sha256": "sha256:b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+      },
+      {
+        "path": "src/wp-includes/blocks/categories.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/blocks/categories.php",
+        "bytes": 4938,
+        "sha256": "sha256:b7cb718e6291fde0e467d1cff89b89ce092ca8ebf7ef1332ac65ef732313026f"
+      },
+      {
+        "path": "src/wp-includes/blocks/archives.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/blocks/archives.php",
+        "bytes": 4385,
+        "sha256": "sha256:e8a615ea53411d1d80e7b884369f92c02a1f44a1e6a8b3eca4ae8d90a0e9f01d"
+      },
+      {
+        "path": "src/wp-includes/blocks/tag-cloud.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/blocks/tag-cloud.php",
+        "bytes": 1590,
+        "sha256": "sha256:6c67d54d9a8c32d5b956eac9378730f9b2138c1fa9fd7a1e30685753015c3186"
+      },
+      {
+        "path": "src/wp-includes/style-engine/class-wp-style-engine.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/style-engine/class-wp-style-engine.php",
+        "bytes": 28558,
+        "sha256": "sha256:a1df14b73b4224855fad56e55ec7f3bc4e2d0dca13f2041c3ff8e89625610da5"
+      },
+      {
+        "path": "src/wp-includes/html-api/class-wp-html-tag-processor.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/html-api/class-wp-html-tag-processor.php",
+        "bytes": 167607,
+        "sha256": "sha256:0e5756430bd64308766474522d313ffcf74bd7c6b7908a82449889fc09dc8792"
+      },
+      {
+        "path": "src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+        "bytes": 50608,
+        "sha256": "sha256:d47be554766bac49ea7910f40119ba7dda137163b860c48be4b8af56f2c07941"
+      },
+      {
+        "path": "src/wp-includes/interactivity-api/interactivity-api.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/interactivity-api/interactivity-api.php",
+        "bytes": 5034,
+        "sha256": "sha256:762b3becc984afb354e4e9a5b39d4855e8bb0c0ffc3f3acd680b18f62072ebb6"
+      }
+    ],
+    "runner": {
+      "path": "tools/wp-core/run-blocks-installed-gate.mjs",
+      "bytes": 23713,
+      "sha256": "sha256:1c7c12b61271357fc319b8ca0f414ecb2fd48a6b7582e3d09a0425eb5cf678e8"
+    }
+  },
+  "package_roots": {
+    "oracle": "build/wp-core/wphx-314-12/oracle-package",
+    "candidate": "build/wp-core/wphx-314-12/candidate-package",
+    "oracle_files": [
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/blocks.php",
+        "bytes": 119442,
+        "sha256": "sha256:b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/blocks/archives.php",
+        "bytes": 4385,
+        "sha256": "sha256:e8a615ea53411d1d80e7b884369f92c02a1f44a1e6a8b3eca4ae8d90a0e9f01d"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/blocks/categories.php",
+        "bytes": 4938,
+        "sha256": "sha256:b7cb718e6291fde0e467d1cff89b89ce092ca8ebf7ef1332ac65ef732313026f"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/blocks/tag-cloud.php",
+        "bytes": 1590,
+        "sha256": "sha256:6c67d54d9a8c32d5b956eac9378730f9b2138c1fa9fd7a1e30685753015c3186"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/class-wp-block-list.php",
+        "bytes": 4713,
+        "sha256": "sha256:0d27514f494f2e9cc8cefcf7ecbddd398eee9bbcb5145514a2c472934bf8f156"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/class-wp-block-parser.php",
+        "bytes": 11520,
+        "sha256": "sha256:dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/class-wp-block-supports.php",
+        "bytes": 6551,
+        "sha256": "sha256:ea2d81f7287aebf87861ea1641a191679256b68317a5a6ac7cfb8d3513e836b5"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/class-wp-block-type-registry.php",
+        "bytes": 5030,
+        "sha256": "sha256:b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/class-wp-block-type.php",
+        "bytes": 17233,
+        "sha256": "sha256:55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/class-wp-block.php",
+        "bytes": 24720,
+        "sha256": "sha256:108a02be5d2b0df9411c5b7b5fb02dd0c489a74ee2361c124e66498f5ecc285e"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/html-api/class-wp-html-tag-processor.php",
+        "bytes": 167607,
+        "sha256": "sha256:0e5756430bd64308766474522d313ffcf74bd7c6b7908a82449889fc09dc8792"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+        "bytes": 50608,
+        "sha256": "sha256:d47be554766bac49ea7910f40119ba7dda137163b860c48be4b8af56f2c07941"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/interactivity-api/interactivity-api.php",
+        "bytes": 5034,
+        "sha256": "sha256:762b3becc984afb354e4e9a5b39d4855e8bb0c0ffc3f3acd680b18f62072ebb6"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wp-includes/style-engine/class-wp-style-engine.php",
+        "bytes": 28558,
+        "sha256": "sha256:a1df14b73b4224855fad56e55ec7f3bc4e2d0dca13f2041c3ff8e89625610da5"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/oracle-package/wphx-blocks-installed-router.php",
+        "bytes": 6891,
+        "sha256": "sha256:8291ca0f9fa1d79526cb5344daf85ea9458cb3e438bdd6c3dd6becb58d02dd1b"
+      }
+    ],
+    "candidate_files": [
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/blocks.php",
+        "bytes": 119442,
+        "sha256": "sha256:b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/blocks/archives.php",
+        "bytes": 4385,
+        "sha256": "sha256:e8a615ea53411d1d80e7b884369f92c02a1f44a1e6a8b3eca4ae8d90a0e9f01d"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/blocks/categories.php",
+        "bytes": 4938,
+        "sha256": "sha256:b7cb718e6291fde0e467d1cff89b89ce092ca8ebf7ef1332ac65ef732313026f"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/blocks/tag-cloud.php",
+        "bytes": 1590,
+        "sha256": "sha256:6c67d54d9a8c32d5b956eac9378730f9b2138c1fa9fd7a1e30685753015c3186"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/class-wp-block-list.php",
+        "bytes": 4713,
+        "sha256": "sha256:0d27514f494f2e9cc8cefcf7ecbddd398eee9bbcb5145514a2c472934bf8f156"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/class-wp-block-parser.php",
+        "bytes": 11520,
+        "sha256": "sha256:dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/class-wp-block-supports.php",
+        "bytes": 6551,
+        "sha256": "sha256:ea2d81f7287aebf87861ea1641a191679256b68317a5a6ac7cfb8d3513e836b5"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/class-wp-block-type-registry.php",
+        "bytes": 5030,
+        "sha256": "sha256:b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/class-wp-block-type.php",
+        "bytes": 17233,
+        "sha256": "sha256:55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/class-wp-block.php",
+        "bytes": 24720,
+        "sha256": "sha256:108a02be5d2b0df9411c5b7b5fb02dd0c489a74ee2361c124e66498f5ecc285e"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/html-api/class-wp-html-tag-processor.php",
+        "bytes": 167607,
+        "sha256": "sha256:0e5756430bd64308766474522d313ffcf74bd7c6b7908a82449889fc09dc8792"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+        "bytes": 50608,
+        "sha256": "sha256:d47be554766bac49ea7910f40119ba7dda137163b860c48be4b8af56f2c07941"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/interactivity-api/interactivity-api.php",
+        "bytes": 5034,
+        "sha256": "sha256:762b3becc984afb354e4e9a5b39d4855e8bb0c0ffc3f3acd680b18f62072ebb6"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wp-includes/style-engine/class-wp-style-engine.php",
+        "bytes": 28558,
+        "sha256": "sha256:a1df14b73b4224855fad56e55ec7f3bc4e2d0dca13f2041c3ff8e89625610da5"
+      },
+      {
+        "path": "build/wp-core/wphx-314-12/candidate-package/wphx-blocks-installed-router.php",
+        "bytes": 6891,
+        "sha256": "sha256:8291ca0f9fa1d79526cb5344daf85ea9458cb3e438bdd6c3dd6becb58d02dd1b"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "boundary:block-package",
+      "method": "GET",
+      "path": "/__wphx/package-boundary",
+      "focus": "selected WPHX-314 package source files and prior evidence inputs are present"
+    },
+    {
+      "id": "front:block-page",
+      "method": "GET",
+      "path": "/?p=block-page",
+      "focus": "installed-style front route records parser/render, block hooks, supports, style engine, core renderer, and interactivity observations"
+    },
+    {
+      "id": "render:supports",
+      "method": "POST",
+      "path": "/wp-admin/admin-post.php?action=wphx_render_block_supports",
+      "body": "block=core%2Fparagraph&anchor=alpha&className=lead&style=color",
+      "focus": "installed-style admin route records wrapper attributes and selected block supports"
+    },
+    {
+      "id": "render:hooks-patterns",
+      "method": "POST",
+      "path": "/wp-admin/admin-post.php?action=wphx_apply_block_hooks",
+      "body": "content=%3C!--%20wp:core/post-content%20%2F--%3E",
+      "focus": "installed-style admin route records hooked-block insertion and ignored metadata intent"
+    },
+    {
+      "id": "render:style-engine",
+      "method": "GET",
+      "path": "/__wphx/style-engine",
+      "focus": "installed-style route records stylesheet generation and stable style handles"
+    },
+    {
+      "id": "render:core-renderers",
+      "method": "GET",
+      "path": "/__wphx/core-renderers?taxonomy=category",
+      "focus": "installed-style route records categories, archives, and tag-cloud server renderer output"
+    },
+    {
+      "id": "render:interactivity",
+      "method": "POST",
+      "path": "/wp-json/wphx/v1/interactivity/render",
+      "body": "store=demo&count=2",
+      "focus": "installed-style REST-like route records interactivity state/config and directive processing"
+    }
+  ],
+  "observations": {
+    "oracle": [
+      {
+        "id": "boundary:block-package",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "boundary:block-package",
+          "package_kind": "installed-style-block-rendering-gate",
+          "source_files": [
+            {
+              "path": "wp-includes/blocks.php",
+              "exists": true,
+              "bytes": 119442,
+              "sha256": "b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+            },
+            {
+              "path": "wp-includes/class-wp-block.php",
+              "exists": true,
+              "bytes": 24720,
+              "sha256": "108a02be5d2b0df9411c5b7b5fb02dd0c489a74ee2361c124e66498f5ecc285e"
+            },
+            {
+              "path": "wp-includes/class-wp-block-list.php",
+              "exists": true,
+              "bytes": 4713,
+              "sha256": "0d27514f494f2e9cc8cefcf7ecbddd398eee9bbcb5145514a2c472934bf8f156"
+            },
+            {
+              "path": "wp-includes/class-wp-block-parser.php",
+              "exists": true,
+              "bytes": 11520,
+              "sha256": "dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+            },
+            {
+              "path": "wp-includes/class-wp-block-supports.php",
+              "exists": true,
+              "bytes": 6551,
+              "sha256": "ea2d81f7287aebf87861ea1641a191679256b68317a5a6ac7cfb8d3513e836b5"
+            },
+            {
+              "path": "wp-includes/class-wp-block-type.php",
+              "exists": true,
+              "bytes": 17233,
+              "sha256": "55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+            },
+            {
+              "path": "wp-includes/class-wp-block-type-registry.php",
+              "exists": true,
+              "bytes": 5030,
+              "sha256": "b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+            },
+            {
+              "path": "wp-includes/blocks/categories.php",
+              "exists": true,
+              "bytes": 4938,
+              "sha256": "b7cb718e6291fde0e467d1cff89b89ce092ca8ebf7ef1332ac65ef732313026f"
+            },
+            {
+              "path": "wp-includes/blocks/archives.php",
+              "exists": true,
+              "bytes": 4385,
+              "sha256": "e8a615ea53411d1d80e7b884369f92c02a1f44a1e6a8b3eca4ae8d90a0e9f01d"
+            },
+            {
+              "path": "wp-includes/blocks/tag-cloud.php",
+              "exists": true,
+              "bytes": 1590,
+              "sha256": "6c67d54d9a8c32d5b956eac9378730f9b2138c1fa9fd7a1e30685753015c3186"
+            },
+            {
+              "path": "wp-includes/style-engine/class-wp-style-engine.php",
+              "exists": true,
+              "bytes": 28558,
+              "sha256": "a1df14b73b4224855fad56e55ec7f3bc4e2d0dca13f2041c3ff8e89625610da5"
+            },
+            {
+              "path": "wp-includes/html-api/class-wp-html-tag-processor.php",
+              "exists": true,
+              "bytes": 167607,
+              "sha256": "0e5756430bd64308766474522d313ffcf74bd7c6b7908a82449889fc09dc8792"
+            },
+            {
+              "path": "wp-includes/interactivity-api/class-wp-interactivity-api.php",
+              "exists": true,
+              "bytes": 50608,
+              "sha256": "d47be554766bac49ea7910f40119ba7dda137163b860c48be4b8af56f2c07941"
+            },
+            {
+              "path": "wp-includes/interactivity-api/interactivity-api.php",
+              "exists": true,
+              "bytes": 5034,
+              "sha256": "762b3becc984afb354e4e9a5b39d4855e8bb0c0ffc3f3acd680b18f62072ebb6"
+            }
+          ],
+          "public_php_replacement_claimed": false
+        },
+        "body_sha256": "sha256:febae74a11692c9e4617930838ca878b35530c32d74ba841282e7d763ffd2531"
+      },
+      {
+        "id": "front:block-page",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "front:block-page",
+          "route": "front",
+          "parsed_blocks": [
+            "core/paragraph",
+            "core/categories",
+            "demo/interactive"
+          ],
+          "render_pipeline": [
+            "parse_blocks",
+            "render_block_data",
+            "render_block_context",
+            "WP_Block::render",
+            "render_block"
+          ],
+          "hooked_blocks": [
+            "wphx/hooked-before"
+          ],
+          "supports": {
+            "anchor": "alpha",
+            "className": "lead",
+            "color": "has-text-color"
+          },
+          "style_handles": [
+            "global-styles",
+            "wp-block-library",
+            "wp-block-categories"
+          ],
+          "html": {
+            "sha256": "8bdfa07254c79df49b59c5f7f7089747b5a76897bae98fd20ecb00dbbf90ef22",
+            "bytes": 431,
+            "has_block_wrapper": true,
+            "has_interactivity_attr": true,
+            "has_hooked_block": true
+          },
+          "installed_database_backed_behavior_claimed": false
+        },
+        "body_sha256": "sha256:28eaf6cd70431a665550d50afdc2227cf7c4aceb799f2a69f614811d2ae9a1a4"
+      },
+      {
+        "id": "render:supports",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:supports",
+          "block": "core/paragraph",
+          "wrapper_attributes": {
+            "id": "alpha",
+            "class": "wp-block-paragraph lead has-text-color",
+            "style": "color:var(--wp--preset--color--primary);"
+          },
+          "supports_applied": [
+            "anchor",
+            "customClassName",
+            "color",
+            "spacing",
+            "typography"
+          ],
+          "wp_block_supports_boundary": "deterministic-installed-router"
+        },
+        "body_sha256": "sha256:33b501ba9b11a8236ac72d594c44512253608d9808b28cc1219aae204fe7cb80"
+      },
+      {
+        "id": "render:hooks-patterns",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:hooks-patterns",
+          "input_sha256": "d9110efe6e53a1a584107f6fb39a5bab6f18fd0f5aea47c637da8c1c29b568b8",
+          "inserted_blocks": [
+            "wphx/hooked-before",
+            "wphx/hooked-after"
+          ],
+          "ignored_metadata": {
+            "metadata_key": "_wp_ignored_hooked_blocks",
+            "preserved": true
+          },
+          "pattern_registry_touched": true,
+          "output_sequence": [
+            "wphx/hooked-before",
+            "core/post-content",
+            "wphx/hooked-after"
+          ]
+        },
+        "body_sha256": "sha256:17546259661af12275929763729ea859fedfd0401f110a72848d40c3207ed9ea"
+      },
+      {
+        "id": "render:style-engine",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:style-engine",
+          "stylesheet_sha256": "1f41389d01b0ffdd8f6cbbe787c30ec2ad181f4016f879f5be7cb845246d9ab7",
+          "rule_count": 2,
+          "context": "block-supports",
+          "handles": [
+            "global-styles",
+            "wp-block-library"
+          ],
+          "css": ".wp-block-paragraph{color:var(--wp--preset--color--primary);margin-block-start:1rem}.wp-block-categories-list{list-style:none}"
+        },
+        "body_sha256": "sha256:05b65de8dddbec77fcde2a52579810fce3e079405d59ea3f2976aef22d9a1c54"
+      },
+      {
+        "id": "render:core-renderers",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:core-renderers",
+          "taxonomy": "category",
+          "categories": {
+            "wrapper_class": "wp-block-categories-list",
+            "enhanced_pagination": true,
+            "item_count": 2
+          },
+          "archives": {
+            "wrapper_class": "wp-block-archives-list",
+            "empty_fallback": false,
+            "type": "monthly"
+          },
+          "tag_cloud": {
+            "wrapper_class": "wp-block-tag-cloud",
+            "unit": "px",
+            "show_count": true
+          },
+          "render_callbacks": [
+            "render_block_core_categories",
+            "render_block_core_archives",
+            "render_block_core_tag_cloud"
+          ]
+        },
+        "body_sha256": "sha256:dd9a741efa79ef731b52e4ec20d64a64af2f1e6ce30012341e30a5d55de00bfa"
+      },
+      {
+        "id": "render:interactivity",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:interactivity",
+          "store": "demo",
+          "state": {
+            "count": 2,
+            "active": true
+          },
+          "config": {
+            "navigation": "client"
+          },
+          "directives": [
+            "data-wp-interactive",
+            "data-wp-context",
+            "data-wp-bind",
+            "data-wp-class",
+            "data-wp-text"
+          ],
+          "html": {
+            "sha256": "3d5d541fa0e98988badd3cbda647564e6199cf22784552af493fdc2f4bd99a22",
+            "bytes": 218,
+            "has_block_wrapper": false,
+            "has_interactivity_attr": true,
+            "has_hooked_block": false
+          },
+          "browser_client_package_ownership_claimed": false
+        },
+        "body_sha256": "sha256:5e7dc288ec5fbdab9543422727a0a86fffa0058b99644d50920d048a557b9f67"
+      }
+    ],
+    "candidate": [
+      {
+        "id": "boundary:block-package",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "boundary:block-package",
+          "package_kind": "installed-style-block-rendering-gate",
+          "source_files": [
+            {
+              "path": "wp-includes/blocks.php",
+              "exists": true,
+              "bytes": 119442,
+              "sha256": "b8b44cb18d6ae7526a36fd3a5fd08c411f3af6c07aba85b3feb34563ed0ad321"
+            },
+            {
+              "path": "wp-includes/class-wp-block.php",
+              "exists": true,
+              "bytes": 24720,
+              "sha256": "108a02be5d2b0df9411c5b7b5fb02dd0c489a74ee2361c124e66498f5ecc285e"
+            },
+            {
+              "path": "wp-includes/class-wp-block-list.php",
+              "exists": true,
+              "bytes": 4713,
+              "sha256": "0d27514f494f2e9cc8cefcf7ecbddd398eee9bbcb5145514a2c472934bf8f156"
+            },
+            {
+              "path": "wp-includes/class-wp-block-parser.php",
+              "exists": true,
+              "bytes": 11520,
+              "sha256": "dc641c682a703efa3909990bb32e66e3bfd98a1fa1793c192a71f63593664487"
+            },
+            {
+              "path": "wp-includes/class-wp-block-supports.php",
+              "exists": true,
+              "bytes": 6551,
+              "sha256": "ea2d81f7287aebf87861ea1641a191679256b68317a5a6ac7cfb8d3513e836b5"
+            },
+            {
+              "path": "wp-includes/class-wp-block-type.php",
+              "exists": true,
+              "bytes": 17233,
+              "sha256": "55c8ee65e17aa9fcd6ff27e97fdbe084f4dd818f156a3b4bd428d24ff6d0f233"
+            },
+            {
+              "path": "wp-includes/class-wp-block-type-registry.php",
+              "exists": true,
+              "bytes": 5030,
+              "sha256": "b760f8ea6b79932d2b8132bf5f7db1ae6f447ee0e4f85e6689731a434a1a3df8"
+            },
+            {
+              "path": "wp-includes/blocks/categories.php",
+              "exists": true,
+              "bytes": 4938,
+              "sha256": "b7cb718e6291fde0e467d1cff89b89ce092ca8ebf7ef1332ac65ef732313026f"
+            },
+            {
+              "path": "wp-includes/blocks/archives.php",
+              "exists": true,
+              "bytes": 4385,
+              "sha256": "e8a615ea53411d1d80e7b884369f92c02a1f44a1e6a8b3eca4ae8d90a0e9f01d"
+            },
+            {
+              "path": "wp-includes/blocks/tag-cloud.php",
+              "exists": true,
+              "bytes": 1590,
+              "sha256": "6c67d54d9a8c32d5b956eac9378730f9b2138c1fa9fd7a1e30685753015c3186"
+            },
+            {
+              "path": "wp-includes/style-engine/class-wp-style-engine.php",
+              "exists": true,
+              "bytes": 28558,
+              "sha256": "a1df14b73b4224855fad56e55ec7f3bc4e2d0dca13f2041c3ff8e89625610da5"
+            },
+            {
+              "path": "wp-includes/html-api/class-wp-html-tag-processor.php",
+              "exists": true,
+              "bytes": 167607,
+              "sha256": "0e5756430bd64308766474522d313ffcf74bd7c6b7908a82449889fc09dc8792"
+            },
+            {
+              "path": "wp-includes/interactivity-api/class-wp-interactivity-api.php",
+              "exists": true,
+              "bytes": 50608,
+              "sha256": "d47be554766bac49ea7910f40119ba7dda137163b860c48be4b8af56f2c07941"
+            },
+            {
+              "path": "wp-includes/interactivity-api/interactivity-api.php",
+              "exists": true,
+              "bytes": 5034,
+              "sha256": "762b3becc984afb354e4e9a5b39d4855e8bb0c0ffc3f3acd680b18f62072ebb6"
+            }
+          ],
+          "public_php_replacement_claimed": false
+        },
+        "body_sha256": "sha256:febae74a11692c9e4617930838ca878b35530c32d74ba841282e7d763ffd2531"
+      },
+      {
+        "id": "front:block-page",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "front:block-page",
+          "route": "front",
+          "parsed_blocks": [
+            "core/paragraph",
+            "core/categories",
+            "demo/interactive"
+          ],
+          "render_pipeline": [
+            "parse_blocks",
+            "render_block_data",
+            "render_block_context",
+            "WP_Block::render",
+            "render_block"
+          ],
+          "hooked_blocks": [
+            "wphx/hooked-before"
+          ],
+          "supports": {
+            "anchor": "alpha",
+            "className": "lead",
+            "color": "has-text-color"
+          },
+          "style_handles": [
+            "global-styles",
+            "wp-block-library",
+            "wp-block-categories"
+          ],
+          "html": {
+            "sha256": "8bdfa07254c79df49b59c5f7f7089747b5a76897bae98fd20ecb00dbbf90ef22",
+            "bytes": 431,
+            "has_block_wrapper": true,
+            "has_interactivity_attr": true,
+            "has_hooked_block": true
+          },
+          "installed_database_backed_behavior_claimed": false
+        },
+        "body_sha256": "sha256:28eaf6cd70431a665550d50afdc2227cf7c4aceb799f2a69f614811d2ae9a1a4"
+      },
+      {
+        "id": "render:supports",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:supports",
+          "block": "core/paragraph",
+          "wrapper_attributes": {
+            "id": "alpha",
+            "class": "wp-block-paragraph lead has-text-color",
+            "style": "color:var(--wp--preset--color--primary);"
+          },
+          "supports_applied": [
+            "anchor",
+            "customClassName",
+            "color",
+            "spacing",
+            "typography"
+          ],
+          "wp_block_supports_boundary": "deterministic-installed-router"
+        },
+        "body_sha256": "sha256:33b501ba9b11a8236ac72d594c44512253608d9808b28cc1219aae204fe7cb80"
+      },
+      {
+        "id": "render:hooks-patterns",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:hooks-patterns",
+          "input_sha256": "d9110efe6e53a1a584107f6fb39a5bab6f18fd0f5aea47c637da8c1c29b568b8",
+          "inserted_blocks": [
+            "wphx/hooked-before",
+            "wphx/hooked-after"
+          ],
+          "ignored_metadata": {
+            "metadata_key": "_wp_ignored_hooked_blocks",
+            "preserved": true
+          },
+          "pattern_registry_touched": true,
+          "output_sequence": [
+            "wphx/hooked-before",
+            "core/post-content",
+            "wphx/hooked-after"
+          ]
+        },
+        "body_sha256": "sha256:17546259661af12275929763729ea859fedfd0401f110a72848d40c3207ed9ea"
+      },
+      {
+        "id": "render:style-engine",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:style-engine",
+          "stylesheet_sha256": "1f41389d01b0ffdd8f6cbbe787c30ec2ad181f4016f879f5be7cb845246d9ab7",
+          "rule_count": 2,
+          "context": "block-supports",
+          "handles": [
+            "global-styles",
+            "wp-block-library"
+          ],
+          "css": ".wp-block-paragraph{color:var(--wp--preset--color--primary);margin-block-start:1rem}.wp-block-categories-list{list-style:none}"
+        },
+        "body_sha256": "sha256:05b65de8dddbec77fcde2a52579810fce3e079405d59ea3f2976aef22d9a1c54"
+      },
+      {
+        "id": "render:core-renderers",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:core-renderers",
+          "taxonomy": "category",
+          "categories": {
+            "wrapper_class": "wp-block-categories-list",
+            "enhanced_pagination": true,
+            "item_count": 2
+          },
+          "archives": {
+            "wrapper_class": "wp-block-archives-list",
+            "empty_fallback": false,
+            "type": "monthly"
+          },
+          "tag_cloud": {
+            "wrapper_class": "wp-block-tag-cloud",
+            "unit": "px",
+            "show_count": true
+          },
+          "render_callbacks": [
+            "render_block_core_categories",
+            "render_block_core_archives",
+            "render_block_core_tag_cloud"
+          ]
+        },
+        "body_sha256": "sha256:dd9a741efa79ef731b52e4ec20d64a64af2f1e6ce30012341e30a5d55de00bfa"
+      },
+      {
+        "id": "render:interactivity",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "render:interactivity",
+          "store": "demo",
+          "state": {
+            "count": 2,
+            "active": true
+          },
+          "config": {
+            "navigation": "client"
+          },
+          "directives": [
+            "data-wp-interactive",
+            "data-wp-context",
+            "data-wp-bind",
+            "data-wp-class",
+            "data-wp-text"
+          ],
+          "html": {
+            "sha256": "3d5d541fa0e98988badd3cbda647564e6199cf22784552af493fdc2f4bd99a22",
+            "bytes": 218,
+            "has_block_wrapper": false,
+            "has_interactivity_attr": true,
+            "has_hooked_block": false
+          },
+          "browser_client_package_ownership_claimed": false
+        },
+        "body_sha256": "sha256:5e7dc288ec5fbdab9543422727a0a86fffa0058b99644d50920d048a557b9f67"
+      }
+    ],
+    "matches": true
+  },
+  "claims": {
+    "public_php_replacement_claimed": false,
+    "haxe_runtime_logic_claimed": false,
+    "installed_database_backed_block_behavior_claimed": false,
+    "browser_gutenberg_package_ownership_claimed": false,
+    "upstream_phpunit_pass_pass_claimed": false,
+    "durable_original_path_adapter_claimed": false
+  },
+  "remaining_gaps": [
+    {
+      "id": "copied-public-php-package",
+      "detail": "Oracle and candidate package roots both mirror selected locked upstream WordPress PHP source with deterministic installed-style routers. This is bridge evidence, not generated public PHP ownership."
+    },
+    {
+      "id": "full-installed-block-runtime-not-covered",
+      "detail": "The gate records front-end/admin/REST-style block observations without running full database-backed posts, themes/templates, editor screens, browser Gutenberg packages, or provisioned upstream PHPUnit pass/pass."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-314-12-blocks-installed-gate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "cases": 7,
+    "source_file_count": 14,
+    "oracle_candidate_match": true,
+    "behavior_parity_claimed": true,
+    "public_php_replacement_claimed": false
+  }
+}

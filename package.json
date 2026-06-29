@@ -457,6 +457,8 @@
     "wp:core:wphx-314-interactivity-api-oracle-fixture:check": "node tools/wp-core/run-interactivity-api-oracle-fixture.mjs --check",
     "wp:core:wphx-314-core-block-renderer-oracle-fixture": "node tools/wp-core/run-core-block-renderer-oracle-fixture.mjs",
     "wp:core:wphx-314-core-block-renderer-oracle-fixture:check": "node tools/wp-core/run-core-block-renderer-oracle-fixture.mjs --check",
+    "wp:core:wphx-314-blocks-installed": "node tools/wp-core/run-blocks-installed-gate.mjs",
+    "wp:core:wphx-314-blocks-installed:check": "node tools/wp-core/run-blocks-installed-gate.mjs --check",
     "wp:core:wphx-322-php-first-party-closure": "node tools/wp-core/run-php-first-party-manifest-closure.mjs",
     "wp:core:wphx-322-php-first-party-closure:check": "node tools/wp-core/run-php-first-party-manifest-closure.mjs --check",
     "wp:core:wphx-305-surface": "node tools/wp-core/run-wpdb-surface.mjs",
