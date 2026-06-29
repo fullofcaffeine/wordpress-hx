@@ -122,6 +122,8 @@ A fixture may use a hand-authored or JavaScript-emitted shell while proving a bo
 
 If the stock Haxe PHP target cannot emit an idiomatic shell shape that WordPress plugins can consume, reduce the problem to a generic compiler-pressure fixture. Consider Reflaxe or a custom/forked PHP target only with evidence and an ADR; do not let convenience PHP strings in runners become the architecture.
 
+If a custom/Reflaxe PHP generator is active, treat the stock Haxe PHP target and Haxe standard library as implementation references, not as things to casually replace. The generator should adapt existing std/php lowering for runtime boot, autoloading, native arrays, string and Unicode behavior, target intrinsics, reflection basics, and standard library calls wherever practical. WordPress-specific emission is allowed for original file paths, conditional global declarations, plugin/theme-facing reflection, mixed include timing, and ABI shapes that stock Haxe cannot express directly, but those extensions should stay named, narrow, and backed by parity fixtures so the generator can later be extracted as a reusable `reflaxe.php`-style target.
+
 PHP is the privileged compatibility host for the current WordPress parity milestone. Rust/native providers are future optional internal providers, not peer adapters for unmodified PHP plugins. A native provider must have a PHP fallback, cross only pure value boundaries, and pass native-on/native-off differential evidence before any compatibility claim.
 
 ## Verification

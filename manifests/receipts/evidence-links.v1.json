@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 277,
+  "closed_task_count": 278,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "83742e6b334f11ee44f16eaed28b35a8adbc90f5476fd04d35ae91d1564a9154",
+          "sha256": "17696bc7811e5a83039be7d19d4aa42c37aa750df7dd5971171d15a89b81931c",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -2825,6 +2825,16 @@
           "path": "receipts/operations/wphx-807-backup-restore.v1.json",
           "sha256": "ca9a8862805f7ca4d9d15aa5ed96a5f8ff2884d0420ab06cb45ee02c9ca64f4b",
           "id": "receipt:wphx-807-backup-restore"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP.01",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-01-f1-f4-facade-drivers.v1.json",
+          "sha256": "c8092d708f4ff7b1d2638c8fc24e3900b43facf7719de9e92d3501dcbc906be5",
+          "id": "receipt:wphx-comp-php-01-f1-f4-facade-drivers"
         }
       ]
     }

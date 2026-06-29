@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.compiler-facade-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-01-f1-f4-facade-drivers",
+  "issue": "WPHX-COMP-PHP.01",
+  "recorded_at": "2026-06-29T00:00:00Z",
+  "status": "passed",
+  "commands": [
+    "npm run wphx:php:f1:check",
+    "npm run wphx:php:f4:check"
+  ],
+  "generated_files": [
+    {
+      "path": "build/wphx-php/f1/generated/wp-includes/plugin.php",
+      "declarations": [
+        "global-function:add_filter"
+      ],
+      "probe": "existing F1 reflection and behavior oracle probe"
+    },
+    {
+      "path": "build/wphx-php/f4/generated/wp-includes/class-wphx-public-class.php",
+      "declarations": [
+        "interface:WPHX_Public_Interface",
+        "class:WPHX_Public_Base",
+        "class:WPHX_Public_Class"
+      ],
+      "probe": "existing F4 reflection and object-behavior oracle probe"
+    }
+  ],
+  "source": [
+    "src/wphx/compiler/php/WphxPhpCompiler.hx",
+    "fixtures/wphx-php/f1-facade.hxml",
+    "fixtures/wphx-php/f4-public-class.hxml",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Shell.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F4PublicInterface.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F4PublicBase.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F4PublicClass.hx"
+  ],
+  "claims": [
+    "F1 global function facade generation is compiler-owned for the fixture path.",
+    "F4 public interface/base/class facade generation is compiler-owned for the fixture path.",
+    "Generated PHP passes PHP lint and the existing reflection/behavior probes for both fixture paths.",
+    "The WPHX PHP emitter manifest records generated paths and declarations for both fixture paths."
+  ],
+  "non_claims": [
+    "This is not a full PHP backend.",
+    "The F4 fixture-local native array helper is bounded compiler pressure, not a replacement for Haxe std/php lowering.",
+    "WordPress Core public-method replacement remains future work under WPHX-COMP-PHP.02."
+  ]
+}

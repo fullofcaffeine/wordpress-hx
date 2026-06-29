@@ -16,6 +16,8 @@
     "wphx:php:smoke:check": "node tools/wphx-php/run-smoke.mjs --check",
     "wphx:php:f1": "node tools/wphx-php/run-f1-facade.mjs",
     "wphx:php:f1:check": "node tools/wphx-php/run-f1-facade.mjs --check",
+    "wphx:php:f4": "node tools/wphx-php/run-f4-public-class.mjs",
+    "wphx:php:f4:check": "node tools/wphx-php/run-f4-public-class.mjs --check",
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",
     "security:gitleaks:staged": "bash scripts/security/run-gitleaks.sh --staged",
     "security:kses-corpus": "node tools/security/run-kses-security-corpus.mjs",

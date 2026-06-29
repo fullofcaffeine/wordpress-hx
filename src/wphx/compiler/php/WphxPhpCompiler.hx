@@ -49,6 +49,7 @@ private typedef PendingClass =
 	final phpName:String;
 	final guarded:Bool;
 	final haxeBootstrap:Null<String>;
+	final order:Int;
 	final classType:ClassType;
 }
 
@@ -154,6 +155,17 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			}
 		}
 
+		classes.sort((left, right) ->
+		{
+			final fileCompare = Reflect.compare(left.file, right.file);
+			if (fileCompare != 0)
+			{
+				return fileCompare;
+			}
+			final orderCompare = Reflect.compare(left.order, right.order);
+			return orderCompare != 0 ? orderCompare : Reflect.compare(left.phpName, right.phpName);
+		});
+
 		final byPath = new Map<String, Array<String>>();
 		final declarationsByPath = new Map<String, Array<EmissionDeclaration>>();
 		final haxeBootstrapsByPath = new Map<String, String>();
@@ -174,7 +186,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		{
 			rememberHaxeBootstrap(haxeBootstrapsByPath, pending.file, pending.haxeBootstrap);
 			appendFilePart(byPath, declarationsByPath, pending.file, emitClass(pending), {
-				kind: "class",
+				kind: pending.classType.isInterface ? "interface" : "class",
 				name: pending.phpName,
 				haxeModule: pending.classType.module,
 				guarded: pending.guarded,
@@ -212,6 +224,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				phpName: className,
 				guarded: hasMetadata(classType.meta.get(), "wp.ifMissing"),
 				haxeBootstrap: metadataString(classType.meta.get(), "wp.haxeBootstrap"),
+				order: metadataInt(classType.meta.get(), "wp.order") ?? 0,
 				classType: classType
 			});
 		}
@@ -282,15 +295,50 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 
 	function emitClass(pending:PendingClass):String
 	{
+		if (pending.classType.isInterface)
+		{
+			return emitInterface(pending);
+		}
+
 		final lines = new Array<String>();
-		lines.push("class " + pending.phpName);
+		lines.push("class " + pending.phpName + emitInheritance(pending.classType));
 		lines.push("{");
+
+		for (field in pending.classType.statics.get())
+		{
+			if (hasMetadata(field.meta.get(), "wp.const"))
+			{
+				final expr = field.expr();
+				if (expr == null)
+				{
+					reportUnsupported("missing const value for " + pending.phpName + "::" + field.name);
+					continue;
+				}
+				lines.push("\tpublic const " + phpIdent(field.name) + " = " + emitExpr(expr) + ";");
+			}
+		}
+
+		for (field in pending.classType.statics.get())
+		{
+			if (hasMetadata(field.meta.get(), "wp.const") || !field.kind.match(FVar(_, _)))
+			{
+				continue;
+			}
+			final visibility = phpVisibility(field);
+			if (visibility == null)
+			{
+				continue;
+			}
+			final expr = field.expr();
+			lines.push("\t" + visibility + " static $" + phpIdent(field.name) + (expr == null ? "" : " = " + emitExpr(expr)) + ";");
+		}
 
 		for (field in pending.classType.fields.get())
 		{
-			if (field.kind.match(FVar(_, _)) && field.isPublic)
+			final visibility = phpVisibility(field);
+			if (field.kind.match(FVar(_, _)) && visibility != null)
 			{
-				lines.push("\tpublic $" + phpIdent(field.name) + ";");
+				lines.push("\t" + visibility + " $" + phpIdent(field.name) + ";");
 			}
 		}
 
@@ -346,9 +394,67 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		return "if (!class_exists('" + pending.phpName + "', false)) {\n" + indent(decl) + "\n}";
 	}
 
+	function emitInterface(pending:PendingClass):String
+	{
+		final lines = new Array<String>();
+		lines.push("interface " + pending.phpName);
+		lines.push("{");
+		for (field in pending.classType.fields.get())
+		{
+			if (!field.kind.match(FMethod(_)))
+			{
+				continue;
+			}
+			lines.push("\tpublic function " + phpIdent(field.name) + "(" + emitInterfaceArgs(field) + ");");
+		}
+		lines.push("}");
+
+		final decl = lines.join("\n");
+		if (!pending.guarded)
+		{
+			return decl;
+		}
+		return "if (!interface_exists('" + pending.phpName + "', false)) {\n" + indent(decl) + "\n}";
+	}
+
+	function emitInheritance(classType:ClassType):String
+	{
+		final parts = new Array<String>();
+		if (classType.superClass != null)
+		{
+			parts.push("extends " + phpClassName(classType.superClass.t.get()));
+		}
+		if (classType.interfaces.length > 0)
+		{
+			parts.push("implements " + classType.interfaces.map(item -> phpClassName(item.t.get())).join(", "));
+		}
+		return parts.length == 0 ? "" : " " + parts.join(" ");
+	}
+
+	function emitInterfaceArgs(field:ClassField):String
+	{
+		return switch (field.type)
+		{
+			case TFun(args, _):
+				args.map(arg -> "$" + phpIdent(arg.name)).join(", ");
+			case _:
+				reportUnsupported("unsupported interface method type for " + field.name);
+				"";
+		}
+	}
+
 	function emitArgs(args:Array<TypedFunctionArg>):String
 	{
-		return args.map(arg -> "$" + phpIdent(arg.v.name) + emitDefault(arg.value)).join(", ");
+		return args.map(arg -> "$" + phpIdent(tvarMetadataString(arg.v, "wp.name") ?? arg.v.name) + emitArgDefault(arg)).join(", ");
+	}
+
+	function emitArgDefault(arg:TypedFunctionArg):String
+	{
+		if (tvarHasMetadata(arg.v, "wp.defaultArray"))
+		{
+			return " = []";
+		}
+		return emitDefault(arg.value);
 	}
 
 	function emitDefault(value:Null<TypedExpr>):String
@@ -375,7 +481,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				value == null ? "return;" : "return " + emitExpr(value) + ";";
 			case TVar(v, value):
 				final rhs = value == null ? "" : " = " + emitExpr(value);
-				"$" + phpIdent(v.name) + rhs + ";";
+				"$" + phpVarName(v) + rhs + ";";
 			case TBlock(_):
 				emitBody(expr);
 			case _:
@@ -406,7 +512,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 						"parent";
 				}
 			case TLocal(v):
-				"$" + phpIdent(v.name);
+				"$" + phpVarName(v);
 			case TParenthesis(inner):
 				"(" + emitExpr(inner) + ")";
 			case TBinop(op, left, right):
@@ -414,7 +520,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			case TField(target, access):
 				emitField(target, access);
 			case TCall(target, args):
-				emitExpr(target) + "(" + args.map(emitExpr).join(", ") + ")";
+				emitCall(target, args);
 			case TNew(classRef, _, args):
 				"new " + phpClassName(classRef.get()) + "(" + args.map(emitExpr).join(", ") + ")";
 			case TArrayDecl(values):
@@ -461,6 +567,52 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		return emitExpr(left) + " " + opText + " " + emitExpr(right);
 	}
 
+	function emitCall(target:TypedExpr, args:Array<TypedExpr>):String
+	{
+		switch (target.expr)
+		{
+			case TConst(TSuper):
+				return "parent::__construct(" + args.map(emitExpr).join(", ") + ")";
+			case TField(_, FStatic(classRef, fieldRef)):
+				final lowered = emitNativeArrayCall(classRef.get(), fieldRef.get(), args);
+				if (lowered != null)
+				{
+					return lowered;
+				}
+			case _:
+		}
+		return emitExpr(target) + "(" + args.map(emitExpr).join(", ") + ")";
+	}
+
+	function emitNativeArrayCall(classType:ClassType, field:ClassField, args:Array<TypedExpr>):Null<String>
+	{
+		final phpFunction = metadataString(field.meta.get(), "wp.phpFunction");
+		if (phpFunction != null)
+		{
+			return phpFunction + "(" + args.map(emitExpr).join(", ") + ")";
+		}
+
+		if (hasMetadata(field.meta.get(), "wp.phpArrayGet"))
+		{
+			if (args.length != 3)
+			{
+				reportUnsupported("php array get lowering expects 3 arguments for " + classType.module + "." + field.name);
+				return "null";
+			}
+			final array = emitExpr(args[0]);
+			final key = emitExpr(args[1]);
+			final fallback = emitExpr(args[2]);
+			return "(array_key_exists(" + key + ", " + array + ") ? " + array + "[" + key + "] : " + fallback + ")";
+		}
+		return switch (field.name)
+		{
+			case "keyExists" if (args.length == 2):
+				"array_key_exists(" + emitExpr(args[1]) + ", " + emitExpr(args[0]) + ")";
+			case _:
+				null;
+		}
+	}
+
 	function isStringExpr(expr:TypedExpr):Bool
 	{
 		return TypeTools.toString(expr.t) == "String";
@@ -473,7 +625,9 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			case FInstance(_, _, field):
 				emitExpr(target) + "->" + phpIdent(field.get().name);
 			case FStatic(classRef, field):
-				phpClassName(classRef.get()) + "::" + phpIdent(field.get().name);
+				final fieldValue = field.get();
+				final delimiter = fieldValue.kind.match(FVar(_, _)) ? "::$" : "::";
+				phpClassName(classRef.get()) + delimiter + phpIdent(fieldValue.name);
 			case FClosure(_, field):
 				emitExpr(target) + "->" + phpIdent(field.get().name);
 			case FAnon(field):
@@ -577,6 +731,33 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		return null;
 	}
 
+	function tvarMetadataString(v:TVar, name:String):Null<String>
+	{
+		return v.meta == null ? null : metadataString(v.meta.get(), name);
+	}
+
+	function tvarHasMetadata(v:TVar, name:String):Bool
+	{
+		return v.meta != null && hasMetadata(v.meta.get(), name);
+	}
+
+	function metadataInt(entries:Array<MetadataEntry>, name:String):Null<Int>
+	{
+		for (entry in entries)
+		{
+			if (!metadataNameMatches(entry.name, name) || entry.params.length == 0)
+			{
+				continue;
+			}
+			return switch (entry.params[0].expr)
+			{
+				case EConst(CInt(value, _)): Std.parseInt(value);
+				case _: null;
+			}
+		}
+		return null;
+	}
+
 	function hasMetadata(entries:Array<MetadataEntry>, name:String):Bool
 	{
 		for (entry in entries)
@@ -628,6 +809,27 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 	{
 		final nativeName = metadataString(classType.meta.get(), "native");
 		return nativeName ?? classType.name;
+	}
+
+	function phpVisibility(field:ClassField):Null<String>
+	{
+		final requested = metadataString(field.meta.get(), "wp.visibility");
+		if (requested != null)
+		{
+			return switch (requested)
+			{
+				case "public", "protected", "private": requested;
+				case _:
+					reportUnsupported("unsupported visibility " + requested + " for " + field.name);
+					null;
+			}
+		}
+		return field.isPublic ? "public" : null;
+	}
+
+	function phpVarName(v:TVar):String
+	{
+		return phpIdent(tvarMetadataString(v, "wp.name") ?? v.name);
 	}
 
 	function phpIdent(value:String):String

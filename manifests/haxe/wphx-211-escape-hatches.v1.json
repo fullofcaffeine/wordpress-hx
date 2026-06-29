@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 211,
+  "scanned_file_count": 214,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -124,6 +124,9 @@
     "fixtures/wp-public-types/src/wphx/fixtures/wp/publictypes/PublicTypeKernel.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/SmokeEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/SmokeSurface.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Entry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Shell.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/HaxeFacadeKernel.hx",
     "src/wphx/compiler/php/CompilerInit.hx",
     "src/wphx/compiler/php/WphxPhpCompiler.hx",
     "src/wphx/wp/auth/AuthAdapterContract.hx",
