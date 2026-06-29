@@ -1,0 +1,1404 @@
+{
+  "schema": "wphx.wp-core-media-filesystem-upload-surface.v1",
+  "issue": "WPHX-313.01",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wp-core/run-media-filesystem-upload-surface.mjs",
+  "inputs": {
+    "source_inventory": {
+      "path": "manifests/source-inventory.jsonl",
+      "bytes": 11207179,
+      "sha256": "sha256:69d3f94f72d7c955a55c46991f81331522f0e306a89af9e037ce216a5263aff3"
+    },
+    "artifact_provenance": {
+      "path": "manifests/artifact-provenance.jsonl",
+      "bytes": 1829830,
+      "sha256": "sha256:b5855fd8ea57e1712b332514e4e2f46b0f5bf70b176c7657bf0e592fa56229d4"
+    },
+    "test_inventory": {
+      "path": "manifests/test-inventory.jsonl",
+      "bytes": 1921833,
+      "sha256": "sha256:fdfb65de3dcfb9cc649a1802bae9ffa5714aa6cc627ad608d94d7cd78e0af9ff"
+    },
+    "php_abi": {
+      "path": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
+      "bytes": 35108922,
+      "sha256": "sha256:e77b6138e9781b04fe3ce8a0982743475179c74d4d790562ab43cb59b82ffc6b"
+    },
+    "first_party_closure": {
+      "path": "manifests/wp-core/wphx-322-php-first-party-manifest-closure.v1.json",
+      "bytes": 38022,
+      "sha256": "sha256:2ebc43942267fd9d42d19a4bda00d8e7a02e38a80fc6b866e97018a8833e1080"
+    }
+  },
+  "scope": {
+    "owner": "WPHX-313",
+    "included": "C1 WordPress 7.0 PHP source and distribution artifacts classified to media library helpers, attachment thumbnails, image metadata/editing, uploads, MIME/filetype checks, and filesystem/upload IO by the WPHX-322 owner rules.",
+    "cross_domain_notes": [
+      {
+        "owner": "WPHX-307",
+        "reason": "Attachments are posts with postmeta and taxonomy relationships. WPHX-313 fixtures must cover media semantics without taking broad post/query/storage ownership."
+      },
+      {
+        "owner": "WPHX-310",
+        "reason": "Theme image controls, site icons, custom headers/backgrounds, and Customizer media settings stay theme/customizer work while sharing media primitives."
+      },
+      {
+        "owner": "WPHX-311",
+        "reason": "REST attachment endpoints and upload routes need REST schema/transport coordination before any installed API claim."
+      },
+      {
+        "owner": "WPHX-314",
+        "reason": "Image, gallery, cover, file, and media-text block rendering can exercise media contracts but remain block-rendering gates."
+      },
+      {
+        "owner": "WPHX-316/WPHX-315",
+        "reason": "Admin media screens, list tables, AJAX actions, and modal flows need later admin UX and list-table evidence beyond media helper behavior."
+      },
+      {
+        "owner": "WPHX-317/WPHX-319",
+        "reason": "Multisite quotas/site paths and updater filesystem credential flows wrap upload/filesystem primitives but remain separate domain owners."
+      }
+    ],
+    "semantic_handoff_candidates": [
+      {
+        "path": "src/wp-content/themes/twentyeleven/content-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyeleven/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfifteen/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfourteen/content-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfourteen/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/header/header-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyten/attachment.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyten/loop-attachment.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentythirteen/content-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentythirteen/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwelve/content-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwelve/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/featured-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/banner-intro-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/banner-with-description-and-images-grid.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/heading-and-paragraph-with-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/hero-full-width-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/media-instagram-grid.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/overlapped-images.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/page-link-in-bio-heading-paragraph-links-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/cta-content-image-on-right.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/cta-services-image-left.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/gallery-full-screen-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/gallery-offset-images-grid-2-col.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/gallery-offset-images-grid-3-col.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/gallery-offset-images-grid-4-col.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/posts-images-only-3-col.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/posts-images-only-offset-4-col.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/text-alternating-images.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/text-title-left-image-right.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/footer-query-images-title-citation.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/general-image-with-caption.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/general-layered-images-with-duotone.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/general-two-images-text.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/general-wide-image-intro-buttons.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/header-image-background-overlay.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/header-image-background.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/page-about-large-image-and-buttons.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/page-about-media-left.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/page-about-media-right.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/page-layout-image-and-text.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/page-layout-image-text-and-video.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/patterns/query-image-grid.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/blocks/post-featured-image.php",
+        "owner": "WPHX-307",
+        "reason": "Attachments are posts and metadata at the storage layer; WPHX-313 owns media/file behavior exercised through those post APIs."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-image-control.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-background-image-setting.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-cropped-image-control.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-header-image-control.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-header-image-setting.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-image-control.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-media-control.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/customize/class-wp-customize-upload-control.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/media-template.php",
+        "owner": "WPHX-310",
+        "reason": "Customizer, theme headers/backgrounds, and template rendering expose media controls but remain theme/customizer surface owners."
+      },
+      {
+        "path": "src/wp-includes/php-ai-client/src/Files/Enums/FileTypeEnum.php",
+        "owner": "WPHX-301",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/php-ai-client/third-party/Psr/Http/Message/UploadedFileFactoryInterface.php",
+        "owner": "WPHX-312",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/php-ai-client/third-party/Psr/Http/Message/UploadedFileInterface.php",
+        "owner": "WPHX-312",
+        "reason": "Current owner rules assign this path to another domain; WPHX-313 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/post-thumbnail-template.php",
+        "owner": "WPHX-307",
+        "reason": "Attachments are posts and metadata at the storage layer; WPHX-313 owns media/file behavior exercised through those post APIs."
+      },
+      {
+        "path": "src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+        "owner": "WPHX-311",
+        "reason": "REST attachment controllers are transport/schema work even when they exercise media upload and attachment semantics."
+      }
+    ]
+  },
+  "coverage": {
+    "source_count": 37,
+    "artifact_count": 37,
+    "abi_entry_count": 666,
+    "class_count": 22,
+    "test_count": 81,
+    "source_by_group": {
+      "admin_media_library": {
+        "count": 5,
+        "paths": [
+          "src/wp-admin/includes/class-wp-media-list-table.php",
+          "src/wp-admin/includes/media.php",
+          "src/wp-admin/media-new.php",
+          "src/wp-admin/media.php",
+          "src/wp-admin/options-media.php"
+        ]
+      },
+      "filesystem_api_upload_io": {
+        "count": 8,
+        "paths": [
+          "src/wp-admin/includes/class-wp-filesystem-base.php",
+          "src/wp-admin/includes/class-wp-filesystem-direct.php",
+          "src/wp-admin/includes/class-wp-filesystem-ftpext.php",
+          "src/wp-admin/includes/class-wp-filesystem-ftpsockets.php",
+          "src/wp-admin/includes/class-wp-filesystem-ssh2.php",
+          "src/wp-admin/includes/file.php",
+          "src/wp-includes/blocks/file.php",
+          "src/wp-includes/php-ai-client/src/Files/DTO/File.php"
+        ]
+      },
+      "image_metadata_editors": {
+        "count": 7,
+        "paths": [
+          "src/wp-admin/includes/image-edit.php",
+          "src/wp-admin/includes/image.php",
+          "src/wp-includes/blocks/image.php",
+          "src/wp-includes/class-wp-image-editor-gd.php",
+          "src/wp-includes/class-wp-image-editor-imagick.php",
+          "src/wp-includes/class-wp-image-editor.php",
+          "src/wp-includes/widgets/class-wp-widget-media-image.php"
+        ]
+      },
+      "media_filesystem_upload_related": {
+        "count": 4,
+        "paths": [
+          "src/wp-admin/includes/class-custom-image-header.php",
+          "src/wp-includes/php-ai-client/src/Providers/Models/ImageGeneration/Contracts/ImageGenerationModelInterface.php",
+          "src/wp-includes/php-ai-client/src/Providers/Models/ImageGeneration/Contracts/ImageGenerationOperationModelInterface.php",
+          "src/wp-includes/php-ai-client/src/Providers/OpenAiCompatibleImplementation/AbstractOpenAiCompatibleImageGenerationModel.php"
+        ]
+      },
+      "media_shortcode_library": {
+        "count": 7,
+        "paths": [
+          "src/wp-includes/blocks/media-text.php",
+          "src/wp-includes/media.php",
+          "src/wp-includes/php-ai-client/src/Files/Enums/MediaOrientationEnum.php",
+          "src/wp-includes/widgets/class-wp-widget-media-audio.php",
+          "src/wp-includes/widgets/class-wp-widget-media-gallery.php",
+          "src/wp-includes/widgets/class-wp-widget-media-video.php",
+          "src/wp-includes/widgets/class-wp-widget-media.php"
+        ]
+      },
+      "mime_filetype_security": {
+        "count": 1,
+        "paths": [
+          "src/wp-includes/php-ai-client/src/Files/ValueObjects/MimeType.php"
+        ]
+      },
+      "uploads_admin_endpoint": {
+        "count": 5,
+        "paths": [
+          "src/wp-admin/async-upload.php",
+          "src/wp-admin/includes/class-file-upload-upgrader.php",
+          "src/wp-admin/media-upload.php",
+          "src/wp-admin/upload.php",
+          "src/wp-includes/php-ai-client/third-party/Nyholm/Psr7/UploadedFile.php"
+        ]
+      }
+    },
+    "artifact_by_group": {
+      "admin_media_library": {
+        "count": 5,
+        "paths": [
+          "wp-admin/includes/class-wp-media-list-table.php",
+          "wp-admin/includes/media.php",
+          "wp-admin/media-new.php",
+          "wp-admin/media.php",
+          "wp-admin/options-media.php"
+        ]
+      },
+      "filesystem_api_upload_io": {
+        "count": 8,
+        "paths": [
+          "wp-admin/includes/class-wp-filesystem-base.php",
+          "wp-admin/includes/class-wp-filesystem-direct.php",
+          "wp-admin/includes/class-wp-filesystem-ftpext.php",
+          "wp-admin/includes/class-wp-filesystem-ftpsockets.php",
+          "wp-admin/includes/class-wp-filesystem-ssh2.php",
+          "wp-admin/includes/file.php",
+          "wp-includes/blocks/file.php",
+          "wp-includes/php-ai-client/src/Files/DTO/File.php"
+        ]
+      },
+      "image_metadata_editors": {
+        "count": 7,
+        "paths": [
+          "wp-admin/includes/image-edit.php",
+          "wp-admin/includes/image.php",
+          "wp-includes/blocks/image.php",
+          "wp-includes/class-wp-image-editor-gd.php",
+          "wp-includes/class-wp-image-editor-imagick.php",
+          "wp-includes/class-wp-image-editor.php",
+          "wp-includes/widgets/class-wp-widget-media-image.php"
+        ]
+      },
+      "media_filesystem_upload_related": {
+        "count": 4,
+        "paths": [
+          "wp-admin/includes/class-custom-image-header.php",
+          "wp-includes/php-ai-client/src/Providers/Models/ImageGeneration/Contracts/ImageGenerationModelInterface.php",
+          "wp-includes/php-ai-client/src/Providers/Models/ImageGeneration/Contracts/ImageGenerationOperationModelInterface.php",
+          "wp-includes/php-ai-client/src/Providers/OpenAiCompatibleImplementation/AbstractOpenAiCompatibleImageGenerationModel.php"
+        ]
+      },
+      "media_shortcode_library": {
+        "count": 7,
+        "paths": [
+          "wp-includes/blocks/media-text.php",
+          "wp-includes/media.php",
+          "wp-includes/php-ai-client/src/Files/Enums/MediaOrientationEnum.php",
+          "wp-includes/widgets/class-wp-widget-media-audio.php",
+          "wp-includes/widgets/class-wp-widget-media-gallery.php",
+          "wp-includes/widgets/class-wp-widget-media-video.php",
+          "wp-includes/widgets/class-wp-widget-media.php"
+        ]
+      },
+      "mime_filetype_security": {
+        "count": 1,
+        "paths": [
+          "wp-includes/php-ai-client/src/Files/ValueObjects/MimeType.php"
+        ]
+      },
+      "uploads_admin_endpoint": {
+        "count": 5,
+        "paths": [
+          "wp-admin/async-upload.php",
+          "wp-admin/includes/class-file-upload-upgrader.php",
+          "wp-admin/media-upload.php",
+          "wp-admin/upload.php",
+          "wp-includes/php-ai-client/third-party/Nyholm/Psr7/UploadedFile.php"
+        ]
+      }
+    },
+    "abi_by_group": {
+      "admin_media_library": {
+        "count": 78,
+        "functions": [
+          "_cleanup_image_add_caption",
+          "attachment_submitbox_metadata",
+          "edit_form_image_editor",
+          "get_attachment_fields_to_edit",
+          "get_compat_media_markup",
+          "get_image_send_to_editor",
+          "get_media_item",
+          "get_media_items",
+          "get_upload_iframe_src",
+          "image_add_caption",
+          "image_align_input_fields",
+          "image_attachment_fields_to_edit",
+          "image_link_input_fields",
+          "image_media_send_to_editor",
+          "image_size_input_fields",
+          "media_buttons",
+          "media_handle_sideload",
+          "media_handle_upload",
+          "media_post_single_attachment_fields_to_edit",
+          "media_send_to_editor",
+          "media_sideload_image",
+          "media_single_attachment_fields_to_edit",
+          "media_upload_flash_bypass",
+          "media_upload_form",
+          "media_upload_form_handler",
+          "media_upload_gallery",
+          "media_upload_gallery_form",
+          "media_upload_header",
+          "media_upload_html_bypass",
+          "media_upload_library",
+          "media_upload_library_form",
+          "media_upload_max_image_resize",
+          "media_upload_tabs",
+          "media_upload_text_after",
+          "media_upload_type_form",
+          "media_upload_type_url_form",
+          "multisite_over_quota_message",
+          "the_media_upload_tabs",
+          "update_gallery_tab",
+          "wp_add_id3_tag_data",
+          "wp_caption_input_textarea",
+          "wp_get_media_creation_timestamp",
+          "wp_iframe",
+          "wp_media_attach_action",
+          "wp_media_insert_url_form",
+          "wp_media_upload_handler",
+          "wp_read_audio_metadata",
+          "wp_read_video_metadata"
+        ],
+        "classes": [
+          "WP_Media_List_Table"
+        ],
+        "methods": [
+          "WP_Media_List_Table::__construct",
+          "WP_Media_List_Table::_get_row_actions",
+          "WP_Media_List_Table::ajax_user_can",
+          "WP_Media_List_Table::column_author",
+          "WP_Media_List_Table::column_cb",
+          "WP_Media_List_Table::column_comments",
+          "WP_Media_List_Table::column_date",
+          "WP_Media_List_Table::column_default",
+          "WP_Media_List_Table::column_desc",
+          "WP_Media_List_Table::column_parent",
+          "WP_Media_List_Table::column_title",
+          "WP_Media_List_Table::current_action",
+          "WP_Media_List_Table::display_rows",
+          "WP_Media_List_Table::extra_tablenav",
+          "WP_Media_List_Table::get_bulk_actions",
+          "WP_Media_List_Table::get_columns",
+          "WP_Media_List_Table::get_default_primary_column_name",
+          "WP_Media_List_Table::get_sortable_columns",
+          "WP_Media_List_Table::get_views",
+          "WP_Media_List_Table::handle_row_actions",
+          "WP_Media_List_Table::has_items",
+          "WP_Media_List_Table::no_items",
+          "WP_Media_List_Table::prepare_items",
+          "WP_Media_List_Table::views"
+        ],
+        "properties": [
+          "WP_Media_List_Table::$comment_pending_count",
+          "WP_Media_List_Table::$detached",
+          "WP_Media_List_Table::$is_trash"
+        ]
+      },
+      "filesystem_api_upload_io": {
+        "count": 234,
+        "functions": [
+          "WP_Filesystem",
+          "_unzip_file_pclzip",
+          "_unzip_file_ziparchive",
+          "_wp_handle_upload",
+          "copy_dir",
+          "download_url",
+          "get_file_description",
+          "get_filesystem_method",
+          "get_home_path",
+          "list_files",
+          "move_dir",
+          "register_block_core_file",
+          "render_block_core_file",
+          "request_filesystem_credentials",
+          "unzip_file",
+          "validate_file_to_edit",
+          "verify_file_md5",
+          "verify_file_signature",
+          "wp_edit_theme_plugin_file",
+          "wp_get_plugin_file_editable_extensions",
+          "wp_get_theme_file_editable_extensions",
+          "wp_handle_sideload",
+          "wp_handle_upload",
+          "wp_handle_upload_error",
+          "wp_opcache_invalidate",
+          "wp_opcache_invalidate_directory",
+          "wp_print_file_editor_templates",
+          "wp_print_request_filesystem_credentials_modal",
+          "wp_tempnam",
+          "wp_trusted_keys",
+          "wp_zip_file_is_valid"
+        ],
+        "classes": [
+          "WP_Filesystem_Base",
+          "WP_Filesystem_Direct",
+          "WP_Filesystem_FTPext",
+          "WP_Filesystem_SSH2",
+          "WP_Filesystem_ftpsockets",
+          "WordPress\\AiClient\\Files\\DTO\\File"
+        ],
+        "methods": [
+          "WP_Filesystem_Base::abspath",
+          "WP_Filesystem_Base::atime",
+          "WP_Filesystem_Base::chdir",
+          "WP_Filesystem_Base::chgrp",
+          "WP_Filesystem_Base::chmod",
+          "WP_Filesystem_Base::chown",
+          "WP_Filesystem_Base::connect",
+          "WP_Filesystem_Base::copy",
+          "WP_Filesystem_Base::cwd",
+          "WP_Filesystem_Base::delete",
+          "WP_Filesystem_Base::dirlist",
+          "WP_Filesystem_Base::exists",
+          "WP_Filesystem_Base::find_base_dir",
+          "WP_Filesystem_Base::find_folder",
+          "WP_Filesystem_Base::get_base_dir",
+          "WP_Filesystem_Base::get_contents",
+          "WP_Filesystem_Base::get_contents_array",
+          "WP_Filesystem_Base::getchmod",
+          "WP_Filesystem_Base::gethchmod",
+          "WP_Filesystem_Base::getnumchmodfromh",
+          "WP_Filesystem_Base::group",
+          "WP_Filesystem_Base::is_binary",
+          "WP_Filesystem_Base::is_dir",
+          "WP_Filesystem_Base::is_file",
+          "WP_Filesystem_Base::is_readable",
+          "WP_Filesystem_Base::is_writable",
+          "WP_Filesystem_Base::mkdir",
+          "WP_Filesystem_Base::move",
+          "WP_Filesystem_Base::mtime",
+          "WP_Filesystem_Base::owner",
+          "WP_Filesystem_Base::put_contents",
+          "WP_Filesystem_Base::rmdir",
+          "WP_Filesystem_Base::search_for_folder",
+          "WP_Filesystem_Base::size",
+          "WP_Filesystem_Base::touch",
+          "WP_Filesystem_Base::wp_content_dir",
+          "WP_Filesystem_Base::wp_lang_dir",
+          "WP_Filesystem_Base::wp_plugins_dir",
+          "WP_Filesystem_Base::wp_themes_dir",
+          "WP_Filesystem_Direct::__construct",
+          "WP_Filesystem_Direct::atime",
+          "WP_Filesystem_Direct::chdir",
+          "WP_Filesystem_Direct::chgrp",
+          "WP_Filesystem_Direct::chmod",
+          "WP_Filesystem_Direct::chown",
+          "WP_Filesystem_Direct::copy",
+          "WP_Filesystem_Direct::cwd",
+          "WP_Filesystem_Direct::delete",
+          "WP_Filesystem_Direct::dirlist",
+          "WP_Filesystem_Direct::exists",
+          "WP_Filesystem_Direct::get_contents",
+          "WP_Filesystem_Direct::get_contents_array",
+          "WP_Filesystem_Direct::getchmod",
+          "WP_Filesystem_Direct::group",
+          "WP_Filesystem_Direct::is_dir",
+          "WP_Filesystem_Direct::is_file",
+          "WP_Filesystem_Direct::is_readable",
+          "WP_Filesystem_Direct::is_writable",
+          "WP_Filesystem_Direct::mkdir",
+          "WP_Filesystem_Direct::move",
+          "WP_Filesystem_Direct::mtime",
+          "WP_Filesystem_Direct::owner",
+          "WP_Filesystem_Direct::put_contents",
+          "WP_Filesystem_Direct::rmdir",
+          "WP_Filesystem_Direct::size",
+          "WP_Filesystem_Direct::touch",
+          "WP_Filesystem_FTPext::__construct",
+          "WP_Filesystem_FTPext::__destruct",
+          "WP_Filesystem_FTPext::atime",
+          "WP_Filesystem_FTPext::chdir",
+          "WP_Filesystem_FTPext::chmod",
+          "WP_Filesystem_FTPext::connect",
+          "WP_Filesystem_FTPext::copy",
+          "WP_Filesystem_FTPext::cwd",
+          "WP_Filesystem_FTPext::delete",
+          "WP_Filesystem_FTPext::dirlist",
+          "WP_Filesystem_FTPext::exists",
+          "WP_Filesystem_FTPext::get_contents",
+          "WP_Filesystem_FTPext::get_contents_array",
+          "WP_Filesystem_FTPext::getchmod",
+          "WP_Filesystem_FTPext::group",
+          "WP_Filesystem_FTPext::is_dir",
+          "WP_Filesystem_FTPext::is_file",
+          "WP_Filesystem_FTPext::is_readable",
+          "WP_Filesystem_FTPext::is_writable",
+          "WP_Filesystem_FTPext::mkdir",
+          "WP_Filesystem_FTPext::move",
+          "WP_Filesystem_FTPext::mtime",
+          "WP_Filesystem_FTPext::owner",
+          "WP_Filesystem_FTPext::parselisting",
+          "WP_Filesystem_FTPext::put_contents",
+          "WP_Filesystem_FTPext::rmdir",
+          "WP_Filesystem_FTPext::size",
+          "WP_Filesystem_FTPext::touch",
+          "WP_Filesystem_SSH2::__construct",
+          "WP_Filesystem_SSH2::atime",
+          "WP_Filesystem_SSH2::chdir",
+          "WP_Filesystem_SSH2::chgrp",
+          "WP_Filesystem_SSH2::chmod",
+          "WP_Filesystem_SSH2::chown",
+          "WP_Filesystem_SSH2::connect",
+          "WP_Filesystem_SSH2::copy",
+          "WP_Filesystem_SSH2::cwd",
+          "WP_Filesystem_SSH2::delete",
+          "WP_Filesystem_SSH2::dirlist",
+          "WP_Filesystem_SSH2::exists",
+          "WP_Filesystem_SSH2::get_contents",
+          "WP_Filesystem_SSH2::get_contents_array",
+          "WP_Filesystem_SSH2::getchmod",
+          "WP_Filesystem_SSH2::group",
+          "WP_Filesystem_SSH2::is_dir",
+          "WP_Filesystem_SSH2::is_file",
+          "WP_Filesystem_SSH2::is_readable",
+          "WP_Filesystem_SSH2::is_writable",
+          "WP_Filesystem_SSH2::mkdir",
+          "WP_Filesystem_SSH2::move",
+          "WP_Filesystem_SSH2::mtime",
+          "WP_Filesystem_SSH2::owner",
+          "WP_Filesystem_SSH2::put_contents",
+          "WP_Filesystem_SSH2::rmdir",
+          "WP_Filesystem_SSH2::run_command",
+          "WP_Filesystem_SSH2::sftp_path",
+          "WP_Filesystem_SSH2::size",
+          "WP_Filesystem_SSH2::touch",
+          "WP_Filesystem_ftpsockets::__construct",
+          "WP_Filesystem_ftpsockets::__destruct",
+          "WP_Filesystem_ftpsockets::atime",
+          "WP_Filesystem_ftpsockets::chdir",
+          "WP_Filesystem_ftpsockets::chmod",
+          "WP_Filesystem_ftpsockets::connect",
+          "WP_Filesystem_ftpsockets::copy",
+          "WP_Filesystem_ftpsockets::cwd",
+          "WP_Filesystem_ftpsockets::delete",
+          "WP_Filesystem_ftpsockets::dirlist",
+          "WP_Filesystem_ftpsockets::exists",
+          "WP_Filesystem_ftpsockets::get_contents",
+          "WP_Filesystem_ftpsockets::get_contents_array",
+          "WP_Filesystem_ftpsockets::getchmod",
+          "WP_Filesystem_ftpsockets::group",
+          "WP_Filesystem_ftpsockets::is_dir",
+          "WP_Filesystem_ftpsockets::is_file",
+          "WP_Filesystem_ftpsockets::is_readable",
+          "WP_Filesystem_ftpsockets::is_writable",
+          "WP_Filesystem_ftpsockets::mkdir",
+          "WP_Filesystem_ftpsockets::move",
+          "WP_Filesystem_ftpsockets::mtime",
+          "WP_Filesystem_ftpsockets::owner",
+          "WP_Filesystem_ftpsockets::put_contents",
+          "WP_Filesystem_ftpsockets::rmdir",
+          "WP_Filesystem_ftpsockets::size",
+          "WP_Filesystem_ftpsockets::touch",
+          "WordPress\\AiClient\\Files\\DTO\\File::__clone",
+          "WordPress\\AiClient\\Files\\DTO\\File::__construct",
+          "WordPress\\AiClient\\Files\\DTO\\File::convertFileToBase64",
+          "WordPress\\AiClient\\Files\\DTO\\File::detectAndProcessFile",
+          "WordPress\\AiClient\\Files\\DTO\\File::determineMimeType",
+          "WordPress\\AiClient\\Files\\DTO\\File::fromArray",
+          "WordPress\\AiClient\\Files\\DTO\\File::getBase64Data",
+          "WordPress\\AiClient\\Files\\DTO\\File::getDataUri",
+          "WordPress\\AiClient\\Files\\DTO\\File::getFileType",
+          "WordPress\\AiClient\\Files\\DTO\\File::getJsonSchema",
+          "WordPress\\AiClient\\Files\\DTO\\File::getMimeType",
+          "WordPress\\AiClient\\Files\\DTO\\File::getMimeTypeObject",
+          "WordPress\\AiClient\\Files\\DTO\\File::getUrl",
+          "WordPress\\AiClient\\Files\\DTO\\File::isAudio",
+          "WordPress\\AiClient\\Files\\DTO\\File::isDocument",
+          "WordPress\\AiClient\\Files\\DTO\\File::isImage",
+          "WordPress\\AiClient\\Files\\DTO\\File::isInline",
+          "WordPress\\AiClient\\Files\\DTO\\File::isMimeType",
+          "WordPress\\AiClient\\Files\\DTO\\File::isRemote",
+          "WordPress\\AiClient\\Files\\DTO\\File::isText",
+          "WordPress\\AiClient\\Files\\DTO\\File::isUrl",
+          "WordPress\\AiClient\\Files\\DTO\\File::isVideo",
+          "WordPress\\AiClient\\Files\\DTO\\File::toArray"
+        ],
+        "properties": [
+          "WP_Filesystem_Base::$cache",
+          "WP_Filesystem_Base::$errors",
+          "WP_Filesystem_Base::$method",
+          "WP_Filesystem_Base::$options",
+          "WP_Filesystem_Base::$verbose",
+          "WP_Filesystem_FTPext::$link",
+          "WP_Filesystem_SSH2::$keys",
+          "WP_Filesystem_SSH2::$link",
+          "WP_Filesystem_SSH2::$sftp_link",
+          "WP_Filesystem_ftpsockets::$ftp",
+          "WordPress\\AiClient\\Files\\DTO\\File::$base64Data",
+          "WordPress\\AiClient\\Files\\DTO\\File::$fileType",
+          "WordPress\\AiClient\\Files\\DTO\\File::$mimeType",
+          "WordPress\\AiClient\\Files\\DTO\\File::$url"
+        ]
+      },
+      "image_metadata_editors": {
+        "count": 116,
+        "functions": [
+          "_copy_image_file",
+          "_crop_image_resource",
+          "_flip_image_resource",
+          "_image_get_preview_ratio",
+          "_load_image_to_edit_path",
+          "_rotate_image_resource",
+          "_wp_image_meta_replace_original",
+          "_wp_make_subsizes",
+          "block_core_image_get_lightbox_settings",
+          "block_core_image_print_lightbox_overlay",
+          "block_core_image_render_lightbox",
+          "file_is_displayable_image",
+          "file_is_valid_image",
+          "image_edit_apply_changes",
+          "load_image_to_edit",
+          "register_block_core_image",
+          "render_block_core_image",
+          "stream_preview_image",
+          "wp_copy_parent_attachment_properties",
+          "wp_create_image_subsizes",
+          "wp_crop_image",
+          "wp_exif_date2ts",
+          "wp_exif_frac2dec",
+          "wp_generate_attachment_metadata",
+          "wp_get_image_alttext",
+          "wp_get_missing_image_subsizes",
+          "wp_image_editor",
+          "wp_read_image_metadata",
+          "wp_restore_image",
+          "wp_save_image",
+          "wp_save_image_file",
+          "wp_stream_image",
+          "wp_update_image_subsizes"
+        ],
+        "classes": [
+          "WP_Image_Editor",
+          "WP_Image_Editor_GD",
+          "WP_Image_Editor_Imagick",
+          "WP_Widget_Media_Image",
+          "src/wp-includes/blocks/image.php:25"
+        ],
+        "methods": [
+          "WP_Image_Editor::__construct",
+          "WP_Image_Editor::crop",
+          "WP_Image_Editor::flip",
+          "WP_Image_Editor::generate_filename",
+          "WP_Image_Editor::get_default_quality",
+          "WP_Image_Editor::get_extension",
+          "WP_Image_Editor::get_mime_type",
+          "WP_Image_Editor::get_output_format",
+          "WP_Image_Editor::get_quality",
+          "WP_Image_Editor::get_size",
+          "WP_Image_Editor::get_suffix",
+          "WP_Image_Editor::load",
+          "WP_Image_Editor::make_image",
+          "WP_Image_Editor::maybe_exif_rotate",
+          "WP_Image_Editor::multi_resize",
+          "WP_Image_Editor::resize",
+          "WP_Image_Editor::rotate",
+          "WP_Image_Editor::save",
+          "WP_Image_Editor::set_quality",
+          "WP_Image_Editor::stream",
+          "WP_Image_Editor::supports_mime_type",
+          "WP_Image_Editor::test",
+          "WP_Image_Editor::update_size",
+          "WP_Image_Editor_GD::__destruct",
+          "WP_Image_Editor_GD::_resize",
+          "WP_Image_Editor_GD::_save",
+          "WP_Image_Editor_GD::crop",
+          "WP_Image_Editor_GD::flip",
+          "WP_Image_Editor_GD::load",
+          "WP_Image_Editor_GD::make_image",
+          "WP_Image_Editor_GD::make_subsize",
+          "WP_Image_Editor_GD::multi_resize",
+          "WP_Image_Editor_GD::resize",
+          "WP_Image_Editor_GD::rotate",
+          "WP_Image_Editor_GD::save",
+          "WP_Image_Editor_GD::set_quality",
+          "WP_Image_Editor_GD::stream",
+          "WP_Image_Editor_GD::supports_mime_type",
+          "WP_Image_Editor_GD::test",
+          "WP_Image_Editor_GD::update_size",
+          "WP_Image_Editor_Imagick::__destruct",
+          "WP_Image_Editor_Imagick::_save",
+          "WP_Image_Editor_Imagick::crop",
+          "WP_Image_Editor_Imagick::flip",
+          "WP_Image_Editor_Imagick::load",
+          "WP_Image_Editor_Imagick::make_subsize",
+          "WP_Image_Editor_Imagick::maybe_exif_rotate",
+          "WP_Image_Editor_Imagick::multi_resize",
+          "WP_Image_Editor_Imagick::pdf_load_source",
+          "WP_Image_Editor_Imagick::pdf_setup",
+          "WP_Image_Editor_Imagick::remove_pdf_alpha_channel",
+          "WP_Image_Editor_Imagick::resize",
+          "WP_Image_Editor_Imagick::rotate",
+          "WP_Image_Editor_Imagick::save",
+          "WP_Image_Editor_Imagick::set_imagick_time_limit",
+          "WP_Image_Editor_Imagick::set_quality",
+          "WP_Image_Editor_Imagick::stream",
+          "WP_Image_Editor_Imagick::strip_meta",
+          "WP_Image_Editor_Imagick::supports_mime_type",
+          "WP_Image_Editor_Imagick::test",
+          "WP_Image_Editor_Imagick::thumbnail_image",
+          "WP_Image_Editor_Imagick::update_size",
+          "WP_Image_Editor_Imagick::write_image",
+          "WP_Widget_Media_Image::__construct",
+          "WP_Widget_Media_Image::enqueue_admin_scripts",
+          "WP_Widget_Media_Image::get_instance_schema",
+          "WP_Widget_Media_Image::render_control_template_scripts",
+          "WP_Widget_Media_Image::render_media",
+          "null::block_core_image_extract_empty_figcaption_element"
+        ],
+        "properties": [
+          "WP_Image_Editor::$default_mime_type",
+          "WP_Image_Editor::$default_quality",
+          "WP_Image_Editor::$file",
+          "WP_Image_Editor::$mime_type",
+          "WP_Image_Editor::$output_mime_type",
+          "WP_Image_Editor::$quality",
+          "WP_Image_Editor::$size",
+          "WP_Image_Editor_GD::$image",
+          "WP_Image_Editor_Imagick::$image"
+        ]
+      },
+      "media_filesystem_upload_related": {
+        "count": 52,
+        "functions": [],
+        "classes": [
+          "Custom_Image_Header",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel"
+        ],
+        "methods": [
+          "Custom_Image_Header::__construct",
+          "Custom_Image_Header::admin_page",
+          "Custom_Image_Header::ajax_header_add",
+          "Custom_Image_Header::ajax_header_crop",
+          "Custom_Image_Header::ajax_header_remove",
+          "Custom_Image_Header::attachment_fields_to_edit",
+          "Custom_Image_Header::create_attachment_object",
+          "Custom_Image_Header::css_includes",
+          "Custom_Image_Header::customize_set_last_used",
+          "Custom_Image_Header::filter_upload_tabs",
+          "Custom_Image_Header::finished",
+          "Custom_Image_Header::get_default_header_images",
+          "Custom_Image_Header::get_header_dimensions",
+          "Custom_Image_Header::get_previous_crop",
+          "Custom_Image_Header::get_uploaded_header_images",
+          "Custom_Image_Header::help",
+          "Custom_Image_Header::init",
+          "Custom_Image_Header::insert_attachment",
+          "Custom_Image_Header::js",
+          "Custom_Image_Header::js_1",
+          "Custom_Image_Header::js_2",
+          "Custom_Image_Header::js_includes",
+          "Custom_Image_Header::process_default_headers",
+          "Custom_Image_Header::remove_header_image",
+          "Custom_Image_Header::reset_header_image",
+          "Custom_Image_Header::set_header_image",
+          "Custom_Image_Header::show_header_selector",
+          "Custom_Image_Header::step",
+          "Custom_Image_Header::step_1",
+          "Custom_Image_Header::step_2",
+          "Custom_Image_Header::step_2_manage_upload",
+          "Custom_Image_Header::step_3",
+          "Custom_Image_Header::take_action",
+          "WordPress\\AiClient\\Providers\\Models\\ImageGeneration\\Contracts\\ImageGenerationModelInterface::generateImageResult",
+          "WordPress\\AiClient\\Providers\\Models\\ImageGeneration\\Contracts\\ImageGenerationOperationModelInterface::generateImageOperation",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::createRequest",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::generateImageResult",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::getResultId",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::parseResponseChoiceToCandidate",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::parseResponseToGenerativeAiResult",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::prepareGenerateImageParams",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::preparePromptParam",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::prepareSizeParam",
+          "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel::throwIfNotSuccessful"
+        ],
+        "properties": [
+          "Custom_Image_Header::$admin_header_callback",
+          "Custom_Image_Header::$admin_image_div_callback",
+          "Custom_Image_Header::$default_headers",
+          "Custom_Image_Header::$updated"
+        ]
+      },
+      "media_shortcode_library": {
+        "count": 144,
+        "functions": [
+          "_wp_add_additional_image_sizes",
+          "_wp_get_attachment_relative_path",
+          "_wp_get_image_size_from_meta",
+          "_wp_image_editor_choose",
+          "_wp_post_thumbnail_class_filter",
+          "_wp_post_thumbnail_class_filter_add",
+          "_wp_post_thumbnail_class_filter_remove",
+          "_wp_post_thumbnail_context_filter",
+          "_wp_post_thumbnail_context_filter_add",
+          "_wp_post_thumbnail_context_filter_remove",
+          "add_image_size",
+          "adjacent_image_link",
+          "attachment_url_to_postid",
+          "gallery_shortcode",
+          "get_adjacent_image_link",
+          "get_attached_media",
+          "get_attachment_taxonomies",
+          "get_image_tag",
+          "get_intermediate_image_sizes",
+          "get_media_embedded_in_content",
+          "get_next_image_link",
+          "get_post_galleries",
+          "get_post_galleries_images",
+          "get_post_gallery",
+          "get_post_gallery_images",
+          "get_previous_image_link",
+          "get_taxonomies_for_attachments",
+          "has_image_size",
+          "image_constrain_size_for_editor",
+          "image_downsize",
+          "image_get_intermediate_size",
+          "image_hwstring",
+          "image_make_intermediate_size",
+          "image_resize_dimensions",
+          "img_caption_shortcode",
+          "is_gd_image",
+          "next_image_link",
+          "previous_image_link",
+          "register_block_core_media_text",
+          "remove_image_size",
+          "render_block_core_media_text",
+          "set_post_thumbnail_size",
+          "wp_audio_shortcode",
+          "wp_calculate_image_sizes",
+          "wp_calculate_image_srcset",
+          "wp_constrain_dimensions",
+          "wp_enqueue_img_auto_sizes_contain_css_fix",
+          "wp_enqueue_media",
+          "wp_expand_dimensions",
+          "wp_filter_content_tags",
+          "wp_get_additional_image_sizes",
+          "wp_get_attachment_id3_keys",
+          "wp_get_attachment_image",
+          "wp_get_attachment_image_sizes",
+          "wp_get_attachment_image_src",
+          "wp_get_attachment_image_srcset",
+          "wp_get_attachment_image_url",
+          "wp_get_audio_extensions",
+          "wp_get_avif_info",
+          "wp_get_image_editor",
+          "wp_get_image_editor_output_format",
+          "wp_get_loading_optimization_attributes",
+          "wp_get_registered_image_subsizes",
+          "wp_get_video_extensions",
+          "wp_get_webp_info",
+          "wp_getimagesize",
+          "wp_high_priority_element_flag",
+          "wp_iframe_tag_add_loading_attr",
+          "wp_image_add_srcset_and_sizes",
+          "wp_image_editor_supports",
+          "wp_image_file_matches_image_meta",
+          "wp_image_matches_ratio",
+          "wp_image_src_get_dimensions",
+          "wp_imagecreatetruecolor",
+          "wp_img_tag_add_auto_sizes",
+          "wp_img_tag_add_loading_optimization_attrs",
+          "wp_img_tag_add_srcset_and_sizes_attr",
+          "wp_img_tag_add_width_and_height_attr",
+          "wp_increase_content_media_count",
+          "wp_lazy_loading_enabled",
+          "wp_max_upload_size",
+          "wp_maybe_add_fetchpriority_high_attr",
+          "wp_maybe_generate_attachment_metadata",
+          "wp_media_personal_data_exporter",
+          "wp_mediaelement_fallback",
+          "wp_omit_loading_attr_threshold",
+          "wp_playlist_scripts",
+          "wp_playlist_shortcode",
+          "wp_plupload_default_settings",
+          "wp_prepare_attachment_for_js",
+          "wp_register_media_personal_data_exporter",
+          "wp_show_heic_upload_error",
+          "wp_sizes_attribute_includes_valid_auto",
+          "wp_underscore_playlist_templates",
+          "wp_video_shortcode",
+          "wpview_media_sandbox_styles"
+        ],
+        "classes": [
+          "WP_Widget_Media",
+          "WP_Widget_Media_Audio",
+          "WP_Widget_Media_Gallery",
+          "WP_Widget_Media_Video",
+          "WordPress\\AiClient\\Files\\Enums\\MediaOrientationEnum"
+        ],
+        "methods": [
+          "WP_Widget_Media::__construct",
+          "WP_Widget_Media::_register_one",
+          "WP_Widget_Media::display_media_state",
+          "WP_Widget_Media::enqueue_admin_scripts",
+          "WP_Widget_Media::enqueue_preview_scripts",
+          "WP_Widget_Media::form",
+          "WP_Widget_Media::get_default_description",
+          "WP_Widget_Media::get_instance_schema",
+          "WP_Widget_Media::get_l10n_defaults",
+          "WP_Widget_Media::has_content",
+          "WP_Widget_Media::is_attachment_with_mime_type",
+          "WP_Widget_Media::render_control_template_scripts",
+          "WP_Widget_Media::render_media",
+          "WP_Widget_Media::reset_default_labels",
+          "WP_Widget_Media::sanitize_token_list",
+          "WP_Widget_Media::update",
+          "WP_Widget_Media::widget",
+          "WP_Widget_Media_Audio::__construct",
+          "WP_Widget_Media_Audio::enqueue_admin_scripts",
+          "WP_Widget_Media_Audio::enqueue_preview_scripts",
+          "WP_Widget_Media_Audio::get_instance_schema",
+          "WP_Widget_Media_Audio::render_control_template_scripts",
+          "WP_Widget_Media_Audio::render_media",
+          "WP_Widget_Media_Gallery::__construct",
+          "WP_Widget_Media_Gallery::enqueue_admin_scripts",
+          "WP_Widget_Media_Gallery::get_instance_schema",
+          "WP_Widget_Media_Gallery::has_content",
+          "WP_Widget_Media_Gallery::render_control_template_scripts",
+          "WP_Widget_Media_Gallery::render_media",
+          "WP_Widget_Media_Video::__construct",
+          "WP_Widget_Media_Video::enqueue_admin_scripts",
+          "WP_Widget_Media_Video::enqueue_preview_scripts",
+          "WP_Widget_Media_Video::get_instance_schema",
+          "WP_Widget_Media_Video::inject_video_max_width_style",
+          "WP_Widget_Media_Video::render_control_template_scripts",
+          "WP_Widget_Media_Video::render_media"
+        ],
+        "properties": [
+          "WP_Widget_Media::$default_description",
+          "WP_Widget_Media::$l10n",
+          "WP_Widget_Media::$l10n_defaults",
+          "WP_Widget_Media::$registered"
+        ]
+      },
+      "mime_filetype_security": {
+        "count": 16,
+        "functions": [],
+        "classes": [
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType"
+        ],
+        "methods": [
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::__construct",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::__toString",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::equals",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::fromExtension",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isAudio",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isDocument",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isImage",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isText",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isType",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isValid",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::isVideo",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::toExtension"
+        ],
+        "properties": [
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::$documentTypes",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::$extensionMap",
+          "WordPress\\AiClient\\Files\\ValueObjects\\MimeType::$value"
+        ]
+      },
+      "uploads_admin_endpoint": {
+        "count": 26,
+        "functions": [],
+        "classes": [
+          "File_Upload_Upgrader",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile"
+        ],
+        "methods": [
+          "File_Upload_Upgrader::__construct",
+          "File_Upload_Upgrader::cleanup",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::__construct",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::getClientFilename",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::getClientMediaType",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::getError",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::getSize",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::getStream",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::moveTo",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::validateActive"
+        ],
+        "properties": [
+          "File_Upload_Upgrader::$filename",
+          "File_Upload_Upgrader::$id",
+          "File_Upload_Upgrader::$package",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$clientFilename",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$clientMediaType",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$error",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$file",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$moved",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$size",
+          "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile::$stream"
+        ]
+      }
+    },
+    "classes": [
+      "Custom_Image_Header",
+      "File_Upload_Upgrader",
+      "WP_Filesystem_Base",
+      "WP_Filesystem_Direct",
+      "WP_Filesystem_FTPext",
+      "WP_Filesystem_SSH2",
+      "WP_Filesystem_ftpsockets",
+      "WP_Image_Editor",
+      "WP_Image_Editor_GD",
+      "WP_Image_Editor_Imagick",
+      "WP_Media_List_Table",
+      "WP_Widget_Media",
+      "WP_Widget_Media_Audio",
+      "WP_Widget_Media_Gallery",
+      "WP_Widget_Media_Image",
+      "WP_Widget_Media_Video",
+      "WordPress\\AiClientDependencies\\Nyholm\\Psr7\\UploadedFile",
+      "WordPress\\AiClient\\Files\\DTO\\File",
+      "WordPress\\AiClient\\Files\\Enums\\MediaOrientationEnum",
+      "WordPress\\AiClient\\Files\\ValueObjects\\MimeType",
+      "WordPress\\AiClient\\Providers\\OpenAiCompatibleImplementation\\AbstractOpenAiCompatibleImageGenerationModel",
+      "src/wp-includes/blocks/image.php:25"
+    ],
+    "abi_risks": {
+      "functions_with_reference_parameters": [
+        "_wp_handle_upload",
+        "wp_add_id3_tag_data",
+        "wp_getimagesize",
+        "wp_handle_sideload",
+        "wp_handle_upload",
+        "wp_handle_upload_error"
+      ],
+      "methods_with_reference_parameters": [],
+      "variadic_functions": [
+        "wp_iframe"
+      ],
+      "conditional_functions": [
+        "wp_handle_upload_error"
+      ]
+    },
+    "test_paths": [
+      "tests/e2e/specs/media-upload.test.js",
+      "tests/phpunit/tests/admin/includesFile.php",
+      "tests/phpunit/tests/attachment/slashes.php",
+      "tests/phpunit/tests/block-templates/buildBlockTemplateResultFromFile.php",
+      "tests/phpunit/tests/customize/media-control.php",
+      "tests/phpunit/tests/feed/wpSimplePieFile.php",
+      "tests/phpunit/tests/file.php",
+      "tests/phpunit/tests/filesystem/base.php",
+      "tests/phpunit/tests/filesystem/copyDir.php",
+      "tests/phpunit/tests/filesystem/findFolder.php",
+      "tests/phpunit/tests/filesystem/moveDir.php",
+      "tests/phpunit/tests/filesystem/unzipFilePclzip.php",
+      "tests/phpunit/tests/filesystem/unzipFileZiparchive.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/atime.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/base.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/chdir.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/chgrp.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/chmod.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/chown.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/construct.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/copy.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/cwd.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/delete.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/dirlist.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/exists.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/getContents.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/getContentsArray.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/getchmod.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/isDir.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/isFile.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/isReadable.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/isWritable.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/mkdir.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/move.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/mtime.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/putContents.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/rmdir.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/size.php",
+      "tests/phpunit/tests/filesystem/wpFilesystemDirect/touch.php",
+      "tests/phpunit/tests/filesystem/wpOpcacheInvalidateDirectory.php",
+      "tests/phpunit/tests/filesystem/wpZipFileIsValid.php",
+      "tests/phpunit/tests/functions/wpCheckFiletype.php",
+      "tests/phpunit/tests/functions/wpDeleteFile.php",
+      "tests/phpunit/tests/image/base.php",
+      "tests/phpunit/tests/image/dimensions.php",
+      "tests/phpunit/tests/image/editor.php",
+      "tests/phpunit/tests/image/editorGd.php",
+      "tests/phpunit/tests/image/editorImagick.php",
+      "tests/phpunit/tests/image/functions.php",
+      "tests/phpunit/tests/image/header.php",
+      "tests/phpunit/tests/image/intermediateSize.php",
+      "tests/phpunit/tests/image/meta.php",
+      "tests/phpunit/tests/image/resize.php",
+      "tests/phpunit/tests/image/resizeGd.php",
+      "tests/phpunit/tests/image/resizeImagick.php",
+      "tests/phpunit/tests/image/siteIcon.php",
+      "tests/phpunit/tests/image/size.php",
+      "tests/phpunit/tests/link/themeFile.php",
+      "tests/phpunit/tests/media.php",
+      "tests/phpunit/tests/media/getAdjacentImageLink.php",
+      "tests/phpunit/tests/media/getAttachmentTaxonomies.php",
+      "tests/phpunit/tests/media/getNextImageLink.php",
+      "tests/phpunit/tests/media/getPostGalleries.php",
+      "tests/phpunit/tests/media/getPreviousImageLink.php",
+      "tests/phpunit/tests/media/nextImageLink.php",
+      "tests/phpunit/tests/media/previousImageLink.php",
+      "tests/phpunit/tests/media/testcase-adjacent-image-link.php",
+      "tests/phpunit/tests/media/wpAddId3TagData.php",
+      "tests/phpunit/tests/media/wpCopyParentAttachmentProperties.php",
+      "tests/phpunit/tests/media/wpGenerateAttachmentMetadata.php",
+      "tests/phpunit/tests/media/wpImageTagAddDecodingAttr.php",
+      "tests/phpunit/tests/media/wpImgTagAddWidthAndHeightAttr.php",
+      "tests/phpunit/tests/media/wpPlaylistShortcode.php",
+      "tests/phpunit/tests/multisite/uploadIsUserOverQuota.php",
+      "tests/phpunit/tests/post/attachments.php",
+      "tests/phpunit/tests/post/thumbnails.php",
+      "tests/phpunit/tests/privacy/wpPrivacyGeneratePersonalDataExportFile.php",
+      "tests/phpunit/tests/upload.php",
+      "tests/phpunit/tests/xmlrpc/wp/editProfile.php",
+      "tests/phpunit/tests/xmlrpc/wp/getProfile.php",
+      "tests/phpunit/tests/xmlrpc/wp/uploadFile.php"
+    ]
+  },
+  "evidence_plan": {
+    "first_haxe_candidate": "A typed media/filesystem/upload adapter-contract model for upload validation, MIME/filetype decisions, attachment metadata routing, image editor selection, thumbnail generation handoff, filesystem credential routing, and hook intent.",
+    "required_next_fixtures": [
+      "upload validation, overrides, unique filename, and MIME/filetype oracle fixture",
+      "attachment metadata and thumbnail generation oracle fixture",
+      "image editor selection, resize, crop, and save-path oracle fixture",
+      "media shortcode, image srcset, and gallery output fixture",
+      "filesystem credentials, direct/FTP/SSH2 backend routing fixture",
+      "admin media upload/AJAX narrowed fixture",
+      "REST attachment upload handoff fixture",
+      "multisite upload quota and path handoff fixture",
+      "selected upstream PHPUnit media/upload/filesystem ratchet"
+    ],
+    "claim": "This surface manifest bounds WPHX-313 and names fixture gates. It does not claim public PHP replacement, Haxe-owned runtime logic, live filesystem/image-library parity, REST/admin upload parity, or installed-distribution media parity."
+  },
+  "validation_result": {
+    "status": "passed",
+    "source_count": 37,
+    "artifact_count": 37,
+    "abi_entry_count": 666,
+    "class_count": 22,
+    "test_count": 81
+  }
+}

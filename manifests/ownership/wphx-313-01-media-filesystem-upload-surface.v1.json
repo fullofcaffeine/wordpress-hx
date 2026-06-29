@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/media-filesystem-upload-surface",
+  "issue": {
+    "id": "wordpresshx-l76.19.1",
+    "external_ref": "WPHX-313.01"
+  },
+  "unit": {
+    "kind": "surface_inventory",
+    "name": "media, attachments, image metadata/editing, filesystem, and upload surface",
+    "area": "wp-includes/media.php wp-admin/includes/media.php wp-admin/includes/image.php wp-admin/includes/file.php wp-admin/upload.php",
+    "public_contract": "This slice inventories WordPress media/filesystem/upload runtime boundaries and fixture targets. It does not claim migrated runtime behavior or public PHP ABI replacement."
+  },
+  "ownership_state": "oracle_surface_inventory",
+  "ownership_axes": {
+    "semantic_owner": "upstream_oracle_described",
+    "adapter_contract_owner": "not_yet_started",
+    "emission_strategy": "none",
+    "execution_provider": "upstream_php_oracle",
+    "compatibility_evidence": "surface_inventory"
+  },
+  "bridge": {
+    "exists": false,
+    "kind": "not_applicable",
+    "removal_gate": "Promote bounded media/filesystem/upload decisions to typed Haxe adapter contracts, then later to typed Adapter IR/original-path PHP with differential, filesystem/image-library, REST/admin, and upstream PHPUnit evidence."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-media-filesystem-upload-surface.mjs",
+    "manifests/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json",
+    "manifests/ownership/wphx-313-01-media-filesystem-upload-surface.v1.json",
+    "receipts/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json",
+    "manifests/ownership/wphx-313-01-media-filesystem-upload-surface.v1.json",
+    "receipts/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-313-media-filesystem-upload-surface",
+      "npm run wp:core:wphx-313-media-filesystem-upload-surface:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-313-01-media-filesystem-upload-surface"
+    ],
+    "manifest_digest": "sha256:69fc7e4719ba45ccbea0c7e7d52cf2af1927cf485f48f69f81bbfa126df6fec6"
+  }
+}

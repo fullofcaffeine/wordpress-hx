@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-313-01-media-filesystem-upload-surface",
+  "issue": {
+    "id": "wordpresshx-l76.19.1",
+    "external_ref": "WPHX-313.01",
+    "title": "WPHX-313.01 - Inventory media, filesystem, and upload surface"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json",
+      "role": "media/filesystem/upload surface inventory"
+    },
+    {
+      "path": "manifests/ownership/wphx-313-01-media-filesystem-upload-surface.v1.json",
+      "role": "media/filesystem/upload surface ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-media-filesystem-upload-surface.mjs",
+      "role": "deterministic surface generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-313-media-filesystem-upload-surface",
+    "npm run wp:core:wphx-313-media-filesystem-upload-surface:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_count": 37,
+    "artifact_count": 37,
+    "abi_entry_count": 666,
+    "class_count": 22,
+    "test_count": 81
+  },
+  "manifest_sha256": "sha256:69fc7e4719ba45ccbea0c7e7d52cf2af1927cf485f48f69f81bbfa126df6fec6",
+  "ownership_sha256": "sha256:004f6fd249383f8e6834af4275d0164636cd5471ce44dfdd48df46ba6287c311"
+}
