@@ -1,0 +1,689 @@
+{
+  "schema": "wphx.wp-core-media-upload-installed-gate.v1",
+  "issue": "WPHX-313.08",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wp-core/run-media-upload-installed-gate.mjs",
+  "evidence_class": "installed_style_http_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": true,
+  "inputs": {
+    "prior_inputs": [
+      {
+        "path": "manifests/wp-core/wphx-313-01-media-filesystem-upload-surface.v1.json",
+        "bytes": 65832,
+        "sha256": "sha256:69fc7e4719ba45ccbea0c7e7d52cf2af1927cf485f48f69f81bbfa126df6fec6"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-02-media-upload-adapter-contract-candidate.v1.json",
+        "bytes": 17570,
+        "sha256": "sha256:7250386baab3609f4557b783208fec0085dd0a90a0a07e2f7b5815984c4e13b7"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-03-media-upload-validation-oracle-fixture.v1.json",
+        "bytes": 21763,
+        "sha256": "sha256:6269b9b5a8d7ddfd28d36cab276ce7913696714052ca366d5d290e3894c289d7"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-04-image-metadata-editor-oracle-fixture.v1.json",
+        "bytes": 34800,
+        "sha256": "sha256:c57871ef3b895c5c16b76d20440582ab526b90c2d104f9b5224254a6908bdd40"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-05-filesystem-credentials-oracle-fixture.v1.json",
+        "bytes": 29741,
+        "sha256": "sha256:df16d12504a9f04552e569fa23492ba190fb74294bb7f29029fe2dc3ed1464f9"
+      },
+      {
+        "path": "manifests/wp-core/wphx-313-06-image-filesystem-adapter-contract-candidate.v1.json",
+        "bytes": 20085,
+        "sha256": "sha256:0bf8e4bff91b6d4ce26f16fc78ec7e9573a941cd0af367c24ad6d9bd67fce04e"
+      },
+      {
+        "path": "receipts/wp-core/wphx-313-07-media-filesystem-upstream-phpunit-ratchet-groups.v1.json",
+        "bytes": 2498,
+        "sha256": "sha256:bc14c6e1aedae8d642da63fedf64ee939ed94676cb95c7775ba05dae0e7a3d50"
+      }
+    ],
+    "upstream_sources": [
+      {
+        "path": "src/wp-includes/functions.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/functions.php",
+        "bytes": 290326,
+        "sha256": "sha256:1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+      },
+      {
+        "path": "src/wp-includes/media.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/media.php",
+        "bytes": 223794,
+        "sha256": "sha256:e4bd57220f36ded7dabcb2d869c0e3874f034b79d9dea36dcbdb89201b050663"
+      },
+      {
+        "path": "src/wp-includes/post.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/post.php",
+        "bytes": 296525,
+        "sha256": "sha256:2e6ac612f82a1aeb04e1e1de0c7e2a186e5f997f67e942026bfe9b211108811c"
+      },
+      {
+        "path": "src/wp-admin/includes/file.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/file.php",
+        "bytes": 97913,
+        "sha256": "sha256:8bb99b94ad43d996b9f3b39e1ec4778d7e7baca3de764a29c99177e3c89ec0d8"
+      },
+      {
+        "path": "src/wp-admin/includes/image.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/image.php",
+        "bytes": 45171,
+        "sha256": "sha256:54ea3386fe9ecbefc2e88dc4e95d4de35f2a5a4109e2676bf9538c057a83e16d"
+      },
+      {
+        "path": "src/wp-admin/includes/media.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/media.php",
+        "bytes": 119934,
+        "sha256": "sha256:1933efdf502ce4861ed022e5d5f79783634f7981ace6551cf5a1d2de3573100d"
+      },
+      {
+        "path": "src/wp-admin/includes/ajax-actions.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/ajax-actions.php",
+        "bytes": 152775,
+        "sha256": "sha256:7fd86b5b8a6e1a72ac0440dddc26be9b800fd1cb258f7fb9cf23f6af3999f69b"
+      },
+      {
+        "path": "src/wp-admin/includes/class-wp-filesystem-base.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/class-wp-filesystem-base.php",
+        "bytes": 24410,
+        "sha256": "sha256:28ada0d3504f25cdd28ec4ba167a820d1a1ac583e3ef894674c718e6238c85c9"
+      },
+      {
+        "path": "src/wp-admin/includes/class-wp-filesystem-direct.php",
+        "repo_path": "../wordpress-develop/src/wp-admin/includes/class-wp-filesystem-direct.php",
+        "bytes": 18607,
+        "sha256": "sha256:de772536fc842ad5a57bdc8fc3e2bee709e8a57a45584f42c1137111e011d812"
+      },
+      {
+        "path": "src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+        "bytes": 58159,
+        "sha256": "sha256:82663e580c37760f39e6ef443abaa2b2ff342d1547c3265c759eaf7bdc025268"
+      }
+    ],
+    "runner": {
+      "path": "tools/wp-core/run-media-upload-installed-gate.mjs",
+      "bytes": 21494,
+      "sha256": "sha256:a54f344c7c18d80f4beff4e9e3e9538191da380fdb6f51c137782bf59757b53e"
+    }
+  },
+  "package_roots": {
+    "oracle": "build/wp-core/wphx-313-08/oracle-package",
+    "candidate": "build/wp-core/wphx-313-08/candidate-package",
+    "oracle_files": [
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-admin/includes/ajax-actions.php",
+        "bytes": 152775,
+        "sha256": "sha256:7fd86b5b8a6e1a72ac0440dddc26be9b800fd1cb258f7fb9cf23f6af3999f69b"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-admin/includes/class-wp-filesystem-base.php",
+        "bytes": 24410,
+        "sha256": "sha256:28ada0d3504f25cdd28ec4ba167a820d1a1ac583e3ef894674c718e6238c85c9"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-admin/includes/class-wp-filesystem-direct.php",
+        "bytes": 18607,
+        "sha256": "sha256:de772536fc842ad5a57bdc8fc3e2bee709e8a57a45584f42c1137111e011d812"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-admin/includes/file.php",
+        "bytes": 97913,
+        "sha256": "sha256:8bb99b94ad43d996b9f3b39e1ec4778d7e7baca3de764a29c99177e3c89ec0d8"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-admin/includes/image.php",
+        "bytes": 45171,
+        "sha256": "sha256:54ea3386fe9ecbefc2e88dc4e95d4de35f2a5a4109e2676bf9538c057a83e16d"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-admin/includes/media.php",
+        "bytes": 119934,
+        "sha256": "sha256:1933efdf502ce4861ed022e5d5f79783634f7981ace6551cf5a1d2de3573100d"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-includes/functions.php",
+        "bytes": 290326,
+        "sha256": "sha256:1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-includes/media.php",
+        "bytes": 223794,
+        "sha256": "sha256:e4bd57220f36ded7dabcb2d869c0e3874f034b79d9dea36dcbdb89201b050663"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-includes/post.php",
+        "bytes": 296525,
+        "sha256": "sha256:2e6ac612f82a1aeb04e1e1de0c7e2a186e5f997f67e942026bfe9b211108811c"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+        "bytes": 58159,
+        "sha256": "sha256:82663e580c37760f39e6ef443abaa2b2ff342d1547c3265c759eaf7bdc025268"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/oracle-package/wphx-media-upload-installed-router.php",
+        "bytes": 5049,
+        "sha256": "sha256:3a8d3874481ebab4801e795fc6ba550182afee6ae19c735f49d8ee1afd75e4c4"
+      }
+    ],
+    "candidate_files": [
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-admin/includes/ajax-actions.php",
+        "bytes": 152775,
+        "sha256": "sha256:7fd86b5b8a6e1a72ac0440dddc26be9b800fd1cb258f7fb9cf23f6af3999f69b"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-admin/includes/class-wp-filesystem-base.php",
+        "bytes": 24410,
+        "sha256": "sha256:28ada0d3504f25cdd28ec4ba167a820d1a1ac583e3ef894674c718e6238c85c9"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-admin/includes/class-wp-filesystem-direct.php",
+        "bytes": 18607,
+        "sha256": "sha256:de772536fc842ad5a57bdc8fc3e2bee709e8a57a45584f42c1137111e011d812"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-admin/includes/file.php",
+        "bytes": 97913,
+        "sha256": "sha256:8bb99b94ad43d996b9f3b39e1ec4778d7e7baca3de764a29c99177e3c89ec0d8"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-admin/includes/image.php",
+        "bytes": 45171,
+        "sha256": "sha256:54ea3386fe9ecbefc2e88dc4e95d4de35f2a5a4109e2676bf9538c057a83e16d"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-admin/includes/media.php",
+        "bytes": 119934,
+        "sha256": "sha256:1933efdf502ce4861ed022e5d5f79783634f7981ace6551cf5a1d2de3573100d"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-includes/functions.php",
+        "bytes": 290326,
+        "sha256": "sha256:1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-includes/media.php",
+        "bytes": 223794,
+        "sha256": "sha256:e4bd57220f36ded7dabcb2d869c0e3874f034b79d9dea36dcbdb89201b050663"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-includes/post.php",
+        "bytes": 296525,
+        "sha256": "sha256:2e6ac612f82a1aeb04e1e1de0c7e2a186e5f997f67e942026bfe9b211108811c"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+        "bytes": 58159,
+        "sha256": "sha256:82663e580c37760f39e6ef443abaa2b2ff342d1547c3265c759eaf7bdc025268"
+      },
+      {
+        "path": "build/wp-core/wphx-313-08/candidate-package/wphx-media-upload-installed-router.php",
+        "bytes": 5049,
+        "sha256": "sha256:3a8d3874481ebab4801e795fc6ba550182afee6ae19c735f49d8ee1afd75e4c4"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "boundary:media-upload-package",
+      "method": "GET",
+      "path": "/__wphx/package-boundary",
+      "focus": "selected WPHX-313 package source files and prior evidence inputs are present"
+    },
+    {
+      "id": "upload:validation",
+      "method": "POST",
+      "path": "/wp-admin/async-upload.php",
+      "body": "filename=Photo.JPG&mime=image%2Fjpeg&bytes=12345&form=html-upload",
+      "focus": "installed-style upload route records MIME/filetype/unique filename and hook intent"
+    },
+    {
+      "id": "media:attachment-response",
+      "method": "GET",
+      "path": "/wp-admin/upload.php?attachment_id=42",
+      "focus": "installed-style media route records attachment response shape and responsive image fields"
+    },
+    {
+      "id": "image:metadata-editor",
+      "method": "POST",
+      "path": "/wp-admin/admin-post.php?action=wphx_generate_metadata",
+      "body": "attachment_id=42&file=photo.jpg&width=1600&height=900",
+      "focus": "installed-style image metadata route records editor selection, subsize, and metadata update intent"
+    },
+    {
+      "id": "rest:attachment-upload",
+      "method": "POST",
+      "path": "/wp-json/wp/v2/media",
+      "body": "filename=rest-photo.png&content_type=image%2Fpng&bytes=45678",
+      "focus": "installed-style REST attachment route records create/upload response intent"
+    },
+    {
+      "id": "ajax:image-edit",
+      "method": "POST",
+      "path": "/wp-admin/admin-ajax.php?action=image-editor",
+      "body": "attachment_id=42&operation=crop&x=10&y=20&w=640&h=360",
+      "focus": "installed-style AJAX media route records image editor mutation intent"
+    },
+    {
+      "id": "filesystem:credentials-direct",
+      "method": "POST",
+      "path": "/wp-admin/update.php?action=filesystem",
+      "body": "method=direct&operation=put&path=wp-content%2Fuploads%2Fphoto.jpg",
+      "focus": "installed-style filesystem route records direct credential and direct I/O intent"
+    }
+  ],
+  "observations": {
+    "oracle": [
+      {
+        "id": "boundary:media-upload-package",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "boundary:media-upload-package",
+          "package_kind": "installed-style-media-upload-gate",
+          "source_files": [
+            {
+              "path": "wp-includes/functions.php",
+              "exists": true,
+              "bytes": 290326,
+              "sha256": "1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+            },
+            {
+              "path": "wp-includes/media.php",
+              "exists": true,
+              "bytes": 223794,
+              "sha256": "e4bd57220f36ded7dabcb2d869c0e3874f034b79d9dea36dcbdb89201b050663"
+            },
+            {
+              "path": "wp-includes/post.php",
+              "exists": true,
+              "bytes": 296525,
+              "sha256": "2e6ac612f82a1aeb04e1e1de0c7e2a186e5f997f67e942026bfe9b211108811c"
+            },
+            {
+              "path": "wp-admin/includes/file.php",
+              "exists": true,
+              "bytes": 97913,
+              "sha256": "8bb99b94ad43d996b9f3b39e1ec4778d7e7baca3de764a29c99177e3c89ec0d8"
+            },
+            {
+              "path": "wp-admin/includes/image.php",
+              "exists": true,
+              "bytes": 45171,
+              "sha256": "54ea3386fe9ecbefc2e88dc4e95d4de35f2a5a4109e2676bf9538c057a83e16d"
+            },
+            {
+              "path": "wp-admin/includes/media.php",
+              "exists": true,
+              "bytes": 119934,
+              "sha256": "1933efdf502ce4861ed022e5d5f79783634f7981ace6551cf5a1d2de3573100d"
+            },
+            {
+              "path": "wp-admin/includes/ajax-actions.php",
+              "exists": true,
+              "bytes": 152775,
+              "sha256": "7fd86b5b8a6e1a72ac0440dddc26be9b800fd1cb258f7fb9cf23f6af3999f69b"
+            },
+            {
+              "path": "wp-admin/includes/class-wp-filesystem-base.php",
+              "exists": true,
+              "bytes": 24410,
+              "sha256": "28ada0d3504f25cdd28ec4ba167a820d1a1ac583e3ef894674c718e6238c85c9"
+            },
+            {
+              "path": "wp-admin/includes/class-wp-filesystem-direct.php",
+              "exists": true,
+              "bytes": 18607,
+              "sha256": "de772536fc842ad5a57bdc8fc3e2bee709e8a57a45584f42c1137111e011d812"
+            },
+            {
+              "path": "wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+              "exists": true,
+              "bytes": 58159,
+              "sha256": "82663e580c37760f39e6ef443abaa2b2ff342d1547c3265c759eaf7bdc025268"
+            }
+          ],
+          "public_php_replacement_claimed": false
+        },
+        "body_sha256": "sha256:ff5abf5e020e0439269499e06eba25980e7d9382fe958729be811b6b1ee3d1f6"
+      },
+      {
+        "id": "upload:validation",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "upload:validation",
+          "filename": "Photo.JPG",
+          "sanitized": "photo.jpg",
+          "unique_filename": "photo-1.jpg",
+          "mime": "image/jpeg",
+          "allowed": true,
+          "bytes": 12345,
+          "hooks": [
+            "wp_handle_upload_prefilter",
+            "wp_handle_upload",
+            "add_attachment"
+          ]
+        },
+        "body_sha256": "sha256:bf8151311df7698c59af79d0d4faf44a82cbbeb0669b61005498db028c93189e"
+      },
+      {
+        "id": "media:attachment-response",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "media:attachment-response",
+          "id": 42,
+          "type": "image",
+          "subtype": "jpeg",
+          "url": "https://example.test/wp-content/uploads/photo.jpg",
+          "sizes": [
+            "thumbnail",
+            "medium",
+            "large"
+          ],
+          "responsive": {
+            "srcset": true,
+            "sizes": "(max-width: 1600px) 100vw, 1600px"
+          }
+        },
+        "body_sha256": "sha256:281dc7582cabbaf6c39c77c08a23896cdec03cab22edd849a92151f2a2055d8f"
+      },
+      {
+        "id": "image:metadata-editor",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "image:metadata-editor",
+          "attachment_id": 42,
+          "file": "photo.jpg",
+          "editor_selection": "editor_selected",
+          "intermediate": "intermediate_metadata_ready",
+          "subsizes": [
+            "thumbnail",
+            "medium",
+            "large"
+          ],
+          "metadata_update": "metadata_make_missing",
+          "native_image_library_execution_claimed": false
+        },
+        "body_sha256": "sha256:375a847e2358269252f65d23b64d15a36b5563546c5a17c26f1a800e5fae922c"
+      },
+      {
+        "id": "rest:attachment-upload",
+        "status": 201,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "rest:attachment-upload",
+          "filename": "rest-photo.png",
+          "mime_type": "image/png",
+          "status": "inherit",
+          "guid": "https://example.test/wp-content/uploads/rest-photo.png",
+          "links": {
+            "self": "/wp-json/wp/v2/media/42",
+            "collection": "/wp-json/wp/v2/media"
+          },
+          "rest_controller": "WP_REST_Attachments_Controller"
+        },
+        "body_sha256": "sha256:796955c82df53f7b7e5df8f174c0d18f810570c37123b2c646ecd7346eb75650"
+      },
+      {
+        "id": "ajax:image-edit",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "ajax:image-edit",
+          "action": "image-editor",
+          "attachment_id": 42,
+          "operation": "crop",
+          "crop": {
+            "x": 10,
+            "y": 20,
+            "w": 640,
+            "h": 360
+          },
+          "ajax_handler": "wp_ajax_image_editor",
+          "filesystem_write_claimed": false
+        },
+        "body_sha256": "sha256:8c41b24ecb7c00800fd2c9ebad9a09af6b3701a3ecbf7d1e2604de06a6c7a0d4"
+      },
+      {
+        "id": "filesystem:credentials-direct",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "filesystem:credentials-direct",
+          "method": "direct",
+          "credentials": "filesystem_credentials_direct",
+          "io": "direct_io_write",
+          "path": "wp-content/uploads/photo.jpg",
+          "remote_transport_claimed": false
+        },
+        "body_sha256": "sha256:bdb98d20a86479598bdb0d826f1961449ab99c07597d1d3264127166f6ada4e1"
+      }
+    ],
+    "candidate": [
+      {
+        "id": "boundary:media-upload-package",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "boundary:media-upload-package",
+          "package_kind": "installed-style-media-upload-gate",
+          "source_files": [
+            {
+              "path": "wp-includes/functions.php",
+              "exists": true,
+              "bytes": 290326,
+              "sha256": "1da1a76b610bca873081ed4cbc68b5dce303df0fad16570e6abae1d50b236faf"
+            },
+            {
+              "path": "wp-includes/media.php",
+              "exists": true,
+              "bytes": 223794,
+              "sha256": "e4bd57220f36ded7dabcb2d869c0e3874f034b79d9dea36dcbdb89201b050663"
+            },
+            {
+              "path": "wp-includes/post.php",
+              "exists": true,
+              "bytes": 296525,
+              "sha256": "2e6ac612f82a1aeb04e1e1de0c7e2a186e5f997f67e942026bfe9b211108811c"
+            },
+            {
+              "path": "wp-admin/includes/file.php",
+              "exists": true,
+              "bytes": 97913,
+              "sha256": "8bb99b94ad43d996b9f3b39e1ec4778d7e7baca3de764a29c99177e3c89ec0d8"
+            },
+            {
+              "path": "wp-admin/includes/image.php",
+              "exists": true,
+              "bytes": 45171,
+              "sha256": "54ea3386fe9ecbefc2e88dc4e95d4de35f2a5a4109e2676bf9538c057a83e16d"
+            },
+            {
+              "path": "wp-admin/includes/media.php",
+              "exists": true,
+              "bytes": 119934,
+              "sha256": "1933efdf502ce4861ed022e5d5f79783634f7981ace6551cf5a1d2de3573100d"
+            },
+            {
+              "path": "wp-admin/includes/ajax-actions.php",
+              "exists": true,
+              "bytes": 152775,
+              "sha256": "7fd86b5b8a6e1a72ac0440dddc26be9b800fd1cb258f7fb9cf23f6af3999f69b"
+            },
+            {
+              "path": "wp-admin/includes/class-wp-filesystem-base.php",
+              "exists": true,
+              "bytes": 24410,
+              "sha256": "28ada0d3504f25cdd28ec4ba167a820d1a1ac583e3ef894674c718e6238c85c9"
+            },
+            {
+              "path": "wp-admin/includes/class-wp-filesystem-direct.php",
+              "exists": true,
+              "bytes": 18607,
+              "sha256": "de772536fc842ad5a57bdc8fc3e2bee709e8a57a45584f42c1137111e011d812"
+            },
+            {
+              "path": "wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php",
+              "exists": true,
+              "bytes": 58159,
+              "sha256": "82663e580c37760f39e6ef443abaa2b2ff342d1547c3265c759eaf7bdc025268"
+            }
+          ],
+          "public_php_replacement_claimed": false
+        },
+        "body_sha256": "sha256:ff5abf5e020e0439269499e06eba25980e7d9382fe958729be811b6b1ee3d1f6"
+      },
+      {
+        "id": "upload:validation",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "upload:validation",
+          "filename": "Photo.JPG",
+          "sanitized": "photo.jpg",
+          "unique_filename": "photo-1.jpg",
+          "mime": "image/jpeg",
+          "allowed": true,
+          "bytes": 12345,
+          "hooks": [
+            "wp_handle_upload_prefilter",
+            "wp_handle_upload",
+            "add_attachment"
+          ]
+        },
+        "body_sha256": "sha256:bf8151311df7698c59af79d0d4faf44a82cbbeb0669b61005498db028c93189e"
+      },
+      {
+        "id": "media:attachment-response",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "media:attachment-response",
+          "id": 42,
+          "type": "image",
+          "subtype": "jpeg",
+          "url": "https://example.test/wp-content/uploads/photo.jpg",
+          "sizes": [
+            "thumbnail",
+            "medium",
+            "large"
+          ],
+          "responsive": {
+            "srcset": true,
+            "sizes": "(max-width: 1600px) 100vw, 1600px"
+          }
+        },
+        "body_sha256": "sha256:281dc7582cabbaf6c39c77c08a23896cdec03cab22edd849a92151f2a2055d8f"
+      },
+      {
+        "id": "image:metadata-editor",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "image:metadata-editor",
+          "attachment_id": 42,
+          "file": "photo.jpg",
+          "editor_selection": "editor_selected",
+          "intermediate": "intermediate_metadata_ready",
+          "subsizes": [
+            "thumbnail",
+            "medium",
+            "large"
+          ],
+          "metadata_update": "metadata_make_missing",
+          "native_image_library_execution_claimed": false
+        },
+        "body_sha256": "sha256:375a847e2358269252f65d23b64d15a36b5563546c5a17c26f1a800e5fae922c"
+      },
+      {
+        "id": "rest:attachment-upload",
+        "status": 201,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "rest:attachment-upload",
+          "filename": "rest-photo.png",
+          "mime_type": "image/png",
+          "status": "inherit",
+          "guid": "https://example.test/wp-content/uploads/rest-photo.png",
+          "links": {
+            "self": "/wp-json/wp/v2/media/42",
+            "collection": "/wp-json/wp/v2/media"
+          },
+          "rest_controller": "WP_REST_Attachments_Controller"
+        },
+        "body_sha256": "sha256:796955c82df53f7b7e5df8f174c0d18f810570c37123b2c646ecd7346eb75650"
+      },
+      {
+        "id": "ajax:image-edit",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "ajax:image-edit",
+          "action": "image-editor",
+          "attachment_id": 42,
+          "operation": "crop",
+          "crop": {
+            "x": 10,
+            "y": 20,
+            "w": 640,
+            "h": 360
+          },
+          "ajax_handler": "wp_ajax_image_editor",
+          "filesystem_write_claimed": false
+        },
+        "body_sha256": "sha256:8c41b24ecb7c00800fd2c9ebad9a09af6b3701a3ecbf7d1e2604de06a6c7a0d4"
+      },
+      {
+        "id": "filesystem:credentials-direct",
+        "status": 200,
+        "content_type": "application/json; charset=UTF-8",
+        "json": {
+          "case": "filesystem:credentials-direct",
+          "method": "direct",
+          "credentials": "filesystem_credentials_direct",
+          "io": "direct_io_write",
+          "path": "wp-content/uploads/photo.jpg",
+          "remote_transport_claimed": false
+        },
+        "body_sha256": "sha256:bdb98d20a86479598bdb0d826f1961449ab99c07597d1d3264127166f6ada4e1"
+      }
+    ],
+    "matches": true
+  },
+  "claims": {
+    "public_php_replacement_claimed": false,
+    "haxe_runtime_logic_claimed": false,
+    "native_image_library_execution_claimed": false,
+    "remote_filesystem_transport_claimed": false,
+    "installed_database_backed_media_claimed": false,
+    "durable_original_path_adapter_claimed": false
+  },
+  "remaining_gaps": [
+    {
+      "id": "copied-public-php-package",
+      "detail": "Oracle and candidate package roots both mirror selected locked upstream WordPress PHP source with deterministic installed-style routers. This is bridge evidence, not generated public PHP ownership."
+    },
+    {
+      "id": "native-image-and-filesystem-side-effects-not-covered",
+      "detail": "The gate records image editor, metadata, REST/AJAX media, and filesystem intent without running GD/Imagick, EXIF/IPTC extraction, remote FTP/SSH transports, updater package operations, or database-backed media persistence."
+    }
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-313-08-media-upload-installed-gate.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "cases": 7,
+    "oracle_candidate_match": true,
+    "behavior_parity_claimed": true,
+    "public_php_replacement_claimed": false
+  }
+}

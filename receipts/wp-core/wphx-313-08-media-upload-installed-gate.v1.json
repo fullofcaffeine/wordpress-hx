@@ -1,0 +1,42 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-313-08-media-upload-installed-gate",
+  "issue": {
+    "id": "wordpresshx-ymd",
+    "external_ref": "WPHX-313.08",
+    "title": "WPHX-313.08 - Add installed-style media upload gate"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "command": "npm run wp:core:wphx-313-media-upload-installed",
+  "evidence_class": "installed_style_http_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": true,
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-313-08-media-upload-installed-gate.v1.json",
+      "role": "media/upload installed-style HTTP gate manifest",
+      "sha256": "sha256:852f9d7e24d0b65c6fe0ebb16ea87788b1814f8515d13637cef5eb16f7762938"
+    },
+    {
+      "path": "manifests/ownership/wphx-313-08-media-upload-installed-gate.v1.json",
+      "role": "ownership manifest for media/upload installed-style gate"
+    },
+    {
+      "path": "tools/wp-core/run-media-upload-installed-gate.mjs",
+      "role": "installed-style media/upload gate generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-313-media-upload-installed",
+    "npm run wp:core:wphx-313-media-upload-installed:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "cases": 7,
+    "oracle_candidate_match": true,
+    "behavior_parity_claimed": true,
+    "public_php_replacement_claimed": false
+  }
+}

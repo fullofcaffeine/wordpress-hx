@@ -1,0 +1,51 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/media-upload-installed-gate",
+  "issue": {
+    "id": "wordpresshx-ymd",
+    "external_ref": "WPHX-313.08"
+  },
+  "unit": {
+    "kind": "packaged-distribution-installed-http-gate",
+    "name": "media, upload, image metadata/editor, REST/AJAX media, and filesystem installed-style gate",
+    "area": "wp-includes/media.php wp-admin/includes/file.php wp-admin/includes/image.php wp-admin/includes/media.php wp-admin/includes/ajax-actions.php",
+    "public_contract": "The packaged media/upload surface must match vanilla through installed-style package boundary, upload validation, attachment response, image metadata/editor intent, REST attachment, AJAX media, and filesystem credential/direct I/O observations while keeping public PHP replacement claims explicit."
+  },
+  "ownership_state": "packaged_distribution_candidate",
+  "ownership_axes": {
+    "semantic_owner": "wordpress_oracle_bridge",
+    "adapter_contract_owner": "haxe_typed_for_selected_decisions",
+    "emission_strategy": "copied_upstream_public_php_with_deterministic_router",
+    "execution_provider": "php_cli_builtin_server",
+    "compatibility_evidence": "installed_style_http_parity"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "copied-upstream-package-with-deterministic-installed-router",
+    "removal_gate": "Replace copied public PHP with generated original-path media/upload/filesystem adapters and rerun this gate plus native image-library, REST/admin, remote filesystem, updater, and upstream PHPUnit evidence before claiming durable public PHP ownership."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-media-upload-installed-gate.mjs",
+    "manifests/wp-core/wphx-313-08-media-upload-installed-gate.v1.json",
+    "manifests/ownership/wphx-313-08-media-upload-installed-gate.v1.json",
+    "receipts/wp-core/wphx-313-08-media-upload-installed-gate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-313-08-media-upload-installed-gate.v1.json",
+    "manifests/ownership/wphx-313-08-media-upload-installed-gate.v1.json",
+    "receipts/wp-core/wphx-313-08-media-upload-installed-gate.v1.json",
+    "build/wp-core/wphx-313-08"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-313-media-upload-installed",
+      "npm run wp:core:wphx-313-media-upload-installed:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-313-08-media-upload-installed-gate"
+    ],
+    "manifest_digest": "sha256:852f9d7e24d0b65c6fe0ebb16ea87788b1814f8515d13637cef5eb16f7762938"
+  },
+  "notes": "This gate proves installed-style package routing and deterministic observations only. It does not perform real image processing, database writes, remote filesystem transports, or durable generated original-path PHP replacement."
+}
