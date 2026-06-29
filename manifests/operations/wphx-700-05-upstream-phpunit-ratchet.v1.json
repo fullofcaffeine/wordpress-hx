@@ -14,8 +14,8 @@
     },
     "groups": {
       "path": "tests/upstream/phpunit/groups.json",
-      "bytes": 19239,
-      "sha256": "sha256:de0d1df932c83decb83e50c92e04f2e980acba806879ccd2bb1fb7a5ab5b4d73"
+      "bytes": 26118,
+      "sha256": "sha256:14d9038bd12099bd838280e361ede62a628dfe29d43741139a86e2363f2cfb53"
     },
     "known_deltas": {
       "path": "tests/upstream/phpunit/known-deltas.json",
@@ -449,6 +449,131 @@
         "tests/phpunit/tests/ajax/wpAjaxParseMediaShortcode.php",
         "tests/phpunit/tests/ajax/wpAjaxSendAttachmentToEditor.php"
       ]
+    },
+    {
+      "id": "blocks-parser-render-core",
+      "owner": "WPHX-314",
+      "files": [
+        "tests/phpunit/tests/blocks/render.php",
+        "tests/phpunit/tests/blocks/renderBlock.php",
+        "tests/phpunit/tests/blocks/renderReusable.php",
+        "tests/phpunit/tests/blocks/serialize.php",
+        "tests/phpunit/tests/blocks/wpBlock.php",
+        "tests/phpunit/tests/blocks/wpBlockList.php",
+        "tests/phpunit/tests/blocks/wpBlockParser.php",
+        "tests/phpunit/tests/blocks/wpBlockType.php",
+        "tests/phpunit/tests/blocks/wpBlockTypeRegistry.php",
+        "tests/phpunit/tests/blocks/wpBlockMetadataRegistry.php",
+        "tests/phpunit/tests/blocks/register.php",
+        "tests/phpunit/tests/blocks/registerBlockTypeFromMetadataWithRegistry.php",
+        "tests/phpunit/tests/blocks/getBlockAssetUrl.php"
+      ]
+    },
+    {
+      "id": "blocks-supports-bindings-core",
+      "owner": "WPHX-314",
+      "files": [
+        "tests/phpunit/tests/block-bindings/postMetaSource.php",
+        "tests/phpunit/tests/block-bindings/register.php",
+        "tests/phpunit/tests/block-bindings/render.php",
+        "tests/phpunit/tests/block-bindings/wp-block-get-block-bindings-processor.php",
+        "tests/phpunit/tests/block-bindings/wpBlockBindingsRegistry.php",
+        "tests/phpunit/tests/block-supports/anchor.php",
+        "tests/phpunit/tests/block-supports/aria-label.php",
+        "tests/phpunit/tests/block-supports/auto-register.php",
+        "tests/phpunit/tests/block-supports/block-style-variations.php",
+        "tests/phpunit/tests/block-supports/block-visibility.php",
+        "tests/phpunit/tests/block-supports/border.php",
+        "tests/phpunit/tests/block-supports/colors.php",
+        "tests/phpunit/tests/block-supports/duotone.php",
+        "tests/phpunit/tests/block-supports/layout.php",
+        "tests/phpunit/tests/block-supports/shadow.php",
+        "tests/phpunit/tests/block-supports/spacing.php",
+        "tests/phpunit/tests/block-supports/typography.php",
+        "tests/phpunit/tests/block-supports/wpApplyDimensionsSupport.php",
+        "tests/phpunit/tests/block-supports/wpCreateBlockStyleVariationInstanceName.php",
+        "tests/phpunit/tests/block-supports/wpGetBlockStyleVariationNameFromClass.php",
+        "tests/phpunit/tests/block-supports/wpGetLayoutStyle.php",
+        "tests/phpunit/tests/block-supports/wpRenderBackgroundSupport.php",
+        "tests/phpunit/tests/block-supports/wpRenderCustomCssClassName.php",
+        "tests/phpunit/tests/block-supports/wpRenderCustomCssSupportStyles.php",
+        "tests/phpunit/tests/block-supports/wpRenderDimensionsSupport.php",
+        "tests/phpunit/tests/block-supports/wpRenderElementsSupport.php",
+        "tests/phpunit/tests/block-supports/wpRenderElementsSupportStyles.php",
+        "tests/phpunit/tests/block-supports/wpRenderPositionSupport.php",
+        "tests/phpunit/tests/block-supports/wpStripCustomCssFromBlocks.php"
+      ]
+    },
+    {
+      "id": "blocks-hooks-patterns-core",
+      "owner": "WPHX-314",
+      "files": [
+        "tests/phpunit/tests/block-pattern/wpBlockPatternCategoriesRegistry.php",
+        "tests/phpunit/tests/blocks/applyBlockHooksToContent.php",
+        "tests/phpunit/tests/blocks/applyBlockHooksToContentFromPostObject.php",
+        "tests/phpunit/tests/blocks/getHookedBlocks.php",
+        "tests/phpunit/tests/blocks/insertHookedBlocks.php",
+        "tests/phpunit/tests/blocks/insertHookedBlocksAndSetIgnoredHookedBlocksMetadata.php",
+        "tests/phpunit/tests/blocks/resolvePatternBlocks.php",
+        "tests/phpunit/tests/blocks/setIgnoredHookedBlocksMetadata.php",
+        "tests/phpunit/tests/blocks/updateIgnoredHookedBlocksPostMeta.php",
+        "tests/phpunit/tests/blocks/wpBlockPatternsRegistry.php",
+        "tests/phpunit/tests/blocks/wpBlockStylesRegistry.php"
+      ]
+    },
+    {
+      "id": "style-engine-core",
+      "owner": "WPHX-314",
+      "files": [
+        "tests/phpunit/tests/style-engine/styleEngine.php",
+        "tests/phpunit/tests/style-engine/wpStyleEngineCssDeclarations.php",
+        "tests/phpunit/tests/style-engine/wpStyleEngineCssRule.php",
+        "tests/phpunit/tests/style-engine/wpStyleEngineCssRulesStore.php",
+        "tests/phpunit/tests/style-engine/wpStyleEngineProcessor.php",
+        "tests/phpunit/tests/blocks/supportedStyles.php"
+      ]
+    },
+    {
+      "id": "html-api-core",
+      "owner": "WPHX-314",
+      "files": [
+        "tests/phpunit/tests/html-api/wpHtmlDecoder.php",
+        "tests/phpunit/tests/html-api/wpHtmlDoctypeInfo.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessor-bookmark.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessor-serialize.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessor.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorBreadcrumbs.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorComments.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorHtml5lib.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorMetaTag.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorModifiableText.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRules.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRulesHeadingElements.php",
+        "tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRulesListElements.php",
+        "tests/phpunit/tests/html-api/wpHtmlSupportRequiredActiveFormatReconstruction.php",
+        "tests/phpunit/tests/html-api/wpHtmlTagProcessor-bookmark.php",
+        "tests/phpunit/tests/html-api/wpHtmlTagProcessor-token-scanning.php",
+        "tests/phpunit/tests/html-api/wpHtmlTagProcessor.php",
+        "tests/phpunit/tests/html-api/wpHtmlTagProcessorModifiableText.php",
+        "tests/phpunit/tests/html-api/wpHtmlTagProcessorScriptTag.php"
+      ]
+    },
+    {
+      "id": "interactivity-api-core",
+      "owner": "WPHX-314",
+      "files": [
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-bind.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-class.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-context.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-each.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-interactive.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-router-region.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-style.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-text.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPI.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPIDirectivesProcessor.php",
+        "tests/phpunit/tests/interactivity-api/wpInteractivityAPIFunctions.php"
+      ]
     }
   ],
   "known_deltas": {
@@ -459,7 +584,7 @@
   },
   "report": {
     "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
-    "sha256": "sha256:a545031231b7c308a530fa40ddf0dd7d185dbb362b0ee855b87e113a32279462"
+    "sha256": "sha256:8c18ddc6d95bc9248bc163f35afb0fa4ebd3fc0ff2dd6a8b811ebf48f92bf0dc"
   },
   "validation_result": {
     "status": "blocked",

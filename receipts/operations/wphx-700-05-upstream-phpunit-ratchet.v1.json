@@ -15,12 +15,12 @@
     {
       "path": "manifests/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
       "role": "upstream PHPUnit ratchet manifest",
-      "sha256": "sha256:a56638478865103df347be26f47d7e6844c18ec1e2a762013c3d77c4ce003743"
+      "sha256": "sha256:3020e0db3162681e45ba7ed71911b87a7c61c7eed979a5233072d6b0a58370e7"
     },
     {
       "path": "build/upstream-phpunit/wphx-700-05/reports/upstream-phpunit-ratchet.json",
       "role": "complete upstream PHPUnit ratchet report",
-      "sha256": "sha256:a545031231b7c308a530fa40ddf0dd7d185dbb362b0ee855b87e113a32279462"
+      "sha256": "sha256:8c18ddc6d95bc9248bc163f35afb0fa4ebd3fc0ff2dd6a8b811ebf48f92bf0dc"
     },
     {
       "path": "tests/upstream/phpunit/known-deltas.json",

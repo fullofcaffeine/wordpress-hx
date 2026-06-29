@@ -1,0 +1,88 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-314-11-blocks-interactivity-upstream-phpunit-ratchet-groups",
+  "issue": {
+    "id": "wordpresshx-l76.20.5",
+    "external_ref": "WPHX-314.11",
+    "title": "WPHX-314.11 - Add blocks interactivity upstream PHPUnit ratchet groups"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "command": "npm run upstream:phpunit-ratchet",
+  "evidence_class": "upstream_suite_parity",
+  "artifact_scope": "packaged_distribution",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "tests/upstream/phpunit/groups.json",
+      "role": "selected upstream blocks/style/html/interactivity PHPUnit ratchet groups",
+      "sha256": "sha256:14d9038bd12099bd838280e361ede62a628dfe29d43741139a86e2363f2cfb53"
+    },
+    {
+      "path": "manifests/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
+      "role": "refreshed upstream PHPUnit ratchet manifest",
+      "sha256": "sha256:3020e0db3162681e45ba7ed71911b87a7c61c7eed979a5233072d6b0a58370e7"
+    },
+    {
+      "path": "receipts/operations/wphx-700-05-upstream-phpunit-ratchet.v1.json",
+      "role": "refreshed upstream PHPUnit ratchet receipt",
+      "sha256": "sha256:b4a8268d7372ae260b424bf119e5b47cedb40fb7387d2e9d226be649506660bc"
+    },
+    {
+      "path": "docs/operations/upstream-phpunit-ratchet.md",
+      "role": "expanded ratchet scope documentation",
+      "sha256": "sha256:66299381b3569ef99a1ae0a4baab2e44a4cb06f1f9f5eaf05f8d58e028726ed0"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "bounded WPHX-314.11 progress interpretation",
+      "sha256": "sha256:f58ed62de3c292418184657b59a7dfd17f74ddf3b6ae091b38598016eaf71ce0"
+    }
+  ],
+  "verification_commands": [
+    "npm run upstream:phpunit-ratchet",
+    "npm run upstream:phpunit-ratchet:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "selected_groups": [
+    {
+      "id": "blocks-parser-render-core",
+      "file_count": 13
+    },
+    {
+      "id": "blocks-supports-bindings-core",
+      "file_count": 29
+    },
+    {
+      "id": "blocks-hooks-patterns-core",
+      "file_count": 11
+    },
+    {
+      "id": "style-engine-core",
+      "file_count": 6
+    },
+    {
+      "id": "html-api-core",
+      "file_count": 19
+    },
+    {
+      "id": "interactivity-api-core",
+      "file_count": 11
+    }
+  ],
+  "validation_result": {
+    "status": "blocked",
+    "environment_ready": false,
+    "selected_upstream_groups_declared": true,
+    "selected_wphx_314_group_count": 6,
+    "selected_wphx_314_test_file_count": 89,
+    "runs_executed": 0,
+    "behavior_parity_claimed": false,
+    "blocked_inputs": [
+      "vanilla_phpunit_vendor_missing",
+      "vanilla_wp_tests_config_missing",
+      "candidate_root_env_missing"
+    ],
+    "remaining_gate": "Run npm run upstream:phpunit-ratchet:provision after the disposable runtime is refreshed to record executable pass/pass classifications for the WPHX-314 groups."
+  }
+}
