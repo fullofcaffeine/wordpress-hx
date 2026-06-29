@@ -1,0 +1,858 @@
+{
+  "schema": "wphx.wp_core.block_patterns_registry_oracle_fixture.v1",
+  "issue": {
+    "id": "wordpresshx-u5p",
+    "external_ref": "WPHX-314.05",
+    "title": "WPHX-314.05 - Add block patterns registry oracle fixture"
+  },
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": {
+    "path": "tools/wp-core/run-block-patterns-registry-oracle-fixture.mjs",
+    "sha256": "sha256:0d0cb3a7f38b540b761c81c94357da02f7bc9b19a4ec9d70af0eee741d67a739",
+    "check_command": "npm run wp:core:wphx-314-block-patterns-registry-oracle-fixture:check"
+  },
+  "evidence_class": "copied_oracle_candidate_php_fixture",
+  "artifact_scope": {
+    "domain": "blocks_patterns_registry",
+    "public_php_replacement_claimed": false,
+    "haxe_runtime_logic_claimed": false,
+    "installed_block_parity_claimed": false,
+    "upstream_phpunit_pass_pass_claimed": false,
+    "browser_gutenberg_ownership_claimed": false,
+    "block_hooks_insertion_claimed": false
+  },
+  "inputs": {
+    "upstream_root": "../wordpress-develop",
+    "source_files": [
+      {
+        "path": "src/wp-includes/class-wp-block-patterns-registry.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-patterns-registry.php",
+        "bytes": 10312,
+        "sha256": "sha256:1a3e95b9148d4711f66c5777d2712f01e326e4b6e6e2cfbc2cbc81cde39ec03a"
+      },
+      {
+        "path": "src/wp-includes/class-wp-block-pattern-categories-registry.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/class-wp-block-pattern-categories-registry.php",
+        "bytes": 4383,
+        "sha256": "sha256:cc7fbd48ee9d71cd0371de09a570968234be4333af95977fe94ebc8eaccababc"
+      },
+      {
+        "path": "src/wp-includes/block-patterns.php",
+        "repo_path": "../wordpress-develop/src/wp-includes/block-patterns.php",
+        "bytes": 15606,
+        "sha256": "sha256:50d76e2bb2f0a917a0fc15e95c10b44ad435a9e83399bfd7abe937cfbcf9d2c9"
+      }
+    ],
+    "prior_evidence": [
+      {
+        "path": "manifests/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+        "bytes": 136288,
+        "sha256": "sha256:5041e65e848fa3246be418e78f44c7ae041144d7807cb49808dc0264f4e1dac4"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-02-blocks-interactivity-adapter-contract-candidate.v1.json",
+        "bytes": 20704,
+        "sha256": "sha256:455098435d2e51efb9a9a7e4ccec1e79c0b0619f7bea9b5fc9711bbea6105730"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-03-block-parser-render-oracle-fixture.v1.json",
+        "bytes": 18515,
+        "sha256": "sha256:daa984fef6c448b8f5d24c718b1e6b7e4a19a54542b2e011e1ae68d3a669d10e"
+      },
+      {
+        "path": "manifests/wp-core/wphx-314-04-block-supports-bindings-oracle-fixture.v1.json",
+        "bytes": 52295,
+        "sha256": "sha256:12b652f06a3594d3c2a1c5c7b8aebb85cd79dbb6c4f008b4f1f1db98588e3068"
+      }
+    ]
+  },
+  "fixture": {
+    "cases": [
+      {
+        "id": "block-patterns:register-get-content",
+        "focus": "content-backed pattern registration, get_registered, get_all_registered, and hook insertion boundary"
+      },
+      {
+        "id": "block-patterns:file-path-lazy-content",
+        "focus": "filePath-backed pattern lazy include and content caching"
+      },
+      {
+        "id": "block-patterns:outside-init-tracking",
+        "focus": "registration outside init tracked separately for patterns"
+      },
+      {
+        "id": "block-patterns:validation-unregister",
+        "focus": "invalid pattern registration and unregister failure/success contracts"
+      },
+      {
+        "id": "block-patterns:categories",
+        "focus": "category registration, outside-init tracking, get/unregister contracts"
+      },
+      {
+        "id": "block-patterns:normalize-remote",
+        "focus": "remote pattern snake_case to camelCase normalization"
+      }
+    ],
+    "covered_symbols": [
+      "register_block_pattern",
+      "unregister_block_pattern",
+      "register_block_pattern_category",
+      "unregister_block_pattern_category",
+      "_register_core_block_patterns_and_categories",
+      "wp_normalize_remote_block_pattern",
+      "WP_Block_Patterns_Registry",
+      "WP_Block_Patterns_Registry::register",
+      "WP_Block_Patterns_Registry::unregister",
+      "WP_Block_Patterns_Registry::get_registered",
+      "WP_Block_Patterns_Registry::get_all_registered",
+      "WP_Block_Patterns_Registry::is_registered",
+      "WP_Block_Pattern_Categories_Registry",
+      "WP_Block_Pattern_Categories_Registry::register",
+      "WP_Block_Pattern_Categories_Registry::unregister",
+      "WP_Block_Pattern_Categories_Registry::get_registered",
+      "WP_Block_Pattern_Categories_Registry::get_all_registered",
+      "WP_Block_Pattern_Categories_Registry::is_registered",
+      "apply_block_hooks_to_content"
+    ],
+    "deterministic_boundaries": [
+      "WordPress 7.0 PHP pattern registry, category registry, and block-patterns helper source files are mirrored into oracle and candidate roots.",
+      "Hook dispatch, theme support, translation, sanitize_title, and block hook insertion are deterministic stubs.",
+      "apply_block_hooks_to_content is observed as a boundary during get_registered/get_all_registered, but real block hook insertion is not claimed in this slice.",
+      "The filePath case writes a deterministic local PHP pattern file inside the build root and verifies lazy include/caching behavior."
+    ]
+  },
+  "runs": {
+    "oracle": {
+      "label": "oracle",
+      "root": "build/wp-core/wphx-314-05/oracle",
+      "php_version": "8.4.7",
+      "source_files": [
+        {
+          "path": "build/wp-core/wphx-314-05/oracle/wp-includes/class-wp-block-patterns-registry.php",
+          "bytes": 10312,
+          "sha256": "sha256:1a3e95b9148d4711f66c5777d2712f01e326e4b6e6e2cfbc2cbc81cde39ec03a"
+        },
+        {
+          "path": "build/wp-core/wphx-314-05/oracle/wp-includes/class-wp-block-pattern-categories-registry.php",
+          "bytes": 4383,
+          "sha256": "sha256:cc7fbd48ee9d71cd0371de09a570968234be4333af95977fe94ebc8eaccababc"
+        },
+        {
+          "path": "build/wp-core/wphx-314-05/oracle/wp-includes/block-patterns.php",
+          "bytes": 15606,
+          "sha256": "sha256:50d76e2bb2f0a917a0fc15e95c10b44ad435a9e83399bfd7abe937cfbcf9d2c9"
+        }
+      ],
+      "probe": {
+        "path": "build/wp-core/wphx-314-05/oracle/probe.php",
+        "bytes": 8464,
+        "sha256": "sha256:147f12d18f0d8e46212b17f17d046aee94e771b28a073f9433f6e9439286a391"
+      },
+      "observations": [
+        {
+          "id": "block-patterns:register-get-content",
+          "focus": "content-backed pattern registration, get_registered, get_all_registered, and hook insertion boundary",
+          "observation": {
+            "case": "block-patterns:register-get-content",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "registered": true,
+              "is_registered": true,
+              "get_registered": {
+                "blockTypes": [
+                  "core/paragraph"
+                ],
+                "categories": [
+                  "featured",
+                  "text"
+                ],
+                "content": "HOOKED[wphx/hero]:<!-- wp:paragraph --><p>Hello</p><!-- /wp:paragraph -->",
+                "description": "Fixture hero",
+                "inserter": false,
+                "keywords": [
+                  "alpha",
+                  "beta"
+                ],
+                "name": "wphx/hero",
+                "postTypes": [
+                  "post"
+                ],
+                "templateTypes": [
+                  "single"
+                ],
+                "title": "Hero",
+                "viewportWidth": 960
+              },
+              "all_registered": [
+                {
+                  "blockTypes": [
+                    "core/paragraph"
+                  ],
+                  "categories": [
+                    "featured",
+                    "text"
+                  ],
+                  "content": "HOOKED[wphx/hero]:<!-- wp:paragraph --><p>Hello</p><!-- /wp:paragraph -->",
+                  "description": "Fixture hero",
+                  "inserter": false,
+                  "keywords": [
+                    "alpha",
+                    "beta"
+                  ],
+                  "name": "wphx/hero",
+                  "postTypes": [
+                    "post"
+                  ],
+                  "templateTypes": [
+                    "single"
+                  ],
+                  "title": "Hero",
+                  "viewportWidth": 960
+                }
+              ],
+              "missing_pattern": null
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/hero"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/hero"
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-patterns:file-path-lazy-content",
+          "focus": "filePath-backed pattern lazy include and content caching",
+          "observation": {
+            "case": "block-patterns:file-path-lazy-content",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "registered": true,
+              "first": {
+                "content": "HOOKED[wphx/file-pattern]:FILE-CONTENT:fixture-pattern.php",
+                "filePath": "fixture-pattern.php",
+                "name": "wphx/file-pattern",
+                "title": "File pattern"
+              },
+              "second": {
+                "content": "HOOKED[wphx/file-pattern]:FILE-CONTENT:fixture-pattern.php",
+                "name": "wphx/file-pattern",
+                "title": "File pattern"
+              },
+              "file_path_removed": true
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/file-pattern"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/file-pattern"
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-patterns:outside-init-tracking",
+          "focus": "registration outside init tracked separately for patterns",
+          "observation": {
+            "case": "block-patterns:outside-init-tracking",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "all": [
+                {
+                  "content": "HOOKED[wphx/outside]:<p>outside</p>",
+                  "name": "wphx/outside",
+                  "title": "Outside"
+                },
+                {
+                  "content": "HOOKED[wphx/inside]:<p>inside</p>",
+                  "name": "wphx/inside",
+                  "title": "Inside"
+                }
+              ],
+              "outside_only": [
+                {
+                  "content": "HOOKED[wphx/outside]:<p>outside</p>",
+                  "name": "wphx/outside",
+                  "title": "Outside"
+                }
+              ]
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/outside"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/inside"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/outside"
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-patterns:validation-unregister",
+          "focus": "invalid pattern registration and unregister failure/success contracts",
+          "observation": {
+            "case": "block-patterns:validation-unregister",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "invalid_name": false,
+              "missing_title": false,
+              "missing_content": false,
+              "valid": true,
+              "removed": true,
+              "missing_remove": false
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              }
+            ],
+            "wrong": [
+              {
+                "function": "WP_Block_Patterns_Registry::register",
+                "message": "Pattern name must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Patterns_Registry::register",
+                "message": "Pattern title must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Patterns_Registry::register",
+                "message": "Pattern content must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Patterns_Registry::unregister",
+                "message": "Pattern \"wphx/remove-me\" not found.",
+                "version": "5.5.0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "block-patterns:categories",
+          "focus": "category registration, outside-init tracking, get/unregister contracts",
+          "observation": {
+            "case": "block-patterns:categories",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "outside": true,
+              "inside": true,
+              "invalid": false,
+              "outside_get": {
+                "name": "wphx/outside-cat",
+                "label": "Outside Cat",
+                "description": "Outside category"
+              },
+              "all": [
+                {
+                  "name": "wphx/outside-cat",
+                  "label": "Outside Cat",
+                  "description": "Outside category"
+                }
+              ],
+              "outside_only": [
+                {
+                  "name": "wphx/outside-cat",
+                  "label": "Outside Cat",
+                  "description": "Outside category"
+                }
+              ],
+              "removed": true,
+              "missing": false
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              }
+            ],
+            "wrong": [
+              {
+                "function": "WP_Block_Pattern_Categories_Registry::register",
+                "message": "Block pattern category name must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Pattern_Categories_Registry::unregister",
+                "message": "Block pattern category \"wphx/inside-cat\" not found.",
+                "version": "5.5.0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "block-patterns:normalize-remote",
+          "focus": "remote pattern snake_case to camelCase normalization",
+          "observation": {
+            "case": "block-patterns:normalize-remote",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "normalized_full": {
+                "title": "Remote",
+                "content": "<p>remote</p>",
+                "blockTypes": [
+                  "core/paragraph"
+                ],
+                "viewportWidth": 480
+              },
+              "normalized_partial": {
+                "title": "Partial",
+                "content": "<p>partial</p>"
+              }
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              }
+            ],
+            "wrong": []
+          }
+        }
+      ],
+      "output_sha256": "sha256:9c34ad9fb58b4452c56ead23a494e54885b013d20c05084a7f8c5763a02da379"
+    },
+    "candidate": {
+      "label": "candidate",
+      "root": "build/wp-core/wphx-314-05/candidate",
+      "php_version": "8.4.7",
+      "source_files": [
+        {
+          "path": "build/wp-core/wphx-314-05/candidate/wp-includes/class-wp-block-patterns-registry.php",
+          "bytes": 10312,
+          "sha256": "sha256:1a3e95b9148d4711f66c5777d2712f01e326e4b6e6e2cfbc2cbc81cde39ec03a"
+        },
+        {
+          "path": "build/wp-core/wphx-314-05/candidate/wp-includes/class-wp-block-pattern-categories-registry.php",
+          "bytes": 4383,
+          "sha256": "sha256:cc7fbd48ee9d71cd0371de09a570968234be4333af95977fe94ebc8eaccababc"
+        },
+        {
+          "path": "build/wp-core/wphx-314-05/candidate/wp-includes/block-patterns.php",
+          "bytes": 15606,
+          "sha256": "sha256:50d76e2bb2f0a917a0fc15e95c10b44ad435a9e83399bfd7abe937cfbcf9d2c9"
+        }
+      ],
+      "probe": {
+        "path": "build/wp-core/wphx-314-05/candidate/probe.php",
+        "bytes": 8464,
+        "sha256": "sha256:147f12d18f0d8e46212b17f17d046aee94e771b28a073f9433f6e9439286a391"
+      },
+      "observations": [
+        {
+          "id": "block-patterns:register-get-content",
+          "focus": "content-backed pattern registration, get_registered, get_all_registered, and hook insertion boundary",
+          "observation": {
+            "case": "block-patterns:register-get-content",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "registered": true,
+              "is_registered": true,
+              "get_registered": {
+                "blockTypes": [
+                  "core/paragraph"
+                ],
+                "categories": [
+                  "featured",
+                  "text"
+                ],
+                "content": "HOOKED[wphx/hero]:<!-- wp:paragraph --><p>Hello</p><!-- /wp:paragraph -->",
+                "description": "Fixture hero",
+                "inserter": false,
+                "keywords": [
+                  "alpha",
+                  "beta"
+                ],
+                "name": "wphx/hero",
+                "postTypes": [
+                  "post"
+                ],
+                "templateTypes": [
+                  "single"
+                ],
+                "title": "Hero",
+                "viewportWidth": 960
+              },
+              "all_registered": [
+                {
+                  "blockTypes": [
+                    "core/paragraph"
+                  ],
+                  "categories": [
+                    "featured",
+                    "text"
+                  ],
+                  "content": "HOOKED[wphx/hero]:<!-- wp:paragraph --><p>Hello</p><!-- /wp:paragraph -->",
+                  "description": "Fixture hero",
+                  "inserter": false,
+                  "keywords": [
+                    "alpha",
+                    "beta"
+                  ],
+                  "name": "wphx/hero",
+                  "postTypes": [
+                    "post"
+                  ],
+                  "templateTypes": [
+                    "single"
+                  ],
+                  "title": "Hero",
+                  "viewportWidth": 960
+                }
+              ],
+              "missing_pattern": null
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/hero"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/hero"
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-patterns:file-path-lazy-content",
+          "focus": "filePath-backed pattern lazy include and content caching",
+          "observation": {
+            "case": "block-patterns:file-path-lazy-content",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "registered": true,
+              "first": {
+                "content": "HOOKED[wphx/file-pattern]:FILE-CONTENT:fixture-pattern.php",
+                "filePath": "fixture-pattern.php",
+                "name": "wphx/file-pattern",
+                "title": "File pattern"
+              },
+              "second": {
+                "content": "HOOKED[wphx/file-pattern]:FILE-CONTENT:fixture-pattern.php",
+                "name": "wphx/file-pattern",
+                "title": "File pattern"
+              },
+              "file_path_removed": true
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/file-pattern"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/file-pattern"
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-patterns:outside-init-tracking",
+          "focus": "registration outside init tracked separately for patterns",
+          "observation": {
+            "case": "block-patterns:outside-init-tracking",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "all": [
+                {
+                  "content": "HOOKED[wphx/outside]:<p>outside</p>",
+                  "name": "wphx/outside",
+                  "title": "Outside"
+                },
+                {
+                  "content": "HOOKED[wphx/inside]:<p>inside</p>",
+                  "name": "wphx/inside",
+                  "title": "Inside"
+                }
+              ],
+              "outside_only": [
+                {
+                  "content": "HOOKED[wphx/outside]:<p>outside</p>",
+                  "name": "wphx/outside",
+                  "title": "Outside"
+                }
+              ]
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/outside"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/inside"
+              },
+              {
+                "hook_name": "apply_block_hooks_to_content",
+                "callback": "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+                "pattern": "wphx/outside"
+              }
+            ],
+            "wrong": []
+          }
+        },
+        {
+          "id": "block-patterns:validation-unregister",
+          "focus": "invalid pattern registration and unregister failure/success contracts",
+          "observation": {
+            "case": "block-patterns:validation-unregister",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "invalid_name": false,
+              "missing_title": false,
+              "missing_content": false,
+              "valid": true,
+              "removed": true,
+              "missing_remove": false
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              }
+            ],
+            "wrong": [
+              {
+                "function": "WP_Block_Patterns_Registry::register",
+                "message": "Pattern name must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Patterns_Registry::register",
+                "message": "Pattern title must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Patterns_Registry::register",
+                "message": "Pattern content must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Patterns_Registry::unregister",
+                "message": "Pattern \"wphx/remove-me\" not found.",
+                "version": "5.5.0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "block-patterns:categories",
+          "focus": "category registration, outside-init tracking, get/unregister contracts",
+          "observation": {
+            "case": "block-patterns:categories",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "outside": true,
+              "inside": true,
+              "invalid": false,
+              "outside_get": {
+                "name": "wphx/outside-cat",
+                "label": "Outside Cat",
+                "description": "Outside category"
+              },
+              "all": [
+                {
+                  "name": "wphx/outside-cat",
+                  "label": "Outside Cat",
+                  "description": "Outside category"
+                }
+              ],
+              "outside_only": [
+                {
+                  "name": "wphx/outside-cat",
+                  "label": "Outside Cat",
+                  "description": "Outside category"
+                }
+              ],
+              "removed": true,
+              "missing": false
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              }
+            ],
+            "wrong": [
+              {
+                "function": "WP_Block_Pattern_Categories_Registry::register",
+                "message": "Block pattern category name must be a string.",
+                "version": "5.5.0"
+              },
+              {
+                "function": "WP_Block_Pattern_Categories_Registry::unregister",
+                "message": "Block pattern category \"wphx/inside-cat\" not found.",
+                "version": "5.5.0"
+              }
+            ]
+          }
+        },
+        {
+          "id": "block-patterns:normalize-remote",
+          "focus": "remote pattern snake_case to camelCase normalization",
+          "observation": {
+            "case": "block-patterns:normalize-remote",
+            "theme_support": {
+              "core-block-patterns": true
+            },
+            "output": {
+              "normalized_full": {
+                "title": "Remote",
+                "content": "<p>remote</p>",
+                "blockTypes": [
+                  "core/paragraph"
+                ],
+                "viewportWidth": 480
+              },
+              "normalized_partial": {
+                "title": "Partial",
+                "content": "<p>partial</p>"
+              }
+            },
+            "filters": [],
+            "actions": [
+              {
+                "hook_name": "init",
+                "priority": 10,
+                "accepted_args": 1,
+                "callback": "_register_theme_block_patterns"
+              }
+            ],
+            "wrong": []
+          }
+        }
+      ],
+      "output_sha256": "sha256:9c34ad9fb58b4452c56ead23a494e54885b013d20c05084a7f8c5763a02da379"
+    },
+    "comparable_sha256": "sha256:1f73b13dbd71ef225132211c6c6666faefef6d279781fcfd4a048dc108fc4763"
+  },
+  "remaining_gaps": [
+    "Haxe-owned runtime implementation for block pattern registries is not claimed.",
+    "Generated original-path public PHP adapter replacement is not claimed.",
+    "Real block hook insertion, theme directory scanning, remote pattern REST loading, installed pattern behavior, selected upstream PHPUnit pass/pass, editor/browser, and Gutenberg package ownership remain later gates.",
+    "Full style engine/global styles/layout/HTML API/interactivity ownership remains outside this fixture."
+  ],
+  "ownership_manifest": "manifests/ownership/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+  "validation_result": {
+    "status": "passed",
+    "case_count": 6,
+    "covered_symbol_count": 19,
+    "source_file_count": 3,
+    "oracle_candidate_match": true,
+    "public_php_replacement_claimed": false
+  }
+}

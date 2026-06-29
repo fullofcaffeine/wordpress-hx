@@ -1,0 +1,95 @@
+{
+  "schema": "wphx.receipt.v1",
+  "id": "wphx-314-05-block-patterns-registry-oracle-fixture",
+  "issue": {
+    "id": "wordpresshx-u5p",
+    "external_ref": "WPHX-314.05",
+    "title": "WPHX-314.05 - Add block patterns registry oracle fixture"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "artifacts": {
+    "manifest": "manifests/wp-core/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+    "ownership": {
+      "schema": "wphx.ownership_manifest.v1",
+      "manifest_id": "wphx-314-05-block-patterns-registry-oracle-fixture",
+      "issue": {
+        "id": "wordpresshx-u5p",
+        "external_ref": "WPHX-314.05",
+        "title": "WPHX-314.05 - Add block patterns registry oracle fixture"
+      },
+      "unit": {
+        "kind": "wp_core_oracle_fixture",
+        "domain": "blocks_patterns_registry",
+        "source_files": [
+          "src/wp-includes/class-wp-block-patterns-registry.php",
+          "src/wp-includes/class-wp-block-pattern-categories-registry.php",
+          "src/wp-includes/block-patterns.php"
+        ]
+      },
+      "ownership_state": "bridge_shell",
+      "ownership_axes": {
+        "semantic_behavior": "upstream_wordpress_php_oracle",
+        "haxe_source": "not_claimed",
+        "public_php_abi": "copied_oracle_candidate_fixture_only",
+        "installed_distribution": "not_claimed",
+        "browser_gutenberg": "not_claimed"
+      },
+      "bridge": {
+        "kind": "copied_oracle_candidate_php_fixture",
+        "removal_gate": "Replace the copied public PHP fixture with typed Haxe-owned pattern registry decisions plus WPHX Adapter IR/generated original-path public PHP evidence, or explicitly supersede this bridge with an accepted backend/custom-target improvement.",
+        "non_claims": [
+          "Haxe-owned runtime implementation for block pattern registries is not claimed.",
+          "Generated original-path public PHP adapter replacement is not claimed.",
+          "Real block hook insertion, theme directory scanning, remote pattern REST loading, installed pattern behavior, selected upstream PHPUnit pass/pass, editor/browser, and Gutenberg package ownership remain later gates.",
+          "Full style engine/global styles/layout/HTML API/interactivity ownership remains outside this fixture."
+        ]
+      },
+      "owned_paths": [],
+      "generated_paths": [
+        "manifests/wp-core/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+        "manifests/ownership/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+        "receipts/wp-core/wphx-314-05-block-patterns-registry-oracle-fixture.v1.json",
+        "build/wp-core/wphx-314-05/oracle/probe.php",
+        "build/wp-core/wphx-314-05/candidate/probe.php"
+      ],
+      "verification": {
+        "status": "passed",
+        "case_count": 6,
+        "covered_symbol_count": 19,
+        "source_file_count": 3,
+        "oracle_candidate_match": true,
+        "public_php_replacement_claimed": false
+      },
+      "notes": [
+        "This fixture is a behavior target for future Haxe ownership. It records pattern registry validation, lazy content loading, outside-init tracking, category registry behavior, and remote key normalization.",
+        "Block hook insertion is intentionally reduced to a deterministic boundary stub."
+      ]
+    },
+    "runner": "tools/wp-core/run-block-patterns-registry-oracle-fixture.mjs",
+    "generated_oracle_probe": "build/wp-core/wphx-314-05/oracle/probe.php",
+    "generated_candidate_probe": "build/wp-core/wphx-314-05/candidate/probe.php"
+  },
+  "verification_commands": [
+    "npm run wp:core:wphx-314-block-patterns-registry-oracle-fixture",
+    "npm run wp:core:wphx-314-block-patterns-registry-oracle-fixture:check",
+    "npm run receipts:validate",
+    "npm run beads:validate",
+    "npm run precommit"
+  ],
+  "related_receipts": [
+    "receipts/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+    "receipts/wp-core/wphx-314-02-blocks-interactivity-adapter-contract-candidate.v1.json",
+    "receipts/wp-core/wphx-314-03-block-parser-render-oracle-fixture.v1.json",
+    "receipts/wp-core/wphx-314-04-block-supports-bindings-oracle-fixture.v1.json"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "case_count": 6,
+    "covered_symbol_count": 19,
+    "source_file_count": 3,
+    "oracle_candidate_match": true,
+    "public_php_replacement_claimed": false
+  },
+  "manifest_sha256": "sha256:8c04f165fff10495d4137a1bfe7cd6fdb7548b2e247d136db38f03fede7cff20",
+  "ownership_sha256": "sha256:c14fa6a8d5ae5ca75093e8fabab2cfbd6b4b6dfde714dd8df9edc6fac09f8116"
+}
