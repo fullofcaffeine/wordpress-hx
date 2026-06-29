@@ -1,0 +1,2737 @@
+{
+  "schema": "wphx.wp-core-blocks-interactivity-surface.v1",
+  "issue": "WPHX-314.01",
+  "generated_at": "2026-06-29T00:00:00.000Z",
+  "generator": "tools/wp-core/run-blocks-interactivity-surface.mjs",
+  "inputs": {
+    "source_inventory": {
+      "path": "manifests/source-inventory.jsonl",
+      "bytes": 11207179,
+      "sha256": "sha256:69d3f94f72d7c955a55c46991f81331522f0e306a89af9e037ce216a5263aff3"
+    },
+    "artifact_provenance": {
+      "path": "manifests/artifact-provenance.jsonl",
+      "bytes": 1829830,
+      "sha256": "sha256:b5855fd8ea57e1712b332514e4e2f46b0f5bf70b176c7657bf0e592fa56229d4"
+    },
+    "test_inventory": {
+      "path": "manifests/test-inventory.jsonl",
+      "bytes": 1921833,
+      "sha256": "sha256:fdfb65de3dcfb9cc649a1802bae9ffa5714aa6cc627ad608d94d7cd78e0af9ff"
+    },
+    "php_abi": {
+      "path": "manifests/php-abi/wordpress-7.0-core-abi.v1.json",
+      "bytes": 35108922,
+      "sha256": "sha256:e77b6138e9781b04fe3ce8a0982743475179c74d4d790562ab43cb59b82ffc6b"
+    },
+    "first_party_closure": {
+      "path": "manifests/wp-core/wphx-322-php-first-party-manifest-closure.v1.json",
+      "bytes": 38022,
+      "sha256": "sha256:2ebc43942267fd9d42d19a4bda00d8e7a02e38a80fc6b866e97018a8833e1080"
+    }
+  },
+  "scope": {
+    "owner": "WPHX-314",
+    "included": "C1 WordPress 7.0 PHP source and distribution artifacts classified to blocks, block parser, block registration/rendering, supports, bindings, block hooks, patterns, interactivity, style engine, HTML API, fonts, and block asset helpers by the WPHX-322 owner rules.",
+    "cross_domain_notes": [
+      {
+        "owner": "WPHX-307/WPHX-308",
+        "reason": "Post, query, navigation, term, and comment blocks consume post/query/taxonomy/comment primitives without moving those storage/query domains into WPHX-314."
+      },
+      {
+        "owner": "WPHX-310",
+        "reason": "Block templates, template parts, theme.json, global styles, and template hierarchy remain theme/template gates that block rendering must coordinate with."
+      },
+      {
+        "owner": "WPHX-311",
+        "reason": "REST block endpoints, editor settings, and block directory/schema behavior need REST transport/schema evidence before installed API claims."
+      },
+      {
+        "owner": "WPHX-312/WPHX-313",
+        "reason": "RSS/embed/feed/media blocks exercise HTTP/feed/embed/media primitives that stay owned by their source domains beneath block renderer fixtures."
+      },
+      {
+        "owner": "WPHX-315/WPHX-316/WPHX-400",
+        "reason": "Admin/editor screens, AJAX, browser package exports, React behavior, and Gutenberg packages remain separate admin/browser tracks even when they expose block PHP behavior."
+      }
+    ],
+    "semantic_handoff_candidates": [
+      {
+        "path": "src/wp-admin/includes/template.php",
+        "owner": "WPHX-310",
+        "reason": "Block templates, theme.json, global styles, and template hierarchy remain theme/template ownership while block rendering must coordinate with them."
+      },
+      {
+        "path": "src/wp-content/themes/twentyeleven/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfifteen/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfifteen/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfourteen/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfourteen/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfourteen/page-templates/contributors.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyfourteen/page-templates/full-width.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/inc/template-functions.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/content/content-excerpt.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/content/content-none.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/content/content-page.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/content/content-single.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/content/content.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/footer/footer-widgets.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/header/entry-header.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/header/site-branding.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/post/author-bio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentynineteen/template-parts/post/discussion-meta.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/inc/template-functions.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/footer/footer-widgets.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/footer/site-info.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/header/header-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/header/site-branding.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/navigation/navigation-top.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/page/content-front-page-panels.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/page/content-front-page.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/page/content-page.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-audio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-excerpt.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-gallery.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-none.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content-video.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyseventeen/template-parts/post/content.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/template-parts/biography.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/template-parts/content-none.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/template-parts/content-page.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/template-parts/content-search.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/template-parts/content-single.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentysixteen/template-parts/content.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentyten/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentythirteen/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwelve/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwelve/page-templates/front-page.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwelve/page-templates/full-width.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/content-cover.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/content.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/entry-author-bio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/entry-header.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/featured-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/footer-menus-widgets.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/modal-menu.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/modal-search.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/navigation.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/template-parts/pagination.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/templates/template-cover.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwenty/templates/template-full-width.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-404-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-archive-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-archive-photo-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-archive-text-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-archive-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-home-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-home-photo-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-home-posts-grid-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-home-text-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-home-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-home-with-sidebar-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-page-photo-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-page-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-query-loop-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-query-loop-photo-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-query-loop-text-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-query-loop-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-query-loop.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-search-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-search-photo-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-search-text-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-search-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-single-left-aligned-content.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-single-news-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-single-offset.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-single-photo-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-single-text-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfive/patterns/template-single-vertical-header-blog.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-archive-blogging.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-archive-portfolio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-home-blogging.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-home-business.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-home-portfolio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-index-blogging.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-index-portfolio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-search-blogging.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-search-portfolio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyfour/patterns/template-single-portfolio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/inc/block-styles.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/inc/template-functions.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/inc/template-tags.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/content/content-excerpt.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/content/content-none.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/content/content-page.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/content/content-single.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/content/content.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-aside.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-audio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-chat.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-gallery.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-image.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-link.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-quote.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-status.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt-video.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/excerpt/excerpt.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/footer/footer-widgets.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/header/entry-header.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/header/excerpt-header.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/header/site-branding.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/header/site-header.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/header/site-nav.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentyone/template-parts/post/author-bio.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-content/themes/twentytwentytwo/inc/block-patterns.php",
+        "owner": "WPHX-320",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/assets/script-modules-packages.php",
+        "owner": "WPHX-310",
+        "reason": "Block templates, theme.json, global styles, and template hierarchy remain theme/template ownership while block rendering must coordinate with them."
+      },
+      {
+        "path": "src/wp-includes/author-template.php",
+        "owner": "WPHX-306",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/block-bindings/post-data.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-bindings/post-meta.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-bindings/term-data.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/block-patterns/query-grid-posts.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-patterns/query-large-title-posts.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-patterns/query-medium-posts.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-patterns/query-offset-posts.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-patterns/query-small-posts.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-patterns/query-standard-posts.php",
+        "owner": "WPHX-307",
+        "reason": "Query, post, navigation, and content blocks read posts or metadata; WPHX-314 owns block semantics without taking broad post/query ownership."
+      },
+      {
+        "path": "src/wp-includes/block-template-utils.php",
+        "owner": "WPHX-310",
+        "reason": "Block templates, theme.json, global styles, and template hierarchy remain theme/template ownership while block rendering must coordinate with them."
+      },
+      {
+        "path": "src/wp-includes/block-template.php",
+        "owner": "WPHX-310",
+        "reason": "Block templates, theme.json, global styles, and template hierarchy remain theme/template ownership while block rendering must coordinate with them."
+      },
+      {
+        "path": "src/wp-includes/blocks/comment-author-name.php",
+        "owner": "WPHX-306",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/blocks/comment-content.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comment-date.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comment-edit-link.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comment-reply-link.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comment-template.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comments-pagination-next.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comments-pagination-numbers.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comments-pagination-previous.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comments-pagination.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comments-title.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/comments.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      },
+      {
+        "path": "src/wp-includes/blocks/file.php",
+        "owner": "WPHX-313",
+        "reason": "Image, gallery, cover, file, and media-text blocks depend on media/attachment contracts owned by WPHX-313."
+      },
+      {
+        "path": "src/wp-includes/blocks/image.php",
+        "owner": "WPHX-313",
+        "reason": "Image, gallery, cover, file, and media-text blocks depend on media/attachment contracts owned by WPHX-313."
+      },
+      {
+        "path": "src/wp-includes/blocks/index.php",
+        "owner": "WPHX-309",
+        "reason": "Current owner rules assign this path to another domain; WPHX-314 must coordinate behavior without changing ownership here."
+      },
+      {
+        "path": "src/wp-includes/blocks/latest-comments.php",
+        "owner": "WPHX-308",
+        "reason": "Term and comment blocks exercise taxonomy/comment primitives that remain owned by WPHX-308."
+      }
+    ]
+  },
+  "coverage": {
+    "source_count": 140,
+    "artifact_count": 140,
+    "abi_entry_count": 1137,
+    "class_count": 46,
+    "named_class_count": 45,
+    "anonymous_class_count": 1,
+    "test_count": 163,
+    "source_by_group": {
+      "block_assets": {
+        "count": 2,
+        "paths": [
+          "src/wp-includes/assets/icon-library-manifest.php",
+          "src/wp-includes/assets/script-loader-packages.php"
+        ]
+      },
+      "block_bindings": {
+        "count": 4,
+        "paths": [
+          "src/wp-includes/block-bindings.php",
+          "src/wp-includes/block-bindings/pattern-overrides.php",
+          "src/wp-includes/class-wp-block-bindings-registry.php",
+          "src/wp-includes/class-wp-block-bindings-source.php"
+        ]
+      },
+      "block_parser": {
+        "count": 3,
+        "paths": [
+          "src/wp-includes/class-wp-block-parser-block.php",
+          "src/wp-includes/class-wp-block-parser-frame.php",
+          "src/wp-includes/class-wp-block-parser.php"
+        ]
+      },
+      "block_patterns": {
+        "count": 9,
+        "paths": [
+          "src/wp-includes/block-patterns.php",
+          "src/wp-includes/block-patterns/navigation-overlay-accent-bg.php",
+          "src/wp-includes/block-patterns/navigation-overlay-black-bg.php",
+          "src/wp-includes/block-patterns/navigation-overlay-centered-with-extras.php",
+          "src/wp-includes/block-patterns/navigation-overlay-centered.php",
+          "src/wp-includes/block-patterns/navigation-overlay.php",
+          "src/wp-includes/block-patterns/social-links-shared-background-color.php",
+          "src/wp-includes/class-wp-block-pattern-categories-registry.php",
+          "src/wp-includes/class-wp-block-patterns-registry.php"
+        ]
+      },
+      "block_registration_render": {
+        "count": 8,
+        "paths": [
+          "src/wp-admin/edit-form-blocks.php",
+          "src/wp-admin/widgets-form-blocks.php",
+          "src/wp-includes/blocks.php",
+          "src/wp-includes/blocks/require-dynamic-blocks.php",
+          "src/wp-includes/blocks/require-static-blocks.php",
+          "src/wp-includes/class-wp-block-type-registry.php",
+          "src/wp-includes/class-wp-block-type.php",
+          "src/wp-includes/class-wp-block.php"
+        ]
+      },
+      "block_related": {
+        "count": 8,
+        "paths": [
+          "src/wp-includes/block-editor.php",
+          "src/wp-includes/class-wp-block-editor-context.php",
+          "src/wp-includes/class-wp-block-list.php",
+          "src/wp-includes/class-wp-block-metadata-registry.php",
+          "src/wp-includes/class-wp-block-processor.php",
+          "src/wp-includes/class-wp-block-styles-registry.php",
+          "src/wp-includes/class-wp-classic-to-block-menu-converter.php",
+          "src/wp-includes/widgets/class-wp-widget-block.php"
+        ]
+      },
+      "block_supports": {
+        "count": 23,
+        "paths": [
+          "src/wp-includes/block-supports/align.php",
+          "src/wp-includes/block-supports/anchor.php",
+          "src/wp-includes/block-supports/aria-label.php",
+          "src/wp-includes/block-supports/auto-register.php",
+          "src/wp-includes/block-supports/background.php",
+          "src/wp-includes/block-supports/block-style-variations.php",
+          "src/wp-includes/block-supports/block-visibility.php",
+          "src/wp-includes/block-supports/border.php",
+          "src/wp-includes/block-supports/colors.php",
+          "src/wp-includes/block-supports/custom-classname.php",
+          "src/wp-includes/block-supports/custom-css.php",
+          "src/wp-includes/block-supports/dimensions.php",
+          "src/wp-includes/block-supports/duotone.php",
+          "src/wp-includes/block-supports/elements.php",
+          "src/wp-includes/block-supports/generated-classname.php",
+          "src/wp-includes/block-supports/layout.php",
+          "src/wp-includes/block-supports/position.php",
+          "src/wp-includes/block-supports/settings.php",
+          "src/wp-includes/block-supports/shadow.php",
+          "src/wp-includes/block-supports/spacing.php",
+          "src/wp-includes/block-supports/typography.php",
+          "src/wp-includes/block-supports/utils.php",
+          "src/wp-includes/class-wp-block-supports.php"
+        ]
+      },
+      "core_block_library": {
+        "count": 48,
+        "paths": [
+          "src/wp-includes/blocks/accordion-item.php",
+          "src/wp-includes/blocks/accordion.php",
+          "src/wp-includes/blocks/archives.php",
+          "src/wp-includes/blocks/avatar.php",
+          "src/wp-includes/blocks/block.php",
+          "src/wp-includes/blocks/blocks-json.php",
+          "src/wp-includes/blocks/breadcrumbs.php",
+          "src/wp-includes/blocks/button.php",
+          "src/wp-includes/blocks/calendar.php",
+          "src/wp-includes/blocks/categories.php",
+          "src/wp-includes/blocks/cover.php",
+          "src/wp-includes/blocks/details.php",
+          "src/wp-includes/blocks/footnotes.php",
+          "src/wp-includes/blocks/gallery.php",
+          "src/wp-includes/blocks/heading.php",
+          "src/wp-includes/blocks/home-link.php",
+          "src/wp-includes/blocks/icon.php",
+          "src/wp-includes/blocks/legacy-widget.php",
+          "src/wp-includes/blocks/list.php",
+          "src/wp-includes/blocks/loginout.php",
+          "src/wp-includes/blocks/navigation-link.php",
+          "src/wp-includes/blocks/navigation-link/shared/item-should-render.php",
+          "src/wp-includes/blocks/navigation-link/shared/render-submenu-icon.php",
+          "src/wp-includes/blocks/navigation-overlay-close.php",
+          "src/wp-includes/blocks/navigation-submenu.php",
+          "src/wp-includes/blocks/navigation.php",
+          "src/wp-includes/blocks/page-list-item.php",
+          "src/wp-includes/blocks/page-list.php",
+          "src/wp-includes/blocks/paragraph.php",
+          "src/wp-includes/blocks/pattern.php",
+          "src/wp-includes/blocks/query-no-results.php",
+          "src/wp-includes/blocks/query-pagination-next.php",
+          "src/wp-includes/blocks/query-pagination-numbers.php",
+          "src/wp-includes/blocks/query-pagination-previous.php",
+          "src/wp-includes/blocks/query-pagination.php",
+          "src/wp-includes/blocks/query-title.php",
+          "src/wp-includes/blocks/query-total.php",
+          "src/wp-includes/blocks/read-more.php",
+          "src/wp-includes/blocks/rss.php",
+          "src/wp-includes/blocks/search.php",
+          "src/wp-includes/blocks/shortcode.php",
+          "src/wp-includes/blocks/site-logo.php",
+          "src/wp-includes/blocks/site-tagline.php",
+          "src/wp-includes/blocks/site-title.php",
+          "src/wp-includes/blocks/social-link.php",
+          "src/wp-includes/blocks/tag-cloud.php",
+          "src/wp-includes/blocks/video.php",
+          "src/wp-includes/blocks/widget-group.php"
+        ]
+      },
+      "fonts_api": {
+        "count": 12,
+        "paths": [
+          "src/wp-admin/font-library.php",
+          "src/wp-includes/build/pages/font-library/page-wp-admin.php",
+          "src/wp-includes/build/pages/font-library/page.php",
+          "src/wp-includes/build/routes/font-list/content.min.asset.php",
+          "src/wp-includes/build/routes/font-list/route.min.asset.php",
+          "src/wp-includes/build/routes/fonts-home/route.min.asset.php",
+          "src/wp-includes/fonts.php",
+          "src/wp-includes/fonts/class-wp-font-collection.php",
+          "src/wp-includes/fonts/class-wp-font-face-resolver.php",
+          "src/wp-includes/fonts/class-wp-font-face.php",
+          "src/wp-includes/fonts/class-wp-font-library.php",
+          "src/wp-includes/fonts/class-wp-font-utils.php"
+        ]
+      },
+      "html_api": {
+        "count": 14,
+        "paths": [
+          "src/wp-includes/html-api/class-wp-html-active-formatting-elements.php",
+          "src/wp-includes/html-api/class-wp-html-attribute-token.php",
+          "src/wp-includes/html-api/class-wp-html-decoder.php",
+          "src/wp-includes/html-api/class-wp-html-doctype-info.php",
+          "src/wp-includes/html-api/class-wp-html-open-elements.php",
+          "src/wp-includes/html-api/class-wp-html-processor-state.php",
+          "src/wp-includes/html-api/class-wp-html-processor.php",
+          "src/wp-includes/html-api/class-wp-html-span.php",
+          "src/wp-includes/html-api/class-wp-html-stack-event.php",
+          "src/wp-includes/html-api/class-wp-html-tag-processor.php",
+          "src/wp-includes/html-api/class-wp-html-text-replacement.php",
+          "src/wp-includes/html-api/class-wp-html-token.php",
+          "src/wp-includes/html-api/class-wp-html-unsupported-exception.php",
+          "src/wp-includes/html-api/html5-named-character-references.php"
+        ]
+      },
+      "interactivity_api": {
+        "count": 3,
+        "paths": [
+          "src/wp-includes/interactivity-api/class-wp-interactivity-api-directives-processor.php",
+          "src/wp-includes/interactivity-api/class-wp-interactivity-api.php",
+          "src/wp-includes/interactivity-api/interactivity-api.php"
+        ]
+      },
+      "style_engine": {
+        "count": 6,
+        "paths": [
+          "src/wp-includes/style-engine.php",
+          "src/wp-includes/style-engine/class-wp-style-engine-css-declarations.php",
+          "src/wp-includes/style-engine/class-wp-style-engine-css-rule.php",
+          "src/wp-includes/style-engine/class-wp-style-engine-css-rules-store.php",
+          "src/wp-includes/style-engine/class-wp-style-engine-processor.php",
+          "src/wp-includes/style-engine/class-wp-style-engine.php"
+        ]
+      }
+    },
+    "artifact_by_group": {
+      "block_assets": {
+        "count": 2,
+        "paths": [
+          "wp-includes/assets/icon-library-manifest.php",
+          "wp-includes/assets/script-loader-packages.php"
+        ]
+      },
+      "block_bindings": {
+        "count": 4,
+        "paths": [
+          "wp-includes/block-bindings.php",
+          "wp-includes/block-bindings/pattern-overrides.php",
+          "wp-includes/class-wp-block-bindings-registry.php",
+          "wp-includes/class-wp-block-bindings-source.php"
+        ]
+      },
+      "block_parser": {
+        "count": 3,
+        "paths": [
+          "wp-includes/class-wp-block-parser-block.php",
+          "wp-includes/class-wp-block-parser-frame.php",
+          "wp-includes/class-wp-block-parser.php"
+        ]
+      },
+      "block_patterns": {
+        "count": 9,
+        "paths": [
+          "wp-includes/block-patterns.php",
+          "wp-includes/block-patterns/navigation-overlay-accent-bg.php",
+          "wp-includes/block-patterns/navigation-overlay-black-bg.php",
+          "wp-includes/block-patterns/navigation-overlay-centered-with-extras.php",
+          "wp-includes/block-patterns/navigation-overlay-centered.php",
+          "wp-includes/block-patterns/navigation-overlay.php",
+          "wp-includes/block-patterns/social-links-shared-background-color.php",
+          "wp-includes/class-wp-block-pattern-categories-registry.php",
+          "wp-includes/class-wp-block-patterns-registry.php"
+        ]
+      },
+      "block_registration_render": {
+        "count": 8,
+        "paths": [
+          "wp-admin/edit-form-blocks.php",
+          "wp-admin/widgets-form-blocks.php",
+          "wp-includes/blocks.php",
+          "wp-includes/blocks/require-dynamic-blocks.php",
+          "wp-includes/blocks/require-static-blocks.php",
+          "wp-includes/class-wp-block-type-registry.php",
+          "wp-includes/class-wp-block-type.php",
+          "wp-includes/class-wp-block.php"
+        ]
+      },
+      "block_related": {
+        "count": 8,
+        "paths": [
+          "wp-includes/block-editor.php",
+          "wp-includes/class-wp-block-editor-context.php",
+          "wp-includes/class-wp-block-list.php",
+          "wp-includes/class-wp-block-metadata-registry.php",
+          "wp-includes/class-wp-block-processor.php",
+          "wp-includes/class-wp-block-styles-registry.php",
+          "wp-includes/class-wp-classic-to-block-menu-converter.php",
+          "wp-includes/widgets/class-wp-widget-block.php"
+        ]
+      },
+      "block_supports": {
+        "count": 23,
+        "paths": [
+          "wp-includes/block-supports/align.php",
+          "wp-includes/block-supports/anchor.php",
+          "wp-includes/block-supports/aria-label.php",
+          "wp-includes/block-supports/auto-register.php",
+          "wp-includes/block-supports/background.php",
+          "wp-includes/block-supports/block-style-variations.php",
+          "wp-includes/block-supports/block-visibility.php",
+          "wp-includes/block-supports/border.php",
+          "wp-includes/block-supports/colors.php",
+          "wp-includes/block-supports/custom-classname.php",
+          "wp-includes/block-supports/custom-css.php",
+          "wp-includes/block-supports/dimensions.php",
+          "wp-includes/block-supports/duotone.php",
+          "wp-includes/block-supports/elements.php",
+          "wp-includes/block-supports/generated-classname.php",
+          "wp-includes/block-supports/layout.php",
+          "wp-includes/block-supports/position.php",
+          "wp-includes/block-supports/settings.php",
+          "wp-includes/block-supports/shadow.php",
+          "wp-includes/block-supports/spacing.php",
+          "wp-includes/block-supports/typography.php",
+          "wp-includes/block-supports/utils.php",
+          "wp-includes/class-wp-block-supports.php"
+        ]
+      },
+      "core_block_library": {
+        "count": 48,
+        "paths": [
+          "wp-includes/blocks/accordion-item.php",
+          "wp-includes/blocks/accordion.php",
+          "wp-includes/blocks/archives.php",
+          "wp-includes/blocks/avatar.php",
+          "wp-includes/blocks/block.php",
+          "wp-includes/blocks/blocks-json.php",
+          "wp-includes/blocks/breadcrumbs.php",
+          "wp-includes/blocks/button.php",
+          "wp-includes/blocks/calendar.php",
+          "wp-includes/blocks/categories.php",
+          "wp-includes/blocks/cover.php",
+          "wp-includes/blocks/details.php",
+          "wp-includes/blocks/footnotes.php",
+          "wp-includes/blocks/gallery.php",
+          "wp-includes/blocks/heading.php",
+          "wp-includes/blocks/home-link.php",
+          "wp-includes/blocks/icon.php",
+          "wp-includes/blocks/legacy-widget.php",
+          "wp-includes/blocks/list.php",
+          "wp-includes/blocks/loginout.php",
+          "wp-includes/blocks/navigation-link.php",
+          "wp-includes/blocks/navigation-link/shared/item-should-render.php",
+          "wp-includes/blocks/navigation-link/shared/render-submenu-icon.php",
+          "wp-includes/blocks/navigation-overlay-close.php",
+          "wp-includes/blocks/navigation-submenu.php",
+          "wp-includes/blocks/navigation.php",
+          "wp-includes/blocks/page-list-item.php",
+          "wp-includes/blocks/page-list.php",
+          "wp-includes/blocks/paragraph.php",
+          "wp-includes/blocks/pattern.php",
+          "wp-includes/blocks/query-no-results.php",
+          "wp-includes/blocks/query-pagination-next.php",
+          "wp-includes/blocks/query-pagination-numbers.php",
+          "wp-includes/blocks/query-pagination-previous.php",
+          "wp-includes/blocks/query-pagination.php",
+          "wp-includes/blocks/query-title.php",
+          "wp-includes/blocks/query-total.php",
+          "wp-includes/blocks/read-more.php",
+          "wp-includes/blocks/rss.php",
+          "wp-includes/blocks/search.php",
+          "wp-includes/blocks/shortcode.php",
+          "wp-includes/blocks/site-logo.php",
+          "wp-includes/blocks/site-tagline.php",
+          "wp-includes/blocks/site-title.php",
+          "wp-includes/blocks/social-link.php",
+          "wp-includes/blocks/tag-cloud.php",
+          "wp-includes/blocks/video.php",
+          "wp-includes/blocks/widget-group.php"
+        ]
+      },
+      "fonts_api": {
+        "count": 12,
+        "paths": [
+          "wp-admin/font-library.php",
+          "wp-includes/build/pages/font-library/page-wp-admin.php",
+          "wp-includes/build/pages/font-library/page.php",
+          "wp-includes/build/routes/font-list/content.min.asset.php",
+          "wp-includes/build/routes/font-list/route.min.asset.php",
+          "wp-includes/build/routes/fonts-home/route.min.asset.php",
+          "wp-includes/fonts.php",
+          "wp-includes/fonts/class-wp-font-collection.php",
+          "wp-includes/fonts/class-wp-font-face-resolver.php",
+          "wp-includes/fonts/class-wp-font-face.php",
+          "wp-includes/fonts/class-wp-font-library.php",
+          "wp-includes/fonts/class-wp-font-utils.php"
+        ]
+      },
+      "html_api": {
+        "count": 14,
+        "paths": [
+          "wp-includes/html-api/class-wp-html-active-formatting-elements.php",
+          "wp-includes/html-api/class-wp-html-attribute-token.php",
+          "wp-includes/html-api/class-wp-html-decoder.php",
+          "wp-includes/html-api/class-wp-html-doctype-info.php",
+          "wp-includes/html-api/class-wp-html-open-elements.php",
+          "wp-includes/html-api/class-wp-html-processor-state.php",
+          "wp-includes/html-api/class-wp-html-processor.php",
+          "wp-includes/html-api/class-wp-html-span.php",
+          "wp-includes/html-api/class-wp-html-stack-event.php",
+          "wp-includes/html-api/class-wp-html-tag-processor.php",
+          "wp-includes/html-api/class-wp-html-text-replacement.php",
+          "wp-includes/html-api/class-wp-html-token.php",
+          "wp-includes/html-api/class-wp-html-unsupported-exception.php",
+          "wp-includes/html-api/html5-named-character-references.php"
+        ]
+      },
+      "interactivity_api": {
+        "count": 3,
+        "paths": [
+          "wp-includes/interactivity-api/class-wp-interactivity-api-directives-processor.php",
+          "wp-includes/interactivity-api/class-wp-interactivity-api.php",
+          "wp-includes/interactivity-api/interactivity-api.php"
+        ]
+      },
+      "style_engine": {
+        "count": 6,
+        "paths": [
+          "wp-includes/style-engine.php",
+          "wp-includes/style-engine/class-wp-style-engine-css-declarations.php",
+          "wp-includes/style-engine/class-wp-style-engine-css-rule.php",
+          "wp-includes/style-engine/class-wp-style-engine-css-rules-store.php",
+          "wp-includes/style-engine/class-wp-style-engine-processor.php",
+          "wp-includes/style-engine/class-wp-style-engine.php"
+        ]
+      }
+    },
+    "abi_by_group": {
+      "block_bindings": {
+        "count": 26,
+        "functions": [
+          "_block_bindings_pattern_overrides_get_value",
+          "_register_block_bindings_pattern_overrides_source",
+          "get_all_registered_block_bindings_sources",
+          "get_block_bindings_source",
+          "get_block_bindings_supported_attributes",
+          "register_block_bindings_source",
+          "unregister_block_bindings_source"
+        ],
+        "classes": [
+          "WP_Block_Bindings_Registry",
+          "WP_Block_Bindings_Source"
+        ],
+        "methods": [
+          "WP_Block_Bindings_Registry::__wakeup",
+          "WP_Block_Bindings_Registry::get_all_registered",
+          "WP_Block_Bindings_Registry::get_instance",
+          "WP_Block_Bindings_Registry::get_registered",
+          "WP_Block_Bindings_Registry::is_registered",
+          "WP_Block_Bindings_Registry::register",
+          "WP_Block_Bindings_Registry::unregister",
+          "WP_Block_Bindings_Source::__construct",
+          "WP_Block_Bindings_Source::__wakeup",
+          "WP_Block_Bindings_Source::get_value"
+        ],
+        "properties": [
+          "WP_Block_Bindings_Registry::$allowed_source_properties",
+          "WP_Block_Bindings_Registry::$instance",
+          "WP_Block_Bindings_Registry::$sources",
+          "WP_Block_Bindings_Source::$get_value_callback",
+          "WP_Block_Bindings_Source::$label",
+          "WP_Block_Bindings_Source::$name",
+          "WP_Block_Bindings_Source::$uses_context"
+        ]
+      },
+      "block_parser": {
+        "count": 26,
+        "functions": [],
+        "classes": [
+          "WP_Block_Parser",
+          "WP_Block_Parser_Block",
+          "WP_Block_Parser_Frame"
+        ],
+        "methods": [
+          "WP_Block_Parser::add_block_from_stack",
+          "WP_Block_Parser::add_freeform",
+          "WP_Block_Parser::add_inner_block",
+          "WP_Block_Parser::freeform",
+          "WP_Block_Parser::next_token",
+          "WP_Block_Parser::parse",
+          "WP_Block_Parser::proceed",
+          "WP_Block_Parser_Block::__construct",
+          "WP_Block_Parser_Frame::__construct"
+        ],
+        "properties": [
+          "WP_Block_Parser::$document",
+          "WP_Block_Parser::$offset",
+          "WP_Block_Parser::$output",
+          "WP_Block_Parser::$stack",
+          "WP_Block_Parser_Block::$attrs",
+          "WP_Block_Parser_Block::$blockName",
+          "WP_Block_Parser_Block::$innerBlocks",
+          "WP_Block_Parser_Block::$innerContent",
+          "WP_Block_Parser_Block::$innerHTML",
+          "WP_Block_Parser_Frame::$block",
+          "WP_Block_Parser_Frame::$leading_html_start",
+          "WP_Block_Parser_Frame::$prev_offset",
+          "WP_Block_Parser_Frame::$token_length",
+          "WP_Block_Parser_Frame::$token_start"
+        ]
+      },
+      "block_patterns": {
+        "count": 32,
+        "functions": [
+          "_load_remote_block_patterns",
+          "_load_remote_featured_patterns",
+          "_register_core_block_patterns_and_categories",
+          "_register_remote_theme_patterns",
+          "_register_theme_block_patterns",
+          "register_block_pattern",
+          "register_block_pattern_category",
+          "unregister_block_pattern",
+          "unregister_block_pattern_category",
+          "wp_normalize_remote_block_pattern"
+        ],
+        "classes": [
+          "WP_Block_Pattern_Categories_Registry",
+          "WP_Block_Patterns_Registry"
+        ],
+        "methods": [
+          "WP_Block_Pattern_Categories_Registry::get_all_registered",
+          "WP_Block_Pattern_Categories_Registry::get_instance",
+          "WP_Block_Pattern_Categories_Registry::get_registered",
+          "WP_Block_Pattern_Categories_Registry::is_registered",
+          "WP_Block_Pattern_Categories_Registry::register",
+          "WP_Block_Pattern_Categories_Registry::unregister",
+          "WP_Block_Patterns_Registry::__wakeup",
+          "WP_Block_Patterns_Registry::get_all_registered",
+          "WP_Block_Patterns_Registry::get_content",
+          "WP_Block_Patterns_Registry::get_instance",
+          "WP_Block_Patterns_Registry::get_registered",
+          "WP_Block_Patterns_Registry::is_registered",
+          "WP_Block_Patterns_Registry::register",
+          "WP_Block_Patterns_Registry::unregister"
+        ],
+        "properties": [
+          "WP_Block_Pattern_Categories_Registry::$instance",
+          "WP_Block_Pattern_Categories_Registry::$registered_categories",
+          "WP_Block_Pattern_Categories_Registry::$registered_categories_outside_init",
+          "WP_Block_Patterns_Registry::$instance",
+          "WP_Block_Patterns_Registry::$registered_patterns",
+          "WP_Block_Patterns_Registry::$registered_patterns_outside_init"
+        ]
+      },
+      "block_registration_render": {
+        "count": 135,
+        "functions": [
+          "_excerpt_render_inner_blocks",
+          "_filter_block_content_callback",
+          "_restore_wpautop_hook",
+          "_wp_enqueue_auto_register_blocks",
+          "_wp_filter_post_meta_footnotes",
+          "_wp_footnotes_force_filtered_html_on_import_filter",
+          "_wp_footnotes_kses_init",
+          "_wp_footnotes_kses_init_filters",
+          "_wp_footnotes_remove_filters",
+          "apply_block_hooks_to_content",
+          "apply_block_hooks_to_content_from_post_object",
+          "block_has_support",
+          "block_version",
+          "build_comment_query_vars_from_block",
+          "build_query_vars_from_query_block",
+          "do_blocks",
+          "excerpt_remove_blocks",
+          "excerpt_remove_footnotes",
+          "extract_serialized_parent_block",
+          "filter_block_content",
+          "filter_block_core_template_part_attributes",
+          "filter_block_kses",
+          "filter_block_kses_value",
+          "generate_block_asset_handle",
+          "get_block_asset_url",
+          "get_block_metadata_i18n_schema",
+          "get_comment_delimited_block_content",
+          "get_comments_pagination_arrow",
+          "get_dynamic_block_names",
+          "get_hooked_blocks",
+          "get_query_pagination_arrow",
+          "has_block",
+          "has_blocks",
+          "insert_hooked_blocks",
+          "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+          "insert_hooked_blocks_into_rest_response",
+          "make_after_block_visitor",
+          "make_before_block_visitor",
+          "parse_blocks",
+          "register_block_script_handle",
+          "register_block_script_module_id",
+          "register_block_style",
+          "register_block_style_handle",
+          "register_block_type",
+          "register_block_type_from_metadata",
+          "remove_block_asset_path_prefix",
+          "remove_serialized_parent_block",
+          "render_block",
+          "resolve_pattern_blocks",
+          "serialize_block",
+          "serialize_block_attributes",
+          "serialize_blocks",
+          "set_ignored_hooked_blocks_metadata",
+          "strip_core_block_namespace",
+          "traverse_and_serialize_block",
+          "traverse_and_serialize_blocks",
+          "unregister_block_style",
+          "unregister_block_type",
+          "update_ignored_hooked_blocks_postmeta",
+          "wp_migrate_old_typography_shape",
+          "wp_register_block_metadata_collection",
+          "wp_register_block_types_from_metadata_collection"
+        ],
+        "classes": [
+          "WP_Block",
+          "WP_Block_Type",
+          "WP_Block_Type_Registry",
+          "src/wp-includes/class-wp-block.php:429"
+        ],
+        "methods": [
+          "WP_Block::__construct",
+          "WP_Block::__get",
+          "WP_Block::get_block_bindings_processor",
+          "WP_Block::process_block_bindings",
+          "WP_Block::refresh_context_dependents",
+          "WP_Block::refresh_parsed_block_dependents",
+          "WP_Block::render",
+          "WP_Block::replace_html",
+          "WP_Block_Type::__construct",
+          "WP_Block_Type::__get",
+          "WP_Block_Type::__isset",
+          "WP_Block_Type::__set",
+          "WP_Block_Type::get_attributes",
+          "WP_Block_Type::get_uses_context",
+          "WP_Block_Type::get_variations",
+          "WP_Block_Type::is_dynamic",
+          "WP_Block_Type::prepare_attributes_for_render",
+          "WP_Block_Type::render",
+          "WP_Block_Type::set_props",
+          "WP_Block_Type_Registry::__wakeup",
+          "WP_Block_Type_Registry::get_all_registered",
+          "WP_Block_Type_Registry::get_instance",
+          "WP_Block_Type_Registry::get_registered",
+          "WP_Block_Type_Registry::is_registered",
+          "WP_Block_Type_Registry::register",
+          "WP_Block_Type_Registry::unregister",
+          "null::replace_rich_text"
+        ],
+        "properties": [
+          "WP_Block::$available_context",
+          "WP_Block::$block_type",
+          "WP_Block::$context",
+          "WP_Block::$inner_blocks",
+          "WP_Block::$inner_content",
+          "WP_Block::$inner_html",
+          "WP_Block::$name",
+          "WP_Block::$parsed_block",
+          "WP_Block::$registry",
+          "WP_Block_Type::$allowed_blocks",
+          "WP_Block_Type::$ancestor",
+          "WP_Block_Type::$api_version",
+          "WP_Block_Type::$attributes",
+          "WP_Block_Type::$block_hooks",
+          "WP_Block_Type::$category",
+          "WP_Block_Type::$deprecated_properties",
+          "WP_Block_Type::$description",
+          "WP_Block_Type::$editor_script_handles",
+          "WP_Block_Type::$editor_style_handles",
+          "WP_Block_Type::$example",
+          "WP_Block_Type::$icon",
+          "WP_Block_Type::$keywords",
+          "WP_Block_Type::$name",
+          "WP_Block_Type::$parent",
+          "WP_Block_Type::$provides_context",
+          "WP_Block_Type::$render_callback",
+          "WP_Block_Type::$script_handles",
+          "WP_Block_Type::$selectors",
+          "WP_Block_Type::$style_handles",
+          "WP_Block_Type::$styles",
+          "WP_Block_Type::$supports",
+          "WP_Block_Type::$textdomain",
+          "WP_Block_Type::$title",
+          "WP_Block_Type::$uses_context",
+          "WP_Block_Type::$variation_callback",
+          "WP_Block_Type::$variations",
+          "WP_Block_Type::$view_script_handles",
+          "WP_Block_Type::$view_script_module_ids",
+          "WP_Block_Type::$view_style_handles",
+          "WP_Block_Type_Registry::$instance",
+          "WP_Block_Type_Registry::$registered_block_types"
+        ]
+      },
+      "block_related": {
+        "count": 118,
+        "functions": [
+          "_wp_get_iframed_editor_assets",
+          "block_editor_rest_api_preload",
+          "get_allowed_block_types",
+          "get_block_categories",
+          "get_block_editor_settings",
+          "get_block_editor_theme_styles",
+          "get_classic_theme_supports_block_editor_settings",
+          "get_default_block_categories",
+          "get_default_block_editor_settings",
+          "get_legacy_widget_block_editor_settings",
+          "wp_get_first_block",
+          "wp_get_post_content_block_attributes",
+          "wp_initialize_site_preview_hooks"
+        ],
+        "classes": [
+          "WP_Block_Editor_Context",
+          "WP_Block_List",
+          "WP_Block_Metadata_Registry",
+          "WP_Block_Processor",
+          "WP_Block_Styles_Registry",
+          "WP_Classic_To_Block_Menu_Converter",
+          "WP_Widget_Block"
+        ],
+        "methods": [
+          "WP_Block_Editor_Context::__construct",
+          "WP_Block_List::__construct",
+          "WP_Block_List::count",
+          "WP_Block_List::current",
+          "WP_Block_List::key",
+          "WP_Block_List::next",
+          "WP_Block_List::offsetExists",
+          "WP_Block_List::offsetGet",
+          "WP_Block_List::offsetSet",
+          "WP_Block_List::offsetUnset",
+          "WP_Block_List::rewind",
+          "WP_Block_List::valid",
+          "WP_Block_Metadata_Registry::default_identifier_callback",
+          "WP_Block_Metadata_Registry::find_collection_path",
+          "WP_Block_Metadata_Registry::get_collection_block_metadata_files",
+          "WP_Block_Metadata_Registry::get_default_collection_roots",
+          "WP_Block_Metadata_Registry::get_metadata",
+          "WP_Block_Metadata_Registry::has_metadata",
+          "WP_Block_Metadata_Registry::is_valid_collection_path",
+          "WP_Block_Metadata_Registry::register_collection",
+          "WP_Block_Processor::__construct",
+          "WP_Block_Processor::allocate_and_return_parsed_attributes",
+          "WP_Block_Processor::are_equal_block_types",
+          "WP_Block_Processor::extract_full_block_and_advance",
+          "WP_Block_Processor::find_html_comment_end",
+          "WP_Block_Processor::get_attributes",
+          "WP_Block_Processor::get_block_type",
+          "WP_Block_Processor::get_breadcrumbs",
+          "WP_Block_Processor::get_delimiter_type",
+          "WP_Block_Processor::get_depth",
+          "WP_Block_Processor::get_html_content",
+          "WP_Block_Processor::get_last_error",
+          "WP_Block_Processor::get_last_json_error",
+          "WP_Block_Processor::get_printable_block_type",
+          "WP_Block_Processor::get_span",
+          "WP_Block_Processor::has_closing_flag",
+          "WP_Block_Processor::is_block_type",
+          "WP_Block_Processor::is_html",
+          "WP_Block_Processor::is_non_whitespace_html",
+          "WP_Block_Processor::next_block",
+          "WP_Block_Processor::next_delimiter",
+          "WP_Block_Processor::next_token",
+          "WP_Block_Processor::normalize_block_type",
+          "WP_Block_Processor::opens_block",
+          "WP_Block_Styles_Registry::get_all_registered",
+          "WP_Block_Styles_Registry::get_instance",
+          "WP_Block_Styles_Registry::get_registered",
+          "WP_Block_Styles_Registry::get_registered_styles_for_block",
+          "WP_Block_Styles_Registry::is_registered",
+          "WP_Block_Styles_Registry::register",
+          "WP_Block_Styles_Registry::unregister",
+          "WP_Classic_To_Block_Menu_Converter::convert",
+          "WP_Classic_To_Block_Menu_Converter::group_by_parent_id",
+          "WP_Classic_To_Block_Menu_Converter::to_blocks",
+          "WP_Widget_Block::__construct",
+          "WP_Widget_Block::form",
+          "WP_Widget_Block::get_dynamic_classname",
+          "WP_Widget_Block::set_is_wide_widget_in_customizer",
+          "WP_Widget_Block::update",
+          "WP_Widget_Block::widget"
+        ],
+        "properties": [
+          "WP_Block_Editor_Context::$name",
+          "WP_Block_Editor_Context::$post",
+          "WP_Block_List::$available_context",
+          "WP_Block_List::$blocks",
+          "WP_Block_List::$registry",
+          "WP_Block_Metadata_Registry::$collections",
+          "WP_Block_Metadata_Registry::$default_collection_roots",
+          "WP_Block_Metadata_Registry::$last_matched_collection",
+          "WP_Block_Processor::$after_previous_delimiter",
+          "WP_Block_Processor::$has_closing_flag",
+          "WP_Block_Processor::$json_at",
+          "WP_Block_Processor::$json_length",
+          "WP_Block_Processor::$last_error",
+          "WP_Block_Processor::$last_json_error",
+          "WP_Block_Processor::$matched_delimiter_at",
+          "WP_Block_Processor::$matched_delimiter_length",
+          "WP_Block_Processor::$name_at",
+          "WP_Block_Processor::$name_length",
+          "WP_Block_Processor::$namespace_at",
+          "WP_Block_Processor::$next_stack_op",
+          "WP_Block_Processor::$open_blocks_at",
+          "WP_Block_Processor::$open_blocks_length",
+          "WP_Block_Processor::$source_text",
+          "WP_Block_Processor::$state",
+          "WP_Block_Processor::$type",
+          "WP_Block_Processor::$was_void",
+          "WP_Block_Styles_Registry::$instance",
+          "WP_Block_Styles_Registry::$registered_block_styles",
+          "WP_Widget_Block::$default_instance"
+        ]
+      },
+      "block_supports": {
+        "count": 76,
+        "functions": [
+          "_wp_add_block_level_preset_styles",
+          "_wp_add_block_level_presets_class",
+          "_wp_get_presets_class_name",
+          "get_block_wrapper_attributes",
+          "wp_add_parent_layout_to_parsed_block",
+          "wp_apply_alignment_support",
+          "wp_apply_anchor_support",
+          "wp_apply_aria_label_support",
+          "wp_apply_border_support",
+          "wp_apply_colors_support",
+          "wp_apply_custom_classname_support",
+          "wp_apply_dimensions_support",
+          "wp_apply_generated_classname_support",
+          "wp_apply_shadow_support",
+          "wp_apply_spacing_support",
+          "wp_apply_typography_support",
+          "wp_custom_css_force_filtered_html_on_import_filter",
+          "wp_custom_css_kses_init",
+          "wp_custom_css_kses_init_filters",
+          "wp_custom_css_remove_filters",
+          "wp_enqueue_block_custom_css",
+          "wp_enqueue_block_style_variation_styles",
+          "wp_get_block_default_classname",
+          "wp_get_block_style_variation_name_from_class",
+          "wp_get_block_style_variation_name_from_registered_style",
+          "wp_get_computed_fluid_typography_value",
+          "wp_get_elements_class_name",
+          "wp_get_layout_definitions",
+          "wp_get_layout_style",
+          "wp_get_typography_font_size_value",
+          "wp_get_typography_value_and_unit",
+          "wp_has_border_feature_support",
+          "wp_mark_auto_generate_control_attributes",
+          "wp_register_alignment_support",
+          "wp_register_anchor_support",
+          "wp_register_aria_label_support",
+          "wp_register_background_support",
+          "wp_register_block_style_variations_from_theme_json_partials",
+          "wp_register_border_support",
+          "wp_register_colors_support",
+          "wp_register_custom_classname_support",
+          "wp_register_custom_css_support",
+          "wp_register_dimensions_support",
+          "wp_register_layout_support",
+          "wp_register_position_support",
+          "wp_register_shadow_support",
+          "wp_register_spacing_support",
+          "wp_register_typography_support",
+          "wp_render_background_support",
+          "wp_render_block_style_variation_class_name",
+          "wp_render_block_style_variation_support_styles",
+          "wp_render_block_visibility_support",
+          "wp_render_custom_css_class_name",
+          "wp_render_custom_css_support_styles",
+          "wp_render_dimensions_support",
+          "wp_render_elements_class_name",
+          "wp_render_elements_support_styles",
+          "wp_render_layout_support_flag",
+          "wp_render_position_support",
+          "wp_render_typography_support",
+          "wp_resolve_block_style_variation_ref_values",
+          "wp_restore_group_inner_container",
+          "wp_restore_image_outer_container",
+          "wp_should_add_elements_class_name",
+          "wp_should_skip_block_supports_serialization",
+          "wp_strip_custom_css_from_blocks",
+          "wp_typography_get_preset_inline_style_value"
+        ],
+        "classes": [
+          "WP_Block_Supports"
+        ],
+        "methods": [
+          "WP_Block_Supports::apply_block_supports",
+          "WP_Block_Supports::get_instance",
+          "WP_Block_Supports::init",
+          "WP_Block_Supports::register",
+          "WP_Block_Supports::register_attributes"
+        ],
+        "properties": [
+          "WP_Block_Supports::$block_supports",
+          "WP_Block_Supports::$block_to_render",
+          "WP_Block_Supports::$instance"
+        ]
+      },
+      "core_block_library": {
+        "count": 206,
+        "functions": [
+          "_delete_custom_logo_on_remove_site_logo",
+          "_delete_site_logo_on_remove_custom_logo",
+          "_delete_site_logo_on_remove_custom_logo_on_setup_theme",
+          "_delete_site_logo_on_remove_theme_mods",
+          "_override_custom_logo_theme_mod",
+          "_sync_custom_logo_to_site_logo",
+          "apply_block_core_search_border_style",
+          "apply_block_core_search_border_styles",
+          "block_core_accordion_item_render",
+          "block_core_archives_build_dropdown_script",
+          "block_core_breadcrumbs_create_item",
+          "block_core_breadcrumbs_create_page_number_item",
+          "block_core_breadcrumbs_get_archive_breadcrumbs",
+          "block_core_breadcrumbs_get_hierarchical_post_type_breadcrumbs",
+          "block_core_breadcrumbs_get_post_title",
+          "block_core_breadcrumbs_get_term_ancestors_items",
+          "block_core_breadcrumbs_get_terms_breadcrumbs",
+          "block_core_breadcrumbs_is_paged",
+          "block_core_calendar_has_published_posts",
+          "block_core_calendar_update_has_published_post_on_delete",
+          "block_core_calendar_update_has_published_post_on_transition_post_status",
+          "block_core_calendar_update_has_published_posts",
+          "block_core_details_set_img_fetchpriority_low",
+          "block_core_gallery_data_id_backcompatibility",
+          "block_core_gallery_render",
+          "block_core_gallery_render_context",
+          "block_core_heading_render",
+          "block_core_home_link_build_css_colors",
+          "block_core_home_link_build_css_font_sizes",
+          "block_core_home_link_build_li_wrapper_attributes",
+          "block_core_list_render",
+          "block_core_navigation_add_directives_to_overlay_close",
+          "block_core_navigation_add_directives_to_submenu",
+          "block_core_navigation_block_contains_core_navigation",
+          "block_core_navigation_block_tree_has_block_type",
+          "block_core_navigation_build_css_colors",
+          "block_core_navigation_build_css_font_sizes",
+          "block_core_navigation_filter_out_empty_blocks",
+          "block_core_navigation_from_block_get_post_ids",
+          "block_core_navigation_get_classic_menu_fallback",
+          "block_core_navigation_get_classic_menu_fallback_blocks",
+          "block_core_navigation_get_fallback_blocks",
+          "block_core_navigation_get_inner_blocks_from_unstable_location",
+          "block_core_navigation_get_menu_items_at_location",
+          "block_core_navigation_get_most_recently_published_navigation",
+          "block_core_navigation_get_post_ids",
+          "block_core_navigation_get_submenu_visibility",
+          "block_core_navigation_link_build_css_colors",
+          "block_core_navigation_link_build_css_font_sizes",
+          "block_core_navigation_link_build_variations",
+          "block_core_navigation_link_filter_variations",
+          "block_core_navigation_link_maybe_urldecode",
+          "block_core_navigation_maybe_use_classic_menu_fallback",
+          "block_core_navigation_overlay_html_has_close_block",
+          "block_core_navigation_parse_blocks_from_menu_items",
+          "block_core_navigation_render_submenu_icon",
+          "block_core_navigation_set_overlay_image_fetch_priority",
+          "block_core_navigation_sort_menu_items_by_parent_id",
+          "block_core_navigation_submenu_build_css_font_sizes",
+          "block_core_navigation_submenu_get_submenu_visibility",
+          "block_core_navigation_typographic_presets_backcompatibility",
+          "block_core_page_list_build_css_colors",
+          "block_core_page_list_build_css_font_sizes",
+          "block_core_page_list_get_submenu_visibility",
+          "block_core_page_list_nest_pages",
+          "block_core_page_list_render_nested_page_list",
+          "block_core_paragraph_add_class",
+          "block_core_shared_navigation_item_should_render",
+          "block_core_shared_navigation_render_submenu_icon",
+          "block_core_social_link_get_color_classes",
+          "block_core_social_link_get_color_styles",
+          "block_core_social_link_get_icon",
+          "block_core_social_link_get_name",
+          "block_core_social_link_services",
+          "build_dropdown_script_block_core_categories",
+          "build_variation_for_navigation_link",
+          "classnames_for_block_core_search",
+          "discard_sidebar_being_rendered",
+          "get_block_core_avatar_border_attributes",
+          "get_border_color_classes_for_block_core_search",
+          "get_color_classes_for_block_core_search",
+          "get_typography_classes_for_block_core_search",
+          "get_typography_styles_for_block_core_search",
+          "handle_legacy_widget_preview_iframe",
+          "note_sidebar_being_rendered",
+          "register_block_core_accordion",
+          "register_block_core_accordion_item",
+          "register_block_core_archives",
+          "register_block_core_avatar",
+          "register_block_core_block",
+          "register_block_core_breadcrumbs",
+          "register_block_core_button",
+          "register_block_core_calendar",
+          "register_block_core_categories",
+          "register_block_core_cover",
+          "register_block_core_details",
+          "register_block_core_footnotes",
+          "register_block_core_footnotes_post_meta",
+          "register_block_core_gallery",
+          "register_block_core_heading",
+          "register_block_core_home_link",
+          "register_block_core_icon",
+          "register_block_core_legacy_widget",
+          "register_block_core_list",
+          "register_block_core_loginout",
+          "register_block_core_navigation",
+          "register_block_core_navigation_link",
+          "register_block_core_navigation_overlay_close",
+          "register_block_core_navigation_submenu",
+          "register_block_core_page_list",
+          "register_block_core_page_list_item",
+          "register_block_core_paragraph",
+          "register_block_core_pattern",
+          "register_block_core_query_no_results",
+          "register_block_core_query_pagination",
+          "register_block_core_query_pagination_next",
+          "register_block_core_query_pagination_numbers",
+          "register_block_core_query_pagination_previous",
+          "register_block_core_query_title",
+          "register_block_core_query_total",
+          "register_block_core_read_more",
+          "register_block_core_rss",
+          "register_block_core_search",
+          "register_block_core_shortcode",
+          "register_block_core_site_icon_setting",
+          "register_block_core_site_logo",
+          "register_block_core_site_logo_setting",
+          "register_block_core_site_tagline",
+          "register_block_core_site_title",
+          "register_block_core_social_link",
+          "register_block_core_tag_cloud",
+          "register_block_core_video",
+          "register_block_core_widget_group",
+          "render_block_core_accordion",
+          "render_block_core_archives",
+          "render_block_core_avatar",
+          "render_block_core_block",
+          "render_block_core_breadcrumbs",
+          "render_block_core_button",
+          "render_block_core_calendar",
+          "render_block_core_categories",
+          "render_block_core_cover",
+          "render_block_core_footnotes",
+          "render_block_core_home_link",
+          "render_block_core_icon",
+          "render_block_core_legacy_widget",
+          "render_block_core_loginout",
+          "render_block_core_navigation",
+          "render_block_core_navigation_link",
+          "render_block_core_navigation_overlay_close",
+          "render_block_core_navigation_submenu",
+          "render_block_core_page_list",
+          "render_block_core_pattern",
+          "render_block_core_query_no_results",
+          "render_block_core_query_pagination",
+          "render_block_core_query_pagination_next",
+          "render_block_core_query_pagination_numbers",
+          "render_block_core_query_pagination_previous",
+          "render_block_core_query_title",
+          "render_block_core_query_total",
+          "render_block_core_read_more",
+          "render_block_core_rss",
+          "render_block_core_search",
+          "render_block_core_shortcode",
+          "render_block_core_site_logo",
+          "render_block_core_site_tagline",
+          "render_block_core_site_title",
+          "render_block_core_social_link",
+          "render_block_core_tag_cloud",
+          "render_block_core_video",
+          "render_block_core_widget_group",
+          "styles_for_block_core_search",
+          "wp_add_footnotes_to_revision",
+          "wp_get_footnotes_from_revision"
+        ],
+        "classes": [
+          "WP_Block_Cloner",
+          "WP_Navigation_Block_Renderer"
+        ],
+        "methods": [
+          "WP_Block_Cloner::clone_instance",
+          "WP_Navigation_Block_Renderer::disable_overlay_menu_for_nested_navigation_blocks",
+          "WP_Navigation_Block_Renderer::does_block_need_a_list_item_wrapper",
+          "WP_Navigation_Block_Renderer::get_classes",
+          "WP_Navigation_Block_Renderer::get_inner_block_markup",
+          "WP_Navigation_Block_Renderer::get_inner_blocks",
+          "WP_Navigation_Block_Renderer::get_inner_blocks_from_fallback",
+          "WP_Navigation_Block_Renderer::get_inner_blocks_from_navigation_post",
+          "WP_Navigation_Block_Renderer::get_inner_blocks_html",
+          "WP_Navigation_Block_Renderer::get_layout_class",
+          "WP_Navigation_Block_Renderer::get_markup_for_inner_block",
+          "WP_Navigation_Block_Renderer::get_nav_attributes",
+          "WP_Navigation_Block_Renderer::get_nav_element_directives",
+          "WP_Navigation_Block_Renderer::get_navigation_name",
+          "WP_Navigation_Block_Renderer::get_overlay_blocks_from_template_part",
+          "WP_Navigation_Block_Renderer::get_overlay_inline_styles",
+          "WP_Navigation_Block_Renderer::get_responsive_container_classes",
+          "WP_Navigation_Block_Renderer::get_responsive_container_markup",
+          "WP_Navigation_Block_Renderer::get_styles",
+          "WP_Navigation_Block_Renderer::get_template_part_blocks_html",
+          "WP_Navigation_Block_Renderer::get_unique_navigation_name",
+          "WP_Navigation_Block_Renderer::handle_view_script_module_loading",
+          "WP_Navigation_Block_Renderer::has_submenus",
+          "WP_Navigation_Block_Renderer::is_interactive",
+          "WP_Navigation_Block_Renderer::is_responsive",
+          "WP_Navigation_Block_Renderer::render"
+        ],
+        "properties": [
+          "WP_Navigation_Block_Renderer::$has_submenus",
+          "WP_Navigation_Block_Renderer::$needs_list_item_wrapper",
+          "WP_Navigation_Block_Renderer::$seen_menu_names"
+        ]
+      },
+      "fonts_api": {
+        "count": 71,
+        "functions": [
+          "_wp_after_delete_font_family",
+          "_wp_before_delete_font_face",
+          "_wp_filter_font_directory",
+          "_wp_register_default_font_collections",
+          "wp_font_dir",
+          "wp_font_library_intercept_render",
+          "wp_font_library_preload_data",
+          "wp_font_library_render_page",
+          "wp_font_library_wp_admin_enqueue_scripts",
+          "wp_font_library_wp_admin_preload_data",
+          "wp_font_library_wp_admin_render_page",
+          "wp_get_font_dir",
+          "wp_get_font_library_menu_items",
+          "wp_get_font_library_routes",
+          "wp_get_font_library_wp_admin_menu_items",
+          "wp_get_font_library_wp_admin_routes",
+          "wp_print_font_faces",
+          "wp_print_font_faces_from_style_variations",
+          "wp_register_font_collection",
+          "wp_register_font_library_menu_item",
+          "wp_register_font_library_route",
+          "wp_register_font_library_wp_admin_menu_item",
+          "wp_register_font_library_wp_admin_route",
+          "wp_unregister_font_collection"
+        ],
+        "classes": [
+          "WP_Font_Collection",
+          "WP_Font_Face",
+          "WP_Font_Face_Resolver",
+          "WP_Font_Library",
+          "WP_Font_Utils"
+        ],
+        "methods": [
+          "WP_Font_Collection::__construct",
+          "WP_Font_Collection::get_data",
+          "WP_Font_Collection::get_sanitization_schema",
+          "WP_Font_Collection::load_from_file",
+          "WP_Font_Collection::load_from_json",
+          "WP_Font_Collection::load_from_url",
+          "WP_Font_Collection::sanitize_and_validate_data",
+          "WP_Font_Face::build_font_face_css",
+          "WP_Font_Face::compile_src",
+          "WP_Font_Face::compile_variations",
+          "WP_Font_Face::generate_and_print",
+          "WP_Font_Face::get_css",
+          "WP_Font_Face::order_src",
+          "WP_Font_Face::validate_font_face_declarations",
+          "WP_Font_Face::validate_fonts",
+          "WP_Font_Face_Resolver::convert_font_face_properties",
+          "WP_Font_Face_Resolver::get_fonts_from_style_variations",
+          "WP_Font_Face_Resolver::get_fonts_from_theme_json",
+          "WP_Font_Face_Resolver::maybe_parse_name_from_comma_separated_list",
+          "WP_Font_Face_Resolver::parse_settings",
+          "WP_Font_Face_Resolver::to_kebab_case",
+          "WP_Font_Face_Resolver::to_theme_file_uri",
+          "WP_Font_Library::get_font_collection",
+          "WP_Font_Library::get_font_collections",
+          "WP_Font_Library::get_instance",
+          "WP_Font_Library::is_collection_registered",
+          "WP_Font_Library::register_font_collection",
+          "WP_Font_Library::unregister_font_collection",
+          "WP_Font_Utils::apply_sanitizer",
+          "WP_Font_Utils::get_allowed_font_mime_types",
+          "WP_Font_Utils::get_font_face_slug",
+          "WP_Font_Utils::maybe_add_quotes",
+          "WP_Font_Utils::sanitize_font_family",
+          "WP_Font_Utils::sanitize_from_schema"
+        ],
+        "properties": [
+          "WP_Font_Collection::$data",
+          "WP_Font_Collection::$slug",
+          "WP_Font_Collection::$src",
+          "WP_Font_Face::$font_face_property_defaults",
+          "WP_Font_Face::$valid_font_display",
+          "WP_Font_Face::$valid_font_face_properties",
+          "WP_Font_Library::$collections",
+          "WP_Font_Library::$instance"
+        ]
+      },
+      "html_api": {
+        "count": 331,
+        "functions": [],
+        "classes": [
+          "WP_HTML_Active_Formatting_Elements",
+          "WP_HTML_Attribute_Token",
+          "WP_HTML_Decoder",
+          "WP_HTML_Doctype_Info",
+          "WP_HTML_Open_Elements",
+          "WP_HTML_Processor",
+          "WP_HTML_Processor_State",
+          "WP_HTML_Span",
+          "WP_HTML_Stack_Event",
+          "WP_HTML_Tag_Processor",
+          "WP_HTML_Text_Replacement",
+          "WP_HTML_Token",
+          "WP_HTML_Unsupported_Exception"
+        ],
+        "methods": [
+          "WP_HTML_Active_Formatting_Elements::clear_up_to_last_marker",
+          "WP_HTML_Active_Formatting_Elements::contains_node",
+          "WP_HTML_Active_Formatting_Elements::count",
+          "WP_HTML_Active_Formatting_Elements::current_node",
+          "WP_HTML_Active_Formatting_Elements::insert_marker",
+          "WP_HTML_Active_Formatting_Elements::push",
+          "WP_HTML_Active_Formatting_Elements::remove_node",
+          "WP_HTML_Active_Formatting_Elements::walk_down",
+          "WP_HTML_Active_Formatting_Elements::walk_up",
+          "WP_HTML_Attribute_Token::__construct",
+          "WP_HTML_Decoder::attribute_starts_with",
+          "WP_HTML_Decoder::code_point_to_utf8_bytes",
+          "WP_HTML_Decoder::decode",
+          "WP_HTML_Decoder::decode_attribute",
+          "WP_HTML_Decoder::decode_text_node",
+          "WP_HTML_Decoder::read_character_reference",
+          "WP_HTML_Doctype_Info::__construct",
+          "WP_HTML_Doctype_Info::from_doctype_token",
+          "WP_HTML_Open_Elements::__wakeup",
+          "WP_HTML_Open_Elements::after_element_pop",
+          "WP_HTML_Open_Elements::after_element_push",
+          "WP_HTML_Open_Elements::at",
+          "WP_HTML_Open_Elements::clear_to_table_body_context",
+          "WP_HTML_Open_Elements::clear_to_table_context",
+          "WP_HTML_Open_Elements::clear_to_table_row_context",
+          "WP_HTML_Open_Elements::contains",
+          "WP_HTML_Open_Elements::contains_node",
+          "WP_HTML_Open_Elements::count",
+          "WP_HTML_Open_Elements::current_node",
+          "WP_HTML_Open_Elements::current_node_is",
+          "WP_HTML_Open_Elements::has_element_in_button_scope",
+          "WP_HTML_Open_Elements::has_element_in_list_item_scope",
+          "WP_HTML_Open_Elements::has_element_in_scope",
+          "WP_HTML_Open_Elements::has_element_in_select_scope",
+          "WP_HTML_Open_Elements::has_element_in_specific_scope",
+          "WP_HTML_Open_Elements::has_element_in_table_scope",
+          "WP_HTML_Open_Elements::has_p_in_button_scope",
+          "WP_HTML_Open_Elements::pop",
+          "WP_HTML_Open_Elements::pop_until",
+          "WP_HTML_Open_Elements::push",
+          "WP_HTML_Open_Elements::remove_node",
+          "WP_HTML_Open_Elements::set_pop_handler",
+          "WP_HTML_Open_Elements::set_push_handler",
+          "WP_HTML_Open_Elements::walk_down",
+          "WP_HTML_Open_Elements::walk_up",
+          "WP_HTML_Processor::__construct",
+          "WP_HTML_Processor::add_class",
+          "WP_HTML_Processor::bail",
+          "WP_HTML_Processor::bookmark_token",
+          "WP_HTML_Processor::class_list",
+          "WP_HTML_Processor::close_a_p_element",
+          "WP_HTML_Processor::close_cell",
+          "WP_HTML_Processor::create_fragment",
+          "WP_HTML_Processor::create_fragment_at_current_node",
+          "WP_HTML_Processor::create_full_parser",
+          "WP_HTML_Processor::expects_closer",
+          "WP_HTML_Processor::generate_implied_end_tags",
+          "WP_HTML_Processor::generate_implied_end_tags_thoroughly",
+          "WP_HTML_Processor::get_adjusted_current_node",
+          "WP_HTML_Processor::get_attribute",
+          "WP_HTML_Processor::get_attribute_names_with_prefix",
+          "WP_HTML_Processor::get_breadcrumbs",
+          "WP_HTML_Processor::get_comment_type",
+          "WP_HTML_Processor::get_current_depth",
+          "WP_HTML_Processor::get_encoding",
+          "WP_HTML_Processor::get_last_error",
+          "WP_HTML_Processor::get_modifiable_text",
+          "WP_HTML_Processor::get_namespace",
+          "WP_HTML_Processor::get_tag",
+          "WP_HTML_Processor::get_token_name",
+          "WP_HTML_Processor::get_token_type",
+          "WP_HTML_Processor::get_unsupported_exception",
+          "WP_HTML_Processor::has_bookmark",
+          "WP_HTML_Processor::has_class",
+          "WP_HTML_Processor::has_self_closing_flag",
+          "WP_HTML_Processor::insert_foreign_element",
+          "WP_HTML_Processor::insert_html_element",
+          "WP_HTML_Processor::insert_virtual_node",
+          "WP_HTML_Processor::is_html_integration_point",
+          "WP_HTML_Processor::is_mathml_integration_point",
+          "WP_HTML_Processor::is_special",
+          "WP_HTML_Processor::is_tag_closer",
+          "WP_HTML_Processor::is_virtual",
+          "WP_HTML_Processor::is_void",
+          "WP_HTML_Processor::matches_breadcrumbs",
+          "WP_HTML_Processor::next_tag",
+          "WP_HTML_Processor::next_token",
+          "WP_HTML_Processor::next_visitable_token",
+          "WP_HTML_Processor::normalize",
+          "WP_HTML_Processor::reconstruct_active_formatting_elements",
+          "WP_HTML_Processor::release_bookmark",
+          "WP_HTML_Processor::remove_attribute",
+          "WP_HTML_Processor::remove_class",
+          "WP_HTML_Processor::reset_insertion_mode_appropriately",
+          "WP_HTML_Processor::run_adoption_agency_algorithm",
+          "WP_HTML_Processor::seek",
+          "WP_HTML_Processor::serialize",
+          "WP_HTML_Processor::serialize_token",
+          "WP_HTML_Processor::set_attribute",
+          "WP_HTML_Processor::set_bookmark",
+          "WP_HTML_Processor::step",
+          "WP_HTML_Processor::step_after_after_body",
+          "WP_HTML_Processor::step_after_after_frameset",
+          "WP_HTML_Processor::step_after_body",
+          "WP_HTML_Processor::step_after_frameset",
+          "WP_HTML_Processor::step_after_head",
+          "WP_HTML_Processor::step_before_head",
+          "WP_HTML_Processor::step_before_html",
+          "WP_HTML_Processor::step_in_body",
+          "WP_HTML_Processor::step_in_caption",
+          "WP_HTML_Processor::step_in_cell",
+          "WP_HTML_Processor::step_in_column_group",
+          "WP_HTML_Processor::step_in_foreign_content",
+          "WP_HTML_Processor::step_in_frameset",
+          "WP_HTML_Processor::step_in_head",
+          "WP_HTML_Processor::step_in_head_noscript",
+          "WP_HTML_Processor::step_in_row",
+          "WP_HTML_Processor::step_in_select",
+          "WP_HTML_Processor::step_in_select_in_table",
+          "WP_HTML_Processor::step_in_table",
+          "WP_HTML_Processor::step_in_table_body",
+          "WP_HTML_Processor::step_in_table_text",
+          "WP_HTML_Processor::step_in_template",
+          "WP_HTML_Processor::step_initial",
+          "WP_HTML_Processor_State::__construct",
+          "WP_HTML_Span::__construct",
+          "WP_HTML_Stack_Event::__construct",
+          "WP_HTML_Tag_Processor::__construct",
+          "WP_HTML_Tag_Processor::__toString",
+          "WP_HTML_Tag_Processor::__wakeup",
+          "WP_HTML_Tag_Processor::add_class",
+          "WP_HTML_Tag_Processor::after_tag",
+          "WP_HTML_Tag_Processor::apply_attributes_updates",
+          "WP_HTML_Tag_Processor::base_class_next_token",
+          "WP_HTML_Tag_Processor::change_parsing_namespace",
+          "WP_HTML_Tag_Processor::class_list",
+          "WP_HTML_Tag_Processor::class_name_updates_to_attributes_updates",
+          "WP_HTML_Tag_Processor::escape_javascript_script_contents",
+          "WP_HTML_Tag_Processor::get_attribute",
+          "WP_HTML_Tag_Processor::get_attribute_names_with_prefix",
+          "WP_HTML_Tag_Processor::get_comment_type",
+          "WP_HTML_Tag_Processor::get_doctype_info",
+          "WP_HTML_Tag_Processor::get_enqueued_attribute_value",
+          "WP_HTML_Tag_Processor::get_full_comment_text",
+          "WP_HTML_Tag_Processor::get_modifiable_text",
+          "WP_HTML_Tag_Processor::get_namespace",
+          "WP_HTML_Tag_Processor::get_qualified_attribute_name",
+          "WP_HTML_Tag_Processor::get_qualified_tag_name",
+          "WP_HTML_Tag_Processor::get_script_content_type",
+          "WP_HTML_Tag_Processor::get_tag",
+          "WP_HTML_Tag_Processor::get_token_name",
+          "WP_HTML_Tag_Processor::get_token_type",
+          "WP_HTML_Tag_Processor::get_updated_html",
+          "WP_HTML_Tag_Processor::has_bookmark",
+          "WP_HTML_Tag_Processor::has_class",
+          "WP_HTML_Tag_Processor::has_self_closing_flag",
+          "WP_HTML_Tag_Processor::is_tag_closer",
+          "WP_HTML_Tag_Processor::matches",
+          "WP_HTML_Tag_Processor::next_tag",
+          "WP_HTML_Tag_Processor::next_token",
+          "WP_HTML_Tag_Processor::parse_next_attribute",
+          "WP_HTML_Tag_Processor::parse_next_tag",
+          "WP_HTML_Tag_Processor::parse_query",
+          "WP_HTML_Tag_Processor::paused_at_incomplete_token",
+          "WP_HTML_Tag_Processor::release_bookmark",
+          "WP_HTML_Tag_Processor::remove_attribute",
+          "WP_HTML_Tag_Processor::remove_class",
+          "WP_HTML_Tag_Processor::seek",
+          "WP_HTML_Tag_Processor::set_attribute",
+          "WP_HTML_Tag_Processor::set_bookmark",
+          "WP_HTML_Tag_Processor::set_modifiable_text",
+          "WP_HTML_Tag_Processor::skip_rawtext",
+          "WP_HTML_Tag_Processor::skip_rcdata",
+          "WP_HTML_Tag_Processor::skip_script_data",
+          "WP_HTML_Tag_Processor::skip_whitespace",
+          "WP_HTML_Tag_Processor::sort_start_ascending",
+          "WP_HTML_Tag_Processor::subdivide_text_appropriately",
+          "WP_HTML_Text_Replacement::__construct",
+          "WP_HTML_Token::__construct",
+          "WP_HTML_Token::__destruct",
+          "WP_HTML_Token::__wakeup",
+          "WP_HTML_Unsupported_Exception::__construct"
+        ],
+        "properties": [
+          "WP_HTML_Active_Formatting_Elements::$stack",
+          "WP_HTML_Attribute_Token::$is_true",
+          "WP_HTML_Attribute_Token::$length",
+          "WP_HTML_Attribute_Token::$name",
+          "WP_HTML_Attribute_Token::$start",
+          "WP_HTML_Attribute_Token::$value_length",
+          "WP_HTML_Attribute_Token::$value_starts_at",
+          "WP_HTML_Doctype_Info::$indicated_compatibility_mode",
+          "WP_HTML_Doctype_Info::$name",
+          "WP_HTML_Doctype_Info::$public_identifier",
+          "WP_HTML_Doctype_Info::$system_identifier",
+          "WP_HTML_Open_Elements::$has_p_in_button_scope",
+          "WP_HTML_Open_Elements::$pop_handler",
+          "WP_HTML_Open_Elements::$push_handler",
+          "WP_HTML_Open_Elements::$stack",
+          "WP_HTML_Processor::$bookmark_counter",
+          "WP_HTML_Processor::$breadcrumbs",
+          "WP_HTML_Processor::$context_node",
+          "WP_HTML_Processor::$current_element",
+          "WP_HTML_Processor::$element_queue",
+          "WP_HTML_Processor::$last_error",
+          "WP_HTML_Processor::$release_internal_bookmark_on_destruct",
+          "WP_HTML_Processor::$state",
+          "WP_HTML_Processor::$unsupported_exception",
+          "WP_HTML_Processor_State::$active_formatting_elements",
+          "WP_HTML_Processor_State::$context_node",
+          "WP_HTML_Processor_State::$current_token",
+          "WP_HTML_Processor_State::$encoding",
+          "WP_HTML_Processor_State::$encoding_confidence",
+          "WP_HTML_Processor_State::$form_element",
+          "WP_HTML_Processor_State::$frameset_ok",
+          "WP_HTML_Processor_State::$head_element",
+          "WP_HTML_Processor_State::$insertion_mode",
+          "WP_HTML_Processor_State::$stack_of_open_elements",
+          "WP_HTML_Processor_State::$stack_of_template_insertion_modes",
+          "WP_HTML_Span::$length",
+          "WP_HTML_Span::$start",
+          "WP_HTML_Stack_Event::$operation",
+          "WP_HTML_Stack_Event::$provenance",
+          "WP_HTML_Stack_Event::$token",
+          "WP_HTML_Tag_Processor::$attributes",
+          "WP_HTML_Tag_Processor::$bookmarks",
+          "WP_HTML_Tag_Processor::$bytes_already_parsed",
+          "WP_HTML_Tag_Processor::$classname_updates",
+          "WP_HTML_Tag_Processor::$comment_type",
+          "WP_HTML_Tag_Processor::$compat_mode",
+          "WP_HTML_Tag_Processor::$duplicate_attributes",
+          "WP_HTML_Tag_Processor::$html",
+          "WP_HTML_Tag_Processor::$is_closing_tag",
+          "WP_HTML_Tag_Processor::$last_query",
+          "WP_HTML_Tag_Processor::$lexical_updates",
+          "WP_HTML_Tag_Processor::$parser_state",
+          "WP_HTML_Tag_Processor::$parsing_namespace",
+          "WP_HTML_Tag_Processor::$seek_count",
+          "WP_HTML_Tag_Processor::$skip_newline_at",
+          "WP_HTML_Tag_Processor::$sought_class_name",
+          "WP_HTML_Tag_Processor::$sought_match_offset",
+          "WP_HTML_Tag_Processor::$sought_tag_name",
+          "WP_HTML_Tag_Processor::$stop_on_tag_closers",
+          "WP_HTML_Tag_Processor::$tag_name_length",
+          "WP_HTML_Tag_Processor::$tag_name_starts_at",
+          "WP_HTML_Tag_Processor::$text_length",
+          "WP_HTML_Tag_Processor::$text_node_classification",
+          "WP_HTML_Tag_Processor::$text_starts_at",
+          "WP_HTML_Tag_Processor::$token_length",
+          "WP_HTML_Tag_Processor::$token_starts_at",
+          "WP_HTML_Text_Replacement::$length",
+          "WP_HTML_Text_Replacement::$start",
+          "WP_HTML_Text_Replacement::$text",
+          "WP_HTML_Token::$bookmark_name",
+          "WP_HTML_Token::$has_self_closing_flag",
+          "WP_HTML_Token::$integration_node_type",
+          "WP_HTML_Token::$namespace",
+          "WP_HTML_Token::$node_name",
+          "WP_HTML_Token::$on_destroy",
+          "WP_HTML_Unsupported_Exception::$active_formatting_elements",
+          "WP_HTML_Unsupported_Exception::$stack_of_open_elements",
+          "WP_HTML_Unsupported_Exception::$token",
+          "WP_HTML_Unsupported_Exception::$token_at",
+          "WP_HTML_Unsupported_Exception::$token_name"
+        ]
+      },
+      "interactivity_api": {
+        "count": 57,
+        "functions": [
+          "wp_interactivity",
+          "wp_interactivity_config",
+          "wp_interactivity_data_wp_context",
+          "wp_interactivity_get_context",
+          "wp_interactivity_get_element",
+          "wp_interactivity_process_directives",
+          "wp_interactivity_state"
+        ],
+        "classes": [
+          "WP_Interactivity_API",
+          "WP_Interactivity_API_Directives_Processor"
+        ],
+        "methods": [
+          "WP_Interactivity_API::_process_directives",
+          "WP_Interactivity_API::add_client_navigation_support_to_script_module",
+          "WP_Interactivity_API::add_hooks",
+          "WP_Interactivity_API::add_load_on_client_navigation_attribute_to_script_modules",
+          "WP_Interactivity_API::config",
+          "WP_Interactivity_API::data_wp_bind_processor",
+          "WP_Interactivity_API::data_wp_class_processor",
+          "WP_Interactivity_API::data_wp_context_processor",
+          "WP_Interactivity_API::data_wp_each_processor",
+          "WP_Interactivity_API::data_wp_interactive_processor",
+          "WP_Interactivity_API::data_wp_router_region_processor",
+          "WP_Interactivity_API::data_wp_style_processor",
+          "WP_Interactivity_API::data_wp_text_processor",
+          "WP_Interactivity_API::evaluate",
+          "WP_Interactivity_API::extract_directive_value",
+          "WP_Interactivity_API::filter_script_module_interactivity_data",
+          "WP_Interactivity_API::filter_script_module_interactivity_router_data",
+          "WP_Interactivity_API::get_context",
+          "WP_Interactivity_API::get_directive_entries",
+          "WP_Interactivity_API::get_element",
+          "WP_Interactivity_API::get_router_animation_styles",
+          "WP_Interactivity_API::kebab_to_camel_case",
+          "WP_Interactivity_API::merge_style_property",
+          "WP_Interactivity_API::parse_directive_name",
+          "WP_Interactivity_API::print_client_interactivity_data",
+          "WP_Interactivity_API::print_router_loading_and_screen_reader_markup",
+          "WP_Interactivity_API::print_router_markup",
+          "WP_Interactivity_API::process_directives",
+          "WP_Interactivity_API::register_script_modules",
+          "WP_Interactivity_API::state",
+          "WP_Interactivity_API_Directives_Processor::append_content_after_template_tag_closer",
+          "WP_Interactivity_API_Directives_Processor::get_after_opener_tag_and_before_closer_tag_positions",
+          "WP_Interactivity_API_Directives_Processor::get_balanced_tag_bookmarks",
+          "WP_Interactivity_API_Directives_Processor::get_content_between_balanced_template_tags",
+          "WP_Interactivity_API_Directives_Processor::has_and_visits_its_closer_tag",
+          "WP_Interactivity_API_Directives_Processor::next_balanced_tag_closer_tag",
+          "WP_Interactivity_API_Directives_Processor::set_content_between_balanced_tags",
+          "WP_Interactivity_API_Directives_Processor::skip_to_tag_closer"
+        ],
+        "properties": [
+          "WP_Interactivity_API::$config_data",
+          "WP_Interactivity_API::$context_stack",
+          "WP_Interactivity_API::$current_element",
+          "WP_Interactivity_API::$derived_state_closures",
+          "WP_Interactivity_API::$directive_processors",
+          "WP_Interactivity_API::$has_processed_router_region",
+          "WP_Interactivity_API::$namespace_stack",
+          "WP_Interactivity_API::$script_modules_that_can_load_on_client_navigation",
+          "WP_Interactivity_API::$state_data"
+        ]
+      },
+      "style_engine": {
+        "count": 59,
+        "functions": [
+          "wp_style_engine_get_styles",
+          "wp_style_engine_get_stylesheet_from_context",
+          "wp_style_engine_get_stylesheet_from_css_rules"
+        ],
+        "classes": [
+          "WP_Style_Engine",
+          "WP_Style_Engine_CSS_Declarations",
+          "WP_Style_Engine_CSS_Rule",
+          "WP_Style_Engine_CSS_Rules_Store",
+          "WP_Style_Engine_Processor"
+        ],
+        "methods": [
+          "WP_Style_Engine::compile_css",
+          "WP_Style_Engine::compile_stylesheet_from_css_rules",
+          "WP_Style_Engine::get_classnames",
+          "WP_Style_Engine::get_css_declarations",
+          "WP_Style_Engine::get_css_var_value",
+          "WP_Style_Engine::get_individual_property_css_declarations",
+          "WP_Style_Engine::get_slug_from_preset_value",
+          "WP_Style_Engine::get_store",
+          "WP_Style_Engine::get_url_or_value_css_declaration",
+          "WP_Style_Engine::is_valid_style_value",
+          "WP_Style_Engine::parse_block_styles",
+          "WP_Style_Engine::store_css_rule",
+          "WP_Style_Engine_CSS_Declarations::__construct",
+          "WP_Style_Engine_CSS_Declarations::add_declaration",
+          "WP_Style_Engine_CSS_Declarations::add_declarations",
+          "WP_Style_Engine_CSS_Declarations::filter_declaration",
+          "WP_Style_Engine_CSS_Declarations::get_declarations",
+          "WP_Style_Engine_CSS_Declarations::get_declarations_string",
+          "WP_Style_Engine_CSS_Declarations::remove_declaration",
+          "WP_Style_Engine_CSS_Declarations::remove_declarations",
+          "WP_Style_Engine_CSS_Declarations::sanitize_property",
+          "WP_Style_Engine_CSS_Rule::__construct",
+          "WP_Style_Engine_CSS_Rule::add_declarations",
+          "WP_Style_Engine_CSS_Rule::get_css",
+          "WP_Style_Engine_CSS_Rule::get_declarations",
+          "WP_Style_Engine_CSS_Rule::get_rules_group",
+          "WP_Style_Engine_CSS_Rule::get_selector",
+          "WP_Style_Engine_CSS_Rule::set_rules_group",
+          "WP_Style_Engine_CSS_Rule::set_selector",
+          "WP_Style_Engine_CSS_Rules_Store::add_rule",
+          "WP_Style_Engine_CSS_Rules_Store::get_all_rules",
+          "WP_Style_Engine_CSS_Rules_Store::get_name",
+          "WP_Style_Engine_CSS_Rules_Store::get_store",
+          "WP_Style_Engine_CSS_Rules_Store::get_stores",
+          "WP_Style_Engine_CSS_Rules_Store::remove_all_stores",
+          "WP_Style_Engine_CSS_Rules_Store::remove_rule",
+          "WP_Style_Engine_CSS_Rules_Store::set_name",
+          "WP_Style_Engine_Processor::add_rules",
+          "WP_Style_Engine_Processor::add_store",
+          "WP_Style_Engine_Processor::combine_rules_selectors",
+          "WP_Style_Engine_Processor::get_css"
+        ],
+        "properties": [
+          "WP_Style_Engine_CSS_Declarations::$declarations",
+          "WP_Style_Engine_CSS_Rule::$declarations",
+          "WP_Style_Engine_CSS_Rule::$rules_group",
+          "WP_Style_Engine_CSS_Rule::$selector",
+          "WP_Style_Engine_CSS_Rules_Store::$name",
+          "WP_Style_Engine_CSS_Rules_Store::$rules",
+          "WP_Style_Engine_CSS_Rules_Store::$stores",
+          "WP_Style_Engine_Processor::$css_rules",
+          "WP_Style_Engine_Processor::$stores"
+        ]
+      }
+    },
+    "classes": [
+      "WP_Block",
+      "WP_Block_Bindings_Registry",
+      "WP_Block_Bindings_Source",
+      "WP_Block_Cloner",
+      "WP_Block_Editor_Context",
+      "WP_Block_List",
+      "WP_Block_Metadata_Registry",
+      "WP_Block_Parser",
+      "WP_Block_Parser_Block",
+      "WP_Block_Parser_Frame",
+      "WP_Block_Pattern_Categories_Registry",
+      "WP_Block_Patterns_Registry",
+      "WP_Block_Processor",
+      "WP_Block_Styles_Registry",
+      "WP_Block_Supports",
+      "WP_Block_Type",
+      "WP_Block_Type_Registry",
+      "WP_Classic_To_Block_Menu_Converter",
+      "WP_Font_Collection",
+      "WP_Font_Face",
+      "WP_Font_Face_Resolver",
+      "WP_Font_Library",
+      "WP_Font_Utils",
+      "WP_HTML_Active_Formatting_Elements",
+      "WP_HTML_Attribute_Token",
+      "WP_HTML_Decoder",
+      "WP_HTML_Doctype_Info",
+      "WP_HTML_Open_Elements",
+      "WP_HTML_Processor",
+      "WP_HTML_Processor_State",
+      "WP_HTML_Span",
+      "WP_HTML_Stack_Event",
+      "WP_HTML_Tag_Processor",
+      "WP_HTML_Text_Replacement",
+      "WP_HTML_Token",
+      "WP_HTML_Unsupported_Exception",
+      "WP_Interactivity_API",
+      "WP_Interactivity_API_Directives_Processor",
+      "WP_Navigation_Block_Renderer",
+      "WP_Style_Engine",
+      "WP_Style_Engine_CSS_Declarations",
+      "WP_Style_Engine_CSS_Rule",
+      "WP_Style_Engine_CSS_Rules_Store",
+      "WP_Style_Engine_Processor",
+      "WP_Widget_Block"
+    ],
+    "abi_risks": {
+      "functions_with_reference_parameters": [
+        "apply_block_core_search_border_style",
+        "apply_block_core_search_border_styles",
+        "apply_block_hooks_to_content_from_post_object",
+        "insert_hooked_blocks",
+        "insert_hooked_blocks_and_set_ignored_hooked_blocks_metadata",
+        "set_ignored_hooked_blocks_metadata",
+        "wp_resolve_block_style_variation_ref_values"
+      ],
+      "methods_with_reference_parameters": [
+        "WP_HTML_Decoder::read_character_reference",
+        "WP_Interactivity_API::data_wp_each_processor"
+      ],
+      "variadic_functions": [],
+      "conditional_functions": [
+        "block_core_calendar_update_has_published_post_on_delete",
+        "block_core_calendar_update_has_published_post_on_transition_post_status",
+        "block_core_navigation_get_inner_blocks_from_unstable_location",
+        "block_core_navigation_get_menu_items_at_location",
+        "block_core_navigation_sort_menu_items_by_parent_id"
+      ],
+      "anonymous_classes": [
+        {
+          "path": "src/wp-includes/class-wp-block.php",
+          "location": {
+            "start_line": 429,
+            "start_column": 34,
+            "start_offset": 14215,
+            "end_line": 472,
+            "end_column": 3,
+            "end_offset": 15629
+          },
+          "extends": "WP_HTML_Processor",
+          "implements": []
+        }
+      ]
+    },
+    "test_paths": [
+      "tests/phpunit/data/blocks/notice/block.asset.php",
+      "tests/phpunit/data/blocks/notice/block.js",
+      "tests/phpunit/data/blocks/notice/render.php",
+      "tests/phpunit/data/blocks/notice/shared-script.asset.php",
+      "tests/phpunit/data/blocks/notice/shared-script.js",
+      "tests/phpunit/data/blocks/notice/variations.php",
+      "tests/phpunit/data/html-api/script-element-escaping-diagram.php",
+      "tests/phpunit/data/html-api/token-counting-html-processor.php",
+      "tests/phpunit/data/themedir1/block-theme-child/blocks/example-block/index.asset.php",
+      "tests/phpunit/data/themedir1/block-theme-child/blocks/example-block/index.js",
+      "tests/phpunit/data/themedir1/block-theme-child/blocks/example-block/view.asset.php",
+      "tests/phpunit/data/themedir1/block-theme-child/blocks/example-block/view.js",
+      "tests/phpunit/data/themedir1/block-theme-child/page-home.php",
+      "tests/phpunit/data/themedir1/block-theme-non-latin/index.php",
+      "tests/phpunit/data/themedir1/block-theme-non-latin/page-1.php",
+      "tests/phpunit/data/themedir1/block-theme-patterns/patterns/cta.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/blocks/hooked-after/render.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/blocks/hooked-before/render.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/blocks/hooked-first-child/render.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/blocks/hooked-last-child/render.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/patterns/footer-default.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/patterns/hidden-comments.php",
+      "tests/phpunit/data/themedir1/block-theme-with-hooked-blocks/patterns/post-meta.php",
+      "tests/phpunit/data/themedir1/block-theme/blocks/example-block/index.asset.php",
+      "tests/phpunit/data/themedir1/block-theme/blocks/example-block/index.js",
+      "tests/phpunit/data/themedir1/block-theme/blocks/example-block/view.asset.php",
+      "tests/phpunit/data/themedir1/block-theme/blocks/example-block/view.js",
+      "tests/phpunit/data/themedir1/block-theme/functions.php",
+      "tests/phpunit/data/themedir1/block-theme/index.php",
+      "tests/phpunit/data/themedir1/block-theme/page-1.php",
+      "tests/phpunit/data/themedir1/block_theme-[0.4.0]/index.php",
+      "tests/phpunit/data/themedir1/block_theme-[0.4.0]/page-1.php",
+      "tests/phpunit/data/themedir1/empty-fontface-theme/functions.php",
+      "tests/phpunit/data/themedir1/empty-fontface-theme/index.php",
+      "tests/phpunit/data/themedir1/subdir/block_theme-[1.0.0]/index.php",
+      "tests/phpunit/tests/block-bindings/postMetaSource.php",
+      "tests/phpunit/tests/block-bindings/register.php",
+      "tests/phpunit/tests/block-bindings/render.php",
+      "tests/phpunit/tests/block-bindings/wp-block-get-block-bindings-processor.php",
+      "tests/phpunit/tests/block-bindings/wpBlockBindingsRegistry.php",
+      "tests/phpunit/tests/block-pattern/wpBlockPatternCategoriesRegistry.php",
+      "tests/phpunit/tests/block-processor/wpBlockProcessor-BlockProcessing.php",
+      "tests/phpunit/tests/block-processor/wpBlockProcessor.php",
+      "tests/phpunit/tests/block-supports/anchor.php",
+      "tests/phpunit/tests/block-supports/aria-label.php",
+      "tests/phpunit/tests/block-supports/auto-register.php",
+      "tests/phpunit/tests/block-supports/block-style-variations.php",
+      "tests/phpunit/tests/block-supports/block-visibility.php",
+      "tests/phpunit/tests/block-supports/border.php",
+      "tests/phpunit/tests/block-supports/colors.php",
+      "tests/phpunit/tests/block-supports/duotone.php",
+      "tests/phpunit/tests/block-supports/layout.php",
+      "tests/phpunit/tests/block-supports/shadow.php",
+      "tests/phpunit/tests/block-supports/spacing.php",
+      "tests/phpunit/tests/block-supports/typography.php",
+      "tests/phpunit/tests/block-supports/wpApplyDimensionsSupport.php",
+      "tests/phpunit/tests/block-supports/wpCreateBlockStyleVariationInstanceName.php",
+      "tests/phpunit/tests/block-supports/wpGetBlockStyleVariationNameFromClass.php",
+      "tests/phpunit/tests/block-supports/wpGetLayoutStyle.php",
+      "tests/phpunit/tests/block-supports/wpRenderBackgroundSupport.php",
+      "tests/phpunit/tests/block-supports/wpRenderCustomCssClassName.php",
+      "tests/phpunit/tests/block-supports/wpRenderCustomCssSupportStyles.php",
+      "tests/phpunit/tests/block-supports/wpRenderDimensionsSupport.php",
+      "tests/phpunit/tests/block-supports/wpRenderElementsSupport.php",
+      "tests/phpunit/tests/block-supports/wpRenderElementsSupportStyles.php",
+      "tests/phpunit/tests/block-supports/wpRenderPositionSupport.php",
+      "tests/phpunit/tests/block-supports/wpStripCustomCssFromBlocks.php",
+      "tests/phpunit/tests/block-template-utils.php",
+      "tests/phpunit/tests/block-template.php",
+      "tests/phpunit/tests/block-templates/WpBlockTemplatesRegistry.php",
+      "tests/phpunit/tests/block-templates/base.php",
+      "tests/phpunit/tests/block-templates/buildBlockTemplateResultFromFile.php",
+      "tests/phpunit/tests/block-templates/buildBlockTemplateResultFromPost.php",
+      "tests/phpunit/tests/block-templates/getTemplateHierarchy.php",
+      "tests/phpunit/tests/block-templates/injectIgnoredHookedBlocksMetadataAttributes.php",
+      "tests/phpunit/tests/blocks/applyBlockHooksToContent.php",
+      "tests/phpunit/tests/blocks/applyBlockHooksToContentFromPostObject.php",
+      "tests/phpunit/tests/blocks/editor.php",
+      "tests/phpunit/tests/blocks/getBlockAssetUrl.php",
+      "tests/phpunit/tests/blocks/getBlockTemplates.php",
+      "tests/phpunit/tests/blocks/getHookedBlocks.php",
+      "tests/phpunit/tests/blocks/insertHookedBlocks.php",
+      "tests/phpunit/tests/blocks/insertHookedBlocksAndSetIgnoredHookedBlocksMetadata.php",
+      "tests/phpunit/tests/blocks/register.php",
+      "tests/phpunit/tests/blocks/registerBlockTypeFromMetadataWithRegistry.php",
+      "tests/phpunit/tests/blocks/registerCoreBlockStyleHandles.php",
+      "tests/phpunit/tests/blocks/render.php",
+      "tests/phpunit/tests/blocks/renderBlock.php",
+      "tests/phpunit/tests/blocks/renderCommentTemplate.php",
+      "tests/phpunit/tests/blocks/renderReusable.php",
+      "tests/phpunit/tests/blocks/resolvePatternBlocks.php",
+      "tests/phpunit/tests/blocks/serialize.php",
+      "tests/phpunit/tests/blocks/setIgnoredHookedBlocksMetadata.php",
+      "tests/phpunit/tests/blocks/supportedStyles.php",
+      "tests/phpunit/tests/blocks/updateIgnoredHookedBlocksPostMeta.php",
+      "tests/phpunit/tests/blocks/wpBlock.php",
+      "tests/phpunit/tests/blocks/wpBlockList.php",
+      "tests/phpunit/tests/blocks/wpBlockMetadataRegistry.php",
+      "tests/phpunit/tests/blocks/wpBlockParser.php",
+      "tests/phpunit/tests/blocks/wpBlockPatternsRegistry.php",
+      "tests/phpunit/tests/blocks/wpBlockStylesRegistry.php",
+      "tests/phpunit/tests/blocks/wpBlockType.php",
+      "tests/phpunit/tests/blocks/wpBlockTypeRegistry.php",
+      "tests/phpunit/tests/fonts/font-face/base.php",
+      "tests/phpunit/tests/fonts/font-face/wp-font-face-tests-dataset.php",
+      "tests/phpunit/tests/fonts/font-face/wpFontFace/generateAndPrint.php",
+      "tests/phpunit/tests/fonts/font-face/wpFontFaceResolver/getFontsFromStyleVariations.php",
+      "tests/phpunit/tests/fonts/font-face/wpFontFaceResolver/getFontsFromThemeJson.php",
+      "tests/phpunit/tests/fonts/font-face/wpPrintFontFaces.php",
+      "tests/phpunit/tests/fonts/font-face/wpPrintFontFacesFromStyleVariations.php",
+      "tests/phpunit/tests/fonts/font-library/fontLibraryHooks.php",
+      "tests/phpunit/tests/fonts/font-library/postTypes.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontCollection/__construct.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontCollection/getData.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontLibrary/base.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontLibrary/getFontCollection.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontLibrary/getFontCollections.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontLibrary/registerFontCollection.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontLibrary/unregisterFontCollection.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontUtils/getFontFaceSlug.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontUtils/sanitizeFontFamily.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontUtils/sanitizeFromSchema.php",
+      "tests/phpunit/tests/fonts/font-library/wpFontsDir.php",
+      "tests/phpunit/tests/fonts/font-library/wpRestFontCollectionsController.php",
+      "tests/phpunit/tests/fonts/font-library/wpRestFontFacesController.php",
+      "tests/phpunit/tests/fonts/font-library/wpRestFontFamiliesController.php",
+      "tests/phpunit/tests/html-api/wpHtmlDecoder.php",
+      "tests/phpunit/tests/html-api/wpHtmlDoctypeInfo.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessor-bookmark.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessor-serialize.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessor.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorBreadcrumbs.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorComments.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorHtml5lib.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorMetaTag.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorModifiableText.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRules.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRulesHeadingElements.php",
+      "tests/phpunit/tests/html-api/wpHtmlProcessorSemanticRulesListElements.php",
+      "tests/phpunit/tests/html-api/wpHtmlSupportRequiredActiveFormatReconstruction.php",
+      "tests/phpunit/tests/html-api/wpHtmlTagProcessor-bookmark.php",
+      "tests/phpunit/tests/html-api/wpHtmlTagProcessor-token-scanning.php",
+      "tests/phpunit/tests/html-api/wpHtmlTagProcessor.php",
+      "tests/phpunit/tests/html-api/wpHtmlTagProcessorModifiableText.php",
+      "tests/phpunit/tests/html-api/wpHtmlTagProcessorScriptTag.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-bind.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-class.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-context.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-each.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-interactive.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-router-region.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-style.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI-wp-text.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPI.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPIDirectivesProcessor.php",
+      "tests/phpunit/tests/interactivity-api/wpInteractivityAPIFunctions.php",
+      "tests/phpunit/tests/rest-api/rest-global-styles-controller.php",
+      "tests/phpunit/tests/rest-api/rest-global-styles-revisions-controller.php",
+      "tests/phpunit/tests/style-engine/styleEngine.php",
+      "tests/phpunit/tests/style-engine/wpStyleEngineCssDeclarations.php",
+      "tests/phpunit/tests/style-engine/wpStyleEngineCssRule.php",
+      "tests/phpunit/tests/style-engine/wpStyleEngineCssRulesStore.php",
+      "tests/phpunit/tests/style-engine/wpStyleEngineProcessor.php"
+    ]
+  },
+  "evidence_plan": {
+    "first_haxe_candidate": "A typed blocks/interactivity adapter-contract model for parser state, parsed block trees, block type registration, render context, support serialization, binding resolution, block hooks insertion, style engine output, HTML tag processing, interactivity state, and hook intent.",
+    "required_next_fixtures": [
+      "block parser and serialize/parse roundtrip oracle fixture",
+      "block registration, render callback, context, and do_blocks oracle fixture",
+      "block supports attributes/style/class serialization fixture",
+      "block bindings source registration and resolution fixture",
+      "block hooks insertion/ignored-hooked-blocks fixture",
+      "block pattern/style registration and lookup fixture",
+      "style engine and HTML API tag-processing fixture",
+      "interactivity API state, directive processing, and hydration-data fixture",
+      "selected core block renderer fixture spanning post/query/media/feed handoffs",
+      "selected upstream PHPUnit blocks/style-engine/html-api/interactivity ratchet"
+    ],
+    "claim": "This surface manifest bounds WPHX-314 and names fixture gates. It does not claim public PHP replacement, Haxe-owned runtime logic, editor/browser ownership, installed-distribution block parity, or Gutenberg package ownership."
+  },
+  "validation_result": {
+    "status": "passed",
+    "source_count": 140,
+    "artifact_count": 140,
+    "abi_entry_count": 1137,
+    "class_count": 46,
+    "test_count": 163
+  }
+}

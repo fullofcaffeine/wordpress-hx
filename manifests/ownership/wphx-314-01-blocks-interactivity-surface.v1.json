@@ -1,0 +1,49 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/blocks-interactivity-surface",
+  "issue": {
+    "id": "wordpresshx-1ky",
+    "external_ref": "WPHX-314.01"
+  },
+  "unit": {
+    "kind": "surface_inventory",
+    "name": "blocks, block parser, block rendering, supports, bindings, hooks, style engine, HTML API, fonts, assets, and interactivity surface",
+    "area": "wp-includes/blocks.php wp-includes/blocks/ wp-includes/class-wp-block*.php wp-includes/block-*.php wp-includes/interactivity-api/ wp-includes/style-engine/ wp-includes/html-api/",
+    "public_contract": "This slice inventories WordPress block/interactivity runtime boundaries and fixture targets. It does not claim migrated runtime behavior, editor/browser ownership, or public PHP ABI replacement."
+  },
+  "ownership_state": "oracle_surface_inventory",
+  "ownership_axes": {
+    "semantic_owner": "upstream_oracle_described",
+    "adapter_contract_owner": "not_yet_started",
+    "emission_strategy": "none",
+    "execution_provider": "upstream_php_oracle",
+    "compatibility_evidence": "surface_inventory"
+  },
+  "bridge": {
+    "exists": false,
+    "kind": "not_applicable",
+    "removal_gate": "Promote bounded block/interactivity decisions to typed Haxe adapter contracts, then later to typed Adapter IR/original-path PHP with parser/render/support/bindings/style/interactivity, installed distribution, upstream PHPUnit, and browser/Gutenberg handoff evidence."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-blocks-interactivity-surface.mjs",
+    "manifests/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+    "manifests/ownership/wphx-314-01-blocks-interactivity-surface.v1.json",
+    "receipts/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+    "manifests/ownership/wphx-314-01-blocks-interactivity-surface.v1.json",
+    "receipts/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-314-blocks-interactivity-surface",
+      "npm run wp:core:wphx-314-blocks-interactivity-surface:check",
+      "npm run receipts:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-314-01-blocks-interactivity-surface"
+    ],
+    "manifest_digest": "sha256:5041e65e848fa3246be418e78f44c7ae041144d7807cb49808dc0264f4e1dac4"
+  }
+}

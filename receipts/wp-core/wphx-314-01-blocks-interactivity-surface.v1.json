@@ -1,0 +1,38 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-314-01-blocks-interactivity-surface",
+  "issue": {
+    "id": "wordpresshx-1ky",
+    "external_ref": "WPHX-314.01",
+    "title": "WPHX-314.01 - Inventory blocks, block parser, render, supports, bindings, and interactivity PHP surface"
+  },
+  "recorded_at": "2026-06-29T00:00:00.000Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-314-01-blocks-interactivity-surface.v1.json",
+      "role": "blocks/interactivity surface inventory"
+    },
+    {
+      "path": "manifests/ownership/wphx-314-01-blocks-interactivity-surface.v1.json",
+      "role": "blocks/interactivity surface ownership manifest"
+    },
+    {
+      "path": "tools/wp-core/run-blocks-interactivity-surface.mjs",
+      "role": "deterministic surface generator and check-mode validator"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-314-blocks-interactivity-surface",
+    "npm run wp:core:wphx-314-blocks-interactivity-surface:check"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "source_count": 140,
+    "artifact_count": 140,
+    "abi_entry_count": 1137,
+    "class_count": 46,
+    "test_count": 163
+  },
+  "manifest_sha256": "sha256:5041e65e848fa3246be418e78f44c7ae041144d7807cb49808dc0264f4e1dac4",
+  "ownership_sha256": "sha256:a6ba62d0874d36b832c49e42303ec70ca4171a7e2ec4ea6f5573d50dcc6a82ca"
+}
