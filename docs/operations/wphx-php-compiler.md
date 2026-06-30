@@ -232,6 +232,8 @@ It emits `build/wphx-php/template-segment-nested/generated/wp-admin/wphx-templat
 
 `WPHX-COMP-PHP-SEGMENT-PLAN-PRINTER` keeps the emitted admin-style and nested segment-shell behavior unchanged while routing those adapters through a bounded compiler-side segment plan printer. The current printer accepts ordered `PhpSegment` and `OutputSegment` entries, toggles PHP/output mode deterministically, and records `segment.plan-printer` in the affected emission manifests. This is the first implementation step toward ADR-005's ordered file-segment plans; it is not arbitrary Haxe expression lowering, a full mixed-template backend, or a claim over existing WordPress template directories.
 
+`WPHX-COMP-PHP-SEGMENT-MANIFEST` adds structured `segment_plans` metadata to the WPHX PHP emission manifest for those generated script adapters. Each plan records the original path, adapter name, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs. This makes the compiler output itself consumable by future Adapter IR tooling or a broader backend without moving behavior out of the existing bounded fixtures.
+
 ## Adapter IR
 
 The WPHX PHP compiler now uses an Adapter IR before printing PHP:
@@ -243,9 +245,9 @@ typed Haxe source and metadata
   -> wphx-php-emission.v1.json
 ```
 
-The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, bounded direct file-scope script adapters, compiler-emitted segment shell adapters, a bounded segment-plan printer for generated template shells, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
+The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, bounded direct file-scope script adapters, compiler-emitted segment shell adapters, a bounded segment-plan printer for generated template shells, structured segment-plan emission metadata, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` and `segment_plans` so richer adapters can depend on them explicitly.
 
-This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. Grouped `WP_Http` adapters, the file-segment/template model, the first generated admin-style segment shell, the first generated nested segment shell, and the segment-plan printer are now proven gates; the next template movement should replace temporary public shells one bounded segment plan at a time without jumping to broad mixed PHP/HTML ownership.
+This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. Grouped `WP_Http` adapters, the file-segment/template model, the first generated admin-style segment shell, the first generated nested segment shell, the segment-plan printer, and structured segment-plan manifest metadata are now proven gates; the next template movement should replace temporary public shells one bounded segment plan at a time without jumping to broad mixed PHP/HTML ownership.
 
 `WPHX-COMP-PHP.06` adds the first generated `WP_Http::buildCookieHeader( &$r )` original-path shell. It is a WordPress profile pressure gate over native PHP array mutation, scalar cookie upgrading, `WP_Http_Cookie` object preservation, filter timing, and helper delegation. `WPHX-COMP-PHP-CORE-IR-NATIVE-ARRAYS` keeps the same public-shell behavior while moving the native-array body through reusable PHP-core IR nodes. This is still not arbitrary Haxe expression lowering or a complete PHP backend.
 
@@ -264,7 +266,7 @@ The initial metadata contract is intentionally small:
 - `@:wp.byRef` emits a PHP `&$parameter` for reference-visible ABI boundaries.
 - `@:wp.visibility("protected")`, `@:wp.name("name")`, and `@:wp.defaultArray` preserve PHP reflection-visible class/member/static-method/parameter ABI when Haxe's source-level spelling differs.
 
-The emitter also writes `wphx-php-emission.v1.json` with generated paths, declarations, source modules, hashes-by-runner evidence, and unsupported construct notes.
+The emitter also writes `wphx-php-emission.v1.json` with generated paths, declarations, source modules, `core_ir_features`, bounded `segment_plans` where script adapters have a file-segment contract, hashes-by-runner evidence, and unsupported construct notes.
 
 ## Scope
 

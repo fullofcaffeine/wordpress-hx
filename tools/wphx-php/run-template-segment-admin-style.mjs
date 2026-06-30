@@ -57,6 +57,24 @@ const segmentOrder = [
   "return_exit"
 ];
 
+const expectedEmissionSegmentPlans = [
+  {
+    path: "wp-admin/wphx-template-segment-admin.php",
+    adapter: "template-segment-admin-style",
+    adoption_mode: "compiler_emitted_segment_shell",
+    segments: segmentOrder,
+    caller_scope: [
+      { kind: "reads_locals", names: ["title", "notice", "items", "screen"] },
+      { kind: "mutates_locals", names: ["notice", "items"] },
+      { kind: "mutates_objects", names: ["screen.rendered"] },
+      { kind: "globals", names: ["wphx_segment_trace"] }
+    ],
+    include_semantics: [],
+    observable_effects: ["guard_return", "mixed_output_order", "escaped_output", "local_array_mutation", "object_mutation", "global_trace", "include_return_value"],
+    unsupported: []
+  }
+];
+
 function command(commandName, commandArgs) {
   return execFileSync(commandName, commandArgs, {
     encoding: "utf8",
@@ -99,6 +117,19 @@ function assertJsonEqual(actual, expected, label) {
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
     throw new Error(`Unexpected ${label}:\nactual=${JSON.stringify(actual, null, 2)}\nexpected=${JSON.stringify(expected, null, 2)}`);
   }
+}
+
+function normalizeEmissionSegmentPlans(plans) {
+  return plans.map((plan) => ({
+    path: plan.path,
+    adapter: plan.adapter,
+    adoption_mode: plan.adoption_mode,
+    segments: plan.segments,
+    caller_scope: plan.caller_scope.map((entry) => ({ kind: entry.kind, names: entry.names })),
+    include_semantics: plan.include_semantics,
+    observable_effects: plan.observable_effects,
+    unsupported: plan.unsupported
+  }));
 }
 
 function writeProbe() {
@@ -222,6 +253,7 @@ const declarations = emissionManifest.files.flatMap((file) =>
 const expectedDeclarations = ["wp-admin/wphx-template-segment-admin.php:script:template-segment-admin-style"];
 assertJsonEqual(declarations, expectedDeclarations, "emission declarations");
 assertJsonEqual([...emissionManifest.core_ir_features].sort(), expectedCoreIrFeatures, "core IR features");
+assertJsonEqual(normalizeEmissionSegmentPlans(emissionManifest.segment_plans), expectedEmissionSegmentPlans, "compiler-emitted segment plans");
 if (emissionManifest.unsupported.length !== 0) {
   throw new Error(`Unexpected unsupported constructs: ${JSON.stringify(emissionManifest.unsupported)}`);
 }
@@ -257,6 +289,7 @@ const manifest = {
     ...inputRecord(emissionManifestPath),
     declarations: expectedDeclarations,
     core_ir_features: expectedCoreIrFeatures,
+    segment_plans: expectedEmissionSegmentPlans,
     unsupported_empty: true
   },
   segment_plan: {
@@ -293,6 +326,7 @@ const manifest = {
     php_lint: "passed",
     exact_shape_patterns_passed: true,
     core_ir_features_passed: true,
+    compiler_emitted_segment_plans_passed: true,
     unsupported_empty: true,
     oracle_candidate_behavior_match: true,
     guard_behavior_passed: true

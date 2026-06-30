@@ -28,12 +28,13 @@
       "role": "WPHX PHP compiler script adapter implementation"
     }
   ],
-  "manifest_sha256": "sha256:7edd04bf8d1378a18ae38921d820520805e2fa1424edb76f7529bfab14c83094",
+  "manifest_sha256": "sha256:49cd225d37fc559955636374086fd0bfaf00bea53b138e0a93dcbb0ed8abeea7",
   "validation_result": {
     "status": "passed",
     "php_lint": "passed",
     "exact_shape_patterns_passed": true,
     "core_ir_features_passed": true,
+    "compiler_emitted_segment_plans_passed": true,
     "unsupported_empty": true,
     "oracle_candidate_behavior_match": true,
     "guard_behavior_passed": true,

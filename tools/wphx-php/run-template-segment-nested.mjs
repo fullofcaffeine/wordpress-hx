@@ -73,6 +73,38 @@ const segmentOrder = [
   "parent.return_exit"
 ];
 
+const expectedEmissionSegmentPlans = [
+  {
+    path: "wp-admin/includes/wphx-template-nested-partial.php",
+    adapter: "template-segment-nested-partial",
+    adoption_mode: "compiler_emitted_segment_shell",
+    segments: ["script", "literal_output", "template_expression", "return_exit"],
+    caller_scope: [
+      { kind: "reads_locals", names: ["items", "screen", "partial_marker"] },
+      { kind: "mutates_locals", names: ["items"] },
+      { kind: "mutates_objects", names: ["screen.partial"] },
+      { kind: "globals", names: ["wphx_nested_segment_trace"] }
+    ],
+    include_semantics: ["nested_include", "include_return_value", "repeated_include", "include_once_second_return_true", "function_scope_include_locals"],
+    observable_effects: ["mixed_output_order", "escaped_output", "local_array_mutation", "object_mutation", "global_trace", "include_return_value"],
+    unsupported: []
+  },
+  {
+    path: "wp-admin/wphx-template-nested-parent.php",
+    adapter: "template-segment-nested-parent",
+    adoption_mode: "compiler_emitted_segment_shell",
+    segments: ["guard", "declaration", "script", "literal_output", "template_expression", "include", "script", "return_exit"],
+    caller_scope: [
+      { kind: "reads_locals", names: ["title", "items", "screen"] },
+      { kind: "creates_locals", names: ["partial_marker", "partial_return"] },
+      { kind: "globals", names: ["wphx_nested_segment_trace"] }
+    ],
+    include_semantics: ["nested_include", "include_return_value", "repeated_include", "include_once_second_return_true", "function_scope_include_locals"],
+    observable_effects: ["guard_return", "mixed_output_order", "escaped_output", "global_trace", "include_return_value"],
+    unsupported: []
+  }
+];
+
 function command(commandName, commandArgs) {
   return execFileSync(commandName, commandArgs, {
     encoding: "utf8",
@@ -121,6 +153,19 @@ function assertValue(condition, message) {
   if (!condition) {
     throw new Error(message);
   }
+}
+
+function normalizeEmissionSegmentPlans(plans) {
+  return plans.map((plan) => ({
+    path: plan.path,
+    adapter: plan.adapter,
+    adoption_mode: plan.adoption_mode,
+    segments: plan.segments,
+    caller_scope: plan.caller_scope.map((entry) => ({ kind: entry.kind, names: entry.names })),
+    include_semantics: plan.include_semantics,
+    observable_effects: plan.observable_effects,
+    unsupported: plan.unsupported
+  }));
 }
 
 function writeProbe() {
@@ -364,6 +409,7 @@ const expectedDeclarations = [
 ];
 assertJsonEqual(declarations, expectedDeclarations, "emission declarations");
 assertJsonEqual([...emissionManifest.core_ir_features].sort(), expectedCoreIrFeatures, "core IR features");
+assertJsonEqual(normalizeEmissionSegmentPlans(emissionManifest.segment_plans), expectedEmissionSegmentPlans, "compiler-emitted segment plans");
 if (emissionManifest.unsupported.length !== 0) {
   throw new Error(`Unexpected unsupported constructs: ${JSON.stringify(emissionManifest.unsupported)}`);
 }
@@ -403,6 +449,7 @@ const manifest = {
     ...inputRecord(emissionManifestPath),
     declarations: expectedDeclarations,
     core_ir_features: expectedCoreIrFeatures,
+    segment_plans: expectedEmissionSegmentPlans,
     unsupported_empty: true
   },
   segment_plan: {
@@ -445,6 +492,7 @@ const manifest = {
     php_lint: "passed",
     exact_shape_patterns_passed: true,
     core_ir_features_passed: true,
+    compiler_emitted_segment_plans_passed: true,
     unsupported_empty: true,
     oracle_candidate_behavior_match: true,
     guard_behavior_passed: true,

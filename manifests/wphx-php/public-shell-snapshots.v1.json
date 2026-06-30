@@ -47,8 +47,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/conditional-global-class-smoke/generated/wphx-php-emission.v1.json",
-        "bytes": 1169,
-        "sha256": "sha256:258530f2cd133dbf13fcf51e763b4550c980969723cbac62609a64e8756c5667"
+        "bytes": 1192,
+        "sha256": "sha256:5f45a415905fe42cce1b26f87c95b33e7d9b7cfec555de7ea9696fc906725ce6"
       }
     },
     {
@@ -85,8 +85,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wphx-php-emission.v1.json",
-        "bytes": 616,
-        "sha256": "sha256:ca460a1b62eb20615f22538b88d48e0178732e2d32b06850f1915bd7683e1128"
+        "bytes": 639,
+        "sha256": "sha256:dc17edc4e64f8a03ef108b75ceb7cdd8ff820c8c3df2b66c3286cf5d22e87a0f"
       }
     },
     {
@@ -135,8 +135,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wphx-php-emission.v1.json",
-        "bytes": 1224,
-        "sha256": "sha256:82e5009a44d2a0d2d670d37a57458ebe1cbe7818d77af7f2045d01c6714d7825"
+        "bytes": 1247,
+        "sha256": "sha256:03d4999900c929cc5b579cec3c1a4775f51ddf8cd4f86b66ac0e63f1e21f1476"
       }
     },
     {
@@ -175,8 +175,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/by-reference-global-function/generated/wphx-php-emission.v1.json",
-        "bytes": 635,
-        "sha256": "sha256:351aa64d50443b88d2ea255db49f15608c4855bf8837d724c98b5ed5fa6e3a48"
+        "bytes": 658,
+        "sha256": "sha256:10a9d3b3c39206f4bed089c6d7ef0fd7510b9a359e4533923f88964ceff8fc3d"
       }
     },
     {
@@ -217,8 +217,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 638,
-        "sha256": "sha256:75a4ee121989c745e76834fbee5f296ff9cad9827c0d17b7de459db47116b657"
+        "bytes": 661,
+        "sha256": "sha256:33d1df36379b22df59f56b760bc19f7db50bc1a1da304dc0a51edf1700680c30"
       }
     },
     {
@@ -263,8 +263,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 940,
-        "sha256": "sha256:f04afb16f20c386ca93c84baa09a9887567f77a1ace75e490f1f0ae67892de19"
+        "bytes": 963,
+        "sha256": "sha256:f4096011d387a69d74acf807759a859f08e042a7478e28b50aaccedcdbe4e06f"
       }
     },
     {
@@ -305,8 +305,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 1054,
-        "sha256": "sha256:96f9b50d168602ee6668c6a356ab1785eedc5072924a7a477613243977ae803b"
+        "bytes": 1077,
+        "sha256": "sha256:55e90533beec8e9c7c67e9459a0142b709297ef7b5365bfd4acb6495e142a408"
       }
     },
     {
@@ -341,8 +341,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/include-side-effect-script/generated/wphx-php-emission.v1.json",
-        "bytes": 796,
-        "sha256": "sha256:cce512109b8afec57f7a7058c6136eb14f3b0b715913463b93222212d07f09db"
+        "bytes": 819,
+        "sha256": "sha256:d3a6c25ad4e282c6f17abeac5a2416534d6f87700b724e0b54f67297c60d6370"
       }
     },
     {
@@ -385,8 +385,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-admin-style/generated/wphx-php-emission.v1.json",
-        "bytes": 1003,
-        "sha256": "sha256:9fedf3bc90166b40caaca7dd61be5244c2f94c64b79ebc4587684fd7c5c39a74"
+        "bytes": 2270,
+        "sha256": "sha256:355709da82831595cd63c666945153b2b54dadd6db488d27897c05cf3c7b0a15"
       }
     },
     {
@@ -427,8 +427,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-parent/generated/wphx-php-emission.v1.json",
-        "bytes": 1560,
-        "sha256": "sha256:93f34465bc171262620c7266a24e4be89cfe55df2d46f3d03d61f964bf942b79"
+        "bytes": 4128,
+        "sha256": "sha256:5dfca1347c55c4c1dabc0383b8e7a9b8f5ab086a2791ee9eaabfab13fae14643"
       }
     },
     {
@@ -465,8 +465,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-partial/generated/wphx-php-emission.v1.json",
-        "bytes": 1560,
-        "sha256": "sha256:93f34465bc171262620c7266a24e4be89cfe55df2d46f3d03d61f964bf942b79"
+        "bytes": 4128,
+        "sha256": "sha256:5dfca1347c55c4c1dabc0383b8e7a9b8f5ab086a2791ee9eaabfab13fae14643"
       }
     }
   ],

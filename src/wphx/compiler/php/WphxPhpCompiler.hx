@@ -141,6 +141,7 @@ private typedef EmissionManifest =
 	final bootstrap_error_handler_policy:String;
 	final files:Array<EmissionManifestFile>;
 	final core_ir_features:Array<String>;
+	final segment_plans:Array<EmissionSegmentPlan>;
 	final unsupported:Array<String>;
 }
 
@@ -149,6 +150,24 @@ private typedef EmissionManifestFile =
 	final path:String;
 	final bytes:Int;
 	final declarations:Array<EmissionDeclaration>;
+}
+
+private typedef EmissionSegmentPlan =
+{
+	final path:String;
+	final adapter:String;
+	final adoption_mode:String;
+	final segments:Array<String>;
+	final caller_scope:Array<EmissionSegmentFact>;
+	final include_semantics:Array<String>;
+	final observable_effects:Array<String>;
+	final unsupported:Array<String>;
+}
+
+private typedef EmissionSegmentFact =
+{
+	final kind:String;
+	final names:Array<String>;
 }
 
 private typedef TypedFunctionArg =
@@ -171,6 +190,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 	var modules:Array<ModuleType> = [];
 	var unsupported:Array<String> = [];
 	var coreIrFeatures:Array<String> = [];
+	var segmentPlans:Array<EmissionSegmentPlan> = [];
 
 	public function new()
 	{
@@ -225,6 +245,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 
 	function buildFiles():Array<GeneratedPhpFile>
 	{
+		segmentPlans = [];
 		return buildAdapterFilePlans(collectAdapterDeclarations()).map(emitAdapterFile);
 	}
 
@@ -278,7 +299,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 	function emitAdapterFile(plan:AdapterFilePlan):GeneratedPhpFile
 	{
 		final prologue = plan.haxeBootstrap == null ? [] : [emitHaxeBootstrap(plan.haxeBootstrap)];
-		final contentParts = prologue.concat(plan.declarations.map(emitAdapterDeclaration));
+		final contentParts = prologue.concat(plan.declarations.map(declaration -> emitAdapterDeclaration(plan.path, declaration)));
 		return {
 			path: plan.path,
 			content: "<?php\n" + contentParts.join("\n\n") + "\n",
@@ -413,7 +434,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		}
 	}
 
-	function emitAdapterDeclaration(declaration:AdapterDeclaration):String
+	function emitAdapterDeclaration(path:String, declaration:AdapterDeclaration):String
 	{
 		return switch (declaration)
 		{
@@ -422,7 +443,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			case ClassAdapter(declaration):
 				emitClass(declaration);
 			case ScriptAdapter(declaration):
-				emitScript(declaration);
+				emitScript(path, declaration);
 		}
 	}
 
@@ -457,18 +478,18 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		}
 	}
 
-	function emitScript(pending:AdapterScript):String
+	function emitScript(path:String, pending:AdapterScript):String
 	{
 		return switch (pending.adapter)
 		{
 			case "include-side-effects":
 				emitIncludeSideEffectsScript();
 			case "template-segment-admin-style":
-				emitTemplateSegmentAdminStyleScript();
+				emitTemplateSegmentAdminStyleScript(path, pending.adapter);
 			case "template-segment-nested-parent":
-				emitTemplateSegmentNestedParentScript();
+				emitTemplateSegmentNestedParentScript(path, pending.adapter);
 			case "template-segment-nested-partial":
-				emitTemplateSegmentNestedPartialScript();
+				emitTemplateSegmentNestedPartialScript(path, pending.adapter);
 			case _:
 				reportUnsupported("unsupported WPHX PHP script adapter " + pending.adapter);
 				"";
@@ -525,8 +546,54 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		return parts.join("");
 	}
 
-	function emitTemplateSegmentAdminStyleScript():String
+	function recordSegmentPlan(path:String, adapter:String, segments:Array<String>, callerScope:Array<EmissionSegmentFact>, includeSemantics:Array<String>,
+			observableEffects:Array<String>):Void
 	{
+		segmentPlans.push({
+			path: path,
+			adapter: adapter,
+			adoption_mode: "compiler_emitted_segment_shell",
+			segments: segments,
+			caller_scope: callerScope,
+			include_semantics: includeSemantics,
+			observable_effects: observableEffects,
+			unsupported: []
+		});
+	}
+
+	function segmentFact(kind:String, names:Array<String>):EmissionSegmentFact
+	{
+		return {
+			kind: kind,
+			names: names
+		};
+	}
+
+	function emitTemplateSegmentAdminStyleScript(path:String, adapter:String):String
+	{
+		recordSegmentPlan(path, adapter, [
+			"guard",
+			"declaration",
+			"script",
+			"literal_output",
+			"template_expression",
+			"control",
+			"script",
+			"return_exit"
+		], [
+			segmentFact("reads_locals", ["title", "notice", "items", "screen"]),
+			segmentFact("mutates_locals", ["notice", "items"]),
+			segmentFact("mutates_objects", ["screen.rendered"]),
+			segmentFact("globals", ["wphx_segment_trace"])
+		], [], [
+			"guard_return",
+			"mixed_output_order",
+			"escaped_output",
+			"local_array_mutation",
+			"object_mutation",
+			"global_trace",
+			"include_return_value"
+		]);
 		return emitSegmentPlan([
 			"segment.guard",
 			"segment.declaration",
@@ -576,8 +643,34 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		]);
 	}
 
-	function emitTemplateSegmentNestedParentScript():String
+	function emitTemplateSegmentNestedParentScript(path:String, adapter:String):String
 	{
+		recordSegmentPlan(path, adapter, [
+			"guard",
+			"declaration",
+			"script",
+			"literal_output",
+			"template_expression",
+			"include",
+			"script",
+			"return_exit"
+		], [
+			segmentFact("reads_locals", ["title", "items", "screen"]),
+			segmentFact("creates_locals", ["partial_marker", "partial_return"]),
+			segmentFact("globals", ["wphx_nested_segment_trace"])
+		], [
+			"nested_include",
+			"include_return_value",
+			"repeated_include",
+			"include_once_second_return_true",
+			"function_scope_include_locals"
+		], [
+			"guard_return",
+			"mixed_output_order",
+			"escaped_output",
+			"global_trace",
+			"include_return_value"
+		]);
 		return emitSegmentPlan([
 			"segment.guard",
 			"segment.declaration",
@@ -615,8 +708,27 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		]);
 	}
 
-	function emitTemplateSegmentNestedPartialScript():String
+	function emitTemplateSegmentNestedPartialScript(path:String, adapter:String):String
 	{
+		recordSegmentPlan(path, adapter, ["script", "literal_output", "template_expression", "return_exit"], [
+			segmentFact("reads_locals", ["items", "screen", "partial_marker"]),
+			segmentFact("mutates_locals", ["items"]),
+			segmentFact("mutates_objects", ["screen.partial"]),
+			segmentFact("globals", ["wphx_nested_segment_trace"])
+		], [
+			"nested_include",
+			"include_return_value",
+			"repeated_include",
+			"include_once_second_return_true",
+			"function_scope_include_locals"
+		], [
+			"mixed_output_order",
+			"escaped_output",
+			"local_array_mutation",
+			"object_mutation",
+			"global_trace",
+			"include_return_value"
+		]);
 		return emitSegmentPlan([
 			"segment.script",
 			"segment.literal-output",
@@ -1469,6 +1581,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			bootstrap_error_handler_policy: bootstrapErrorHandlerPolicy(),
 			files: generated,
 			core_ir_features: coreIrFeatures,
+			segment_plans: segmentPlans,
 			unsupported: unsupported
 		};
 		return Json.stringify(manifest, null, "  ") + "\n";

@@ -36,8 +36,8 @@
   ],
   "emission_manifest": {
     "path": "build/wphx-php/template-segment-nested/generated/wphx-php-emission.v1.json",
-    "bytes": 1560,
-    "sha256": "sha256:93f34465bc171262620c7266a24e4be89cfe55df2d46f3d03d61f964bf942b79",
+    "bytes": 4128,
+    "sha256": "sha256:5dfca1347c55c4c1dabc0383b8e7a9b8f5ab086a2791ee9eaabfab13fae14643",
     "declarations": [
       "wp-admin/includes/wphx-template-nested-partial.php:script:template-segment-nested-partial",
       "wp-admin/wphx-template-nested-parent.php:script:template-segment-nested-parent"
@@ -56,6 +56,116 @@
       "segment.return",
       "segment.script",
       "segment.template-expression"
+    ],
+    "segment_plans": [
+      {
+        "path": "wp-admin/includes/wphx-template-nested-partial.php",
+        "adapter": "template-segment-nested-partial",
+        "adoption_mode": "compiler_emitted_segment_shell",
+        "segments": [
+          "script",
+          "literal_output",
+          "template_expression",
+          "return_exit"
+        ],
+        "caller_scope": [
+          {
+            "kind": "reads_locals",
+            "names": [
+              "items",
+              "screen",
+              "partial_marker"
+            ]
+          },
+          {
+            "kind": "mutates_locals",
+            "names": [
+              "items"
+            ]
+          },
+          {
+            "kind": "mutates_objects",
+            "names": [
+              "screen.partial"
+            ]
+          },
+          {
+            "kind": "globals",
+            "names": [
+              "wphx_nested_segment_trace"
+            ]
+          }
+        ],
+        "include_semantics": [
+          "nested_include",
+          "include_return_value",
+          "repeated_include",
+          "include_once_second_return_true",
+          "function_scope_include_locals"
+        ],
+        "observable_effects": [
+          "mixed_output_order",
+          "escaped_output",
+          "local_array_mutation",
+          "object_mutation",
+          "global_trace",
+          "include_return_value"
+        ],
+        "unsupported": []
+      },
+      {
+        "path": "wp-admin/wphx-template-nested-parent.php",
+        "adapter": "template-segment-nested-parent",
+        "adoption_mode": "compiler_emitted_segment_shell",
+        "segments": [
+          "guard",
+          "declaration",
+          "script",
+          "literal_output",
+          "template_expression",
+          "include",
+          "script",
+          "return_exit"
+        ],
+        "caller_scope": [
+          {
+            "kind": "reads_locals",
+            "names": [
+              "title",
+              "items",
+              "screen"
+            ]
+          },
+          {
+            "kind": "creates_locals",
+            "names": [
+              "partial_marker",
+              "partial_return"
+            ]
+          },
+          {
+            "kind": "globals",
+            "names": [
+              "wphx_nested_segment_trace"
+            ]
+          }
+        ],
+        "include_semantics": [
+          "nested_include",
+          "include_return_value",
+          "repeated_include",
+          "include_once_second_return_true",
+          "function_scope_include_locals"
+        ],
+        "observable_effects": [
+          "guard_return",
+          "mixed_output_order",
+          "escaped_output",
+          "global_trace",
+          "include_return_value"
+        ],
+        "unsupported": []
+      }
     ],
     "unsupported_empty": true
   },
@@ -879,6 +989,7 @@
     "php_lint": "passed",
     "exact_shape_patterns_passed": true,
     "core_ir_features_passed": true,
+    "compiler_emitted_segment_plans_passed": true,
     "unsupported_empty": true,
     "oracle_candidate_behavior_match": true,
     "guard_behavior_passed": true,

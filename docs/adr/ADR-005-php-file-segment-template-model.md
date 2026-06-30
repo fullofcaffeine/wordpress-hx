@@ -16,6 +16,8 @@ F6 already proves template/caller-scope behavior for admin-style and theme-style
 
 `WPHX-COMP-PHP-SEGMENT-PLAN-PRINTER` routes those generated segment shells through the first bounded in-compiler ordered segment printer. Current plans are deliberately small `PhpSegment` and `OutputSegment` sequences whose manifests record `segment.plan-printer`; this is a printer checkpoint for proven shells, not broad template backend ownership.
 
+`WPHX-COMP-PHP-SEGMENT-MANIFEST` adds structured segment-plan metadata to the WPHX PHP emission manifest for those generated shells. The metadata names the original path, adapter, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs so later Adapter IR, backend, or extracted `reflaxe.php` work can consume the compiler output directly.
+
 ## Decision
 
 Represent every existing WordPress mixed or direct PHP script as an ordered file-segment plan before claiming durable ownership.

@@ -1,0 +1,72 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-segment-manifest",
+  "issue": {
+    "id": "wordpresshx-nvt",
+    "external_ref": "WPHX-COMP-PHP-SEGMENT-MANIFEST",
+    "title": "Emit structured segment plans"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_segment_plan_manifest",
+  "artifact_scope": "minimized_generated_template_segment_shells",
+  "commands": [
+    "npm run wphx:php:template-segment-admin-style",
+    "npm run wphx:php:template-segment-nested",
+    "npm run wphx:php:public-shell-snapshots"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP compiler segment_plans emission metadata implementation"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-admin-style.mjs",
+      "role": "admin-style runner asserting compiler-emitted segment_plans metadata"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-nested.mjs",
+      "role": "nested runner asserting compiler-emitted segment_plans metadata"
+    },
+    {
+      "path": "manifests/wphx-php/template-segment-admin-style.v1.json",
+      "role": "admin-style segment shell manifest with segment_plans evidence"
+    },
+    {
+      "path": "manifests/wphx-php/template-segment-nested.v1.json",
+      "role": "nested segment shell manifest with segment_plans evidence"
+    },
+    {
+      "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
+      "role": "generated-shape snapshot manifest refreshed for emission-manifest hashes"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations documentation for structured segment-plan metadata"
+    },
+    {
+      "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
+      "role": "ADR-005 note tying segment_plans metadata to the file-segment model"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "admin_style_behavior_match": true,
+    "nested_behavior_match": true,
+    "compiler_emitted_segment_plans_passed": true,
+    "public_shell_snapshot_cases": 11,
+    "unsupported_empty": true
+  },
+  "claims": [
+    "WPHX PHP emission manifests include structured segment_plans metadata for the existing generated admin-style and nested template segment shell adapters.",
+    "The focused runners assert compiler-emitted original path, adapter, adoption mode, segment order, caller-scope facts, include semantics, observable effects, and unsupported=[] for those plans.",
+    "Generated PHP behavior remains oracle/candidate identical and public-shell snapshot coverage remains at 11 cases."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX parity for existing Core templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim a full PHP template backend or whole-file ownership for any WordPress file."
+  ]
+}

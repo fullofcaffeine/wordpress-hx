@@ -22,8 +22,8 @@
   },
   "emission_manifest": {
     "path": "build/wphx-php/template-segment-admin-style/generated/wphx-php-emission.v1.json",
-    "bytes": 1003,
-    "sha256": "sha256:9fedf3bc90166b40caaca7dd61be5244c2f94c64b79ebc4587684fd7c5c39a74",
+    "bytes": 2270,
+    "sha256": "sha256:355709da82831595cd63c666945153b2b54dadd6db488d27897c05cf3c7b0a15",
     "declarations": [
       "wp-admin/wphx-template-segment-admin.php:script:template-segment-admin-style"
     ],
@@ -39,6 +39,64 @@
       "segment.return",
       "segment.script",
       "segment.template-expression"
+    ],
+    "segment_plans": [
+      {
+        "path": "wp-admin/wphx-template-segment-admin.php",
+        "adapter": "template-segment-admin-style",
+        "adoption_mode": "compiler_emitted_segment_shell",
+        "segments": [
+          "guard",
+          "declaration",
+          "script",
+          "literal_output",
+          "template_expression",
+          "control",
+          "script",
+          "return_exit"
+        ],
+        "caller_scope": [
+          {
+            "kind": "reads_locals",
+            "names": [
+              "title",
+              "notice",
+              "items",
+              "screen"
+            ]
+          },
+          {
+            "kind": "mutates_locals",
+            "names": [
+              "notice",
+              "items"
+            ]
+          },
+          {
+            "kind": "mutates_objects",
+            "names": [
+              "screen.rendered"
+            ]
+          },
+          {
+            "kind": "globals",
+            "names": [
+              "wphx_segment_trace"
+            ]
+          }
+        ],
+        "include_semantics": [],
+        "observable_effects": [
+          "guard_return",
+          "mixed_output_order",
+          "escaped_output",
+          "local_array_mutation",
+          "object_mutation",
+          "global_trace",
+          "include_return_value"
+        ],
+        "unsupported": []
+      }
     ],
     "unsupported_empty": true
   },
@@ -236,6 +294,7 @@
     "php_lint": "passed",
     "exact_shape_patterns_passed": true,
     "core_ir_features_passed": true,
+    "compiler_emitted_segment_plans_passed": true,
     "unsupported_empty": true,
     "oracle_candidate_behavior_match": true,
     "guard_behavior_passed": true
