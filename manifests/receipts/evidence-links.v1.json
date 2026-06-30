@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 323,
+  "closed_task_count": 324,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -3133,7 +3133,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-first-segment-shell.v1.json",
-          "sha256": "b4e3d90ad2bb1820ac54906a9030cd49264b97920ec9010c3c13386434305478",
+          "sha256": "6c2660899f26e8420dba7ffedcf5228b2a44369e6d6fc0ad9ea9ad8db08de787",
           "id": "receipt:wphx-comp-php-first-segment-shell"
         }
       ]
@@ -3163,7 +3163,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-nested-segment-shell.v1.json",
-          "sha256": "0b4ed7e59b1393d79c437250f06049b72cb4e47623782aac8e9515aab7dd5807",
+          "sha256": "0145a8aca2f0decf8ca4c3903c9de88116c1418fb5228ee52de4887e6f958286",
           "id": "receipt:wphx-comp-php-nested-segment-shell"
         }
       ]
@@ -3175,6 +3175,16 @@
           "path": "receipts/operations/wphx-comp-php-oracle-response.v1.json",
           "sha256": "c9dcd86d53b9b94495caab7ffa0a5d393956b44a4c68d11163b843c52856747d",
           "id": "receipt:wphx-comp-php-oracle-response"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-SEGMENT-PLAN-PRINTER",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-segment-plan-printer.v1.json",
+          "sha256": "f8558fabf9c1d3ce329af5ea0a00ae806c34eb7c44547e43938c113a0784b43a",
+          "id": "receipt:wphx-comp-php-segment-plan-printer"
         }
       ]
     },
@@ -3193,7 +3203,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "140a05a453447fd68a2f6e2207993eded08ecdf4977c2704bee8c946fd81666c",
+          "sha256": "deb81e3d3d3e0986850db2d86ef68fceb58e93da9340f218450b78baeb5a7e28",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]
@@ -3213,7 +3223,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-template-segment-model.v1.json",
-          "sha256": "2d9ae258061887827d6cb90c23cfcd910eebe437cf1d7af13b2a8d5841ed21d5",
+          "sha256": "f13d9effad915d2d4f6cb37d8285e9da1ae43730911372627c73f8a8ed147660",
           "id": "receipt:wphx-comp-php-template-segment-model"
         }
       ]

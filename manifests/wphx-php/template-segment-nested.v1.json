@@ -36,8 +36,8 @@
   ],
   "emission_manifest": {
     "path": "build/wphx-php/template-segment-nested/generated/wphx-php-emission.v1.json",
-    "bytes": 1532,
-    "sha256": "sha256:947ff14112551f1aa1b0a0e1588f7671fb830ddf9c1998061bd60bcc3525fd2c",
+    "bytes": 1560,
+    "sha256": "sha256:93f34465bc171262620c7266a24e4be89cfe55df2d46f3d03d61f964bf942b79",
     "declarations": [
       "wp-admin/includes/wphx-template-nested-partial.php:script:template-segment-nested-partial",
       "wp-admin/wphx-template-nested-parent.php:script:template-segment-nested-parent"
@@ -52,6 +52,7 @@
       "segment.include-return",
       "segment.literal-output",
       "segment.object-mutation",
+      "segment.plan-printer",
       "segment.return",
       "segment.script",
       "segment.template-expression"

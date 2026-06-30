@@ -52,6 +52,7 @@ const expectedCoreIrFeatures = [
   "segment.include-return",
   "segment.literal-output",
   "segment.object-mutation",
+  "segment.plan-printer",
   "segment.return",
   "segment.script",
   "segment.template-expression"

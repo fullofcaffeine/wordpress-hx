@@ -28,7 +28,7 @@
       "role": "WPHX PHP compiler script adapter implementation"
     }
   ],
-  "manifest_sha256": "sha256:592d7c98befaae57783b7bcacdbc668ee5aed08f78c1a56430ed9dd1cd68fc8f",
+  "manifest_sha256": "sha256:443372af1fbbd8e70473f5e112fb958676f409bb3ad92debf1d88afb10e30484",
   "validation_result": {
     "status": "passed",
     "php_lint": "passed",

@@ -1,0 +1,74 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-segment-plan-printer",
+  "issue": {
+    "id": "wordpresshx-zdd",
+    "external_ref": "WPHX-COMP-PHP-SEGMENT-PLAN-PRINTER",
+    "title": "Print template shells from segment plans"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_segment_plan_printer",
+  "artifact_scope": "minimized_generated_template_segment_shells",
+  "commands": [
+    "npm run wphx:php:template-segment-admin-style:check",
+    "npm run wphx:php:template-segment-nested:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run format:haxe:check"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "bounded WPHX PHP segment-plan printer implementation"
+    },
+    {
+      "path": "manifests/wphx-php/template-segment-admin-style.v1.json",
+      "role": "admin-style generated segment shell manifest with segment.plan-printer evidence"
+    },
+    {
+      "path": "manifests/wphx-php/template-segment-nested.v1.json",
+      "role": "nested generated segment shell manifest with segment.plan-printer evidence"
+    },
+    {
+      "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
+      "role": "generated-shape snapshot manifest covering 11 public-shell cases"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-admin-style.mjs",
+      "role": "admin-style segment shell behavior and manifest runner"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-nested.mjs",
+      "role": "nested segment shell behavior and manifest runner"
+    },
+    {
+      "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
+      "role": "file-segment/template model ADR with segment-plan printer checkpoint"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations documentation for bounded segment-plan printing"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "admin_style_behavior_match": true,
+    "nested_behavior_match": true,
+    "public_shell_snapshot_cases": 11,
+    "affected_manifests_record_segment_plan_printer": true,
+    "unsupported_empty": true,
+    "haxe_format_check": "passed"
+  },
+  "claims": [
+    "WPHX PHP routes the existing generated admin-style and nested template segment shells through a bounded ordered segment-plan printer.",
+    "The affected emission manifests record segment.plan-printer with unsupported=[] while preserving oracle/candidate behavior.",
+    "Public-shell generated-shape snapshot coverage still covers 11 cases after the segment-plan printer migration."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX parity for existing Core templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim a full PHP template backend or whole-file ownership for any WordPress file."
+  ]
+}

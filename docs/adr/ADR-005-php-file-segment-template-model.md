@@ -14,6 +14,8 @@ F6 already proves template/caller-scope behavior for admin-style and theme-style
 
 `WPHX-COMP-PHP-NESTED-SEGMENT-SHELL` extends the implementation checkpoint to a generated original-path parent template and generated nested partial. It proves caller-scope local reads and mutation across the include boundary, object mutation, global trace order, ordered parent/partial output, nested include return values, repeated include, include_once second-return behavior, and function-scope include locals against oracle fixtures.
 
+`WPHX-COMP-PHP-SEGMENT-PLAN-PRINTER` routes those generated segment shells through the first bounded in-compiler ordered segment printer. Current plans are deliberately small `PhpSegment` and `OutputSegment` sequences whose manifests record `segment.plan-printer`; this is a printer checkpoint for proven shells, not broad template backend ownership.
+
 ## Decision
 
 Represent every existing WordPress mixed or direct PHP script as an ordered file-segment plan before claiming durable ownership.

@@ -127,6 +127,12 @@ private typedef PhpCoreArrayEntry =
 	final value:PhpCoreExpr;
 }
 
+private enum PhpFileSegment
+{
+	PhpSegment(code:String);
+	OutputSegment(content:String);
+}
+
 private typedef EmissionManifest =
 {
 	final schema:String;
@@ -491,9 +497,37 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			+ ");";
 	}
 
+	function emitSegmentPlan(features:Array<String>, segments:Array<PhpFileSegment>):String
+	{
+		recordCoreIrFeatures(features.concat(["segment.plan-printer"]));
+		var phpOpen = true;
+		final parts = new Array<String>();
+		for (segment in segments)
+		{
+			switch (segment)
+			{
+				case PhpSegment(code):
+					if (!phpOpen)
+					{
+						parts.push("<?php\n");
+						phpOpen = true;
+					}
+					parts.push(code);
+				case OutputSegment(content):
+					if (phpOpen)
+					{
+						parts.push("?>\n");
+						phpOpen = false;
+					}
+					parts.push(content);
+			}
+		}
+		return parts.join("");
+	}
+
 	function emitTemplateSegmentAdminStyleScript():String
 	{
-		recordCoreIrFeatures([
+		return emitSegmentPlan([
 			"segment.guard",
 			"segment.declaration",
 			"segment.script",
@@ -504,57 +538,47 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			"segment.caller-scope-local",
 			"segment.object-mutation",
 			"segment.global-mutation"
+		], [
+			PhpSegment("if (!defined('ABSPATH')) {\n"
+				+ "\treturn 'ABSPATH_REQUIRED';\n"
+				+ "}\n\n"
+				+ "if (!function_exists('wphx_segment_escape')) {\n"
+				+ "\tfunction wphx_segment_escape($value) {\n"
+				+ "\t\treturn htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');\n"
+				+ "\t}\n"
+				+ "}\n\n"
+				+ "if (!function_exists('wphx_segment_row_class')) {\n"
+				+ "\tfunction wphx_segment_row_class($index) {\n"
+				+ "\t\treturn 0 === $index % 2 ? 'row even' : 'row odd';\n"
+				+ "\t}\n"
+				+ "}\n\n"
+				+ "$GLOBALS['wphx_segment_trace'][] = array(\n"
+				+ "\t'event' => 'admin:begin',\n"
+				+ "\t'title' => $title,\n"
+				+ "\t'itemCount' => count($items),\n"
+				+ ");\n\n"
+				+ "$notice = strtoupper($notice);\n"
+				+ "$screen->rendered = true;\n"),
+			OutputSegment("<div class=\"wrap\" data-screen=\"<?php echo wphx_segment_escape($screen->id); ?>\">\n"
+				+ "\t<h1><?php echo wphx_segment_escape($title); ?></h1>\n"
+				+ "\t<div class=\"notice\"><?php echo wphx_segment_escape($notice); ?></div>\n"
+				+ "\t<ul class=\"wp-list-table\">\n"
+				+ "\t\t<?php foreach ($items as $index => $item) : ?>\n"
+				+ "\t\t\t<li class=\"<?php echo wphx_segment_escape(wphx_segment_row_class($index)); ?>\""
+				+ " data-index=\"<?php echo wphx_segment_escape($index); ?>\">"
+				+ "<?php echo wphx_segment_escape($item); ?></li>\n"
+				+ "\t\t<?php endforeach; ?>\n"
+				+ "\t</ul>\n"
+				+ "</div>\n"),
+			PhpSegment("$items[] = 'admin-mutated';\n" + "$GLOBALS['wphx_segment_trace'][] = array(\n" + "\t'event' => 'admin:end',\n"
+				+ "\t'notice' => $notice,\n" + "\t'itemCount' => count($items),\n" + ");\n\n" + "return array(\n" + "\t'kind' => 'admin-segment',\n"
+				+ "\t'notice' => $notice,\n" + "\t'itemCount' => count($items),\n" + "\t'marker' => 'segment:ADMIN',\n" + ");")
 		]);
-		return "if (!defined('ABSPATH')) {\n"
-			+ "\treturn 'ABSPATH_REQUIRED';\n"
-			+ "}\n\n"
-			+ "if (!function_exists('wphx_segment_escape')) {\n"
-			+ "\tfunction wphx_segment_escape($value) {\n"
-			+ "\t\treturn htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');\n"
-			+ "\t}\n"
-			+ "}\n\n"
-			+ "if (!function_exists('wphx_segment_row_class')) {\n"
-			+ "\tfunction wphx_segment_row_class($index) {\n"
-			+ "\t\treturn 0 === $index % 2 ? 'row even' : 'row odd';\n"
-			+ "\t}\n"
-			+ "}\n\n"
-			+ "$GLOBALS['wphx_segment_trace'][] = array(\n"
-			+ "\t'event' => 'admin:begin',\n"
-			+ "\t'title' => $title,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");\n\n"
-			+ "$notice = strtoupper($notice);\n"
-			+ "$screen->rendered = true;\n"
-			+ "?>\n"
-			+ "<div class=\"wrap\" data-screen=\"<?php echo wphx_segment_escape($screen->id); ?>\">\n"
-			+ "\t<h1><?php echo wphx_segment_escape($title); ?></h1>\n"
-			+ "\t<div class=\"notice\"><?php echo wphx_segment_escape($notice); ?></div>\n"
-			+ "\t<ul class=\"wp-list-table\">\n"
-			+ "\t\t<?php foreach ($items as $index => $item) : ?>\n"
-			+ "\t\t\t<li class=\"<?php echo wphx_segment_escape(wphx_segment_row_class($index)); ?>\""
-			+ " data-index=\"<?php echo wphx_segment_escape($index); ?>\">"
-			+ "<?php echo wphx_segment_escape($item); ?></li>\n"
-			+ "\t\t<?php endforeach; ?>\n"
-			+ "\t</ul>\n"
-			+ "</div>\n"
-			+ "<?php\n"
-			+ "$items[] = 'admin-mutated';\n"
-			+ "$GLOBALS['wphx_segment_trace'][] = array(\n"
-			+ "\t'event' => 'admin:end',\n"
-			+ "\t'notice' => $notice,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");\n\n"
-			+ "return array(\n"
-			+ "\t'kind' => 'admin-segment',\n"
-			+ "\t'notice' => $notice,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ "\t'marker' => 'segment:ADMIN',\n"
-			+ ");";
 	}
 
 	function emitTemplateSegmentNestedParentScript():String
 	{
-		recordCoreIrFeatures([
+		return emitSegmentPlan([
 			"segment.guard",
 			"segment.declaration",
 			"segment.script",
@@ -564,45 +588,36 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			"segment.return",
 			"segment.caller-scope-local",
 			"segment.global-mutation"
+		], [
+			PhpSegment("if (!defined('ABSPATH')) {\n"
+				+ "\treturn 'ABSPATH_REQUIRED';\n"
+				+ "}\n\n"
+				+ "if (!function_exists('wphx_nested_segment_escape')) {\n"
+				+ "\tfunction wphx_nested_segment_escape($value) {\n"
+				+ "\t\treturn htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');\n"
+				+ "\t}\n"
+				+ "}\n\n"
+				+ "$GLOBALS['wphx_nested_segment_trace'][] = array(\n"
+				+ "\t'event' => 'parent:begin',\n"
+				+ "\t'title' => $title,\n"
+				+ "\t'itemCount' => count($items),\n"
+				+ ");\n"
+				+ "$partial_marker = 'from-parent';\n"),
+			OutputSegment("<section class=\"wphx-nested\" data-screen=\"<?php echo wphx_nested_segment_escape($screen->id); ?>\">\n"
+				+ "\t<h2><?php echo wphx_nested_segment_escape($title); ?></h2>\n"
+				+ "\t<?php $partial_return = include __DIR__ . '/includes/wphx-template-nested-partial.php'; ?>\n"
+				+ "\t<footer data-count=\"<?php echo wphx_nested_segment_escape(count($items)); ?>\">"
+				+ "<?php echo wphx_nested_segment_escape($partial_return['marker']); ?></footer>\n"
+				+ "</section>\n"),
+			PhpSegment("$GLOBALS['wphx_nested_segment_trace'][] = array(\n" + "\t'event' => 'parent:end',\n" + "\t'partial' => $partial_return,\n"
+				+ "\t'itemCount' => count($items),\n" + ");\n\n" + "return array(\n" + "\t'kind' => 'nested-parent',\n" + "\t'partial' => $partial_return,\n"
+				+ "\t'itemCount' => count($items),\n" + "\t'marker' => 'segment:NESTED-PARENT',\n" + ");")
 		]);
-		return "if (!defined('ABSPATH')) {\n"
-			+ "\treturn 'ABSPATH_REQUIRED';\n"
-			+ "}\n\n"
-			+ "if (!function_exists('wphx_nested_segment_escape')) {\n"
-			+ "\tfunction wphx_nested_segment_escape($value) {\n"
-			+ "\t\treturn htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');\n"
-			+ "\t}\n"
-			+ "}\n\n"
-			+ "$GLOBALS['wphx_nested_segment_trace'][] = array(\n"
-			+ "\t'event' => 'parent:begin',\n"
-			+ "\t'title' => $title,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");\n"
-			+ "$partial_marker = 'from-parent';\n"
-			+ "?>\n"
-			+ "<section class=\"wphx-nested\" data-screen=\"<?php echo wphx_nested_segment_escape($screen->id); ?>\">\n"
-			+ "\t<h2><?php echo wphx_nested_segment_escape($title); ?></h2>\n"
-			+ "\t<?php $partial_return = include __DIR__ . '/includes/wphx-template-nested-partial.php'; ?>\n"
-			+ "\t<footer data-count=\"<?php echo wphx_nested_segment_escape(count($items)); ?>\">"
-			+ "<?php echo wphx_nested_segment_escape($partial_return['marker']); ?></footer>\n"
-			+ "</section>\n"
-			+ "<?php\n"
-			+ "$GLOBALS['wphx_nested_segment_trace'][] = array(\n"
-			+ "\t'event' => 'parent:end',\n"
-			+ "\t'partial' => $partial_return,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");\n\n"
-			+ "return array(\n"
-			+ "\t'kind' => 'nested-parent',\n"
-			+ "\t'partial' => $partial_return,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ "\t'marker' => 'segment:NESTED-PARENT',\n"
-			+ ");";
 	}
 
 	function emitTemplateSegmentNestedPartialScript():String
 	{
-		recordCoreIrFeatures([
+		return emitSegmentPlan([
 			"segment.script",
 			"segment.literal-output",
 			"segment.template-expression",
@@ -612,29 +627,16 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			"segment.caller-scope-local-mutation",
 			"segment.object-mutation",
 			"segment.global-mutation"
+		], [
+			PhpSegment("$GLOBALS['wphx_nested_segment_trace'][] = array(\n" + "\t'event' => 'partial:begin',\n" + "\t'marker' => $partial_marker,\n"
+				+ "\t'itemCount' => count($items),\n" + ");\n" + "$items[] = 'partial-mutated';\n" + "$screen->partial = $partial_marker;\n"),
+			OutputSegment("<div class=\"wphx-partial\" data-marker=\"<?php echo wphx_nested_segment_escape($partial_marker); ?>\">\n"
+				+ "\t<span><?php echo wphx_nested_segment_escape(end($items)); ?></span>\n"
+				+ "</div>\n"),
+			PhpSegment("$GLOBALS['wphx_nested_segment_trace'][] = array(\n" + "\t'event' => 'partial:end',\n" + "\t'itemCount' => count($items),\n"
+				+ ");\n\n" + "return array(\n" + "\t'kind' => 'nested-partial',\n" + "\t'marker' => 'segment:NESTED-PARTIAL',\n"
+				+ "\t'localMarker' => $partial_marker,\n" + "\t'itemCount' => count($items),\n" + ");")
 		]);
-		return "$GLOBALS['wphx_nested_segment_trace'][] = array(\n"
-			+ "\t'event' => 'partial:begin',\n"
-			+ "\t'marker' => $partial_marker,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");\n"
-			+ "$items[] = 'partial-mutated';\n"
-			+ "$screen->partial = $partial_marker;\n"
-			+ "?>\n"
-			+ "<div class=\"wphx-partial\" data-marker=\"<?php echo wphx_nested_segment_escape($partial_marker); ?>\">\n"
-			+ "\t<span><?php echo wphx_nested_segment_escape(end($items)); ?></span>\n"
-			+ "</div>\n"
-			+ "<?php\n"
-			+ "$GLOBALS['wphx_nested_segment_trace'][] = array(\n"
-			+ "\t'event' => 'partial:end',\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");\n\n"
-			+ "return array(\n"
-			+ "\t'kind' => 'nested-partial',\n"
-			+ "\t'marker' => 'segment:NESTED-PARTIAL',\n"
-			+ "\t'localMarker' => $partial_marker,\n"
-			+ "\t'itemCount' => count($items),\n"
-			+ ");";
 	}
 
 	function emitFunction(pending:AdapterGlobalFunction):String

@@ -22,8 +22,8 @@
   },
   "emission_manifest": {
     "path": "build/wphx-php/template-segment-admin-style/generated/wphx-php-emission.v1.json",
-    "bytes": 975,
-    "sha256": "sha256:75ff92510e7e176e942ba22d9757c93089e0ac723f206985242d4ef00fefbac7",
+    "bytes": 1003,
+    "sha256": "sha256:9fedf3bc90166b40caaca7dd61be5244c2f94c64b79ebc4587684fd7c5c39a74",
     "declarations": [
       "wp-admin/wphx-template-segment-admin.php:script:template-segment-admin-style"
     ],
@@ -35,6 +35,7 @@
       "segment.guard",
       "segment.literal-output",
       "segment.object-mutation",
+      "segment.plan-printer",
       "segment.return",
       "segment.script",
       "segment.template-expression"
