@@ -28,14 +28,19 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-deprecated-parse-url-candidate.mjs",
-      "bytes": 16757,
-      "sha256": "sha256:a1556b54e26fb7ec552b66998b97b6f0b267362cf195441b7fccd69bfbe6ae23"
+      "bytes": 17556,
+      "sha256": "sha256:ab714af01c195c9dec0fa93526a410ee10162c8d030a07b3be16d0e43d9eb6b5"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-deprecated-parse-url-candidate.hxml",
         "bytes": 134,
         "sha256": "sha256:6441655ac5f08b838314adf00706bdd9dc808fe12fd60582e43a38d5412f0b1c"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-parser-helpers.hxml",
+        "bytes": 354,
+        "sha256": "sha256:a8b66bcf4f334ef0953f560e1161859d13fe4b8e99d6fb771dbb64dab8232626"
       },
       {
         "path": "src/wphx/wp/http/HttpDeprecatedParseUrl.hx",
@@ -46,8 +51,33 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.hx",
         "bytes": 568,
         "sha256": "sha256:0f1f044c32c351818d0482b2c236c88b4e702fcfa128155c5869648956039f0c"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpParserHelpersEntry.hx",
+        "bytes": 330,
+        "sha256": "sha256:04cd706af8a95a7e22a44c68b35414ff30dd6f84d75cc391b0353f44248d3417"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx",
+        "bytes": 1110,
+        "sha256": "sha256:d0515b4b79595294f57c3511cef7651b432689b271bd5585943f3ca9fce7362a"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
+        "bytes": 506,
+        "sha256": "sha256:86e5d78ec9f4fb43da1e51c8d0a27513ce350b9c6511b48ff05b3913c801f5a1"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx",
+        "bytes": 302,
+        "sha256": "sha256:edf69b94b36c3034e065d6580bffc179cf3b4eb6d552cbe7664df1e0d735288c"
       }
     ],
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-60/generated/wphx-php-emission.v1.json",
+      "bytes": 661,
+      "sha256": "sha256:33d1df36379b22df59f56b760bc19f7db50bc1a1da304dc0a51edf1700680c30"
+    },
     "upstream_sources": [
       {
         "path": "src/wp-includes/class-wp-http.php",
@@ -59,6 +89,7 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-deprecated-parse-url-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-parser-helpers.hxml",
     "haxe_output": "build/wp-core/wphx-312-64/haxe",
     "compiled_php_files": [
       "build/wp-core/wphx-312-64/haxe/index.php",
@@ -79,20 +110,35 @@
       "build/wp-core/wphx-312-64/haxe/lib/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.php",
       "build/wp-core/wphx-312-64/haxe/lib/wphx/wp/http/_HttpDeprecatedParseUrl/HttpDeprecatedParseUrl_Fields_.php"
     ],
+    "compiler_emitted_public_shell": {
+      "path": "build/wp-core/wphx-312-64/candidate/wp-includes/class-wp-http.php",
+      "source_path": "build/wp-core/wphx-312-60/generated/wp-includes/class-wp-http.php",
+      "manifest": "build/wp-core/wphx-312-60/generated/wphx-php-emission.v1.json",
+      "declarations": [
+        "class:WP_Http"
+      ],
+      "emitted_methods": [
+        {
+          "name": "parse_url",
+          "visibility": "protected"
+        }
+      ],
+      "unsupported": []
+    },
     "promoted_symbols": [
       "WP_Http::parse_url deprecated function metadata",
       "WP_Http::parse_url deprecated replacement metadata",
       "WP_Http::parse_url wp_parse_url delegation"
     ],
     "public_shell_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
       "public_php_abi_preserved": true,
-      "shell_body_ownership": "temporary candidate shell preserves the protected static WP_Http::parse_url ABI, subclass access behavior, native _deprecated_function call, and native wp_parse_url false-or-array shape while delegating wrapper metadata and parse delegation to generated Haxe PHP",
+      "shell_body_ownership": "compiler-emitted original-path class-wp-http.php shell preserves the protected static WP_Http::parse_url ABI, subclass access behavior, native _deprecated_function call, and native wp_parse_url false-or-array shape while delegating wrapper metadata and parse delegation to generated Haxe PHP",
       "native_boundaries": [
         "protected static PHP method ABI",
         "_deprecated_function dispatch",
         "wp_parse_url false-or-array result shape",
-        "temporary original-path class-wp-http.php shell"
+        "compiler-emitted original-path class-wp-http.php shell"
       ]
     }
   },
@@ -194,9 +240,9 @@
       "detail": "This candidate promotes only the deprecated WP_Http::parse_url wrapper metadata and handoff. processResponse, processHeaders, buildCookieHeader, chunkTransferDecode, wp_parse_url internals, WP_Http_Cookie, and header/cookie side effects remain separate PHP boundaries or previously scoped candidates."
     },
     {
-      "id": "durable-public-php-adapter-not-yet-generated",
+      "id": "whole-wp-http-file-not-yet-owned",
       "owner": "WPHX-312.64",
-      "detail": "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+      "detail": "The candidate consumes a compiler-emitted grouped original-path class-wp-http.php shell for the protected parse_url boundary, but broader WP_Http methods and whole-file original-path ownership remain later compiler-driven gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
@@ -206,7 +252,10 @@
     "promoted_symbols": 3,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "protected_parse_url_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false
   }

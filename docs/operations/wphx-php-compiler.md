@@ -141,6 +141,8 @@ haxe fixtures/wphx-php/wp-http-parser-helpers.hxml
 
 The runner emits `build/wp-core/wphx-312-60/generated/wp-includes/class-wp-http.php` with `WP_Http::processResponse`, `WP_Http::chunkTransferDecode`, and protected `WP_Http::parse_url`, lints that PHP, runs oracle/candidate probes for all three helper cases, and verifies the WPHX PHP manifest records `class:WP_Http` with no unsupported constructs. This is the current model for replacing copied or JS-patched PHP shells with compiler-emitted original-path adapters while keeping stock Haxe PHP responsible for runtime implementation classes and stdlib behavior.
 
+`WPHX-COMP-PHP-RETIRE-WP-HTTP-PARSE-URL-TEMP-SHELL` applies that model to the existing WPHX-312.64 protected `WP_Http::parse_url` Haxe candidate. The WPHX-312.64 runner now compiles `fixtures/wphx-php/wp-http-parser-helpers.hxml`, installs the compiler-emitted grouped `wp-includes/class-wp-http.php` shell into the candidate package, verifies `protected static function parse_url($url)` is present, verifies the WPHX emission manifest records `class:WP_Http` with `unsupported=[]`, and then reuses the original oracle/candidate behavior probe. That retires the copied/runner-patched public shell for this boundary; it still does not claim whole-file `WP_Http`, `wp_parse_url` internals, installed distribution behavior, or broad request ownership.
+
 The public-shell snapshot lane compiles representative WPHX PHP fixtures twice from clean roots:
 
 ```bash

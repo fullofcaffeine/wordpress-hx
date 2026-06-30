@@ -29,8 +29,8 @@
       },
       {
         "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
-        "bytes": 13544,
-        "sha256": "sha256:b5b7fc9ddfb41a7b750ac667caac017a53e151ce7bc5f4fcc7a721039b69eec5"
+        "bytes": 24156,
+        "sha256": "sha256:f3c5619438c184fd82c6f98c4b16519c3932dbdb809d00fbed16fdfbca9c8dcb"
       },
       {
         "path": "manifests/wp-core/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
@@ -51,8 +51,8 @@
       },
       {
         "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-        "bytes": 42291,
-        "sha256": "sha256:8ef29d03c8b49e75fc8eb14f4e33a9351c3df67ca54c6ff47398f4ff330e106a"
+        "bytes": 52236,
+        "sha256": "sha256:f282c873e9270439c94944445dbd91e2b7750e949a6c4cf23dd6449dc84c1bc9"
       },
       {
         "path": "src/wphx/wp/http/HttpProcessResponse.hx",
@@ -146,8 +146,8 @@
     ],
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-comp-php-group-wp-http/generated/wphx-php-emission.v1.json",
-      "bytes": 1139,
-      "sha256": "sha256:fd3adcc138b333fccc8aa37c16ee6e01435e727e458f053bc399ee5f727d5d47"
+      "bytes": 1162,
+      "sha256": "sha256:9f17e912e3605967f3dcff9abc1298e746206415917d61bebe41180493cd4dab"
     }
   },
   "generated": {

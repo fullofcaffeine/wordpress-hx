@@ -23,6 +23,14 @@
     {
       "path": "src/wphx/wp/http/HttpDeprecatedParseUrl.hx",
       "role": "module-level Haxe source for WP_Http::parse_url deprecated-wrapper metadata and handoff"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx",
+      "role": "WPHX PHP source for grouped original-path WP_Http public shell"
+    },
+    {
+      "path": "build/wp-core/wphx-312-60/generated/wphx-php-emission.v1.json",
+      "role": "WPHX PHP emission manifest for compiler-emitted class-wp-http.php"
     }
   ],
   "verification_commands": [
@@ -34,7 +42,8 @@
   "related_receipts": [
     "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
     "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
-    "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture"
+    "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture",
+    "receipt:wphx-comp-php-group-wp-http-helpers"
   ],
   "validation_result": {
     "status": "passed",
@@ -42,7 +51,10 @@
     "promoted_symbols": 3,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "protected_parse_url_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false
   }

@@ -16,10 +16,13 @@ const RECORDED_AT = "2026-06-28T02:00:00.000Z";
 const UPSTREAM_ROOT = "../wordpress-develop";
 const RUNNER = "tools/wp-core/run-wp-http-deprecated-parse-url-candidate.mjs";
 const HXML = "fixtures/wp-core/http-deprecated-parse-url-candidate.hxml";
+const WPHX_PHP_HXML = "fixtures/wphx-php/wp-http-parser-helpers.hxml";
 const OUT_ROOT = "build/wp-core/wphx-312-64";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
 const ORACLE_ROOT = `${OUT_ROOT}/oracle`;
 const CANDIDATE_ROOT = `${OUT_ROOT}/candidate`;
+const WPHX_PHP_ROOT = "build/wp-core/wphx-312-60/generated";
+const WPHX_PHP_MANIFEST = `${WPHX_PHP_ROOT}/wphx-php-emission.v1.json`;
 const PROBE = `${OUT_ROOT}/probe.php`;
 const OUT = "manifests/wp-core/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json";
 const OWNERSHIP = "manifests/ownership/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json";
@@ -31,10 +34,14 @@ const PARSER_FIXTURE = "manifests/wp-core/wphx-312-42-wp-http-parser-header-orac
 const SOURCE_FILES = ["src/wp-includes/class-wp-http.php"];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_PHP_HXML,
   "src/wphx/wp/http/HttpDeprecatedParseUrl.hx",
-  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.hx"
+  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpParserHelpersEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx"
 ];
-const HAXE_MODULE = "\\wphx\\wp\\http\\_HttpDeprecatedParseUrl\\HttpDeprecatedParseUrl_Fields_";
 const PROMOTED_SYMBOLS = [
   "WP_Http::parse_url deprecated function metadata",
   "WP_Http::parse_url deprecated replacement metadata",
@@ -92,72 +99,11 @@ function mirrorSources(root) {
   }
 }
 
-function haxeBootstrapBlock() {
-  return `if ( ! function_exists( 'wphx_312_64_bootstrap_haxe' ) ) {
-\tfunction wphx_312_64_bootstrap_haxe() {
-\t\tstatic $bootstrapped = false;
-\t\tif ( $bootstrapped ) {
-\t\t\treturn;
-\t\t}
-\t\t$bootstrapped = true;
-
-\t\t$wphx_312_64_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
-\t\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_312_64_lib );
-\t\tspl_autoload_register(
-\t\t\tfunction ( $class ) {
-\t\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
-\t\t\t\tif ( $file ) {
-\t\t\t\t\tinclude_once $file;
-\t\t\t\t}
-\t\t\t}
-\t\t);
-\t\t\\php\\Boot::__hx__init();
-\t}
-}
-wphx_312_64_bootstrap_haxe();
-`;
-}
-
-function installBootstrap(source) {
-  const marker = "<?php\n";
-  if (!source.startsWith(marker)) throw new Error("class-wp-http.php did not start with PHP open tag");
-  return `${marker}\n${haxeBootstrapBlock()}\n${source.slice(marker.length)}`;
-}
-
-function replaceStaticMethod(source, methodName, replacement) {
-  const pattern = new RegExp(`(?:public|protected)\\s+static\\s+function\\s+${methodName}\\s*\\(`, "m");
-  const match = pattern.exec(source);
-  if (!match) throw new Error(`Unable to locate static method ${methodName}`);
-  const openBrace = source.indexOf("{", match.index);
-  if (openBrace === -1) throw new Error(`Unable to locate opening brace for ${methodName}`);
-  let depth = 0;
-  for (let index = openBrace; index < source.length; index += 1) {
-    const char = source[index];
-    if (char === "{") depth += 1;
-    if (char === "}") {
-      depth -= 1;
-      if (depth === 0) return `${source.slice(0, match.index)}${replacement}${source.slice(index + 1)}`;
-    }
-  }
-  throw new Error(`Unable to locate closing brace for ${methodName}`);
-}
-
-function transformCandidateDeprecatedParseUrl() {
-  const path = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
-  let source = installBootstrap(readFileSync(path, "utf8"));
-  source = replaceStaticMethod(
-    source,
-    "parse_url",
-    `protected static function parse_url( $url ) {
-\t_deprecated_function(
-\t\t${HAXE_MODULE}::deprecatedFunctionName(),
-\t\t${HAXE_MODULE}::deprecatedVersion(),
-\t\t${HAXE_MODULE}::replacementFunctionName()
-\t);
-\treturn ${HAXE_MODULE}::parseUrl( (string) $url );
-}`
-  );
-  writeFileSync(path, source);
+function installCompilerEmittedCandidateShell() {
+  const source = `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`;
+  const target = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(source, target);
 }
 
 function writeProbe() {
@@ -268,12 +214,22 @@ function ownershipManifest(manifestSha) {
     ownership_state: "haxe_owned_candidate_with_public_php_shell",
     bridge: {
       exists: true,
-      kind: "generated-php-haxe-helper-with-temporary-original-path-shell",
+      kind: "compiler-emitted-grouped-original-path-public-php-shell",
       removal_gate:
-        "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, and generated-shell gates before claiming durable public PHP ownership."
+        "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, and generated-shell gates before claiming durable whole-file WP_Http ownership."
     },
-    owned_paths: [RUNNER, HXML, "src/wphx/wp/http/HttpDeprecatedParseUrl.hx", "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.hx", OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    owned_paths: [
+      RUNNER,
+      HXML,
+      WPHX_PHP_HXML,
+      "src/wphx/wp/http/HttpDeprecatedParseUrl.hx",
+      "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.hx",
+      "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx",
+      OUT,
+      OWNERSHIP,
+      RECEIPT
+    ],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, WPHX_PHP_MANIFEST, OUT_ROOT],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-wp-http-deprecated-parse-url-candidate",
@@ -290,9 +246,9 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  command("haxe", [WPHX_PHP_HXML]);
   mirrorSources(ORACLE_ROOT);
-  mirrorSources(CANDIDATE_ROOT);
-  transformCandidateDeprecatedParseUrl();
+  installCompilerEmittedCandidateShell();
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -314,6 +270,23 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
+  const wphxDeclarations = wphxPhpManifest.files.flatMap((file) => file.declarations.map((entry) => `${entry.kind}:${entry.name}`));
+  if (JSON.stringify(wphxDeclarations) !== JSON.stringify(["class:WP_Http"])) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP declarations", declarations: wphxDeclarations }, null, 2));
+    process.exit(1);
+  }
+  if (wphxPhpManifest.unsupported.length !== 0) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP unsupported constructs", unsupported: wphxPhpManifest.unsupported }, null, 2));
+    process.exit(1);
+  }
+  const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http.php");
+  const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const protectedParseUrlEmitted = /protected\s+static\s+function\s+parse_url\s*\(\s*\$url\s*\)/.test(generatedShell);
+  if (!protectedParseUrlEmitted) {
+    console.error(JSON.stringify({ status: "failed", reason: "generated shell is missing protected parse_url" }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-wp-http-deprecated-parse-url-candidate.v1",
     issue: ISSUE.external_ref,
@@ -327,23 +300,33 @@ async function main() {
       parser_header_oracle_fixture_manifest: inputRecord(PARSER_FIXTURE),
       runner: inputRecord(RUNNER),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
+      wphx_php_manifest: inputRecord(WPHX_PHP_MANIFEST),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_PHP_HXML,
       haxe_output: HAXE_OUT,
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
+      compiler_emitted_public_shell: {
+        path: generatedShellPath,
+        source_path: `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`,
+        manifest: WPHX_PHP_MANIFEST,
+        declarations: wphxDeclarations,
+        emitted_methods: [{ name: "parse_url", visibility: "protected" }],
+        unsupported: wphxPhpManifest.unsupported
+      },
       promoted_symbols: PROMOTED_SYMBOLS,
       public_shell_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
         public_php_abi_preserved: true,
         shell_body_ownership:
-          "temporary candidate shell preserves the protected static WP_Http::parse_url ABI, subclass access behavior, native _deprecated_function call, and native wp_parse_url false-or-array shape while delegating wrapper metadata and parse delegation to generated Haxe PHP",
+          "compiler-emitted original-path class-wp-http.php shell preserves the protected static WP_Http::parse_url ABI, subclass access behavior, native _deprecated_function call, and native wp_parse_url false-or-array shape while delegating wrapper metadata and parse delegation to generated Haxe PHP",
         native_boundaries: [
           "protected static PHP method ABI",
           "_deprecated_function dispatch",
           "wp_parse_url false-or-array result shape",
-          "temporary original-path class-wp-http.php shell"
+          "compiler-emitted original-path class-wp-http.php shell"
         ]
       }
     },
@@ -376,9 +359,10 @@ async function main() {
           "This candidate promotes only the deprecated WP_Http::parse_url wrapper metadata and handoff. processResponse, processHeaders, buildCookieHeader, chunkTransferDecode, wp_parse_url internals, WP_Http_Cookie, and header/cookie side effects remain separate PHP boundaries or previously scoped candidates."
       },
       {
-        id: "durable-public-php-adapter-not-yet-generated",
+        id: "whole-wp-http-file-not-yet-owned",
         owner: ISSUE.external_ref,
-        detail: "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+        detail:
+          "The candidate consumes a compiler-emitted grouped original-path class-wp-http.php shell for the protected parse_url boundary, but broader WP_Http methods and whole-file original-path ownership remain later compiler-driven gates."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -388,7 +372,10 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
+      compiler_emitted_public_php: true,
+      protected_parse_url_emitted: protectedParseUrlEmitted,
+      unsupported_empty: wphxPhpManifest.unsupported.length === 0,
       installed_wordpress_behavior_claimed: false,
       live_http_claimed: false
     }
@@ -405,7 +392,9 @@ async function main() {
       { path: OUT, role: "WP_Http deprecated parse_url Haxe parity candidate manifest" },
       { path: OWNERSHIP, role: "ownership manifest for Haxe-owned WP_Http deprecated parse_url wrapper" },
       { path: RUNNER, role: "deterministic PHP CLI oracle/candidate Haxe runner" },
-      { path: "src/wphx/wp/http/HttpDeprecatedParseUrl.hx", role: "module-level Haxe source for WP_Http::parse_url deprecated-wrapper metadata and handoff" }
+      { path: "src/wphx/wp/http/HttpDeprecatedParseUrl.hx", role: "module-level Haxe source for WP_Http::parse_url deprecated-wrapper metadata and handoff" },
+      { path: "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx", role: "WPHX PHP source for grouped original-path WP_Http public shell" },
+      { path: WPHX_PHP_MANIFEST, role: "WPHX PHP emission manifest for compiler-emitted class-wp-http.php" }
     ],
     verification_commands: [
       "npm run wp:core:wphx-312-wp-http-deprecated-parse-url-candidate",
@@ -416,7 +405,8 @@ async function main() {
     related_receipts: [
       "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
       "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
-      "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture"
+      "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture",
+      "receipt:wphx-comp-php-group-wp-http-helpers"
     ],
     validation_result: manifest.validation_result
   };

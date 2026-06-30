@@ -1,0 +1,82 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-parse-url-temp-shell",
+  "issue": {
+    "id": "wordpresshx-nlz",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-PARSE-URL-TEMP-SHELL",
+    "title": "Retire the temporary WP_Http::parse_url public shell"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_public_shell_retirement",
+  "artifact_scope": "wp_http_parse_url_candidate_boundary",
+  "commands": [
+    "npm run wp:core:wphx-312-wp-http-deprecated-parse-url-candidate",
+    "npm run wp:core:wphx-312-wp-http-deprecated-parse-url-candidate:check",
+    "npm run wphx:php:wp-http-grouped-helpers",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-deprecated-parse-url-candidate.mjs",
+      "role": "WPHX-312.64 runner that installs the compiler-emitted grouped WP_Http shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+      "role": "WPHX-312.64 manifest with compiler_emitted_public_php=true"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+      "role": "ownership manifest for the Haxe-owned deprecated parse_url wrapper boundary"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+      "role": "WPHX-312.64 verification receipt"
+    },
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http compiler manifest proving unsupported=[]"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http compiler receipt"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx",
+      "role": "typed WPHX PHP source for the grouped parser-helper shell"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations note documenting the retired temporary shell"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program progress checkpoint for this compiler evidence"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "wphx_312_64_check_passed": true,
+    "compiler_emitted_public_php": true,
+    "protected_parse_url_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 11,
+    "whole_file_wp_http_claimed": false
+  },
+  "claims": [
+    "The WPHX-312.64 protected WP_Http::parse_url candidate now uses the WPHX compiler-emitted grouped original-path class-wp-http.php public shell.",
+    "The runner verifies the WPHX emission manifest records class:WP_Http with unsupported=[] and verifies protected static function parse_url($url) exists before running the oracle/candidate behavior probe.",
+    "The previous copied or runner-patched temporary public PHP shell is no longer the authority for the protected parse_url boundary."
+  ],
+  "non_claims": [
+    "This does not claim whole-file WP_Http ownership.",
+    "This does not claim wp_parse_url internals, live HTTP transport, installed WordPress distribution behavior, WP_Http::request ownership, or broad generated public PHP replacement.",
+    "This does not claim WPHX PHP is already a complete arbitrary-Haxe PHP backend."
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-64-wp-http-deprecated-parse-url-candidate",
+    "receipt:wphx-comp-php-group-wp-http-helpers",
+    "receipt:wphx-comp-php-public-shell-snapshots"
+  ]
+}

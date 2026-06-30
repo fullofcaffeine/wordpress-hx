@@ -21,7 +21,7 @@
     {
       "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
       "role": "grouped WP_Http helper compiler manifest",
-      "sha256": "sha256:3b9c4fb347777569bfbd7a87b0f1bed29fa8844e667ce77d22c4251cc5dff982"
+      "sha256": "sha256:ecc2ca63706d316cce5d0b72fed851ba2f85742fbfa641a5db73d1e1ea6bfd3d"
     },
     {
       "path": "manifests/ownership/wphx-comp-php-group-wp-http-helpers.v1.json",
