@@ -57,10 +57,10 @@ The 2026-06-29 oracle review keeps this architecture and names the current split
 
 ```text
 stock Haxe PHP = private implementation emitter
-WPHX PHP       = bounded WordPress original-path public adapter emitter
+WPHX PHP       = staged custom PHP compiler for WordPress original-path public adapters
 ```
 
-This amendment does not claim the stock Haxe PHP target is good enough to emit modern WordPress public files directly. Public WordPress files remain a compatibility surface with file identity, declaration timing, references, globals, native arrays, reflection, warnings, stack traces, and include behavior. WPHX PHP is the active implementation of the deterministic original-path adapter/linker lane for those files, while stock Haxe PHP remains responsible for ordinary private Haxe implementation classes and Haxe stdlib/runtime behavior.
+This amendment does not claim the stock Haxe PHP target is good enough to emit modern WordPress public files directly. Public WordPress files remain a compatibility surface with file identity, declaration timing, references, globals, native arrays, reflection, warnings, stack traces, and include behavior. WPHX PHP is the active custom compiler implementation of the deterministic original-path adapter/linker lane for those files, while stock Haxe PHP remains responsible for ordinary private Haxe implementation classes and Haxe stdlib/runtime behavior until specific fixtures move that responsibility.
 
 The portable asset is Haxe-owned semantics plus typed adapter contracts, not PHP text. Future Go, Rust, WASM, native, or custom-target profiles should consume the Haxe-owned semantic model and either bypass PHP-specific public adapters for pure internal kernels or generate their own explicit compatibility adapters. The PHP adapter remains privileged for ordinary WordPress plugin/theme compatibility.
 
@@ -120,7 +120,7 @@ The linker owns WordPress-facing PHP files. It must:
 
 Generated PHP adapters are not a temporary hack. The PHP compatibility-adapter role is the accepted compatibility boundary for public WordPress PHP. Per ADR-004, upstream-derived, hand-written, string-generated, or exact-source-transformed shell implementations are temporary migration mechanisms until the adapter contract is Haxe-owned and emitted from typed adapter plans.
 
-The in-repo WPHX PHP emitter is now the current implementation of this original-path adapter lane. It must remain bounded to WordPress-facing adapter generation unless a later ADR accepts a broader backend scope. If it begins lowering arbitrary Haxe programs, duplicating Haxe PHP runtime/stdlib behavior, or maintaining backend-scale semantics, stop and reassess whether to improve stock Haxe PHP, fork/augment the stock generator, or design a real custom PHP target.
+The in-repo WPHX PHP compiler is now the current implementation of this original-path adapter lane and the chosen staged custom PHP compiler track. It must remain bounded to WordPress-facing adapter generation until evidence and a later ADR accept broader backend scope. If it begins lowering arbitrary Haxe programs, duplicating Haxe PHP runtime/stdlib behavior, or maintaining backend-scale semantics, stop and reassess whether that pressure should become reusable WPHX PHP core, a stock Haxe PHP improvement, a stock-generator augmentation, or an explicit promotion of WPHX PHP toward a full custom/Reflaxe PHP backend.
 
 ### Public Shell Retirement States
 
@@ -197,4 +197,4 @@ Before parity, a smell fix must be marked as no-observable-change and cite oracl
 
 This ADR is clarified by ADR-004 for Haxe semantic authority, typed adapter ownership, and native-provider policy. It may be superseded further if later evidence shows that the linker boundary cannot preserve a required public PHP contract or imposes unacceptable measured overhead. Supersession requires a new ADR, a minimized fixture, and updated receipts.
 
-The WPHX PHP adapter-emitter amendment remains evidence-gated. It does not supersede the backend-fork criteria above, and it does not authorize a general `reflaxe.php` backend without minimized evidence and a new ADR.
+The WPHX PHP custom-compiler amendment remains evidence-gated. It does not supersede the backend-fork criteria above, and it does not authorize a general arbitrary-Haxe `reflaxe.php` backend flip without minimized evidence and a new ADR. It does, however, mean new Haxe ABI metadata and Adapter IR should be designed so the staged WPHX PHP compiler can later become or feed that backend without source rewrites.

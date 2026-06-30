@@ -1,24 +1,24 @@
 # WPHX PHP Compiler
 
-`WPHX-COMP-PHP` starts the in-repo custom PHP emitter for WordPress-shaped public files. The intended long-term shape is a modern Reflaxe PHP compiler core plus a WordPress compatibility profile, not a WordPress-only text generator.
+`WPHX-COMP-PHP` starts the in-repo custom PHP compiler for WordPress-shaped public files. The intended long-term shape is a modern Reflaxe PHP compiler core plus a WordPress compatibility profile, not a WordPress-only text generator.
 
 The compiler is a Haxe/Reflaxe module under `src/wphx/compiler/php`. It uses Reflaxe manual output so emitted file paths can be WordPress distribution paths such as `wp-includes/*.php`, not merely Haxe package paths. Reflaxe is loaded through the explicit classpath recorded in `toolchain.lock.json` and `upstream.lock.json`.
 
-The current strategy, accepted after oracle review on 2026-06-29 and formalized in [ADR-013](../adr/ADR-013-wphx-php-adapter-ir-and-scope.md), is intentionally hybrid:
+The current strategy, accepted after oracle review on 2026-06-29 and formalized in [ADR-013](../adr/ADR-013-wphx-php-adapter-ir-and-scope.md), is a staged custom compiler strategy:
 
 - stock Haxe PHP emits private Haxe implementation classes and remains the reference for stdlib/runtime behavior;
-- WPHX PHP emits bounded WordPress original-path public adapter files;
+- WPHX PHP is the custom compiler lane and currently emits bounded WordPress original-path public adapter files;
 - typed Haxe source, metadata, Adapter IR, and manifests are the durable asset, not generated PHP strings.
 
 When WPHX public adapters bootstrap stock Haxe PHP implementation classes, that bootstrap is governed by [ADR-014](../adr/ADR-014-haxe-php-bootstrap-lifecycle.md). It is request-state behavior, not invisible plumbing: include path mutation, SPL autoloaders, `php.Boot::__hx__init()`, mbstring encoding, error handling, source maps, and stack traces need explicit evidence before broad distribution claims.
 
-Do not assume stock Haxe PHP can directly generate public WordPress Core files with the ABI, file topology, reference behavior, warning behavior, stack traces, and include timing modern WordPress requires. Public WordPress files must pass WPHX public-shell gates. Conversely, do not expand WPHX PHP into a full backend unless minimized evidence shows the hybrid cannot preserve required behavior.
+Do not assume stock Haxe PHP can directly generate public WordPress Core files with the ABI, file topology, reference behavior, warning behavior, stack traces, and include timing modern WordPress requires. Public WordPress files must pass WPHX public-shell gates. Conversely, do not flip WPHX PHP into a full arbitrary-Haxe backend until minimized evidence shows the staged Adapter IR path has accumulated backend-scale pressure and a later ADR accepts that promotion.
 
 Use the native Haxe PHP generator and `std/php` sources in `../haxe.compilerdev.reference/haxe` as an implementation oracle for generic, borrowable lowering/runtime behavior when useful. That reference can guide what to reuse or adapt; WordPress public ABI, original path topology, declaration timing, and ecosystem-visible behavior still require WordPress oracle fixtures and WPHX public-shell evidence.
 
 Copied, transformed, hand-authored, or JS-patched public PHP shells are bridge mechanisms only. The shell-retirement states in [ownership-state-model.md](ownership-state-model.md) define which claims are allowed for `bridge_shell`, `generated_helper_with_temporary_shell`, `compiler_emitted_original_path_shell`, `durable_public_adapter`, and `whole_file_owned`. Durable public PHP claims must cite compiler-emitted original-path shell evidence, durable adapter evidence, whole-file evidence, or an accepted backend/custom-target improvement.
 
-When a feature is admitted, decide whether it belongs in the reusable PHP compiler core or the WordPress profile. Generic expression lowering, loops, conditionals, calls, object construction, arrays, casts, std/php interop, and idiomatic PHP formatting belong in the reusable core. Original WordPress paths, pluggable declaration timing, public ABI manifests, and compatibility-host profile adapters belong in the WordPress profile.
+When a feature is admitted, decide whether it belongs in the reusable PHP compiler core or the WordPress profile. Generic expression lowering, loops, conditionals, calls, object construction, arrays, casts, std/php interop, and idiomatic PHP formatting belong in the reusable core. Original WordPress paths, pluggable declaration timing, public ABI manifests, and compatibility-host profile adapters belong in the WordPress profile. Design new annotations, ABI manifests, and Adapter IR nodes as if a future full WPHX PHP backend or extracted `reflaxe.php` target will consume them, so Haxe source does not need to change when the compiler broadens.
 
 ## Current Invocation
 
@@ -197,7 +197,7 @@ typed Haxe source and metadata
 
 The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, bounded direct file-scope script adapters, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
 
-This IR is deliberately narrower than a full PHP backend. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters and later designing a file-segment/template model before mixed PHP/HTML ownership claims.
+This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters and later designing a file-segment/template model before mixed PHP/HTML ownership claims.
 
 `WPHX-COMP-PHP.06` adds the first generated `WP_Http::buildCookieHeader( &$r )` original-path shell. It is a WordPress profile pressure gate over native PHP array mutation, scalar cookie upgrading, `WP_Http_Cookie` object preservation, filter timing, and helper delegation. `WPHX-COMP-PHP-CORE-IR-NATIVE-ARRAYS` keeps the same public-shell behavior while moving the native-array body through reusable PHP-core IR nodes. This is still not arbitrary Haxe expression lowering or a complete PHP backend.
 

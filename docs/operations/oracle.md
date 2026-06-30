@@ -34,4 +34,4 @@ Prompt bundles:
 
 Accepted response:
 
-- The 2026-06-29 original-path PHP emission response keeps the hybrid strategy: stock Haxe PHP is the private implementation emitter; WPHX PHP is the bounded WordPress original-path public adapter emitter. The response does not recommend a stock PHP generator fork or broad `reflaxe.php` target yet.
+- The 2026-06-29 original-path PHP emission response keeps the hybrid execution strategy: stock Haxe PHP is the private implementation emitter; WPHX PHP is the staged custom compiler lane for bounded WordPress original-path public adapters. The response does not recommend a stock PHP generator fork or immediate arbitrary-Haxe `reflaxe.php` backend flip yet.

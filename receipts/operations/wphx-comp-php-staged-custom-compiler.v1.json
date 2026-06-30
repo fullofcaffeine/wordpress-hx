@@ -1,0 +1,56 @@
+{
+  "schema": "wphx.operations-receipt.v1",
+  "id": "receipt:wphx-comp-php-staged-custom-compiler",
+  "issue": {
+    "id": "wordpresshx-onh",
+    "external_ref": "WPHX-COMP-PHP-STAGED-CUSTOM-COMPILER",
+    "title": "Clarify staged WPHX PHP custom compiler strategy"
+  },
+  "recorded_at": "2026-06-30T01:28:52Z",
+  "status": "captured",
+  "artifacts": [
+    {
+      "path": "docs/adr/ADR-013-wphx-php-adapter-ir-and-scope.md",
+      "role": "accepted Adapter IR ADR clarified to name WPHX PHP as the staged custom compiler lane"
+    },
+    {
+      "path": "docs/adr/ADR-001-php-emission-architecture.md",
+      "role": "PHP emission architecture clarified around staged custom compiler scope and promotion gates"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations guidance for future-backend-ready annotations, ABI metadata, and Adapter IR"
+    },
+    {
+      "path": "AGENTS.md",
+      "role": "agent rule requiring WPHX PHP work to treat Adapter IR as staged custom compiler input"
+    },
+    {
+      "path": "docs/operations/agent-instructions.md",
+      "role": "operations copy of agent instruction clarification"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program rollup recording strategy clarification without score movement"
+    }
+  ],
+  "verification_commands": [
+    "npm run receipts:build",
+    "npm run receipts:validate",
+    "npm run beads:validate",
+    "npm run format:haxe:check",
+    "npm run precommit",
+    "git diff --check"
+  ],
+  "claims": [
+    "WPHX PHP is the active staged custom PHP compiler lane, not merely a temporary shell generator.",
+    "The current admitted scope remains Adapter IR-backed WordPress original-path public adapter emission.",
+    "Stock Haxe PHP remains the private implementation emitter and std/php oracle until fixtures move that responsibility.",
+    "New Haxe annotations, ABI metadata, and Adapter IR nodes should be designed as future inputs to a broader WPHX PHP backend or extracted reflaxe.php target without Haxe source rewrites."
+  ],
+  "non_claims": [
+    "This receipt does not claim WPHX PHP is already a complete arbitrary-Haxe PHP backend.",
+    "This receipt does not move the WordPressHX progress score.",
+    "This receipt does not add new PHP lowering features, WordPress runtime parity, generated public PHP adapters, or installed distribution behavior."
+  ]
+}

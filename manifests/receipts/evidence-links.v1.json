@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 318,
+  "closed_task_count": 319,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -3165,6 +3165,16 @@
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
           "sha256": "4df21cc94a55a38a09f097544bc6ef7c0a0fb5afde4127cdbf45f42a62d5cfb6",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-STAGED-CUSTOM-COMPILER",
+      "receipts": [
+        {
+          "path": "receipts/operations/wphx-comp-php-staged-custom-compiler.v1.json",
+          "sha256": "049bcb7ce128fd8936d97b83fca6519f124138e937ab64b998fce6f4a32335e4",
+          "id": "receipt:wphx-comp-php-staged-custom-compiler"
         }
       ]
     },
