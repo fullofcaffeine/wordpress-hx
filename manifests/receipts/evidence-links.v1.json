@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 337,
+  "closed_task_count": 338,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "cf2df8a98d64622ea095f273718385a84686f8cdeeb66c3b9870638fff9b89ec",
+          "sha256": "99060733d5b48b110dce5b43772e8feead26cea750bef0346a7ae20982cd054f",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -2198,7 +2198,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
-          "sha256": "c089d463005e8c8c7337c334e0101ad2a21340f60ff01bef021d2f1a40d5c504",
+          "sha256": "953db8b392f31fa9f9d915e8b08b054179a29a428ccbb635596529476429f484",
           "id": "receipt:wphx-312-54-wp-http-block-request-candidate"
         }
       ]
@@ -3153,7 +3153,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
-          "sha256": "c8abc1563f7dac2c5ba2e5fba81eca711e0de9dfaed175d7c208851a2e07487e",
+          "sha256": "b69e4b4b2bcf7a77304270d81ee4b345ac2e8d014625ecd6877323ad397002d1",
           "id": "receipt:wphx-comp-php-group-wp-http-helpers"
         }
       ]
@@ -3205,6 +3205,16 @@
           "path": "receipts/compiler/wphx-comp-php-retire-wp-http-absolute-url-temp-shell.v1.json",
           "sha256": "9b7e8c4cf96aa9b07d76a89278e40dde99ac3f2a172ba933377dbe0ef8539ffa",
           "id": "receipt:wphx-comp-php-retire-wp-http-absolute-url-temp-shell"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-BLOCK-REQUEST-TEMP-SHELL",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-retire-wp-http-block-request-temp-shell.v1.json",
+          "sha256": "a09c9d945a98749a18ac2ccbddb8302a44a7c707a1bc0234a4b334fba8986584",
+          "id": "receipt:wphx-comp-php-retire-wp-http-block-request-temp-shell"
         }
       ]
     },

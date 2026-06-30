@@ -50,6 +50,7 @@ const HAXE_SOURCES = [
   "src/wphx/wp/http/HttpRedirectCompatibility.hx",
   "src/wphx/wp/http/HttpRedirectValidation.hx",
   "src/wphx/wp/http/HttpAbsoluteUrl.hx",
+  "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpGroupedHelpersCandidateEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
@@ -62,6 +63,7 @@ const HAXE_SOURCES = [
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpAbsoluteUrl.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx"
 ];
 const CASES = [
@@ -73,7 +75,12 @@ const CASES = [
   "wp-http:is-ip-address",
   "wp-http:browser-redirect-compatibility",
   "wp-http:validate-redirects",
-  "wp-http:make-absolute-url"
+  "wp-http:make-absolute-url",
+  "wp-http-block:disabled",
+  "wp-http-block:default-external",
+  "wp-http-block:local-filter",
+  "wp-http-block:accessible-exact",
+  "wp-http-block:accessible-wildcard"
 ];
 const REQUIRED_CORE_IR_FEATURES = [
   "stmt.if",
@@ -91,6 +98,7 @@ const REQUIRED_CORE_IR_FEATURES = [
   "expr.array-append",
   "expr.array-write-target",
   "expr.array-coerce",
+  "expr.bool",
   "expr.coerce-bool",
   "expr.coerce-int",
   "expr.coerce-string",
@@ -203,8 +211,21 @@ ini_set( 'log_errors', '0' );
 define( 'ABSPATH', $root . '/' );
 define( 'WPINC', 'wp-includes' );
 
+if ( 'wp-http-block:default-external' === $case || 'wp-http-block:local-filter' === $case ) {
+\tdefine( 'WP_HTTP_BLOCK_EXTERNAL', true );
+}
+if ( 'wp-http-block:accessible-exact' === $case ) {
+\tdefine( 'WP_HTTP_BLOCK_EXTERNAL', true );
+\tdefine( 'WP_ACCESSIBLE_HOSTS', 'api.wordpress.org,updates.example.test' );
+}
+if ( 'wp-http-block:accessible-wildcard' === $case ) {
+\tdefine( 'WP_HTTP_BLOCK_EXTERNAL', true );
+\tdefine( 'WP_ACCESSIBLE_HOSTS', '*.wordpress.org,downloads.example.test' );
+}
+
 $GLOBALS['wphx_deprecated'] = array();
 $GLOBALS['wphx_filters'] = array();
+$GLOBALS['wphx_force_block_local'] = 'wp-http-block:local-filter' === $case;
 
 function _deprecated_function( $function_name, $version, $replacement = '' ) {
 \t$GLOBALS['wphx_deprecated'][] = array( 'function' => $function_name, 'version' => $version, 'replacement' => $replacement );
@@ -222,7 +243,14 @@ function apply_filters( $hook_name, $value, ...$args ) {
 \tif ( 'wp_http_cookie_value' === $hook_name ) {
 \t\treturn 'filtered-' . $args[0] . '-' . str_replace( ' ', '_', (string) $value );
 \t}
+\tif ( 'block_local_requests' === $hook_name && ! empty( $GLOBALS['wphx_force_block_local'] ) ) {
+\t\treturn true;
+\t}
 \treturn $value;
+}
+
+function get_option( $name ) {
+\treturn 'siteurl' === $name ? 'https://site.example.test/wp' : null;
 }
 
 function __( $text ) {
@@ -434,6 +462,64 @@ switch ( $case ) {
 \t\t$assertions['query_fragment'] = 'https://example.test/wp-admin/css/edit.css?updated=1#section' === $result['urls']['query_fragment'];
 \t\t$assertions['parse_failures_passthrough'] = 'relative/file.txt' === $result['urls']['empty_base'] && 'relative/file.txt' === $result['urls']['base_parse_fail'] && 'fixture://relative-parse-fail' === $result['urls']['relative_parse_fail'];
 \t\tbreak;
+\tcase 'wp-http-block:disabled':
+\t\t$http = new WP_Http();
+\t\t$reflection = new ReflectionMethod( 'WP_Http', 'block_request' );
+\t\t$result['blocked'] = array(
+\t\t\t'external' => $http->block_request( 'https://blocked.example.test/path' ),
+\t\t\t'malformed' => $http->block_request( 'http://' ),
+\t\t\t'localhost' => $http->block_request( 'http://localhost/path' ),
+\t\t);
+\t\t$result['reflection'] = array( 'visibility' => $reflection->isPublic() ? 'public' : 'non-public', 'static' => $reflection->isStatic(), 'params' => array_map( function ( $param ) { return array( 'name' => $param->getName(), 'by_ref' => $param->isPassedByReference() ); }, $reflection->getParameters() ) );
+\t\t$assertions['reflection'] = $reflection->isPublic() && ! $reflection->isStatic() && 1 === $reflection->getNumberOfParameters() && 'uri' === $reflection->getParameters()[0]->getName();
+\t\t$assertions['nothing_blocked_when_disabled'] = array( 'external' => false, 'malformed' => false, 'localhost' => false ) === $result['blocked'];
+\t\tbreak;
+\tcase 'wp-http-block:default-external':
+\t\t$http = new WP_Http();
+\t\t$result['blocked'] = array(
+\t\t\t'external' => $http->block_request( 'https://blocked.example.test/path' ),
+\t\t\t'malformed' => $http->block_request( 'http://' ),
+\t\t\t'localhost' => $http->block_request( 'http://localhost/path' ),
+\t\t\t'site_host' => $http->block_request( 'https://site.example.test/wp-json/' ),
+\t\t);
+\t\t$result['filter_calls'] = $GLOBALS['wphx_filters'];
+\t\t$assertions['external_and_malformed_blocked'] = true === $result['blocked']['external'] && true === $result['blocked']['malformed'];
+\t\t$assertions['local_and_site_allowed'] = false === $result['blocked']['localhost'] && false === $result['blocked']['site_host'];
+\t\t$assertions['local_filter_called_twice'] = 2 === count( array_filter( $GLOBALS['wphx_filters'], static function ( $call ) { return 'block_local_requests' === $call['hook']; } ) );
+\t\tbreak;
+\tcase 'wp-http-block:local-filter':
+\t\t$http = new WP_Http();
+\t\t$result['blocked'] = array(
+\t\t\t'localhost' => $http->block_request( 'http://localhost/path' ),
+\t\t\t'site_host' => $http->block_request( 'https://site.example.test/wp-json/' ),
+\t\t);
+\t\t$result['filter_calls'] = $GLOBALS['wphx_filters'];
+\t\t$assertions['local_filter_can_block_local_and_site'] = array( 'localhost' => true, 'site_host' => true ) === $result['blocked'];
+\t\tbreak;
+\tcase 'wp-http-block:accessible-exact':
+\t\t$http = new WP_Http();
+\t\t$result['blocked'] = array(
+\t\t\t'api_wordpress_org' => $http->block_request( 'https://api.wordpress.org/core/version-check/1.7/' ),
+\t\t\t'updates_example' => $http->block_request( 'https://updates.example.test/package.zip' ),
+\t\t\t'subdomain_not_exact' => $http->block_request( 'https://downloads.wordpress.org/plugin/example.zip' ),
+\t\t\t'other_external' => $http->block_request( 'https://blocked.example.test/path' ),
+\t\t);
+\t\t$assertions['exact_hosts_allowed'] = false === $result['blocked']['api_wordpress_org'] && false === $result['blocked']['updates_example'];
+\t\t$assertions['non_exact_and_other_blocked'] = true === $result['blocked']['subdomain_not_exact'] && true === $result['blocked']['other_external'];
+\t\tbreak;
+\tcase 'wp-http-block:accessible-wildcard':
+\t\t$http = new WP_Http();
+\t\t$result['blocked'] = array(
+\t\t\t'api_wordpress_org' => $http->block_request( 'https://api.wordpress.org/core/version-check/1.7/' ),
+\t\t\t'downloads_wordpress_org' => $http->block_request( 'https://downloads.wordpress.org/plugin/example.zip' ),
+\t\t\t'root_wordpress_org' => $http->block_request( 'https://wordpress.org/news/' ),
+\t\t\t'downloads_example_exact' => $http->block_request( 'https://downloads.example.test/file.zip' ),
+\t\t\t'blocked_external' => $http->block_request( 'https://blocked.example.test/path' ),
+\t\t);
+\t\t$assertions['wildcard_subdomains_allowed'] = false === $result['blocked']['api_wordpress_org'] && false === $result['blocked']['downloads_wordpress_org'];
+\t\t$assertions['root_and_other_external_blocked'] = true === $result['blocked']['root_wordpress_org'] && true === $result['blocked']['blocked_external'];
+\t\t$assertions['exact_entry_still_allowed'] = false === $result['blocked']['downloads_example_exact'];
+\t\tbreak;
 \tdefault:
 \t\t$assertions['known_case'] = false;
 }
@@ -464,10 +550,10 @@ function ownershipManifest(manifestSha) {
     issue: ISSUE,
     unit: {
       kind: "compiler-emitted-original-path-public-shell",
-      name: "Grouped WP_Http parser/header/cookie/IP/redirect/absolute URL helper shell",
+      name: "Grouped WP_Http parser/header/cookie/IP/redirect/absolute URL/block-request helper shell",
       path: "wp-includes/class-wp-http.php",
       public_contract:
-        "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), and make_absolute_url($maybe_relative_path, $url) ABI and behavior gates in one original-path file."
+        "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), make_absolute_url($maybe_relative_path, $url), and block_request($uri) ABI and behavior gates in one original-path file."
     },
     ownership_state: "compiler_emitted_original_path_shell",
     ownership_axes: {
@@ -543,7 +629,8 @@ function main() {
         generatedSource
       ) &&
       /public\s+static\s+function\s+validate_redirects\s*\(\s*\$location\s*\)/.test(generatedSource) &&
-      /public\s+static\s+function\s+make_absolute_url\s*\(\s*\$maybe_relative_path\s*,\s*\$url\s*\)/.test(generatedSource),
+      /public\s+static\s+function\s+make_absolute_url\s*\(\s*\$maybe_relative_path\s*,\s*\$url\s*\)/.test(generatedSource) &&
+      /public\s+function\s+block_request\s*\(\s*\$uri\s*\)/.test(generatedSource),
     one_wp_http_class: (generatedSource.match(/class WP_Http/g) ?? []).length === 1,
     wordpress_bootstrap_profile: generatedSource.includes("HAXE_CUSTOM_ERROR_HANDLER") && generatedSource.includes("WPHX_WP_HTTP_GROUPED_HELPERS_BOOTSTRAPPED"),
     parser_delegation: generatedSource.includes("HttpProcessResponse_Fields_::responseHeaders") && generatedSource.includes("HttpChunkTransferDecode_Fields_::decodeChunkTransfer"),
@@ -560,7 +647,13 @@ function main() {
       generatedSource.includes("HttpAbsoluteUrl_Fields_::makeAbsoluteUrl") &&
       generatedSource.includes("wp_parse_url( $url )") &&
       generatedSource.includes("wp_parse_url( $maybe_relative_path )") &&
-      generatedSource.includes("return $maybe_relative_path;")
+      generatedSource.includes("return $maybe_relative_path;"),
+    block_request_ir:
+      generatedSource.includes("HttpBlockRequestPolicy_Fields_::isLocalRequest") &&
+      generatedSource.includes("HttpBlockRequestPolicy_Fields_::shouldBlockExternalHost") &&
+      generatedSource.includes("defined( 'WP_HTTP_BLOCK_EXTERNAL' )") &&
+      generatedSource.includes("constant( 'WP_ACCESSIBLE_HOSTS' )") &&
+      generatedSource.includes("apply_filters( 'block_local_requests', false )")
   };
   if (!Object.values(shellChecks).every(Boolean)) {
     console.error(JSON.stringify({ status: "failed", reason: "shell checks failed", shellChecks, declarations, unsupported: wphxManifest.unsupported }, null, 2));
@@ -606,7 +699,8 @@ function main() {
         "WP_Http::is_ip_address",
         "WP_Http::browser_redirect_compatibility",
         "WP_Http::validate_redirects",
-        "WP_Http::make_absolute_url"
+        "WP_Http::make_absolute_url",
+        "WP_Http::block_request"
       ]
     },
     claims: {
@@ -645,9 +739,9 @@ function main() {
     ],
     validation_result: manifest.validation_result,
     claims: [
-      "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), and make_absolute_url($maybe_relative_path, $url).",
-      "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all nine helper cases, and WPHX PHP manifest unsupported=[].",
-      "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, Requests exception throwing, null literals, and PHP-owned wp_parse_url boundary handling before Haxe absolute URL assembly."
+      "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), make_absolute_url($maybe_relative_path, $url), and block_request($uri).",
+      "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all fourteen helper cases, and WPHX PHP manifest unsupported=[].",
+      "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, Requests exception throwing, null and bool literals, PHP-owned wp_parse_url boundary handling before Haxe absolute URL assembly, and PHP-owned block_request constants/options/filter boundaries around Haxe policy helpers."
     ],
     non_claims: [
       "This does not claim whole-file WP_Http ownership.",

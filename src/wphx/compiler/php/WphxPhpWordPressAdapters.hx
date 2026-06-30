@@ -36,6 +36,8 @@ class WphxPhpWordPressAdapters
 				validateRedirects(fieldName, helper);
 			case "wp-http-make-absolute-url":
 				makeAbsoluteUrl(fieldName, helper);
+			case "wp-http-block-request":
+				blockRequest(fieldName, helper);
 			case _:
 				null;
 		}
@@ -351,6 +353,54 @@ class WphxPhpWordPressAdapters
 				PhpCastBool(PhpVar("relative_query_present")),
 				PhpVar("relative_fragment"),
 				PhpCastBool(PhpVar("relative_fragment_present"))
+			]))
+		]);
+	}
+
+	static function blockRequest(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http::block_request adapter " + fieldName);
+		}
+
+		final uri = PhpVar("uri");
+		final check = PhpVar("check");
+		final home = PhpVar("home");
+		final requestHost = PhpVar("request_host");
+		final siteHost = PhpVar("site_host");
+		return plan([
+			"stmt.if",
+			"stmt.assign",
+			"stmt.var",
+			"stmt.return",
+			"expr.array-read",
+			"expr.bool",
+			"expr.coerce-string",
+			"expr.function-call",
+			"expr.static-call",
+			"expr.binop"
+		], [
+			PhpIf(PhpBinop("||", PhpNot(PhpFunctionCall("defined", [PhpString("WP_HTTP_BLOCK_EXTERNAL")])),
+				PhpNot(PhpFunctionCall("constant", [PhpString("WP_HTTP_BLOCK_EXTERNAL")]))),
+				[PhpReturn(PhpBool(false))]),
+			PhpLocal("check", PhpFunctionCall("parse_url", [uri])),
+			PhpIf(PhpNot(check), [PhpReturn(PhpBool(true))]),
+			PhpLocal("home", PhpFunctionCall("parse_url", [PhpFunctionCall("get_option", [PhpString("siteurl")])])),
+			PhpLocal("request_host", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(check, PhpString("host"))]),
+				[PhpAssign(requestHost, PhpCastString(PhpArrayRead(check, PhpString("host"))))]),
+			PhpLocal("site_host", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(home, PhpString("host"))]),
+				[PhpAssign(siteHost, PhpCastString(PhpArrayRead(home, PhpString("host"))))]),
+			PhpIf(PhpStaticCall(helper, "isLocalRequest", [requestHost, siteHost]),
+				[
+					PhpReturn(PhpFunctionCall("apply_filters", [PhpString("block_local_requests"), PhpBool(false)]))
+				]),
+			PhpIf(PhpNot(PhpFunctionCall("defined", [PhpString("WP_ACCESSIBLE_HOSTS")])), [PhpReturn(PhpBool(true))]),
+			PhpReturn(PhpStaticCall(helper, "shouldBlockExternalHost", [
+				requestHost,
+				PhpCastString(PhpFunctionCall("constant", [PhpString("WP_ACCESSIBLE_HOSTS")]))
 			]))
 		]);
 	}

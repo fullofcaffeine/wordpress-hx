@@ -51,13 +51,13 @@
       },
       {
         "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-        "bytes": 47318,
-        "sha256": "sha256:c1ffee078c9793d9e35d4122c0d42f19ef93a4eec710ae59e5549a638bc5ecfc"
+        "bytes": 47428,
+        "sha256": "sha256:55ffc90710ecf5dca7874086c674892046da47f677ede21762ddaf861f690b17"
       },
       {
         "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
-        "bytes": 13439,
-        "sha256": "sha256:f9b9c2f7efa592657b8cfc3881a49450436f1072645563a0e7ef7ebaf47af456"
+        "bytes": 15455,
+        "sha256": "sha256:7c4c877d3b8d87b2d24662b4291016f04ac2a6874a3589024430a4c2b93ec14f"
       },
       {
         "path": "src/wphx/wp/http/HttpProcessResponse.hx",
@@ -105,19 +105,24 @@
         "sha256": "sha256:76e363bf506d55e22594abe067fac78933c5291c96f10d63f159c677a211fd59"
       },
       {
+        "path": "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+        "bytes": 2065,
+        "sha256": "sha256:a2d1f53e4abba34c62e20bfb0b6b461586bdb9fe0e5f3da339d18d4d349d8430"
+      },
+      {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpGroupedHelpersCandidateEntry.hx",
-        "bytes": 2006,
-        "sha256": "sha256:b2ab1a8160b1349230a2822c86b56e8e859dc9b127a5c7737bf5015972eac55f"
+        "bytes": 2252,
+        "sha256": "sha256:459987f13cf732a04516322e478a0f89552138be55f684e3aada86688ea44635"
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
-        "bytes": 1017,
-        "sha256": "sha256:ed6357d9f15a39ce1f26bea7f39740773a543b97e6552054dd5847771954b78a"
+        "bytes": 1118,
+        "sha256": "sha256:2a8bf9fa1a4cb333c0891ba0c742461f1627acd40bf25bd6206b21a4a503adf3"
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
-        "bytes": 3351,
-        "sha256": "sha256:6684ccf4dba840a5a95cd9a9a14449a30202d1de6eb2f7faac49a8237c7a605a"
+        "bytes": 3607,
+        "sha256": "sha256:a823a37aef341591bb11b389f7b9ee6aed2d64c68909b2d20abeb97d3f5b6e58"
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
@@ -161,8 +166,13 @@
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpAbsoluteUrl.hx",
-        "bytes": 555,
-        "sha256": "sha256:46e80d161ae82988779640b22f742aedd184c788c33e4ec7d90119435a9d70bd"
+        "bytes": 553,
+        "sha256": "sha256:6aea65b7e13b331b8d2aa56675b2fd63fcbc8cffd76627edf8a9524059f305be"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+        "bytes": 337,
+        "sha256": "sha256:dfef1a5a2a5966954d907490d9893f7e7c4b36261e0aaea59e2d4aa64299eafd"
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx",
@@ -171,8 +181,8 @@
       },
       {
         "path": "tools/wphx-php/run-wp-http-grouped-helpers.mjs",
-        "bytes": 35208,
-        "sha256": "sha256:f15de9518977b74953b7f552be5e46afc4650dc95ea1ec6357eeea8721568352"
+        "bytes": 41271,
+        "sha256": "sha256:97703dcf68dfd255563d08018621cc25e9600a2e580071ff8a8f0668c775486e"
       }
     ],
     "upstream_sources": [
@@ -191,16 +201,16 @@
     ],
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-comp-php-group-wp-http/generated/wphx-php-emission.v1.json",
-      "bytes": 1273,
-      "sha256": "sha256:2e9dc28d203d14da6386d8a7640ad3bee8bc6d0b8c9338fe7a6698a80dbbe093"
+      "bytes": 1290,
+      "sha256": "sha256:34c5118266448c46dd95cc2651b4afa6045fa989f072ee00e69f9b47070ed308"
     }
   },
   "generated": {
     "root": "build/wp-core/wphx-comp-php-group-wp-http/generated",
     "shell": {
       "path": "build/wp-core/wphx-comp-php-group-wp-http/generated/wp-includes/class-wp-http.php",
-      "bytes": 7172,
-      "sha256": "sha256:be672904d42f8f23f0685e876ba17f7765f141a41f2cbdfca4d42a8c7508eb33"
+      "bytes": 8065,
+      "sha256": "sha256:72016f71ccdf224e71e409e87d31cc63bde1f62df85588337b86a1668a30bf66"
     },
     "support_files": [
       {
@@ -219,6 +229,7 @@
       "expr.array-write-target",
       "expr.assign",
       "expr.binop",
+      "expr.bool",
       "expr.class-const",
       "expr.coerce-bool",
       "expr.coerce-int",
@@ -253,7 +264,12 @@
     "wp-http:is-ip-address",
     "wp-http:browser-redirect-compatibility",
     "wp-http:validate-redirects",
-    "wp-http:make-absolute-url"
+    "wp-http:make-absolute-url",
+    "wp-http-block:disabled",
+    "wp-http-block:default-external",
+    "wp-http-block:local-filter",
+    "wp-http-block:accessible-exact",
+    "wp-http-block:accessible-wildcard"
   ],
   "observations": {
     "oracle": {
@@ -615,6 +631,104 @@
           "relative_parent": true,
           "query_fragment": true,
           "parse_failures_passthrough": true
+        }
+      },
+      "wp-http-block:disabled": {
+        "case": "wp-http-block:disabled",
+        "blocked": {
+          "external": false,
+          "malformed": false,
+          "localhost": false
+        },
+        "reflection": {
+          "visibility": "public",
+          "static": false,
+          "params": [
+            {
+              "name": "uri",
+              "by_ref": false
+            }
+          ]
+        },
+        "assertions": {
+          "reflection": true,
+          "nothing_blocked_when_disabled": true
+        }
+      },
+      "wp-http-block:default-external": {
+        "case": "wp-http-block:default-external",
+        "blocked": {
+          "external": true,
+          "malformed": true,
+          "localhost": false,
+          "site_host": false
+        },
+        "filter_calls": [
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          },
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          }
+        ],
+        "assertions": {
+          "external_and_malformed_blocked": true,
+          "local_and_site_allowed": true,
+          "local_filter_called_twice": true
+        }
+      },
+      "wp-http-block:local-filter": {
+        "case": "wp-http-block:local-filter",
+        "blocked": {
+          "localhost": true,
+          "site_host": true
+        },
+        "filter_calls": [
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          },
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          }
+        ],
+        "assertions": {
+          "local_filter_can_block_local_and_site": true
+        }
+      },
+      "wp-http-block:accessible-exact": {
+        "case": "wp-http-block:accessible-exact",
+        "blocked": {
+          "api_wordpress_org": false,
+          "updates_example": false,
+          "subdomain_not_exact": true,
+          "other_external": true
+        },
+        "assertions": {
+          "exact_hosts_allowed": true,
+          "non_exact_and_other_blocked": true
+        }
+      },
+      "wp-http-block:accessible-wildcard": {
+        "case": "wp-http-block:accessible-wildcard",
+        "blocked": {
+          "api_wordpress_org": false,
+          "downloads_wordpress_org": false,
+          "root_wordpress_org": true,
+          "downloads_example_exact": false,
+          "blocked_external": true
+        },
+        "assertions": {
+          "wildcard_subdomains_allowed": true,
+          "root_and_other_external_blocked": true,
+          "exact_entry_still_allowed": true
         }
       }
     },
@@ -978,6 +1092,104 @@
           "query_fragment": true,
           "parse_failures_passthrough": true
         }
+      },
+      "wp-http-block:disabled": {
+        "case": "wp-http-block:disabled",
+        "blocked": {
+          "external": false,
+          "malformed": false,
+          "localhost": false
+        },
+        "reflection": {
+          "visibility": "public",
+          "static": false,
+          "params": [
+            {
+              "name": "uri",
+              "by_ref": false
+            }
+          ]
+        },
+        "assertions": {
+          "reflection": true,
+          "nothing_blocked_when_disabled": true
+        }
+      },
+      "wp-http-block:default-external": {
+        "case": "wp-http-block:default-external",
+        "blocked": {
+          "external": true,
+          "malformed": true,
+          "localhost": false,
+          "site_host": false
+        },
+        "filter_calls": [
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          },
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          }
+        ],
+        "assertions": {
+          "external_and_malformed_blocked": true,
+          "local_and_site_allowed": true,
+          "local_filter_called_twice": true
+        }
+      },
+      "wp-http-block:local-filter": {
+        "case": "wp-http-block:local-filter",
+        "blocked": {
+          "localhost": true,
+          "site_host": true
+        },
+        "filter_calls": [
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          },
+          {
+            "hook": "block_local_requests",
+            "value": false,
+            "args": []
+          }
+        ],
+        "assertions": {
+          "local_filter_can_block_local_and_site": true
+        }
+      },
+      "wp-http-block:accessible-exact": {
+        "case": "wp-http-block:accessible-exact",
+        "blocked": {
+          "api_wordpress_org": false,
+          "updates_example": false,
+          "subdomain_not_exact": true,
+          "other_external": true
+        },
+        "assertions": {
+          "exact_hosts_allowed": true,
+          "non_exact_and_other_blocked": true
+        }
+      },
+      "wp-http-block:accessible-wildcard": {
+        "case": "wp-http-block:accessible-wildcard",
+        "blocked": {
+          "api_wordpress_org": false,
+          "downloads_wordpress_org": false,
+          "root_wordpress_org": true,
+          "downloads_example_exact": false,
+          "blocked_external": true
+        },
+        "assertions": {
+          "wildcard_subdomains_allowed": true,
+          "root_and_other_external_blocked": true,
+          "exact_entry_still_allowed": true
+        }
       }
     },
     "matches": true
@@ -998,7 +1210,8 @@
     "ip_address_delegation": true,
     "redirect_compatibility_ir": true,
     "redirect_validation_ir": true,
-    "absolute_url_ir": true
+    "absolute_url_ir": true,
+    "block_request_ir": true
   },
   "validation_result": {
     "status": "passed",
@@ -1014,7 +1227,8 @@
       "WP_Http::is_ip_address",
       "WP_Http::browser_redirect_compatibility",
       "WP_Http::validate_redirects",
-      "WP_Http::make_absolute_url"
+      "WP_Http::make_absolute_url",
+      "WP_Http::block_request"
     ]
   },
   "claims": {

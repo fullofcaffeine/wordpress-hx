@@ -14,14 +14,16 @@
   "ownership_state": "haxe_owned_candidate_with_public_php_shell",
   "bridge": {
     "exists": true,
-    "kind": "generated-php-haxe-policy-with-temporary-original-path-shell",
-    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass external request blocking, selected upstream HTTP PHPUnit, installed distribution, ecosystem HTTP policy, and live/recorded transport gates before claiming durable public PHP ownership."
+    "kind": "compiler-emitted-grouped-original-path-public-php-shell",
+    "removal_gate": "Pass external request blocking, selected upstream HTTP PHPUnit, installed distribution, ecosystem HTTP policy, live/recorded transport, and whole-file WP_Http gates before claiming durable public PHP or whole-file ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-wp-http-block-request-candidate.mjs",
     "fixtures/wp-core/http-block-request-candidate.hxml",
+    "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpBlockRequestCandidateEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
     "manifests/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
     "manifests/ownership/wphx-312-54-wp-http-block-request-candidate.v1.json",
     "receipts/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json"
@@ -30,6 +32,7 @@
     "manifests/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
     "manifests/ownership/wphx-312-54-wp-http-block-request-candidate.v1.json",
     "receipts/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
+    "build/wp-core/wphx-312-54/wphx-php/wphx-php-emission.v1.json",
     "build/wp-core/wphx-312-54"
   ],
   "verification": {
@@ -42,6 +45,6 @@
     "receipt_refs": [
       "receipt:wphx-312-54-wp-http-block-request-candidate"
     ],
-    "manifest_digest": "sha256:af6c75af1a8e1d186f3656c52b01d975bb15ebd8d81b73eee370ae155e903380"
+    "manifest_digest": "sha256:b1e363e35341f39d879626adf3c0698db0ee3405ba21e013e7ba813c93895b37"
   }
 }

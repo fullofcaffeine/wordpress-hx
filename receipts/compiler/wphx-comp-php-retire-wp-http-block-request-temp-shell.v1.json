@@ -1,0 +1,66 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-block-request-temp-shell",
+  "issue": {
+    "id": "wordpresshx-1yu",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-BLOCK-REQUEST-TEMP-SHELL",
+    "title": "Use generated shell in WPHX-312.54"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell_retirement",
+  "artifact_scope": "wp_http_block_request_public_adapter",
+  "commands": [
+    "npm run format:haxe",
+    "npm run wphx:php:wp-http-grouped-helpers",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wp:core:wphx-312-wp-http-block-request-candidate",
+    "npm run wp:core:wphx-312-wp-http-block-request-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "generic PHP-core IR printer now routing instance methods through adapter plans and printing bool literals"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter plan for WP_Http::block_request"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+      "role": "typed shell metadata for the grouped WP_Http block_request adapter"
+    },
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http helper compiler manifest proving fourteen adapter cases"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
+      "role": "WPHX-312.54 oracle/candidate manifest using the compiler-emitted original-path public shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-54-wp-http-block-request-candidate.v1.json",
+      "role": "behavior receipt for the retired temporary shell candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "grouped_wp_http_helpers_cases": 14,
+    "block_request_candidate_cases": 5,
+    "compiler_emitted_public_php": true,
+    "block_request_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 11
+  },
+  "claims": [
+    "WPHX PHP emits the original-path WP_Http::block_request instance adapter in the grouped class-wp-http.php shell.",
+    "The WPHX-312.54 candidate no longer copies and patches a PHP method body in its runner.",
+    "PHP still owns WP_HTTP_BLOCK_EXTERNAL, WP_ACCESSIBLE_HOSTS, parse_url, get_option('siteurl'), and block_local_requests filter timing at the public boundary while Haxe owns localhost/site-host and accessible-host matching policy helpers."
+  ],
+  "non_claims": [
+    "This does not claim whole-file WP_Http ownership.",
+    "This does not claim WP_Http::request, live HTTP transport, Requests network I/O, DNS/proxy/TLS behavior, installed distribution behavior, or generated WP_Http_Cookie ownership.",
+    "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

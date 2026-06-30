@@ -105,6 +105,7 @@ enum PhpCoreExpr
 {
 	PhpVar(name:String);
 	PhpNull;
+	PhpBool(value:Bool);
 	PhpInt(value:Int);
 	PhpString(value:String);
 	PhpArrayRead(base:PhpCoreExpr, key:PhpCoreExpr);
@@ -915,7 +916,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			final fn = functionOf(expr, "method " + field.name);
 			lines.push("\tpublic function " + phpName + "(" + emitArgs(fn.args) + ")");
 			lines.push("\t{");
-			lines.push(indent(emitBody(fn.expr), "\t\t"));
+			lines.push(indent(emitMethodBody(field, TypedExprMethodBody(fn.expr)), "\t\t"));
 			lines.push("\t}");
 		}
 
@@ -1072,6 +1073,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				"$" + phpIdent(name);
 			case PhpNull:
 				"null";
+			case PhpBool(value):
+				value ? "true" : "false";
 			case PhpInt(value):
 				Std.string(value);
 			case PhpString(value):

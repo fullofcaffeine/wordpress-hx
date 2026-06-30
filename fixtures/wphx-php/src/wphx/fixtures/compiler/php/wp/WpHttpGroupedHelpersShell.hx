@@ -87,4 +87,11 @@ class WpHttpGroupedHelpersShell
 	{
 		return HaxeHttpAbsoluteUrl.makeAbsoluteUrl(maybeRelativePath, "", "", null, "", false, false, null, null, "", false, "", false, "", false);
 	}
+
+	@:wp.adapter("wp-http-block-request")
+	@:wp.haxeHelper("\\wphx\\wp\\http\\_HttpBlockRequestPolicy\\HttpBlockRequestPolicy_Fields_")
+	public function block_request(uri:String):NativeValue
+	{
+		return HaxeHttpBlockRequestPolicy.isLocalRequest(uri, "");
+	}
 }

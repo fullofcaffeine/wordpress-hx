@@ -6,11 +6,11 @@
   "command": "npm run haxe:escape-hatches",
   "status": "passed",
   "manifest": "manifests/haxe/wphx-211-escape-hatches.v1.json",
-  "manifest_sha256": "sha256:3f93aad18cb49d3d944b1dade1f0dcbe469eef1806cef107acf569b6c30e7cf1",
-  "scanned_file_count": 266,
-  "occurrence_count": 77,
+  "manifest_sha256": "sha256:983cf48deed97e0ff3f317d14edf858cd8529ec2c91306fa8efd92783b3f7462",
+  "scanned_file_count": 267,
+  "occurrence_count": 78,
   "by_kind": {
-    "cast": 3,
+    "cast": 4,
     "Dynamic": 8,
     "php.Syntax.code": 66
   }

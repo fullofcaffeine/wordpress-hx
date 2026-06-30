@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 266,
+  "scanned_file_count": 267,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -154,6 +154,7 @@
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/template/TemplateSegmentNestedEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/template/TemplateSegmentNestedParentScript.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/template/TemplateSegmentNestedPartialScript.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpAbsoluteUrl.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpChunkTransferDecode.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieHeaderAssembly.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
@@ -273,7 +274,7 @@
     "src/wphx/wp/themes/ThemeTemplateAdapterContract.hx"
   ],
   "lookback_lines": 6,
-  "occurrence_count": 77,
+  "occurrence_count": 78,
   "occurrences": [
     {
       "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeKernel.hx",
@@ -397,7 +398,17 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
-      "line": 19,
+      "line": 18,
+      "kinds": [
+        "cast"
+      ],
+      "source": "final shell:WpHttpGroupedHelpersShell = cast null;",
+      "source_sha256": "sha256:8b601187a7310a4fbc38d2a04e3d4d6ea67383edb7151a71b61bfd7351038830",
+      "justification": "WPHX-211: compile anchor only; runtime PHP receives a native by-ref options array from the probe."
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
+      "line": 21,
       "kinds": [
         "cast"
       ],
@@ -1047,7 +1058,7 @@
     }
   ],
   "by_kind": {
-    "cast": 3,
+    "cast": 4,
     "Dynamic": 8,
     "php.Syntax.code": 66
   },

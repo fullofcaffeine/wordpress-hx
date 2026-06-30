@@ -21,7 +21,7 @@
     {
       "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
       "role": "grouped WP_Http helper compiler manifest",
-      "sha256": "sha256:1a5deac338d4b5925c55b7bb2961fb7ed7110692f00979b423c07e7e999fa8a9"
+      "sha256": "sha256:130b41cb1c636abb59d6766ae2cba948751cd454e30e34e06808797454acf10c"
     },
     {
       "path": "manifests/ownership/wphx-comp-php-group-wp-http-helpers.v1.json",
@@ -46,13 +46,14 @@
       "WP_Http::is_ip_address",
       "WP_Http::browser_redirect_compatibility",
       "WP_Http::validate_redirects",
-      "WP_Http::make_absolute_url"
+      "WP_Http::make_absolute_url",
+      "WP_Http::block_request"
     ]
   },
   "claims": [
-    "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), and make_absolute_url($maybe_relative_path, $url).",
-    "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all nine helper cases, and WPHX PHP manifest unsupported=[].",
-    "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, Requests exception throwing, null literals, and PHP-owned wp_parse_url boundary handling before Haxe absolute URL assembly."
+    "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), make_absolute_url($maybe_relative_path, $url), and block_request($uri).",
+    "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all fourteen helper cases, and WPHX PHP manifest unsupported=[].",
+    "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, Requests exception throwing, null and bool literals, PHP-owned wp_parse_url boundary handling before Haxe absolute URL assembly, and PHP-owned block_request constants/options/filter boundaries around Haxe policy helpers."
   ],
   "non_claims": [
     "This does not claim whole-file WP_Http ownership.",
