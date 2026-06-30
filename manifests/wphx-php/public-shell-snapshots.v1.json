@@ -603,8 +603,8 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 10452,
-      "sha256": "sha256:7030cdc7c0489709d0f944b0dff2924eda16bcdb9b9ba8397cd6788e46abac52",
+      "bytes": 10532,
+      "sha256": "sha256:9a5e3bc9e9a454d4706ce0942c831b1e767f49ff4d11e09d05b9c8e25af0aad7",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -622,6 +622,7 @@
         "HttpRequestNonblocking_Fields_::nonblockingResponse",
         "HttpProcessHeaders_Fields_::headerKey",
         "HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection",
+        "HttpRequestMethodOptions_Fields_::shouldUseBodyDataFormat",
         "HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation",
         "HttpRequestStreamBlocking_Fields_::shouldForceBlockingForStream",
         "return apply_filters( 'http_response'"
@@ -645,8 +646,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 1516,
-        "sha256": "sha256:9f0603bd41c43109398f9ff1b999a4f1acbdcb0bf7f6396199d3d3ecdf3259b2"
+        "bytes": 1561,
+        "sha256": "sha256:24f7affe6bbf2f06d0bc67e91ed4a6c7bdab29217bbec79e455b8e1219a8b926"
       }
     },
     {

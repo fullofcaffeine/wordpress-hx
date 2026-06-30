@@ -1206,6 +1206,7 @@ class WphxPhpWordPressAdapters
 		}
 
 		final headRedirectionDefaultHelper = namedHelper(helpers, "headRedirectionDefault");
+		final methodOptionsHelper = namedHelper(helpers, "methodOptions");
 		final safetyOptionsHelper = namedHelper(helpers, "safetyOptions");
 		final streamBlockingHelper = namedHelper(helpers, "streamBlocking");
 		final url = PhpVar("url");
@@ -1249,6 +1250,10 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.head-redirection-default-helper");
 		}
+		if (methodOptionsHelper != null)
+		{
+			features.push("wp-http.request.method-options-helper");
+		}
 		if (streamBlockingHelper != null)
 		{
 			features.push("wp-http.request.stream-blocking-helper");
@@ -1267,6 +1272,8 @@ class WphxPhpWordPressAdapters
 		final streamBlockingStatement = streamBlockingHelper == null ? PhpAssign(read(parsedArgs, "blocking"),
 			PhpBool(true)) : PhpIf(PhpStaticCall(streamBlockingHelper, "shouldForceBlockingForStream", [PhpCastBool(read(parsedArgs, "stream"))]),
 				[PhpAssign(read(parsedArgs, "blocking"), PhpBool(true))]);
+		final methodBodyFormatCondition = methodOptionsHelper == null ? PhpBinop("&&", PhpBinop("!==", PhpString("HEAD"), type),
+			PhpBinop("!==", PhpString("GET"), type)) : PhpStaticCall(methodOptionsHelper, "shouldUseBodyDataFormat", [PhpCastString(type)]);
 
 		return plan(features, [
 			PhpLocal("defaults",
@@ -1403,8 +1410,7 @@ class WphxPhpWordPressAdapters
 				PhpAssign(read(options, "verifyname"), PhpBool(false))
 			],
 				[PhpAssign(read(options, "verify"), read(parsedArgs, "sslcertificates"))]),
-			PhpIf(PhpBinop("&&", PhpBinop("!==", PhpString("HEAD"), type), PhpBinop("!==", PhpString("GET"), type)),
-				[PhpAssign(read(options, "data_format"), PhpString("body"))]),
+			PhpIf(methodBodyFormatCondition, [PhpAssign(read(options, "data_format"), PhpString("body"))]),
 			PhpAssign(read(options, "verify"), PhpFunctionCall("apply_filters", [PhpString("https_ssl_verify"), read(options, "verify"), url])),
 			PhpLocal("proxy", PhpNew("WP_HTTP_Proxy", [])),
 			PhpIf(PhpBinop("&&", PhpMethodCall(proxy, "is_enabled", []), PhpMethodCall(proxy, "send_through_proxy", [url])), [

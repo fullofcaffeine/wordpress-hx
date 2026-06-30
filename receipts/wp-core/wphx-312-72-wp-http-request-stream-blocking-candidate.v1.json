@@ -58,6 +58,7 @@
       "expr.static-call",
       "wp-http.request.nonblocking-response",
       "wp-http.request.head-redirection-default-helper",
+      "wp-http.request.method-options-helper",
       "wp-http.request.safety-options-helper",
       "wp-http.request.stream-blocking-helper"
     ],

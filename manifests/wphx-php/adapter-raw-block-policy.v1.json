@@ -5,8 +5,8 @@
   "generator": "tools/wphx-php/check-adapter-raw-blocks.mjs",
   "scanned_profile": {
     "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
-    "bytes": 56700,
-    "sha256": "sha256:347cfc61fbdd6cb1cdc2b03c83078e97f688283876b06a67ee985491646a61ae"
+    "bytes": 57050,
+    "sha256": "sha256:8dfd0778508d46a2b3d351375a229ec11a73a412112aea75c6055258c7d981e5"
   },
   "template_directory": "src/wphx/compiler/php/templates/wordpress",
   "templates": [],

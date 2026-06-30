@@ -24,6 +24,7 @@
     "src/wphx/wp/http/HttpRequestNonblocking.hx",
     "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
     "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
+    "src/wphx/wp/http/HttpRequestMethodOptions.hx",
     "src/wphx/wp/http/HttpProcessHeaders.hx",
     "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
     "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
@@ -54,6 +55,6 @@
     "receipt_refs": [
       "receipt:wphx-312-67-wp-http-request-safety-options-candidate"
     ],
-    "manifest_digest": "sha256:a2253fbc9cd33b27ecf5358fa194017e0d245f1eda457761f6f6be7e6c1ddaba"
+    "manifest_digest": "sha256:899f8db2761eb27e41b669acae6bb902c216cf0603109c2be7da1757c4942c59"
   }
 }

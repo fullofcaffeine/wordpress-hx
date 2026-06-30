@@ -287,6 +287,7 @@ const CASES = [
       "HttpRequestNonblocking_Fields_::nonblockingResponse",
       "HttpProcessHeaders_Fields_::headerKey",
       "HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection",
+      "HttpRequestMethodOptions_Fields_::shouldUseBodyDataFormat",
       "HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation",
       "HttpRequestStreamBlocking_Fields_::shouldForceBlockingForStream",
       "return apply_filters( 'http_response'"

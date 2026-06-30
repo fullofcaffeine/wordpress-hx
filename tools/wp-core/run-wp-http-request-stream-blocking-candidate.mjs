@@ -54,6 +54,7 @@ const HAXE_SOURCES = [
   "src/wphx/wp/http/HttpRequestNonblocking.hx",
   "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
   "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
+  "src/wphx/wp/http/HttpRequestMethodOptions.hx",
   "src/wphx/wp/http/HttpProcessHeaders.hx",
   "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
   "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
@@ -725,6 +726,7 @@ async function main() {
     "expr.static-call",
     "wp-http.request.nonblocking-response",
     "wp-http.request.head-redirection-default-helper",
+    "wp-http.request.method-options-helper",
     "wp-http.request.safety-options-helper",
     "wp-http.request.stream-blocking-helper"
   ];
@@ -744,6 +746,7 @@ async function main() {
     normalize_cookies_cookie_instance: generatedShell.includes("$value instanceof WP_Http_Cookie"),
     process_headers_haxe_call: generatedShell.includes("HttpProcessHeaders_Fields_::headerKey"),
     head_redirection_haxe_call: generatedShell.includes("HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection"),
+    method_options_haxe_call: generatedShell.includes("HttpRequestMethodOptions_Fields_::shouldUseBodyDataFormat"),
     stream_blocking_haxe_call: generatedShell.includes(`${HAXE_MODULE}::shouldForceBlockingForStream`),
     safety_options_haxe_call: generatedShell.includes("HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation"),
     nonblocking_haxe_call: generatedShell.includes("HttpRequestNonblocking_Fields_::nonblockingResponse"),

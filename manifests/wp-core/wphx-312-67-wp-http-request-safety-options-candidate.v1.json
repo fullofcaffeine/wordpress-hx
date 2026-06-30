@@ -49,13 +49,13 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-request-safety-options-candidate.mjs",
-      "bytes": 38481,
-      "sha256": "sha256:134299f49bbda2da86e4649ea46dc94782c1cf47392e71fe86ae2aa934b4434e"
+      "bytes": 38692,
+      "sha256": "sha256:5c0c03bab52a4de99008e6e11b2dc506df489c5e15b380153ab65580a9506c97"
     },
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-312-67/wphx-php/wphx-php-emission.v1.json",
-      "bytes": 1516,
-      "sha256": "sha256:9f0603bd41c43109398f9ff1b999a4f1acbdcb0bf7f6396199d3d3ecdf3259b2"
+      "bytes": 1561,
+      "sha256": "sha256:24f7affe6bbf2f06d0bc67e91ed4a6c7bdab29217bbec79e455b8e1219a8b926"
     },
     "haxe_sources": [
       {
@@ -82,6 +82,11 @@
         "path": "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
         "bytes": 348,
         "sha256": "sha256:32c12ed8335d2037b15be96c2cc5e2ec50882f506a3fdc7883c85841828c920f"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRequestMethodOptions.hx",
+        "bytes": 330,
+        "sha256": "sha256:2473a5ffe2e27d0afd23f451b0f41f9aef913f1c26e48eb28acab2816264da4c"
       },
       {
         "path": "src/wphx/wp/http/HttpProcessHeaders.hx",
@@ -115,13 +120,13 @@
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "bytes": 2111,
-        "sha256": "sha256:7dbaca538b3f0dcb02f037fcc09a1c0ac8d4e2636bf3d80cb71571decd9bebe1"
+        "bytes": 2226,
+        "sha256": "sha256:b778a2aefb2d2e8f27e19c5eded7d0a747f12be93be305fdefb6bec8077fe594"
       },
       {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestSafetyOptionsCandidateEntry.hx",
-        "bytes": 989,
-        "sha256": "sha256:d3111bfb34e42ccf6267d7e92c41a24573ddf1669400fe7e04f1f1e05c88dc4c"
+        "bytes": 1094,
+        "sha256": "sha256:ed3483008644b5bf95e6feb00204542fb1dfaf53803e7dfd337a6797bd134970"
       }
     ],
     "upstream_sources": [
@@ -171,7 +176,7 @@
     "public_shell": {
       "path": "build/wp-core/wphx-312-67/candidate/wp-includes/class-wp-http.php",
       "source_path": "build/wp-core/wphx-312-67/wphx-php/wp-includes/class-wp-http.php",
-      "sha256": "sha256:7030cdc7c0489709d0f944b0dff2924eda16bcdb9b9ba8397cd6788e46abac52",
+      "sha256": "sha256:9a5e3bc9e9a454d4706ce0942c831b1e767f49ff4d11e09d05b9c8e25af0aad7",
       "compiler_emitted": true,
       "shape": {
         "manifest_declares_wp_http": true,
@@ -184,6 +189,7 @@
         "normalize_cookies_cookie_instance": true,
         "process_headers_haxe_call": true,
         "head_redirection_haxe_call": true,
+        "method_options_haxe_call": true,
         "safety_options_haxe_call": true,
         "stream_blocking_haxe_call": true,
         "nonblocking_haxe_call": true,
@@ -213,6 +219,7 @@
       "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpBlockRequestPolicy/HttpBlockRequestPolicy_Fields_.php",
       "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpProcessHeaders/HttpProcessHeaders_Fields_.php",
       "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpRequestHeadRedirectionDefault/HttpRequestHeadRedirectionDefault_Fields_.php",
+      "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpRequestMethodOptions/HttpRequestMethodOptions_Fields_.php",
       "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpRequestNonblocking/HttpRequestNonblocking_Fields_.php",
       "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpRequestSafetyOptions/HttpRequestSafetyOptions_Fields_.php",
       "build/wp-core/wphx-312-67/haxe/lib/wphx/wp/http/_HttpRequestStreamBlocking/HttpRequestStreamBlocking_Fields_.php"
@@ -235,6 +242,7 @@
         "expr.static-call",
         "wp-http.request.nonblocking-response",
         "wp-http.request.head-redirection-default-helper",
+        "wp-http.request.method-options-helper",
         "wp-http.request.safety-options-helper",
         "wp-http.request.stream-blocking-helper"
       ],
@@ -2690,6 +2698,7 @@
       "expr.static-call",
       "wp-http.request.nonblocking-response",
       "wp-http.request.head-redirection-default-helper",
+      "wp-http.request.method-options-helper",
       "wp-http.request.safety-options-helper",
       "wp-http.request.stream-blocking-helper"
     ],
