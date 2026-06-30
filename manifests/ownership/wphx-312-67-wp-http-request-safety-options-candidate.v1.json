@@ -11,14 +11,25 @@
     "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Proxy, WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Response, and WP_Http_Cookie support",
     "public_contract": "This candidate promotes only the WP_Http::request decision to register the validate_redirects hook when wp_kses_bad_protocol exists and reject_unsafe_urls is enabled. PHP still owns public request ABI, http_request_reject_unsafe_urls filtering, URL validation, bad-protocol stripping, hook object mechanics, proxy option/auth handoff, pre_http_send_through_proxy overrides, Requests dispatch, debug/error handling, and native arrays/objects."
   },
-  "ownership_state": "haxe_candidate_with_public_php_shell",
+  "ownership_state": "compiler_emitted_original_path_shell",
   "bridge": {
     "exists": true,
-    "kind": "copied-public-php-shell-calling-generated-haxe",
-    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy/safety, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+    "kind": "compiler-emitted-original-path-public-php-shell",
+    "removal_gate": "Promote additional WP_Http::request branches only through WPHX PHP emitted adapters, typed Haxe helpers, request proxy/safety gates, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming full request or whole-file ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-wp-http-request-safety-options-candidate.mjs",
+    "fixtures/wp-core/http-request-safety-options-candidate.hxml",
+    "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+    "src/wphx/wp/http/HttpRequestNonblocking.hx",
+    "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+    "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
+    "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestSafetyOptionsCandidateEntry.hx",
     "manifests/wp-core/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
     "manifests/ownership/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
     "receipts/wp-core/wphx-312-67-wp-http-request-safety-options-candidate.v1.json"
@@ -27,18 +38,20 @@
     "manifests/wp-core/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
     "manifests/ownership/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
     "receipts/wp-core/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
-    "build/wp-core/wphx-312-67"
+    "build/wp-core/wphx-312-67",
+    "build/wp-core/wphx-312-67/wphx-php/wphx-php-emission.v1.json"
   ],
   "verification": {
     "oracle_commands": [
       "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate",
       "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate:check",
+      "npm run wphx:php:public-shell-snapshots:check",
       "npm run receipts:validate",
       "npm run beads:validate"
     ],
     "receipt_refs": [
       "receipt:wphx-312-67-wp-http-request-safety-options-candidate"
     ],
-    "manifest_digest": "sha256:ba4a4e300fb5ad13577ec722e68b68abf3d50c56731300e1d8fc875213c05f7a"
+    "manifest_digest": "sha256:4c42f77a7ebba37949e568b4503a5f13d8c775dca8a626f3766638491ff73730"
   }
 }

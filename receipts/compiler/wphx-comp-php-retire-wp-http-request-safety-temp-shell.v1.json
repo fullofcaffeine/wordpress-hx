@@ -1,0 +1,64 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-request-safety-temp-shell",
+  "issue": {
+    "id": "wordpresshx-rcp3",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REQUEST-SAFETY-TEMP-SHELL",
+    "title": "Use generated request adapter for WP_Http::request safety options"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_public_shell",
+  "artifact_scope": "wp_http_request_safety_candidate_shell_retirement",
+  "commands": [
+    "haxelib run formatter -s fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestSafetyOptionsCandidateEntry.hx",
+    "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run wphx:php:adapter-raw-blocks:check",
+    "npm run format:haxe:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-request-safety-options-candidate.mjs",
+      "role": "WPHX-312.67 runner installing compiler-emitted class-wp-http.php request shell"
+    },
+    {
+      "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestSafetyOptionsCandidateEntry.hx",
+      "role": "stock Haxe PHP compile anchor for request helper modules used by the generated shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
+      "role": "safety-options candidate manifest with generated-shell and IR feature evidence"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
+      "role": "ownership manifest marking the boundary as compiler_emitted_original_path_shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
+      "role": "behavior receipt for the safety-options candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "request_safety_candidate_cases": 6,
+    "public_shell_snapshot_cases": 17,
+    "php_raw_block_count": 0,
+    "template_reference_count": 0,
+    "template_lint_count": 0,
+    "ownership_state": "compiler_emitted_original_path_shell"
+  },
+  "claims": [
+    "WPHX-312.67 now consumes the compiler-emitted original-path WP_Http::request shell instead of a copied/runner-patched class-wp-http.php body.",
+    "The safety-options helper remains the bounded Haxe-owned branch claim, with helper modules compiled for the generated shell's runtime calls.",
+    "All six deterministic request safety/proxy oracle/candidate probes remain behavior-identical."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http::request ownership.",
+    "This does not claim live network/proxy behavior, upstream HTTP PHPUnit parity, or installed distribution behavior.",
+    "This does not claim whole-file WP_Http ownership."
+  ]
+}

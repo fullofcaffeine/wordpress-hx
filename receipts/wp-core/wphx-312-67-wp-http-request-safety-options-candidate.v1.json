@@ -28,6 +28,7 @@
   "verification_commands": [
     "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate",
     "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
     "npm run receipts:validate",
     "npm run beads:validate"
   ],
@@ -47,7 +48,21 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "request_shell_emitted": true,
+    "wphx_php_manifest_unsupported_empty": true,
+    "request_ir_features_present": true,
+    "request_ir_features": [
+      "stmt.try-catch",
+      "stmt.if",
+      "stmt.if-else",
+      "expr.long-array",
+      "expr.method-call",
+      "expr.static-call",
+      "wp-http.request.nonblocking-response",
+      "wp-http.request.safety-options-helper",
+      "wp-http.request.stream-blocking-helper"
+    ],
+    "public_php_replacement_claimed": true,
     "full_request_safety_claimed": false,
     "installed_wordpress_behavior_claimed": false,
     "live_requests_network_io_claimed": false,
