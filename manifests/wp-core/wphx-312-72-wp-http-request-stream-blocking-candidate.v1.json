@@ -7,7 +7,8 @@
     "haxe_source",
     "generated_php_candidate",
     "oracle_source_mirror",
-    "php_cli_observed_fixture"
+    "php_cli_observed_fixture",
+    "compiler_php_ir_feature_evidence"
   ],
   "artifact_scope": "haxe_parity_candidate",
   "inputs": {
@@ -28,8 +29,13 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-request-stream-blocking-candidate.mjs",
-      "bytes": 33223,
-      "sha256": "sha256:eae6fa12569531238f73d476f51ec7225f8e74d8daf9e84454d0b286d72ab158"
+      "bytes": 36203,
+      "sha256": "sha256:e4c18ec919f0171504a781cdd5a77b291b803d54e51037ea88b0d74e0987e5ae"
+    },
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-72/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 1189,
+      "sha256": "sha256:1440a83aff5b40a1f5b79edced19aab1a00ba79744523fac13789fdfe1ef3a48"
     },
     "haxe_sources": [
       {
@@ -38,14 +44,54 @@
         "sha256": "sha256:19eed48daefeb340b7c28c00f083ac1cc99a04a6d0aa28a9af3c3d68592da0f0"
       },
       {
+        "path": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+        "bytes": 403,
+        "sha256": "sha256:ed1ab7eb5c6f2668f91dba67ac4f5fe3ff357736c2679e5cb615714ad8ee8cea"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRequestNonblocking.hx",
+        "bytes": 591,
+        "sha256": "sha256:8cb156ee5ec7381b4bdc94bf799c793c3bda1bb1b05fe440f9899e146889a5e5"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+        "bytes": 2065,
+        "sha256": "sha256:a2d1f53e4abba34c62e20bfb0b6b461586bdb9fe0e5f3da339d18d4d349d8430"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
+        "bytes": 408,
+        "sha256": "sha256:1c18b8c7c61a3bf42e9469ec994db62d9436e60bca231b166bfaef61db011546"
+      },
+      {
         "path": "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
         "bytes": 319,
         "sha256": "sha256:19761955fa5bf14201e4282f1f48943379138837163dde7efcd2e9b57d811477"
       },
       {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+        "bytes": 337,
+        "sha256": "sha256:dfef1a5a2a5966954d907490d9893f7e7c4b36261e0aaea59e2d4aa64299eafd"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+        "bytes": 272,
+        "sha256": "sha256:5fa50cb634470c07cf6097a33ea788735a1c5ba655ce561ae89ae973ff44a3d0"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+        "bytes": 223,
+        "sha256": "sha256:b035813d4e6c82f1f37cce19d29b6c160ffe0e4d29ea8e9cb6949e32d5df18e6"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "bytes": 1294,
+        "sha256": "sha256:476dcb43e7afc72e91c2abeccbcdb38e4fad96b4c52a5460e17c371ae4d9328e"
+      },
+      {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamBlockingCandidateEntry.hx",
-        "bytes": 313,
-        "sha256": "sha256:657b5f0c38dd4462a932161f3e41e8c1b0e571657524c6e50bdddace1c179496"
+        "bytes": 765,
+        "sha256": "sha256:5ff35122fdf1e5418da43ef5f4603257963d8b68076ced3d7169838ff933738c"
       }
     ],
     "upstream_sources": [
@@ -89,11 +135,32 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-request-stream-blocking-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
     "haxe_output": "build/wp-core/wphx-312-72/haxe",
+    "wphx_php_output": "build/wp-core/wphx-312-72/wphx-php",
+    "public_shell": {
+      "path": "build/wp-core/wphx-312-72/candidate/wp-includes/class-wp-http.php",
+      "source_path": "build/wp-core/wphx-312-72/wphx-php/wp-includes/class-wp-http.php",
+      "sha256": "sha256:87402e640d85ad4ffb00e153c6ff6b600f9d341345fd174e85e06367747b35c8",
+      "compiler_emitted": true,
+      "shape": {
+        "manifest_declares_wp_http": true,
+        "unsupported_empty": true,
+        "request_signature": true,
+        "block_request_signature": true,
+        "stream_blocking_haxe_call": true,
+        "safety_options_haxe_call": true,
+        "nonblocking_haxe_call": true,
+        "requests_dispatch": true,
+        "request_ir_features_present": true
+      }
+    },
     "compiled_php_files": [
       "build/wp-core/wphx-312-72/haxe/index.php",
       "build/wp-core/wphx-312-72/haxe/lib/Array_hx.php",
+      "build/wp-core/wphx-312-72/haxe/lib/EReg.php",
       "build/wp-core/wphx-312-72/haxe/lib/Std.php",
+      "build/wp-core/wphx-312-72/haxe/lib/StringBuf.php",
       "build/wp-core/wphx-312-72/haxe/lib/haxe/Exception.php",
       "build/wp-core/wphx-312-72/haxe/lib/haxe/ValueException.php",
       "build/wp-core/wphx-312-72/haxe/lib/haxe/iterators/ArrayIterator.php",
@@ -107,13 +174,31 @@
       "build/wp-core/wphx-312-72/haxe/lib/php/_Boot/HxString.php",
       "build/wp-core/wphx-312-72/haxe/lib/php/_polyfills.php",
       "build/wp-core/wphx-312-72/haxe/lib/wphx/fixtures/wp/core/HttpRequestStreamBlockingCandidateEntry.php",
+      "build/wp-core/wphx-312-72/haxe/lib/wphx/wp/http/_HttpBlockRequestPolicy/HttpBlockRequestPolicy_Fields_.php",
+      "build/wp-core/wphx-312-72/haxe/lib/wphx/wp/http/_HttpRequestNonblocking/HttpRequestNonblocking_Fields_.php",
+      "build/wp-core/wphx-312-72/haxe/lib/wphx/wp/http/_HttpRequestSafetyOptions/HttpRequestSafetyOptions_Fields_.php",
       "build/wp-core/wphx-312-72/haxe/lib/wphx/wp/http/_HttpRequestStreamBlocking/HttpRequestStreamBlocking_Fields_.php"
     ],
     "haxe_module": "\\wphx\\wp\\http\\_HttpRequestStreamBlocking\\HttpRequestStreamBlocking_Fields_",
     "promoted_symbols": [
       "WP_Http::request stream=true forces blocking decision"
     ],
-    "promoted_behavior": "Only the WP_Http::request stream blocking assignment decision is emitted by generated Haxe PHP. The surrounding public method body, filename defaulting, writable-directory validation, and Requests option array remain a copied candidate shell."
+    "promoted_behavior": "Only the WP_Http::request stream blocking assignment decision is claimed by this candidate. The surrounding public method body is now emitted by structured WPHX PHP Adapter IR as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership.",
+    "adapter_ir": {
+      "adapter": "wp-http-request-nonblocking",
+      "required_features": [
+        "stmt.try-catch",
+        "stmt.if",
+        "stmt.if-else",
+        "expr.long-array",
+        "expr.method-call",
+        "expr.static-call",
+        "wp-http.request.nonblocking-response",
+        "wp-http.request.safety-options-helper",
+        "wp-http.request.stream-blocking-helper"
+      ],
+      "missing_features": []
+    }
   },
   "fixture": {
     "cases": [
@@ -151,9 +236,10 @@
       "runtime_stubs": "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed orchestration sources; outbound Requests::request records options or throws without network I/O."
     },
     "public_abi_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
       "copied_oracle_public_php": true,
-      "copied_candidate_public_php_shell": true,
+      "copied_candidate_public_php_shell": false,
+      "compiler_emitted_public_php": true,
       "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
       "installed_wordpress_behavior_claimed": false
     },
@@ -348,9 +434,9 @@
       "detail": "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
     },
     {
-      "id": "public-php-adapter-not-yet-generated",
+      "id": "full-wp-http-request-not-yet-owned",
       "owner": "WPHX-312.72",
-      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+      "detail": "The candidate consumes a compiler-emitted original-path class-wp-http.php shell for a bounded WP_Http::request stream branch gate plus supporting request/block_request branches. Broader request semantics, whole-file WP_Http ownership, and installed distribution behavior remain later compiler-driven gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
@@ -361,7 +447,21 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "request_shell_emitted": true,
+    "wphx_php_manifest_unsupported_empty": true,
+    "request_ir_features_present": true,
+    "request_ir_features": [
+      "stmt.try-catch",
+      "stmt.if",
+      "stmt.if-else",
+      "expr.long-array",
+      "expr.method-call",
+      "expr.static-call",
+      "wp-http.request.nonblocking-response",
+      "wp-http.request.safety-options-helper",
+      "wp-http.request.stream-blocking-helper"
+    ],
+    "public_php_replacement_claimed": true,
     "full_request_orchestration_claimed": false,
     "streaming_file_io_claimed": false,
     "installed_wordpress_behavior_claimed": false,

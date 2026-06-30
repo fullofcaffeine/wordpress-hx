@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 357,
+  "closed_task_count": 358,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -2378,7 +2378,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
-          "sha256": "e9cd296a812b0667545be04c89dc4aaffd23f04cdaeb8c8a222ee1f6c33ab6ce",
+          "sha256": "afbdb1e76fdcf93528b9dfe6cd9a423283e6de70d009ff1ecd51c466df114292",
           "id": "receipt:wphx-312-72-wp-http-request-stream-blocking-candidate"
         }
       ]
@@ -3425,6 +3425,16 @@
           "path": "receipts/compiler/wphx-comp-php-retire-wp-http-request-nonblocking-temp-shell.v1.json",
           "sha256": "1e20fde33260331ef391cec06b3de746cb7f44fe6a84ae3f29a2a7714d1a4dfe",
           "id": "receipt:wphx-comp-php-retire-wp-http-request-nonblocking-temp-shell"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REQUEST-STREAM-BLOCKING-TEMP-SHELL",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-retire-wp-http-request-stream-blocking-temp-shell.v1.json",
+          "sha256": "41083323339f6e788324c8ac80682dc87fcdd0d474680b03b8d39af9fdb4f7cc",
+          "id": "receipt:wphx-comp-php-retire-wp-http-request-stream-blocking-temp-shell"
         }
       ]
     },

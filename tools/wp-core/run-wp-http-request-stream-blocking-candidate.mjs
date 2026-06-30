@@ -16,8 +16,11 @@ const RECORDED_AT = "2026-06-28T08:00:00.000Z";
 const UPSTREAM_ROOT = "../wordpress-develop";
 const RUNNER = "tools/wp-core/run-wp-http-request-stream-blocking-candidate.mjs";
 const HXML = "fixtures/wp-core/http-request-stream-blocking-candidate.hxml";
+const WPHX_PHP_HXML = "fixtures/wphx-php/wp-http-request-nonblocking.hxml";
 const OUT_ROOT = "build/wp-core/wphx-312-72";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
+const WPHX_PHP_ROOT = `${OUT_ROOT}/wphx-php`;
+const WPHX_PHP_MANIFEST = `${WPHX_PHP_ROOT}/wphx-php-emission.v1.json`;
 const ORACLE_ROOT = `${OUT_ROOT}/oracle`;
 const CANDIDATE_ROOT = `${OUT_ROOT}/candidate`;
 const PROBE = `${OUT_ROOT}/probe.php`;
@@ -47,7 +50,15 @@ const COVERED_SYMBOLS = [
 ];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_PHP_HXML,
+  "src/wphx/wp/http/HttpRequestNonblocking.hx",
+  "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+  "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
   "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamBlockingCandidateEntry.hx"
 ];
 const HAXE_MODULE = "\\wphx\\wp\\http\\_HttpRequestStreamBlocking\\HttpRequestStreamBlocking_Fields_";
@@ -101,50 +112,12 @@ function mirrorSources(root) {
   }
 }
 
-function haxeBootstrapBlock() {
-	return `if ( ! function_exists( 'wphx_312_72_bootstrap_haxe' ) ) {
-\tfunction wphx_312_72_bootstrap_haxe() {
-\t\tstatic $bootstrapped = false;
-\t\tif ( $bootstrapped ) {
-\t\t\treturn;
-\t\t}
-\t\t$bootstrapped = true;
-
-\t\t$wphx_312_72_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
-\t\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_312_72_lib );
-\t\tspl_autoload_register(
-\t\t\tfunction ( $class ) {
-\t\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
-\t\t\t\tif ( $file ) {
-\t\t\t\t\tinclude_once $file;
-\t\t\t\t}
-\t\t\t}
-\t\t);
-\t\t\\php\\Boot::__hx__init();
-\t}
-}
-wphx_312_72_bootstrap_haxe();
-`;
-}
-
-function installBootstrap(source) {
-  const marker = "<?php\n";
-  if (!source.startsWith(marker)) throw new Error("class-wp-http.php did not start with PHP open tag");
-  return `${marker}\n${haxeBootstrapBlock()}\n${source.slice(marker.length)}`;
-}
-
-function transformCandidateRequestStreamBlocking() {
-	const path = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
-	const original = `\t\t\t$parsed_args['blocking'] = true;
-`;
-	const replacement = `\t\t\tif ( ${HAXE_MODULE}::shouldForceBlockingForStream( (bool) $parsed_args['stream'] ) ) {
-\t\t\t\t$parsed_args['blocking'] = true;
-\t\t\t}
-`;
-  const source = installBootstrap(readFileSync(path, "utf8"));
-  const transformed = source.replace(original, replacement);
-  if (transformed === source) throw new Error("Unable to replace WP_Http::request stream blocking decision branch");
-  writeFileSync(path, transformed);
+function installCompilerEmittedCandidateShell() {
+  const source = `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`;
+  const target = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
+  if (!existsSync(source)) throw new Error(`Missing WPHX PHP emitted shell: ${source}`);
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(source, target);
 }
 
 function writeProbe() {
@@ -685,19 +658,20 @@ function ownershipManifest(manifestSha) {
       public_contract:
         "This candidate promotes only the WP_Http::request decision that stream=true forces the parsed blocking option to true before Requests dispatch. PHP still owns public WP_Http::request ABI, request defaults and filters, stream filename defaulting, writable-directory validation, header/cookie/redirect/SSL/max_bytes/data_format handoff, Requests dispatch, response filtering, and native arrays/objects."
     },
-    ownership_state: "haxe_candidate_with_public_php_shell",
+    ownership_state: "compiler_emitted_original_path_shell",
     bridge: {
       exists: true,
-      kind: "copied-public-php-shell-calling-generated-haxe",
+      kind: "compiler-emitted-original-path-public-php-shell",
       removal_gate:
-        "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+        "Promote additional WP_Http::request branches only through WPHX PHP emitted adapters, typed Haxe helpers, request orchestration gates, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request or whole-file ownership."
     },
-    owned_paths: [RUNNER, OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    owned_paths: [RUNNER, ...HAXE_SOURCES, OUT, OWNERSHIP, RECEIPT],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT, WPHX_PHP_MANIFEST],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate",
         "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate:check",
+        "npm run wphx:php:public-shell-snapshots:check",
         "npm run receipts:validate",
         "npm run beads:validate"
       ],
@@ -710,9 +684,10 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  command("haxe", [WPHX_PHP_HXML, "-D", `wphx_php_output=${WPHX_PHP_ROOT}`, "-D", `wphx_php_manifest=${WPHX_PHP_MANIFEST}`]);
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
-  transformCandidateRequestStreamBlocking();
+  installCompilerEmittedCandidateShell();
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -734,29 +709,84 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
+  const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http.php");
+  const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const requiredRequestIrFeatures = [
+    "stmt.try-catch",
+    "stmt.if",
+    "stmt.if-else",
+    "expr.long-array",
+    "expr.method-call",
+    "expr.static-call",
+    "wp-http.request.nonblocking-response",
+    "wp-http.request.safety-options-helper",
+    "wp-http.request.stream-blocking-helper"
+  ];
+  const coreIrFeatures = new Set(wphxPhpManifest.core_ir_features ?? []);
+  const missingRequestIrFeatures = requiredRequestIrFeatures.filter((feature) => !coreIrFeatures.has(feature));
+  const wphxPhpShape = {
+    manifest_declares_wp_http: wphxPhpManifest.files.some((file) =>
+      file.path === "wp-includes/class-wp-http.php" &&
+      file.declarations.some((declaration) => declaration.kind === "class" && declaration.name === "WP_Http")
+    ),
+    unsupported_empty: Array.isArray(wphxPhpManifest.unsupported) && wphxPhpManifest.unsupported.length === 0,
+    request_signature: generatedShell.includes("public function request($url, $args = [])"),
+    block_request_signature: generatedShell.includes("public function block_request($uri)"),
+    stream_blocking_haxe_call: generatedShell.includes(`${HAXE_MODULE}::shouldForceBlockingForStream`),
+    safety_options_haxe_call: generatedShell.includes("HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation"),
+    nonblocking_haxe_call: generatedShell.includes("HttpRequestNonblocking_Fields_::nonblockingResponse"),
+    requests_dispatch: generatedShell.includes("WpOrg\\Requests\\Requests::request"),
+    request_ir_features_present: missingRequestIrFeatures.length === 0
+  };
+  if (!Object.values(wphxPhpShape).every(Boolean)) {
+    console.error(JSON.stringify({ status: "failed", reason: "WPHX PHP generated shell shape check failed", wphxPhpShape }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-wp-http-request-stream-blocking-candidate.v1",
     issue: ISSUE.external_ref,
     generated_at: RECORDED_AT,
     generator: RUNNER,
-    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture"],
+    evidence_classes: [
+      "haxe_source",
+      "generated_php_candidate",
+      "oracle_source_mirror",
+      "php_cli_observed_fixture",
+      "compiler_php_ir_feature_evidence"
+    ],
     artifact_scope: "haxe_parity_candidate",
     inputs: {
       surface_manifest: inputRecord(SURFACE),
       adapter_contract_manifest: inputRecord(CONTRACT),
       request_orchestration_fixture_manifest: inputRecord(REQUEST_ORCHESTRATION_FIXTURE),
       runner: inputRecord(RUNNER),
+      wphx_php_manifest: inputRecord(WPHX_PHP_MANIFEST),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_PHP_HXML,
       haxe_output: HAXE_OUT,
+      wphx_php_output: WPHX_PHP_ROOT,
+      public_shell: {
+        path: generatedShellPath,
+        source_path: `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`,
+        sha256: sha256File(generatedShellPath),
+        compiler_emitted: true,
+        shape: wphxPhpShape
+      },
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
       haxe_module: HAXE_MODULE,
       promoted_symbols: PROMOTED_SYMBOLS,
       promoted_behavior:
-        "Only the WP_Http::request stream blocking assignment decision is emitted by generated Haxe PHP. The surrounding public method body, filename defaulting, writable-directory validation, and Requests option array remain a copied candidate shell."
+        "Only the WP_Http::request stream blocking assignment decision is claimed by this candidate. The surrounding public method body is now emitted by structured WPHX PHP Adapter IR as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership.",
+      adapter_ir: {
+        adapter: "wp-http-request-nonblocking",
+        required_features: requiredRequestIrFeatures,
+        missing_features: missingRequestIrFeatures
+      }
     },
     fixture: {
       cases: CASES,
@@ -772,9 +802,10 @@ async function main() {
           "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed orchestration sources; outbound Requests::request records options or throws without network I/O."
       },
       public_abi_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
         copied_oracle_public_php: true,
-        copied_candidate_public_php_shell: true,
+        copied_candidate_public_php_shell: false,
+        compiler_emitted_public_php: true,
         adapter_contract_foundation: CONTRACT,
         installed_wordpress_behavior_claimed: false
       },
@@ -813,9 +844,10 @@ async function main() {
           "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
       },
       {
-        id: "public-php-adapter-not-yet-generated",
+        id: "full-wp-http-request-not-yet-owned",
         owner: ISSUE.external_ref,
-        detail: "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+        detail:
+          "The candidate consumes a compiler-emitted original-path class-wp-http.php shell for a bounded WP_Http::request stream branch gate plus supporting request/block_request branches. Broader request semantics, whole-file WP_Http ownership, and installed distribution behavior remain later compiler-driven gates."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -826,7 +858,11 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      request_shell_emitted: true,
+      wphx_php_manifest_unsupported_empty: wphxPhpShape.unsupported_empty,
+      request_ir_features_present: missingRequestIrFeatures.length === 0,
+      request_ir_features: requiredRequestIrFeatures,
+      public_php_replacement_claimed: true,
       full_request_orchestration_claimed: false,
       streaming_file_io_claimed: false,
       installed_wordpress_behavior_claimed: false,
@@ -851,6 +887,7 @@ async function main() {
     verification_commands: [
       "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate",
       "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate:check",
+      "npm run wphx:php:public-shell-snapshots:check",
       "npm run receipts:validate",
       "npm run beads:validate"
     ],

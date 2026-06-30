@@ -1,0 +1,64 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-request-stream-blocking-temp-shell",
+  "issue": {
+    "id": "wordpresshx-e03z",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REQUEST-STREAM-BLOCKING-TEMP-SHELL",
+    "title": "Use generated request adapter for WP_Http::request stream blocking"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_public_shell",
+  "artifact_scope": "wp_http_request_stream_blocking_candidate_shell_retirement",
+  "commands": [
+    "haxelib run formatter -s fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamBlockingCandidateEntry.hx",
+    "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run wphx:php:adapter-raw-blocks:check",
+    "npm run format:haxe:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-request-stream-blocking-candidate.mjs",
+      "role": "WPHX-312.72 runner installing compiler-emitted class-wp-http.php request shell"
+    },
+    {
+      "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamBlockingCandidateEntry.hx",
+      "role": "stock Haxe PHP compile anchor for request helper modules used by the generated shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
+      "role": "stream-blocking candidate manifest with generated-shell and IR feature evidence"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
+      "role": "ownership manifest marking the boundary as compiler_emitted_original_path_shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
+      "role": "behavior receipt for the stream-blocking candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "request_stream_blocking_candidate_cases": 1,
+    "public_shell_snapshot_cases": 17,
+    "php_raw_block_count": 0,
+    "template_reference_count": 0,
+    "template_lint_count": 0,
+    "ownership_state": "compiler_emitted_original_path_shell"
+  },
+  "claims": [
+    "WPHX-312.72 now consumes the compiler-emitted original-path WP_Http::request shell instead of a copied/runner-patched class-wp-http.php body.",
+    "The stream-blocking helper remains the bounded Haxe-owned branch claim, with helper modules compiled for the generated shell's runtime calls.",
+    "The deterministic streaming oracle/candidate probe remains behavior-identical."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http::request ownership.",
+    "This does not claim live streaming transfer behavior, network I/O, upstream HTTP PHPUnit parity, or installed distribution behavior.",
+    "This does not claim whole-file WP_Http ownership."
+  ]
+}
