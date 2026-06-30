@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 264,
+  "scanned_file_count": 265,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -161,6 +161,7 @@
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessHeaders.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpBuildCookieHeaderEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpChunkTransferDecodeEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
@@ -395,7 +396,7 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
-      "line": 17,
+      "line": 18,
       "kinds": [
         "cast"
       ],

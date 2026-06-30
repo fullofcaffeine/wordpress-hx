@@ -28,14 +28,19 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
-      "bytes": 16772,
-      "sha256": "sha256:fb91ee2f9886ad95e5187e2b2471d717119533b6ac29fe2ae16109884021b2ad"
+      "bytes": 18558,
+      "sha256": "sha256:ac62cf292de845ffc112897c0be67c0e0f27f2444f4cd96ca732237581fe77e9"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-redirect-validation-candidate.hxml",
         "bytes": 134,
         "sha256": "sha256:f4e0b8a357b79ef83ea4ce8acf3345e812c4deec2f6cc3dfe2124c38bdf519d6"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
+        "bytes": 387,
+        "sha256": "sha256:0c1c7e5072df33c2bca2f8200ad03c213bc8ccd559df50812b7d71b490c309a9"
       },
       {
         "path": "src/wphx/wp/http/HttpRedirectValidation.hx",
@@ -46,8 +51,68 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRedirectValidationCandidateEntry.hx",
         "bytes": 211,
         "sha256": "sha256:89026c41c38645f23e209b8db7f7cf47d4c4fb8a8e029b13ae43edb060b4223e"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
+        "bytes": 905,
+        "sha256": "sha256:6148627ee62a05b858fb9fcd2c477865a0f7fc35d29451e887ca8f0e8bfc2143"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+        "bytes": 2959,
+        "sha256": "sha256:65951cb3bf3b3dddde6c7dfbbcd615fcb512492c0e40bf2f54cc20fafc7150c2"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieHeaderAssembly.hx",
+        "bytes": 339,
+        "sha256": "sha256:ef1e24f2f65fc45c7526899b4d37679b4c1d31cf0bb0e80559e6a8208f3df71d"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessHeaders.hx",
+        "bytes": 550,
+        "sha256": "sha256:09a1bc6c5efe014ed136e4839f0bc1d5dfc7eee94756b448b21a5bb25cd33482"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
+        "bytes": 359,
+        "sha256": "sha256:ebaf7352eab4fa3d6c7fd5563b7a78601b5001c01584a2532f0594322a41bfce"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpChunkTransferDecode.hx",
+        "bytes": 314,
+        "sha256": "sha256:d39a608a63881c5e8da002cc0698d1002697e84ec0f5d5fcfea5e9a829f674bb"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
+        "bytes": 506,
+        "sha256": "sha256:86e5d78ec9f4fb43da1e51c8d0a27513ce350b9c6511b48ff05b3913c801f5a1"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpIpAddress.hx",
+        "bytes": 342,
+        "sha256": "sha256:850a6ae2c6b741aa53d0f4a0ed40ca63722a39f8a83c1a6582980bfcb7c4776e"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
+        "bytes": 321,
+        "sha256": "sha256:e0a33410aa9307f5c8b29634c443bf899f1ce70eb5243b2154bfd7c951077670"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
+        "bytes": 236,
+        "sha256": "sha256:f7654c624aa4d06c9cecfe1792c16edcc5dd11f7b88f3209322a2fdb77624611"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx",
+        "bytes": 302,
+        "sha256": "sha256:edf69b94b36c3034e065d6580bffc179cf3b4eb6d552cbe7664df1e0d735288c"
       }
     ],
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-57/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 1256,
+      "sha256": "sha256:5205f4fa57d27a8b8250fb588924ac4e4bb74d4482bc6d1dd865ea49bc9da3d9"
+    },
     "upstream_sources": [
       {
         "path": "src/wp-includes/class-wp-http.php",
@@ -59,6 +124,7 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-redirect-validation-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "haxe_output": "build/wp-core/wphx-312-57/haxe",
     "compiled_php_files": [
       "build/wp-core/wphx-312-57/haxe/index.php",
@@ -79,17 +145,34 @@
       "build/wp-core/wphx-312-57/haxe/lib/wphx/fixtures/wp/core/HttpRedirectValidationCandidateEntry.php",
       "build/wp-core/wphx-312-57/haxe/lib/wphx/wp/http/_HttpRedirectValidation/HttpRedirectValidation_Fields_.php"
     ],
+    "compiler_emitted_public_shell": {
+      "path": "build/wp-core/wphx-312-57/candidate/wp-includes/class-wp-http.php",
+      "source_path": "build/wp-core/wphx-312-57/wphx-php/wp-includes/class-wp-http.php",
+      "manifest": "build/wp-core/wphx-312-57/wphx-php/wphx-php-emission.v1.json",
+      "declarations": [
+        "class:WP_Http"
+      ],
+      "emitted_methods": [
+        {
+          "name": "validate_redirects",
+          "visibility": "public",
+          "by_reference_parameters": []
+        }
+      ],
+      "unsupported": []
+    },
     "promoted_symbols": [
       "WP_Http::validate_redirects failure decision"
     ],
     "public_shell_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
       "public_php_abi_preserved": true,
-      "shell_body_ownership": "temporary candidate shell preserves the WP_Http public static method ABI, WordPress URL validation, translation, and Requests exception construction while delegating the bounded failure decision to generated Haxe PHP",
+      "shell_body_ownership": "compiler-emitted original-path class-wp-http.php shell preserves the WP_Http::validate_redirects public static method ABI, WordPress URL validation, translation, and Requests exception construction while delegating the bounded failure decision to generated Haxe PHP",
       "native_boundaries": [
         "wp_http_validate_url",
         "__ translation",
-        "WpOrg\\Requests\\Exception"
+        "WpOrg\\Requests\\Exception",
+        "compiler-emitted original-path class-wp-http.php shell"
       ]
     }
   },
@@ -179,9 +262,9 @@
       "detail": "The fixture observes redirect validation helper behavior only. It does not execute WP_Http::request, Requests network I/O, DNS, proxy, TLS, redirect following, or transport execution."
     },
     {
-      "id": "durable-public-php-adapter-not-yet-generated",
+      "id": "whole-wp-http-file-not-yet-owned",
       "owner": "WPHX-312.57",
-      "detail": "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+      "detail": "The candidate consumes a compiler-emitted grouped original-path class-wp-http.php shell for the validate_redirects boundary, but broader WP_Http methods and whole-file original-path ownership remain later compiler-driven gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
@@ -191,7 +274,10 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "validate_redirects_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false,
     "dns_resolution_claimed": false

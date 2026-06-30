@@ -1,0 +1,75 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-redirect-validation-temp-shell",
+  "issue": {
+    "id": "wordpresshx-hdp",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REDIRECT-VALIDATION-TEMP-SHELL",
+    "title": "Use generated shell in WPHX-312.57"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell_retirement",
+  "artifact_scope": "wp_http_validate_redirects_public_shell",
+  "commands": [
+    "npm run wp:core:wphx-312-wp-http-redirect-validation-candidate",
+    "npm run wp:core:wphx-312-wp-http-redirect-validation-candidate:check",
+    "npm run wphx:php:wp-http-grouped-helpers",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
+      "role": "WPHX-312.57 runner that installs the compiler-emitted grouped WP_Http shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+      "role": "WPHX-312.57 manifest with compiler_emitted_public_php=true"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+      "role": "ownership manifest recording compiler-emitted grouped original-path public PHP shell state"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+      "role": "WPHX-312.57 verification receipt"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+      "role": "WPHX PHP grouped WP_Http shell source including validate_redirects"
+    },
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http helper compiler manifest with eight behavior cases"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations note documenting the retired temporary shell"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program progress note for the validate_redirects shell retirement"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "wphx_312_57_check_passed": true,
+    "compiler_emitted_public_php": true,
+    "validate_redirects_emitted": true,
+    "unsupported_empty": true,
+    "grouped_helper_cases": 8,
+    "public_shell_snapshot_cases": 11,
+    "whole_file_wp_http_claimed": false,
+    "wp_http_request_claimed": false,
+    "installed_distribution_claimed": false
+  },
+  "claims": [
+    "The WPHX-312.57 WP_Http::validate_redirects candidate now uses the WPHX compiler-emitted grouped original-path class-wp-http.php public shell.",
+    "The generated shell preserves the public static validate_redirects($location) ABI, keeps wp_http_validate_url, translation, and Requests exception construction in PHP, and delegates the bounded reject decision to the Haxe helper.",
+    "The previous copied or runner-patched temporary public PHP shell is no longer the authority for the validate_redirects boundary."
+  ],
+  "non_claims": [
+    "This receipt does not claim whole-file WP_Http ownership.",
+    "This receipt does not claim WP_Http::request ownership, live HTTP transport behavior, installed WordPress distribution behavior, absolute URL resolution, redirect following, broader redirect helper ownership, or generated Requests ownership."
+  ]
+}

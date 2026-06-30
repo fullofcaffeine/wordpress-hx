@@ -73,4 +73,11 @@ class WpHttpGroupedHelpersShell
 	{
 		HaxeHttpRedirectCompatibility.shouldUseBrowserGet(302);
 	}
+
+	@:wp.adapter("wp-http-validate-redirects")
+	@:wp.haxeHelper("\\wphx\\wp\\http\\_HttpRedirectValidation\\HttpRedirectValidation_Fields_")
+	public static function validate_redirects(location:String):Void
+	{
+		HaxeHttpRedirectValidation.shouldRejectRedirect(false);
+	}
 }

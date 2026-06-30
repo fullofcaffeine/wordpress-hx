@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 334,
+  "closed_task_count": 335,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "6fef2fb2a2299c1f4410cff82bd6458ae034f8afbdde15eb029e9a6ae1a331e3",
+          "sha256": "0ad5d349288c3fc02aa3526b00345c6a5cae01897ba490d615ef7c7af142fbc1",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -2228,7 +2228,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
-          "sha256": "3dbec243cfc5568fd51f9a364e91bdbb0577521a645829d6a70d6172a4a13323",
+          "sha256": "d57f41c5b5b670b2b0502662c117f22226b01342a70bd2a5b4c06cd683c1f945",
           "id": "receipt:wphx-312-57-wp-http-redirect-validation-candidate"
         }
       ]
@@ -3153,7 +3153,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
-          "sha256": "1aaad584ccb85898c34206d701a12701ee68e56f7d11a6d0371bd42a154c0865",
+          "sha256": "880399d704d2962f9525fc2a4f082338fdff83be9d8eaeed460c47766a748f86",
           "id": "receipt:wphx-comp-php-group-wp-http-helpers"
         }
       ]
@@ -3235,6 +3235,16 @@
           "path": "receipts/compiler/wphx-comp-php-retire-wp-http-process-headers-temp-shell.v1.json",
           "sha256": "9c0f618c7290dc985b964ac781fd8fd6b59fc70efdc3553867cf917a8b97f163",
           "id": "receipt:wphx-comp-php-retire-wp-http-process-headers-temp-shell"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REDIRECT-VALIDATION-TEMP-SHELL",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-retire-wp-http-redirect-validation-temp-shell.v1.json",
+          "sha256": "e2109b04347a191a10d4d51cf248850e746d0087f5937ec6a8387520b794f03a",
+          "id": "receipt:wphx-comp-php-retire-wp-http-redirect-validation-temp-shell"
         }
       ]
     },

@@ -23,6 +23,14 @@
     {
       "path": "src/wphx/wp/http/HttpRedirectValidation.hx",
       "role": "module-level Haxe source for WP_Http::validate_redirects decision"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+      "role": "WPHX PHP source for grouped original-path WP_Http public shell"
+    },
+    {
+      "path": "build/wp-core/wphx-312-57/wphx-php/wphx-php-emission.v1.json",
+      "role": "WPHX PHP emission manifest for compiler-emitted class-wp-http.php"
     }
   ],
   "verification_commands": [
@@ -34,7 +42,8 @@
   "related_receipts": [
     "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
     "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
-    "receipt:wphx-312-41-wp-http-helper-oracle-fixture"
+    "receipt:wphx-312-41-wp-http-helper-oracle-fixture",
+    "receipt:wphx-comp-php-group-wp-http-helpers"
   ],
   "validation_result": {
     "status": "passed",
@@ -42,7 +51,10 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "validate_redirects_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false,
     "dns_resolution_claimed": false

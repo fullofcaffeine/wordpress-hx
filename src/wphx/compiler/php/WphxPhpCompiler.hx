@@ -96,6 +96,7 @@ private enum PhpCoreStmt
 	PhpLocal(name:String, value:PhpCoreExpr);
 	PhpExprStmt(expr:PhpCoreExpr);
 	PhpReturn(value:PhpCoreExpr);
+	PhpThrow(value:PhpCoreExpr);
 	PhpBreak;
 	PhpContinue;
 }
@@ -119,6 +120,7 @@ private enum PhpCoreExpr
 	PhpPostDecrement(target:PhpCoreExpr);
 	PhpNot(expr:PhpCoreExpr);
 	PhpCastArray(expr:PhpCoreExpr);
+	PhpCastBool(expr:PhpCoreExpr);
 	PhpCastInt(expr:PhpCoreExpr);
 	PhpCastString(expr:PhpCoreExpr);
 }
@@ -963,6 +965,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 					emitWpHttpIsIpAddressBody(field);
 				case "wp-http-browser-redirect-compatibility":
 					emitWpHttpBrowserRedirectCompatibilityBody(field);
+				case "wp-http-validate-redirects":
+					emitWpHttpValidateRedirectsBody(field);
 				case _:
 					reportUnsupported("unsupported WPHX PHP method adapter " + adapter + " for " + field.name);
 					"";
@@ -1176,6 +1180,34 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		]);
 	}
 
+	function emitWpHttpValidateRedirectsBody(field:ClassField):String
+	{
+		final helper = metadataString(field.meta.get(), "wp.haxeHelper");
+		if (helper == null)
+		{
+			reportUnsupported("missing @:wp.haxeHelper for WP_Http::validate_redirects adapter " + field.name);
+			return "";
+		}
+
+		recordCoreIrFeatures([
+			"stmt.if",
+			"stmt.throw",
+			"expr.coerce-bool",
+			"expr.function-call",
+			"expr.new",
+			"expr.static-call"
+		]);
+
+		return emitPhpCoreStatements([
+			PhpIf(PhpStaticCall(helper, "shouldRejectRedirect", [PhpCastBool(PhpFunctionCall("wp_http_validate_url", [PhpVar("location")]))]), [
+				PhpThrow(PhpNew("\\WpOrg\\Requests\\Exception", [
+					PhpFunctionCall("__", [PhpString("A valid URL was not provided.")]),
+					PhpString("wp_http.redirect_failed_validation")
+				]))
+			])
+		]);
+	}
+
 	function emitPhpCoreStatements(statements:Array<PhpCoreStmt>, depth:Int = 0):String
 	{
 		return statements.map(statement -> emitPhpCoreStatement(statement, depth)).join("\n");
@@ -1253,6 +1285,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				prefix + emitPhpCoreExpr(expr, depth) + ";";
 			case PhpReturn(value):
 				prefix + "return " + emitPhpCoreExpr(value, depth) + ";";
+			case PhpThrow(value):
+				prefix + "throw " + emitPhpCoreExpr(value, depth) + ";";
 			case PhpBreak:
 				prefix + "break;";
 			case PhpContinue:
@@ -1301,6 +1335,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				"! " + emitPhpCoreExpr(inner, depth);
 			case PhpCastArray(inner):
 				"(array) " + emitPhpCoreExpr(inner, depth);
+			case PhpCastBool(inner):
+				"(bool) " + emitPhpCoreExpr(inner, depth);
 			case PhpCastInt(inner):
 				"(int) " + emitPhpCoreExpr(inner, depth);
 			case PhpCastString(inner):

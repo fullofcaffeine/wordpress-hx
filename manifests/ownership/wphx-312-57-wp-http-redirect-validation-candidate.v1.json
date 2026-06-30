@@ -9,19 +9,21 @@
     "kind": "haxe_parity_candidate",
     "name": "WP_Http redirect validation failure decision",
     "area": "src/wp-includes/class-wp-http.php WP_Http::validate_redirects",
-    "public_contract": "This candidate preserves the WP_Http PHP class shell, wp_http_validate_url, translation, and Requests exception ABI while delegating the validated/failed branch decision to module-level Haxe source."
+    "public_contract": "This candidate preserves the WP_Http PHP class shell, wp_http_validate_url, translation, and Requests exception ABI through a compiler-emitted original-path public shell while delegating the validated/failed branch decision to module-level Haxe source."
   },
   "ownership_state": "haxe_owned_candidate_with_public_php_shell",
   "bridge": {
     "exists": true,
-    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
-    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable public PHP ownership."
+    "kind": "compiler-emitted-grouped-original-path-public-php-shell",
+    "removal_gate": "Expand generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable whole-file WP_Http ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-wp-http-redirect-validation-candidate.mjs",
     "fixtures/wp-core/http-redirect-validation-candidate.hxml",
+    "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "src/wphx/wp/http/HttpRedirectValidation.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRedirectValidationCandidateEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
     "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
     "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
     "receipts/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json"
@@ -30,6 +32,7 @@
     "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
     "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
     "receipts/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+    "build/wp-core/wphx-312-57/wphx-php/wphx-php-emission.v1.json",
     "build/wp-core/wphx-312-57"
   ],
   "verification": {
@@ -42,6 +45,6 @@
     "receipt_refs": [
       "receipt:wphx-312-57-wp-http-redirect-validation-candidate"
     ],
-    "manifest_digest": "sha256:1a1212803fb6d624ef3bb27051125a252eea5c74e775df177cd9af7db08aeca7"
+    "manifest_digest": "sha256:316000e1a50b554af8e8643bd879e14cc24d64dfd86342523a4ded4c79bc1d02"
   }
 }

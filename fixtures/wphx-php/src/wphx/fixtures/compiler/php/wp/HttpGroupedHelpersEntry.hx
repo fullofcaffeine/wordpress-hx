@@ -13,6 +13,7 @@ class HttpGroupedHelpersEntry
 		WpHttpGroupedHelpersShell.is_ip_address("127.0.0.1");
 		// WPHX-211: compile anchor only; runtime PHP receives a native by-ref options array from the probe.
 		WpHttpGroupedHelpersShell.browser_redirect_compatibility(cast null, cast null, cast null, cast null, cast null);
+		WpHttpGroupedHelpersShell.validate_redirects("https://valid.example/path");
 		// WPHX-211: compile anchor only; runtime PHP receives a native by-ref request array from the probe.
 		WpHttpGroupedHelpersShell.buildCookieHeader(cast null);
 	}

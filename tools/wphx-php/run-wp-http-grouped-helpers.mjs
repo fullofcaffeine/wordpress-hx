@@ -47,6 +47,7 @@ const HAXE_SOURCES = [
   "src/wphx/wp/http/HttpProcessHeaders.hx",
   "src/wphx/wp/http/HttpIpAddress.hx",
   "src/wphx/wp/http/HttpRedirectCompatibility.hx",
+  "src/wphx/wp/http/HttpRedirectValidation.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpGroupedHelpersCandidateEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
@@ -57,6 +58,7 @@ const HAXE_SOURCES = [
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessHeaders.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpIpAddress.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx"
 ];
 const CASES = [
@@ -66,7 +68,8 @@ const CASES = [
   "wp-http-parser:build-cookie-header",
   "wp-http-parser:process-headers",
   "wp-http:is-ip-address",
-  "wp-http:browser-redirect-compatibility"
+  "wp-http:browser-redirect-compatibility",
+  "wp-http:validate-redirects"
 ];
 const REQUIRED_CORE_IR_FEATURES = [
   "stmt.if",
@@ -77,12 +80,14 @@ const REQUIRED_CORE_IR_FEATURES = [
   "stmt.assign",
   "stmt.var",
   "stmt.return",
+  "stmt.throw",
   "stmt.break",
   "stmt.continue",
   "expr.array-read",
   "expr.array-append",
   "expr.array-write-target",
   "expr.array-coerce",
+  "expr.coerce-bool",
   "expr.coerce-int",
   "expr.coerce-string",
   "expr.long-array",
@@ -171,6 +176,15 @@ namespace WpOrg\\Requests {
 \t\t\t$this->status_code = $status_code;
 \t\t}
 \t}
+
+\tclass Exception extends \\Exception {
+\t\tpublic $type;
+
+\t\tpublic function __construct( $message = '', $type = '' ) {
+\t\t\tparent::__construct( $message );
+\t\t\t$this->type = $type;
+\t\t}
+\t}
 }
 
 namespace {
@@ -201,6 +215,14 @@ function apply_filters( $hook_name, $value, ...$args ) {
 \t\treturn 'filtered-' . $args[0] . '-' . str_replace( ' ', '_', (string) $value );
 \t}
 \treturn $value;
+}
+
+function __( $text ) {
+\treturn $text;
+}
+
+function wp_http_validate_url( $location ) {
+\treturn str_starts_with( $location, 'https://valid.example/' ) ? $location : false;
 }
 
 function wphx_summarize( $value ) {
@@ -363,6 +385,24 @@ switch ( $case ) {
 \t\t$assertions['status_302_switches_to_get'] = 'GET' === $options302['type'];
 \t\t$assertions['status_301_preserves_type'] = 'POST' === $options301['type'];
 \t\tbreak;
+\tcase 'wp-http:validate-redirects':
+\t\t$reflection = new ReflectionMethod( 'WP_Http', 'validate_redirects' );
+\t\t$params = $reflection->getParameters();
+\t\t$valid = 'no-throw';
+\t\t$error = null;
+\t\tWP_Http::validate_redirects( 'https://valid.example/path' );
+\t\ttry {
+\t\t\tWP_Http::validate_redirects( 'ftp://invalid.example/path' );
+\t\t} catch ( WpOrg\\Requests\\Exception $exception ) {
+\t\t\t$error = array( 'class' => get_class( $exception ), 'message' => $exception->getMessage(), 'type' => $exception->type );
+\t\t}
+\t\t$result['valid'] = $valid;
+\t\t$result['error'] = $error;
+\t\t$result['reflection'] = array( 'visibility' => $reflection->isPublic() ? 'public' : 'non-public', 'static' => $reflection->isStatic(), 'params' => array_map( function ( $param ) { return array( 'name' => $param->getName(), 'by_ref' => $param->isPassedByReference() ); }, $params ) );
+\t\t$assertions['reflection'] = $reflection->isPublic() && $reflection->isStatic() && 1 === count( $params ) && 'location' === $params[0]->getName();
+\t\t$assertions['valid_no_throw'] = 'no-throw' === $valid;
+\t\t$assertions['invalid_exception'] = array( 'class' => 'WpOrg\\\\Requests\\\\Exception', 'message' => 'A valid URL was not provided.', 'type' => 'wp_http.redirect_failed_validation' ) === $error;
+\t\tbreak;
 \tdefault:
 \t\t$assertions['known_case'] = false;
 }
@@ -396,7 +436,7 @@ function ownershipManifest(manifestSha) {
       name: "Grouped WP_Http parser/header/cookie/IP/redirect helper shell",
       path: "wp-includes/class-wp-http.php",
       public_contract:
-        "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), and browser_redirect_compatibility(..., &$options, $original) ABI and behavior gates in one original-path file."
+        "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), and validate_redirects($location) ABI and behavior gates in one original-path file."
     },
     ownership_state: "compiler_emitted_original_path_shell",
     ownership_axes: {
@@ -470,7 +510,8 @@ function main() {
       /public\s+static\s+function\s+is_ip_address\s*\(\s*\$maybe_ip\s*\)/.test(generatedSource) &&
       /public\s+static\s+function\s+browser_redirect_compatibility\s*\(\s*\$location\s*,\s*\$headers\s*,\s*\$data\s*,\s*&\$options\s*,\s*\$original\s*\)/.test(
         generatedSource
-      ),
+      ) &&
+      /public\s+static\s+function\s+validate_redirects\s*\(\s*\$location\s*\)/.test(generatedSource),
     one_wp_http_class: (generatedSource.match(/class WP_Http/g) ?? []).length === 1,
     wordpress_bootstrap_profile: generatedSource.includes("HAXE_CUSTOM_ERROR_HANDLER") && generatedSource.includes("WPHX_WP_HTTP_GROUPED_HELPERS_BOOTSTRAPPED"),
     parser_delegation: generatedSource.includes("HttpProcessResponse_Fields_::responseHeaders") && generatedSource.includes("HttpChunkTransferDecode_Fields_::decodeChunkTransfer"),
@@ -478,7 +519,11 @@ function main() {
     ip_address_delegation: generatedSource.includes("HttpIpAddress_Fields_::ipAddressVersion"),
     redirect_compatibility_ir:
       generatedSource.includes("HttpRedirectCompatibility_Fields_::shouldUseBrowserGet") &&
-      generatedSource.includes("$options['type'] = \\WpOrg\\Requests\\Requests::GET;")
+      generatedSource.includes("$options['type'] = \\WpOrg\\Requests\\Requests::GET;"),
+    redirect_validation_ir:
+      generatedSource.includes("HttpRedirectValidation_Fields_::shouldRejectRedirect") &&
+      generatedSource.includes("wp_http_validate_url( $location )") &&
+      generatedSource.includes("throw new \\WpOrg\\Requests\\Exception")
   };
   if (!Object.values(shellChecks).every(Boolean)) {
     console.error(JSON.stringify({ status: "failed", reason: "shell checks failed", shellChecks, declarations, unsupported: wphxManifest.unsupported }, null, 2));
@@ -522,7 +567,8 @@ function main() {
         "WP_Http::buildCookieHeader",
         "WP_Http::processHeaders",
         "WP_Http::is_ip_address",
-        "WP_Http::browser_redirect_compatibility"
+        "WP_Http::browser_redirect_compatibility",
+        "WP_Http::validate_redirects"
       ]
     },
     claims: {
@@ -561,9 +607,9 @@ function main() {
     ],
     validation_result: manifest.validation_result,
     claims: [
-      "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), and browser_redirect_compatibility(..., &$options, $original).",
-      "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all seven helper cases, and WPHX PHP manifest unsupported=[].",
-      "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, and by-reference redirect option mutation."
+      "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), and validate_redirects($location).",
+      "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all eight helper cases, and WPHX PHP manifest unsupported=[].",
+      "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, and Requests exception throwing."
     ],
     non_claims: [
       "This does not claim whole-file WP_Http ownership.",

@@ -16,6 +16,7 @@ import wphx.wp.http.HttpProcessHeaders.startsFinalResponseBlock;
 import wphx.wp.http.HttpProcessResponse.responseBody;
 import wphx.wp.http.HttpProcessResponse.responseHeaders;
 import wphx.wp.http.HttpRedirectCompatibility.shouldUseBrowserGet;
+import wphx.wp.http.HttpRedirectValidation.shouldRejectRedirect;
 
 /**
 	Compile anchor for grouped WP_Http parser/header/cookie Haxe helpers.
@@ -40,5 +41,6 @@ class HttpGroupedHelpersCandidateEntry
 		headerKey("X-Test: yes");
 		headerValue("X-Test: yes");
 		shouldUseBrowserGet(302);
+		shouldRejectRedirect(false);
 	}
 }
