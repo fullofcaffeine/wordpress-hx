@@ -1,0 +1,65 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-encoding-temp-shell",
+  "issue": {
+    "id": "wordpresshx-gi3",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-ENCODING-TEMP-SHELL",
+    "title": "Use generated shell in WPHX-312.50"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell_retirement",
+  "artifact_scope": "wp_http_encoding_public_class_adapter",
+  "commands": [
+    "haxe fixtures/wphx-php/wp-http-encoding.hxml",
+    "npm run wp:core:wphx-312-http-encoding-candidate",
+    "npm run wp:core:wphx-312-http-encoding-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run format:haxe",
+    "npm run haxe:escape-hatches"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "generic PHP class printer now supports AllowDynamicProperties metadata"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter plans for WP_Http_Encoding"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpEncodingShell.hx",
+      "role": "typed shell metadata for the compiler-emitted WP_Http_Encoding adapter"
+    },
+    {
+      "path": "fixtures/wphx-php/wp-http-encoding.hxml",
+      "role": "WPHX PHP compile fixture for wp-includes/class-wp-http-encoding.php"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-50-http-encoding-candidate.v1.json",
+      "role": "WPHX-312.50 oracle/candidate manifest using the compiler-emitted original-path public shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-50-http-encoding-candidate.v1.json",
+      "role": "behavior receipt for the retired temporary shell candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "encoding_candidate_cases": 6,
+    "compiler_emitted_public_php": true,
+    "encoding_shell_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 12
+  },
+  "claims": [
+    "WPHX PHP emits the original-path wp-includes/class-wp-http-encoding.php public class adapter for WP_Http_Encoding.",
+    "The WPHX-312.50 candidate no longer copies and patches a public PHP class shell for promoted encoding methods.",
+    "PHP still owns public accept_encoding function_exists checks and wp_http_accept_encoding filter timing while Haxe owns bounded compression/decompression, compatibility inflate, content-encoding, should-decode, and availability helpers."
+  ],
+  "non_claims": [
+    "This does not claim live HTTP transfer-encoding negotiation or streaming transport behavior.",
+    "This does not claim installed WordPress distribution behavior or selected upstream HTTP PHPUnit parity for WP_Http_Encoding.",
+    "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

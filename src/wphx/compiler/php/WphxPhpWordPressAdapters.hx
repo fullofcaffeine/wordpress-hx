@@ -40,6 +40,20 @@ class WphxPhpWordPressAdapters
 				blockRequest(fieldName, helper);
 			case "wp-http-handle-redirects":
 				handleRedirects(fieldName, helper);
+			case "wp-http-encoding-compress":
+				encodingCompress(fieldName, helper);
+			case "wp-http-encoding-decompress":
+				encodingDecompress(fieldName, helper);
+			case "wp-http-encoding-compatible-gzinflate":
+				encodingCompatibleGzinflate(fieldName, helper);
+			case "wp-http-encoding-accept-encoding":
+				encodingAcceptEncoding(fieldName, helper);
+			case "wp-http-encoding-content-encoding":
+				encodingContentEncoding(fieldName, helper);
+			case "wp-http-encoding-should-decode":
+				encodingShouldDecode(fieldName, helper);
+			case "wp-http-encoding-is-available":
+				encodingIsAvailable(fieldName, helper);
 			case _:
 				null;
 		}
@@ -469,6 +483,125 @@ class WphxPhpWordPressAdapters
 			]),
 			PhpReturn(PhpFunctionCall("wp_remote_request", [redirectLocation, args]))
 		]);
+	}
+
+	static function encodingCompress(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::compress adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.coerce-int", "expr.coerce-string", "expr.static-call"], [
+			PhpReturn(PhpStaticCall(helper, "compress", [PhpCastString(PhpVar("raw")), PhpCastInt(PhpVar("level"))]))
+		]);
+	}
+
+	static function encodingDecompress(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::decompress adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.coerce-string", "expr.static-call"], [
+			PhpReturn(PhpStaticCall(helper, "decompress", [PhpCastString(PhpVar("compressed"))]))
+		]);
+	}
+
+	static function encodingCompatibleGzinflate(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::compatible_gzinflate adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.coerce-string", "expr.static-call"], [
+			PhpReturn(PhpStaticCall(helper, "compatibleGzinflate", [PhpCastString(PhpVar("gz_data"))]))
+		]);
+	}
+
+	static function encodingAcceptEncoding(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::accept_encoding adapter " + fieldName);
+		}
+
+		final type = PhpVar("type");
+		final args = PhpVar("args");
+		final compressionEnabled = PhpVar("compression_enabled");
+		return plan([
+			"stmt.if",
+			"stmt.assign",
+			"stmt.var",
+			"stmt.return",
+			"expr.array-read",
+			"expr.array-append",
+			"expr.bool",
+			"expr.function-call",
+			"expr.long-array",
+			"expr.static-call"
+		], [
+			PhpLocal("type", PhpLongArray([])),
+			PhpLocal("compression_enabled", PhpStaticCall(helper, "isAvailable", [])),
+			PhpIf(PhpNot(PhpArrayRead(args, PhpString("decompress"))), [PhpAssign(compressionEnabled, PhpBool(false))]),
+			PhpIf(PhpArrayRead(args, PhpString("stream")), [PhpAssign(compressionEnabled, PhpBool(false))]),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(args, PhpString("limit_response_size"))]), [PhpAssign(compressionEnabled, PhpBool(false))]),
+			PhpIf(compressionEnabled,
+				[
+					PhpIf(PhpFunctionCall("function_exists", [PhpString("gzinflate")]), [PhpAssign(PhpArrayAppend(type), PhpString("deflate;q=1.0"))]),
+					PhpIf(PhpFunctionCall("function_exists", [PhpString("gzuncompress")]), [PhpAssign(PhpArrayAppend(type), PhpString("compress;q=0.5"))]),
+					PhpIf(PhpFunctionCall("function_exists", [PhpString("gzdecode")]), [PhpAssign(PhpArrayAppend(type), PhpString("gzip;q=0.5"))])
+				]),
+			PhpAssign(type, PhpFunctionCall("apply_filters", [PhpString("wp_http_accept_encoding"), type, PhpVar("url"), args])),
+			PhpReturn(PhpFunctionCall("implode", [PhpString(", "), type]))
+		]);
+	}
+
+	static function encodingContentEncoding(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::content_encoding adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.static-call"], [PhpReturn(PhpStaticCall(helper, "contentEncoding", []))]);
+	}
+
+	static function encodingShouldDecode(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::should_decode adapter " + fieldName);
+		}
+
+		return plan([
+			"stmt.if",
+			"stmt.return",
+			"expr.bool",
+			"expr.coerce-string",
+			"expr.function-call",
+			"expr.static-call"
+		], [
+			PhpIf(PhpFunctionCall("is_array", [PhpVar("headers")]), [
+				PhpReturn(PhpStaticCall(helper, "shouldDecodeFromNativeHeaders", [PhpVar("headers")]))
+			]),
+			PhpIf(PhpFunctionCall("is_string", [PhpVar("headers")]), [
+				PhpReturn(PhpStaticCall(helper, "shouldDecodeFromString", [PhpCastString(PhpVar("headers"))]))
+			]),
+			PhpReturn(PhpBool(false))
+		]);
+	}
+
+	static function encodingIsAvailable(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Encoding::is_available adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.static-call"], [PhpReturn(PhpStaticCall(helper, "isAvailable", []))]);
 	}
 }
 #end

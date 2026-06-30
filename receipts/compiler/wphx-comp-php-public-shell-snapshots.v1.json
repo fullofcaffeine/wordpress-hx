@@ -18,11 +18,11 @@
     "npm run wphx:php:public-shell-snapshots",
     "npm run wphx:php:public-shell-snapshots:check"
   ],
-  "manifest_sha256": "sha256:f3c5619438c184fd82c6f98c4b16519c3932dbdb809d00fbed16fdfbca9c8dcb",
+  "manifest_sha256": "sha256:14e8543c0b4a6469b367d0ccb53fa3e97b06b0560d3b091d6bcc221d2f55d086",
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 11,
+    "case_count": 12,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,

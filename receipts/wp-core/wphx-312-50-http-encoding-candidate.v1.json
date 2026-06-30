@@ -23,6 +23,10 @@
     {
       "path": "src/wphx/wp/http/HttpEncodingStrategy.hx",
       "role": "Haxe-owned HTTP encoding strategy source"
+    },
+    {
+      "path": "build/wp-core/wphx-312-50/wphx-php/wphx-php-emission.v1.json",
+      "role": "WPHX PHP emission manifest for compiler-emitted class-wp-http-encoding.php"
     }
   ],
   "verification_commands": [
@@ -42,7 +46,10 @@
     "promoted_symbols": 6,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "encoding_shell_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_transfer_encoding_claimed": false
   }

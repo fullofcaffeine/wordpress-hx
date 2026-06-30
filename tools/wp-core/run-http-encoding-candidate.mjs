@@ -16,10 +16,13 @@ const RECORDED_AT = "2026-06-27T00:00:00.000Z";
 const UPSTREAM_ROOT = "../wordpress-develop";
 const RUNNER = "tools/wp-core/run-http-encoding-candidate.mjs";
 const HXML = "fixtures/wp-core/http-encoding-candidate.hxml";
+const WPHX_PHP_HXML = "fixtures/wphx-php/wp-http-encoding.hxml";
 const OUT_ROOT = "build/wp-core/wphx-312-50";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
 const ORACLE_ROOT = `${OUT_ROOT}/oracle`;
 const CANDIDATE_ROOT = `${OUT_ROOT}/candidate`;
+const WPHX_PHP_ROOT = `${OUT_ROOT}/wphx-php`;
+const WPHX_PHP_MANIFEST = `${WPHX_PHP_ROOT}/wphx-php-emission.v1.json`;
 const PROBE = `${OUT_ROOT}/probe.php`;
 const OUT = "manifests/wp-core/wphx-312-50-http-encoding-candidate.v1.json";
 const OWNERSHIP = "manifests/ownership/wphx-312-50-http-encoding-candidate.v1.json";
@@ -31,8 +34,12 @@ const ENCODING_FIXTURE = "manifests/wp-core/wphx-312-40-http-encoding-oracle-fix
 const SOURCE_FILES = ["src/wp-includes/class-wp-http-encoding.php"];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_PHP_HXML,
   "src/wphx/wp/http/HttpEncodingStrategy.hx",
-  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx"
+  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpEncodingEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpEncodingShell.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpEncodingStrategy.hx"
 ];
 const PROMOTED_SYMBOLS = [
   "WP_Http_Encoding::compress",
@@ -96,108 +103,11 @@ function mirrorSources(root) {
   }
 }
 
-function haxeBootstrapBlock() {
-  return `if ( ! function_exists( 'wphx_312_50_bootstrap_haxe' ) ) {
-\tfunction wphx_312_50_bootstrap_haxe() {
-\t\tstatic $bootstrapped = false;
-\t\tif ( $bootstrapped ) {
-\t\t\treturn;
-\t\t}
-\t\t$bootstrapped = true;
-
-\t\t$wphx_312_50_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
-\t\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_312_50_lib );
-\t\tspl_autoload_register(
-\t\t\tfunction ( $class ) {
-\t\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
-\t\t\t\tif ( $file ) {
-\t\t\t\t\tinclude_once $file;
-\t\t\t\t}
-\t\t\t}
-\t\t);
-\t\t\\php\\Boot::__hx__init();
-\t}
-}
-wphx_312_50_bootstrap_haxe();
-`;
-}
-
-function installBootstrap(source) {
-  const marker = "<?php\n";
-  if (!source.startsWith(marker)) throw new Error("class-wp-http-encoding.php did not start with PHP open tag");
-  return `${marker}\n${haxeBootstrapBlock()}\n${source.slice(marker.length)}`;
-}
-
-function replaceFunction(source, functionName, replacement) {
-  const pattern = new RegExp(`public\\s+static\\s+function\\s+${functionName}\\s*\\(`, "m");
-  const match = pattern.exec(source);
-  if (!match) throw new Error(`Unable to locate method ${functionName}`);
-  const openBrace = source.indexOf("{", match.index);
-  if (openBrace === -1) throw new Error(`Unable to locate opening brace for ${functionName}`);
-  let depth = 0;
-  for (let index = openBrace; index < source.length; index += 1) {
-    const char = source[index];
-    if (char === "{") depth += 1;
-    if (char === "}") {
-      depth -= 1;
-      if (depth === 0) return `${source.slice(0, match.index)}${replacement}${source.slice(index + 1)}`;
-    }
-  }
-  throw new Error(`Unable to locate closing brace for ${functionName}`);
-}
-
-function transformCandidateEncoding() {
-  const path = `${CANDIDATE_ROOT}/wp-includes/class-wp-http-encoding.php`;
-  let source = installBootstrap(readFileSync(path, "utf8"));
-  source = replaceFunction(
-    source,
-    "compress",
-    `public static function compress( $raw, $level = 9, $supports = null ) {
-\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::compress( (string) $raw, (int) $level );
-}`
-  );
-  source = replaceFunction(
-    source,
-    "decompress",
-    `public static function decompress( $compressed, $length = null ) {
-\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::decompress( (string) $compressed );
-}`
-  );
-  source = replaceFunction(
-    source,
-    "compatible_gzinflate",
-    `public static function compatible_gzinflate( $gz_data ) {
-\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::compatibleGzinflate( (string) $gz_data );
-}`
-  );
-  source = replaceFunction(
-    source,
-    "content_encoding",
-    `public static function content_encoding() {
-\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::contentEncoding();
-}`
-  );
-  source = replaceFunction(
-    source,
-    "should_decode",
-    `public static function should_decode( $headers ) {
-\tif ( is_array( $headers ) ) {
-\t\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::shouldDecodeFromNativeHeaders( $headers );
-\t}
-\tif ( is_string( $headers ) ) {
-\t\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::shouldDecodeFromString( $headers );
-\t}
-\treturn false;
-}`
-  );
-  source = replaceFunction(
-    source,
-    "is_available",
-    `public static function is_available() {
-\treturn \\wphx\\wp\\http\\HttpEncodingStrategy::isAvailable();
-}`
-  );
-  writeFileSync(path, source);
+function installCompilerEmittedCandidateShell() {
+  const source = `${WPHX_PHP_ROOT}/wp-includes/class-wp-http-encoding.php`;
+  const target = `${CANDIDATE_ROOT}/wp-includes/class-wp-http-encoding.php`;
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(source, target);
 }
 
 function writeProbe() {
@@ -337,12 +247,12 @@ function ownershipManifest(manifestSha) {
     ownership_state: "haxe_parity_candidate",
     bridge: {
       exists: true,
-      kind: "generated-haxe-php-behind-public-php-class-shell",
+      kind: "compiler-emitted-original-path-public-php-shell",
       removal_gate:
-        "Promote from candidate shell to generated original-path adapter only after class-wp-http-encoding.php ownership/linker work proves reflection, include timing, selected upstream HTTP PHPUnit, installed distribution behavior, and live/recorded transfer-encoding parity."
+        "Promote beyond this bounded public class adapter only after selected upstream HTTP PHPUnit, installed distribution behavior, include timing, and live/recorded transfer-encoding parity gates pass."
     },
     owned_paths: [...HAXE_SOURCES, RUNNER, OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, WPHX_PHP_MANIFEST, OUT_ROOT],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-http-encoding-candidate",
@@ -361,7 +271,8 @@ async function main() {
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
   command("haxe", [HXML]);
-  transformCandidateEncoding();
+  command("haxe", [WPHX_PHP_HXML, "-D", `wphx_php_output=${WPHX_PHP_ROOT}`, "-D", `wphx_php_manifest=${WPHX_PHP_MANIFEST}`]);
+  installCompilerEmittedCandidateShell();
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -379,6 +290,41 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const haxeOutputFiles = command("find", [HAXE_OUT, "-type", "f"]).split("\n").filter(Boolean).sort();
+  const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
+  const wphxDeclarations = wphxPhpManifest.files.flatMap((file) => file.declarations.map((entry) => `${entry.kind}:${entry.name}`));
+  if (JSON.stringify(wphxDeclarations) !== JSON.stringify(["class:WP_Http_Encoding"])) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP declarations", declarations: wphxDeclarations }, null, 2));
+    process.exit(1);
+  }
+  if (wphxPhpManifest.unsupported.length !== 0) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP unsupported constructs", unsupported: wphxPhpManifest.unsupported }, null, 2));
+    process.exit(1);
+  }
+  const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http-encoding.php");
+  const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const requiredShellShapes = [
+    /#\[AllowDynamicProperties\]/,
+    /class\s+WP_Http_Encoding/,
+    /public\s+static\s+function\s+compress\s*\(\s*\$raw\s*,\s*\$level\s*=\s*9\s*,\s*\$supports\s*=\s*null\s*\)/,
+    /public\s+static\s+function\s+decompress\s*\(\s*\$compressed\s*,\s*\$length\s*=\s*null\s*\)/,
+    /public\s+static\s+function\s+compatible_gzinflate\s*\(\s*\$gz_data\s*\)/,
+    /public\s+static\s+function\s+accept_encoding\s*\(\s*\$url\s*,\s*\$args\s*\)/,
+    /public\s+static\s+function\s+content_encoding\s*\(\s*\)/,
+    /public\s+static\s+function\s+should_decode\s*\(\s*\$headers\s*\)/,
+    /public\s+static\s+function\s+is_available\s*\(\s*\)/
+  ];
+  const encodingShellEmitted =
+    requiredShellShapes.every((pattern) => pattern.test(generatedShell)) &&
+    generatedShell.includes("HttpEncodingStrategy::compress") &&
+    generatedShell.includes("HttpEncodingStrategy::decompress") &&
+    generatedShell.includes("HttpEncodingStrategy::compatibleGzinflate") &&
+    generatedShell.includes("apply_filters( 'wp_http_accept_encoding', $type, $url, $args )") &&
+    generatedShell.includes("HttpEncodingStrategy::shouldDecodeFromNativeHeaders") &&
+    generatedShell.includes("HttpEncodingStrategy::isAvailable");
+  if (!encodingShellEmitted) {
+    console.error(JSON.stringify({ status: "failed", reason: "generated shell is missing WP_Http_Encoding adapter shape" }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-http-encoding-candidate.v1",
     issue: ISSUE.external_ref,
@@ -392,17 +338,35 @@ async function main() {
       encoding_oracle_fixture_manifest: inputRecord(ENCODING_FIXTURE),
       runner: inputRecord(RUNNER),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
+      wphx_php_manifest: inputRecord(WPHX_PHP_MANIFEST),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       kind: "haxe_generated_http_encoding_strategy",
       hxml: HXML,
+      wphx_php_hxml: WPHX_PHP_HXML,
       promoted_symbols: PROMOTED_SYMBOLS,
-      public_shell: `${CANDIDATE_ROOT}/wp-includes/class-wp-http-encoding.php`,
+      public_shell: generatedShellPath,
+      compiler_emitted_public_shell: {
+        path: generatedShellPath,
+        source_path: `${WPHX_PHP_ROOT}/wp-includes/class-wp-http-encoding.php`,
+        manifest: WPHX_PHP_MANIFEST,
+        declarations: wphxDeclarations,
+        emitted_methods: [
+          "compress",
+          "decompress",
+          "compatible_gzinflate",
+          "accept_encoding",
+          "content_encoding",
+          "should_decode",
+          "is_available"
+        ],
+        unsupported: wphxPhpManifest.unsupported
+      },
       generated_php_files: haxeOutputFiles.map(inputRecord),
       boundary_notes: [
         "PHP zlib functions remain a narrow WPHX-211 native boundary because WordPress exposes PHP's binary string and false-on-failure semantics.",
-        "accept_encoding keeps the native apply_filters('wp_http_accept_encoding') boundary in the public PHP shell while is_available delegates to Haxe."
+        "accept_encoding keeps the native function_exists and apply_filters('wp_http_accept_encoding') boundaries in the compiler-emitted public PHP shell while is_available delegates to Haxe."
       ]
     },
     fixture: {
@@ -415,7 +379,7 @@ async function main() {
         live_installed_wordpress: false,
         php_cli: true,
         runtime_stubs:
-          "Only apply_filters is stubbed for the accept-encoding filter. Oracle executes copied WordPress class-wp-http-encoding.php; candidate executes the same public class shell with promoted methods delegated to generated Haxe PHP."
+          "Only apply_filters is stubbed for the accept-encoding filter. Oracle executes copied WordPress class-wp-http-encoding.php; candidate executes the compiler-emitted original-path public class shell with promoted methods delegated to generated Haxe PHP."
       }
     },
     build: { haxe_out: HAXE_OUT, oracle_root: ORACLE_ROOT, candidate_root: CANDIDATE_ROOT, php_lint: phpLint },
@@ -429,21 +393,15 @@ async function main() {
     },
     remaining_gaps: [
       {
-        id: "public-original-path-adapter-not-yet-generated",
+        id: "installed-distribution-behavior-not-executed",
         owner: ISSUE.external_ref,
-        detail:
-          "The candidate shell is transformed in the fixture build root. Durable class-wp-http-encoding.php generation through the linker/original-path adapter remains later work."
+        detail: "The candidate is compared in a PHP CLI fixture rather than an installed WordPress distribution."
       },
       {
         id: "live-transfer-encoding-not-executed",
         owner: ISSUE.external_ref,
         detail:
           "The fixture executes deterministic PHP CLI zlib payloads and header checks, not live HTTP content negotiation, streaming transfer behavior, or partial response races."
-      },
-      {
-        id: "installed-distribution-behavior-not-executed",
-        owner: ISSUE.external_ref,
-        detail: "The candidate is compared in a PHP CLI fixture rather than an installed WordPress distribution."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -453,7 +411,10 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
+      compiler_emitted_public_php: true,
+      encoding_shell_emitted: encodingShellEmitted,
+      unsupported_empty: wphxPhpManifest.unsupported.length === 0,
       installed_wordpress_behavior_claimed: false,
       live_transfer_encoding_claimed: false
     }
@@ -470,7 +431,8 @@ async function main() {
       { path: OUT, role: "WP_Http_Encoding Haxe parity candidate manifest" },
       { path: OWNERSHIP, role: "ownership manifest for Haxe-backed HTTP encoding candidate" },
       { path: RUNNER, role: "candidate generator and oracle comparator" },
-      { path: "src/wphx/wp/http/HttpEncodingStrategy.hx", role: "Haxe-owned HTTP encoding strategy source" }
+      { path: "src/wphx/wp/http/HttpEncodingStrategy.hx", role: "Haxe-owned HTTP encoding strategy source" },
+      { path: WPHX_PHP_MANIFEST, role: "WPHX PHP emission manifest for compiler-emitted class-wp-http-encoding.php" }
     ],
     verification_commands: [
       "npm run wp:core:wphx-312-http-encoding-candidate",

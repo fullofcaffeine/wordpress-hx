@@ -317,6 +317,57 @@
       }
     },
     {
+      "id": "wp-http-encoding-class-shell",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "public_class",
+        "allow_dynamic_properties",
+        "top_level_bootstrap_side_effect"
+      ],
+      "hxml": "fixtures/wphx-php/wp-http-encoding.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/wp-http-encoding-class-shell/generated/wp-includes/class-wp-http-encoding.php",
+      "bytes": 2340,
+      "sha256": "sha256:62e9f30df861fe517c6d17b5ebb949b56deb14499ad33c4ac1a461ed83eb41a6",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "#[AllowDynamicProperties]",
+        "class WP_Http_Encoding",
+        "public static function compress($raw, $level = 9, $supports = null)",
+        "public static function decompress($compressed, $length = null)",
+        "public static function compatible_gzinflate($gz_data)",
+        "public static function accept_encoding($url, $args)",
+        "apply_filters( 'wp_http_accept_encoding', $type, $url, $args )",
+        "public static function should_decode($headers)",
+        "public static function is_available()"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [
+          "WP_Http_Encoding"
+        ],
+        "interfaces": [],
+        "methods": [
+          "accept_encoding",
+          "compatible_gzinflate",
+          "compress",
+          "content_encoding",
+          "decompress",
+          "is_available",
+          "should_decode"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "segment_plan_contract": null,
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/wp-http-encoding-class-shell/generated/wphx-php-emission.v1.json",
+        "bytes": 927,
+        "sha256": "sha256:bef3763659a066733ff9fde23fee45b63d3a3b01942bba5342c4f3f94adbda63"
+      }
+    },
+    {
       "id": "include-side-effect-script",
       "evidence_class": "generated_shape",
       "artifact_scope": "minimized_fixture",
@@ -696,7 +747,7 @@
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 11,
+    "case_count": 12,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,

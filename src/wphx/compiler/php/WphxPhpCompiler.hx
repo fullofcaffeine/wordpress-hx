@@ -835,6 +835,10 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		}
 
 		final lines = new Array<String>();
+		if (hasMetadata(pending.classType.meta.get(), "wp.allowDynamicProperties"))
+		{
+			lines.push("#[AllowDynamicProperties]");
+		}
 		lines.push("class " + pending.phpName + emitInheritance(pending.classType));
 		lines.push("{");
 

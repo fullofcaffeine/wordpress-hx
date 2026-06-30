@@ -143,6 +143,27 @@ const CASES = [
     }
   },
   {
+    id: "wp-http-encoding-class-shell",
+    hxml: "fixtures/wphx-php/wp-http-encoding.hxml",
+    selected: "wp-includes/class-wp-http-encoding.php",
+    shell_shapes: ["public_class", "allow_dynamic_properties", "top_level_bootstrap_side_effect"],
+    exact_patterns: [
+      "#[AllowDynamicProperties]",
+      "class WP_Http_Encoding",
+      "public static function compress($raw, $level = 9, $supports = null)",
+      "public static function decompress($compressed, $length = null)",
+      "public static function compatible_gzinflate($gz_data)",
+      "public static function accept_encoding($url, $args)",
+      "apply_filters( 'wp_http_accept_encoding', $type, $url, $args )",
+      "public static function should_decode($headers)",
+      "public static function is_available()"
+    ],
+    ast_expect: {
+      classes: ["WP_Http_Encoding"],
+      methods: ["compress", "decompress", "compatible_gzinflate", "accept_encoding", "content_encoding", "should_decode", "is_available"]
+    }
+  },
+  {
     id: "include-side-effect-script",
     hxml: "fixtures/wphx-php/include-side-effects.hxml",
     selected: "wp-includes/wphx-include-side-effects.php",

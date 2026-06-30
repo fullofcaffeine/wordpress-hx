@@ -1,0 +1,8 @@
+-cp ../haxe.compilerdev.reference/reflaxe/src
+-cp src
+-cp fixtures/wphx-php/src
+-main wphx.fixtures.compiler.php.wp.HttpEncodingEntry
+-D wphx_php_output=build/wp-core/wphx-comp-php-http-encoding/generated
+-D wphx_php_manifest=build/wp-core/wphx-comp-php-http-encoding/generated/wphx-php-emission.v1.json
+-D wphx_php_profile=wordpress
+--macro wphx.compiler.php.CompilerInit.Start()

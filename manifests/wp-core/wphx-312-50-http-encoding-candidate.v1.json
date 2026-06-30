@@ -27,14 +27,19 @@
     },
     "runner": {
       "path": "tools/wp-core/run-http-encoding-candidate.mjs",
-      "bytes": 21329,
-      "sha256": "sha256:75b785912da61ac61ed28856c765fd8d3428899cb7ba25a2b65134635b1455f1"
+      "bytes": 21643,
+      "sha256": "sha256:abb951c649f121480619cf177392cd8ae1e8d660be59f04bfb0dfc58338d3e45"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-encoding-candidate.hxml",
         "bytes": 124,
         "sha256": "sha256:822379df8a63f48f42a01d673e744b3734ad770b165f8cf10e8f5013de660841"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-encoding.hxml",
+        "bytes": 381,
+        "sha256": "sha256:b20b9c408c72964583dff61e26a34866dbcb6282f9c3181fe2c3895c171b1b41"
       },
       {
         "path": "src/wphx/wp/http/HttpEncodingStrategy.hx",
@@ -45,8 +50,28 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx",
         "bytes": 313,
         "sha256": "sha256:3c79c2ff96d70950b70f0d24174be688fc5d8a53d271f2bfb7c75c6401c0a0c0"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpEncodingEntry.hx",
+        "bytes": 421,
+        "sha256": "sha256:aba61b4b51834c73fe7aaf5e8493ec7d01ad265ca0b8aa6dc10f13f5963ddfbf"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpEncodingShell.hx",
+        "bytes": 2329,
+        "sha256": "sha256:13241f362d4db67f9f6374924f2c3ca513f585ef32be3ab3637b0ad85340df94"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpEncodingStrategy.hx",
+        "bytes": 592,
+        "sha256": "sha256:399c7af98ad36404a87ee84c76b7dc1019d9882ff46600a3f849914acd8730dc"
       }
     ],
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-50/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 927,
+      "sha256": "sha256:bef3763659a066733ff9fde23fee45b63d3a3b01942bba5342c4f3f94adbda63"
+    },
     "upstream_sources": [
       {
         "path": "src/wp-includes/class-wp-http-encoding.php",
@@ -59,6 +84,7 @@
   "candidate": {
     "kind": "haxe_generated_http_encoding_strategy",
     "hxml": "fixtures/wp-core/http-encoding-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-encoding.hxml",
     "promoted_symbols": [
       "WP_Http_Encoding::compress",
       "WP_Http_Encoding::decompress",
@@ -68,6 +94,24 @@
       "WP_Http_Encoding::is_available"
     ],
     "public_shell": "build/wp-core/wphx-312-50/candidate/wp-includes/class-wp-http-encoding.php",
+    "compiler_emitted_public_shell": {
+      "path": "build/wp-core/wphx-312-50/candidate/wp-includes/class-wp-http-encoding.php",
+      "source_path": "build/wp-core/wphx-312-50/wphx-php/wp-includes/class-wp-http-encoding.php",
+      "manifest": "build/wp-core/wphx-312-50/wphx-php/wphx-php-emission.v1.json",
+      "declarations": [
+        "class:WP_Http_Encoding"
+      ],
+      "emitted_methods": [
+        "compress",
+        "decompress",
+        "compatible_gzinflate",
+        "accept_encoding",
+        "content_encoding",
+        "should_decode",
+        "is_available"
+      ],
+      "unsupported": []
+    },
     "generated_php_files": [
       {
         "path": "build/wp-core/wphx-312-50/haxe/index.php",
@@ -177,7 +221,7 @@
     ],
     "boundary_notes": [
       "PHP zlib functions remain a narrow WPHX-211 native boundary because WordPress exposes PHP's binary string and false-on-failure semantics.",
-      "accept_encoding keeps the native apply_filters('wp_http_accept_encoding') boundary in the public PHP shell while is_available delegates to Haxe."
+      "accept_encoding keeps the native function_exists and apply_filters('wp_http_accept_encoding') boundaries in the compiler-emitted public PHP shell while is_available delegates to Haxe."
     ]
   },
   "fixture": {
@@ -219,7 +263,7 @@
       "database_io": false,
       "live_installed_wordpress": false,
       "php_cli": true,
-      "runtime_stubs": "Only apply_filters is stubbed for the accept-encoding filter. Oracle executes copied WordPress class-wp-http-encoding.php; candidate executes the same public class shell with promoted methods delegated to generated Haxe PHP."
+      "runtime_stubs": "Only apply_filters is stubbed for the accept-encoding filter. Oracle executes copied WordPress class-wp-http-encoding.php; candidate executes the compiler-emitted original-path public class shell with promoted methods delegated to generated Haxe PHP."
     }
   },
   "build": {
@@ -490,19 +534,14 @@
   },
   "remaining_gaps": [
     {
-      "id": "public-original-path-adapter-not-yet-generated",
+      "id": "installed-distribution-behavior-not-executed",
       "owner": "WPHX-312.50",
-      "detail": "The candidate shell is transformed in the fixture build root. Durable class-wp-http-encoding.php generation through the linker/original-path adapter remains later work."
+      "detail": "The candidate is compared in a PHP CLI fixture rather than an installed WordPress distribution."
     },
     {
       "id": "live-transfer-encoding-not-executed",
       "owner": "WPHX-312.50",
       "detail": "The fixture executes deterministic PHP CLI zlib payloads and header checks, not live HTTP content negotiation, streaming transfer behavior, or partial response races."
-    },
-    {
-      "id": "installed-distribution-behavior-not-executed",
-      "owner": "WPHX-312.50",
-      "detail": "The candidate is compared in a PHP CLI fixture rather than an installed WordPress distribution."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-50-http-encoding-candidate.v1.json",
@@ -512,7 +551,10 @@
     "promoted_symbols": 6,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "encoding_shell_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_transfer_encoding_claimed": false
   }

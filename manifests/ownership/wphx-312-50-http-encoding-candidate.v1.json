@@ -14,13 +14,17 @@
   "ownership_state": "haxe_parity_candidate",
   "bridge": {
     "exists": true,
-    "kind": "generated-haxe-php-behind-public-php-class-shell",
-    "removal_gate": "Promote from candidate shell to generated original-path adapter only after class-wp-http-encoding.php ownership/linker work proves reflection, include timing, selected upstream HTTP PHPUnit, installed distribution behavior, and live/recorded transfer-encoding parity."
+    "kind": "compiler-emitted-original-path-public-php-shell",
+    "removal_gate": "Promote beyond this bounded public class adapter only after selected upstream HTTP PHPUnit, installed distribution behavior, include timing, and live/recorded transfer-encoding parity gates pass."
   },
   "owned_paths": [
     "fixtures/wp-core/http-encoding-candidate.hxml",
+    "fixtures/wphx-php/wp-http-encoding.hxml",
     "src/wphx/wp/http/HttpEncodingStrategy.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpEncodingEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpEncodingShell.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpEncodingStrategy.hx",
     "tools/wp-core/run-http-encoding-candidate.mjs",
     "manifests/wp-core/wphx-312-50-http-encoding-candidate.v1.json",
     "manifests/ownership/wphx-312-50-http-encoding-candidate.v1.json",
@@ -30,6 +34,7 @@
     "manifests/wp-core/wphx-312-50-http-encoding-candidate.v1.json",
     "manifests/ownership/wphx-312-50-http-encoding-candidate.v1.json",
     "receipts/wp-core/wphx-312-50-http-encoding-candidate.v1.json",
+    "build/wp-core/wphx-312-50/wphx-php/wphx-php-emission.v1.json",
     "build/wp-core/wphx-312-50"
   ],
   "verification": {
@@ -43,6 +48,6 @@
       "receipt:wphx-312-50-http-encoding-candidate",
       "receipt:wphx-312-40-http-encoding-oracle-fixture"
     ],
-    "manifest_digest": "sha256:50ebc2c901c43f5f35eff75d3ecfb611435c80d89b30094464cdb25f4086f6d9"
+    "manifest_digest": "sha256:0b3ed742971d0d4374d2cf8b9faaf4cf991f5c336da8770bb783257c6762f96d"
   }
 }
