@@ -23,6 +23,10 @@
     {
       "path": "src/wphx/wp/http/HttpCookieStrategy.hx",
       "role": "typed Haxe source for WP_Http_Cookie matching/header behavior"
+    },
+    {
+      "path": "build/wp-core/wphx-312-53/wphx-php/wphx-php-emission.v1.json",
+      "role": "WPHX PHP emission manifest for the compiler-emitted original-path public shell"
     }
   ],
   "verification_commands": [
@@ -42,7 +46,10 @@
     "promoted_symbols": 4,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "cookie_shell_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false,
     "requests_cookie_jar_claimed": false

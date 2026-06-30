@@ -84,6 +84,16 @@ class WphxPhpWordPressAdapters
 				responseSetStatus(fieldName, helper);
 			case "wp-http-response-json-serialize":
 				responseJsonSerialize(fieldName, helper);
+			case "wp-http-cookie-construct":
+				cookieConstruct(fieldName, helper);
+			case "wp-http-cookie-test":
+				cookieTest(fieldName, helper);
+			case "wp-http-cookie-get-header-value":
+				cookieGetHeaderValue(fieldName, helper);
+			case "wp-http-cookie-get-full-header":
+				cookieGetFullHeader(fieldName, helper);
+			case "wp-http-cookie-get-attributes":
+				cookieGetAttributes(fieldName, helper);
 			case _:
 				null;
 		}
@@ -812,6 +822,124 @@ class WphxPhpWordPressAdapters
 		}
 
 		return plan(["stmt.expr", "expr.static-call"], [PhpExprStmt(PhpStaticCall(helper, method, [PhpVar("this"), value]))]);
+	}
+
+	static function cookieConstruct(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return plan(["stmt.raw-wordpress-boundary"], [
+			PhpRawBlock("if ( $requested_url ) {\n"
+				+ "\t$parsed_url = parse_url( $requested_url );\n"
+				+ "}\n"
+				+ "if ( isset( $parsed_url['host'] ) ) {\n"
+				+ "\t$this->domain = $parsed_url['host'];\n"
+				+ "}\n"
+				+ "$this->path = $parsed_url['path'] ?? '/';\n"
+				+ "if ( ! str_ends_with( $this->path, '/' ) ) {\n"
+				+ "\t$this->path = dirname( $this->path ) . '/';\n"
+				+ "}\n"
+				+ "\n"
+				+ "if ( is_string( $data ) ) {\n"
+				+ "\t$pairs = explode( ';', $data );\n"
+				+ "\n"
+				+ "\t$name        = trim( substr( $pairs[0], 0, strpos( $pairs[0], '=' ) ) );\n"
+				+ "\t$value       = substr( $pairs[0], strpos( $pairs[0], '=' ) + 1 );\n"
+				+ "\t$this->name  = $name;\n"
+				+ "\t$this->value = urldecode( $value );\n"
+				+ "\n"
+				+ "\tarray_shift( $pairs );\n"
+				+ "\n"
+				+ "\tforeach ( $pairs as $pair ) {\n"
+				+ "\t\t$pair = rtrim( $pair );\n"
+				+ "\n"
+				+ "\t\tif ( empty( $pair ) ) {\n"
+				+ "\t\t\tcontinue;\n"
+				+ "\t\t}\n"
+				+ "\n"
+				+ "\t\tlist( $key, $val ) = strpos( $pair, '=' ) ? explode( '=', $pair ) : array( $pair, '' );\n"
+				+ "\t\t$key               = strtolower( trim( $key ) );\n"
+				+ "\t\tif ( 'expires' === $key ) {\n"
+				+ "\t\t\t$val = strtotime( $val );\n"
+				+ "\t\t}\n"
+				+ "\t\t$this->$key = $val;\n"
+				+ "\t}\n"
+				+ "} else {\n"
+				+ "\tif ( ! isset( $data['name'] ) ) {\n"
+				+ "\t\treturn;\n"
+				+ "\t}\n"
+				+ "\n"
+				+ "\tforeach ( array( 'name', 'value', 'path', 'domain', 'port', 'host_only' ) as $field ) {\n"
+				+ "\t\tif ( isset( $data[ $field ] ) ) {\n"
+				+ "\t\t\t$this->$field = $data[ $field ];\n"
+				+ "\t\t}\n"
+				+ "\t}\n"
+				+ "\n"
+				+ "\tif ( isset( $data['expires'] ) ) {\n"
+				+ "\t\t$this->expires = is_int( $data['expires'] ) ? $data['expires'] : strtotime( $data['expires'] );\n"
+				+ "\t} else {\n"
+				+ "\t\t$this->expires = null;\n"
+				+ "\t}\n"
+				+ "}")
+		]);
+	}
+
+	static function cookieTest(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Cookie::test adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.coerce-string", "expr.static-call"], [
+			PhpReturn(PhpStaticCall(helper, "test", [PhpVar("this"), PhpCastString(PhpVar("url"))]))
+		]);
+	}
+
+	static function cookieGetHeaderValue(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Cookie::getHeaderValue adapter " + fieldName);
+		}
+
+		return plan([
+			"stmt.if",
+			"stmt.var",
+			"stmt.return",
+			"expr.object-property",
+			"expr.static-call",
+			"expr.function-call",
+			"expr.string"
+		], [
+			PhpIf(PhpNot(PhpStaticCall(helper, "hasHeaderFields", [PhpVar("this")])), [PhpReturn(PhpString(""))]),
+			PhpLocal("filtered", PhpFunctionCall("apply_filters", [
+				PhpString("wp_http_cookie_value"),
+				PhpObjectProperty(PhpVar("this"), "value"),
+				PhpObjectProperty(PhpVar("this"), "name")
+			])),
+			PhpReturn(PhpStaticCall(helper, "headerValue", [PhpVar("this"), PhpVar("filtered")]))
+		]);
+	}
+
+	static function cookieGetFullHeader(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Cookie::getFullHeader adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.method-call", "expr.static-call"], [
+			PhpReturn(PhpStaticCall(helper, "fullHeader", [PhpMethodCall(PhpVar("this"), "getHeaderValue", [])]))
+		]);
+	}
+
+	static function cookieGetAttributes(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http_Cookie::get_attributes adapter " + fieldName);
+		}
+
+		return plan(["stmt.return", "expr.static-call"], [PhpReturn(PhpStaticCall(helper, "attributes", [PhpVar("this")]))]);
 	}
 }
 #end

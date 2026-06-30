@@ -14,14 +14,18 @@
   "ownership_state": "haxe_owned_candidate_with_public_php_shell",
   "bridge": {
     "exists": true,
-    "kind": "generated-php-haxe-strategy-with-temporary-original-path-shell",
-    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass constructor-parsing ownership, live/recorded HTTP transport, Requests cookie jar conversion, redirect/cookie propagation, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming durable public PHP ownership."
+    "kind": "compiler-emitted-original-path-public-php-shell",
+    "removal_gate": "Pass constructor-parsing ownership, live/recorded HTTP transport, Requests cookie jar conversion, redirect/cookie propagation, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming broader WP_Http_Cookie or whole-file HTTP ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-http-cookie-candidate.mjs",
     "fixtures/wp-core/http-cookie-candidate.hxml",
+    "fixtures/wphx-php/wp-http-cookie.hxml",
     "src/wphx/wp/http/HttpCookieStrategy.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieCandidateEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieStrategy.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpCookieEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpCookieShell.hx",
     "manifests/wp-core/wphx-312-53-http-cookie-candidate.v1.json",
     "manifests/ownership/wphx-312-53-http-cookie-candidate.v1.json",
     "receipts/wp-core/wphx-312-53-http-cookie-candidate.v1.json"
@@ -30,6 +34,7 @@
     "manifests/wp-core/wphx-312-53-http-cookie-candidate.v1.json",
     "manifests/ownership/wphx-312-53-http-cookie-candidate.v1.json",
     "receipts/wp-core/wphx-312-53-http-cookie-candidate.v1.json",
+    "build/wp-core/wphx-312-53/wphx-php/wphx-php-emission.v1.json",
     "build/wp-core/wphx-312-53"
   ],
   "verification": {
@@ -42,6 +47,6 @@
     "receipt_refs": [
       "receipt:wphx-312-53-http-cookie-candidate"
     ],
-    "manifest_digest": "sha256:d8487701b17578cffa66dfd92f571761bc33403eea519478a0717d5e6174ec9f"
+    "manifest_digest": "sha256:f3eb9e073b8a410c1ea79f7b4497170552246a2b0344160070626a3a7d93bfe6"
   }
 }

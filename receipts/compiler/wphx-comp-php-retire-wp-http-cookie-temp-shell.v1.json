@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-cookie-temp-shell",
+  "issue": {
+    "id": "wordpresshx-q33",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-COOKIE-TEMP-SHELL",
+    "title": "Use generated shell in WPHX-312.53"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell_retirement",
+  "artifact_scope": "wp_http_cookie_public_class_adapter",
+  "commands": [
+    "haxe fixtures/wphx-php/wp-http-cookie.hxml",
+    "npm run wp:core:wphx-312-http-cookie-candidate",
+    "npm run wp:core:wphx-312-http-cookie-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run format:haxe",
+    "npm run haxe:escape-hatches"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter plans for WP_Http_Cookie"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpCookieShell.hx",
+      "role": "typed shell metadata for the compiler-emitted WP_Http_Cookie adapter"
+    },
+    {
+      "path": "fixtures/wphx-php/wp-http-cookie.hxml",
+      "role": "WPHX PHP compile fixture for wp-includes/class-wp-http-cookie.php"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-53-http-cookie-candidate.v1.json",
+      "role": "WPHX-312.53 oracle/candidate manifest using the compiler-emitted original-path public shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-53-http-cookie-candidate.v1.json",
+      "role": "behavior receipt for the retired temporary shell candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "cookie_candidate_cases": 6,
+    "compiler_emitted_public_php": true,
+    "cookie_shell_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 15
+  },
+  "claims": [
+    "WPHX PHP emits the original-path wp-includes/class-wp-http-cookie.php public class adapter for WP_Http_Cookie.",
+    "The WPHX-312.53 candidate no longer copies and patches a public PHP class shell for promoted cookie matching/header behavior.",
+    "PHP still owns constructor parsing/defaults, parse_url, strtotime, urldecode, dynamic Set-Cookie attributes, public properties, #[AllowDynamicProperties], and wp_http_cookie_value filter timing while Haxe owns bounded post-construction matching, header formatting, and attribute shape."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http_Cookie constructor ownership, Requests cookie jar semantics, or live HTTP behavior.",
+    "This does not claim installed WordPress distribution behavior or selected upstream HTTP PHPUnit parity for WP_Http_Cookie.",
+    "This does not claim broader HTTP cookie propagation ownership or that WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

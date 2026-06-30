@@ -26,16 +26,26 @@
       "bytes": 16186,
       "sha256": "sha256:00588999d36cddd752353945676f036bb47409e026063d847cb313f9977c0f01"
     },
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-53/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 895,
+      "sha256": "sha256:2b591b0f4649acfeacacf71c71f26f64fb4475b70d2a22175653d132eb245f53"
+    },
     "runner": {
       "path": "tools/wp-core/run-http-cookie-candidate.mjs",
-      "bytes": 22161,
-      "sha256": "sha256:451e64f0bdab745fe3b8f96d01c8382ef4febbfb03f84d63d0416ca75f8fce3a"
+      "bytes": 22514,
+      "sha256": "sha256:a503dc02a50c2035888f38315090cffec17a5613dd5728b60ed70f334b010aca"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-cookie-candidate.hxml",
         "bytes": 122,
         "sha256": "sha256:6fc825f08faa1e6c7576fd10869c0ad5c7035e7d973c5ed43ff8a40da5609dc7"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-cookie.hxml",
+        "bytes": 375,
+        "sha256": "sha256:49259bcaa676e4215348dbfa42f3e74e9931e834c8723bf5292e286c169708a2"
       },
       {
         "path": "src/wphx/wp/http/HttpCookieStrategy.hx",
@@ -46,6 +56,21 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieCandidateEntry.hx",
         "bytes": 172,
         "sha256": "sha256:f944b620847dd6cab62b3355007b1266b1ee5a8663826e2ff023e410b6f5eb97"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieStrategy.hx",
+        "bytes": 532,
+        "sha256": "sha256:efc62565e040c414f48f08ecdb4c726c14fb9444e621b4c6a01aecb18f05fa60"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpCookieEntry.hx",
+        "bytes": 275,
+        "sha256": "sha256:8268f2d7ab4ff94f961db6f23c6aae2493e2c1c82460d52732e9779efb39a117"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpCookieShell.hx",
+        "bytes": 1963,
+        "sha256": "sha256:454166a79c785ef9347702eb0ca258560e003fb7c18ba2a2d4eee0becca3b8a1"
       }
     ],
     "upstream_sources": [
@@ -59,7 +84,11 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-cookie-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-cookie.hxml",
     "haxe_output": "build/wp-core/wphx-312-53/haxe",
+    "wphx_php_output": "build/wp-core/wphx-312-53/wphx-php",
+    "public_shell": "build/wp-core/wphx-312-53/candidate/wp-includes/class-wp-http-cookie.php",
+    "compiler_emitted_public_shell": "build/wp-core/wphx-312-53/wphx-php/wp-includes/class-wp-http-cookie.php",
     "compiled_php_files": [
       "build/wp-core/wphx-312-53/haxe/index.php",
       "build/wp-core/wphx-312-53/haxe/lib/Array_hx.php",
@@ -93,9 +122,10 @@
       "WP_Http_Cookie::get_attributes"
     ],
     "public_shell_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
+      "compiler_emitted_public_php": true,
       "public_php_abi_preserved": true,
-      "shell_body_ownership": "temporary candidate shell preserves constructor/filter boundaries and delegates bounded post-construction behavior to generated Haxe PHP",
+      "shell_body_ownership": "compiler-emitted original-path public PHP shell preserves constructor/filter boundaries and delegates bounded post-construction behavior to generated Haxe PHP",
       "native_boundaries": [
         "constructor parsing/defaults",
         "parse_url",
@@ -536,11 +566,6 @@
       "id": "requests-cookie-jar-not-executed",
       "owner": "WPHX-312.53",
       "detail": "Requests cookie jar semantics and conversion between Requests cookies and WP_Http_Cookie require further installed/live parity before ownership promotion."
-    },
-    {
-      "id": "durable-public-php-adapter-not-yet-generated",
-      "owner": "WPHX-312.53",
-      "detail": "The candidate uses a bounded generated-PHP strategy plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-53-http-cookie-candidate.v1.json",
@@ -550,7 +575,10 @@
     "promoted_symbols": 4,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "cookie_shell_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false,
     "requests_cookie_jar_claimed": false

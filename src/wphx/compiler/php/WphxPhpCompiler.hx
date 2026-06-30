@@ -97,6 +97,7 @@ enum PhpCoreStmt
 	PhpExprStmt(expr:PhpCoreExpr);
 	PhpReturn(value:PhpCoreExpr);
 	PhpThrow(value:PhpCoreExpr);
+	PhpRawBlock(code:String);
 	PhpBreak;
 	PhpContinue;
 }
@@ -1062,6 +1063,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				prefix + "return " + emitPhpCoreExpr(value, depth) + ";";
 			case PhpThrow(value):
 				prefix + "throw " + emitPhpCoreExpr(value, depth) + ";";
+			case PhpRawBlock(code):
+				code.split("\n").map(line -> line.length == 0 ? "" : prefix + line).join("\n");
 			case PhpBreak:
 				prefix + "break;";
 			case PhpContinue:

@@ -212,6 +212,37 @@ const CASES = [
     }
   },
   {
+    id: "wp-http-cookie-class-shell",
+    hxml: "fixtures/wphx-php/wp-http-cookie.hxml",
+    selected: "wp-includes/class-wp-http-cookie.php",
+    shell_shapes: ["public_class", "allow_dynamic_properties", "public_properties", "top_level_bootstrap_side_effect"],
+    exact_patterns: [
+      "#[AllowDynamicProperties]",
+      "class WP_Http_Cookie",
+      "public $name;",
+      "public $value;",
+      "public $expires;",
+      "public $path;",
+      "public $domain;",
+      "public $port;",
+      "public $host_only;",
+      "public function __construct($data, $requested_url = '')",
+      "parse_url( $requested_url )",
+      "$this->$key = $val;",
+      "public function test($url)",
+      "public function getHeaderValue()",
+      "public function getFullHeader()",
+      "public function get_attributes()",
+      "HttpCookieStrategy_Fields_::test",
+      "HttpCookieStrategy_Fields_::headerValue",
+      "HttpCookieStrategy_Fields_::attributes"
+    ],
+    ast_expect: {
+      classes: ["WP_Http_Cookie"],
+      methods: ["__construct", "test", "getHeaderValue", "getFullHeader", "get_attributes"]
+    }
+  },
+  {
     id: "include-side-effect-script",
     hxml: "fixtures/wphx-php/include-side-effects.hxml",
     selected: "wp-includes/wphx-include-side-effects.php",
