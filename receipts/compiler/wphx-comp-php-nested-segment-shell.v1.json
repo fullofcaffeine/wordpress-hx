@@ -1,0 +1,56 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-nested-segment-shell",
+  "issue": {
+    "id": "wordpresshx-97t",
+    "external_ref": "WPHX-COMP-PHP-NESTED-SEGMENT-SHELL",
+    "title": "Emit nested template segment shell"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_nested_segment_shell",
+  "artifact_scope": "minimized_nested_admin_style_template_segment_fixture",
+  "commands": [
+    "npm run wphx:php:template-segment-nested",
+    "npm run wphx:php:template-segment-nested:check"
+  ],
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/template-segment-nested.v1.json",
+      "role": "WPHX PHP nested template segment shell manifest"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-nested.mjs",
+      "role": "deterministic nested template segment shell runner"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP compiler script adapter implementation"
+    }
+  ],
+  "manifest_sha256": "sha256:1c718c21d5a415b6e0e01d508cf65194cfb3caf82e9f7a67f6ecc52d83aa0c49",
+  "validation_result": {
+    "status": "passed",
+    "php_lint": "passed",
+    "exact_shape_patterns_passed": true,
+    "core_ir_features_passed": true,
+    "unsupported_empty": true,
+    "oracle_candidate_behavior_match": true,
+    "guard_behavior_passed": true,
+    "nested_include_behavior_passed": true,
+    "include_once_behavior_passed": true,
+    "function_scope_include_behavior_passed": true
+  },
+  "claims": [
+    "WPHX PHP emits a compiler-generated original-path parent template segment shell plus generated nested partial shell.",
+    "The generated parent includes the generated partial through the original-path directory relationship and preserves caller-scope locals.",
+    "Oracle and candidate behavior match for ordered output, nested include return values, repeated include, include_once second return behavior, caller local mutation, object mutation, global trace order, and function-scope include locals."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX parity for existing Core templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ]
+}

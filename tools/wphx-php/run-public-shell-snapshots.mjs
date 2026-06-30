@@ -173,6 +173,37 @@ const CASES = [
     ast_expect: {
       functions: ["wphx_segment_escape", "wphx_segment_row_class"]
     }
+  },
+  {
+    id: "template-segment-nested-parent",
+    hxml: "fixtures/wphx-php/template-segment-nested.hxml",
+    selected: "wp-admin/wphx-template-nested-parent.php",
+    shell_shapes: ["template_segment_shell", "nested_include", "guard", "literal_output", "template_expression", "include_return_or_direct_file_scope_script"],
+    exact_patterns: [
+      "if (!defined('ABSPATH'))",
+      "function wphx_nested_segment_escape($value)",
+      "$partial_marker = 'from-parent';",
+      "include __DIR__ . '/includes/wphx-template-nested-partial.php'",
+      "<section class=\"wphx-nested\" data-screen=\"<?php echo wphx_nested_segment_escape($screen->id); ?>\">",
+      "'marker' => 'segment:NESTED-PARENT'"
+    ],
+    ast_expect: {
+      functions: ["wphx_nested_segment_escape"]
+    }
+  },
+  {
+    id: "template-segment-nested-partial",
+    hxml: "fixtures/wphx-php/template-segment-nested.hxml",
+    selected: "wp-admin/includes/wphx-template-nested-partial.php",
+    shell_shapes: ["template_segment_shell", "nested_partial", "literal_output", "template_expression", "include_return_or_direct_file_scope_script"],
+    exact_patterns: [
+      "$GLOBALS['wphx_nested_segment_trace'][] = array(",
+      "$items[] = 'partial-mutated';",
+      "$screen->partial = $partial_marker;",
+      "<div class=\"wphx-partial\" data-marker=\"<?php echo wphx_nested_segment_escape($partial_marker); ?>\">",
+      "'marker' => 'segment:NESTED-PARTIAL'"
+    ],
+    ast_expect: {}
   }
 ];
 
@@ -375,7 +406,8 @@ function main() {
       include_return_or_direct_file_scope_script: results.some((item) =>
         item.shell_shapes.includes("include_return_or_direct_file_scope_script")
       ),
-      template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell"))
+      template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell")),
+      nested_template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell") && item.shell_shapes.includes("nested_include"))
     },
     pending_shell_shape_gaps: [],
     validation_result: {

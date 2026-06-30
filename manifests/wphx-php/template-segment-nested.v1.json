@@ -1,0 +1,888 @@
+{
+  "schema": "wphx.wphx-php-template-segment-nested.v1",
+  "issue": {
+    "id": "wordpresshx-97t",
+    "external_ref": "WPHX-COMP-PHP-NESTED-SEGMENT-SHELL",
+    "title": "Emit nested template segment shell"
+  },
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "runner": "tools/wphx-php/run-template-segment-nested.mjs",
+  "hxml": "fixtures/wphx-php/template-segment-nested.hxml",
+  "evidence_class": "compiler_emitted_nested_segment_shell",
+  "artifact_scope": "minimized_nested_admin_style_template_segment_fixture",
+  "generated_shells": [
+    {
+      "path": "build/wphx-php/template-segment-nested/generated/wp-admin/wphx-template-nested-parent.php",
+      "bytes": 1114,
+      "sha256": "sha256:d3887ddb690ca9413c3eaed2b007a36187a7751574dbceb052e4b0fd34cbf10f"
+    },
+    {
+      "path": "build/wphx-php/template-segment-nested/generated/wp-admin/includes/wphx-template-nested-partial.php",
+      "bytes": 661,
+      "sha256": "sha256:89ed91504a10c5c22f943c931717186141d0a898c185e5c40936cdf7f628b28c"
+    }
+  ],
+  "oracle_shells": [
+    {
+      "path": "fixtures/wphx-php/oracle/template-segment-nested/wp-admin/wphx-template-nested-parent.php",
+      "bytes": 1168,
+      "sha256": "sha256:f263c0a0a1e060de113ac9ac65ed33b7933dd41c47c2af3f7d76606006b55fd2"
+    },
+    {
+      "path": "fixtures/wphx-php/oracle/template-segment-nested/wp-admin/includes/wphx-template-nested-partial.php",
+      "bytes": 706,
+      "sha256": "sha256:d25ad77d12f0da0770ed25b404d333293d6f10b74c3765af4109cd5a630a4f17"
+    }
+  ],
+  "emission_manifest": {
+    "path": "build/wphx-php/template-segment-nested/generated/wphx-php-emission.v1.json",
+    "bytes": 1532,
+    "sha256": "sha256:947ff14112551f1aa1b0a0e1588f7671fb830ddf9c1998061bd60bcc3525fd2c",
+    "declarations": [
+      "wp-admin/includes/wphx-template-nested-partial.php:script:template-segment-nested-partial",
+      "wp-admin/wphx-template-nested-parent.php:script:template-segment-nested-parent"
+    ],
+    "core_ir_features": [
+      "segment.caller-scope-local",
+      "segment.caller-scope-local-mutation",
+      "segment.declaration",
+      "segment.global-mutation",
+      "segment.guard",
+      "segment.include",
+      "segment.include-return",
+      "segment.literal-output",
+      "segment.object-mutation",
+      "segment.return",
+      "segment.script",
+      "segment.template-expression"
+    ],
+    "unsupported_empty": true
+  },
+  "segment_plan": {
+    "original_paths": [
+      "wp-admin/wphx-template-nested-parent.php",
+      "wp-admin/includes/wphx-template-nested-partial.php"
+    ],
+    "adoption_mode": "compiler_emitted_segment_shell",
+    "segment_order": [
+      "parent.guard",
+      "parent.declaration",
+      "parent.script",
+      "parent.literal_output",
+      "parent.template_expression",
+      "parent.include",
+      "partial.script",
+      "partial.literal_output",
+      "partial.template_expression",
+      "partial.return_exit",
+      "parent.script",
+      "parent.return_exit"
+    ],
+    "caller_scope": {
+      "parent_reads_locals": [
+        "title",
+        "items",
+        "screen"
+      ],
+      "parent_creates_locals": [
+        "partial_marker",
+        "partial_return"
+      ],
+      "partial_reads_locals": [
+        "items",
+        "screen",
+        "partial_marker"
+      ],
+      "partial_mutates_locals": [
+        "items"
+      ],
+      "partial_mutates_objects": [
+        "screen.partial"
+      ],
+      "globals": [
+        "wphx_nested_segment_trace"
+      ]
+    },
+    "include_semantics": [
+      "nested_include",
+      "repeated_include",
+      "include_once_second_return_true",
+      "function_scope_include_locals"
+    ],
+    "observable_effects": [
+      "guard_return",
+      "mixed_output_order",
+      "escaped_output",
+      "local_array_mutation",
+      "object_mutation",
+      "global_trace",
+      "include_return_value"
+    ]
+  },
+  "generated_shape": {
+    "exact_patterns": {
+      "parent": [
+        "if (!defined('ABSPATH'))",
+        "function wphx_nested_segment_escape($value)",
+        "$partial_marker = 'from-parent';",
+        "include __DIR__ . '/includes/wphx-template-nested-partial.php'",
+        "<section class=\"wphx-nested\" data-screen=\"<?php echo wphx_nested_segment_escape($screen->id); ?>\">",
+        "'marker' => 'segment:NESTED-PARENT'"
+      ],
+      "partial": [
+        "$GLOBALS['wphx_nested_segment_trace'][] = array(",
+        "$items[] = 'partial-mutated';",
+        "$screen->partial = $partial_marker;",
+        "<div class=\"wphx-partial\" data-marker=\"<?php echo wphx_nested_segment_escape($partial_marker); ?>\">",
+        "'marker' => 'segment:NESTED-PARTIAL'"
+      ]
+    },
+    "php_lint": "passed"
+  },
+  "observations": {
+    "oracle": {
+      "guard": {
+        "returnValue": "ABSPATH_REQUIRED",
+        "output": ""
+      },
+      "parent-normal": {
+        "returnValue": {
+          "kind": "nested-parent",
+          "partial": {
+            "kind": "nested-partial",
+            "marker": "segment:NESTED-PARTIAL",
+            "localMarker": "from-parent",
+            "itemCount": 3
+          },
+          "itemCount": 3,
+          "marker": "segment:NESTED-PARENT"
+        },
+        "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+        "locals": {
+          "title": "Nested & Parent",
+          "items": [
+            "alpha",
+            "beta <two>",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "dashboard",
+            "partial": "from-parent"
+          }
+        },
+        "trace": [
+          {
+            "event": "parent:begin",
+            "title": "Nested & Parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "from-parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          },
+          {
+            "event": "parent:end",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3
+          }
+        ],
+        "functions": {
+          "escape": true
+        }
+      },
+      "parent-repeated": {
+        "first": {
+          "returnValue": {
+            "kind": "nested-parent",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3,
+            "marker": "segment:NESTED-PARENT"
+          },
+          "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+          "locals": {
+            "title": "Nested & Parent",
+            "items": [
+              "alpha",
+              "beta <two>",
+              "partial-mutated"
+            ],
+            "screen": {
+              "id": "dashboard",
+              "partial": "from-parent"
+            }
+          },
+          "trace": [
+            {
+              "event": "parent:begin",
+              "title": "Nested & Parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:begin",
+              "marker": "from-parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:end",
+              "itemCount": 3
+            },
+            {
+              "event": "parent:end",
+              "partial": {
+                "kind": "nested-partial",
+                "marker": "segment:NESTED-PARTIAL",
+                "localMarker": "from-parent",
+                "itemCount": 3
+              },
+              "itemCount": 3
+            }
+          ],
+          "functions": {
+            "escape": true
+          }
+        },
+        "second": {
+          "returnValue": {
+            "kind": "nested-parent",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3,
+            "marker": "segment:NESTED-PARENT"
+          },
+          "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+          "locals": {
+            "title": "Nested & Parent",
+            "items": [
+              "alpha",
+              "beta <two>",
+              "partial-mutated"
+            ],
+            "screen": {
+              "id": "dashboard",
+              "partial": "from-parent"
+            }
+          },
+          "trace": [
+            {
+              "event": "parent:begin",
+              "title": "Nested & Parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:begin",
+              "marker": "from-parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:end",
+              "itemCount": 3
+            },
+            {
+              "event": "parent:end",
+              "partial": {
+                "kind": "nested-partial",
+                "marker": "segment:NESTED-PARTIAL",
+                "localMarker": "from-parent",
+                "itemCount": 3
+              },
+              "itemCount": 3
+            }
+          ],
+          "functions": {
+            "escape": true
+          }
+        }
+      },
+      "parent-include-once": {
+        "firstReturn": {
+          "kind": "nested-parent",
+          "partial": {
+            "kind": "nested-partial",
+            "marker": "segment:NESTED-PARTIAL",
+            "localMarker": "from-parent",
+            "itemCount": 3
+          },
+          "itemCount": 3,
+          "marker": "segment:NESTED-PARENT"
+        },
+        "secondReturn": true,
+        "firstOutput": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+        "secondOutput": "",
+        "locals": {
+          "items": [
+            "alpha",
+            "beta <two>",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "dashboard",
+            "partial": "from-parent"
+          }
+        },
+        "trace": [
+          {
+            "event": "parent:begin",
+            "title": "Nested & Parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "from-parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          },
+          {
+            "event": "parent:end",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3
+          }
+        ]
+      },
+      "function-scope": {
+        "returnValue": {
+          "kind": "nested-parent",
+          "partial": {
+            "kind": "nested-partial",
+            "marker": "segment:NESTED-PARTIAL",
+            "localMarker": "from-parent",
+            "itemCount": 3
+          },
+          "itemCount": 3,
+          "marker": "segment:NESTED-PARENT"
+        },
+        "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Function Scope</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+        "locals": {
+          "title": "Function Scope",
+          "items": [
+            "alpha",
+            "beta <two>",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "dashboard",
+            "partial": "from-parent"
+          }
+        },
+        "trace": [
+          {
+            "event": "parent:begin",
+            "title": "Function Scope",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "from-parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          },
+          {
+            "event": "parent:end",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3
+          }
+        ],
+        "functions": {
+          "escape": true
+        }
+      },
+      "partial-repeated": {
+        "firstReturn": {
+          "kind": "nested-partial",
+          "marker": "segment:NESTED-PARTIAL",
+          "localMarker": "direct-marker",
+          "itemCount": 2
+        },
+        "secondReturn": {
+          "kind": "nested-partial",
+          "marker": "segment:NESTED-PARTIAL",
+          "localMarker": "direct-marker",
+          "itemCount": 3
+        },
+        "firstOutput": "<div class=\"wphx-partial\" data-marker=\"direct-marker\">\n\t<span>partial-mutated</span>\n</div>\n",
+        "secondOutput": "<div class=\"wphx-partial\" data-marker=\"direct-marker\">\n\t<span>partial-mutated</span>\n</div>\n",
+        "locals": {
+          "items": [
+            "direct",
+            "partial-mutated",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "partial-only",
+            "partial": "direct-marker"
+          }
+        },
+        "trace": [
+          {
+            "event": "partial:begin",
+            "marker": "direct-marker",
+            "itemCount": 1
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "direct-marker",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          }
+        ]
+      },
+      "partial-include-once": {
+        "firstReturn": {
+          "kind": "nested-partial",
+          "marker": "segment:NESTED-PARTIAL",
+          "localMarker": "direct-marker",
+          "itemCount": 2
+        },
+        "secondReturn": true,
+        "firstOutput": "<div class=\"wphx-partial\" data-marker=\"direct-marker\">\n\t<span>partial-mutated</span>\n</div>\n",
+        "secondOutput": "",
+        "locals": {
+          "items": [
+            "direct",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "partial-only",
+            "partial": "direct-marker"
+          }
+        },
+        "trace": [
+          {
+            "event": "partial:begin",
+            "marker": "direct-marker",
+            "itemCount": 1
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 2
+          }
+        ]
+      }
+    },
+    "candidate": {
+      "guard": {
+        "returnValue": "ABSPATH_REQUIRED",
+        "output": ""
+      },
+      "parent-normal": {
+        "returnValue": {
+          "kind": "nested-parent",
+          "partial": {
+            "kind": "nested-partial",
+            "marker": "segment:NESTED-PARTIAL",
+            "localMarker": "from-parent",
+            "itemCount": 3
+          },
+          "itemCount": 3,
+          "marker": "segment:NESTED-PARENT"
+        },
+        "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+        "locals": {
+          "title": "Nested & Parent",
+          "items": [
+            "alpha",
+            "beta <two>",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "dashboard",
+            "partial": "from-parent"
+          }
+        },
+        "trace": [
+          {
+            "event": "parent:begin",
+            "title": "Nested & Parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "from-parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          },
+          {
+            "event": "parent:end",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3
+          }
+        ],
+        "functions": {
+          "escape": true
+        }
+      },
+      "parent-repeated": {
+        "first": {
+          "returnValue": {
+            "kind": "nested-parent",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3,
+            "marker": "segment:NESTED-PARENT"
+          },
+          "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+          "locals": {
+            "title": "Nested & Parent",
+            "items": [
+              "alpha",
+              "beta <two>",
+              "partial-mutated"
+            ],
+            "screen": {
+              "id": "dashboard",
+              "partial": "from-parent"
+            }
+          },
+          "trace": [
+            {
+              "event": "parent:begin",
+              "title": "Nested & Parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:begin",
+              "marker": "from-parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:end",
+              "itemCount": 3
+            },
+            {
+              "event": "parent:end",
+              "partial": {
+                "kind": "nested-partial",
+                "marker": "segment:NESTED-PARTIAL",
+                "localMarker": "from-parent",
+                "itemCount": 3
+              },
+              "itemCount": 3
+            }
+          ],
+          "functions": {
+            "escape": true
+          }
+        },
+        "second": {
+          "returnValue": {
+            "kind": "nested-parent",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3,
+            "marker": "segment:NESTED-PARENT"
+          },
+          "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+          "locals": {
+            "title": "Nested & Parent",
+            "items": [
+              "alpha",
+              "beta <two>",
+              "partial-mutated"
+            ],
+            "screen": {
+              "id": "dashboard",
+              "partial": "from-parent"
+            }
+          },
+          "trace": [
+            {
+              "event": "parent:begin",
+              "title": "Nested & Parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:begin",
+              "marker": "from-parent",
+              "itemCount": 2
+            },
+            {
+              "event": "partial:end",
+              "itemCount": 3
+            },
+            {
+              "event": "parent:end",
+              "partial": {
+                "kind": "nested-partial",
+                "marker": "segment:NESTED-PARTIAL",
+                "localMarker": "from-parent",
+                "itemCount": 3
+              },
+              "itemCount": 3
+            }
+          ],
+          "functions": {
+            "escape": true
+          }
+        }
+      },
+      "parent-include-once": {
+        "firstReturn": {
+          "kind": "nested-parent",
+          "partial": {
+            "kind": "nested-partial",
+            "marker": "segment:NESTED-PARTIAL",
+            "localMarker": "from-parent",
+            "itemCount": 3
+          },
+          "itemCount": 3,
+          "marker": "segment:NESTED-PARENT"
+        },
+        "secondReturn": true,
+        "firstOutput": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Nested &amp; Parent</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+        "secondOutput": "",
+        "locals": {
+          "items": [
+            "alpha",
+            "beta <two>",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "dashboard",
+            "partial": "from-parent"
+          }
+        },
+        "trace": [
+          {
+            "event": "parent:begin",
+            "title": "Nested & Parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "from-parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          },
+          {
+            "event": "parent:end",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3
+          }
+        ]
+      },
+      "function-scope": {
+        "returnValue": {
+          "kind": "nested-parent",
+          "partial": {
+            "kind": "nested-partial",
+            "marker": "segment:NESTED-PARTIAL",
+            "localMarker": "from-parent",
+            "itemCount": 3
+          },
+          "itemCount": 3,
+          "marker": "segment:NESTED-PARENT"
+        },
+        "output": "<section class=\"wphx-nested\" data-screen=\"dashboard\">\n\t<h2>Function Scope</h2>\n\t<div class=\"wphx-partial\" data-marker=\"from-parent\">\n\t<span>partial-mutated</span>\n</div>\n\t<footer data-count=\"3\">segment:NESTED-PARTIAL</footer>\n</section>\n",
+        "locals": {
+          "title": "Function Scope",
+          "items": [
+            "alpha",
+            "beta <two>",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "dashboard",
+            "partial": "from-parent"
+          }
+        },
+        "trace": [
+          {
+            "event": "parent:begin",
+            "title": "Function Scope",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "from-parent",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          },
+          {
+            "event": "parent:end",
+            "partial": {
+              "kind": "nested-partial",
+              "marker": "segment:NESTED-PARTIAL",
+              "localMarker": "from-parent",
+              "itemCount": 3
+            },
+            "itemCount": 3
+          }
+        ],
+        "functions": {
+          "escape": true
+        }
+      },
+      "partial-repeated": {
+        "firstReturn": {
+          "kind": "nested-partial",
+          "marker": "segment:NESTED-PARTIAL",
+          "localMarker": "direct-marker",
+          "itemCount": 2
+        },
+        "secondReturn": {
+          "kind": "nested-partial",
+          "marker": "segment:NESTED-PARTIAL",
+          "localMarker": "direct-marker",
+          "itemCount": 3
+        },
+        "firstOutput": "<div class=\"wphx-partial\" data-marker=\"direct-marker\">\n\t<span>partial-mutated</span>\n</div>\n",
+        "secondOutput": "<div class=\"wphx-partial\" data-marker=\"direct-marker\">\n\t<span>partial-mutated</span>\n</div>\n",
+        "locals": {
+          "items": [
+            "direct",
+            "partial-mutated",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "partial-only",
+            "partial": "direct-marker"
+          }
+        },
+        "trace": [
+          {
+            "event": "partial:begin",
+            "marker": "direct-marker",
+            "itemCount": 1
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:begin",
+            "marker": "direct-marker",
+            "itemCount": 2
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 3
+          }
+        ]
+      },
+      "partial-include-once": {
+        "firstReturn": {
+          "kind": "nested-partial",
+          "marker": "segment:NESTED-PARTIAL",
+          "localMarker": "direct-marker",
+          "itemCount": 2
+        },
+        "secondReturn": true,
+        "firstOutput": "<div class=\"wphx-partial\" data-marker=\"direct-marker\">\n\t<span>partial-mutated</span>\n</div>\n",
+        "secondOutput": "",
+        "locals": {
+          "items": [
+            "direct",
+            "partial-mutated"
+          ],
+          "screen": {
+            "id": "partial-only",
+            "partial": "direct-marker"
+          }
+        },
+        "trace": [
+          {
+            "event": "partial:begin",
+            "marker": "direct-marker",
+            "itemCount": 1
+          },
+          {
+            "event": "partial:end",
+            "itemCount": 2
+          }
+        ]
+      }
+    }
+  },
+  "claims": [
+    "WPHX PHP emits a compiler-generated original-path parent template segment shell plus generated nested partial shell.",
+    "The generated parent includes the generated partial through the original-path directory relationship and preserves caller-scope locals.",
+    "Oracle and candidate behavior match for ordered output, nested include return values, repeated include, include_once second return behavior, caller local mutation, object mutation, global trace order, and function-scope include locals."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX parity for existing Core templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ],
+  "validation_result": {
+    "status": "passed",
+    "php_lint": "passed",
+    "exact_shape_patterns_passed": true,
+    "core_ir_features_passed": true,
+    "unsupported_empty": true,
+    "oracle_candidate_behavior_match": true,
+    "guard_behavior_passed": true,
+    "nested_include_behavior_passed": true,
+    "include_once_behavior_passed": true,
+    "function_scope_include_behavior_passed": true
+  }
+}

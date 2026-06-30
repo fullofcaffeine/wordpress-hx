@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 322,
+  "closed_task_count": 323,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "c9b8560084901231dd5edf6f4c77a3bfbac2d2bd3ee8e6177962763da8c82555",
+          "sha256": "a2b89d7eee1786249b2c83f40e6b7fc512985609c8ca89f47256a2ea724fd573",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -3159,6 +3159,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-COMP-PHP-NESTED-SEGMENT-SHELL",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-nested-segment-shell.v1.json",
+          "sha256": "0b4ed7e59b1393d79c437250f06049b72cb4e47623782aac8e9515aab7dd5807",
+          "id": "receipt:wphx-comp-php-nested-segment-shell"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-COMP-PHP-ORACLE-RESPONSE",
       "receipts": [
         {
@@ -3183,7 +3193,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "246c308ba93106c57ed4116e46f8c344e8e7699c28f799797b38c945b288cd88",
+          "sha256": "140a05a453447fd68a2f6e2207993eded08ecdf4977c2704bee8c946fd81666c",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]
@@ -3203,7 +3213,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-template-segment-model.v1.json",
-          "sha256": "465560259362d3b279562c93eab2306cd49347a6af8227deac4b6d46426c593d",
+          "sha256": "2d9ae258061887827d6cb90c23cfcd910eebe437cf1d7af13b2a8d5841ed21d5",
           "id": "receipt:wphx-comp-php-template-segment-model"
         }
       ]

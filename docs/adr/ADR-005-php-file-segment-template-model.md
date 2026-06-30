@@ -12,6 +12,8 @@ F6 already proves template/caller-scope behavior for admin-style and theme-style
 
 `WPHX-COMP-PHP-FIRST-SEGMENT-SHELL` is the first implementation checkpoint for this ADR. It emits a minimized original-path admin-style segment shell from WPHX PHP compiler metadata and proves guard, declaration, script, literal output, template expression, control, caller-scope local mutation, object mutation, global trace mutation, and return behavior against an oracle fixture.
 
+`WPHX-COMP-PHP-NESTED-SEGMENT-SHELL` extends the implementation checkpoint to a generated original-path parent template and generated nested partial. It proves caller-scope local reads and mutation across the include boundary, object mutation, global trace order, ordered parent/partial output, nested include return values, repeated include, include_once second-return behavior, and function-scope include locals against oracle fixtures.
+
 ## Decision
 
 Represent every existing WordPress mixed or direct PHP script as an ordered file-segment plan before claiming durable ownership.

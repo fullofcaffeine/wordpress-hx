@@ -388,6 +388,86 @@
         "bytes": 975,
         "sha256": "sha256:75ff92510e7e176e942ba22d9757c93089e0ac723f206985242d4ef00fefbac7"
       }
+    },
+    {
+      "id": "template-segment-nested-parent",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "template_segment_shell",
+        "nested_include",
+        "guard",
+        "literal_output",
+        "template_expression",
+        "include_return_or_direct_file_scope_script"
+      ],
+      "hxml": "fixtures/wphx-php/template-segment-nested.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-parent/generated/wp-admin/wphx-template-nested-parent.php",
+      "bytes": 1114,
+      "sha256": "sha256:d3887ddb690ca9413c3eaed2b007a36187a7751574dbceb052e4b0fd34cbf10f",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "if (!defined('ABSPATH'))",
+        "function wphx_nested_segment_escape($value)",
+        "$partial_marker = 'from-parent';",
+        "include __DIR__ . '/includes/wphx-template-nested-partial.php'",
+        "<section class=\"wphx-nested\" data-screen=\"<?php echo wphx_nested_segment_escape($screen->id); ?>\">",
+        "'marker' => 'segment:NESTED-PARENT'"
+      ],
+      "ast_contract": {
+        "functions": [
+          "wphx_nested_segment_escape"
+        ],
+        "classes": [],
+        "interfaces": [],
+        "methods": [],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-parent/generated/wphx-php-emission.v1.json",
+        "bytes": 1532,
+        "sha256": "sha256:947ff14112551f1aa1b0a0e1588f7671fb830ddf9c1998061bd60bcc3525fd2c"
+      }
+    },
+    {
+      "id": "template-segment-nested-partial",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "template_segment_shell",
+        "nested_partial",
+        "literal_output",
+        "template_expression",
+        "include_return_or_direct_file_scope_script"
+      ],
+      "hxml": "fixtures/wphx-php/template-segment-nested.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-partial/generated/wp-admin/includes/wphx-template-nested-partial.php",
+      "bytes": 661,
+      "sha256": "sha256:89ed91504a10c5c22f943c931717186141d0a898c185e5c40936cdf7f628b28c",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "$GLOBALS['wphx_nested_segment_trace'][] = array(",
+        "$items[] = 'partial-mutated';",
+        "$screen->partial = $partial_marker;",
+        "<div class=\"wphx-partial\" data-marker=\"<?php echo wphx_nested_segment_escape($partial_marker); ?>\">",
+        "'marker' => 'segment:NESTED-PARTIAL'"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [],
+        "interfaces": [],
+        "methods": [],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-partial/generated/wphx-php-emission.v1.json",
+        "bytes": 1532,
+        "sha256": "sha256:947ff14112551f1aa1b0a0e1588f7671fb830ddf9c1998061bd60bcc3525fd2c"
+      }
     }
   ],
   "shell_shape_coverage": {
@@ -400,13 +480,14 @@
     "native_array_mutation": true,
     "top_level_bootstrap_side_effect": true,
     "include_return_or_direct_file_scope_script": true,
-    "template_segment_shell": true
+    "template_segment_shell": true,
+    "nested_template_segment_shell": true
   },
   "pending_shell_shape_gaps": [],
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 9,
+    "case_count": 11,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,
