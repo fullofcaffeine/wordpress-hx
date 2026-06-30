@@ -1,0 +1,34 @@
+{
+  "schema": "wphx.operations-receipt.v1",
+  "id": "receipt:wphx-docs-wp-http-helper-shell-retirement-rows",
+  "issue": {
+    "id": "wordpresshx-blo",
+    "external_ref": "WPHX-DOCS-WP-HTTP-HELPER-SHELL-RETIREMENT-ROWS",
+    "title": "Align WP_Http helper detail rows with compiler-emitted shells"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "captured",
+  "artifacts": [
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "progress detail rows for WPHX-312.62, WPHX-312.63, and WPHX-312.64"
+    }
+  ],
+  "verification_commands": [
+    "npm run receipts:build",
+    "npm run receipts:validate",
+    "npm run beads:validate",
+    "npm run format:haxe:check",
+    "npm run precommit"
+  ],
+  "claims": [
+    "The WPHX-312.62 detail row now describes the accepted WPHX PHP compiler-emitted grouped original-path WP_Http::processHeaders adapter evidence.",
+    "The WPHX-312.63 detail row now describes the accepted WPHX PHP compiler-emitted grouped original-path WP_Http::buildCookieHeader(&$r) adapter evidence.",
+    "The WPHX-312.64 detail row now describes the accepted WPHX PHP compiler-emitted grouped original-path protected WP_Http::parse_url adapter evidence.",
+    "The corrected rows keep whole-file WP_Http, WP_Http::request, live transport, installed distribution, and generated WP_Http_Cookie ownership outside the bounded helper claims."
+  ],
+  "non_claims": [
+    "This receipt does not change runtime behavior, runner behavior, Haxe source, generated PHP, or the accepted ownership boundary.",
+    "This receipt does not claim whole-file WP_Http ownership, full WP_Http::request ownership, live HTTP transport behavior, or installed distribution replacement."
+  ]
+}
