@@ -23,6 +23,8 @@
     "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
     "src/wphx/wp/http/HttpRequestNonblocking.hx",
     "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+    "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
+    "src/wphx/wp/http/HttpProcessHeaders.hx",
     "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
     "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
@@ -53,6 +55,6 @@
     "receipt_refs": [
       "receipt:wphx-312-65-wp-http-request-nonblocking-candidate"
     ],
-    "manifest_digest": "sha256:2d700a2a48441ce7ac960602406251e27acda103d36dbe0fd3c2d187e05f5946"
+    "manifest_digest": "sha256:4827b7241b18b040f1d5f7ba5015f442ac602e27f125d4fa4d97e240c95d2d77"
   }
 }

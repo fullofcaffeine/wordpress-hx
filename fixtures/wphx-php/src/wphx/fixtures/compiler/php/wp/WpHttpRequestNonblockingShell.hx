@@ -17,11 +17,31 @@ class WpHttpRequestNonblockingShell
 
 	@:wp.adapter("wp-http-request-nonblocking")
 	@:wp.haxeHelper("\\wphx\\wp\\http\\_HttpRequestNonblocking\\HttpRequestNonblocking_Fields_")
+	@:wp.haxeHelper("headRedirectionDefault", "\\wphx\\wp\\http\\_HttpRequestHeadRedirectionDefault\\HttpRequestHeadRedirectionDefault_Fields_")
 	@:wp.haxeHelper("safetyOptions", "\\wphx\\wp\\http\\_HttpRequestSafetyOptions\\HttpRequestSafetyOptions_Fields_")
 	@:wp.haxeHelper("streamBlocking", "\\wphx\\wp\\http\\_HttpRequestStreamBlocking\\HttpRequestStreamBlocking_Fields_")
 	public function request(url:String, @:wp.defaultArray args:NativeValue = null):NativeValue
 	{
 		return HaxeHttpRequestNonblocking.nonblockingResponse();
+	}
+
+	@:wp.adapter("wp-http-process-headers")
+	@:wp.haxeHelper("\\wphx\\wp\\http\\_HttpProcessHeaders\\HttpProcessHeaders_Fields_")
+	public static function processHeaders(headers:NativeValue, url:String = ""):NativeValue
+	{
+		HaxeHttpProcessHeaders.startsFinalResponseBlock("");
+		HaxeHttpProcessHeaders.isHeaderLine("");
+		HaxeHttpProcessHeaders.responseCode("");
+		HaxeHttpProcessHeaders.responseMessage("");
+		HaxeHttpProcessHeaders.headerKey("X-Test: yes");
+		HaxeHttpProcessHeaders.headerValue("X-Test: yes");
+		return headers;
+	}
+
+	@:wp.adapter("wp-http-normalize-cookies")
+	public static function normalize_cookies(cookies:NativeValue):NativeValue
+	{
+		return cookies;
 	}
 
 	@:wp.adapter("wp-http-block-request")

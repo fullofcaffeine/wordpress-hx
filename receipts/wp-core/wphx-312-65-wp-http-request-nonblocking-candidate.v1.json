@@ -62,10 +62,13 @@
       "stmt.if",
       "stmt.if-else",
       "expr.const",
+      "expr.instanceof",
       "expr.long-array",
       "expr.method-call",
+      "expr.static-closure",
       "expr.static-call",
       "wp-http.request.nonblocking-response",
+      "wp-http.request.head-redirection-default-helper",
       "wp-http.request.safety-options-helper",
       "wp-http.request.stream-blocking-helper"
     ],

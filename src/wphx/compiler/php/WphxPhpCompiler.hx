@@ -128,10 +128,12 @@ enum PhpCoreExpr
 	PhpDynamicObjectProperty(target:PhpCoreExpr, property:PhpCoreExpr);
 	PhpFunctionCall(name:String, args:Array<PhpCoreExpr>);
 	PhpBinop(op:String, left:PhpCoreExpr, right:PhpCoreExpr);
+	PhpInstanceOf(value:PhpCoreExpr, className:String);
 	PhpNullCoalesce(left:PhpCoreExpr, right:PhpCoreExpr);
 	PhpTernary(condition:PhpCoreExpr, ifTrue:PhpCoreExpr, ifFalse:PhpCoreExpr);
 	PhpAssignExpr(target:PhpCoreExpr, value:PhpCoreExpr);
 	PhpPostDecrement(target:PhpCoreExpr);
+	PhpStaticClosure(parameters:Array<String>, body:Array<PhpCoreStmt>);
 	PhpNot(expr:PhpCoreExpr);
 	PhpCastArray(expr:PhpCoreExpr);
 	PhpCastBool(expr:PhpCoreExpr);
@@ -1157,6 +1159,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				name + emitPhpCoreCallArgs(args, depth);
 			case PhpBinop(op, left, right):
 				emitPhpCoreExpr(left, depth) + " " + op + " " + emitPhpCoreExpr(right, depth);
+			case PhpInstanceOf(value, className):
+				emitPhpCoreExpr(value, depth) + " instanceof " + className;
 			case PhpNullCoalesce(left, right):
 				emitPhpCoreExpr(left, depth) + " ?? " + emitPhpCoreExpr(right, depth);
 			case PhpTernary(condition, ifTrue, ifFalse):
@@ -1169,6 +1173,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				emitPhpCoreExpr(target, depth) + " = " + emitPhpCoreExpr(value, depth);
 			case PhpPostDecrement(target):
 				emitPhpCoreExpr(target, depth) + "--";
+			case PhpStaticClosure(parameters, body):
+				emitPhpCoreStaticClosure(parameters, body, depth);
 			case PhpNot(inner):
 				"! " + emitPhpCoreExpr(inner, depth);
 			case PhpCastArray(inner):
@@ -1180,6 +1186,17 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			case PhpCastString(inner):
 				"(string) " + emitPhpCoreExpr(inner, depth);
 		}
+	}
+
+	function emitPhpCoreStaticClosure(parameters:Array<String>, body:Array<PhpCoreStmt>, depth:Int):String
+	{
+		return "static function ("
+			+ parameters.map(parameter -> " $" + phpIdent(parameter)).join(",")
+			+ " ) {\n"
+			+ emitPhpCoreStatements(body, depth + 1)
+			+ "\n"
+			+ tabs(depth)
+			+ "}";
 	}
 
 	function emitPhpCoreDynamicObjectProperty(target:PhpCoreExpr, property:PhpCoreExpr, depth:Int):String

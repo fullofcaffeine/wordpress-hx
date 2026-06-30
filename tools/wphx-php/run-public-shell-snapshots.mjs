@@ -275,19 +275,25 @@ const CASES = [
     exact_patterns: [
       "class WP_Http",
       "public function request($url, $args = [])",
+      "public static function processHeaders($headers, $url = '')",
+      "public static function normalize_cookies($cookies)",
       "public function block_request($uri)",
+      "new WpOrg\\Requests\\Cookie\\Jar()",
+      "$value instanceof WP_Http_Cookie",
       "WpOrg\\Requests\\Requests::request",
       "new WP_HTTP_Requests_Response",
       "do_action( 'http_api_debug'",
       "reset_mbstring_encoding();",
       "HttpRequestNonblocking_Fields_::nonblockingResponse",
+      "HttpProcessHeaders_Fields_::headerKey",
+      "HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection",
       "HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation",
       "HttpRequestStreamBlocking_Fields_::shouldForceBlockingForStream",
       "return apply_filters( 'http_response'"
     ],
     ast_expect: {
       classes: ["WP_Http"],
-      methods: ["__construct", "request", "block_request"]
+      methods: ["__construct", "request", "processHeaders", "normalize_cookies", "block_request"]
     }
   },
   {

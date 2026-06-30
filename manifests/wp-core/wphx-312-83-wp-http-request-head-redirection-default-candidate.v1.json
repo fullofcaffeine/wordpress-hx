@@ -7,7 +7,8 @@
     "haxe_source",
     "generated_php_candidate",
     "oracle_source_mirror",
-    "php_cli_observed_fixture"
+    "php_cli_observed_fixture",
+    "compiler_php_ir_feature_evidence"
   ],
   "artifact_scope": "haxe_parity_candidate",
   "inputs": {
@@ -28,8 +29,13 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-request-head-redirection-default-candidate.mjs",
-      "bytes": 33775,
-      "sha256": "sha256:35959f982e705f232bef128591dce4878b5d95fad818f58ec49a2e360358d2d7"
+      "bytes": 37480,
+      "sha256": "sha256:8275c3c9237dc3e9dfa321cc6212e97c26e9ab14e84f313a0010c5cad166c3ad"
+    },
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-83/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 1516,
+      "sha256": "sha256:9f0603bd41c43109398f9ff1b999a4f1acbdcb0bf7f6396199d3d3ecdf3259b2"
     },
     "haxe_sources": [
       {
@@ -38,14 +44,64 @@
         "sha256": "sha256:2e3c11dbbf96ba1cbe39d0e6da6f2eb2bda94c9107eba2ddff3c5de60b5836b3"
       },
       {
+        "path": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+        "bytes": 403,
+        "sha256": "sha256:ed1ab7eb5c6f2668f91dba67ac4f5fe3ff357736c2679e5cb615714ad8ee8cea"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRequestNonblocking.hx",
+        "bytes": 591,
+        "sha256": "sha256:8cb156ee5ec7381b4bdc94bf799c793c3bda1bb1b05fe440f9899e146889a5e5"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+        "bytes": 2065,
+        "sha256": "sha256:a2d1f53e4abba34c62e20bfb0b6b461586bdb9fe0e5f3da339d18d4d349d8430"
+      },
+      {
         "path": "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
         "bytes": 348,
         "sha256": "sha256:32c12ed8335d2037b15be96c2cc5e2ec50882f506a3fdc7883c85841828c920f"
       },
       {
+        "path": "src/wphx/wp/http/HttpProcessHeaders.hx",
+        "bytes": 1648,
+        "sha256": "sha256:a8dd503a5a46aa20eb4c4599ff0b1d9397e52bdebc30c31bdacd9fd4faab7b17"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
+        "bytes": 408,
+        "sha256": "sha256:1c18b8c7c61a3bf42e9469ec994db62d9436e60bca231b166bfaef61db011546"
+      },
+      {
+        "path": "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+        "bytes": 319,
+        "sha256": "sha256:19761955fa5bf14201e4282f1f48943379138837163dde7efcd2e9b57d811477"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+        "bytes": 337,
+        "sha256": "sha256:dfef1a5a2a5966954d907490d9893f7e7c4b36261e0aaea59e2d4aa64299eafd"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+        "bytes": 272,
+        "sha256": "sha256:5fa50cb634470c07cf6097a33ea788735a1c5ba655ce561ae89ae973ff44a3d0"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+        "bytes": 223,
+        "sha256": "sha256:b035813d4e6c82f1f37cce19d29b6c160ffe0e4d29ea8e9cb6949e32d5df18e6"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "bytes": 2111,
+        "sha256": "sha256:7dbaca538b3f0dcb02f037fcc09a1c0ac8d4e2636bf3d80cb71571decd9bebe1"
+      },
+      {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestHeadRedirectionDefaultCandidateEntry.hx",
-        "bytes": 355,
-        "sha256": "sha256:515c2a78ed4dbedfdcfd9b0096b199f73e187d5c2cfc93107be6304852ec3aea"
+        "bytes": 999,
+        "sha256": "sha256:843f6c31566e55475d22a9c8709e62d6bf3984ed5f602a32f9dc606e84bd3b75"
       }
     ],
     "upstream_sources": [
@@ -89,11 +145,38 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-request-head-redirection-default-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
     "haxe_output": "build/wp-core/wphx-312-83/haxe",
+    "wphx_php_output": "build/wp-core/wphx-312-83/wphx-php",
+    "public_shell": {
+      "path": "build/wp-core/wphx-312-83/candidate/wp-includes/class-wp-http.php",
+      "source_path": "build/wp-core/wphx-312-83/wphx-php/wp-includes/class-wp-http.php",
+      "sha256": "sha256:7030cdc7c0489709d0f944b0dff2924eda16bcdb9b9ba8397cd6788e46abac52",
+      "compiler_emitted": true,
+      "shape": {
+        "manifest_declares_wp_http": true,
+        "unsupported_empty": true,
+        "request_signature": true,
+        "process_headers_signature": true,
+        "normalize_cookies_signature": true,
+        "block_request_signature": true,
+        "normalize_cookies_cookie_jar": true,
+        "normalize_cookies_cookie_instance": true,
+        "process_headers_haxe_call": true,
+        "head_redirection_haxe_call": true,
+        "safety_options_haxe_call": true,
+        "stream_blocking_haxe_call": true,
+        "nonblocking_haxe_call": true,
+        "requests_dispatch": true,
+        "request_ir_features_present": true
+      }
+    },
     "compiled_php_files": [
       "build/wp-core/wphx-312-83/haxe/index.php",
       "build/wp-core/wphx-312-83/haxe/lib/Array_hx.php",
+      "build/wp-core/wphx-312-83/haxe/lib/EReg.php",
       "build/wp-core/wphx-312-83/haxe/lib/Std.php",
+      "build/wp-core/wphx-312-83/haxe/lib/StringBuf.php",
       "build/wp-core/wphx-312-83/haxe/lib/haxe/Exception.php",
       "build/wp-core/wphx-312-83/haxe/lib/haxe/ValueException.php",
       "build/wp-core/wphx-312-83/haxe/lib/haxe/iterators/ArrayIterator.php",
@@ -107,13 +190,36 @@
       "build/wp-core/wphx-312-83/haxe/lib/php/_Boot/HxString.php",
       "build/wp-core/wphx-312-83/haxe/lib/php/_polyfills.php",
       "build/wp-core/wphx-312-83/haxe/lib/wphx/fixtures/wp/core/HttpRequestHeadRedirectionDefaultCandidateEntry.php",
-      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpRequestHeadRedirectionDefault/HttpRequestHeadRedirectionDefault_Fields_.php"
+      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpBlockRequestPolicy/HttpBlockRequestPolicy_Fields_.php",
+      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpProcessHeaders/HttpProcessHeaders_Fields_.php",
+      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpRequestHeadRedirectionDefault/HttpRequestHeadRedirectionDefault_Fields_.php",
+      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpRequestNonblocking/HttpRequestNonblocking_Fields_.php",
+      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpRequestSafetyOptions/HttpRequestSafetyOptions_Fields_.php",
+      "build/wp-core/wphx-312-83/haxe/lib/wphx/wp/http/_HttpRequestStreamBlocking/HttpRequestStreamBlocking_Fields_.php"
     ],
     "haxe_module": "\\wphx\\wp\\http\\_HttpRequestHeadRedirectionDefault\\HttpRequestHeadRedirectionDefault_Fields_",
     "promoted_symbols": [
       "WP_Http::request explicit HEAD method disables default redirection decision"
     ],
-    "promoted_behavior": "Only the WP_Http::request explicit-HEAD default redirection branch decision is emitted by generated Haxe PHP. The surrounding public method body, wp_parse_args behavior, default filters, and Requests option array remain a copied candidate shell."
+    "promoted_behavior": "Only the WP_Http::request explicit-HEAD default redirection branch decision is claimed by this candidate. The surrounding public method body is now emitted by structured WPHX PHP Adapter IR as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership.",
+    "adapter_ir": {
+      "adapter": "wp-http-request-nonblocking",
+      "required_features": [
+        "stmt.try-catch",
+        "stmt.if",
+        "stmt.if-else",
+        "expr.long-array",
+        "expr.instanceof",
+        "expr.method-call",
+        "expr.static-closure",
+        "expr.static-call",
+        "wp-http.request.nonblocking-response",
+        "wp-http.request.head-redirection-default-helper",
+        "wp-http.request.safety-options-helper",
+        "wp-http.request.stream-blocking-helper"
+      ],
+      "missing_features": []
+    }
   },
   "fixture": {
     "cases": [
@@ -155,9 +261,10 @@
       "runtime_stubs": "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed orchestration sources; outbound Requests::request records options or throws without network I/O."
     },
     "public_abi_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
       "copied_oracle_public_php": true,
-      "copied_candidate_public_php_shell": true,
+      "copied_candidate_public_php_shell": false,
+      "compiler_emitted_public_php": true,
       "adapter_contract_foundation": "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
       "installed_wordpress_behavior_claimed": false
     },
@@ -768,9 +875,9 @@
       "detail": "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
     },
     {
-      "id": "public-php-adapter-not-yet-generated",
+      "id": "full-wp-http-request-not-yet-owned",
       "owner": "WPHX-312.83",
-      "detail": "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+      "detail": "The candidate consumes a compiler-emitted original-path class-wp-http.php shell for a bounded WP_Http::request HEAD redirection branch gate plus supporting request/block_request branches. Broader request semantics, whole-file WP_Http ownership, and installed distribution behavior remain later compiler-driven gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-83-wp-http-request-head-redirection-default-candidate.v1.json",
@@ -781,7 +888,24 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "request_shell_emitted": true,
+    "wphx_php_manifest_unsupported_empty": true,
+    "request_ir_features_present": true,
+    "request_ir_features": [
+      "stmt.try-catch",
+      "stmt.if",
+      "stmt.if-else",
+      "expr.long-array",
+      "expr.instanceof",
+      "expr.method-call",
+      "expr.static-closure",
+      "expr.static-call",
+      "wp-http.request.nonblocking-response",
+      "wp-http.request.head-redirection-default-helper",
+      "wp-http.request.safety-options-helper",
+      "wp-http.request.stream-blocking-helper"
+    ],
+    "public_php_replacement_claimed": true,
     "full_request_orchestration_claimed": false,
     "head_default_redirection_claimed": true,
     "installed_wordpress_behavior_claimed": false,

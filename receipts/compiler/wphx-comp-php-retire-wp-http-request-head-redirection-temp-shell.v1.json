@@ -1,0 +1,70 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-request-head-redirection-temp-shell",
+  "issue": {
+    "id": "wordpresshx-3258",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REQUEST-HEAD-REDIRECTION-TEMP-SHELL",
+    "title": "Use generated request adapter for WP_Http::request HEAD redirection default"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_public_shell",
+  "artifact_scope": "wp_http_request_head_redirection_candidate_shell_retirement",
+  "commands": [
+    "haxelib run formatter -s src/wphx/compiler/php/WphxPhpCompiler.hx -s src/wphx/compiler/php/WphxPhpWordPressAdapters.hx -s fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+    "npm run wp:core:wphx-312-wp-http-request-head-redirection-default-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-head-redirection-default-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run wphx:php:adapter-raw-blocks:check",
+    "npm run format:haxe:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-request-head-redirection-default-candidate.mjs",
+      "role": "WPHX-312.83 runner installing compiler-emitted class-wp-http.php request shell"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+      "role": "typed public shell declaration with request, processHeaders, normalize_cookies, and block_request adapters"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter IR for request HEAD redirection and normalize_cookies support"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-83-wp-http-request-head-redirection-default-candidate.v1.json",
+      "role": "HEAD redirection candidate manifest with generated-shell and IR feature evidence"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-83-wp-http-request-head-redirection-default-candidate.v1.json",
+      "role": "ownership manifest marking the boundary as compiler_emitted_original_path_shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-83-wp-http-request-head-redirection-default-candidate.v1.json",
+      "role": "behavior receipt for the HEAD redirection default candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "request_head_redirection_candidate_cases": 2,
+    "public_shell_snapshot_cases": 17,
+    "php_raw_block_count": 0,
+    "template_reference_count": 0,
+    "template_lint_count": 0,
+    "ownership_state": "compiler_emitted_original_path_shell"
+  },
+  "claims": [
+    "WPHX-312.83 now consumes the compiler-emitted original-path WP_Http::request shell instead of a copied/runner-patched class-wp-http.php body.",
+    "The HEAD redirection default helper remains the bounded Haxe-owned branch claim, with helper modules compiled for the generated shell's runtime calls.",
+    "The shared generated request shell now also emits processHeaders and normalize_cookies adapters needed by the exercised request paths.",
+    "Both deterministic HEAD redirection oracle/candidate probes remain behavior-identical."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http::request ownership.",
+    "This does not claim cookie normalization internals beyond the generated public adapter shape exercised by this candidate.",
+    "This does not claim live network behavior, redirect following, upstream HTTP PHPUnit parity, or installed distribution behavior.",
+    "This does not claim whole-file WP_Http ownership."
+  ]
+}

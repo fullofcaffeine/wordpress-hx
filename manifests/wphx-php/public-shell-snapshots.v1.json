@@ -603,19 +603,25 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 7791,
-      "sha256": "sha256:87402e640d85ad4ffb00e153c6ff6b600f9d341345fd174e85e06367747b35c8",
+      "bytes": 10452,
+      "sha256": "sha256:7030cdc7c0489709d0f944b0dff2924eda16bcdb9b9ba8397cd6788e46abac52",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
         "class WP_Http",
         "public function request($url, $args = [])",
+        "public static function processHeaders($headers, $url = '')",
+        "public static function normalize_cookies($cookies)",
         "public function block_request($uri)",
+        "new WpOrg\\Requests\\Cookie\\Jar()",
+        "$value instanceof WP_Http_Cookie",
         "WpOrg\\Requests\\Requests::request",
         "new WP_HTTP_Requests_Response",
         "do_action( 'http_api_debug'",
         "reset_mbstring_encoding();",
         "HttpRequestNonblocking_Fields_::nonblockingResponse",
+        "HttpProcessHeaders_Fields_::headerKey",
+        "HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection",
         "HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation",
         "HttpRequestStreamBlocking_Fields_::shouldForceBlockingForStream",
         "return apply_filters( 'http_response'"
@@ -629,6 +635,8 @@
         "methods": [
           "__construct",
           "block_request",
+          "normalize_cookies",
+          "processHeaders",
           "request"
         ],
         "protected_methods": [],
@@ -637,8 +645,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 1189,
-        "sha256": "sha256:1440a83aff5b40a1f5b79edced19aab1a00ba79744523fac13789fdfe1ef3a48"
+        "bytes": 1516,
+        "sha256": "sha256:9f0603bd41c43109398f9ff1b999a4f1acbdcb0bf7f6396199d3d3ecdf3259b2"
       }
     },
     {

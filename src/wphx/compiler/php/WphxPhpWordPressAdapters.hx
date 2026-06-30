@@ -112,6 +112,8 @@ class WphxPhpWordPressAdapters
 				cookieGetFullHeader(fieldName, primaryHelper(helpers));
 			case "wp-http-cookie-get-attributes":
 				cookieGetAttributes(fieldName, primaryHelper(helpers));
+			case "wp-http-normalize-cookies":
+				normalizeCookies(fieldName);
 			case "wp-http-transport-get-first-available":
 				transportGetFirstAvailable(fieldName, primaryHelper(helpers));
 			case "wp-http-transport-dispatch-request":
@@ -166,6 +168,52 @@ class WphxPhpWordPressAdapters
 	static function read(base:PhpCoreExpr, key:String):PhpCoreExpr
 	{
 		return PhpArrayRead(base, PhpString(key));
+	}
+
+	static function normalizeCookies(fieldName:String):WordPressMethodAdapterPlan
+	{
+		final cookies = PhpVar("cookies");
+		final cookieJar = PhpVar("cookie_jar");
+		final name = PhpVar("name");
+		final value = PhpVar("value");
+
+		return plan([
+			"stmt.foreach-key-value",
+			"stmt.if-else",
+			"stmt.var",
+			"stmt.assign",
+			"stmt.return",
+			"expr.instanceof",
+			"expr.array-read",
+			"expr.long-array",
+			"expr.object-property",
+			"expr.new",
+			"expr.method-call",
+			"expr.function-call",
+			"expr.static-closure",
+			"expr.cast-string"
+		], [
+			PhpLocal("cookie_jar", PhpNew("WpOrg\\Requests\\Cookie\\Jar", [])),
+			PhpForeachKeyValue(cookies, "name", "value", [
+				PhpIfElse(PhpInstanceOf(value, "WP_Http_Cookie"), [
+					PhpLocal("attributes", PhpFunctionCall("array_filter", [
+						PhpMethodCall(value, "get_attributes", []),
+						PhpStaticClosure(["attr"], [PhpReturn(PhpBinop("!==", PhpNull, PhpVar("attr")))])
+					])),
+					PhpAssign(PhpArrayRead(cookieJar, PhpObjectProperty(value, "name")), PhpNew("WpOrg\\Requests\\Cookie", [
+						PhpCastString(PhpObjectProperty(value, "name")),
+						PhpObjectProperty(value, "value"),
+						PhpVar("attributes"),
+						PhpLongArray([entry("host-only", PhpObjectProperty(value, "host_only"))])
+					]))
+				], [
+					PhpIf(PhpFunctionCall("is_scalar", [value]), [
+						PhpAssign(PhpArrayRead(cookieJar, name), PhpNew("WpOrg\\Requests\\Cookie", [PhpCastString(name), PhpCastString(value)]))
+					])
+				])
+			]),
+			PhpReturn(cookieJar)
+		]);
 	}
 
 	static function processHeaders(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
@@ -1157,6 +1205,7 @@ class WphxPhpWordPressAdapters
 			return missingHelper("missing @:wp.haxeHelper for WP_Http::request nonblocking adapter " + fieldName);
 		}
 
+		final headRedirectionDefaultHelper = namedHelper(helpers, "headRedirectionDefault");
 		final safetyOptionsHelper = namedHelper(helpers, "safetyOptions");
 		final streamBlockingHelper = namedHelper(helpers, "streamBlocking");
 		final url = PhpVar("url");
@@ -1196,10 +1245,19 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.safety-options-helper");
 		}
+		if (headRedirectionDefaultHelper != null)
+		{
+			features.push("wp-http.request.head-redirection-default-helper");
+		}
 		if (streamBlockingHelper != null)
 		{
 			features.push("wp-http.request.stream-blocking-helper");
 		}
+		final headRedirectionDefaultCondition = headRedirectionDefaultHelper == null ? PhpBinop("&&", PhpFunctionCall("isset", [read(args, "method")]),
+			PhpBinop("===", PhpString("HEAD"), read(args, "method"))) : PhpStaticCall(headRedirectionDefaultHelper, "shouldDisableHeadDefaultRedirection", [
+				PhpFunctionCall("isset", [read(args, "method")]),
+				PhpTernary(PhpFunctionCall("isset", [read(args, "method")]), PhpCastString(read(args, "method")), PhpString(""))
+			]);
 		final redirectValidationCondition = safetyOptionsHelper == null ? PhpBinop("&&",
 			PhpFunctionCall("function_exists", [PhpString("wp_kses_bad_protocol")]),
 			read(parsedArgs, "reject_unsafe_urls")) : PhpStaticCall(safetyOptionsHelper, "shouldRegisterRedirectValidation", [
@@ -1241,8 +1299,7 @@ class WphxPhpWordPressAdapters
 					entry("limit_response_size", PhpNull)
 				])),
 			PhpAssign(args, PhpFunctionCall("wp_parse_args", [args])),
-			PhpIf(PhpBinop("&&", PhpFunctionCall("isset", [read(args, "method")]), PhpBinop("===", PhpString("HEAD"), read(args, "method"))),
-				[PhpAssign(read(defaults, "redirection"), PhpInt(0))]),
+			PhpIf(headRedirectionDefaultCondition, [PhpAssign(read(defaults, "redirection"), PhpInt(0))]),
 			PhpLocal("parsed_args", PhpFunctionCall("wp_parse_args", [args, defaults])),
 			PhpAssign(parsedArgs, PhpFunctionCall("apply_filters", [PhpString("http_request_args"), parsedArgs, url])),
 			PhpIf(PhpNot(PhpFunctionCall("isset", [read(parsedArgs, "_redirection")])),
