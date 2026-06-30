@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-segment-snapshot",
+  "issue": {
+    "id": "wordpresshx-b99",
+    "external_ref": "WPHX-COMP-PHP-SEGMENT-SNAPSHOT",
+    "title": "Snapshot segment-plan metadata"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "generated_shape_segment_plan_snapshot",
+  "artifact_scope": "public_shell_snapshot_segment_plan_contracts",
+  "commands": [
+    "npm run wphx:php:public-shell-snapshots",
+    "npm run wphx:php:template-segment-admin-style:check",
+    "npm run wphx:php:template-segment-nested:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wphx-php/run-public-shell-snapshots.mjs",
+      "role": "public-shell snapshot runner asserting segment-plan metadata contracts"
+    },
+    {
+      "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
+      "role": "public-shell snapshot manifest with segment_plan_contract entries"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
+      "role": "public-shell snapshot receipt updated with segment-plan contract validation"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations documentation for snapshot segment-plan contracts"
+    },
+    {
+      "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
+      "role": "ADR-005 checkpoint note for segment-plan snapshot validation"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "public_shell_snapshot_cases": 11,
+    "segment_plan_metadata_coverage": true,
+    "segment_plan_contracts_passed": true,
+    "admin_style_behavior_check": "passed",
+    "nested_behavior_check": "passed",
+    "unsupported_empty": true
+  },
+  "claims": [
+    "The public-shell snapshot lane asserts compiler-emitted segment-plan metadata contracts for the admin-style shell, nested parent, and nested partial cases.",
+    "The snapshot manifest records segment_plan_metadata=true and segment_plan_contracts_passed=true while preserving 11 generated-shape cases.",
+    "Focused admin-style and nested segment behavior checks still pass."
+  ],
+  "non_claims": [
+    "This does not prove WordPress behavior parity beyond the focused oracle/candidate runners.",
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ]
+}

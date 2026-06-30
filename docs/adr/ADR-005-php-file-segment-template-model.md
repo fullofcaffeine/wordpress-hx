@@ -18,6 +18,8 @@ F6 already proves template/caller-scope behavior for admin-style and theme-style
 
 `WPHX-COMP-PHP-SEGMENT-MANIFEST` adds structured segment-plan metadata to the WPHX PHP emission manifest for those generated shells. The metadata names the original path, adapter, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs so later Adapter IR, backend, or extracted `reflaxe.php` work can consume the compiler output directly.
 
+`WPHX-COMP-PHP-SEGMENT-SNAPSHOT` makes that metadata part of generated-shape evidence by asserting the compiler-emitted segment plans in the public-shell snapshot lane for the admin-style shell, nested parent, and nested partial cases.
+
 ## Decision
 
 Represent every existing WordPress mixed or direct PHP script as an ordered file-segment plan before claiming durable ownership.

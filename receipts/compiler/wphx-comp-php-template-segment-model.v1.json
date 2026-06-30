@@ -28,7 +28,7 @@
       "role": "deterministic model runner"
     }
   ],
-  "manifest_sha256": "sha256:8ba16a4e2f7fd64acc8fae84367ab3db580043a65a6364e6fe38aa86c20cefd1",
+  "manifest_sha256": "sha256:138e445c5522726a3521f3d0aeb7a89b105603481c5e56b02bc996b3bc4536ed",
   "validation_result": {
     "status": "passed",
     "f6_prerequisites_passed": true,

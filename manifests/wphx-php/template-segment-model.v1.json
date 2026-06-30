@@ -11,8 +11,8 @@
   "artifact_scope": "file_segment_template_model",
   "adr": {
     "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
-    "bytes": 7689,
-    "sha256": "sha256:8dc594327ce33ff82935206f76f5b2e3cbf6211581d26b7c673f5930ae2176b8"
+    "bytes": 7926,
+    "sha256": "sha256:de91cad8045a163d8159d03a50e184893a6c2c2d725175441ff44baf95021984"
   },
   "prerequisites": {
     "f6_template_scope": {

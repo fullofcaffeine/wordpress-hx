@@ -148,7 +148,7 @@ npm run wphx:php:public-shell-snapshots
 npm run wphx:php:public-shell-snapshots:check
 ```
 
-It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, and empty unsupported manifests for global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, top-level bootstrap side effects, a bounded include-return/direct file-scope script fixture, the first compiler-emitted template segment shell, and the first nested template segment shell. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner.
+It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, empty unsupported manifests, and compiler-emitted `segment_plans` contracts for the template-segment cases. It covers global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, top-level bootstrap side effects, a bounded include-return/direct file-scope script fixture, the first compiler-emitted template segment shell, and the first nested template segment shell. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner.
 
 The pluggable timing fixture compiles a minimized original-path guarded global-function file:
 
@@ -233,6 +233,8 @@ It emits `build/wphx-php/template-segment-nested/generated/wp-admin/wphx-templat
 `WPHX-COMP-PHP-SEGMENT-PLAN-PRINTER` keeps the emitted admin-style and nested segment-shell behavior unchanged while routing those adapters through a bounded compiler-side segment plan printer. The current printer accepts ordered `PhpSegment` and `OutputSegment` entries, toggles PHP/output mode deterministically, and records `segment.plan-printer` in the affected emission manifests. This is the first implementation step toward ADR-005's ordered file-segment plans; it is not arbitrary Haxe expression lowering, a full mixed-template backend, or a claim over existing WordPress template directories.
 
 `WPHX-COMP-PHP-SEGMENT-MANIFEST` adds structured `segment_plans` metadata to the WPHX PHP emission manifest for those generated script adapters. Each plan records the original path, adapter name, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs. This makes the compiler output itself consumable by future Adapter IR tooling or a broader backend without moving behavior out of the existing bounded fixtures.
+
+`WPHX-COMP-PHP-SEGMENT-SNAPSHOT` extends the public-shell snapshot lane so the same structured `segment_plans` metadata is checked during generated-shape snapshots for the admin-style shell, nested parent, and nested partial. This guards the compiler metadata contract in the same place that guards selected generated PHP source shape, while leaving behavior parity in the focused oracle/candidate runners.
 
 ## Adapter IR
 

@@ -45,6 +45,7 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/conditional-global-class-smoke/generated/wphx-php-emission.v1.json",
         "bytes": 1192,
@@ -83,6 +84,7 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wphx-php-emission.v1.json",
         "bytes": 639,
@@ -133,6 +135,7 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wphx-php-emission.v1.json",
         "bytes": 1247,
@@ -173,6 +176,7 @@
           }
         ]
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/by-reference-global-function/generated/wphx-php-emission.v1.json",
         "bytes": 658,
@@ -215,6 +219,7 @@
         ],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wphx-php-emission.v1.json",
         "bytes": 661,
@@ -261,6 +266,7 @@
           }
         ]
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wphx-php-emission.v1.json",
         "bytes": 963,
@@ -303,6 +309,7 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wphx-php-emission.v1.json",
         "bytes": 1077,
@@ -339,6 +346,7 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/include-side-effect-script/generated/wphx-php-emission.v1.json",
         "bytes": 819,
@@ -383,6 +391,62 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": {
+        "path": "wp-admin/wphx-template-segment-admin.php",
+        "adapter": "template-segment-admin-style",
+        "adoption_mode": "compiler_emitted_segment_shell",
+        "segments": [
+          "guard",
+          "declaration",
+          "script",
+          "literal_output",
+          "template_expression",
+          "control",
+          "script",
+          "return_exit"
+        ],
+        "caller_scope": [
+          {
+            "kind": "reads_locals",
+            "names": [
+              "title",
+              "notice",
+              "items",
+              "screen"
+            ]
+          },
+          {
+            "kind": "mutates_locals",
+            "names": [
+              "notice",
+              "items"
+            ]
+          },
+          {
+            "kind": "mutates_objects",
+            "names": [
+              "screen.rendered"
+            ]
+          },
+          {
+            "kind": "globals",
+            "names": [
+              "wphx_segment_trace"
+            ]
+          }
+        ],
+        "include_semantics": [],
+        "observable_effects": [
+          "guard_return",
+          "mixed_output_order",
+          "escaped_output",
+          "local_array_mutation",
+          "object_mutation",
+          "global_trace",
+          "include_return_value"
+        ],
+        "unsupported": []
+      },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-admin-style/generated/wphx-php-emission.v1.json",
         "bytes": 2270,
@@ -425,6 +489,59 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": {
+        "path": "wp-admin/wphx-template-nested-parent.php",
+        "adapter": "template-segment-nested-parent",
+        "adoption_mode": "compiler_emitted_segment_shell",
+        "segments": [
+          "guard",
+          "declaration",
+          "script",
+          "literal_output",
+          "template_expression",
+          "include",
+          "script",
+          "return_exit"
+        ],
+        "caller_scope": [
+          {
+            "kind": "reads_locals",
+            "names": [
+              "title",
+              "items",
+              "screen"
+            ]
+          },
+          {
+            "kind": "creates_locals",
+            "names": [
+              "partial_marker",
+              "partial_return"
+            ]
+          },
+          {
+            "kind": "globals",
+            "names": [
+              "wphx_nested_segment_trace"
+            ]
+          }
+        ],
+        "include_semantics": [
+          "nested_include",
+          "include_return_value",
+          "repeated_include",
+          "include_once_second_return_true",
+          "function_scope_include_locals"
+        ],
+        "observable_effects": [
+          "guard_return",
+          "mixed_output_order",
+          "escaped_output",
+          "global_trace",
+          "include_return_value"
+        ],
+        "unsupported": []
+      },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-parent/generated/wphx-php-emission.v1.json",
         "bytes": 4128,
@@ -463,6 +580,61 @@
         "protected_methods": [],
         "by_reference_parameters": []
       },
+      "segment_plan_contract": {
+        "path": "wp-admin/includes/wphx-template-nested-partial.php",
+        "adapter": "template-segment-nested-partial",
+        "adoption_mode": "compiler_emitted_segment_shell",
+        "segments": [
+          "script",
+          "literal_output",
+          "template_expression",
+          "return_exit"
+        ],
+        "caller_scope": [
+          {
+            "kind": "reads_locals",
+            "names": [
+              "items",
+              "screen",
+              "partial_marker"
+            ]
+          },
+          {
+            "kind": "mutates_locals",
+            "names": [
+              "items"
+            ]
+          },
+          {
+            "kind": "mutates_objects",
+            "names": [
+              "screen.partial"
+            ]
+          },
+          {
+            "kind": "globals",
+            "names": [
+              "wphx_nested_segment_trace"
+            ]
+          }
+        ],
+        "include_semantics": [
+          "nested_include",
+          "include_return_value",
+          "repeated_include",
+          "include_once_second_return_true",
+          "function_scope_include_locals"
+        ],
+        "observable_effects": [
+          "mixed_output_order",
+          "escaped_output",
+          "local_array_mutation",
+          "object_mutation",
+          "global_trace",
+          "include_return_value"
+        ],
+        "unsupported": []
+      },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-partial/generated/wphx-php-emission.v1.json",
         "bytes": 4128,
@@ -481,7 +653,8 @@
     "top_level_bootstrap_side_effect": true,
     "include_return_or_direct_file_scope_script": true,
     "template_segment_shell": true,
-    "nested_template_segment_shell": true
+    "nested_template_segment_shell": true,
+    "segment_plan_metadata": true
   },
   "pending_shell_shape_gaps": [],
   "validation_result": {
@@ -492,6 +665,7 @@
     "php_lint_passed": true,
     "exact_contracts_passed": true,
     "ast_contracts_passed": true,
+    "segment_plan_contracts_passed": true,
     "unsupported_empty": true
   }
 }

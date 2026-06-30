@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 325,
+  "closed_task_count": 326,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -3199,6 +3199,16 @@
       ]
     },
     {
+      "external_ref": "WPHX-COMP-PHP-SEGMENT-SNAPSHOT",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-segment-snapshot.v1.json",
+          "sha256": "7acf60d34db26d517b10951f35bba5834cefd46d7e0f66e209f517b6ab719b86",
+          "id": "receipt:wphx-comp-php-segment-snapshot"
+        }
+      ]
+    },
+    {
       "external_ref": "WPHX-COMP-PHP-SHELL-RETIREMENT",
       "receipts": [
         {
@@ -3213,7 +3223,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "c415a3857384d5ca1759b11890ed9f4fadf2aa55010ab2b2d4bbe7a157036296",
+          "sha256": "5ddaeee57d75aa52dcc6058948e6ba4891a29a063c9ffc119a884c86a8fc4542",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]
@@ -3233,7 +3243,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-template-segment-model.v1.json",
-          "sha256": "505f572e260808776be7b5c15a8c88820accae85efe2e1c880b4e7fea95adc87",
+          "sha256": "920f2fe0e93cf0807f9ea4e3d3bf1be117f5911371830eabb326c2c2f97a5e70",
           "id": "receipt:wphx-comp-php-template-segment-model"
         }
       ]

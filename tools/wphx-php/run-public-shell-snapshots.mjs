@@ -172,6 +172,21 @@ const CASES = [
     ],
     ast_expect: {
       functions: ["wphx_segment_escape", "wphx_segment_row_class"]
+    },
+    expected_segment_plan: {
+      path: "wp-admin/wphx-template-segment-admin.php",
+      adapter: "template-segment-admin-style",
+      adoption_mode: "compiler_emitted_segment_shell",
+      segments: ["guard", "declaration", "script", "literal_output", "template_expression", "control", "script", "return_exit"],
+      caller_scope: [
+        { kind: "reads_locals", names: ["title", "notice", "items", "screen"] },
+        { kind: "mutates_locals", names: ["notice", "items"] },
+        { kind: "mutates_objects", names: ["screen.rendered"] },
+        { kind: "globals", names: ["wphx_segment_trace"] }
+      ],
+      include_semantics: [],
+      observable_effects: ["guard_return", "mixed_output_order", "escaped_output", "local_array_mutation", "object_mutation", "global_trace", "include_return_value"],
+      unsupported: []
     }
   },
   {
@@ -189,6 +204,20 @@ const CASES = [
     ],
     ast_expect: {
       functions: ["wphx_nested_segment_escape"]
+    },
+    expected_segment_plan: {
+      path: "wp-admin/wphx-template-nested-parent.php",
+      adapter: "template-segment-nested-parent",
+      adoption_mode: "compiler_emitted_segment_shell",
+      segments: ["guard", "declaration", "script", "literal_output", "template_expression", "include", "script", "return_exit"],
+      caller_scope: [
+        { kind: "reads_locals", names: ["title", "items", "screen"] },
+        { kind: "creates_locals", names: ["partial_marker", "partial_return"] },
+        { kind: "globals", names: ["wphx_nested_segment_trace"] }
+      ],
+      include_semantics: ["nested_include", "include_return_value", "repeated_include", "include_once_second_return_true", "function_scope_include_locals"],
+      observable_effects: ["guard_return", "mixed_output_order", "escaped_output", "global_trace", "include_return_value"],
+      unsupported: []
     }
   },
   {
@@ -203,7 +232,22 @@ const CASES = [
       "<div class=\"wphx-partial\" data-marker=\"<?php echo wphx_nested_segment_escape($partial_marker); ?>\">",
       "'marker' => 'segment:NESTED-PARTIAL'"
     ],
-    ast_expect: {}
+    ast_expect: {},
+    expected_segment_plan: {
+      path: "wp-admin/includes/wphx-template-nested-partial.php",
+      adapter: "template-segment-nested-partial",
+      adoption_mode: "compiler_emitted_segment_shell",
+      segments: ["script", "literal_output", "template_expression", "return_exit"],
+      caller_scope: [
+        { kind: "reads_locals", names: ["items", "screen", "partial_marker"] },
+        { kind: "mutates_locals", names: ["items"] },
+        { kind: "mutates_objects", names: ["screen.partial"] },
+        { kind: "globals", names: ["wphx_nested_segment_trace"] }
+      ],
+      include_semantics: ["nested_include", "include_return_value", "repeated_include", "include_once_second_return_true", "function_scope_include_locals"],
+      observable_effects: ["mixed_output_order", "escaped_output", "local_array_mutation", "object_mutation", "global_trace", "include_return_value"],
+      unsupported: []
+    }
   }
 ];
 
@@ -320,6 +364,12 @@ function assertIncludes(actual, expected, label) {
   }
 }
 
+function assertJsonEqual(actual, expected, label) {
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) {
+    throw new Error(`Unexpected ${label}:\nactual=${JSON.stringify(actual, null, 2)}\nexpected=${JSON.stringify(expected, null, 2)}`);
+  }
+}
+
 function validateAstContract(contract, expected) {
   assertIncludes(contract.functions, expected.functions, "function");
   assertIncludes(contract.classes, expected.classes, "class");
@@ -327,6 +377,19 @@ function validateAstContract(contract, expected) {
   assertIncludes(contract.methods, expected.methods, "method");
   assertIncludes(contract.protected_methods, expected.protected_methods, "protected method");
   assertIncludes(contract.by_reference_parameters, expected.by_reference_parameters, "by-reference parameter");
+}
+
+function normalizeSegmentPlan(plan) {
+  return {
+    path: plan.path,
+    adapter: plan.adapter,
+    adoption_mode: plan.adoption_mode,
+    segments: plan.segments,
+    caller_scope: plan.caller_scope.map((entry) => ({ kind: entry.kind, names: entry.names })),
+    include_semantics: plan.include_semantics,
+    observable_effects: plan.observable_effects,
+    unsupported: plan.unsupported
+  };
 }
 
 function writeOrCheck(path, content) {
@@ -366,6 +429,15 @@ function main() {
     if (manifest.unsupported.length !== 0) {
       throw new Error(`Generated shell ${fixtureCase.id} has unsupported constructs: ${JSON.stringify(manifest.unsupported)}`);
     }
+    let segmentPlanContract = null;
+    if (fixtureCase.expected_segment_plan) {
+      const actualPlan = manifest.segment_plans?.find((plan) => plan.path === fixtureCase.expected_segment_plan.path);
+      if (!actualPlan) {
+        throw new Error(`Generated shell ${fixtureCase.id} is missing segment_plan metadata for ${fixtureCase.expected_segment_plan.path}`);
+      }
+      segmentPlanContract = normalizeSegmentPlan(actualPlan);
+      assertJsonEqual(segmentPlanContract, fixtureCase.expected_segment_plan, `${fixtureCase.id} segment_plan metadata`);
+    }
 
     results.push({
       id: fixtureCase.id,
@@ -380,6 +452,7 @@ function main() {
       php_lint: "passed",
       exact_patterns: fixtureCase.exact_patterns,
       ast_contract: contract,
+      segment_plan_contract: segmentPlanContract,
       manifest: inputRecord(first.manifestPath)
     });
   }
@@ -407,7 +480,8 @@ function main() {
         item.shell_shapes.includes("include_return_or_direct_file_scope_script")
       ),
       template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell")),
-      nested_template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell") && item.shell_shapes.includes("nested_include"))
+      nested_template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell") && item.shell_shapes.includes("nested_include")),
+      segment_plan_metadata: results.some((item) => item.segment_plan_contract != null)
     },
     pending_shell_shape_gaps: [],
     validation_result: {
@@ -418,6 +492,7 @@ function main() {
       php_lint_passed: true,
       exact_contracts_passed: true,
       ast_contracts_passed: true,
+      segment_plan_contracts_passed: true,
       unsupported_empty: true
     }
   };
@@ -442,6 +517,7 @@ function main() {
     claims: [
       "WPHX PHP public-shell generated shapes are compiled twice from clean roots and checked for byte stability.",
       "The snapshot lane covers current generated global function, public class/interface, protected method, by-reference parameter, conditional declaration, native array mutation, top-level bootstrap side-effect, and include-return/direct file-scope script shell shapes.",
+      "Template segment shell cases assert compiler-emitted segment_plan metadata for original path, adapter, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs.",
       "Selected exact PHP excerpts and AST-normalized declarations are checked without treating generated shape as behavior parity."
     ],
     non_claims: [
