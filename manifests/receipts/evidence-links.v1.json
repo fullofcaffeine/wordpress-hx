@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 335,
+  "closed_task_count": 336,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "0ad5d349288c3fc02aa3526b00345c6a5cae01897ba490d615ef7c7af142fbc1",
+          "sha256": "c92fe09234505daa01775368b851a8886bf84cdcbd3fa982562273159f3d7abe",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -3153,7 +3153,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
-          "sha256": "880399d704d2962f9525fc2a4f082338fdff83be9d8eaeed460c47766a748f86",
+          "sha256": "0a2a29e2178387217cfae3c483bcfaa84e8858de547206c69337a20ad5a4525e",
           "id": "receipt:wphx-comp-php-group-wp-http-helpers"
         }
       ]
@@ -3185,6 +3185,16 @@
           "path": "receipts/operations/wphx-comp-php-oracle-response.v1.json",
           "sha256": "c9dcd86d53b9b94495caab7ffa0a5d393956b44a4c68d11163b843c52856747d",
           "id": "receipt:wphx-comp-php-oracle-response"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-PROFILE-ADAPTER-REGISTRY",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-profile-adapter-registry.v1.json",
+          "sha256": "a8d235e813322dea2cdfdeed3a22e22d4c7617de7e9e976170733ec1cd286c2e",
+          "id": "receipt:wphx-comp-php-profile-adapter-registry"
         }
       ]
     },
@@ -3383,7 +3393,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-06-wp-http-build-cookie-header.v1.json",
-          "sha256": "705d1397da8df2fa05207ab811836251bb0114aa48e64c089dc0b0d02eff8fe9",
+          "sha256": "cb2d0b74f933cb53d8330985a34b364787ee5e15835d55fae52a1786f83d3b97",
           "id": "receipt:wphx-comp-php-06-wp-http-build-cookie-header"
         }
       ]
@@ -3393,7 +3403,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-07-wp-http-process-headers.v1.json",
-          "sha256": "33f7064ab4fcae0b462b52465f994b97e27d31af74b530dc29c123b266f929eb",
+          "sha256": "26b1b3165781a7fe7d024af4748c1a26048b4135bdcf89bb320d3f84010107ad",
           "id": "receipt:wphx-comp-php-07-wp-http-process-headers"
         }
       ]

@@ -85,7 +85,7 @@ private enum AdapterMethodBody
 	TypedExprMethodBody(expr:TypedExpr);
 }
 
-private enum PhpCoreStmt
+enum PhpCoreStmt
 {
 	PhpIf(condition:PhpCoreExpr, body:Array<PhpCoreStmt>);
 	PhpIfElse(condition:PhpCoreExpr, body:Array<PhpCoreStmt>, elseBody:Array<PhpCoreStmt>);
@@ -101,7 +101,7 @@ private enum PhpCoreStmt
 	PhpContinue;
 }
 
-private enum PhpCoreExpr
+enum PhpCoreExpr
 {
 	PhpVar(name:String);
 	PhpInt(value:Int);
@@ -125,7 +125,7 @@ private enum PhpCoreExpr
 	PhpCastString(expr:PhpCoreExpr);
 }
 
-private typedef PhpCoreArrayEntry =
+typedef PhpCoreArrayEntry =
 {
 	final key:Null<PhpCoreExpr>;
 	final value:PhpCoreExpr;
@@ -955,22 +955,19 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		final adapter = metadataString(field.meta.get(), "wp.adapter");
 		if (adapter != null)
 		{
-			return switch (adapter)
+			final plan = WphxPhpWordPressAdapters.methodBody(adapter, field.name, metadataString(field.meta.get(), "wp.haxeHelper"));
+			if (plan == null)
 			{
-				case "wp-http-process-headers":
-					emitWpHttpProcessHeadersBody(field);
-				case "wp-http-build-cookie-header":
-					emitWpHttpBuildCookieHeaderBody(field);
-				case "wp-http-is-ip-address":
-					emitWpHttpIsIpAddressBody(field);
-				case "wp-http-browser-redirect-compatibility":
-					emitWpHttpBrowserRedirectCompatibilityBody(field);
-				case "wp-http-validate-redirects":
-					emitWpHttpValidateRedirectsBody(field);
-				case _:
-					reportUnsupported("unsupported WPHX PHP method adapter " + adapter + " for " + field.name);
-					"";
+				reportUnsupported("unsupported WPHX PHP method adapter " + adapter + " for " + field.name);
+				return "";
 			}
+			if (plan.error != null)
+			{
+				reportUnsupported(plan.error);
+				return "";
+			}
+			recordCoreIrFeatures(plan.features);
+			return emitPhpCoreStatements(plan.statements);
 		}
 
 		return switch (body)
@@ -978,234 +975,6 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			case TypedExprMethodBody(expr):
 				emitBody(expr);
 		}
-	}
-
-	function emitWpHttpProcessHeadersBody(field:ClassField):String
-	{
-		final helper = metadataString(field.meta.get(), "wp.haxeHelper");
-		if (helper == null)
-		{
-			reportUnsupported("missing @:wp.haxeHelper for WP_Http::processHeaders adapter " + field.name);
-			return "";
-		}
-
-		recordCoreIrFeatures([
-			"stmt.if",
-			"stmt.if-else",
-			"stmt.for",
-			"stmt.foreach",
-			"stmt.assign",
-			"stmt.var",
-			"stmt.return",
-			"stmt.break",
-			"stmt.continue",
-			"expr.array-read",
-			"expr.array-append",
-			"expr.array-coerce",
-			"expr.coerce-int",
-			"expr.coerce-string",
-			"expr.long-array",
-			"expr.new",
-			"expr.function-call",
-			"expr.static-call",
-			"expr.binop",
-			"expr.assign"
-		]);
-
-		final headers = PhpVar("headers");
-		final response = PhpVar("response");
-		final newheaders = PhpVar("newheaders");
-		final cookies = PhpVar("cookies");
-		final tempheader = PhpVar("tempheader");
-		final key = PhpVar("key");
-		final value = PhpVar("value");
-		final i = PhpVar("i");
-		final headersAtI = PhpArrayRead(headers, i);
-		final newHeaderAtKey = PhpArrayRead(newheaders, key);
-
-		final statements = [
-			PhpIf(PhpFunctionCall("is_string", [headers]), [
-				PhpAssign(headers, PhpFunctionCall("str_replace", [PhpString("\r\n"), PhpString("\n"), headers])),
-				PhpAssign(headers, PhpFunctionCall("preg_replace", [PhpString("/\n[ \t]/"), PhpString(" "), headers])),
-				PhpAssign(headers, PhpFunctionCall("explode", [PhpString("\n"), headers]))
-			]),
-			PhpLocal("response", PhpLongArray([
-				{
-					key: PhpString("code"),
-					value: PhpInt(0)
-				},
-				{key: PhpString("message"), value: PhpString("")}
-			])),
-			PhpFor(PhpAssignExpr(i, PhpBinop("-", PhpFunctionCall("count", [headers]), PhpInt(1))), PhpBinop(">=", i, PhpInt(0)), PhpPostDecrement(i), [
-				PhpIf(PhpBinop("&&", PhpNot(PhpFunctionCall("empty", [headersAtI])),
-					PhpStaticCall(helper, "startsFinalResponseBlock", [PhpCastString(headersAtI)])),
-					[PhpAssign(headers, PhpFunctionCall("array_splice", [headers, i])), PhpBreak])
-			]),
-			PhpLocal("cookies", PhpLongArray([])),
-			PhpLocal("newheaders", PhpLongArray([])),
-			PhpForeach(PhpCastArray(headers), "tempheader", [
-				PhpIf(PhpFunctionCall("empty", [tempheader]), [PhpContinue]),
-				PhpIf(PhpNot(PhpStaticCall(helper, "isHeaderLine", [PhpCastString(tempheader)])),
-					[
-						PhpAssign(PhpArrayRead(response, PhpString("code")), PhpStaticCall(helper, "responseCode", [PhpCastString(tempheader)])),
-						PhpAssign(PhpArrayRead(response, PhpString("message")), PhpStaticCall(helper, "responseMessage", [PhpCastString(tempheader)])),
-						PhpContinue
-					]),
-				PhpLocal("key", PhpStaticCall(helper, "headerKey", [PhpCastString(tempheader)])),
-				PhpLocal("value", PhpStaticCall(helper, "headerValue", [PhpCastString(tempheader)])),
-				PhpIfElse(PhpFunctionCall("isset", [newHeaderAtKey]), [
-					PhpIf(PhpNot(PhpFunctionCall("is_array", [newHeaderAtKey])), [
-						PhpAssign(newHeaderAtKey, PhpLongArray([
-							{
-								key: null,
-								value: newHeaderAtKey
-							}
-						]))
-					]),
-					PhpAssign(PhpArrayAppend(newHeaderAtKey), value)
-				], [PhpAssign(newHeaderAtKey, value)]),
-				PhpIf(PhpBinop("===", PhpString("set-cookie"), key), [
-					PhpAssign(PhpArrayAppend(cookies), PhpNew("WP_Http_Cookie", [value, PhpVar("url")]))
-				])
-			]),
-			PhpAssign(PhpArrayRead(response, PhpString("code")), PhpCastInt(PhpArrayRead(response, PhpString("code")))),
-			PhpReturn(PhpLongArray([
-				{
-					key: PhpString("response"),
-					value: response
-				},
-				{key: PhpString("headers"), value: newheaders},
-				{key: PhpString("cookies"), value: cookies}
-			]))
-		];
-		return emitPhpCoreStatements(statements);
-	}
-
-	// WordPress profile adapter. The profile still decides which PHP-visible
-	// boundary shape is required; the method body is emitted through reusable
-	// PHP-core statement/expression IR so processHeaders and later adapters can
-	// depend on the same lowering nodes.
-	function emitWpHttpBuildCookieHeaderBody(field:ClassField):String
-	{
-		final helper = metadataString(field.meta.get(), "wp.haxeHelper");
-		if (helper == null)
-		{
-			reportUnsupported("missing @:wp.haxeHelper for WP_Http::buildCookieHeader adapter " + field.name);
-			return "";
-		}
-
-		recordCoreIrFeatures([
-			"stmt.if",
-			"stmt.foreach",
-			"stmt.foreach-key-value",
-			"stmt.assign",
-			"stmt.var",
-			"expr.array-read",
-			"expr.array-write-target",
-			"expr.array-coerce",
-			"expr.long-array",
-			"expr.new",
-			"expr.function-call",
-			"expr.method-call",
-			"expr.static-call"
-		]);
-
-		final cookies = PhpArrayRead(PhpVar("r"), PhpString("cookies"));
-		final headerTarget = PhpArrayRead(PhpArrayRead(PhpVar("r"), PhpString("headers")), PhpString("cookie"));
-		final statements = [
-			PhpIf(PhpNot(PhpFunctionCall("empty", [cookies])), [
-				PhpForeachKeyValue(cookies, "name", "value", [
-					PhpIf(PhpNot(PhpFunctionCall("is_object", [PhpVar("value")])), [
-						PhpAssign(PhpArrayRead(cookies, PhpVar("name")), PhpNew("WP_Http_Cookie", [
-							PhpLongArray([
-								{
-									key: PhpString("name"),
-									value: PhpVar("name")
-								},
-								{key: PhpString("value"), value: PhpVar("value")}
-							])
-						]))
-					])
-				]),
-				PhpLocal("cookies_header", PhpString("")),
-				PhpForeach(PhpCastArray(cookies), "cookie", [
-					PhpAssign(PhpVar("cookies_header"),
-						PhpStaticCall(helper, "appendCookieHeader", [PhpVar("cookies_header"), PhpMethodCall(PhpVar("cookie"), "getHeaderValue", [])]))
-				]),
-				PhpAssign(headerTarget, PhpVar("cookies_header"))
-			])
-		];
-		return emitPhpCoreStatements(statements);
-	}
-
-	function emitWpHttpBrowserRedirectCompatibilityBody(field:ClassField):String
-	{
-		final helper = metadataString(field.meta.get(), "wp.haxeHelper");
-		if (helper == null)
-		{
-			reportUnsupported("missing @:wp.haxeHelper for WP_Http::browser_redirect_compatibility adapter " + field.name);
-			return "";
-		}
-
-		recordCoreIrFeatures([
-			"stmt.if",
-			"stmt.assign",
-			"expr.array-write-target",
-			"expr.object-property",
-			"expr.class-const",
-			"expr.static-call",
-			"expr.coerce-int"
-		]);
-
-		return emitPhpCoreStatements([
-			PhpIf(PhpStaticCall(helper, "shouldUseBrowserGet", [PhpCastInt(PhpObjectProperty(PhpVar("original"), "status_code"))]), [
-				PhpAssign(PhpArrayRead(PhpVar("options"), PhpString("type")), PhpClassConst("\\WpOrg\\Requests\\Requests", "GET"))
-			])
-		]);
-	}
-
-	function emitWpHttpIsIpAddressBody(field:ClassField):String
-	{
-		final helper = metadataString(field.meta.get(), "wp.haxeHelper");
-		if (helper == null)
-		{
-			reportUnsupported("missing @:wp.haxeHelper for WP_Http::is_ip_address adapter " + field.name);
-			return "";
-		}
-
-		recordCoreIrFeatures(["stmt.return", "expr.static-call", "expr.coerce-string"]);
-
-		return emitPhpCoreStatements([
-			PhpReturn(PhpStaticCall(helper, "ipAddressVersion", [PhpCastString(PhpVar("maybe_ip"))]))
-		]);
-	}
-
-	function emitWpHttpValidateRedirectsBody(field:ClassField):String
-	{
-		final helper = metadataString(field.meta.get(), "wp.haxeHelper");
-		if (helper == null)
-		{
-			reportUnsupported("missing @:wp.haxeHelper for WP_Http::validate_redirects adapter " + field.name);
-			return "";
-		}
-
-		recordCoreIrFeatures([
-			"stmt.if",
-			"stmt.throw",
-			"expr.coerce-bool",
-			"expr.function-call",
-			"expr.new",
-			"expr.static-call"
-		]);
-
-		return emitPhpCoreStatements([
-			PhpIf(PhpStaticCall(helper, "shouldRejectRedirect", [PhpCastBool(PhpFunctionCall("wp_http_validate_url", [PhpVar("location")]))]), [
-				PhpThrow(PhpNew("\\WpOrg\\Requests\\Exception", [
-					PhpFunctionCall("__", [PhpString("A valid URL was not provided.")]),
-					PhpString("wp_http.redirect_failed_validation")
-				]))
-			])
-		]);
 	}
 
 	function emitPhpCoreStatements(statements:Array<PhpCoreStmt>, depth:Int = 0):String

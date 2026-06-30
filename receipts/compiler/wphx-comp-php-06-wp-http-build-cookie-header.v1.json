@@ -24,6 +24,7 @@
     "fixtures/wphx-php/wp-http-build-cookie-header.hxml",
     "fixtures/wphx-php/wp-http-build-cookie-header-impl.hxml",
     "src/wphx/compiler/php/WphxPhpCompiler.hx",
+    "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
     "src/wphx/wp/http/HttpCookieHeaderAssembly.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieHeaderAssemblyCandidateEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpBuildCookieHeaderEntry.hx",
@@ -48,8 +49,8 @@
     ],
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-comp-php-06/generated/wphx-php-emission.v1.json",
-      "bytes": 940,
-      "sha256": "sha256:f04afb16f20c386ca93c84baa09a9887567f77a1ace75e490f1f0ae67892de19"
+      "bytes": 963,
+      "sha256": "sha256:f4096011d387a69d74acf807759a859f08e042a7478e28b50aaccedcdbe4e06f"
     }
   },
   "validation_result": {

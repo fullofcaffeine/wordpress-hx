@@ -30,6 +30,7 @@ const HAXE_SOURCES = [
   WPHX_PHP_HXML,
   HAXE_IMPL_HXML,
   "src/wphx/compiler/php/WphxPhpCompiler.hx",
+  "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
   "src/wphx/wp/http/HttpCookieHeaderAssembly.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieHeaderAssemblyCandidateEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpBuildCookieHeaderEntry.hx",

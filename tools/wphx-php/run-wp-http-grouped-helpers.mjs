@@ -40,6 +40,7 @@ const HAXE_SOURCES = [
   WPHX_PHP_HXML,
   HAXE_IMPL_HXML,
   "src/wphx/compiler/php/WphxPhpCompiler.hx",
+  "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
   "src/wphx/wp/http/HttpProcessResponse.hx",
   "src/wphx/wp/http/HttpChunkTransferDecode.hx",
   "src/wphx/wp/http/HttpDeprecatedParseUrl.hx",

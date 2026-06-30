@@ -24,6 +24,7 @@
     "fixtures/wphx-php/wp-http-process-headers.hxml",
     "fixtures/wphx-php/wp-http-process-headers-impl.hxml",
     "src/wphx/compiler/php/WphxPhpCompiler.hx",
+    "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
     "src/wphx/wp/http/HttpProcessHeaders.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProcessHeadersCandidateEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpProcessHeadersEntry.hx",
@@ -48,8 +49,8 @@
     ],
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-comp-php-07/generated/wphx-php-emission.v1.json",
-      "bytes": 1054,
-      "sha256": "sha256:96f9b50d168602ee6668c6a356ab1785eedc5072924a7a477613243977ae803b"
+      "bytes": 1077,
+      "sha256": "sha256:55e90533beec8e9c7c67e9459a0142b709297ef7b5365bfd4acb6495e142a408"
     }
   },
   "validation_result": {

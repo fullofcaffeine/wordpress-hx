@@ -50,7 +50,7 @@
     "receipt_refs": [
       "receipt:wphx-comp-php-group-wp-http-helpers"
     ],
-    "manifest_digest": "sha256:adde91a408cdd684a56095f2dc21b729516b59d6e48daedb244a2149442cc461"
+    "manifest_digest": "sha256:fcfdea85808f8eb2c2ba52bb0541a971d6f0b6f89bb53ffcc169936bc62d5d41"
   },
   "notes": "This grouped shell proves neighboring helpers can coexist in one generated original-path WP_Http adapter. It does not claim WP_Http::request, whole-file WP_Http ownership, live HTTP transport, installed behavior, or mixed-template ownership."
 }

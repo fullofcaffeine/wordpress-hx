@@ -1,0 +1,74 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-profile-adapter-registry",
+  "issue": {
+    "id": "wordpresshx-an3",
+    "external_ref": "WPHX-COMP-PHP-PROFILE-ADAPTER-REGISTRY",
+    "title": "Move WordPress-specific adapter bodies out of compiler core"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_profile_adapter_registry_refactor",
+  "artifact_scope": "wphx_php_wordpress_profile_adapter_plans",
+  "commands": [
+    "npm run wphx:php:wp-http-grouped-helpers",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wphx:php:wp-http-build-cookie-header",
+    "npm run wphx:php:wp-http-build-cookie-header:check",
+    "npm run wphx:php:wp-http-process-headers",
+    "npm run wphx:php:wp-http-process-headers:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "generic WPHX PHP compiler core retaining PHP IR, feature recording, file planning, bootstrap, manifest, and printer behavior"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter registry for bounded wp-http-* method body plans"
+    },
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http helper compiler manifest proving eight adapter cases still pass"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http helper compiler receipt after profile registry split"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "operations documentation for compiler core versus WordPress profile registry responsibilities"
+    },
+    {
+      "path": "docs/adr/ADR-013-wphx-php-adapter-ir-and-scope.md",
+      "role": "architecture decision updated with profile registry boundary"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program progress note for profile adapter registry cleanup"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "grouped_wp_http_helpers_cases": 8,
+    "build_cookie_header_gate_passed": true,
+    "process_headers_gate_passed": true,
+    "public_shell_snapshot_cases": 11,
+    "compiler_core_contains_direct_wp_http_adapter_body_builders": false,
+    "wordpress_profile_registry_present": true,
+    "unsupported_empty": true
+  },
+  "claims": [
+    "WordPress-specific wp-http-* method body construction moved behind WphxPhpWordPressAdapters.hx.",
+    "WphxPhpCompiler.hx still owns generic PHP IR, feature recording, file planning, bootstrap, manifest writing, and printing.",
+    "The grouped WP_Http helper gate, buildCookieHeader gate, processHeaders gate, and public-shell snapshots remain green after the registry split."
+  ],
+  "non_claims": [
+    "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend.",
+    "This does not claim all WordPress adapter profiles are extracted or that future non-WP profiles exist.",
+    "This does not claim whole-file WP_Http ownership or WP_Http::request ownership."
+  ]
+}
