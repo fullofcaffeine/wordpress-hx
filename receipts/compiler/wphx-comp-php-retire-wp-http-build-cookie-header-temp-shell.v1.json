@@ -1,0 +1,81 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-build-cookie-header-temp-shell",
+  "issue": {
+    "id": "wordpresshx-48x",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-BUILD-COOKIE-HEADER-TEMP-SHELL",
+    "title": "Retire the temporary WP_Http::buildCookieHeader public shell"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_public_shell_retirement",
+  "artifact_scope": "wp_http_build_cookie_header_candidate_boundary",
+  "commands": [
+    "npm run wp:core:wphx-312-wp-http-cookie-header-assembly-candidate",
+    "npm run wp:core:wphx-312-wp-http-cookie-header-assembly-candidate:check",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-cookie-header-assembly-candidate.mjs",
+      "role": "WPHX-312.63 runner that installs the compiler-emitted grouped WP_Http shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+      "role": "WPHX-312.63 manifest with compiler_emitted_public_php=true"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+      "role": "ownership manifest for the Haxe-owned buildCookieHeader assembly boundary"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+      "role": "WPHX-312.63 verification receipt"
+    },
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http compiler manifest proving unsupported=[]"
+    },
+    {
+      "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http compiler receipt"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+      "role": "typed WPHX PHP source for the grouped parser/header/cookie shell"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations note documenting the retired temporary shell"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program progress checkpoint for this compiler evidence"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "wphx_312_63_check_passed": true,
+    "compiler_emitted_public_php": true,
+    "build_cookie_header_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 11,
+    "whole_file_wp_http_claimed": false
+  },
+  "claims": [
+    "The WPHX-312.63 WP_Http::buildCookieHeader candidate now uses the WPHX compiler-emitted grouped original-path class-wp-http.php public shell.",
+    "The runner verifies the WPHX emission manifest records class:WP_Http with unsupported=[] and verifies public static function buildCookieHeader(&$r) exists before running the oracle/candidate behavior probe.",
+    "The previous copied or runner-patched temporary public PHP shell is no longer the authority for the buildCookieHeader boundary."
+  ],
+  "non_claims": [
+    "This does not claim whole-file WP_Http ownership.",
+    "This does not claim WP_Http::request, live HTTP transport, installed WordPress distribution behavior, or broad generated public PHP replacement.",
+    "This does not claim WPHX PHP is already a complete arbitrary-Haxe PHP backend."
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-63-wp-http-cookie-header-assembly-candidate",
+    "receipt:wphx-comp-php-group-wp-http-helpers",
+    "receipt:wphx-comp-php-public-shell-snapshots"
+  ]
+}

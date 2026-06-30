@@ -33,14 +33,19 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-cookie-header-assembly-candidate.mjs",
-      "bytes": 18820,
-      "sha256": "sha256:378ded53c5261020ef9e6f0cdc18620ff6b3bc0fe3b740b8b52f33976afa61dc"
+      "bytes": 19528,
+      "sha256": "sha256:7f7931dbb8b9087b14d03166ad87a880270580c68645d1cded4f371c11aefefd"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-cookie-header-assembly-candidate.hxml",
         "bytes": 136,
         "sha256": "sha256:97d85e88ac36d461fb1533d3754b9c23492d1d3418c11d4b113a2569a847d374"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
+        "bytes": 387,
+        "sha256": "sha256:0c1c7e5072df33c2bca2f8200ad03c213bc8ccd559df50812b7d71b490c309a9"
       },
       {
         "path": "src/wphx/wp/http/HttpCookieHeaderAssembly.hx",
@@ -51,8 +56,53 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCookieHeaderAssemblyCandidateEntry.hx",
         "bytes": 335,
         "sha256": "sha256:e3e43f2ef67ca3d45a6967628dd4615b1062e76773cefd0defe2793a7d0f92b5"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
+        "bytes": 553,
+        "sha256": "sha256:9fa7eaf86d9dfd5f16b0fbc892d09a5b146e68ffe8ae0af28c3d9b67da07697e"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+        "bytes": 2028,
+        "sha256": "sha256:4bd61a5190896569b2da49a922707552d783db3ecb98f412f266c524c06bc5ad"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieHeaderAssembly.hx",
+        "bytes": 339,
+        "sha256": "sha256:ef1e24f2f65fc45c7526899b4d37679b4c1d31cf0bb0e80559e6a8208f3df71d"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessHeaders.hx",
+        "bytes": 550,
+        "sha256": "sha256:09a1bc6c5efe014ed136e4839f0bc1d5dfc7eee94756b448b21a5bb25cd33482"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
+        "bytes": 359,
+        "sha256": "sha256:ebaf7352eab4fa3d6c7fd5563b7a78601b5001c01584a2532f0594322a41bfce"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpChunkTransferDecode.hx",
+        "bytes": 314,
+        "sha256": "sha256:d39a608a63881c5e8da002cc0698d1002697e84ec0f5d5fcfea5e9a829f674bb"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
+        "bytes": 506,
+        "sha256": "sha256:86e5d78ec9f4fb43da1e51c8d0a27513ce350b9c6511b48ff05b3913c801f5a1"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx",
+        "bytes": 302,
+        "sha256": "sha256:edf69b94b36c3034e065d6580bffc179cf3b4eb6d552cbe7664df1e0d735288c"
       }
     ],
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-63/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 1162,
+      "sha256": "sha256:9f17e912e3605967f3dcff9abc1298e746206415917d61bebe41180493cd4dab"
+    },
     "upstream_sources": [
       {
         "path": "src/wp-includes/class-wp-http-cookie.php",
@@ -70,6 +120,7 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-cookie-header-assembly-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "haxe_output": "build/wp-core/wphx-312-63/haxe",
     "compiled_php_files": [
       "build/wp-core/wphx-312-63/haxe/index.php",
@@ -90,21 +141,40 @@
       "build/wp-core/wphx-312-63/haxe/lib/wphx/fixtures/wp/core/HttpCookieHeaderAssemblyCandidateEntry.php",
       "build/wp-core/wphx-312-63/haxe/lib/wphx/wp/http/_HttpCookieHeaderAssembly/HttpCookieHeaderAssembly_Fields_.php"
     ],
+    "compiler_emitted_public_shell": {
+      "path": "build/wp-core/wphx-312-63/candidate/wp-includes/class-wp-http.php",
+      "source_path": "build/wp-core/wphx-312-63/wphx-php/wp-includes/class-wp-http.php",
+      "manifest": "build/wp-core/wphx-312-63/wphx-php/wphx-php-emission.v1.json",
+      "declarations": [
+        "class:WP_Http"
+      ],
+      "emitted_methods": [
+        {
+          "name": "buildCookieHeader",
+          "visibility": "public",
+          "by_reference_parameters": [
+            "r"
+          ]
+        }
+      ],
+      "unsupported": []
+    },
     "promoted_symbols": [
       "WP_Http::buildCookieHeader cookie header append order",
       "WP_Http::buildCookieHeader semicolon-space separator assembly",
       "WP_Http::buildCookieHeader trailing delimiter avoidance"
     ],
     "public_shell_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
       "public_php_abi_preserved": true,
-      "shell_body_ownership": "temporary candidate shell preserves by-reference request array mutation, scalar-to-WP_Http_Cookie upgrading, WP_Http_Cookie::getHeaderValue(), and filter timing while delegating Cookie header append/separator assembly to generated Haxe PHP",
+      "shell_body_ownership": "compiler-emitted original-path class-wp-http.php shell preserves by-reference request array mutation, scalar-to-WP_Http_Cookie upgrading, WP_Http_Cookie::getHeaderValue(), and filter timing while delegating Cookie header append/separator assembly to generated Haxe PHP",
       "native_boundaries": [
         "PHP request args array reference mutation",
         "scalar-to-WP_Http_Cookie upgrade",
         "WP_Http_Cookie::getHeaderValue object method",
         "wp_http_cookie_value filter timing and payloads",
-        "native headers and cookies array shapes"
+        "native headers and cookies array shapes",
+        "compiler-emitted original-path class-wp-http.php shell"
       ]
     }
   },
@@ -288,14 +358,9 @@
       "detail": "This candidate promotes only Cookie header separator assembly. PHP still owns request-array mutation, scalar cookie upgrade, WP_Http_Cookie object methods, filter dispatch, and native array shapes."
     },
     {
-      "id": "broader-parser-header-helpers-not-promoted",
+      "id": "whole-wp-http-file-not-yet-owned",
       "owner": "WPHX-312.63",
-      "detail": "processResponse, processHeaders, chunkTransferDecode, protected parse_url, and broader live header/transport behavior remain separate PHP boundaries or previously scoped candidates."
-    },
-    {
-      "id": "durable-public-php-adapter-not-yet-generated",
-      "owner": "WPHX-312.63",
-      "detail": "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+      "detail": "The candidate consumes a compiler-emitted grouped original-path class-wp-http.php shell for the buildCookieHeader boundary, but broader WP_Http methods and whole-file original-path ownership remain later compiler-driven gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
@@ -305,7 +370,10 @@
     "promoted_symbols": 3,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "build_cookie_header_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false
   }
