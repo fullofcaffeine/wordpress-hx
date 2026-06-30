@@ -363,11 +363,12 @@ const receipt = {
   validation_result: manifest.validation_result,
   claims: [
     "The WordPress adapter profile no longer permits inline PhpRawBlock PHP string bodies.",
-    "The only allowed PhpRawBlock form in WphxPhpWordPressAdapters.hx is PhpRawBlock(rendered.code), which points back to compiler-owned adapter template provenance.",
+    "The current WordPress adapter profile scan records zero PhpRawBlock occurrences.",
+    "If future compiler-owned templates are admitted, the only allowed PhpRawBlock form remains PhpRawBlock(rendered.code) with template provenance.",
     "The policy guard is wired into npm precommit checks."
   ],
   non_claims: [
-    "This does not claim that all adapter templates have been promoted to structured PHP IR.",
+    "This does not claim future adapter templates are forbidden when backed by a Beads task, provenance, and parity gates.",
     "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend.",
     "This does not claim additional WordPress runtime behavior parity."
   ]
@@ -414,13 +415,13 @@ const referenceReceipt = {
     every_rendered_template_php_lints: true
   },
   claims: [
-    "Every WordPress-profile renderTemplate call uses static adapter and template-path arguments that the guard can scan.",
-    "Every WordPress-profile renderTemplate path exists under the compiler-owned WordPress adapter template directory.",
-    "Every compiler-owned WordPress adapter template file is referenced by WphxPhpWordPressAdapters.hx.",
-    "Adapter template names used by the WordPress profile are unique."
+    "The current WordPress adapter profile scan records zero renderTemplate references.",
+    "Any future WordPress-profile renderTemplate call must use static adapter and template-path arguments that the guard can scan.",
+    "Any future compiler-owned WordPress adapter template file must be referenced by WphxPhpWordPressAdapters.hx.",
+    "Adapter template names used by the WordPress profile must be unique."
   ],
   non_claims: [
-    "This does not claim that all adapter templates have been promoted to structured PHP IR.",
+    "This does not claim future adapter templates are forbidden when backed by a Beads task, provenance, and parity gates.",
     "This does not claim additional WordPress runtime behavior parity.",
     "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
   ]
@@ -461,13 +462,12 @@ const contentReceipt = {
     every_rendered_template_php_lints: true
   },
   claims: [
-    "Every compiler-owned WordPress adapter template uses only valid {{PLACEHOLDER}} tokens.",
-    "Every template placeholder set matches the static renderTemplate replacement metadata in WphxPhpWordPressAdapters.hx.",
-    "Every template body renders with deterministic lint stand-ins and passes php -l inside a method-body wrapper."
+    "The current compiler-owned WordPress adapter template set is empty.",
+    "Any future compiler-owned WordPress adapter template must use only valid {{PLACEHOLDER}} tokens.",
+    "Any future template placeholder set must match the static renderTemplate replacement metadata and lint after deterministic rendering."
   ],
   non_claims: [
-    "This does not claim that adapter templates are runtime-complete outside their WordPress public method context.",
-    "This does not claim that all adapter templates have been promoted to structured PHP IR.",
+    "This does not claim future adapter templates are forbidden when backed by a Beads task, provenance, and parity gates.",
     "This does not claim additional WordPress runtime behavior parity."
   ]
 };

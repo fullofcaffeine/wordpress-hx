@@ -93,6 +93,7 @@ enum PhpCoreStmt
 	PhpFor(init:PhpCoreExpr, condition:PhpCoreExpr, update:PhpCoreExpr, body:Array<PhpCoreStmt>);
 	PhpForeach(iterable:PhpCoreExpr, valueVar:String, body:Array<PhpCoreStmt>);
 	PhpForeachKeyValue(iterable:PhpCoreExpr, keyVar:String, valueVar:String, body:Array<PhpCoreStmt>);
+	PhpTryCatch(tryBody:Array<PhpCoreStmt>, catchType:String, catchVar:String, catchBody:Array<PhpCoreStmt>);
 	PhpAssign(target:PhpCoreExpr, value:PhpCoreExpr);
 	PhpListAssign(names:Array<String>, value:PhpCoreExpr);
 	PhpLocal(name:String, value:PhpCoreExpr);
@@ -113,6 +114,7 @@ enum PhpCoreExpr
 	PhpBool(value:Bool);
 	PhpInt(value:Int);
 	PhpString(value:String);
+	PhpConst(name:String);
 	PhpArrayRead(base:PhpCoreExpr, key:PhpCoreExpr);
 	PhpArrayAppend(base:PhpCoreExpr);
 	PhpLongArray(entries:Array<PhpCoreArrayEntry>);
@@ -1066,6 +1068,21 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				+ "\n"
 				+ prefix
 				+ "}";
+			case PhpTryCatch(tryBody, catchType, catchVar, catchBody):
+				prefix
+				+ "try {\n"
+				+ emitPhpCoreStatements(tryBody, depth + 1)
+				+ "\n"
+				+ prefix
+				+ "} catch ("
+				+ catchType
+				+ " $"
+				+ phpIdent(catchVar)
+				+ ") {\n"
+				+ emitPhpCoreStatements(catchBody, depth + 1)
+				+ "\n"
+				+ prefix
+				+ "}";
 			case PhpAssign(target, value):
 				prefix + emitPhpCoreExpr(target, depth) + " = " + emitPhpCoreExpr(value, depth) + ";";
 			case PhpListAssign(names, value):
@@ -1110,6 +1127,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				Std.string(value);
 			case PhpString(value):
 				quote(value);
+			case PhpConst(name):
+				name;
 			case PhpArrayRead(base, key):
 				emitPhpCoreExpr(base, depth) + "[" + emitPhpCoreArrayKey(key, depth) + "]";
 			case PhpArrayAppend(base):

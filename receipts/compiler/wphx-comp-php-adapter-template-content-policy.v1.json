@@ -31,20 +31,19 @@
   ],
   "validation_result": {
     "status": "passed",
-    "template_count": 1,
-    "template_lint_count": 1,
+    "template_count": 0,
+    "template_lint_count": 0,
     "every_template_placeholder_contract_matches": true,
     "every_template_placeholder_token_is_valid": true,
     "every_rendered_template_php_lints": true
   },
   "claims": [
-    "Every compiler-owned WordPress adapter template uses only valid {{PLACEHOLDER}} tokens.",
-    "Every template placeholder set matches the static renderTemplate replacement metadata in WphxPhpWordPressAdapters.hx.",
-    "Every template body renders with deterministic lint stand-ins and passes php -l inside a method-body wrapper."
+    "The current compiler-owned WordPress adapter template set is empty.",
+    "Any future compiler-owned WordPress adapter template must use only valid {{PLACEHOLDER}} tokens.",
+    "Any future template placeholder set must match the static renderTemplate replacement metadata and lint after deterministic rendering."
   ],
   "non_claims": [
-    "This does not claim that adapter templates are runtime-complete outside their WordPress public method context.",
-    "This does not claim that all adapter templates have been promoted to structured PHP IR.",
+    "This does not claim future adapter templates are forbidden when backed by a Beads task, provenance, and parity gates.",
     "This does not claim additional WordPress runtime behavior parity."
   ]
 }

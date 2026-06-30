@@ -33,9 +33,9 @@
     "status": "passed",
     "only_rendered_template_raw_blocks": true,
     "inline_raw_blocks_forbidden": true,
-    "template_count": 1,
-    "render_template_call_count": 1,
-    "template_reference_count": 1,
+    "template_count": 0,
+    "render_template_call_count": 0,
+    "template_reference_count": 0,
     "every_render_template_call_is_static": true,
     "every_template_reference_exists": true,
     "every_template_file_is_referenced": true,
@@ -47,11 +47,12 @@
   },
   "claims": [
     "The WordPress adapter profile no longer permits inline PhpRawBlock PHP string bodies.",
-    "The only allowed PhpRawBlock form in WphxPhpWordPressAdapters.hx is PhpRawBlock(rendered.code), which points back to compiler-owned adapter template provenance.",
+    "The current WordPress adapter profile scan records zero PhpRawBlock occurrences.",
+    "If future compiler-owned templates are admitted, the only allowed PhpRawBlock form remains PhpRawBlock(rendered.code) with template provenance.",
     "The policy guard is wired into npm precommit checks."
   ],
   "non_claims": [
-    "This does not claim that all adapter templates have been promoted to structured PHP IR.",
+    "This does not claim future adapter templates are forbidden when backed by a Beads task, provenance, and parity gates.",
     "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend.",
     "This does not claim additional WordPress runtime behavior parity."
   ]

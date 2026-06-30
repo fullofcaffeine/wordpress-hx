@@ -1,0 +1,76 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-request-nonblocking-ir-promotion",
+  "issue": {
+    "id": "wordpresshx-ypp",
+    "external_ref": "WPHX-COMP-PHP-REQUEST-NONBLOCKING-IR-PROMOTION",
+    "title": "Promote WP_Http request nonblocking adapter to WPHX PHP IR"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_core_ir",
+  "artifact_scope": "wp_http_request_nonblocking_public_adapter",
+  "commands": [
+    "npm run format:haxe",
+    "npm run wp:core:wphx-312-wp-http-request-nonblocking-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-nonblocking-candidate:check",
+    "npm run wphx:php:adapter-raw-blocks",
+    "npm run wphx:php:adapter-raw-blocks:check",
+    "npm run wphx:php:public-shell-snapshots",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP core IR/printer support for try/catch and PHP constants"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile WP_Http::request nonblocking adapter plan emitted from structured IR"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-request-nonblocking-candidate.mjs",
+      "role": "runner requiring request adapter template absence and IR feature evidence before accepting WPHX-312.65 generated shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-65-wp-http-request-nonblocking-candidate.v1.json",
+      "role": "candidate manifest recording request nonblocking IR feature evidence"
+    },
+    {
+      "path": "manifests/wphx-php/adapter-raw-block-policy.v1.json",
+      "role": "raw-block/template policy manifest with zero WordPress-profile adapter templates"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "request_candidate_cases": 1,
+    "request_adapter_template_absent": true,
+    "required_ir_features": [
+      "stmt.try-catch",
+      "stmt.if",
+      "stmt.if-else",
+      "expr.const",
+      "expr.long-array",
+      "expr.method-call",
+      "expr.static-call",
+      "wp-http.request.nonblocking-response"
+    ],
+    "php_raw_block_count": 0,
+    "active_adapter_templates": 0,
+    "public_shell_snapshot_cases": 17,
+    "unsupported_empty": true
+  },
+  "claims": [
+    "The bounded WP_Http::request nonblocking adapter is no longer emitted from a compiler-owned raw PHP adapter template.",
+    "The request public-boundary PHP shape is emitted from structured WPHX PHP core IR.",
+    "The WPHX-312.65 nonblocking oracle/candidate runner still passes and requires the request adapter template to be absent.",
+    "The WordPress adapter profile currently has zero PhpRawBlock occurrences and zero active adapter templates."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http::request ownership, broad request orchestration ownership, or whole-file WP_Http ownership.",
+    "This does not claim live Requests network I/O, redirect following, transport execution, upstream HTTP PHPUnit parity, installed WordPress distribution behavior, or broader HTTP ownership.",
+    "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

@@ -55,6 +55,18 @@
     "observations_assert": true,
     "request_shell_emitted": true,
     "wphx_php_manifest_unsupported_empty": true,
+    "adapter_template_absent": true,
+    "request_ir_features_present": true,
+    "request_ir_features": [
+      "stmt.try-catch",
+      "stmt.if",
+      "stmt.if-else",
+      "expr.const",
+      "expr.long-array",
+      "expr.method-call",
+      "expr.static-call",
+      "wp-http.request.nonblocking-response"
+    ],
     "public_php_replacement_claimed": true,
     "full_request_orchestration_claimed": false,
     "installed_wordpress_behavior_claimed": false,

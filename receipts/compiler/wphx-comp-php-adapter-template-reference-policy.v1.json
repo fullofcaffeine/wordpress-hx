@@ -31,9 +31,9 @@
   ],
   "validation_result": {
     "status": "passed",
-    "template_count": 1,
-    "render_template_call_count": 1,
-    "template_reference_count": 1,
+    "template_count": 0,
+    "render_template_call_count": 0,
+    "template_reference_count": 0,
     "every_render_template_call_is_static": true,
     "every_template_reference_exists": true,
     "every_template_file_is_referenced": true,
@@ -44,13 +44,13 @@
     "every_rendered_template_php_lints": true
   },
   "claims": [
-    "Every WordPress-profile renderTemplate call uses static adapter and template-path arguments that the guard can scan.",
-    "Every WordPress-profile renderTemplate path exists under the compiler-owned WordPress adapter template directory.",
-    "Every compiler-owned WordPress adapter template file is referenced by WphxPhpWordPressAdapters.hx.",
-    "Adapter template names used by the WordPress profile are unique."
+    "The current WordPress adapter profile scan records zero renderTemplate references.",
+    "Any future WordPress-profile renderTemplate call must use static adapter and template-path arguments that the guard can scan.",
+    "Any future compiler-owned WordPress adapter template file must be referenced by WphxPhpWordPressAdapters.hx.",
+    "Adapter template names used by the WordPress profile must be unique."
   ],
   "non_claims": [
-    "This does not claim that all adapter templates have been promoted to structured PHP IR.",
+    "This does not claim future adapter templates are forbidden when backed by a Beads task, provenance, and parity gates.",
     "This does not claim additional WordPress runtime behavior parity.",
     "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
   ]

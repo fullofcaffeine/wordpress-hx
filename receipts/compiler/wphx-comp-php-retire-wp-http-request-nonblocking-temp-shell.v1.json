@@ -21,11 +21,7 @@
   "artifacts": [
     {
       "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
-      "role": "WordPress-profile adapter plan for the bounded WP_Http::request nonblocking shell"
-    },
-    {
-      "path": "src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template",
-      "role": "compiler-owned public adapter template for the bounded WP_Http::request orchestration shell"
+      "role": "WordPress-profile adapter plan for the bounded WP_Http::request nonblocking shell, now IR-emitted"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
@@ -49,14 +45,15 @@
     "request_candidate_cases": 1,
     "compiler_emitted_public_php": true,
     "request_shell_emitted": true,
-    "adapter_template_recorded": true,
+    "adapter_template_absent": true,
+    "request_ir_features_present": true,
     "unsupported_empty": true,
     "public_shell_snapshot_cases": 17
   },
   "claims": [
     "WPHX PHP emits the original-path wp-includes/class-wp-http.php bounded WP_Http adapter for the WPHX-312.65 nonblocking response gate.",
     "The WPHX-312.65 candidate no longer copies and patches a public PHP WP_Http::request method body.",
-    "The bounded request orchestration body is a compiler-owned adapter template with manifest-recorded provenance rather than a large inline Haxe string.",
+    "The bounded request orchestration body is emitted from structured WPHX PHP core IR rather than a large inline Haxe string or compiler-owned PHP template.",
     "PHP still owns request orchestration while Haxe owns only the native nonblocking response array shape helper."
   ],
   "non_claims": [

@@ -712,22 +712,29 @@ async function main() {
   const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
   const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http.php");
   const generatedShell = readFileSync(generatedShellPath, "utf8");
-  const requestAdapterTemplate = (wphxPhpManifest.adapter_templates ?? []).find(
+  const requestAdapterTemplateAbsent = !(wphxPhpManifest.adapter_templates ?? []).some(
     (template) => template.adapter === "wp-http-request-nonblocking"
   );
+  const requiredRequestIrFeatures = [
+    "stmt.try-catch",
+    "stmt.if",
+    "stmt.if-else",
+    "expr.const",
+    "expr.long-array",
+    "expr.method-call",
+    "expr.static-call",
+    "wp-http.request.nonblocking-response"
+  ];
+  const coreIrFeatures = new Set(wphxPhpManifest.core_ir_features ?? []);
+  const missingRequestIrFeatures = requiredRequestIrFeatures.filter((feature) => !coreIrFeatures.has(feature));
   const wphxPhpShape = {
     manifest_declares_wp_http: wphxPhpManifest.files.some((file) =>
       file.path === "wp-includes/class-wp-http.php" &&
       file.declarations.some((declaration) => declaration.kind === "class" && declaration.name === "WP_Http")
     ),
     unsupported_empty: Array.isArray(wphxPhpManifest.unsupported) && wphxPhpManifest.unsupported.length === 0,
-    adapter_template_recorded: Boolean(requestAdapterTemplate),
-    adapter_template_path:
-      requestAdapterTemplate?.path === "src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template",
-    adapter_template_hash: typeof requestAdapterTemplate?.sha256 === "string" && requestAdapterTemplate.sha256.startsWith("sha256:"),
-    adapter_template_placeholder: requestAdapterTemplate?.placeholders?.includes("HELPER_CLASS") === true,
-    adapter_template_upstream_ref:
-      requestAdapterTemplate?.upstream_ref === "../wordpress-develop/src/wp-includes/class-wp-http.php WP_Http::request",
+    adapter_template_absent: requestAdapterTemplateAbsent,
+    request_ir_features_present: missingRequestIrFeatures.length === 0,
     request_signature: generatedShell.includes("public function request($url, $args = [])"),
     block_request_signature: generatedShell.includes("public function block_request($uri)"),
     nonblocking_haxe_call: generatedShell.includes(`${HAXE_MODULE}::nonblockingResponse()`),
@@ -746,7 +753,13 @@ async function main() {
     issue: ISSUE.external_ref,
     generated_at: RECORDED_AT,
     generator: RUNNER,
-    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture"],
+    evidence_classes: [
+      "haxe_source",
+      "generated_php_candidate",
+      "oracle_source_mirror",
+      "php_cli_observed_fixture",
+      "compiler_php_ir_feature_evidence"
+    ],
     artifact_scope: "haxe_parity_candidate",
     inputs: {
       surface_manifest: inputRecord(SURFACE),
@@ -773,7 +786,13 @@ async function main() {
       haxe_module: HAXE_MODULE,
       promoted_symbols: PROMOTED_SYMBOLS,
       promoted_behavior:
-        "Only the WP_Http::request nonblocking response array shape after successful Requests dispatch is emitted by generated Haxe PHP. The surrounding public method body is now emitted by the WPHX PHP compiler as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership."
+        "Only the WP_Http::request nonblocking response array shape after successful Requests dispatch is emitted by generated Haxe PHP. The surrounding public method body is now emitted by structured WPHX PHP Adapter IR as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership.",
+      adapter_ir: {
+        adapter: "wp-http-request-nonblocking",
+        template_absent: requestAdapterTemplateAbsent,
+        required_features: requiredRequestIrFeatures,
+        missing_features: missingRequestIrFeatures
+      }
     },
     fixture: {
       cases: CASES,
@@ -849,6 +868,9 @@ async function main() {
       observations_assert: observationsAssert,
       request_shell_emitted: true,
       wphx_php_manifest_unsupported_empty: wphxPhpShape.unsupported_empty,
+      adapter_template_absent: requestAdapterTemplateAbsent,
+      request_ir_features_present: missingRequestIrFeatures.length === 0,
+      request_ir_features: requiredRequestIrFeatures,
       public_php_replacement_claimed: true,
       full_request_orchestration_claimed: false,
       installed_wordpress_behavior_claimed: false,

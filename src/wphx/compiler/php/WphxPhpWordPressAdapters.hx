@@ -3,6 +3,7 @@ package wphx.compiler.php;
 #if (macro || reflaxe_runtime)
 import haxe.crypto.Sha256;
 import sys.io.File;
+import wphx.compiler.php.WphxPhpCompiler.PhpCoreArrayEntry;
 import wphx.compiler.php.WphxPhpCompiler.PhpCoreExpr;
 import wphx.compiler.php.WphxPhpCompiler.PhpCoreStmt;
 
@@ -149,6 +150,21 @@ class WphxPhpWordPressAdapters
 			error: null,
 			templates: templates == null ? [] : templates
 		};
+	}
+
+	static function item(value:PhpCoreExpr):PhpCoreArrayEntry
+	{
+		return {key: null, value: value};
+	}
+
+	static function entry(key:String, value:PhpCoreExpr):PhpCoreArrayEntry
+	{
+		return {key: PhpString(key), value: value};
+	}
+
+	static function read(base:PhpCoreExpr, key:String):PhpCoreExpr
+	{
+		return PhpArrayRead(base, PhpString(key));
 	}
 
 	static function templateError(message:String):WordPressMethodAdapterPlan
@@ -1215,24 +1231,218 @@ class WphxPhpWordPressAdapters
 			return missingHelper("missing @:wp.haxeHelper for WP_Http::request nonblocking adapter " + fieldName);
 		}
 
-		final rendered = renderTemplate("wp-http-request-nonblocking",
-			"src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template", "bounded_public_adapter_template",
-			"../wordpress-develop/src/wp-includes/class-wp-http.php WP_Http::request", [
-			{
-				placeholder: "HELPER_CLASS",
-				value: helper
-			}
-		]);
-		if (rendered.error != null)
-		{
-			return templateError(rendered.error);
-		}
+		final url = PhpVar("url");
+		final args = PhpVar("args");
+		final defaults = PhpVar("defaults");
+		final parsedArgs = PhpVar("parsed_args");
+		final parsedUrl = PhpVar("parsed_url");
+		final response = PhpVar("response");
+		final headers = PhpVar("headers");
+		final data = PhpVar("data");
+		final type = PhpVar("type");
+		final options = PhpVar("options");
+		final proxy = PhpVar("proxy");
+		final requestsResponse = PhpVar("requests_response");
+		final httpResponse = PhpVar("http_response");
+		final exception = PhpVar("e");
+		final requestsClass = "WpOrg\\Requests\\Requests";
 
 		return plan([
-			"stmt.raw-wordpress-boundary",
-			"adapter.template",
+			"stmt.if",
+			"stmt.if-else",
+			"stmt.assign",
+			"stmt.var",
+			"stmt.return",
+			"stmt.try-catch",
+			"expr.array-read",
+			"expr.long-array",
+			"expr.object-property",
+			"expr.new",
+			"expr.const",
+			"expr.static-call",
+			"expr.method-call",
+			"expr.function-call",
+			"expr.binop",
 			"wp-http.request.nonblocking-response"
-		], [PhpRawBlock(rendered.code)], [rendered.provenance]);
+		], [
+			PhpLocal("defaults",
+				PhpLongArray([
+					entry("method", PhpString("GET")),
+					entry("timeout", PhpFunctionCall("apply_filters", [PhpString("http_request_timeout"), PhpInt(5), url])),
+					entry("redirection", PhpFunctionCall("apply_filters", [PhpString("http_request_redirection_count"), PhpInt(5), url])),
+					entry("httpversion", PhpFunctionCall("apply_filters", [PhpString("http_request_version"), PhpString("1.0"), url])),
+					entry("user-agent",
+						PhpFunctionCall("apply_filters",
+							[
+								PhpString("http_headers_useragent"),
+								PhpBinop(".",
+									PhpBinop(".", PhpBinop(".", PhpString("WordPress/"), PhpFunctionCall("get_bloginfo", [PhpString("version")])),
+										PhpString("; ")),
+									PhpFunctionCall("get_bloginfo", [PhpString("url")])),
+								url
+							])),
+					entry("reject_unsafe_urls", PhpFunctionCall("apply_filters", [PhpString("http_request_reject_unsafe_urls"), PhpBool(false), url])),
+					entry("blocking", PhpBool(true)),
+					entry("headers", PhpLongArray([])),
+					entry("cookies", PhpLongArray([])),
+					entry("body", PhpNull),
+					entry("compress", PhpBool(false)),
+					entry("decompress", PhpBool(true)),
+					entry("sslverify", PhpBool(true)),
+					entry("sslcertificates", PhpBinop(".", PhpBinop(".", PhpConst("ABSPATH"), PhpConst("WPINC")), PhpString("/certificates/ca-bundle.crt"))),
+					entry("stream", PhpBool(false)),
+					entry("filename", PhpNull),
+					entry("limit_response_size", PhpNull)
+				])),
+			PhpAssign(args, PhpFunctionCall("wp_parse_args", [args])),
+			PhpIf(PhpBinop("&&", PhpFunctionCall("isset", [read(args, "method")]), PhpBinop("===", PhpString("HEAD"), read(args, "method"))),
+				[PhpAssign(read(defaults, "redirection"), PhpInt(0))]),
+			PhpLocal("parsed_args", PhpFunctionCall("wp_parse_args", [args, defaults])),
+			PhpAssign(parsedArgs, PhpFunctionCall("apply_filters", [PhpString("http_request_args"), parsedArgs, url])),
+			PhpIf(PhpNot(PhpFunctionCall("isset", [read(parsedArgs, "_redirection")])),
+				[PhpAssign(read(parsedArgs, "_redirection"), read(parsedArgs, "redirection"))]),
+			PhpLocal("pre", PhpFunctionCall("apply_filters", [PhpString("pre_http_request"), PhpBool(false), parsedArgs, url])),
+			PhpIf(PhpBinop("!==", PhpBool(false), PhpVar("pre")), [PhpReturn(PhpVar("pre"))]),
+			PhpIf(PhpFunctionCall("function_exists", [PhpString("wp_kses_bad_protocol")]),
+				[
+					PhpIf(read(parsedArgs, "reject_unsafe_urls"), [PhpAssign(url, PhpFunctionCall("wp_http_validate_url", [url]))]),
+					PhpIf(url,
+						[
+							PhpAssign(url,
+								PhpFunctionCall("wp_kses_bad_protocol",
+									[
+										url,
+										PhpLongArray([item(PhpString("http")), item(PhpString("https")), item(PhpString("ssl"))])
+									]))
+						])
+				]),
+			PhpLocal("parsed_url", PhpFunctionCall("parse_url", [url])),
+			PhpIf(PhpBinop("||", PhpFunctionCall("empty", [url]), PhpFunctionCall("empty", [read(parsedUrl, "scheme")])), [
+				PhpAssign(response, PhpNew("WP_Error", [
+					PhpString("http_request_failed"),
+					PhpFunctionCall("__", [PhpString("A valid URL was not provided.")])
+				])),
+				httpApiDebug(response, parsedArgs, url),
+				PhpReturn(response)
+			]),
+			PhpIf(PhpMethodCall(PhpVar("this"), "block_request", [url]), [
+				PhpAssign(response, PhpNew("WP_Error", [
+					PhpString("http_request_not_executed"),
+					PhpFunctionCall("sprintf", [
+						PhpFunctionCall("__", [PhpString("User has blocked requests through HTTP to the URL: %s.")]),
+						url
+					])
+				])),
+				httpApiDebug(response, parsedArgs, url),
+				PhpReturn(response)
+			]),
+			PhpIf(read(parsedArgs, "stream"),
+				[
+					PhpIf(PhpFunctionCall("empty", [read(parsedArgs, "filename")]),
+						[
+							PhpAssign(read(parsedArgs, "filename"), PhpBinop(".", PhpFunctionCall("get_temp_dir", []), PhpFunctionCall("basename", [url])))
+						]),
+					PhpAssign(read(parsedArgs, "blocking"), PhpBool(true)),
+					PhpIf(PhpNot(PhpFunctionCall("wp_is_writable", [PhpFunctionCall("dirname", [read(parsedArgs, "filename")])])),
+						[
+							PhpAssign(response,
+								PhpNew("WP_Error",
+									[
+										PhpString("http_request_failed"),
+										PhpFunctionCall("__",
+											[
+												PhpString("Destination directory for file streaming does not exist or is not writable.")
+											])
+									])),
+							httpApiDebug(response, parsedArgs, url),
+							PhpReturn(response)
+						])
+				]),
+			PhpIf(PhpFunctionCall("is_null", [read(parsedArgs, "headers")]), [PhpAssign(read(parsedArgs, "headers"), PhpLongArray([]))]),
+			PhpIf(PhpNot(PhpFunctionCall("is_array", [read(parsedArgs, "headers")])),
+				[
+					PhpLocal("processed_headers", PhpStaticCall("self", "processHeaders", [read(parsedArgs, "headers")])),
+					PhpAssign(read(parsedArgs, "headers"), read(PhpVar("processed_headers"), "headers"))
+				]),
+			PhpLocal("headers", read(parsedArgs, "headers")),
+			PhpLocal("data", read(parsedArgs, "body")),
+			PhpLocal("type", read(parsedArgs, "method")),
+			PhpLocal("options", PhpLongArray([
+				entry("timeout", read(parsedArgs, "timeout")),
+				entry("useragent", read(parsedArgs, "user-agent")),
+				entry("blocking", read(parsedArgs, "blocking")),
+				entry("hooks", PhpNew("WP_HTTP_Requests_Hooks", [url, parsedArgs]))
+			])),
+			PhpExprStmt(PhpMethodCall(read(options, "hooks"), "register", [
+				PhpString("requests.before_redirect"),
+				PhpLongArray([
+					item(PhpClassConst("static", "class")),
+					item(PhpString("browser_redirect_compatibility"))
+				])
+			])),
+			PhpIf(PhpBinop("&&", PhpFunctionCall("function_exists", [PhpString("wp_kses_bad_protocol")]), read(parsedArgs, "reject_unsafe_urls")),
+				[
+					PhpExprStmt(PhpMethodCall(read(options, "hooks"), "register",
+						[
+							PhpString("requests.before_redirect"),
+							PhpLongArray([item(PhpClassConst("static", "class")), item(PhpString("validate_redirects"))])
+						]))
+				]),
+			PhpIf(read(parsedArgs, "stream"), [PhpAssign(read(options, "filename"), read(parsedArgs, "filename"))]),
+			PhpIfElse(PhpFunctionCall("empty", [read(parsedArgs, "redirection")]), [PhpAssign(read(options, "follow_redirects"), PhpBool(false))],
+				[PhpAssign(read(options, "redirects"), read(parsedArgs, "redirection"))]),
+			PhpIf(PhpFunctionCall("isset", [read(parsedArgs, "limit_response_size")]),
+				[PhpAssign(read(options, "max_bytes"), read(parsedArgs, "limit_response_size"))]),
+			PhpIf(PhpNot(PhpFunctionCall("empty", [read(parsedArgs, "cookies")])), [
+				PhpAssign(read(options, "cookies"), PhpStaticCall("self", "normalize_cookies", [read(parsedArgs, "cookies")]))
+			]),
+			PhpIfElse(PhpNot(read(parsedArgs, "sslverify")), [
+				PhpAssign(read(options, "verify"), PhpBool(false)),
+				PhpAssign(read(options, "verifyname"), PhpBool(false))
+			],
+				[PhpAssign(read(options, "verify"), read(parsedArgs, "sslcertificates"))]),
+			PhpIf(PhpBinop("&&", PhpBinop("!==", PhpString("HEAD"), type), PhpBinop("!==", PhpString("GET"), type)),
+				[PhpAssign(read(options, "data_format"), PhpString("body"))]),
+			PhpAssign(read(options, "verify"), PhpFunctionCall("apply_filters", [PhpString("https_ssl_verify"), read(options, "verify"), url])),
+			PhpLocal("proxy", PhpNew("WP_HTTP_Proxy", [])),
+			PhpIf(PhpBinop("&&", PhpMethodCall(proxy, "is_enabled", []), PhpMethodCall(proxy, "send_through_proxy", [url])), [
+				PhpAssign(read(options, "proxy"), PhpNew("WpOrg\\Requests\\Proxy\\Http", [
+					PhpBinop(".", PhpBinop(".", PhpMethodCall(proxy, "host", []), PhpString(":")), PhpMethodCall(proxy, "port", []))
+				])),
+				PhpIf(PhpMethodCall(proxy, "use_authentication", []), [
+					PhpAssign(PhpObjectProperty(read(options, "proxy"), "use_authentication"), PhpBool(true)),
+					PhpAssign(PhpObjectProperty(read(options, "proxy"), "user"), PhpMethodCall(proxy, "username", [])),
+					PhpAssign(PhpObjectProperty(read(options, "proxy"), "pass"), PhpMethodCall(proxy, "password", []))
+				])
+			]),
+			PhpExprStmt(PhpFunctionCall("mbstring_binary_safe_encoding", [])),
+			PhpTryCatch([
+				PhpLocal("requests_response", PhpStaticCall(requestsClass, "request", [url, headers, data, type, options])),
+				PhpLocal("http_response", PhpNew("WP_HTTP_Requests_Response", [requestsResponse, read(parsedArgs, "filename")])),
+				PhpAssign(response, PhpMethodCall(httpResponse, "to_array", [])),
+				PhpAssign(read(response, "http_response"), httpResponse)
+			], "WpOrg\\Requests\\Exception", "e",
+				[
+					PhpAssign(response, PhpNew("WP_Error", [PhpString("http_request_failed"), PhpMethodCall(exception, "getMessage", [])]))
+				]),
+			PhpExprStmt(PhpFunctionCall("reset_mbstring_encoding", [])),
+			httpApiDebug(response, parsedArgs, url),
+			PhpIf(PhpFunctionCall("is_wp_error", [response]), [PhpReturn(response)]),
+			PhpIf(PhpNot(read(parsedArgs, "blocking")), [PhpReturn(PhpStaticCall(helper, "nonblockingResponse", []))]),
+			PhpReturn(PhpFunctionCall("apply_filters", [PhpString("http_response"), response, parsedArgs, url]))
+		]);
+	}
+
+	static function httpApiDebug(response:PhpCoreExpr, parsedArgs:PhpCoreExpr, url:PhpCoreExpr):PhpCoreStmt
+	{
+		return PhpExprStmt(PhpFunctionCall("do_action", [
+			PhpString("http_api_debug"),
+			response,
+			PhpString("response"),
+			PhpString("WpOrg\\Requests\\Requests"),
+			parsedArgs,
+			url
+		]));
 	}
 }
 #end

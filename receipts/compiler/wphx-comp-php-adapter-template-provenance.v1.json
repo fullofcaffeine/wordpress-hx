@@ -10,6 +10,7 @@
   "status": "passed",
   "evidence_class": "compiler_adapter_template_provenance",
   "artifact_scope": "wphx_php_manifest_adapter_templates",
+  "superseded_by": "receipt:wphx-comp-php-request-nonblocking-ir-promotion",
   "commands": [
     "haxe fixtures/wphx-php/wp-http-request-nonblocking.hxml",
     "npm run wp:core:wphx-312-wp-http-request-nonblocking-candidate",
@@ -30,11 +31,7 @@
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
-      "role": "WordPress-profile adapter template renderer and WP_Http request nonblocking template use"
-    },
-    {
-      "path": "src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template",
-      "role": "compiler-owned bounded WP_Http::request public adapter template"
+      "role": "WordPress-profile adapter template renderer and historical WP_Http request nonblocking template use"
     },
     {
       "path": "tools/wp-core/run-wp-http-request-nonblocking-candidate.mjs",
@@ -54,13 +51,14 @@
     "adapter_templates_manifest_field": true,
     "request_template_recorded": true,
     "request_template_placeholder": "HELPER_CLASS",
+    "superseded_by_ir_promotion": true,
     "request_candidate_cases": 1,
     "public_shell_snapshot_cases": 17
   },
   "claims": [
     "WPHX PHP manifests now record compiler-owned adapter template provenance.",
     "The bounded WP_Http::request nonblocking public adapter body no longer lives as a large inline Haxe string concatenation.",
-    "The WPHX-312.65 runner requires template path, hash, placeholder, ownership, and upstream reference evidence for the generated request shell."
+    "This checkpoint has been superseded by structured WPHX PHP IR emission for the same request nonblocking boundary."
   ],
   "non_claims": [
     "This does not claim full WP_Http::request ownership or whole-file WP_Http ownership.",
