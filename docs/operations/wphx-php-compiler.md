@@ -49,6 +49,8 @@ npm run wphx:php:bootstrap-debug
 npm run wphx:php:bootstrap-debug:check
 npm run wphx:php:include-side-effects
 npm run wphx:php:include-side-effects:check
+npm run wphx:php:template-segment-model
+npm run wphx:php:template-segment-model:check
 npm run wphx:php:wp-http-parser-helpers
 npm run wphx:php:wp-http-parser-helpers:check
 npm run wphx:php:wp-http-chunk-transfer-decode
@@ -195,6 +197,15 @@ npm run wphx:php:include-side-effects:check
 
 It emits `build/wphx-php/include-side-effects/generated/wp-includes/wphx-include-side-effects.php`, lints that PHP, checks exact script-shape excerpts, verifies the emission manifest records `script:include-side-effects` with `unsupported=[]`, and runs isolated PHP probes for top-level include execution, native include return arrays, repeated `include`, first and second `include_once`, function-scope include locals, and output buffering. Evidence is recorded in `manifests/wphx-php/include-side-effects.v1.json` and `receipts/compiler/wphx-comp-php-include-side-effects.v1.json`. This is a bounded original-path script Adapter IR gate; it does not claim mixed PHP/HTML template ownership or arbitrary Haxe expression lowering into file scope.
 
+The file-segment/template model gate links the existing F6 template/caller-scope evidence with the WPHX include side-effect evidence:
+
+```bash
+npm run wphx:php:template-segment-model
+npm run wphx:php:template-segment-model:check
+```
+
+It records `manifests/wphx-php/template-segment-model.v1.json` and `receipts/compiler/wphx-comp-php-template-segment-model.v1.json`, backed by [ADR-005](../adr/ADR-005-php-file-segment-template-model.md). The model names ordered segment kinds, adoption modes, required metadata, and gates before broad mixed PHP/HTML ownership. It classifies the F6 admin-style template, theme-style template, nested partial, and WPHX direct-script include fixture, but it does not claim generated ownership of existing WordPress mixed PHP/HTML files, HHX/HXX parity for existing Core templates, arbitrary Haxe expression lowering in PHP caller scope, or whole-file template ownership.
+
 ## Adapter IR
 
 The WPHX PHP compiler now uses an Adapter IR before printing PHP:
@@ -208,7 +219,7 @@ typed Haxe source and metadata
 
 The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, bounded direct file-scope script adapters, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
 
-This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. The next expected pressure is grouping neighboring generated `WP_Http` adapters and later designing a file-segment/template model before mixed PHP/HTML ownership claims.
+This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. Grouped `WP_Http` adapters and the file-segment/template model are now proven gates; the next template movement must turn a bounded segment plan into generated original-path output without jumping to broad mixed PHP/HTML ownership.
 
 `WPHX-COMP-PHP.06` adds the first generated `WP_Http::buildCookieHeader( &$r )` original-path shell. It is a WordPress profile pressure gate over native PHP array mutation, scalar cookie upgrading, `WP_Http_Cookie` object preservation, filter timing, and helper delegation. `WPHX-COMP-PHP-CORE-IR-NATIVE-ARRAYS` keeps the same public-shell behavior while moving the native-array body through reusable PHP-core IR nodes. This is still not arbitrary Haxe expression lowering or a complete PHP backend.
 
@@ -235,4 +246,4 @@ This is not yet a full PHP backend. The first verified behavior is global functi
 
 The generator should reuse or adapt Haxe stdlib and stock PHP target behavior wherever practical, using `../haxe.compilerdev.reference/haxe` as the reference for std/php lowering. WordPress-specific metadata and lowering are acceptable for original paths, conditional declarations, reflection-visible ABI, native PHP array boundaries, and plugin/theme compatibility, but they should remain named and bounded rather than becoming a parallel reimplementation of the Haxe PHP target.
 
-The next target gate is expanding grouped original-path adapters beyond parser leaf helpers toward richer public ABI shapes such as references, conditional declarations, and neighboring header/cookie helpers. The full `WP_Http::request` method remains deliberately later.
+The next target gate is using the grouped original-path adapter and segment-model evidence to retire copied or JS-patched public shells one boundary at a time. The full `WP_Http::request` method and broad mixed PHP/HTML template ownership remain deliberately later.

@@ -1,0 +1,306 @@
+{
+  "schema": "wphx.wphx-php-template-segment-model.v1",
+  "issue": {
+    "id": "wordpresshx-3k6",
+    "external_ref": "WPHX-COMP-PHP-TEMPLATE-SEGMENT-MODEL",
+    "title": "Define WPHX PHP file-segment/template model"
+  },
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "runner": "tools/wphx-php/run-template-segment-model.mjs",
+  "evidence_class": "compiler_strategy_model",
+  "artifact_scope": "file_segment_template_model",
+  "adr": {
+    "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
+    "bytes": 6104,
+    "sha256": "sha256:fd8213777acc972beae06dd0cf90fa2f0cef25ce5f382297a121306741d18bb2"
+  },
+  "prerequisites": {
+    "f6_template_scope": {
+      "path": "receipts/operations/wphx-107-f6-template-scope.v1.json",
+      "bytes": 2185,
+      "sha256": "sha256:4f8444e339067b9e320e0c62b457c0ed3c31f1bbadd2b523000834a26a4e2a6f"
+    },
+    "f6_manifest": {
+      "path": "manifests/php-facade/wphx-107-f6-template-scope.v1.json",
+      "bytes": 44674,
+      "sha256": "sha256:d8089dca5252903fd8d05a0faf2fb63ccf74f8082f2809199083bfb9a378d52a"
+    },
+    "include_side_effects": {
+      "path": "receipts/compiler/wphx-comp-php-include-side-effects.v1.json",
+      "bytes": 1898,
+      "sha256": "sha256:037c444865df4d8da028e3b6063764f7de21076d01c418beb81559f51d412d38"
+    },
+    "include_manifest": {
+      "path": "manifests/wphx-php/include-side-effects.v1.json",
+      "bytes": 5200,
+      "sha256": "sha256:c9875e38e5ec63a867a34f1cbee7ec9eb789c02928e532bfc8d01735f888b7b9"
+    }
+  },
+  "segment_kinds": [
+    "guard",
+    "declaration",
+    "bootstrap",
+    "script",
+    "literal_output",
+    "template_expression",
+    "control",
+    "include",
+    "return_exit",
+    "raw_compatibility"
+  ],
+  "adoption_modes": [
+    "bridge_original_php_shell",
+    "generated_helper_with_temporary_shell",
+    "compiler_emitted_segment_shell",
+    "context_bridge_template",
+    "direct_script_emission",
+    "haxe_owned_template_unit",
+    "whole_file_owned"
+  ],
+  "cases": [
+    {
+      "id": "admin-style",
+      "source": "WPHX-107",
+      "mode": "context_bridge_template",
+      "original_path": "wp-admin/admin-fixture.php",
+      "segment_order": [
+        "guard",
+        "declaration",
+        "script",
+        "literal_output",
+        "template_expression",
+        "control",
+        "script",
+        "return_exit"
+      ],
+      "caller_scope": {
+        "reads_locals": [
+          "title",
+          "notice",
+          "items",
+          "screen"
+        ],
+        "mutates_locals": [
+          "notice",
+          "items"
+        ],
+        "mutates_objects": [
+          "screen.rendered"
+        ],
+        "globals": [
+          "wphx_f6_trace"
+        ]
+      },
+      "observable_effects": [
+        "mixed_output_order",
+        "escaped_output",
+        "local_array_mutation",
+        "object_mutation",
+        "include_return_value"
+      ],
+      "evidence": {
+        "oracle_file": {
+          "path": "wp-admin/admin-fixture.php",
+          "bytes": 1398,
+          "sha256": "9c5b69b7a4b5783098b5f3afa8d9ed4e0a4200aad6cda50987db6957c4952775"
+        },
+        "generated_file": {
+          "path": "wp-admin/admin-fixture.php",
+          "bytes": 1964,
+          "sha256": "299ea7d7ca7a9b503614e07c3aea9043cd46138822d703c20538dfde98c4e2de"
+        }
+      }
+    },
+    {
+      "id": "theme-style",
+      "source": "WPHX-107",
+      "mode": "context_bridge_template",
+      "original_path": "wp-content/themes/wphx-fixture/content.php",
+      "segment_order": [
+        "guard",
+        "declaration",
+        "script",
+        "literal_output",
+        "template_expression",
+        "include",
+        "script",
+        "return_exit"
+      ],
+      "caller_scope": {
+        "reads_locals": [
+          "post",
+          "classes"
+        ],
+        "creates_locals": [
+          "meta_return",
+          "meta_line"
+        ],
+        "mutates_locals": [
+          "post",
+          "classes"
+        ],
+        "globals": [
+          "wp_query",
+          "wphx_f6_trace"
+        ],
+        "nested_includes": [
+          "wp-content/themes/wphx-fixture/template-parts/meta.php"
+        ]
+      },
+      "observable_effects": [
+        "mixed_output_order",
+        "nested_partial_include",
+        "local_array_mutation",
+        "global_state_mutation",
+        "include_return_value"
+      ],
+      "evidence": {
+        "oracle_file": {
+          "path": "wp-content/themes/wphx-fixture/content.php",
+          "bytes": 1396,
+          "sha256": "d0f5f19c46fa710d43b1f32b291d1da95d41313ce293cc3d1c531b7fc9995c05"
+        },
+        "generated_file": {
+          "path": "wp-content/themes/wphx-fixture/content.php",
+          "bytes": 1835,
+          "sha256": "9d9b1bdbf3f6c97f4cd1c174b451641c70954c068700e015c66bc4e089845d1d"
+        }
+      }
+    },
+    {
+      "id": "theme-style-partial",
+      "source": "WPHX-107",
+      "mode": "context_bridge_template",
+      "original_path": "wp-content/themes/wphx-fixture/template-parts/meta.php",
+      "segment_order": [
+        "script",
+        "return_exit"
+      ],
+      "caller_scope": {
+        "reads_locals": [
+          "post"
+        ],
+        "creates_locals": [
+          "meta_line"
+        ],
+        "globals": [
+          "wphx_f6_trace"
+        ]
+      },
+      "observable_effects": [
+        "partial_created_caller_local",
+        "include_return_value"
+      ],
+      "evidence": {
+        "oracle_file": {
+          "path": "wp-content/themes/wphx-fixture/template-parts/meta.php",
+          "bytes": 216,
+          "sha256": "b4005b7fb7b7d8c0bfa969c170d97aab33974d1b0e2c3c03e9ab13e8ade68ca3"
+        },
+        "generated_file": {
+          "path": "wp-content/themes/wphx-fixture/template-parts/meta.php",
+          "bytes": 252,
+          "sha256": "47a521cfbc3a07b5c78f90d883de4e7a108d2f3d02bb2328fcfa8d8672b7b987"
+        }
+      }
+    },
+    {
+      "id": "direct-script-include-side-effects",
+      "source": "WPHX-COMP-PHP-INCLUDE-SIDE-EFFECTS",
+      "mode": "direct_script_emission",
+      "original_path": "wp-includes/wphx-include-side-effects.php",
+      "segment_order": [
+        "script",
+        "literal_output",
+        "return_exit"
+      ],
+      "caller_scope": {
+        "reads_locals": [
+          "wphx_scope_marker",
+          "wphx_local_marker"
+        ],
+        "globals": [
+          "wphx_include_side_effects"
+        ]
+      },
+      "observable_effects": [
+        "top_level_side_effect",
+        "output_buffering",
+        "include_return_array",
+        "include_once_idempotence"
+      ],
+      "evidence": {
+        "generated_file": {
+          "path": "build/wphx-php/include-side-effects/generated/wp-includes/wphx-include-side-effects.php",
+          "sha256": "3177facd7acceb52e6a9d3a2992c7e507a84021687f2b34765139e201d81cf79",
+          "exact_patterns": [
+            "$GLOBALS['wphx_include_side_effects'][] = array(",
+            "echo 'wphx-include-output:'",
+            "return array(",
+            "'scope_marker' => isset($wphx_scope_marker) ? $wphx_scope_marker : null",
+            "'local_marker' => isset($wphx_local_marker) ? $wphx_local_marker : null"
+          ]
+        },
+        "emission_manifest": {
+          "path": "build/wphx-php/include-side-effects/generated/wphx-php-emission.v1.json",
+          "sha256": "cce512109b8afec57f7a7058c6136eb14f3b0b715913463b93222212d07f09db",
+          "unsupported_empty": true,
+          "declarations": [
+            "wp-includes/wphx-include-side-effects.php:script:include-side-effects"
+          ],
+          "core_ir_features": [
+            "script.function-scope-include",
+            "script.include-return",
+            "script.output",
+            "script.top-level-side-effect"
+          ]
+        }
+      }
+    }
+  ],
+  "required_manifest_fields": [
+    "original_path",
+    "upstream_source_hash",
+    "segment_order",
+    "adoption_mode",
+    "caller_scope",
+    "globals",
+    "output_channels",
+    "include_require_edges",
+    "return_exit_behavior",
+    "bootstrap_requirements",
+    "raw_compatibility_segments",
+    "unsupported_constructs"
+  ],
+  "gates": [
+    "segment manifest with upstream hash",
+    "generated original-path shell or accepted backend output",
+    "php -l",
+    "generated-shape or segment snapshot",
+    "oracle/candidate output, locals, globals, include timing, and return/exit probes",
+    "source-map/debug policy for operator-facing files",
+    "packaged-distribution evidence before installed claims",
+    "explicit non-claims for unmodeled effects"
+  ],
+  "claims": [
+    "WPHX PHP has a named file-segment/template/caller-scope model before broad mixed PHP/HTML ownership claims.",
+    "The model is anchored to F6 admin-style/theme-style caller-scope evidence and the WPHX include-side-effect direct-script evidence.",
+    "Future WPHX PHP template work can classify files by segment kinds and adoption mode before deciding whether Adapter IR, direct script emission, HHX/HXX, or a broader backend is appropriate."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim full theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX is parity evidence for existing WordPress templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ],
+  "validation_result": {
+    "status": "passed",
+    "f6_prerequisites_passed": true,
+    "include_side_effect_prerequisites_passed": true,
+    "segment_kinds_count": 10,
+    "adoption_modes_count": 7,
+    "classified_cases_count": 4,
+    "unsupported_constructs_block_claims": true
+  }
+}

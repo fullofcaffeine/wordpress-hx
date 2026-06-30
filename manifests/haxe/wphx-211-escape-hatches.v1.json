@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 254,
+  "scanned_file_count": 257,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -34,6 +34,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpCronMailFeedEmbedAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpDeprecatedParseUrlCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpEncodingCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpGroupedHelpersCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpIpAddressCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpParserHelpersCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProcessHeadersCandidateEntry.hx",
@@ -155,11 +156,13 @@
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpBuildCookieHeaderEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpChunkTransferDecodeEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpParserHelpersEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpProcessHeadersEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpBuildCookieHeaderShell.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpChunkTransferDecodeShell.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpParserHelpersShell.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpProcessHeadersShell.hx",
     "fixtures/wphx-php/src/wphx/fixtures/php/bootstrap/BootstrapImplEntry.hx",
@@ -261,7 +264,7 @@
     "src/wphx/wp/themes/ThemeTemplateAdapterContract.hx"
   ],
   "lookback_lines": 6,
-  "occurrence_count": 75,
+  "occurrence_count": 76,
   "occurrences": [
     {
       "path": "fixtures/php-facade/src/wphx/fixtures/php/facade/FacadeKernel.hx",
@@ -371,6 +374,16 @@
       ],
       "source": "WpHttpBuildCookieHeaderShell.buildCookieHeader(cast null);",
       "source_sha256": "sha256:6db32fe6c5d6e038273e89b3474a60ab80e89c8fc074ea972de118d0d1a0ec5d",
+      "justification": "WPHX-211: compile anchor only; runtime PHP receives a native by-ref request array from the probe."
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
+      "line": 14,
+      "kinds": [
+        "cast"
+      ],
+      "source": "WpHttpGroupedHelpersShell.buildCookieHeader(cast null);",
+      "source_sha256": "sha256:955332b689f981ee70bc8b91e1f32a22901abefe1ea08229c48ddf8097ab1b6d",
       "justification": "WPHX-211: compile anchor only; runtime PHP receives a native by-ref request array from the probe."
     },
     {
@@ -1015,7 +1028,7 @@
     }
   ],
   "by_kind": {
-    "cast": 1,
+    "cast": 2,
     "Dynamic": 8,
     "php.Syntax.code": 66
   },

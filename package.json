@@ -40,6 +40,8 @@
     "wphx:php:bootstrap-debug:check": "node tools/wphx-php/run-bootstrap-debug.mjs --check",
     "wphx:php:include-side-effects": "node tools/wphx-php/run-include-side-effects.mjs",
     "wphx:php:include-side-effects:check": "node tools/wphx-php/run-include-side-effects.mjs --check",
+    "wphx:php:template-segment-model": "node tools/wphx-php/run-template-segment-model.mjs",
+    "wphx:php:template-segment-model:check": "node tools/wphx-php/run-template-segment-model.mjs --check",
     "wphx:php:wp-http-chunk-transfer-decode": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs",
     "wphx:php:wp-http-chunk-transfer-decode:check": "node tools/wp-core/run-wp-http-chunk-transfer-decode-candidate.mjs --check",
     "security:gitleaks": "bash scripts/security/run-gitleaks.sh",

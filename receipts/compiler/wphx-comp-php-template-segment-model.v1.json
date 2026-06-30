@@ -1,0 +1,53 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-template-segment-model",
+  "issue": {
+    "id": "wordpresshx-3k6",
+    "external_ref": "WPHX-COMP-PHP-TEMPLATE-SEGMENT-MODEL",
+    "title": "Define WPHX PHP file-segment/template model"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_strategy_model",
+  "artifact_scope": "file_segment_template_model",
+  "commands": [
+    "npm run wphx:php:template-segment-model",
+    "npm run wphx:php:template-segment-model:check"
+  ],
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/template-segment-model.v1.json",
+      "role": "WPHX PHP file-segment/template model manifest"
+    },
+    {
+      "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
+      "role": "ADR-005 file-segment/template/caller-scope model"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-model.mjs",
+      "role": "deterministic model runner"
+    }
+  ],
+  "manifest_sha256": "sha256:7719e79e7986957efec5bb7e466798a11fcabab4321a3e1121ec1ba58b0922e1",
+  "validation_result": {
+    "status": "passed",
+    "f6_prerequisites_passed": true,
+    "include_side_effect_prerequisites_passed": true,
+    "segment_kinds_count": 10,
+    "adoption_modes_count": 7,
+    "classified_cases_count": 4,
+    "unsupported_constructs_block_claims": true
+  },
+  "claims": [
+    "WPHX PHP has a named file-segment/template/caller-scope model before broad mixed PHP/HTML ownership claims.",
+    "The model is anchored to F6 admin-style/theme-style caller-scope evidence and the WPHX include-side-effect direct-script evidence.",
+    "Future WPHX PHP template work can classify files by segment kinds and adoption mode before deciding whether Adapter IR, direct script emission, HHX/HXX, or a broader backend is appropriate."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim full theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX is parity evidence for existing WordPress templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 320,
+  "closed_task_count": 321,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "8b9edf8cf8d0e1d8b50e8ef52c9f9988db4a06babbc55e304ced9e88058cd66d",
+          "sha256": "c9b8560084901231dd5edf6f4c77a3bfbac2d2bd3ee8e6177962763da8c82555",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -3185,6 +3185,16 @@
           "path": "receipts/operations/wphx-comp-php-staged-custom-compiler.v1.json",
           "sha256": "049bcb7ce128fd8936d97b83fca6519f124138e937ab64b998fce6f4a32335e4",
           "id": "receipt:wphx-comp-php-staged-custom-compiler"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-TEMPLATE-SEGMENT-MODEL",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-template-segment-model.v1.json",
+          "sha256": "0ccaecf40d29c364a36cb1c2272263f4da5ecbfc25f4c6902ca3d419a72e8eec",
+          "id": "receipt:wphx-comp-php-template-segment-model"
         }
       ]
     },
