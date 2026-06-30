@@ -28,14 +28,19 @@
     },
     "runner": {
       "path": "tools/wp-core/run-http-response-candidate.mjs",
-      "bytes": 20216,
-      "sha256": "sha256:73bbf7a34edac923fb354a62da9e352ccb784696c625149ca1f179eb0e2bf4c6"
+      "bytes": 20215,
+      "sha256": "sha256:519795722c4e3684e337f1509c4639cba17b7383ecc5ffe4282f7a18aeec9246"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-response-candidate.hxml",
         "bytes": 124,
         "sha256": "sha256:27afb20de92083be4b8e2b5a2f1540c4af6b4b76f8949f6277a9c5b8b14e5b19"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-response.hxml",
+        "bytes": 381,
+        "sha256": "sha256:2c35b9bb2b775e955786986f02669e633fd623e6fa1c95183579d4e96d13d954"
       },
       {
         "path": "src/wphx/wp/http/HttpResponseState.hx",
@@ -46,8 +51,28 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx",
         "bytes": 227,
         "sha256": "sha256:c9d890cb095f5cff8538d5fa36e81a29fbc5f08aac01dfb85df8059da65c0d3e"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpResponseState.hx",
+        "bytes": 856,
+        "sha256": "sha256:4ed4f058b9ccc4e3c50997160c6499318a30bba291f2a5bf286fc6d17988fa72"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpResponseEntry.hx",
+        "bytes": 372,
+        "sha256": "sha256:3e72b94b828b68101fc28f3c862d78e94ea2c0a2b607667a4c51d9bed7a34681"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpResponseShell.hx",
+        "bytes": 2725,
+        "sha256": "sha256:134ac557e7d2546b1413ca5b9fd9aace6c579b7c2063aed956d8a122e035f3aa"
       }
     ],
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-52/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 781,
+      "sha256": "sha256:d192a63c98624ea5fb9ce4e29cec294294aedf5807e8497f60bf15191ddd11e6"
+    },
     "upstream_sources": [
       {
         "path": "src/wp-includes/class-wp-http-response.php",
@@ -59,6 +84,7 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-response-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-response.hxml",
     "haxe_output": "build/wp-core/wphx-312-52/haxe",
     "compiled_php_files": [
       "build/wp-core/wphx-312-52/haxe/index.php",
@@ -93,10 +119,37 @@
       "WP_HTTP_Response::set_status",
       "WP_HTTP_Response::jsonSerialize"
     ],
+    "public_shell": "build/wp-core/wphx-312-52/candidate/wp-includes/class-wp-http-response.php",
+    "compiler_emitted_public_shell": {
+      "path": "build/wp-core/wphx-312-52/candidate/wp-includes/class-wp-http-response.php",
+      "source_path": "build/wp-core/wphx-312-52/wphx-php/wp-includes/class-wp-http-response.php",
+      "manifest": "build/wp-core/wphx-312-52/wphx-php/wphx-php-emission.v1.json",
+      "declarations": [
+        "class:WP_HTTP_Response"
+      ],
+      "emitted_methods": [
+        "__construct",
+        "get_headers",
+        "set_headers",
+        "header",
+        "get_status",
+        "set_status",
+        "get_data",
+        "set_data",
+        "jsonSerialize"
+      ],
+      "emitted_properties": [
+        "data",
+        "headers",
+        "status"
+      ],
+      "unsupported": []
+    },
     "public_shell_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
+      "compiler_emitted_public_php": true,
       "public_php_abi_preserved": true,
-      "shell_body_ownership": "temporary candidate shell delegates bounded state behavior to generated Haxe PHP",
+      "shell_body_ownership": "compiler-emitted original-path public class shell delegates bounded state behavior to generated Haxe PHP",
       "native_boundaries": [
         "absint",
         "public PHP properties",
@@ -140,7 +193,7 @@
       "database_io": false,
       "live_installed_wordpress": false,
       "php_cli": true,
-      "runtime_stubs": "absint is a deterministic WordPress-compatible stub; the candidate shell preserves the native absint call boundary through Haxe."
+      "runtime_stubs": "absint is a deterministic WordPress-compatible stub; the candidate executes the compiler-emitted original-path public class shell while preserving the native absint call boundary through Haxe."
     }
   },
   "build": {
@@ -479,11 +532,6 @@
       "id": "installed-distribution-behavior-not-executed",
       "owner": "WPHX-312.52",
       "detail": "The fixture uses PHP CLI with a deterministic absint stub rather than an installed WordPress distribution or plugin/theme ecosystem routes."
-    },
-    {
-      "id": "durable-public-php-adapter-not-yet-generated",
-      "owner": "WPHX-312.52",
-      "detail": "The candidate uses a bounded generated-PHP strategy plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-52-http-response-candidate.v1.json",
@@ -493,7 +541,10 @@
     "promoted_symbols": 9,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "response_shell_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "rest_dispatch_claimed": false,
     "live_http_claimed": false

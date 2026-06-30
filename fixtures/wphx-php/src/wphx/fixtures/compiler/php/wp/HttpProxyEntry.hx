@@ -4,6 +4,7 @@ class HttpProxyEntry
 {
 	static function main():Void
 	{
+		// WPHX-211: compile anchor only; runtime PHP constructs the public proxy object in the probe.
 		final proxy:WpHttpProxyShell = cast null;
 		proxy.is_enabled();
 		proxy.use_authentication();

@@ -16,10 +16,13 @@ const RECORDED_AT = "2026-06-27T00:00:00.000Z";
 const UPSTREAM_ROOT = "../wordpress-develop";
 const RUNNER = "tools/wp-core/run-http-response-candidate.mjs";
 const HXML = "fixtures/wp-core/http-response-candidate.hxml";
+const WPHX_PHP_HXML = "fixtures/wphx-php/wp-http-response.hxml";
 const OUT_ROOT = "build/wp-core/wphx-312-52";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
 const ORACLE_ROOT = `${OUT_ROOT}/oracle`;
 const CANDIDATE_ROOT = `${OUT_ROOT}/candidate`;
+const WPHX_PHP_ROOT = `${OUT_ROOT}/wphx-php`;
+const WPHX_PHP_MANIFEST = `${WPHX_PHP_ROOT}/wphx-php-emission.v1.json`;
 const PROBE = `${OUT_ROOT}/probe.php`;
 const OUT = "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json";
 const OWNERSHIP = "manifests/ownership/wphx-312-52-http-response-candidate.v1.json";
@@ -31,8 +34,12 @@ const RESPONSE_FIXTURE = "manifests/wp-core/wphx-312-38-http-response-object-ora
 const SOURCE_FILES = ["src/wp-includes/class-wp-http-response.php"];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_PHP_HXML,
   "src/wphx/wp/http/HttpResponseState.hx",
-  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx"
+  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpResponseState.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpResponseEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpResponseShell.hx"
 ];
 const PROMOTED_SYMBOLS = [
   "WP_HTTP_Response::__construct",
@@ -98,123 +105,11 @@ function mirrorSources(root) {
   }
 }
 
-function haxeBootstrapBlock() {
-  return `if ( ! function_exists( 'wphx_312_52_bootstrap_haxe' ) ) {
-\tfunction wphx_312_52_bootstrap_haxe() {
-\t\tstatic $bootstrapped = false;
-\t\tif ( $bootstrapped ) {
-\t\t\treturn;
-\t\t}
-\t\t$bootstrapped = true;
-
-\t\t$wphx_312_52_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
-\t\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_312_52_lib );
-\t\tspl_autoload_register(
-\t\t\tfunction ( $class ) {
-\t\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
-\t\t\t\tif ( $file ) {
-\t\t\t\t\tinclude_once $file;
-\t\t\t\t}
-\t\t\t}
-\t\t);
-\t\t\\php\\Boot::__hx__init();
-\t}
-}
-wphx_312_52_bootstrap_haxe();
-`;
-}
-
-function installBootstrap(source) {
-  const marker = "<?php\n";
-  if (!source.startsWith(marker)) throw new Error("class-wp-http-response.php did not start with PHP open tag");
-  return `${marker}\n${haxeBootstrapBlock()}\n${source.slice(marker.length)}`;
-}
-
-function replaceMethod(source, methodName, replacement) {
-  const pattern = new RegExp(`public\\s+function\\s+${methodName}\\s*\\(`, "m");
-  const match = pattern.exec(source);
-  if (!match) throw new Error(`Unable to locate method ${methodName}`);
-  const openBrace = source.indexOf("{", match.index);
-  if (openBrace === -1) throw new Error(`Unable to locate opening brace for ${methodName}`);
-  let depth = 0;
-  for (let index = openBrace; index < source.length; index += 1) {
-    const char = source[index];
-    if (char === "{") depth += 1;
-    if (char === "}") {
-      depth -= 1;
-      if (depth === 0) return `${source.slice(0, match.index)}${replacement}${source.slice(index + 1)}`;
-    }
-  }
-  throw new Error(`Unable to locate closing brace for ${methodName}`);
-}
-
-function transformCandidateResponse() {
-  const path = `${CANDIDATE_ROOT}/wp-includes/class-wp-http-response.php`;
-  let source = installBootstrap(readFileSync(path, "utf8"));
-  source = replaceMethod(
-    source,
-    "__construct",
-    `public function __construct( $data = null, $status = 200, $headers = array() ) {
-\t\\wphx\\wp\\http\\HttpResponseState::initialize( $this, $data, $status, $headers );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "get_headers",
-    `public function get_headers() {
-\treturn \\wphx\\wp\\http\\HttpResponseState::getHeaders( $this );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "set_headers",
-    `public function set_headers( $headers ) {
-\t\\wphx\\wp\\http\\HttpResponseState::setHeaders( $this, $headers );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "header",
-    `public function header( $key, $value, $replace = true ) {
-\t\\wphx\\wp\\http\\HttpResponseState::header( $this, (string) $key, (string) $value, (bool) $replace );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "get_status",
-    `public function get_status() {
-\treturn \\wphx\\wp\\http\\HttpResponseState::getStatus( $this );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "set_status",
-    `public function set_status( $code ) {
-\t\\wphx\\wp\\http\\HttpResponseState::setStatus( $this, $code );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "get_data",
-    `public function get_data() {
-\treturn \\wphx\\wp\\http\\HttpResponseState::getData( $this );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "set_data",
-    `public function set_data( $data ) {
-\t\\wphx\\wp\\http\\HttpResponseState::setData( $this, $data );
-}`
-  );
-  source = replaceMethod(
-    source,
-    "jsonSerialize",
-    `public function jsonSerialize() { // phpcs:ignore WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid
-\treturn \\wphx\\wp\\http\\HttpResponseState::jsonSerialize( $this );
-}`
-  );
-  writeFileSync(path, source);
+function installCompilerEmittedCandidateShell() {
+  const source = `${WPHX_PHP_ROOT}/wp-includes/class-wp-http-response.php`;
+  const target = `${CANDIDATE_ROOT}/wp-includes/class-wp-http-response.php`;
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(source, target);
 }
 
 function writeProbe() {
@@ -349,12 +244,12 @@ function ownershipManifest(manifestSha) {
     ownership_state: "haxe_owned_candidate_with_public_php_shell",
     bridge: {
       exists: true,
-      kind: "generated-php-haxe-strategy-with-temporary-original-path-shell",
+      kind: "compiler-emitted-original-path-public-php-shell",
       removal_gate:
-        "Replace the temporary candidate shell with generated original-path public PHP adapters and pass REST dispatch, Requests bridge, installed HTTP routes, selected upstream HTTP/REST PHPUnit, and ecosystem fixtures before claiming durable public PHP ownership."
+        "Promote beyond this bounded public class adapter only after REST dispatch, Requests bridge, installed HTTP routes, selected upstream HTTP/REST PHPUnit, and ecosystem fixtures pass."
     },
-    owned_paths: [RUNNER, HXML, "src/wphx/wp/http/HttpResponseState.hx", "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx", OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    owned_paths: [RUNNER, ...HAXE_SOURCES, OUT, OWNERSHIP, RECEIPT],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, WPHX_PHP_MANIFEST, OUT_ROOT],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-http-response-candidate",
@@ -371,9 +266,10 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  command("haxe", [WPHX_PHP_HXML, "-D", `wphx_php_output=${WPHX_PHP_ROOT}`, "-D", `wphx_php_manifest=${WPHX_PHP_MANIFEST}`]);
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
-  transformCandidateResponse();
+  installCompilerEmittedCandidateShell();
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -395,6 +291,43 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
+  const wphxDeclarations = wphxPhpManifest.files.flatMap((file) => file.declarations.map((entry) => `${entry.kind}:${entry.name}`));
+  if (JSON.stringify(wphxDeclarations) !== JSON.stringify(["class:WP_HTTP_Response"])) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP declarations", declarations: wphxDeclarations }, null, 2));
+    process.exit(1);
+  }
+  if (wphxPhpManifest.unsupported.length !== 0) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP unsupported constructs", unsupported: wphxPhpManifest.unsupported }, null, 2));
+    process.exit(1);
+  }
+  const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http-response.php");
+  const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const requiredShellShapes = [
+    /#\[AllowDynamicProperties\]/,
+    /class\s+WP_HTTP_Response/,
+    /public\s+\$data;/,
+    /public\s+\$headers;/,
+    /public\s+\$status;/,
+    /public\s+function\s+__construct\s*\(\s*\$data\s*=\s*null\s*,\s*\$status\s*=\s*200\s*,\s*\$headers\s*=\s*\[\s*\]\s*\)/,
+    /public\s+function\s+get_headers\s*\(\s*\)/,
+    /public\s+function\s+set_headers\s*\(\s*\$headers\s*\)/,
+    /public\s+function\s+header\s*\(\s*\$key\s*,\s*\$value\s*,\s*\$replace\s*=\s*true\s*\)/,
+    /public\s+function\s+get_status\s*\(\s*\)/,
+    /public\s+function\s+set_status\s*\(\s*\$code\s*\)/,
+    /public\s+function\s+get_data\s*\(\s*\)/,
+    /public\s+function\s+set_data\s*\(\s*\$data\s*\)/,
+    /public\s+function\s+jsonSerialize\s*\(\s*\)/
+  ];
+  const responseShellEmitted =
+    requiredShellShapes.every((pattern) => pattern.test(generatedShell)) &&
+    generatedShell.includes("HttpResponseState::initialize( $this, $data, $status, $headers )") &&
+    generatedShell.includes("HttpResponseState::header( $this, (string) $key, (string) $value, (bool) $replace )") &&
+    generatedShell.includes("HttpResponseState::jsonSerialize( $this )");
+  if (!responseShellEmitted) {
+    console.error(JSON.stringify({ status: "failed", reason: "generated shell is missing WP_HTTP_Response adapter shape" }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-http-response-candidate.v1",
     issue: ISSUE.external_ref,
@@ -408,17 +341,30 @@ async function main() {
       response_oracle_fixture_manifest: inputRecord(RESPONSE_FIXTURE),
       runner: inputRecord(RUNNER),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
+      wphx_php_manifest: inputRecord(WPHX_PHP_MANIFEST),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_PHP_HXML,
       haxe_output: HAXE_OUT,
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
       promoted_symbols: PROMOTED_SYMBOLS,
+      public_shell: generatedShellPath,
+      compiler_emitted_public_shell: {
+        path: generatedShellPath,
+        source_path: `${WPHX_PHP_ROOT}/wp-includes/class-wp-http-response.php`,
+        manifest: WPHX_PHP_MANIFEST,
+        declarations: wphxDeclarations,
+        emitted_methods: ["__construct", "get_headers", "set_headers", "header", "get_status", "set_status", "get_data", "set_data", "jsonSerialize"],
+        emitted_properties: ["data", "headers", "status"],
+        unsupported: wphxPhpManifest.unsupported
+      },
       public_shell_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
+        compiler_emitted_public_php: true,
         public_php_abi_preserved: true,
-        shell_body_ownership: "temporary candidate shell delegates bounded state behavior to generated Haxe PHP",
+        shell_body_ownership: "compiler-emitted original-path public class shell delegates bounded state behavior to generated Haxe PHP",
         native_boundaries: ["absint", "public PHP properties", "AllowDynamicProperties", "json_encode public-property serialization"]
       }
     },
@@ -430,9 +376,9 @@ async function main() {
         external_network_io: false,
         database_io: false,
         live_installed_wordpress: false,
-        php_cli: true,
-        runtime_stubs:
-          "absint is a deterministic WordPress-compatible stub; the candidate shell preserves the native absint call boundary through Haxe."
+      php_cli: true,
+      runtime_stubs:
+          "absint is a deterministic WordPress-compatible stub; the candidate executes the compiler-emitted original-path public class shell while preserving the native absint call boundary through Haxe."
       }
     },
     build: { oracle_root: ORACLE_ROOT, candidate_root: CANDIDATE_ROOT, php_lint: phpLint },
@@ -461,11 +407,6 @@ async function main() {
         id: "installed-distribution-behavior-not-executed",
         owner: ISSUE.external_ref,
         detail: "The fixture uses PHP CLI with a deterministic absint stub rather than an installed WordPress distribution or plugin/theme ecosystem routes."
-      },
-      {
-        id: "durable-public-php-adapter-not-yet-generated",
-        owner: ISSUE.external_ref,
-        detail: "The candidate uses a bounded generated-PHP strategy plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -475,7 +416,10 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
+      compiler_emitted_public_php: true,
+      response_shell_emitted: responseShellEmitted,
+      unsupported_empty: wphxPhpManifest.unsupported.length === 0,
       installed_wordpress_behavior_claimed: false,
       rest_dispatch_claimed: false,
       live_http_claimed: false
@@ -493,7 +437,8 @@ async function main() {
       { path: OUT, role: "WP_HTTP_Response Haxe parity candidate manifest" },
       { path: OWNERSHIP, role: "ownership manifest for Haxe-owned HTTP response state behavior" },
       { path: RUNNER, role: "deterministic PHP CLI oracle/candidate Haxe runner" },
-      { path: "src/wphx/wp/http/HttpResponseState.hx", role: "typed Haxe source for WP_HTTP_Response state behavior" }
+      { path: "src/wphx/wp/http/HttpResponseState.hx", role: "typed Haxe source for WP_HTTP_Response state behavior" },
+      { path: WPHX_PHP_MANIFEST, role: "WPHX PHP emission manifest for compiler-emitted class-wp-http-response.php" }
     ],
     verification_commands: [
       "npm run wp:core:wphx-312-http-response-candidate",

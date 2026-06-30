@@ -184,6 +184,34 @@ const CASES = [
     }
   },
   {
+    id: "wp-http-response-class-shell",
+    hxml: "fixtures/wphx-php/wp-http-response.hxml",
+    selected: "wp-includes/class-wp-http-response.php",
+    shell_shapes: ["public_class", "allow_dynamic_properties", "public_properties", "top_level_bootstrap_side_effect"],
+    exact_patterns: [
+      "#[AllowDynamicProperties]",
+      "class WP_HTTP_Response",
+      "public $data;",
+      "public $headers;",
+      "public $status;",
+      "public function __construct($data = null, $status = 200, $headers = [])",
+      "public function get_headers()",
+      "public function set_headers($headers)",
+      "public function header($key, $value, $replace = true)",
+      "public function get_status()",
+      "public function set_status($code)",
+      "public function get_data()",
+      "public function set_data($data)",
+      "public function jsonSerialize()",
+      "HttpResponseState::initialize",
+      "HttpResponseState::jsonSerialize"
+    ],
+    ast_expect: {
+      classes: ["WP_HTTP_Response"],
+      methods: ["__construct", "get_headers", "set_headers", "header", "get_status", "set_status", "get_data", "set_data", "jsonSerialize"]
+    }
+  },
+  {
     id: "include-side-effect-script",
     hxml: "fixtures/wphx-php/include-side-effects.hxml",
     selected: "wp-includes/wphx-include-side-effects.php",

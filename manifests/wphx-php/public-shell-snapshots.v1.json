@@ -420,6 +420,67 @@
       }
     },
     {
+      "id": "wp-http-response-class-shell",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "public_class",
+        "allow_dynamic_properties",
+        "public_properties",
+        "top_level_bootstrap_side_effect"
+      ],
+      "hxml": "fixtures/wphx-php/wp-http-response.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/wp-http-response-class-shell/generated/wp-includes/class-wp-http-response.php",
+      "bytes": 1668,
+      "sha256": "sha256:4041205cfbaea7db5a9525ee4bf272bed503cb66798605329e6c9bd23ada4eb8",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "#[AllowDynamicProperties]",
+        "class WP_HTTP_Response",
+        "public $data;",
+        "public $headers;",
+        "public $status;",
+        "public function __construct($data = null, $status = 200, $headers = [])",
+        "public function get_headers()",
+        "public function set_headers($headers)",
+        "public function header($key, $value, $replace = true)",
+        "public function get_status()",
+        "public function set_status($code)",
+        "public function get_data()",
+        "public function set_data($data)",
+        "public function jsonSerialize()",
+        "HttpResponseState::initialize",
+        "HttpResponseState::jsonSerialize"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [
+          "WP_HTTP_Response"
+        ],
+        "interfaces": [],
+        "methods": [
+          "__construct",
+          "get_data",
+          "get_headers",
+          "get_status",
+          "header",
+          "jsonSerialize",
+          "set_data",
+          "set_headers",
+          "set_status"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "segment_plan_contract": null,
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/wp-http-response-class-shell/generated/wphx-php-emission.v1.json",
+        "bytes": 781,
+        "sha256": "sha256:d192a63c98624ea5fb9ce4e29cec294294aedf5807e8497f60bf15191ddd11e6"
+      }
+    },
+    {
       "id": "include-side-effect-script",
       "evidence_class": "generated_shape",
       "artifact_scope": "minimized_fixture",
@@ -799,7 +860,7 @@
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 13,
+    "case_count": 14,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,

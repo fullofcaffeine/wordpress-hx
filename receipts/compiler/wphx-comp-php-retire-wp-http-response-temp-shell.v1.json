@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-response-temp-shell",
+  "issue": {
+    "id": "wordpresshx-knz",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-RESPONSE-TEMP-SHELL",
+    "title": "Use generated shell in WPHX-312.52"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell_retirement",
+  "artifact_scope": "wp_http_response_public_class_adapter",
+  "commands": [
+    "haxe fixtures/wphx-php/wp-http-response.hxml",
+    "npm run wp:core:wphx-312-http-response-candidate",
+    "npm run wp:core:wphx-312-http-response-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run format:haxe",
+    "npm run haxe:escape-hatches"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter plans for WP_HTTP_Response"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpResponseShell.hx",
+      "role": "typed shell metadata for the compiler-emitted WP_HTTP_Response adapter"
+    },
+    {
+      "path": "fixtures/wphx-php/wp-http-response.hxml",
+      "role": "WPHX PHP compile fixture for wp-includes/class-wp-http-response.php"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json",
+      "role": "WPHX-312.52 oracle/candidate manifest using the compiler-emitted original-path public shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-52-http-response-candidate.v1.json",
+      "role": "behavior receipt for the retired temporary shell candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "response_candidate_cases": 5,
+    "compiler_emitted_public_php": true,
+    "response_shell_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 14
+  },
+  "claims": [
+    "WPHX PHP emits the original-path wp-includes/class-wp-http-response.php public class adapter for WP_HTTP_Response.",
+    "The WPHX-312.52 candidate no longer uses a generated temporary public PHP class shell for promoted response-object behavior.",
+    "PHP still owns the reflection-visible class ABI, public property serialization behavior, #[AllowDynamicProperties], and native absint boundary while Haxe owns the bounded response-state transitions."
+  ],
+  "non_claims": [
+    "This does not claim REST server dispatch, Requests transport integration, or live HTTP behavior.",
+    "This does not claim installed WordPress distribution behavior or selected upstream HTTP PHPUnit parity for WP_HTTP_Response.",
+    "This does not claim broader response-object ownership or that WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

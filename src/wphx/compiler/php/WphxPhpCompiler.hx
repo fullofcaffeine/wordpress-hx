@@ -904,7 +904,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				final fn = functionOf(expr, "constructor " + pending.classType.name);
 				lines.push("\tpublic function __construct(" + emitArgs(fn.args) + ")");
 				lines.push("\t{");
-				lines.push(indent(emitBody(fn.expr), "\t\t"));
+				lines.push(indent(emitMethodBody(field, TypedExprMethodBody(fn.expr)), "\t\t"));
 				lines.push("\t}");
 			}
 		}

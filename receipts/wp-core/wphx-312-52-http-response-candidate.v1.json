@@ -23,6 +23,10 @@
     {
       "path": "src/wphx/wp/http/HttpResponseState.hx",
       "role": "typed Haxe source for WP_HTTP_Response state behavior"
+    },
+    {
+      "path": "build/wp-core/wphx-312-52/wphx-php/wphx-php-emission.v1.json",
+      "role": "WPHX PHP emission manifest for compiler-emitted class-wp-http-response.php"
     }
   ],
   "verification_commands": [
@@ -42,7 +46,10 @@
     "promoted_symbols": 9,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "response_shell_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "rest_dispatch_claimed": false,
     "live_http_claimed": false

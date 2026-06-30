@@ -66,6 +66,24 @@ class WphxPhpWordPressAdapters
 				proxyAuthenticationHeader(fieldName, helper);
 			case "wp-http-proxy-send-through-proxy":
 				proxySendThroughProxy(fieldName, helper);
+			case "wp-http-response-construct":
+				responseConstruct(fieldName, helper);
+			case "wp-http-response-get-data":
+				responseGetData(fieldName, helper);
+			case "wp-http-response-set-data":
+				responseSetData(fieldName, helper);
+			case "wp-http-response-get-headers":
+				responseGetHeaders(fieldName, helper);
+			case "wp-http-response-set-headers":
+				responseSetHeaders(fieldName, helper);
+			case "wp-http-response-header":
+				responseHeader(fieldName, helper);
+			case "wp-http-response-get-status":
+				responseGetStatus(fieldName, helper);
+			case "wp-http-response-set-status":
+				responseSetStatus(fieldName, helper);
+			case "wp-http-response-json-serialize":
+				responseJsonSerialize(fieldName, helper);
 			case _:
 				null;
 		}
@@ -710,6 +728,90 @@ class WphxPhpWordPressAdapters
 			]),
 			PhpReturn(PhpStaticCall(helper, "shouldSendThroughProxy", [requestHost, siteHost, bypassHosts]))
 		]);
+	}
+
+	static function responseConstruct(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_HTTP_Response::__construct adapter " + fieldName);
+		}
+
+		return plan(["stmt.expr", "expr.static-call"], [
+			PhpExprStmt(PhpStaticCall(helper, "initialize", [PhpVar("this"), PhpVar("data"), PhpVar("status"), PhpVar("headers")]))
+		]);
+	}
+
+	static function responseGetData(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseReturnHelper(fieldName, helper, "getData");
+	}
+
+	static function responseSetData(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseSetHelper(fieldName, helper, "setData", PhpVar("data"));
+	}
+
+	static function responseGetHeaders(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseReturnHelper(fieldName, helper, "getHeaders");
+	}
+
+	static function responseSetHeaders(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseSetHelper(fieldName, helper, "setHeaders", PhpVar("headers"));
+	}
+
+	static function responseHeader(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_HTTP_Response::header adapter " + fieldName);
+		}
+
+		return plan(["stmt.expr", "expr.coerce-bool", "expr.coerce-string", "expr.static-call"], [
+			PhpExprStmt(PhpStaticCall(helper, "header", [
+				PhpVar("this"),
+				PhpCastString(PhpVar("key")),
+				PhpCastString(PhpVar("value")),
+				PhpCastBool(PhpVar("replace"))
+			]))
+		]);
+	}
+
+	static function responseGetStatus(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseReturnHelper(fieldName, helper, "getStatus");
+	}
+
+	static function responseSetStatus(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseSetHelper(fieldName, helper, "setStatus", PhpVar("code"));
+	}
+
+	static function responseJsonSerialize(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		return responseReturnHelper(fieldName, helper, "jsonSerialize");
+	}
+
+	static function responseReturnHelper(fieldName:String, helper:Null<String>, method:String):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_HTTP_Response::" + fieldName + " adapter");
+		}
+
+		return plan(["stmt.return", "expr.static-call"], [PhpReturn(PhpStaticCall(helper, method, [PhpVar("this")]))]);
+	}
+
+	static function responseSetHelper(fieldName:String, helper:Null<String>, method:String, value:PhpCoreExpr):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_HTTP_Response::" + fieldName + " adapter");
+		}
+
+		return plan(["stmt.expr", "expr.static-call"], [PhpExprStmt(PhpStaticCall(helper, method, [PhpVar("this"), value]))]);
 	}
 }
 #end
