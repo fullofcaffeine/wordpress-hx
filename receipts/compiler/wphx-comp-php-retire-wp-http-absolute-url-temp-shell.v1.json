@@ -1,0 +1,66 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-absolute-url-temp-shell",
+  "issue": {
+    "id": "wordpresshx-wf4",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-ABSOLUTE-URL-TEMP-SHELL",
+    "title": "Use generated shell in WPHX-312.58"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell_retirement",
+  "artifact_scope": "wp_http_make_absolute_url_public_adapter",
+  "commands": [
+    "npm run format:haxe",
+    "npm run wphx:php:wp-http-grouped-helpers",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wp:core:wphx-312-wp-http-absolute-url-candidate",
+    "npm run wp:core:wphx-312-wp-http-absolute-url-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "generic PHP-core IR printer now including the null literal needed by nullable PHP adapter arguments"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter plan for WP_Http::make_absolute_url"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+      "role": "typed shell metadata for the grouped WP_Http make_absolute_url adapter"
+    },
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http helper compiler manifest proving nine adapter cases"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+      "role": "WPHX-312.58 oracle/candidate manifest using the compiler-emitted original-path public shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+      "role": "behavior receipt for the retired temporary shell candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "grouped_wp_http_helpers_cases": 9,
+    "absolute_url_candidate_cases": 1,
+    "compiler_emitted_public_php": true,
+    "make_absolute_url_emitted": true,
+    "unsupported_empty": true,
+    "public_shell_snapshot_cases": 11
+  },
+  "claims": [
+    "WPHX PHP emits the original-path WP_Http::make_absolute_url public adapter in the grouped class-wp-http.php shell.",
+    "The WPHX-312.58 candidate no longer copies and patches a PHP method body in its runner.",
+    "PHP still owns wp_parse_url, empty(), component presence checks, and parse-failure passthrough at the public boundary while Haxe owns URL assembly and normalization."
+  ],
+  "non_claims": [
+    "This does not claim whole-file WP_Http ownership.",
+    "This does not claim WP_Http::request, redirect following, live HTTP transport, Requests network I/O, installed distribution behavior, or generated WP_Http_Cookie ownership.",
+    "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

@@ -34,6 +34,8 @@ class WphxPhpWordPressAdapters
 				browserRedirectCompatibility(fieldName, helper);
 			case "wp-http-validate-redirects":
 				validateRedirects(fieldName, helper);
+			case "wp-http-make-absolute-url":
+				makeAbsoluteUrl(fieldName, helper);
 			case _:
 				null;
 		}
@@ -248,6 +250,108 @@ class WphxPhpWordPressAdapters
 					PhpString("wp_http.redirect_failed_validation")
 				]))
 			])
+		]);
+	}
+
+	static function makeAbsoluteUrl(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
+	{
+		if (helper == null)
+		{
+			return missingHelper("missing @:wp.haxeHelper for WP_Http::make_absolute_url adapter " + fieldName);
+		}
+
+		final maybeRelativePath = PhpVar("maybe_relative_path");
+		final url = PhpVar("url");
+		final urlParts = PhpVar("url_parts");
+		final relativeUrlParts = PhpVar("relative_url_parts");
+		final basePort = PhpVar("base_port");
+		final relativeHost = PhpVar("relative_host");
+		final relativePort = PhpVar("relative_port");
+		return plan([
+			"stmt.if",
+			"stmt.assign",
+			"stmt.var",
+			"stmt.return",
+			"expr.array-read",
+			"expr.coerce-bool",
+			"expr.coerce-int",
+			"expr.coerce-string",
+			"expr.function-call",
+			"expr.null",
+			"expr.static-call"
+		], [
+			PhpIf(PhpFunctionCall("empty", [url]), [PhpReturn(maybeRelativePath)]),
+			PhpLocal("url_parts", PhpFunctionCall("wp_parse_url", [url])),
+			PhpIf(PhpNot(urlParts), [PhpReturn(maybeRelativePath)]),
+			PhpLocal("relative_url_parts", PhpFunctionCall("wp_parse_url", [maybeRelativePath])),
+			PhpIf(PhpNot(relativeUrlParts), [PhpReturn(maybeRelativePath)]),
+			PhpLocal("base_scheme", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(urlParts, PhpString("scheme"))]), [
+				PhpAssign(PhpVar("base_scheme"), PhpCastString(PhpArrayRead(urlParts, PhpString("scheme"))))
+			]),
+			PhpLocal("base_host", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(urlParts, PhpString("host"))]),
+				[
+					PhpAssign(PhpVar("base_host"), PhpCastString(PhpArrayRead(urlParts, PhpString("host"))))
+				]),
+			PhpLocal("base_port", PhpNull),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(urlParts, PhpString("port"))]),
+				[PhpAssign(basePort, PhpCastInt(PhpArrayRead(urlParts, PhpString("port"))))]),
+			PhpLocal("base_path", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(urlParts, PhpString("path"))]),
+				[
+					PhpAssign(PhpVar("base_path"), PhpCastString(PhpArrayRead(urlParts, PhpString("path"))))
+				]),
+			PhpLocal("base_path_present", PhpFunctionCall("empty", [PhpArrayRead(urlParts, PhpString("path"))])),
+			PhpAssign(PhpVar("base_path_present"), PhpNot(PhpVar("base_path_present"))),
+			PhpLocal("relative_has_scheme", PhpFunctionCall("empty", [PhpArrayRead(relativeUrlParts, PhpString("scheme"))])),
+			PhpAssign(PhpVar("relative_has_scheme"), PhpNot(PhpVar("relative_has_scheme"))),
+			PhpLocal("relative_host", PhpNull),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(relativeUrlParts, PhpString("host"))]), [
+				PhpAssign(relativeHost, PhpCastString(PhpArrayRead(relativeUrlParts, PhpString("host"))))
+			]),
+			PhpLocal("relative_port", PhpNull),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(relativeUrlParts, PhpString("port"))]), [
+				PhpAssign(relativePort, PhpCastInt(PhpArrayRead(relativeUrlParts, PhpString("port"))))
+			]),
+			PhpLocal("relative_path", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(relativeUrlParts, PhpString("path"))]),
+				[
+					PhpAssign(PhpVar("relative_path"), PhpCastString(PhpArrayRead(relativeUrlParts, PhpString("path"))))
+				]),
+			PhpLocal("relative_path_present", PhpFunctionCall("empty", [PhpArrayRead(relativeUrlParts, PhpString("path"))])),
+			PhpAssign(PhpVar("relative_path_present"), PhpNot(PhpVar("relative_path_present"))),
+			PhpLocal("relative_query", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(relativeUrlParts, PhpString("query"))]),
+				[
+					PhpAssign(PhpVar("relative_query"), PhpCastString(PhpArrayRead(relativeUrlParts, PhpString("query"))))
+				]),
+			PhpLocal("relative_query_present", PhpFunctionCall("empty", [PhpArrayRead(relativeUrlParts, PhpString("query"))])),
+			PhpAssign(PhpVar("relative_query_present"), PhpNot(PhpVar("relative_query_present"))),
+			PhpLocal("relative_fragment", PhpString("")),
+			PhpIf(PhpFunctionCall("isset", [PhpArrayRead(relativeUrlParts, PhpString("fragment"))]),
+				[
+					PhpAssign(PhpVar("relative_fragment"), PhpCastString(PhpArrayRead(relativeUrlParts, PhpString("fragment"))))
+				]),
+			PhpLocal("relative_fragment_present", PhpFunctionCall("empty", [PhpArrayRead(relativeUrlParts, PhpString("fragment"))])),
+			PhpAssign(PhpVar("relative_fragment_present"), PhpNot(PhpVar("relative_fragment_present"))),
+			PhpReturn(PhpStaticCall(helper, "makeAbsoluteUrl", [
+				PhpCastString(maybeRelativePath),
+				PhpVar("base_scheme"),
+				PhpVar("base_host"),
+				basePort,
+				PhpVar("base_path"),
+				PhpCastBool(PhpVar("base_path_present")),
+				PhpCastBool(PhpVar("relative_has_scheme")),
+				relativeHost,
+				relativePort,
+				PhpVar("relative_path"),
+				PhpCastBool(PhpVar("relative_path_present")),
+				PhpVar("relative_query"),
+				PhpCastBool(PhpVar("relative_query_present")),
+				PhpVar("relative_fragment"),
+				PhpCastBool(PhpVar("relative_fragment_present"))
+			]))
 		]);
 	}
 }

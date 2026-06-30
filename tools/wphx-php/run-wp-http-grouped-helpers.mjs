@@ -49,6 +49,7 @@ const HAXE_SOURCES = [
   "src/wphx/wp/http/HttpIpAddress.hx",
   "src/wphx/wp/http/HttpRedirectCompatibility.hx",
   "src/wphx/wp/http/HttpRedirectValidation.hx",
+  "src/wphx/wp/http/HttpAbsoluteUrl.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpGroupedHelpersCandidateEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
@@ -60,6 +61,7 @@ const HAXE_SOURCES = [
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpIpAddress.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpAbsoluteUrl.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx"
 ];
 const CASES = [
@@ -70,7 +72,8 @@ const CASES = [
   "wp-http-parser:process-headers",
   "wp-http:is-ip-address",
   "wp-http:browser-redirect-compatibility",
-  "wp-http:validate-redirects"
+  "wp-http:validate-redirects",
+  "wp-http:make-absolute-url"
 ];
 const REQUIRED_CORE_IR_FEATURES = [
   "stmt.if",
@@ -97,6 +100,7 @@ const REQUIRED_CORE_IR_FEATURES = [
   "expr.class-const",
   "expr.function-call",
   "expr.method-call",
+  "expr.null",
   "expr.static-call",
   "expr.binop",
   "expr.assign"
@@ -207,6 +211,9 @@ function _deprecated_function( $function_name, $version, $replacement = '' ) {
 }
 
 function wp_parse_url( $url ) {
+\tif ( 'fixture://parse-fail' === $url || 'fixture://relative-parse-fail' === $url ) {
+\t\treturn false;
+\t}
 \treturn parse_url( $url );
 }
 
@@ -404,6 +411,29 @@ switch ( $case ) {
 \t\t$assertions['valid_no_throw'] = 'no-throw' === $valid;
 \t\t$assertions['invalid_exception'] = array( 'class' => 'WpOrg\\\\Requests\\\\Exception', 'message' => 'A valid URL was not provided.', 'type' => 'wp_http.redirect_failed_validation' ) === $error;
 \t\tbreak;
+\tcase 'wp-http:make-absolute-url':
+\t\t$reflection = new ReflectionMethod( 'WP_Http', 'make_absolute_url' );
+\t\t$params = $reflection->getParameters();
+\t\t$base = 'https://example.test/wp-admin/css/edit.css';
+\t\t$result['urls'] = array(
+\t\t\t'absolute' => WP_Http::make_absolute_url( 'https://other.test/x', $base ),
+\t\t\t'schemeless' => WP_Http::make_absolute_url( '//cdn.example.test:8443/lib.js', $base ),
+\t\t\t'root_relative' => WP_Http::make_absolute_url( '/assets/app.js?ver=1#top', $base ),
+\t\t\t'relative_parent' => WP_Http::make_absolute_url( '../img/logo.png?x=1#frag', $base ),
+\t\t\t'query_fragment' => WP_Http::make_absolute_url( '?updated=1#section', $base ),
+\t\t\t'empty_base' => WP_Http::make_absolute_url( 'relative/file.txt', '' ),
+\t\t\t'base_parse_fail' => WP_Http::make_absolute_url( 'relative/file.txt', 'fixture://parse-fail' ),
+\t\t\t'relative_parse_fail' => WP_Http::make_absolute_url( 'fixture://relative-parse-fail', $base ),
+\t\t);
+\t\t$result['reflection'] = array( 'visibility' => $reflection->isPublic() ? 'public' : 'non-public', 'static' => $reflection->isStatic(), 'params' => array_map( function ( $param ) { return array( 'name' => $param->getName(), 'by_ref' => $param->isPassedByReference() ); }, $params ) );
+\t\t$assertions['reflection'] = $reflection->isPublic() && $reflection->isStatic() && 2 === count( $params ) && 'maybe_relative_path' === $params[0]->getName() && 'url' === $params[1]->getName();
+\t\t$assertions['absolute'] = 'https://other.test/x' === $result['urls']['absolute'];
+\t\t$assertions['schemeless'] = 'https://cdn.example.test:8443/lib.js' === $result['urls']['schemeless'];
+\t\t$assertions['root_relative'] = 'https://example.test/assets/app.js?ver=1#top' === $result['urls']['root_relative'];
+\t\t$assertions['relative_parent'] = 'https://example.test/wp-admin/img/logo.png?x=1#frag' === $result['urls']['relative_parent'];
+\t\t$assertions['query_fragment'] = 'https://example.test/wp-admin/css/edit.css?updated=1#section' === $result['urls']['query_fragment'];
+\t\t$assertions['parse_failures_passthrough'] = 'relative/file.txt' === $result['urls']['empty_base'] && 'relative/file.txt' === $result['urls']['base_parse_fail'] && 'fixture://relative-parse-fail' === $result['urls']['relative_parse_fail'];
+\t\tbreak;
 \tdefault:
 \t\t$assertions['known_case'] = false;
 }
@@ -434,10 +464,10 @@ function ownershipManifest(manifestSha) {
     issue: ISSUE,
     unit: {
       kind: "compiler-emitted-original-path-public-shell",
-      name: "Grouped WP_Http parser/header/cookie/IP/redirect helper shell",
+      name: "Grouped WP_Http parser/header/cookie/IP/redirect/absolute URL helper shell",
       path: "wp-includes/class-wp-http.php",
       public_contract:
-        "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), and validate_redirects($location) ABI and behavior gates in one original-path file."
+        "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), and make_absolute_url($maybe_relative_path, $url) ABI and behavior gates in one original-path file."
     },
     ownership_state: "compiler_emitted_original_path_shell",
     ownership_axes: {
@@ -512,7 +542,8 @@ function main() {
       /public\s+static\s+function\s+browser_redirect_compatibility\s*\(\s*\$location\s*,\s*\$headers\s*,\s*\$data\s*,\s*&\$options\s*,\s*\$original\s*\)/.test(
         generatedSource
       ) &&
-      /public\s+static\s+function\s+validate_redirects\s*\(\s*\$location\s*\)/.test(generatedSource),
+      /public\s+static\s+function\s+validate_redirects\s*\(\s*\$location\s*\)/.test(generatedSource) &&
+      /public\s+static\s+function\s+make_absolute_url\s*\(\s*\$maybe_relative_path\s*,\s*\$url\s*\)/.test(generatedSource),
     one_wp_http_class: (generatedSource.match(/class WP_Http/g) ?? []).length === 1,
     wordpress_bootstrap_profile: generatedSource.includes("HAXE_CUSTOM_ERROR_HANDLER") && generatedSource.includes("WPHX_WP_HTTP_GROUPED_HELPERS_BOOTSTRAPPED"),
     parser_delegation: generatedSource.includes("HttpProcessResponse_Fields_::responseHeaders") && generatedSource.includes("HttpChunkTransferDecode_Fields_::decodeChunkTransfer"),
@@ -524,7 +555,12 @@ function main() {
     redirect_validation_ir:
       generatedSource.includes("HttpRedirectValidation_Fields_::shouldRejectRedirect") &&
       generatedSource.includes("wp_http_validate_url( $location )") &&
-      generatedSource.includes("throw new \\WpOrg\\Requests\\Exception")
+      generatedSource.includes("throw new \\WpOrg\\Requests\\Exception"),
+    absolute_url_ir:
+      generatedSource.includes("HttpAbsoluteUrl_Fields_::makeAbsoluteUrl") &&
+      generatedSource.includes("wp_parse_url( $url )") &&
+      generatedSource.includes("wp_parse_url( $maybe_relative_path )") &&
+      generatedSource.includes("return $maybe_relative_path;")
   };
   if (!Object.values(shellChecks).every(Boolean)) {
     console.error(JSON.stringify({ status: "failed", reason: "shell checks failed", shellChecks, declarations, unsupported: wphxManifest.unsupported }, null, 2));
@@ -569,7 +605,8 @@ function main() {
         "WP_Http::processHeaders",
         "WP_Http::is_ip_address",
         "WP_Http::browser_redirect_compatibility",
-        "WP_Http::validate_redirects"
+        "WP_Http::validate_redirects",
+        "WP_Http::make_absolute_url"
       ]
     },
     claims: {
@@ -608,9 +645,9 @@ function main() {
     ],
     validation_result: manifest.validation_result,
     claims: [
-      "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), and validate_redirects($location).",
-      "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all eight helper cases, and WPHX PHP manifest unsupported=[].",
-      "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, and Requests exception throwing."
+      "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), processHeaders($headers, $url = ''), is_ip_address($maybe_ip), browser_redirect_compatibility(..., &$options, $original), validate_redirects($location), and make_absolute_url($maybe_relative_path, $url).",
+      "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all nine helper cases, and WPHX PHP manifest unsupported=[].",
+      "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers, direct static-helper IP detection, object-property reads, class constants, by-reference redirect option mutation, boolean coercion, Requests exception throwing, null literals, and PHP-owned wp_parse_url boundary handling before Haxe absolute URL assembly."
     ],
     non_claims: [
       "This does not claim whole-file WP_Http ownership.",

@@ -397,7 +397,7 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
-      "line": 18,
+      "line": 19,
       "kinds": [
         "cast"
       ],

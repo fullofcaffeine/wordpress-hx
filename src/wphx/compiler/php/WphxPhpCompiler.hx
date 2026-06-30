@@ -104,6 +104,7 @@ enum PhpCoreStmt
 enum PhpCoreExpr
 {
 	PhpVar(name:String);
+	PhpNull;
 	PhpInt(value:Int);
 	PhpString(value:String);
 	PhpArrayRead(base:PhpCoreExpr, key:PhpCoreExpr);
@@ -1069,6 +1070,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		{
 			case PhpVar(name):
 				"$" + phpIdent(name);
+			case PhpNull:
+				"null";
 			case PhpInt(value):
 				Std.string(value);
 			case PhpString(value):

@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 336,
+  "closed_task_count": 337,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "c92fe09234505daa01775368b851a8886bf84cdcbd3fa982562273159f3d7abe",
+          "sha256": "cf2df8a98d64622ea095f273718385a84686f8cdeeb66c3b9870638fff9b89ec",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -2238,7 +2238,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
-          "sha256": "9f5c1c42bdf00a9b3fb56882d1c97b8d90b8cd7d365f9e479c7cf63189a01263",
+          "sha256": "7a5c9f2c578b758e04908e4fa72c5d6a27034b43918de6e23b15e629ba195614",
           "id": "receipt:wphx-312-58-wp-http-absolute-url-candidate"
         }
       ]
@@ -3153,7 +3153,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
-          "sha256": "0a2a29e2178387217cfae3c483bcfaa84e8858de547206c69337a20ad5a4525e",
+          "sha256": "c8abc1563f7dac2c5ba2e5fba81eca711e0de9dfaed175d7c208851a2e07487e",
           "id": "receipt:wphx-comp-php-group-wp-http-helpers"
         }
       ]
@@ -3195,6 +3195,16 @@
           "path": "receipts/compiler/wphx-comp-php-profile-adapter-registry.v1.json",
           "sha256": "a8d235e813322dea2cdfdeed3a22e22d4c7617de7e9e976170733ec1cd286c2e",
           "id": "receipt:wphx-comp-php-profile-adapter-registry"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-ABSOLUTE-URL-TEMP-SHELL",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-retire-wp-http-absolute-url-temp-shell.v1.json",
+          "sha256": "9b7e8c4cf96aa9b07d76a89278e40dde99ac3f2a172ba933377dbe0ef8539ffa",
+          "id": "receipt:wphx-comp-php-retire-wp-http-absolute-url-temp-shell"
         }
       ]
     },

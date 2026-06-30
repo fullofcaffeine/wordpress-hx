@@ -16,10 +16,13 @@ const RECORDED_AT = "2026-06-28T00:50:00.000Z";
 const UPSTREAM_ROOT = "../wordpress-develop";
 const RUNNER = "tools/wp-core/run-wp-http-absolute-url-candidate.mjs";
 const HXML = "fixtures/wp-core/http-absolute-url-candidate.hxml";
+const WPHX_PHP_HXML = "fixtures/wphx-php/wp-http-grouped-helpers.hxml";
 const OUT_ROOT = "build/wp-core/wphx-312-58";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
 const ORACLE_ROOT = `${OUT_ROOT}/oracle`;
 const CANDIDATE_ROOT = `${OUT_ROOT}/candidate`;
+const WPHX_PHP_ROOT = `${OUT_ROOT}/wphx-php`;
+const WPHX_PHP_MANIFEST = `${WPHX_PHP_ROOT}/wphx-php-emission.v1.json`;
 const PROBE = `${OUT_ROOT}/probe.php`;
 const OUT = "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json";
 const OWNERSHIP = "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json";
@@ -29,8 +32,24 @@ const CONTRACT = "manifests/wp-core/wphx-312-02-http-cron-mail-feed-embed-adapte
 const HELPER_FIXTURE = "manifests/wp-core/wphx-312-41-wp-http-helper-oracle-fixture.v1.json";
 
 const SOURCE_FILES = ["src/wp-includes/class-wp-http.php"];
-const HAXE_SOURCES = [HXML, "src/wphx/wp/http/HttpAbsoluteUrl.hx", "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx"];
-const HAXE_MODULE = "\\wphx\\wp\\http\\_HttpAbsoluteUrl\\HttpAbsoluteUrl_Fields_";
+const HAXE_SOURCES = [
+  HXML,
+  WPHX_PHP_HXML,
+  "src/wphx/wp/http/HttpAbsoluteUrl.hx",
+  "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieHeaderAssembly.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessHeaders.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpChunkTransferDecode.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpIpAddress.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpAbsoluteUrl.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx"
+];
 const PROMOTED_SYMBOLS = [
   "WP_Http::make_absolute_url schemeless host assembly",
   "WP_Http::make_absolute_url root-relative path assembly",
@@ -89,97 +108,11 @@ function mirrorSources(root) {
   }
 }
 
-function haxeBootstrapBlock() {
-  return `if ( ! function_exists( 'wphx_312_58_bootstrap_haxe' ) ) {
-\tfunction wphx_312_58_bootstrap_haxe() {
-\t\tstatic $bootstrapped = false;
-\t\tif ( $bootstrapped ) {
-\t\t\treturn;
-\t\t}
-\t\t$bootstrapped = true;
-
-\t\t$wphx_312_58_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
-\t\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_312_58_lib );
-\t\tspl_autoload_register(
-\t\t\tfunction ( $class ) {
-\t\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
-\t\t\t\tif ( $file ) {
-\t\t\t\t\tinclude_once $file;
-\t\t\t\t}
-\t\t\t}
-\t\t);
-\t\t\\php\\Boot::__hx__init();
-\t}
-}
-wphx_312_58_bootstrap_haxe();
-`;
-}
-
-function installBootstrap(source) {
-  const marker = "<?php\n";
-  if (!source.startsWith(marker)) throw new Error("class-wp-http.php did not start with PHP open tag");
-  return `${marker}\n${haxeBootstrapBlock()}\n${source.slice(marker.length)}`;
-}
-
-function replaceStaticMethod(source, methodName, replacement) {
-  const pattern = new RegExp(`public\\s+static\\s+function\\s+${methodName}\\s*\\(`, "m");
-  const match = pattern.exec(source);
-  if (!match) throw new Error(`Unable to locate static method ${methodName}`);
-  const openBrace = source.indexOf("{", match.index);
-  if (openBrace === -1) throw new Error(`Unable to locate opening brace for ${methodName}`);
-  let depth = 0;
-  for (let index = openBrace; index < source.length; index += 1) {
-    const char = source[index];
-    if (char === "{") depth += 1;
-    if (char === "}") {
-      depth -= 1;
-      if (depth === 0) return `${source.slice(0, match.index)}${replacement}${source.slice(index + 1)}`;
-    }
-  }
-  throw new Error(`Unable to locate closing brace for ${methodName}`);
-}
-
-function transformCandidateAbsoluteUrl() {
-  const path = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
-  let source = installBootstrap(readFileSync(path, "utf8"));
-  source = replaceStaticMethod(
-    source,
-    "make_absolute_url",
-    `public static function make_absolute_url( $maybe_relative_path, $url ) {
-\tif ( empty( $url ) ) {
-\t\treturn $maybe_relative_path;
-\t}
-
-\t$url_parts = wp_parse_url( $url );
-\tif ( ! $url_parts ) {
-\t\treturn $maybe_relative_path;
-\t}
-
-\t$relative_url_parts = wp_parse_url( $maybe_relative_path );
-\tif ( ! $relative_url_parts ) {
-\t\treturn $maybe_relative_path;
-\t}
-
-\treturn ${HAXE_MODULE}::makeAbsoluteUrl(
-\t\t(string) $maybe_relative_path,
-\t\t(string) ( $url_parts['scheme'] ?? '' ),
-\t\t(string) ( $url_parts['host'] ?? '' ),
-\t\tisset( $url_parts['port'] ) ? (int) $url_parts['port'] : null,
-\t\t(string) ( $url_parts['path'] ?? '' ),
-\t\t! empty( $url_parts['path'] ),
-\t\t! empty( $relative_url_parts['scheme'] ),
-\t\tisset( $relative_url_parts['host'] ) ? (string) $relative_url_parts['host'] : null,
-\t\tisset( $relative_url_parts['port'] ) ? (int) $relative_url_parts['port'] : null,
-\t\t(string) ( $relative_url_parts['path'] ?? '' ),
-\t\t! empty( $relative_url_parts['path'] ),
-\t\t(string) ( $relative_url_parts['query'] ?? '' ),
-\t\t! empty( $relative_url_parts['query'] ),
-\t\t(string) ( $relative_url_parts['fragment'] ?? '' ),
-\t\t! empty( $relative_url_parts['fragment'] )
-\t);
-}`
-  );
-  writeFileSync(path, source);
+function installCompilerEmittedCandidateShell() {
+  const source = `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`;
+  const target = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(source, target);
 }
 
 function writeProbe() {
@@ -284,12 +217,22 @@ function ownershipManifest(manifestSha) {
     ownership_state: "haxe_owned_candidate_with_public_php_shell",
     bridge: {
       exists: true,
-      kind: "generated-php-haxe-helper-with-temporary-original-path-shell",
+      kind: "compiler-emitted-grouped-original-path-public-php-shell",
       removal_gate:
-        "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable public PHP ownership."
+        "Pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and whole-file WP_Http gates before claiming durable public PHP or whole-file ownership."
     },
-    owned_paths: [RUNNER, HXML, "src/wphx/wp/http/HttpAbsoluteUrl.hx", "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx", OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    owned_paths: [
+      RUNNER,
+      HXML,
+      WPHX_PHP_HXML,
+      "src/wphx/wp/http/HttpAbsoluteUrl.hx",
+      "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx",
+      "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+      OUT,
+      OWNERSHIP,
+      RECEIPT
+    ],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, WPHX_PHP_MANIFEST, OUT_ROOT],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-wp-http-absolute-url-candidate",
@@ -306,9 +249,10 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  command("haxe", [WPHX_PHP_HXML, "-D", `wphx_php_output=${WPHX_PHP_ROOT}`, "-D", `wphx_php_manifest=${WPHX_PHP_MANIFEST}`]);
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
-  transformCandidateAbsoluteUrl();
+  installCompilerEmittedCandidateShell();
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -330,6 +274,27 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
+  const wphxDeclarations = wphxPhpManifest.files.flatMap((file) => file.declarations.map((entry) => `${entry.kind}:${entry.name}`));
+  if (JSON.stringify(wphxDeclarations) !== JSON.stringify(["class:WP_Http"])) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP declarations", declarations: wphxDeclarations }, null, 2));
+    process.exit(1);
+  }
+  if (wphxPhpManifest.unsupported.length !== 0) {
+    console.error(JSON.stringify({ status: "failed", reason: "unexpected WPHX PHP unsupported constructs", unsupported: wphxPhpManifest.unsupported }, null, 2));
+    process.exit(1);
+  }
+  const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http.php");
+  const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const absoluteUrlEmitted =
+    /public\s+static\s+function\s+make_absolute_url\s*\(\s*\$maybe_relative_path\s*,\s*\$url\s*\)/.test(generatedShell) &&
+    generatedShell.includes("wp_parse_url( $url )") &&
+    generatedShell.includes("wp_parse_url( $maybe_relative_path )") &&
+    generatedShell.includes("HttpAbsoluteUrl_Fields_::makeAbsoluteUrl");
+  if (!absoluteUrlEmitted) {
+    console.error(JSON.stringify({ status: "failed", reason: "generated shell is missing make_absolute_url adapter shape" }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-wp-http-absolute-url-candidate.v1",
     issue: ISSUE.external_ref,
@@ -343,19 +308,39 @@ async function main() {
       helper_oracle_fixture_manifest: inputRecord(HELPER_FIXTURE),
       runner: inputRecord(RUNNER),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
+      wphx_php_manifest: inputRecord(WPHX_PHP_MANIFEST),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_PHP_HXML,
       haxe_output: HAXE_OUT,
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
+      compiler_emitted_public_shell: {
+        path: generatedShellPath,
+        source_path: `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`,
+        manifest: WPHX_PHP_MANIFEST,
+        declarations: wphxDeclarations,
+        emitted_methods: [
+          {
+            name: "make_absolute_url",
+            visibility: "public",
+            by_reference_parameters: []
+          }
+        ],
+        unsupported: wphxPhpManifest.unsupported
+      },
       promoted_symbols: PROMOTED_SYMBOLS,
       public_shell_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
         public_php_abi_preserved: true,
         shell_body_ownership:
-          "temporary candidate shell preserves the WP_Http public static method ABI and wp_parse_url failure/passthrough behavior while delegating URL construction to generated Haxe PHP",
-        native_boundaries: ["wp_parse_url", "PHP empty() branch booleans for parsed URL components"]
+          "compiler-emitted original-path class-wp-http.php shell preserves the WP_Http::make_absolute_url public static method ABI and wp_parse_url failure/passthrough behavior while delegating URL construction to generated Haxe PHP",
+        native_boundaries: [
+          "wp_parse_url",
+          "PHP empty() branch booleans for parsed URL components",
+          "compiler-emitted original-path class-wp-http.php shell"
+        ]
       }
     },
     fixture: {
@@ -399,9 +384,10 @@ async function main() {
           "The fixture observes absolute URL helper behavior only. It does not execute WP_Http::request, Requests network I/O, DNS, proxy, TLS, redirect following, or transport execution."
       },
       {
-        id: "durable-public-php-adapter-not-yet-generated",
+        id: "whole-wp-http-file-not-yet-owned",
         owner: ISSUE.external_ref,
-        detail: "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+        detail:
+          "The candidate consumes a compiler-emitted grouped original-path class-wp-http.php shell for the make_absolute_url boundary, but broader WP_Http methods and whole-file original-path ownership remain later compiler-driven gates."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -411,7 +397,10 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
+      compiler_emitted_public_php: true,
+      make_absolute_url_emitted: absoluteUrlEmitted,
+      unsupported_empty: wphxPhpManifest.unsupported.length === 0,
       installed_wordpress_behavior_claimed: false,
       live_http_claimed: false,
       dns_resolution_claimed: false
@@ -429,7 +418,8 @@ async function main() {
       { path: OUT, role: "WP_Http absolute URL Haxe parity candidate manifest" },
       { path: OWNERSHIP, role: "ownership manifest for Haxe-owned WP_Http absolute URL helper" },
       { path: RUNNER, role: "deterministic PHP CLI oracle/candidate Haxe runner" },
-      { path: "src/wphx/wp/http/HttpAbsoluteUrl.hx", role: "module-level Haxe source for WP_Http::make_absolute_url assembly" }
+      { path: "src/wphx/wp/http/HttpAbsoluteUrl.hx", role: "module-level Haxe source for WP_Http::make_absolute_url assembly" },
+      { path: WPHX_PHP_MANIFEST, role: "WPHX PHP emission manifest for compiler-emitted class-wp-http.php" }
     ],
     verification_commands: [
       "npm run wp:core:wphx-312-wp-http-absolute-url-candidate",
@@ -440,7 +430,8 @@ async function main() {
     related_receipts: [
       "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
       "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
-      "receipt:wphx-312-41-wp-http-helper-oracle-fixture"
+      "receipt:wphx-312-41-wp-http-helper-oracle-fixture",
+      "receipt:wphx-comp-php-group-wp-http-helpers"
     ],
     validation_result: manifest.validation_result
   };

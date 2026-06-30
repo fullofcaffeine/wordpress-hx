@@ -80,4 +80,11 @@ class WpHttpGroupedHelpersShell
 	{
 		HaxeHttpRedirectValidation.shouldRejectRedirect(false);
 	}
+
+	@:wp.adapter("wp-http-make-absolute-url")
+	@:wp.haxeHelper("\\wphx\\wp\\http\\_HttpAbsoluteUrl\\HttpAbsoluteUrl_Fields_")
+	public static function make_absolute_url(@:wp.name("maybe_relative_path") maybeRelativePath:String, url:String):String
+	{
+		return HaxeHttpAbsoluteUrl.makeAbsoluteUrl(maybeRelativePath, "", "", null, "", false, false, null, null, "", false, "", false, "", false);
+	}
 }

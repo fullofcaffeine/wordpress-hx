@@ -6,6 +6,7 @@ import wphx.wp.http.HttpDeprecatedParseUrl.deprecatedFunctionName;
 import wphx.wp.http.HttpDeprecatedParseUrl.deprecatedVersion;
 import wphx.wp.http.HttpDeprecatedParseUrl.parseUrl;
 import wphx.wp.http.HttpDeprecatedParseUrl.replacementFunctionName;
+import wphx.wp.http.HttpAbsoluteUrl.makeAbsoluteUrl;
 import wphx.wp.http.HttpIpAddress.ipAddressVersion;
 import wphx.wp.http.HttpProcessHeaders.headerKey;
 import wphx.wp.http.HttpProcessHeaders.headerValue;
@@ -42,5 +43,7 @@ class HttpGroupedHelpersCandidateEntry
 		headerValue("X-Test: yes");
 		shouldUseBrowserGet(302);
 		shouldRejectRedirect(false);
+		makeAbsoluteUrl("../img/logo.png", "https", "example.test", null, "/wp-admin/css/edit.css", true, false, null, null, "../img/logo.png", true, "",
+			false, "", false);
 	}
 }

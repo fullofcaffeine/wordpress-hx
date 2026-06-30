@@ -14,14 +14,16 @@
   "ownership_state": "haxe_owned_candidate_with_public_php_shell",
   "bridge": {
     "exists": true,
-    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
-    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable public PHP ownership."
+    "kind": "compiler-emitted-grouped-original-path-public-php-shell",
+    "removal_gate": "Pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and whole-file WP_Http gates before claiming durable public PHP or whole-file ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
     "fixtures/wp-core/http-absolute-url-candidate.hxml",
+    "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "src/wphx/wp/http/HttpAbsoluteUrl.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
     "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
     "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
     "receipts/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json"
@@ -30,6 +32,7 @@
     "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
     "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
     "receipts/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+    "build/wp-core/wphx-312-58/wphx-php/wphx-php-emission.v1.json",
     "build/wp-core/wphx-312-58"
   ],
   "verification": {
@@ -42,6 +45,6 @@
     "receipt_refs": [
       "receipt:wphx-312-58-wp-http-absolute-url-candidate"
     ],
-    "manifest_digest": "sha256:98bd57195cd7a46be7d60fdf3ee4654409129928e27da7f4c4da2292512ab8ca"
+    "manifest_digest": "sha256:8d50bcb3694f72c480a6bea2c75a97735c867a066316e4a5fa7e07da04be5780"
   }
 }

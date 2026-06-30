@@ -28,14 +28,19 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-absolute-url-candidate.mjs",
-      "bytes": 18279,
-      "sha256": "sha256:7033d05e9d833c59af0f5a42db9de8be0a08673a94660a5a04ebdb69f007ed67"
+      "bytes": 19193,
+      "sha256": "sha256:d53e840a57b822a1b4ebae5517cfc0cce6bab67e8ccbb7dfb93ce01c8ddb1edd"
     },
     "haxe_sources": [
       {
         "path": "fixtures/wp-core/http-absolute-url-candidate.hxml",
         "bytes": 127,
         "sha256": "sha256:d17073cafe670e3579348c8fe2c003a3c2e8a3d625a6a3188f9bcff7d66b6326"
+      },
+      {
+        "path": "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
+        "bytes": 387,
+        "sha256": "sha256:0c1c7e5072df33c2bca2f8200ad03c213bc8ccd559df50812b7d71b490c309a9"
       },
       {
         "path": "src/wphx/wp/http/HttpAbsoluteUrl.hx",
@@ -46,8 +51,73 @@
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.hx",
         "bytes": 331,
         "sha256": "sha256:cef0b8982a59e9fbbab9e5cf52f7f93d0df528a9c69f4f1a6b3790b112ec01bf"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpGroupedHelpersEntry.hx",
+        "bytes": 1017,
+        "sha256": "sha256:ed6357d9f15a39ce1f26bea7f39740773a543b97e6552054dd5847771954b78a"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
+        "bytes": 3351,
+        "sha256": "sha256:6684ccf4dba840a5a95cd9a9a14449a30202d1de6eb2f7faac49a8237c7a605a"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpCookieHeaderAssembly.hx",
+        "bytes": 339,
+        "sha256": "sha256:ef1e24f2f65fc45c7526899b4d37679b4c1d31cf0bb0e80559e6a8208f3df71d"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessHeaders.hx",
+        "bytes": 550,
+        "sha256": "sha256:09a1bc6c5efe014ed136e4839f0bc1d5dfc7eee94756b448b21a5bb25cd33482"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpProcessResponse.hx",
+        "bytes": 359,
+        "sha256": "sha256:ebaf7352eab4fa3d6c7fd5563b7a78601b5001c01584a2532f0594322a41bfce"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpChunkTransferDecode.hx",
+        "bytes": 314,
+        "sha256": "sha256:d39a608a63881c5e8da002cc0698d1002697e84ec0f5d5fcfea5e9a829f674bb"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpDeprecatedParseUrl.hx",
+        "bytes": 506,
+        "sha256": "sha256:86e5d78ec9f4fb43da1e51c8d0a27513ce350b9c6511b48ff05b3913c801f5a1"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpIpAddress.hx",
+        "bytes": 342,
+        "sha256": "sha256:850a6ae2c6b741aa53d0f4a0ed40ca63722a39f8a83c1a6582980bfcb7c4776e"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectCompatibility.hx",
+        "bytes": 321,
+        "sha256": "sha256:e0a33410aa9307f5c8b29634c443bf899f1ce70eb5243b2154bfd7c951077670"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRedirectValidation.hx",
+        "bytes": 236,
+        "sha256": "sha256:f7654c624aa4d06c9cecfe1792c16edcc5dd11f7b88f3209322a2fdb77624611"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpAbsoluteUrl.hx",
+        "bytes": 555,
+        "sha256": "sha256:46e80d161ae82988779640b22f742aedd184c788c33e4ec7d90119435a9d70bd"
+      },
+      {
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/PhpHttpGlobals.hx",
+        "bytes": 302,
+        "sha256": "sha256:edf69b94b36c3034e065d6580bffc179cf3b4eb6d552cbe7664df1e0d735288c"
       }
     ],
+    "wphx_php_manifest": {
+      "path": "build/wp-core/wphx-312-58/wphx-php/wphx-php-emission.v1.json",
+      "bytes": 1273,
+      "sha256": "sha256:2e9dc28d203d14da6386d8a7640ad3bee8bc6d0b8c9338fe7a6698a80dbbe093"
+    },
     "upstream_sources": [
       {
         "path": "src/wp-includes/class-wp-http.php",
@@ -59,6 +129,7 @@
   },
   "candidate": {
     "hxml": "fixtures/wp-core/http-absolute-url-candidate.hxml",
+    "wphx_php_hxml": "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "haxe_output": "build/wp-core/wphx-312-58/haxe",
     "compiled_php_files": [
       "build/wp-core/wphx-312-58/haxe/index.php",
@@ -80,6 +151,22 @@
       "build/wp-core/wphx-312-58/haxe/lib/wphx/fixtures/wp/core/HttpAbsoluteUrlCandidateEntry.php",
       "build/wp-core/wphx-312-58/haxe/lib/wphx/wp/http/_HttpAbsoluteUrl/HttpAbsoluteUrl_Fields_.php"
     ],
+    "compiler_emitted_public_shell": {
+      "path": "build/wp-core/wphx-312-58/candidate/wp-includes/class-wp-http.php",
+      "source_path": "build/wp-core/wphx-312-58/wphx-php/wp-includes/class-wp-http.php",
+      "manifest": "build/wp-core/wphx-312-58/wphx-php/wphx-php-emission.v1.json",
+      "declarations": [
+        "class:WP_Http"
+      ],
+      "emitted_methods": [
+        {
+          "name": "make_absolute_url",
+          "visibility": "public",
+          "by_reference_parameters": []
+        }
+      ],
+      "unsupported": []
+    },
     "promoted_symbols": [
       "WP_Http::make_absolute_url schemeless host assembly",
       "WP_Http::make_absolute_url root-relative path assembly",
@@ -87,12 +174,13 @@
       "WP_Http::make_absolute_url query and fragment append"
     ],
     "public_shell_policy": {
-      "public_php_replacement_claimed": false,
+      "public_php_replacement_claimed": true,
       "public_php_abi_preserved": true,
-      "shell_body_ownership": "temporary candidate shell preserves the WP_Http public static method ABI and wp_parse_url failure/passthrough behavior while delegating URL construction to generated Haxe PHP",
+      "shell_body_ownership": "compiler-emitted original-path class-wp-http.php shell preserves the WP_Http::make_absolute_url public static method ABI and wp_parse_url failure/passthrough behavior while delegating URL construction to generated Haxe PHP",
       "native_boundaries": [
         "wp_parse_url",
-        "PHP empty() branch booleans for parsed URL components"
+        "PHP empty() branch booleans for parsed URL components",
+        "compiler-emitted original-path class-wp-http.php shell"
       ]
     }
   },
@@ -198,9 +286,9 @@
       "detail": "The fixture observes absolute URL helper behavior only. It does not execute WP_Http::request, Requests network I/O, DNS, proxy, TLS, redirect following, or transport execution."
     },
     {
-      "id": "durable-public-php-adapter-not-yet-generated",
+      "id": "whole-wp-http-file-not-yet-owned",
       "owner": "WPHX-312.58",
-      "detail": "The candidate uses a bounded generated-PHP helper plus temporary original-path shell; durable shell generation remains a later cross-domain gate."
+      "detail": "The candidate consumes a compiler-emitted grouped original-path class-wp-http.php shell for the make_absolute_url boundary, but broader WP_Http methods and whole-file original-path ownership remain later compiler-driven gates."
     }
   ],
   "ownership_manifest": "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
@@ -210,7 +298,10 @@
     "promoted_symbols": 4,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
+    "make_absolute_url_emitted": true,
+    "unsupported_empty": true,
     "installed_wordpress_behavior_claimed": false,
     "live_http_claimed": false,
     "dns_resolution_claimed": false
