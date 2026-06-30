@@ -13,6 +13,7 @@ import reflaxe.data.ClassVarData;
 import reflaxe.data.EnumOptionData;
 import sys.FileSystem;
 import sys.io.File;
+import wphx.compiler.php.WphxPhpWordPressAdapters.WordPressAdapterTemplateProvenance;
 
 using reflaxe.helpers.ClassFieldHelper;
 
@@ -149,6 +150,7 @@ private typedef EmissionManifest =
 	final files:Array<EmissionManifestFile>;
 	final core_ir_features:Array<String>;
 	final segment_plans:Array<EmissionSegmentPlan>;
+	final adapter_templates:Array<WordPressAdapterTemplateProvenance>;
 	final unsupported:Array<String>;
 }
 
@@ -198,6 +200,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 	var unsupported:Array<String> = [];
 	var coreIrFeatures:Array<String> = [];
 	var segmentPlans:Array<EmissionSegmentPlan> = [];
+	var adapterTemplates:Array<WordPressAdapterTemplateProvenance> = [];
 
 	public function new()
 	{
@@ -253,6 +256,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 	function buildFiles():Array<GeneratedPhpFile>
 	{
 		segmentPlans = [];
+		adapterTemplates = [];
 		return buildAdapterFilePlans(collectAdapterDeclarations()).map(emitAdapterFile);
 	}
 
@@ -975,6 +979,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				return "";
 			}
 			recordCoreIrFeatures(plan.features);
+			recordAdapterTemplates(plan.templates);
 			return emitPhpCoreStatements(plan.statements);
 		}
 
@@ -1466,6 +1471,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			files: generated,
 			core_ir_features: coreIrFeatures,
 			segment_plans: segmentPlans,
+			adapter_templates: adapterTemplates,
 			unsupported: unsupported
 		};
 		return Json.stringify(manifest, null, "  ") + "\n";
@@ -1592,6 +1598,28 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			}
 		}
 		coreIrFeatures.sort(Reflect.compare);
+	}
+
+	function recordAdapterTemplates(templates:Array<WordPressAdapterTemplateProvenance>):Void
+	{
+		for (template in templates)
+		{
+			final key = template.adapter + "\n" + template.path + "\n" + template.sha256;
+			var exists = false;
+			for (recorded in adapterTemplates)
+			{
+				if (recorded.adapter + "\n" + recorded.path + "\n" + recorded.sha256 == key)
+				{
+					exists = true;
+					break;
+				}
+			}
+			if (!exists)
+			{
+				adapterTemplates.push(template);
+			}
+		}
+		adapterTemplates.sort((left, right) -> Reflect.compare(left.adapter + left.path, right.adapter + right.path));
 	}
 
 	function isModuleFieldsClass(classType:ClassType):Bool

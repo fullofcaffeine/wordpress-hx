@@ -712,12 +712,22 @@ async function main() {
   const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
   const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http.php");
   const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const requestAdapterTemplate = (wphxPhpManifest.adapter_templates ?? []).find(
+    (template) => template.adapter === "wp-http-request-nonblocking"
+  );
   const wphxPhpShape = {
     manifest_declares_wp_http: wphxPhpManifest.files.some((file) =>
       file.path === "wp-includes/class-wp-http.php" &&
       file.declarations.some((declaration) => declaration.kind === "class" && declaration.name === "WP_Http")
     ),
     unsupported_empty: Array.isArray(wphxPhpManifest.unsupported) && wphxPhpManifest.unsupported.length === 0,
+    adapter_template_recorded: Boolean(requestAdapterTemplate),
+    adapter_template_path:
+      requestAdapterTemplate?.path === "src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template",
+    adapter_template_hash: typeof requestAdapterTemplate?.sha256 === "string" && requestAdapterTemplate.sha256.startsWith("sha256:"),
+    adapter_template_placeholder: requestAdapterTemplate?.placeholders?.includes("HELPER_CLASS") === true,
+    adapter_template_upstream_ref:
+      requestAdapterTemplate?.upstream_ref === "../wordpress-develop/src/wp-includes/class-wp-http.php WP_Http::request",
     request_signature: generatedShell.includes("public function request($url, $args = [])"),
     block_request_signature: generatedShell.includes("public function block_request($uri)"),
     nonblocking_haxe_call: generatedShell.includes(`${HAXE_MODULE}::nonblockingResponse()`),

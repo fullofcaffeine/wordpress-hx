@@ -1,0 +1,70 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-adapter-template-provenance",
+  "issue": {
+    "id": "wordpresshx-85p",
+    "external_ref": "WPHX-COMP-PHP-ADAPTER-TEMPLATE-PROVENANCE",
+    "title": "Replace large inline PHP adapter raw block"
+  },
+  "recorded_at": "2026-06-30T00:00:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_adapter_template_provenance",
+  "artifact_scope": "wphx_php_manifest_adapter_templates",
+  "commands": [
+    "haxe fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+    "npm run wp:core:wphx-312-wp-http-request-nonblocking-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-nonblocking-candidate:check",
+    "npm run wphx:php:public-shell-snapshots",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run format:haxe",
+    "npm run haxe:escape-hatches"
+  ],
+  "artifacts": [
+    {
+      "path": "AGENTS.md",
+      "role": "project rule forbidding large inline raw public adapter bodies without structured IR or provenance-tracked compiler templates"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP emission manifest adapter_templates collection and deterministic recording"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter template renderer and WP_Http request nonblocking template use"
+    },
+    {
+      "path": "src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template",
+      "role": "compiler-owned bounded WP_Http::request public adapter template"
+    },
+    {
+      "path": "tools/wp-core/run-wp-http-request-nonblocking-candidate.mjs",
+      "role": "runner requiring adapter template provenance before accepting WPHX-312.65 generated shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-65-wp-http-request-nonblocking-candidate.v1.json",
+      "role": "candidate manifest recording adapter template shape checks"
+    },
+    {
+      "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
+      "role": "public-shell snapshots regenerated with adapter_templates manifest field"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "adapter_templates_manifest_field": true,
+    "request_template_recorded": true,
+    "request_template_placeholder": "HELPER_CLASS",
+    "request_candidate_cases": 1,
+    "public_shell_snapshot_cases": 17
+  },
+  "claims": [
+    "WPHX PHP manifests now record compiler-owned adapter template provenance.",
+    "The bounded WP_Http::request nonblocking public adapter body no longer lives as a large inline Haxe string concatenation.",
+    "The WPHX-312.65 runner requires template path, hash, placeholder, ownership, and upstream reference evidence for the generated request shell."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http::request ownership or whole-file WP_Http ownership.",
+    "This does not claim that adapter templates are runtime implementation authority or generated target files.",
+    "This does not claim WPHX PHP is a complete arbitrary-Haxe PHP backend."
+  ]
+}

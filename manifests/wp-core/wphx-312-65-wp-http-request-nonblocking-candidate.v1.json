@@ -28,13 +28,13 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-request-nonblocking-candidate.mjs",
-      "bytes": 35643,
-      "sha256": "sha256:324d683b462b67423b53015128574fd77e80107efef6ab93441da574a331823a"
+      "bytes": 36417,
+      "sha256": "sha256:3d673848cd10fca800b0cb35b5d828d549dac4c21e8bfc53552c1e677c19a94c"
     },
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-312-65/wphx-php/wphx-php-emission.v1.json",
-      "bytes": 955,
-      "sha256": "sha256:2a576cdc119cc9db49d3efb7f4ec0b35fe04104a12252683e91b0fdf1d1605b9"
+      "bytes": 1471,
+      "sha256": "sha256:151528a45f990906d2c52ba4f7012de35cb0eb315db298c7e73ab653053571ba"
     },
     "haxe_sources": [
       {
@@ -130,11 +130,16 @@
     "public_shell": {
       "path": "build/wp-core/wphx-312-65/candidate/wp-includes/class-wp-http.php",
       "source_path": "build/wp-core/wphx-312-65/wphx-php/wp-includes/class-wp-http.php",
-      "sha256": "sha256:a28d325ffdc17ed601017f4aaa92965782bbc1aad50c70c5542f37bf647bbb90",
+      "sha256": "sha256:3f1c655b6945917c9bb8f62e3ebbc5e8664f6ae1560b2e69da875dbe317e8ee9",
       "compiler_emitted": true,
       "shape": {
         "manifest_declares_wp_http": true,
         "unsupported_empty": true,
+        "adapter_template_recorded": true,
+        "adapter_template_path": true,
+        "adapter_template_hash": true,
+        "adapter_template_placeholder": true,
+        "adapter_template_upstream_ref": true,
         "request_signature": true,
         "block_request_signature": true,
         "nonblocking_haxe_call": true,

@@ -48,8 +48,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/conditional-global-class-smoke/generated/wphx-php-emission.v1.json",
-        "bytes": 1192,
-        "sha256": "sha256:5f45a415905fe42cce1b26f87c95b33e7d9b7cfec555de7ea9696fc906725ce6"
+        "bytes": 1219,
+        "sha256": "sha256:a487fbe629ddf7e13f784a1976866841cc8dcca6689a60e30563420c9c145422"
       }
     },
     {
@@ -87,8 +87,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/facade-global-function/generated/wphx-php-emission.v1.json",
-        "bytes": 639,
-        "sha256": "sha256:dc17edc4e64f8a03ef108b75ceb7cdd8ff820c8c3df2b66c3286cf5d22e87a0f"
+        "bytes": 666,
+        "sha256": "sha256:0436e998d10db3e8c1ffe43848eeafcf3e74033063abf2e9cd8cb559c961edb3"
       }
     },
     {
@@ -138,8 +138,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/public-interface-class/generated/wphx-php-emission.v1.json",
-        "bytes": 1247,
-        "sha256": "sha256:03d4999900c929cc5b579cec3c1a4775f51ddf8cd4f86b66ac0e63f1e21f1476"
+        "bytes": 1274,
+        "sha256": "sha256:5815d991dca1f781e164a4f16fb265331c6c4af775264fe990718835e5294d31"
       }
     },
     {
@@ -179,8 +179,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/by-reference-global-function/generated/wphx-php-emission.v1.json",
-        "bytes": 658,
-        "sha256": "sha256:10a9d3b3c39206f4bed089c6d7ef0fd7510b9a359e4533923f88964ceff8fc3d"
+        "bytes": 685,
+        "sha256": "sha256:9494b0169a51cd3571fbcec523fcc214adaf1f65053f6306362a2c665ba3f33d"
       }
     },
     {
@@ -222,8 +222,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/protected-method-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 661,
-        "sha256": "sha256:33d1df36379b22df59f56b760bc19f7db50bc1a1da304dc0a51edf1700680c30"
+        "bytes": 688,
+        "sha256": "sha256:fd65be169f07362d2b4653ee9ae0390c67a4f7dac46ce46f5826016ab9c83b30"
       }
     },
     {
@@ -269,8 +269,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-array-mutation-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 963,
-        "sha256": "sha256:f4096011d387a69d74acf807759a859f08e042a7478e28b50aaccedcdbe4e06f"
+        "bytes": 990,
+        "sha256": "sha256:21d0d4f773261cce7dd4452db9dede8b8447950a6b8ae8dd98571975ad984e36"
       }
     },
     {
@@ -312,8 +312,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/native-header-cookie-array-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 1077,
-        "sha256": "sha256:55e90533beec8e9c7c67e9459a0142b709297ef7b5365bfd4acb6495e142a408"
+        "bytes": 1104,
+        "sha256": "sha256:2453a267e997d6c5cf58207215f0e9c0a372a86e965c83daf923e3462d29f4dd"
       }
     },
     {
@@ -363,8 +363,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-encoding-class-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 927,
-        "sha256": "sha256:bef3763659a066733ff9fde23fee45b63d3a3b01942bba5342c4f3f94adbda63"
+        "bytes": 954,
+        "sha256": "sha256:e3025a987fc09363beba0ce2abeec0521115b6c6c648843e54cf7c073c7629a2"
       }
     },
     {
@@ -415,8 +415,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-proxy-class-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 887,
-        "sha256": "sha256:bbe8524e4fc78f7ac811f840192c371a0f9257102115699dae79146984843264"
+        "bytes": 914,
+        "sha256": "sha256:ba784362f57ce41a8e415aabb957a5e071eaa52f2bb5842e31931ac121840cd2"
       }
     },
     {
@@ -476,8 +476,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-response-class-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 781,
-        "sha256": "sha256:d192a63c98624ea5fb9ce4e29cec294294aedf5807e8497f60bf15191ddd11e6"
+        "bytes": 808,
+        "sha256": "sha256:c27012c11e55f2d53f7707d7da855fa7c7648c342ce630a33e6d5fe08dd5261e"
       }
     },
     {
@@ -536,8 +536,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-cookie-class-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 895,
-        "sha256": "sha256:2b591b0f4649acfeacacf71c71f26f64fb4475b70d2a22175653d132eb245f53"
+        "bytes": 922,
+        "sha256": "sha256:00b6d89d950377727941f618246de2e5f133b496a81d10f1570961b297bac1f8"
       }
     },
     {
@@ -586,8 +586,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-transport-selection-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 708,
-        "sha256": "sha256:c141fc3e05ef720d813bbc6e8bbb01d8f7b256e1a4944f108d5ef148cc5b5890"
+        "bytes": 735,
+        "sha256": "sha256:2c8df860eeca80bad0a61e411a8196c2fa78dba740064fccdbf1390ab1859eb1"
       }
     },
     {
@@ -602,8 +602,8 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 7554,
-      "sha256": "sha256:a28d325ffdc17ed601017f4aaa92965782bbc1aad50c70c5542f37bf647bbb90",
+      "bytes": 7810,
+      "sha256": "sha256:3f1c655b6945917c9bb8f62e3ebbc5e8664f6ae1560b2e69da875dbe317e8ee9",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -634,8 +634,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 955,
-        "sha256": "sha256:2a576cdc119cc9db49d3efb7f4ec0b35fe04104a12252683e91b0fdf1d1605b9"
+        "bytes": 1471,
+        "sha256": "sha256:151528a45f990906d2c52ba4f7012de35cb0eb315db298c7e73ab653053571ba"
       }
     },
     {
@@ -707,8 +707,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/include-side-effect-script/generated/wphx-php-emission.v1.json",
-        "bytes": 1726,
-        "sha256": "sha256:259fac17edad6ad04b340c9188886471583e6a0757da28a9c68f856f9900294e"
+        "bytes": 1753,
+        "sha256": "sha256:3f34c6fb7f2ab0a6a531485268e329770bfa7a00cc2add39e04a36ac43bc92b4"
       }
     },
     {
@@ -807,8 +807,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-admin-style/generated/wphx-php-emission.v1.json",
-        "bytes": 2270,
-        "sha256": "sha256:355709da82831595cd63c666945153b2b54dadd6db488d27897c05cf3c7b0a15"
+        "bytes": 2297,
+        "sha256": "sha256:ab1ef3362ebe0a58d200f860c014df853edee0000e156c4a358fb174587859c2"
       }
     },
     {
@@ -902,8 +902,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-parent/generated/wphx-php-emission.v1.json",
-        "bytes": 4128,
-        "sha256": "sha256:5dfca1347c55c4c1dabc0383b8e7a9b8f5ab086a2791ee9eaabfab13fae14643"
+        "bytes": 4155,
+        "sha256": "sha256:f800d9871f508a9b37e37c970fe6f563f280dff8910340cd74d36cec8b29bb39"
       }
     },
     {
@@ -995,8 +995,8 @@
       },
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/template-segment-nested-partial/generated/wphx-php-emission.v1.json",
-        "bytes": 4128,
-        "sha256": "sha256:5dfca1347c55c4c1dabc0383b8e7a9b8f5ab086a2791ee9eaabfab13fae14643"
+        "bytes": 4155,
+        "sha256": "sha256:f800d9871f508a9b37e37c970fe6f563f280dff8910340cd74d36cec8b29bb39"
       }
     }
   ],

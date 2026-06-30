@@ -1,13 +1,39 @@
 package wphx.compiler.php;
 
 #if (macro || reflaxe_runtime)
+import haxe.crypto.Sha256;
+import sys.io.File;
 import wphx.compiler.php.WphxPhpCompiler.PhpCoreExpr;
 import wphx.compiler.php.WphxPhpCompiler.PhpCoreStmt;
+
+typedef WordPressAdapterTemplateProvenance =
+{
+	final adapter:String;
+	final path:String;
+	final sha256:String;
+	final placeholders:Array<String>;
+	final ownership:String;
+	final upstream_ref:String;
+}
 
 typedef WordPressMethodAdapterPlan =
 {
 	final features:Array<String>;
 	final statements:Array<PhpCoreStmt>;
+	final error:Null<String>;
+	final templates:Array<WordPressAdapterTemplateProvenance>;
+}
+
+private typedef AdapterTemplateReplacement =
+{
+	final placeholder:String;
+	final value:String;
+}
+
+private typedef AdapterTemplateRender =
+{
+	final code:String;
+	final provenance:WordPressAdapterTemplateProvenance;
 	final error:Null<String>;
 }
 
@@ -107,12 +133,98 @@ class WphxPhpWordPressAdapters
 
 	static function missingHelper(message:String):WordPressMethodAdapterPlan
 	{
-		return {features: [], statements: [], error: message};
+		return {
+			features: [],
+			statements: [],
+			error: message,
+			templates: []
+		};
 	}
 
-	static function plan(features:Array<String>, statements:Array<PhpCoreStmt>):WordPressMethodAdapterPlan
+	static function plan(features:Array<String>, statements:Array<PhpCoreStmt>, ?templates:Array<WordPressAdapterTemplateProvenance>):WordPressMethodAdapterPlan
 	{
-		return {features: features, statements: statements, error: null};
+		return {
+			features: features,
+			statements: statements,
+			error: null,
+			templates: templates == null ? [] : templates
+		};
+	}
+
+	static function templateError(message:String):WordPressMethodAdapterPlan
+	{
+		return {
+			features: [],
+			statements: [],
+			error: message,
+			templates: []
+		};
+	}
+
+	static function renderTemplate(adapter:String, path:String, ownership:String, upstreamRef:String,
+			replacements:Array<AdapterTemplateReplacement>):AdapterTemplateRender
+	{
+		final source = try
+		{
+			File.getContent(path);
+		} catch (error:haxe.Exception)
+		{
+			return {
+				code: "",
+				provenance: emptyTemplateProvenance(adapter, path, ownership, upstreamRef),
+				error: "missing WPHX PHP adapter template " + path + ": " + error.message
+			};
+		}
+
+		var code = source;
+		final placeholders = new Array<String>();
+		for (replacement in replacements)
+		{
+			final token = "{{" + replacement.placeholder + "}}";
+			if (code.indexOf(token) == -1)
+			{
+				return {
+					code: "",
+					provenance: emptyTemplateProvenance(adapter, path, ownership, upstreamRef),
+					error: "WPHX PHP adapter template " + path + " is missing placeholder " + token
+				};
+			}
+			code = StringTools.replace(code, token, replacement.value);
+			placeholders.push(replacement.placeholder);
+		}
+		if (code.indexOf("{{") != -1 || code.indexOf("}}") != -1)
+		{
+			return {
+				code: "",
+				provenance: emptyTemplateProvenance(adapter, path, ownership, upstreamRef),
+				error: "WPHX PHP adapter template " + path + " has unreplaced placeholders"
+			};
+		}
+
+		return {
+			code: StringTools.rtrim(code),
+			provenance: {
+				adapter: adapter,
+				path: path,
+				sha256: "sha256:" + Sha256.encode(source),
+				placeholders: placeholders,
+				ownership: ownership,
+				upstream_ref: upstreamRef
+			},
+			error: null
+		};
+	}
+
+	static function emptyTemplateProvenance(adapter:String, path:String, ownership:String, upstreamRef:String):WordPressAdapterTemplateProvenance
+	{
+		return {
+			adapter: adapter,
+			path: path,
+			sha256: "",
+			placeholders: [],
+			ownership: ownership,
+			upstream_ref: upstreamRef
+		};
 	}
 
 	static function processHeaders(fieldName:String, helper:Null<String>):WordPressMethodAdapterPlan
@@ -1018,179 +1130,24 @@ class WphxPhpWordPressAdapters
 			return missingHelper("missing @:wp.haxeHelper for WP_Http::request nonblocking adapter " + fieldName);
 		}
 
-		return plan(["stmt.raw-wordpress-boundary", "wp-http.request.nonblocking-response"], [
-			PhpRawBlock("$defaults = array(\n"
-				+ "\t'method'              => 'GET',\n"
-				+ "\t'timeout'             => apply_filters( 'http_request_timeout', 5, $url ),\n"
-				+ "\t'redirection'         => apply_filters( 'http_request_redirection_count', 5, $url ),\n"
-				+ "\t'httpversion'         => apply_filters( 'http_request_version', '1.0', $url ),\n"
-				+
-				"\t'user-agent'          => apply_filters( 'http_headers_useragent', 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ), $url ),\n"
-				+ "\t'reject_unsafe_urls'  => apply_filters( 'http_request_reject_unsafe_urls', false, $url ),\n"
-				+ "\t'blocking'            => true,\n"
-				+ "\t'headers'             => array(),\n"
-				+ "\t'cookies'             => array(),\n"
-				+ "\t'body'                => null,\n"
-				+ "\t'compress'            => false,\n"
-				+ "\t'decompress'          => true,\n"
-				+ "\t'sslverify'           => true,\n"
-				+ "\t'sslcertificates'     => ABSPATH . WPINC . '/certificates/ca-bundle.crt',\n"
-				+ "\t'stream'              => false,\n"
-				+ "\t'filename'            => null,\n"
-				+ "\t'limit_response_size' => null,\n"
-				+ ");\n"
-				+ "\n"
-				+ "$args = wp_parse_args( $args );\n"
-				+ "\n"
-				+ "if ( isset( $args['method'] ) && 'HEAD' === $args['method'] ) {\n"
-				+ "\t$defaults['redirection'] = 0;\n"
-				+ "}\n"
-				+ "\n"
-				+ "$parsed_args = wp_parse_args( $args, $defaults );\n"
-				+ "$parsed_args = apply_filters( 'http_request_args', $parsed_args, $url );\n"
-				+ "\n"
-				+ "if ( ! isset( $parsed_args['_redirection'] ) ) {\n"
-				+ "\t$parsed_args['_redirection'] = $parsed_args['redirection'];\n"
-				+ "}\n"
-				+ "\n"
-				+ "$pre = apply_filters( 'pre_http_request', false, $parsed_args, $url );\n"
-				+ "\n"
-				+ "if ( false !== $pre ) {\n"
-				+ "\treturn $pre;\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( function_exists( 'wp_kses_bad_protocol' ) ) {\n"
-				+ "\tif ( $parsed_args['reject_unsafe_urls'] ) {\n"
-				+ "\t\t$url = wp_http_validate_url( $url );\n"
-				+ "\t}\n"
-				+ "\tif ( $url ) {\n"
-				+ "\t\t$url = wp_kses_bad_protocol( $url, array( 'http', 'https', 'ssl' ) );\n"
-				+ "\t}\n"
-				+ "}\n"
-				+ "\n"
-				+ "$parsed_url = parse_url( $url );\n"
-				+ "\n"
-				+ "if ( empty( $url ) || empty( $parsed_url['scheme'] ) ) {\n"
-				+ "\t$response = new WP_Error( 'http_request_failed', __( 'A valid URL was not provided.' ) );\n"
-				+ "\tdo_action( 'http_api_debug', $response, 'response', 'WpOrg\\Requests\\Requests', $parsed_args, $url );\n"
-				+ "\treturn $response;\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( $this->block_request( $url ) ) {\n"
-				+
-				"\t$response = new WP_Error( 'http_request_not_executed', sprintf( __( 'User has blocked requests through HTTP to the URL: %s.' ), $url ) );\n"
-				+ "\tdo_action( 'http_api_debug', $response, 'response', 'WpOrg\\Requests\\Requests', $parsed_args, $url );\n"
-				+ "\treturn $response;\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( $parsed_args['stream'] ) {\n"
-				+ "\tif ( empty( $parsed_args['filename'] ) ) {\n"
-				+ "\t\t$parsed_args['filename'] = get_temp_dir() . basename( $url );\n"
-				+ "\t}\n"
-				+ "\n"
-				+ "\t$parsed_args['blocking'] = true;\n"
-				+ "\tif ( ! wp_is_writable( dirname( $parsed_args['filename'] ) ) ) {\n"
-				+
-				"\t\t$response = new WP_Error( 'http_request_failed', __( 'Destination directory for file streaming does not exist or is not writable.' ) );\n"
-				+ "\t\tdo_action( 'http_api_debug', $response, 'response', 'WpOrg\\Requests\\Requests', $parsed_args, $url );\n"
-				+ "\t\treturn $response;\n"
-				+ "\t}\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( is_null( $parsed_args['headers'] ) ) {\n"
-				+ "\t$parsed_args['headers'] = array();\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( ! is_array( $parsed_args['headers'] ) ) {\n"
-				+ "\t$processed_headers      = self::processHeaders( $parsed_args['headers'] );\n"
-				+ "\t$parsed_args['headers'] = $processed_headers['headers'];\n"
-				+ "}\n"
-				+ "\n"
-				+ "$headers = $parsed_args['headers'];\n"
-				+ "$data    = $parsed_args['body'];\n"
-				+ "$type    = $parsed_args['method'];\n"
-				+ "$options = array(\n"
-				+ "\t'timeout'   => $parsed_args['timeout'],\n"
-				+ "\t'useragent' => $parsed_args['user-agent'],\n"
-				+ "\t'blocking'  => $parsed_args['blocking'],\n"
-				+ "\t'hooks'     => new WP_HTTP_Requests_Hooks( $url, $parsed_args ),\n"
-				+ ");\n"
-				+ "\n"
-				+ "$options['hooks']->register( 'requests.before_redirect', array( static::class, 'browser_redirect_compatibility' ) );\n"
-				+ "\n"
-				+ "if ( function_exists( 'wp_kses_bad_protocol' ) && $parsed_args['reject_unsafe_urls'] ) {\n"
-				+ "\t$options['hooks']->register( 'requests.before_redirect', array( static::class, 'validate_redirects' ) );\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( $parsed_args['stream'] ) {\n"
-				+ "\t$options['filename'] = $parsed_args['filename'];\n"
-				+ "}\n"
-				+ "if ( empty( $parsed_args['redirection'] ) ) {\n"
-				+ "\t$options['follow_redirects'] = false;\n"
-				+ "} else {\n"
-				+ "\t$options['redirects'] = $parsed_args['redirection'];\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( isset( $parsed_args['limit_response_size'] ) ) {\n"
-				+ "\t$options['max_bytes'] = $parsed_args['limit_response_size'];\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( ! empty( $parsed_args['cookies'] ) ) {\n"
-				+ "\t$options['cookies'] = self::normalize_cookies( $parsed_args['cookies'] );\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( ! $parsed_args['sslverify'] ) {\n"
-				+ "\t$options['verify']     = false;\n"
-				+ "\t$options['verifyname'] = false;\n"
-				+ "} else {\n"
-				+ "\t$options['verify'] = $parsed_args['sslcertificates'];\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( 'HEAD' !== $type && 'GET' !== $type ) {\n"
-				+ "\t$options['data_format'] = 'body';\n"
-				+ "}\n"
-				+ "\n"
-				+ "$options['verify'] = apply_filters( 'https_ssl_verify', $options['verify'], $url );\n"
-				+ "\n"
-				+ "$proxy = new WP_HTTP_Proxy();\n"
-				+ "if ( $proxy->is_enabled() && $proxy->send_through_proxy( $url ) ) {\n"
-				+ "\t$options['proxy'] = new WpOrg\\Requests\\Proxy\\Http( $proxy->host() . ':' . $proxy->port() );\n"
-				+ "\n"
-				+ "\tif ( $proxy->use_authentication() ) {\n"
-				+ "\t\t$options['proxy']->use_authentication = true;\n"
-				+ "\t\t$options['proxy']->user               = $proxy->username();\n"
-				+ "\t\t$options['proxy']->pass               = $proxy->password();\n"
-				+ "\t}\n"
-				+ "}\n"
-				+ "\n"
-				+ "mbstring_binary_safe_encoding();\n"
-				+ "\n"
-				+ "try {\n"
-				+ "\t$requests_response = WpOrg\\Requests\\Requests::request( $url, $headers, $data, $type, $options );\n"
-				+ "\n"
-				+ "\t$http_response = new WP_HTTP_Requests_Response( $requests_response, $parsed_args['filename'] );\n"
-				+ "\t$response      = $http_response->to_array();\n"
-				+ "\n"
-				+ "\t$response['http_response'] = $http_response;\n"
-				+ "} catch ( WpOrg\\Requests\\Exception $e ) {\n"
-				+ "\t$response = new WP_Error( 'http_request_failed', $e->getMessage() );\n"
-				+ "}\n"
-				+ "\n"
-				+ "reset_mbstring_encoding();\n"
-				+ "\n"
-				+ "do_action( 'http_api_debug', $response, 'response', 'WpOrg\\Requests\\Requests', $parsed_args, $url );\n"
-				+ "if ( is_wp_error( $response ) ) {\n"
-				+ "\treturn $response;\n"
-				+ "}\n"
-				+ "\n"
-				+ "if ( ! $parsed_args['blocking'] ) {\n"
-				+ "\treturn "
-				+ helper
-				+ "::nonblockingResponse();\n"
-				+ "}\n"
-				+ "\n"
-				+ "return apply_filters( 'http_response', $response, $parsed_args, $url );")
+		final rendered = renderTemplate("wp-http-request-nonblocking",
+			"src/wphx/compiler/php/templates/wordpress/wp-http-request-nonblocking-body.php.template", "bounded_public_adapter_template",
+			"../wordpress-develop/src/wp-includes/class-wp-http.php WP_Http::request", [
+			{
+				placeholder: "HELPER_CLASS",
+				value: helper
+			}
 		]);
+		if (rendered.error != null)
+		{
+			return templateError(rendered.error);
+		}
+
+		return plan([
+			"stmt.raw-wordpress-boundary",
+			"adapter.template",
+			"wp-http.request.nonblocking-response"
+		], [PhpRawBlock(rendered.code)], [rendered.provenance]);
 	}
 }
 #end

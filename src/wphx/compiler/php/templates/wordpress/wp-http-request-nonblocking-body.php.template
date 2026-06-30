@@ -1,0 +1,170 @@
+// WPHX PHP compiler-owned adapter template.
+// Source: WordPress 7.0 WP_Http::request orchestration, bounded to the
+// WPHX-312.65 nonblocking response gate. This is compiler input, not
+// generated target PHP or runtime implementation authority.
+$defaults = array(
+	'method'              => 'GET',
+	'timeout'             => apply_filters( 'http_request_timeout', 5, $url ),
+	'redirection'         => apply_filters( 'http_request_redirection_count', 5, $url ),
+	'httpversion'         => apply_filters( 'http_request_version', '1.0', $url ),
+	'user-agent'          => apply_filters( 'http_headers_useragent', 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ), $url ),
+	'reject_unsafe_urls'  => apply_filters( 'http_request_reject_unsafe_urls', false, $url ),
+	'blocking'            => true,
+	'headers'             => array(),
+	'cookies'             => array(),
+	'body'                => null,
+	'compress'            => false,
+	'decompress'          => true,
+	'sslverify'           => true,
+	'sslcertificates'     => ABSPATH . WPINC . '/certificates/ca-bundle.crt',
+	'stream'              => false,
+	'filename'            => null,
+	'limit_response_size' => null,
+);
+
+$args = wp_parse_args( $args );
+
+if ( isset( $args['method'] ) && 'HEAD' === $args['method'] ) {
+	$defaults['redirection'] = 0;
+}
+
+$parsed_args = wp_parse_args( $args, $defaults );
+$parsed_args = apply_filters( 'http_request_args', $parsed_args, $url );
+
+if ( ! isset( $parsed_args['_redirection'] ) ) {
+	$parsed_args['_redirection'] = $parsed_args['redirection'];
+}
+
+$pre = apply_filters( 'pre_http_request', false, $parsed_args, $url );
+
+if ( false !== $pre ) {
+	return $pre;
+}
+
+if ( function_exists( 'wp_kses_bad_protocol' ) ) {
+	if ( $parsed_args['reject_unsafe_urls'] ) {
+		$url = wp_http_validate_url( $url );
+	}
+	if ( $url ) {
+		$url = wp_kses_bad_protocol( $url, array( 'http', 'https', 'ssl' ) );
+	}
+}
+
+$parsed_url = parse_url( $url );
+
+if ( empty( $url ) || empty( $parsed_url['scheme'] ) ) {
+	$response = new WP_Error( 'http_request_failed', __( 'A valid URL was not provided.' ) );
+	do_action( 'http_api_debug', $response, 'response', 'WpOrg\Requests\Requests', $parsed_args, $url );
+	return $response;
+}
+
+if ( $this->block_request( $url ) ) {
+	$response = new WP_Error( 'http_request_not_executed', sprintf( __( 'User has blocked requests through HTTP to the URL: %s.' ), $url ) );
+	do_action( 'http_api_debug', $response, 'response', 'WpOrg\Requests\Requests', $parsed_args, $url );
+	return $response;
+}
+
+if ( $parsed_args['stream'] ) {
+	if ( empty( $parsed_args['filename'] ) ) {
+		$parsed_args['filename'] = get_temp_dir() . basename( $url );
+	}
+
+	$parsed_args['blocking'] = true;
+	if ( ! wp_is_writable( dirname( $parsed_args['filename'] ) ) ) {
+		$response = new WP_Error( 'http_request_failed', __( 'Destination directory for file streaming does not exist or is not writable.' ) );
+		do_action( 'http_api_debug', $response, 'response', 'WpOrg\Requests\Requests', $parsed_args, $url );
+		return $response;
+	}
+}
+
+if ( is_null( $parsed_args['headers'] ) ) {
+	$parsed_args['headers'] = array();
+}
+
+if ( ! is_array( $parsed_args['headers'] ) ) {
+	$processed_headers      = self::processHeaders( $parsed_args['headers'] );
+	$parsed_args['headers'] = $processed_headers['headers'];
+}
+
+$headers = $parsed_args['headers'];
+$data    = $parsed_args['body'];
+$type    = $parsed_args['method'];
+$options = array(
+	'timeout'   => $parsed_args['timeout'],
+	'useragent' => $parsed_args['user-agent'],
+	'blocking'  => $parsed_args['blocking'],
+	'hooks'     => new WP_HTTP_Requests_Hooks( $url, $parsed_args ),
+);
+
+$options['hooks']->register( 'requests.before_redirect', array( static::class, 'browser_redirect_compatibility' ) );
+
+if ( function_exists( 'wp_kses_bad_protocol' ) && $parsed_args['reject_unsafe_urls'] ) {
+	$options['hooks']->register( 'requests.before_redirect', array( static::class, 'validate_redirects' ) );
+}
+
+if ( $parsed_args['stream'] ) {
+	$options['filename'] = $parsed_args['filename'];
+}
+if ( empty( $parsed_args['redirection'] ) ) {
+	$options['follow_redirects'] = false;
+} else {
+	$options['redirects'] = $parsed_args['redirection'];
+}
+
+if ( isset( $parsed_args['limit_response_size'] ) ) {
+	$options['max_bytes'] = $parsed_args['limit_response_size'];
+}
+
+if ( ! empty( $parsed_args['cookies'] ) ) {
+	$options['cookies'] = self::normalize_cookies( $parsed_args['cookies'] );
+}
+
+if ( ! $parsed_args['sslverify'] ) {
+	$options['verify']     = false;
+	$options['verifyname'] = false;
+} else {
+	$options['verify'] = $parsed_args['sslcertificates'];
+}
+
+if ( 'HEAD' !== $type && 'GET' !== $type ) {
+	$options['data_format'] = 'body';
+}
+
+$options['verify'] = apply_filters( 'https_ssl_verify', $options['verify'], $url );
+
+$proxy = new WP_HTTP_Proxy();
+if ( $proxy->is_enabled() && $proxy->send_through_proxy( $url ) ) {
+	$options['proxy'] = new WpOrg\Requests\Proxy\Http( $proxy->host() . ':' . $proxy->port() );
+
+	if ( $proxy->use_authentication() ) {
+		$options['proxy']->use_authentication = true;
+		$options['proxy']->user               = $proxy->username();
+		$options['proxy']->pass               = $proxy->password();
+	}
+}
+
+mbstring_binary_safe_encoding();
+
+try {
+	$requests_response = WpOrg\Requests\Requests::request( $url, $headers, $data, $type, $options );
+
+	$http_response = new WP_HTTP_Requests_Response( $requests_response, $parsed_args['filename'] );
+	$response      = $http_response->to_array();
+
+	$response['http_response'] = $http_response;
+} catch ( WpOrg\Requests\Exception $e ) {
+	$response = new WP_Error( 'http_request_failed', $e->getMessage() );
+}
+
+reset_mbstring_encoding();
+
+do_action( 'http_api_debug', $response, 'response', 'WpOrg\Requests\Requests', $parsed_args, $url );
+if ( is_wp_error( $response ) ) {
+	return $response;
+}
+
+if ( ! $parsed_args['blocking'] ) {
+	return {{HELPER_CLASS}}::nonblockingResponse();
+}
+
+return apply_filters( 'http_response', $response, $parsed_args, $url );
