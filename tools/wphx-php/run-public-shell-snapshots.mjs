@@ -155,6 +155,24 @@ const CASES = [
       "'local_marker' => isset($wphx_local_marker) ? $wphx_local_marker : null"
     ],
     ast_expect: {}
+  },
+  {
+    id: "template-segment-admin-style",
+    hxml: "fixtures/wphx-php/template-segment-admin-style.hxml",
+    selected: "wp-admin/wphx-template-segment-admin.php",
+    shell_shapes: ["template_segment_shell", "guard", "literal_output", "template_expression", "control", "include_return_or_direct_file_scope_script"],
+    exact_patterns: [
+      "if (!defined('ABSPATH'))",
+      "function wphx_segment_escape($value)",
+      "$GLOBALS['wphx_segment_trace'][] = array(",
+      "<div class=\"wrap\" data-screen=\"<?php echo wphx_segment_escape($screen->id); ?>\">",
+      "<?php foreach ($items as $index => $item) : ?>",
+      "$items[] = 'admin-mutated';",
+      "'marker' => 'segment:ADMIN'"
+    ],
+    ast_expect: {
+      functions: ["wphx_segment_escape", "wphx_segment_row_class"]
+    }
   }
 ];
 
@@ -356,7 +374,8 @@ function main() {
       top_level_bootstrap_side_effect: results.some((item) => item.shell_shapes.includes("top_level_bootstrap_side_effect")),
       include_return_or_direct_file_scope_script: results.some((item) =>
         item.shell_shapes.includes("include_return_or_direct_file_scope_script")
-      )
+      ),
+      template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell"))
     },
     pending_shell_shape_gaps: [],
     validation_result: {

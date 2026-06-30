@@ -457,6 +457,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		{
 			case "include-side-effects":
 				emitIncludeSideEffectsScript();
+			case "template-segment-admin-style":
+				emitTemplateSegmentAdminStyleScript();
 			case _:
 				reportUnsupported("unsupported WPHX PHP script adapter " + pending.adapter);
 				"";
@@ -482,6 +484,67 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			+ "\t'scope_marker' => isset($wphx_scope_marker) ? $wphx_scope_marker : null,\n"
 			+ "\t'local_marker' => isset($wphx_local_marker) ? $wphx_local_marker : null,\n"
 			+ "\t'run_count'    => count($GLOBALS['wphx_include_side_effects']),\n"
+			+ ");";
+	}
+
+	function emitTemplateSegmentAdminStyleScript():String
+	{
+		recordCoreIrFeatures([
+			"segment.guard",
+			"segment.declaration",
+			"segment.script",
+			"segment.literal-output",
+			"segment.template-expression",
+			"segment.control",
+			"segment.return",
+			"segment.caller-scope-local",
+			"segment.object-mutation",
+			"segment.global-mutation"
+		]);
+		return "if (!defined('ABSPATH')) {\n"
+			+ "\treturn 'ABSPATH_REQUIRED';\n"
+			+ "}\n\n"
+			+ "if (!function_exists('wphx_segment_escape')) {\n"
+			+ "\tfunction wphx_segment_escape($value) {\n"
+			+ "\t\treturn htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');\n"
+			+ "\t}\n"
+			+ "}\n\n"
+			+ "if (!function_exists('wphx_segment_row_class')) {\n"
+			+ "\tfunction wphx_segment_row_class($index) {\n"
+			+ "\t\treturn 0 === $index % 2 ? 'row even' : 'row odd';\n"
+			+ "\t}\n"
+			+ "}\n\n"
+			+ "$GLOBALS['wphx_segment_trace'][] = array(\n"
+			+ "\t'event' => 'admin:begin',\n"
+			+ "\t'title' => $title,\n"
+			+ "\t'itemCount' => count($items),\n"
+			+ ");\n\n"
+			+ "$notice = strtoupper($notice);\n"
+			+ "$screen->rendered = true;\n"
+			+ "?>\n"
+			+ "<div class=\"wrap\" data-screen=\"<?php echo wphx_segment_escape($screen->id); ?>\">\n"
+			+ "\t<h1><?php echo wphx_segment_escape($title); ?></h1>\n"
+			+ "\t<div class=\"notice\"><?php echo wphx_segment_escape($notice); ?></div>\n"
+			+ "\t<ul class=\"wp-list-table\">\n"
+			+ "\t\t<?php foreach ($items as $index => $item) : ?>\n"
+			+ "\t\t\t<li class=\"<?php echo wphx_segment_escape(wphx_segment_row_class($index)); ?>\""
+			+ " data-index=\"<?php echo wphx_segment_escape($index); ?>\">"
+			+ "<?php echo wphx_segment_escape($item); ?></li>\n"
+			+ "\t\t<?php endforeach; ?>\n"
+			+ "\t</ul>\n"
+			+ "</div>\n"
+			+ "<?php\n"
+			+ "$items[] = 'admin-mutated';\n"
+			+ "$GLOBALS['wphx_segment_trace'][] = array(\n"
+			+ "\t'event' => 'admin:end',\n"
+			+ "\t'notice' => $notice,\n"
+			+ "\t'itemCount' => count($items),\n"
+			+ ");\n\n"
+			+ "return array(\n"
+			+ "\t'kind' => 'admin-segment',\n"
+			+ "\t'notice' => $notice,\n"
+			+ "\t'itemCount' => count($items),\n"
+			+ "\t'marker' => 'segment:ADMIN',\n"
 			+ ");";
 	}
 

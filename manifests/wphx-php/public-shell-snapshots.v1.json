@@ -344,6 +344,50 @@
         "bytes": 796,
         "sha256": "sha256:cce512109b8afec57f7a7058c6136eb14f3b0b715913463b93222212d07f09db"
       }
+    },
+    {
+      "id": "template-segment-admin-style",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "template_segment_shell",
+        "guard",
+        "literal_output",
+        "template_expression",
+        "control",
+        "include_return_or_direct_file_scope_script"
+      ],
+      "hxml": "fixtures/wphx-php/template-segment-admin-style.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/template-segment-admin-style/generated/wp-admin/wphx-template-segment-admin.php",
+      "bytes": 1347,
+      "sha256": "sha256:23c9a7cc702f77e728a5b746298654d48bf7b3bebb1027d9a410c55276978f3c",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "if (!defined('ABSPATH'))",
+        "function wphx_segment_escape($value)",
+        "$GLOBALS['wphx_segment_trace'][] = array(",
+        "<div class=\"wrap\" data-screen=\"<?php echo wphx_segment_escape($screen->id); ?>\">",
+        "<?php foreach ($items as $index => $item) : ?>",
+        "$items[] = 'admin-mutated';",
+        "'marker' => 'segment:ADMIN'"
+      ],
+      "ast_contract": {
+        "functions": [
+          "wphx_segment_escape",
+          "wphx_segment_row_class"
+        ],
+        "classes": [],
+        "interfaces": [],
+        "methods": [],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/template-segment-admin-style/generated/wphx-php-emission.v1.json",
+        "bytes": 975,
+        "sha256": "sha256:75ff92510e7e176e942ba22d9757c93089e0ac723f206985242d4ef00fefbac7"
+      }
     }
   ],
   "shell_shape_coverage": {
@@ -355,13 +399,14 @@
     "conditional_declaration": true,
     "native_array_mutation": true,
     "top_level_bootstrap_side_effect": true,
-    "include_return_or_direct_file_scope_script": true
+    "include_return_or_direct_file_scope_script": true,
+    "template_segment_shell": true
   },
   "pending_shell_shape_gaps": [],
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 8,
+    "case_count": 9,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,

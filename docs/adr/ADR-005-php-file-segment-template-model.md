@@ -10,6 +10,8 @@ WordPress contains many PHP files whose observable behavior is not only declarat
 
 F6 already proves template/caller-scope behavior for admin-style and theme-style fixtures. `WPHX-COMP-PHP-INCLUDE-SIDE-EFFECTS` already proves a bounded WPHX PHP direct script adapter for include returns, repeated include/include_once behavior, function-scope locals, top-level side effects, and output buffering. This ADR connects those pieces to the WPHX PHP compiler lane so mixed PHP/HTML work has an explicit model before any broad WordPress template ownership claim.
 
+`WPHX-COMP-PHP-FIRST-SEGMENT-SHELL` is the first implementation checkpoint for this ADR. It emits a minimized original-path admin-style segment shell from WPHX PHP compiler metadata and proves guard, declaration, script, literal output, template expression, control, caller-scope local mutation, object mutation, global trace mutation, and return behavior against an oracle fixture.
+
 ## Decision
 
 Represent every existing WordPress mixed or direct PHP script as an ordered file-segment plan before claiming durable ownership.

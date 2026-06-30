@@ -1,0 +1,53 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-first-segment-shell",
+  "issue": {
+    "id": "wordpresshx-8bu",
+    "external_ref": "WPHX-COMP-PHP-FIRST-SEGMENT-SHELL",
+    "title": "Emit first generated template segment shell"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_segment_shell",
+  "artifact_scope": "minimized_admin_style_template_segment_fixture",
+  "commands": [
+    "npm run wphx:php:template-segment-admin-style",
+    "npm run wphx:php:template-segment-admin-style:check"
+  ],
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/template-segment-admin-style.v1.json",
+      "role": "WPHX PHP first template segment shell manifest"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-admin-style.mjs",
+      "role": "deterministic template segment shell runner"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP compiler script adapter implementation"
+    }
+  ],
+  "manifest_sha256": "sha256:592d7c98befaae57783b7bcacdbc668ee5aed08f78c1a56430ed9dd1cd68fc8f",
+  "validation_result": {
+    "status": "passed",
+    "php_lint": "passed",
+    "exact_shape_patterns_passed": true,
+    "core_ir_features_passed": true,
+    "unsupported_empty": true,
+    "oracle_candidate_behavior_match": true,
+    "guard_behavior_passed": true
+  },
+  "claims": [
+    "WPHX PHP emits the first compiler-generated original-path admin-style template segment shell from a script adapter.",
+    "The generated shell covers guard, declaration, script, literal output, template expression, control, caller-scope local mutation, object mutation, global trace, and return behavior in a minimized fixture.",
+    "Oracle and candidate behavior match for rendered output, caller locals, object mutation, global trace, function declarations, include return value, and direct-load guard return."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX parity for existing Core templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ]
+}

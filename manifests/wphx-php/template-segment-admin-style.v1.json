@@ -1,0 +1,242 @@
+{
+  "schema": "wphx.wphx-php-template-segment-admin-style.v1",
+  "issue": {
+    "id": "wordpresshx-8bu",
+    "external_ref": "WPHX-COMP-PHP-FIRST-SEGMENT-SHELL",
+    "title": "Emit first generated template segment shell"
+  },
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "runner": "tools/wphx-php/run-template-segment-admin-style.mjs",
+  "hxml": "fixtures/wphx-php/template-segment-admin-style.hxml",
+  "evidence_class": "compiler_emitted_segment_shell",
+  "artifact_scope": "minimized_admin_style_template_segment_fixture",
+  "generated_shell": {
+    "path": "build/wphx-php/template-segment-admin-style/generated/wp-admin/wphx-template-segment-admin.php",
+    "bytes": 1347,
+    "sha256": "sha256:23c9a7cc702f77e728a5b746298654d48bf7b3bebb1027d9a410c55276978f3c"
+  },
+  "oracle_shell": {
+    "path": "fixtures/wphx-php/oracle/template-segment/wp-admin/wphx-template-segment-admin.php",
+    "bytes": 1419,
+    "sha256": "sha256:2a158a3c3cc23b5e356be6332219d4204eb9bd3c667b2da904a522809e57ba8a"
+  },
+  "emission_manifest": {
+    "path": "build/wphx-php/template-segment-admin-style/generated/wphx-php-emission.v1.json",
+    "bytes": 975,
+    "sha256": "sha256:75ff92510e7e176e942ba22d9757c93089e0ac723f206985242d4ef00fefbac7",
+    "declarations": [
+      "wp-admin/wphx-template-segment-admin.php:script:template-segment-admin-style"
+    ],
+    "core_ir_features": [
+      "segment.caller-scope-local",
+      "segment.control",
+      "segment.declaration",
+      "segment.global-mutation",
+      "segment.guard",
+      "segment.literal-output",
+      "segment.object-mutation",
+      "segment.return",
+      "segment.script",
+      "segment.template-expression"
+    ],
+    "unsupported_empty": true
+  },
+  "segment_plan": {
+    "original_path": "wp-admin/wphx-template-segment-admin.php",
+    "adoption_mode": "compiler_emitted_segment_shell",
+    "segment_order": [
+      "guard",
+      "declaration",
+      "script",
+      "literal_output",
+      "template_expression",
+      "control",
+      "script",
+      "return_exit"
+    ],
+    "caller_scope": {
+      "reads_locals": [
+        "title",
+        "notice",
+        "items",
+        "screen"
+      ],
+      "mutates_locals": [
+        "notice",
+        "items"
+      ],
+      "mutates_objects": [
+        "screen.rendered"
+      ],
+      "globals": [
+        "wphx_segment_trace"
+      ]
+    },
+    "observable_effects": [
+      "guard_return",
+      "mixed_output_order",
+      "escaped_output",
+      "local_array_mutation",
+      "object_mutation",
+      "global_trace",
+      "include_return_value"
+    ]
+  },
+  "generated_shape": {
+    "exact_patterns": [
+      "if (!defined('ABSPATH'))",
+      "function wphx_segment_escape($value)",
+      "$GLOBALS['wphx_segment_trace'][] = array(",
+      "<div class=\"wrap\" data-screen=\"<?php echo wphx_segment_escape($screen->id); ?>\">",
+      "<?php foreach ($items as $index => $item) : ?>",
+      "$items[] = 'admin-mutated';",
+      "'marker' => 'segment:ADMIN'"
+    ],
+    "php_lint": "passed"
+  },
+  "observations": {
+    "oracle": {
+      "normal": {
+        "returnValue": {
+          "kind": "admin-segment",
+          "notice": "SAVED",
+          "itemCount": 3,
+          "marker": "segment:ADMIN"
+        },
+        "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>\n",
+        "locals": {
+          "title": "Posts & Pages",
+          "notice": "SAVED",
+          "items": [
+            "alpha",
+            "beta <two>",
+            "admin-mutated"
+          ],
+          "screen": {
+            "id": "edit-post",
+            "rendered": true
+          }
+        },
+        "trace": [
+          {
+            "event": "admin:begin",
+            "title": "Posts & Pages",
+            "itemCount": 2
+          },
+          {
+            "event": "admin:end",
+            "notice": "SAVED",
+            "itemCount": 3
+          }
+        ],
+        "functions": {
+          "escape": true,
+          "row_class": true
+        }
+      },
+      "guard": {
+        "returnValue": "ABSPATH_REQUIRED",
+        "output": "",
+        "locals": {
+          "title": "Posts & Pages",
+          "notice": "saved",
+          "items": [
+            "alpha",
+            "beta <two>"
+          ],
+          "screen": {
+            "id": "edit-post",
+            "rendered": false
+          }
+        },
+        "trace": [],
+        "functions": {
+          "escape": false,
+          "row_class": false
+        }
+      }
+    },
+    "candidate": {
+      "normal": {
+        "returnValue": {
+          "kind": "admin-segment",
+          "notice": "SAVED",
+          "itemCount": 3,
+          "marker": "segment:ADMIN"
+        },
+        "output": "<div class=\"wrap\" data-screen=\"edit-post\">\n\t<h1>Posts &amp; Pages</h1>\n\t<div class=\"notice\">SAVED</div>\n\t<ul class=\"wp-list-table\">\n\t\t\t\t\t<li class=\"row even\" data-index=\"0\">alpha</li>\n\t\t\t\t\t<li class=\"row odd\" data-index=\"1\">beta &lt;two&gt;</li>\n\t\t\t</ul>\n</div>\n",
+        "locals": {
+          "title": "Posts & Pages",
+          "notice": "SAVED",
+          "items": [
+            "alpha",
+            "beta <two>",
+            "admin-mutated"
+          ],
+          "screen": {
+            "id": "edit-post",
+            "rendered": true
+          }
+        },
+        "trace": [
+          {
+            "event": "admin:begin",
+            "title": "Posts & Pages",
+            "itemCount": 2
+          },
+          {
+            "event": "admin:end",
+            "notice": "SAVED",
+            "itemCount": 3
+          }
+        ],
+        "functions": {
+          "escape": true,
+          "row_class": true
+        }
+      },
+      "guard": {
+        "returnValue": "ABSPATH_REQUIRED",
+        "output": "",
+        "locals": {
+          "title": "Posts & Pages",
+          "notice": "saved",
+          "items": [
+            "alpha",
+            "beta <two>"
+          ],
+          "screen": {
+            "id": "edit-post",
+            "rendered": false
+          }
+        },
+        "trace": [],
+        "functions": {
+          "escape": false,
+          "row_class": false
+        }
+      }
+    }
+  },
+  "claims": [
+    "WPHX PHP emits the first compiler-generated original-path admin-style template segment shell from a script adapter.",
+    "The generated shell covers guard, declaration, script, literal output, template expression, control, caller-scope local mutation, object mutation, global trace, and return behavior in a minimized fixture.",
+    "Oracle and candidate behavior match for rendered output, caller locals, object mutation, global trace, function declarations, include return value, and direct-load guard return."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim broad theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX parity for existing Core templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ],
+  "validation_result": {
+    "status": "passed",
+    "php_lint": "passed",
+    "exact_shape_patterns_passed": true,
+    "core_ir_features_passed": true,
+    "unsupported_empty": true,
+    "oracle_candidate_behavior_match": true,
+    "guard_behavior_passed": true
+  }
+}

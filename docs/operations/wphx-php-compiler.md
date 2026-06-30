@@ -51,6 +51,8 @@ npm run wphx:php:include-side-effects
 npm run wphx:php:include-side-effects:check
 npm run wphx:php:template-segment-model
 npm run wphx:php:template-segment-model:check
+npm run wphx:php:template-segment-admin-style
+npm run wphx:php:template-segment-admin-style:check
 npm run wphx:php:wp-http-parser-helpers
 npm run wphx:php:wp-http-parser-helpers:check
 npm run wphx:php:wp-http-chunk-transfer-decode
@@ -144,7 +146,7 @@ npm run wphx:php:public-shell-snapshots
 npm run wphx:php:public-shell-snapshots:check
 ```
 
-It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, and empty unsupported manifests for global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, top-level bootstrap side effects, and a bounded include-return/direct file-scope script fixture. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner.
+It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, and empty unsupported manifests for global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, top-level bootstrap side effects, a bounded include-return/direct file-scope script fixture, and the first compiler-emitted template segment shell. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner.
 
 The pluggable timing fixture compiles a minimized original-path guarded global-function file:
 
@@ -206,6 +208,16 @@ npm run wphx:php:template-segment-model:check
 
 It records `manifests/wphx-php/template-segment-model.v1.json` and `receipts/compiler/wphx-comp-php-template-segment-model.v1.json`, backed by [ADR-005](../adr/ADR-005-php-file-segment-template-model.md). The model names ordered segment kinds, adoption modes, required metadata, and gates before broad mixed PHP/HTML ownership. It classifies the F6 admin-style template, theme-style template, nested partial, and WPHX direct-script include fixture, but it does not claim generated ownership of existing WordPress mixed PHP/HTML files, HHX/HXX parity for existing Core templates, arbitrary Haxe expression lowering in PHP caller scope, or whole-file template ownership.
 
+The first compiler-emitted template segment shell turns the segment model into generated original-path output:
+
+```bash
+haxe fixtures/wphx-php/template-segment-admin-style.hxml
+npm run wphx:php:template-segment-admin-style
+npm run wphx:php:template-segment-admin-style:check
+```
+
+It emits `build/wphx-php/template-segment-admin-style/generated/wp-admin/wphx-template-segment-admin.php`, lints generated and oracle PHP, checks exact shell excerpts, verifies the emission manifest records `script:template-segment-admin-style` with `unsupported=[]`, and compares oracle/candidate behavior for the `ABSPATH` guard, literal/template output order, caller-scope local mutation, object mutation, global trace mutation, and native include return array. Evidence is recorded in `manifests/wphx-php/template-segment-admin-style.v1.json` and `receipts/compiler/wphx-comp-php-first-segment-shell.v1.json`. This is the first minimized generated segment-shell gate; it does not claim generated ownership of existing WordPress mixed PHP/HTML files, broad admin/theme template ownership, HHX/HXX parity, arbitrary Haxe expression lowering in PHP caller scope, or whole-file ownership.
+
 ## Adapter IR
 
 The WPHX PHP compiler now uses an Adapter IR before printing PHP:
@@ -217,9 +229,9 @@ typed Haxe source and metadata
   -> wphx-php-emission.v1.json
 ```
 
-The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, bounded direct file-scope script adapters, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
+The v0 IR in `src/wphx/compiler/php/WphxPhpCompiler.hx` covers the proven public-shell shapes: original-path files, guarded global functions, classes/interfaces, bounded direct file-scope script adapters, compiler-emitted segment shell adapters, methods, properties, constants, Haxe bootstrap markers, protected methods, by-reference parameters, and manifest declarations. The first reusable PHP-core method-body nodes now cover `if`/`else`, `for`, `foreach`, `break`, `continue`, `return`, native array reads/writes/appends, array casts, int/string casts, long array literals, object construction, local variables, assignments, function calls, method calls, and static calls. The emission manifest records these as `core_ir_features` so richer adapters can depend on them explicitly.
 
-This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. Grouped `WP_Http` adapters and the file-segment/template model are now proven gates; the next template movement must turn a bounded segment plan into generated original-path output without jumping to broad mixed PHP/HTML ownership.
+This IR is deliberately narrower than a full PHP backend, but it is the front door of the staged custom compiler. Add new nodes only when a fixture or WordPress slice needs them, and pair each addition with generated-shape, static/runtime ABI, behavior, and receipt evidence as appropriate. Grouped `WP_Http` adapters, the file-segment/template model, and the first generated admin-style segment shell are now proven gates; the next template movement should replace temporary public shells one bounded segment plan at a time without jumping to broad mixed PHP/HTML ownership.
 
 `WPHX-COMP-PHP.06` adds the first generated `WP_Http::buildCookieHeader( &$r )` original-path shell. It is a WordPress profile pressure gate over native PHP array mutation, scalar cookie upgrading, `WP_Http_Cookie` object preservation, filter timing, and helper delegation. `WPHX-COMP-PHP-CORE-IR-NATIVE-ARRAYS` keeps the same public-shell behavior while moving the native-array body through reusable PHP-core IR nodes. This is still not arbitrary Haxe expression lowering or a complete PHP backend.
 
@@ -232,7 +244,7 @@ The initial metadata contract is intentionally small:
 - `@:native("Class_Name")` emits an annotated Haxe class with that public PHP class name.
 - `@:wp.ifMissing` wraps generated functions/classes in `function_exists` or `class_exists(..., false)` guards.
 - `@:wp.haxeBootstrap("CONSTANT_NAME")` emits a guarded stock Haxe PHP runtime bootstrap for facade shells that delegate to Haxe-generated implementation classes. ADR-014 makes this acceptable for bounded fixtures and leaf candidates, but broad public-shell distribution claims still require include-path/autoload, warning/error-handler, and stack-trace/source-map probes.
-- `@:wp.scriptAdapter("adapter-name")` emits a bounded direct file-scope script adapter selected by name. The only current adapter is `include-side-effects`, which exists to prove include timing, include returns, function-scope locals, and output buffering before mixed template work.
+- `@:wp.scriptAdapter("adapter-name")` emits a bounded direct file-scope or segment-shell script adapter selected by name. The current adapters are `include-side-effects`, which proves include timing, include returns, function-scope locals, and output buffering, and `template-segment-admin-style`, which proves the first minimized generated segment shell with ordered guard/declaration/script/literal/template/control/return behavior.
 - `@:wp.order(n)` orders multiple declarations that share one generated PHP file.
 - `@:wp.const` emits a static field as a PHP class constant.
 - `@:wp.byRef` emits a PHP `&$parameter` for reference-visible ABI boundaries.
