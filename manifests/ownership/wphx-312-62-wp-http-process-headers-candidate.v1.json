@@ -14,14 +14,16 @@
   "ownership_state": "haxe_owned_candidate_with_public_php_shell",
   "bridge": {
     "exists": true,
-    "kind": "generated-php-haxe-helper-with-temporary-original-path-shell",
-    "removal_gate": "Replace the temporary candidate shell with generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, cookie/header, and generated-shell gates before claiming durable public PHP ownership."
+    "kind": "compiler-emitted-grouped-original-path-public-php-shell",
+    "removal_gate": "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, cookie/header, and generated-shell gates before claiming durable whole-file WP_Http ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-wp-http-process-headers-candidate.mjs",
     "fixtures/wp-core/http-process-headers-candidate.hxml",
+    "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
     "src/wphx/wp/http/HttpProcessHeaders.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpProcessHeadersCandidateEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpGroupedHelpersShell.hx",
     "manifests/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
     "manifests/ownership/wphx-312-62-wp-http-process-headers-candidate.v1.json",
     "receipts/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json"
@@ -30,6 +32,7 @@
     "manifests/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
     "manifests/ownership/wphx-312-62-wp-http-process-headers-candidate.v1.json",
     "receipts/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+    "build/wp-core/wphx-312-62/wphx-php/wphx-php-emission.v1.json",
     "build/wp-core/wphx-312-62"
   ],
   "verification": {
@@ -42,6 +45,6 @@
     "receipt_refs": [
       "receipt:wphx-312-62-wp-http-process-headers-candidate"
     ],
-    "manifest_digest": "sha256:fc9964a6844e0341993db326a1808b32852d4334eb9937682f8060a1d2bb222e"
+    "manifest_digest": "sha256:a26e31bd70e180268823480993d1fabacfb30d3c3ed2cf5ac446af29b98ba45a"
   }
 }
