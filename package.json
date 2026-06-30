@@ -26,6 +26,8 @@
     "wphx:php:wp-http-build-cookie-header:check": "node tools/wphx-php/run-wp-http-build-cookie-header.mjs --check",
     "wphx:php:wp-http-process-headers": "node tools/wphx-php/run-wp-http-process-headers.mjs",
     "wphx:php:wp-http-process-headers:check": "node tools/wphx-php/run-wp-http-process-headers.mjs --check",
+    "wphx:php:wp-http-grouped-helpers": "node tools/wphx-php/run-wp-http-grouped-helpers.mjs",
+    "wphx:php:wp-http-grouped-helpers:check": "node tools/wphx-php/run-wp-http-grouped-helpers.mjs --check",
     "wphx:php:public-shell-snapshots": "node tools/wphx-php/run-public-shell-snapshots.mjs",
     "wphx:php:public-shell-snapshots:check": "node tools/wphx-php/run-public-shell-snapshots.mjs --check",
     "wphx:php:pluggable-timing": "node tools/wphx-php/run-pluggable-timing.mjs",

@@ -1,0 +1,56 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wphx-php/grouped-wp-http-helpers",
+  "issue": {
+    "id": "wordpresshx-9ze",
+    "external_ref": "WPHX-COMP-PHP-GROUP-WP-HTTP-HELPERS",
+    "title": "Group WP_Http parser/header/cookie adapters in one generated shell"
+  },
+  "unit": {
+    "kind": "compiler-emitted-original-path-public-shell",
+    "name": "Grouped WP_Http parser/header/cookie helper shell",
+    "path": "wp-includes/class-wp-http.php",
+    "public_contract": "One generated WP_Http class shell must preserve processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), and processHeaders($headers, $url = '') ABI and behavior gates in one original-path file."
+  },
+  "ownership_state": "compiler_emitted_original_path_shell",
+  "ownership_axes": {
+    "semantic_owner": "haxe_helpers_for_bounded_decisions",
+    "adapter_contract_owner": "wphx_php_adapter_ir",
+    "emission_strategy": "wphx_php_staged_custom_compiler",
+    "execution_provider": "php_cli",
+    "compatibility_evidence": "oracle_candidate_behavior_and_reflection"
+  },
+  "bridge": {
+    "exists": true,
+    "kind": "copied-upstream-support-class-only",
+    "removal_gate": "Generated WP_Http_Cookie and full class-wp-http.php ownership remain future work. This gate only claims the grouped helper shell methods listed in the manifest."
+  },
+  "owned_paths": [
+    "tools/wphx-php/run-wp-http-grouped-helpers.mjs",
+    "fixtures/wphx-php/wp-http-grouped-helpers.hxml",
+    "fixtures/wphx-php/wp-http-grouped-helpers-impl.hxml",
+    "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+    "manifests/ownership/wphx-comp-php-group-wp-http-helpers.v1.json",
+    "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+    "manifests/ownership/wphx-comp-php-group-wp-http-helpers.v1.json",
+    "receipts/compiler/wphx-comp-php-group-wp-http-helpers.v1.json",
+    "build/wp-core/wphx-comp-php-group-wp-http"
+  ],
+  "verification": {
+    "commands": [
+      "npm run wphx:php:wp-http-grouped-helpers",
+      "npm run wphx:php:wp-http-grouped-helpers:check",
+      "npm run wphx:php:wp-http-parser-helpers:check",
+      "npm run wphx:php:wp-http-build-cookie-header:check",
+      "npm run wphx:php:wp-http-process-headers:check"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-comp-php-group-wp-http-helpers"
+    ],
+    "manifest_digest": "sha256:3b9c4fb347777569bfbd7a87b0f1bed29fa8844e667ce77d22c4251cc5dff982"
+  },
+  "notes": "This grouped shell proves neighboring helpers can coexist in one generated original-path WP_Http adapter. It does not claim WP_Http::request, whole-file WP_Http ownership, live HTTP transport, installed behavior, or mixed-template ownership."
+}

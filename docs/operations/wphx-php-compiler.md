@@ -35,6 +35,8 @@ npm run wphx:php:wp-http-build-cookie-header
 npm run wphx:php:wp-http-build-cookie-header:check
 npm run wphx:php:wp-http-process-headers
 npm run wphx:php:wp-http-process-headers:check
+npm run wphx:php:wp-http-grouped-helpers
+npm run wphx:php:wp-http-grouped-helpers:check
 npm run wphx:php:public-shell-snapshots
 npm run wphx:php:public-shell-snapshots:check
 npm run wphx:php:pluggable-timing
@@ -107,6 +109,15 @@ haxe fixtures/wphx-php/wp-http-process-headers.hxml
 ```
 
 The runner emits `build/wp-core/wphx-comp-php-07/generated/wp-includes/class-wp-http.php`, lints that PHP, verifies PHP reflection sees `processHeaders($headers, $url = '')`, compares against the copied WordPress oracle for final response block selection, folded-header unfolding, duplicate header arrays, `Set-Cookie` conversion to `WP_Http_Cookie`, native return shape, and empty/falsey input shape, and verifies the WPHX PHP manifest records `class:WP_Http` with no unsupported constructs. The WordPress profile still owns the public ABI/native-array boundary; scalar status/header line decisions delegate to module-level Haxe helpers.
+
+The grouped `WP_Http` helper driver compiles the stock Haxe PHP helper implementation plus one WPHX original-path public shell containing all currently proven parser/header/cookie helper adapters:
+
+```bash
+haxe fixtures/wphx-php/wp-http-grouped-helpers-impl.hxml
+haxe fixtures/wphx-php/wp-http-grouped-helpers.hxml
+```
+
+The runner emits `build/wp-core/wphx-comp-php-group-wp-http/generated/wp-includes/class-wp-http.php` with `WP_Http::processResponse`, `WP_Http::chunkTransferDecode`, protected `WP_Http::parse_url`, `WP_Http::buildCookieHeader( &$r )`, and `WP_Http::processHeaders( $headers, $url = '' )` in a single generated `WP_Http` class. It lints the generated PHP, verifies there is exactly one `class WP_Http`, verifies the WordPress non-throwing bootstrap profile, checks reflection-visible by-reference/default/protected method ABI, compares oracle/candidate behavior for all five helper cases, confirms parser delegation plus native-array header/cookie IR usage, and records `class:WP_Http` with `unsupported=[]`. It does not claim whole-file `WP_Http`, `WP_Http::request`, live HTTP transport, installed distribution behavior, generated `WP_Http_Cookie`, or mixed-template ownership.
 
 The first WordPress Core public-method driver reuses the WPHX-312.61 chunk-transfer fixture:
 

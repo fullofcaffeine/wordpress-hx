@@ -4,8 +4,8 @@ This document is the durable human-readable rollup for progress toward a WordPre
 
 Beads remains the task database. This matrix is a status ledger over Beads issues, receipts, manifests, and PRD milestones. Update it in the same change whenever milestone status, scope, evidence gates, Gutenberg split policy, or completion estimates change.
 
-Last updated: 2026-06-29
-Source checkpoint: `WPHX-COMP-PHP-STAGED-CUSTOM-COMPILER strategy clarified`
+Last updated: 2026-06-30
+Source checkpoint: `WPHX-COMP-PHP-GROUP-WP-HTTP-HELPERS grouped helper shell added`
 Tracking issue: `WPHX-000.02`
 
 ## Super Progress
@@ -26,6 +26,8 @@ This is an evidence-weighted program estimate, not source-line completion. It gi
 The score should move only when evidence moves. A closed task can increase confidence in a slice without implying that the whole source area is ported.
 
 ADR-004 clarifies ownership claims without changing the score: PHP is the privileged compatibility host for current parity, Haxe owns both migrated semantics and adapter intent, and Rust/native/WASM/custom-target providers are future optional providers only for narrowly eligible kernels or explicitly named profiles with PHP fallbacks and native-on/native-off evidence. The 2026-06-29 original-path PHP emission oracle response further clarifies the current compiler split: stock Haxe PHP is the private implementation emitter; WPHX PHP is the staged custom PHP compiler lane currently focused on bounded WordPress original-path public adapters; the portable long-term asset is Haxe-owned semantics plus typed adapter contracts, not generated PHP text. ADR-013 now makes that adapter contract explicit: WPHX PHP lowers typed Haxe source and metadata into Adapter IR file/declaration plans before printing original-path public PHP, and those annotations/IR nodes should be shaped as future inputs to a broader WPHX PHP backend or extracted `reflaxe.php` target without Haxe source rewrites. A later multi-target track, including a browser/WASM profile potentially based on `back2dos/wasmix`, a Go profile potentially based on `fullofcaffeine/reflaxe.go`, and a Rust profile potentially based on `fullofcaffeine/reflaxe.rust`, is tracked as a long-term research option and does not contribute to current parity progress. Future ownership rollups should distinguish semantic ownership, adapter-contract ownership, emission strategy, execution provider, and evidence level.
+
+2026-06-30 compiler checkpoint: `WPHX-COMP-PHP-GROUP-WP-HTTP-HELPERS` adds one WPHX-generated original-path `wp-includes/class-wp-http.php` shell for the currently proven `WP_Http` parser/header/cookie helper group: `processResponse`, `chunkTransferDecode`, protected `parse_url`, `buildCookieHeader( &$r )`, and `processHeaders( $headers, $url = '' )`. It passes PHP lint, reflection/default/reference/protected-method checks, all five oracle/candidate behavior probes, WordPress bootstrap-profile checks, and `unsupported=[]` manifest checks. This improves compiler/public-adapter evidence but does not move the super-progress score because it consolidates already-bounded helper claims rather than adding installed WordPress functionality or whole-file `WP_Http` ownership. The next compiler-pressure movement is to use grouped original-path emission as the default replacement path for copied or JS-patched WP_Http public shells, then prove file-segment/template semantics before broad template ownership or full `WP_Http::request` ownership.
 
 ## PRD Milestone Matrix
 

@@ -1,0 +1,4 @@
+-cp src
+-cp fixtures/wp-core/src
+-main wphx.fixtures.wp.core.HttpGroupedHelpersCandidateEntry
+-php build/wp-core/wphx-comp-php-group-wp-http/haxe

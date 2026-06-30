@@ -1,0 +1,58 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-group-wp-http-helpers",
+  "issue": {
+    "id": "wordpresshx-9ze",
+    "external_ref": "WPHX-COMP-PHP-GROUP-WP-HTTP-HELPERS",
+    "title": "Group WP_Http parser/header/cookie adapters in one generated shell"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_shell",
+  "artifact_scope": "grouped_wordpress_public_adapter",
+  "commands": [
+    "npm run wphx:php:wp-http-grouped-helpers",
+    "npm run wphx:php:wp-http-grouped-helpers:check",
+    "npm run wphx:php:wp-http-parser-helpers:check",
+    "npm run wphx:php:wp-http-build-cookie-header:check",
+    "npm run wphx:php:wp-http-process-headers:check"
+  ],
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
+      "role": "grouped WP_Http helper compiler manifest",
+      "sha256": "sha256:3b9c4fb347777569bfbd7a87b0f1bed29fa8844e667ce77d22c4251cc5dff982"
+    },
+    {
+      "path": "manifests/ownership/wphx-comp-php-group-wp-http-helpers.v1.json",
+      "role": "ownership manifest for grouped WP_Http helper shell"
+    },
+    {
+      "path": "build/wp-core/wphx-comp-php-group-wp-http/generated/wp-includes/class-wp-http.php",
+      "role": "generated original-path grouped WP_Http shell"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "observations_match": true,
+    "assertions_pass": true,
+    "unsupported_empty": true,
+    "emitted_methods": [
+      "WP_Http::processResponse",
+      "WP_Http::chunkTransferDecode",
+      "WP_Http::parse_url",
+      "WP_Http::buildCookieHeader",
+      "WP_Http::processHeaders"
+    ]
+  },
+  "claims": [
+    "WPHX PHP emits one original-path wp-includes/class-wp-http.php adapter containing processResponse, chunkTransferDecode, protected parse_url, buildCookieHeader(&$r), and processHeaders($headers, $url = '').",
+    "The grouped shell passes PHP lint, PHP reflection, behavior parity against the copied WordPress oracle for all five helper cases, and WPHX PHP manifest unsupported=[].",
+    "The shell combines parser-helper delegation with reusable PHP-core IR bodies for native array cookie/header helpers."
+  ],
+  "non_claims": [
+    "This does not claim whole-file WP_Http ownership.",
+    "This does not claim WP_Http::request ownership, live HTTP transport, installed WordPress distribution behavior, generated WP_Http_Cookie ownership, or mixed PHP/HTML template ownership.",
+    "This does not claim WPHX PHP is already a complete arbitrary-Haxe PHP backend."
+  ]
+}
