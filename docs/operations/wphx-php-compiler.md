@@ -208,7 +208,7 @@ npm run wphx:php:template-segment-model
 npm run wphx:php:template-segment-model:check
 ```
 
-It records `manifests/wphx-php/template-segment-model.v1.json` and `receipts/compiler/wphx-comp-php-template-segment-model.v1.json`, backed by [ADR-005](../adr/ADR-005-php-file-segment-template-model.md). The model names ordered segment kinds, adoption modes, required metadata, and gates before broad mixed PHP/HTML ownership. It classifies the F6 admin-style template, theme-style template, nested partial, and WPHX direct-script include fixture, but it does not claim generated ownership of existing WordPress mixed PHP/HTML files, HHX/HXX parity for existing Core templates, arbitrary Haxe expression lowering in PHP caller scope, or whole-file template ownership.
+It records `manifests/wphx-php/template-segment-model.v1.json`, `receipts/compiler/wphx-comp-php-template-segment-model.v1.json`, and the focused compiler-evidence receipt `receipts/compiler/wphx-comp-php-segment-model-compiler-evidence.v1.json`, backed by [ADR-005](../adr/ADR-005-php-file-segment-template-model.md). The model names ordered segment kinds, adoption modes, required metadata, and gates before broad mixed PHP/HTML ownership. It classifies the F6 admin-style template, theme-style template, nested partial, and WPHX direct-script include fixture, and it now consumes compiler-emitted `segment_plans` evidence for the direct-script include adapter, admin-style segment shell, nested parent shell, and nested partial shell. It does not claim generated ownership of existing WordPress mixed PHP/HTML files, HHX/HXX parity for existing Core templates, arbitrary Haxe expression lowering in PHP caller scope, or whole-file template ownership.
 
 The first compiler-emitted template segment shell turns the segment model into generated original-path output:
 
@@ -235,6 +235,8 @@ It emits `build/wphx-php/template-segment-nested/generated/wp-admin/wphx-templat
 `WPHX-COMP-PHP-SEGMENT-MANIFEST` adds structured `segment_plans` metadata to the WPHX PHP emission manifest for those generated script adapters. Each plan records the original path, adapter name, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs. This makes the compiler output itself consumable by future Adapter IR tooling or a broader backend without moving behavior out of the existing bounded fixtures.
 
 `WPHX-COMP-PHP-SEGMENT-SNAPSHOT` extends the public-shell snapshot lane so the same structured `segment_plans` metadata is checked during generated-shape snapshots for the include-side-effect direct script, admin-style shell, nested parent, and nested partial. This guards the compiler metadata contract in the same place that guards selected generated PHP source shape, while leaving behavior parity in the focused oracle/candidate runners.
+
+`WPHX-COMP-PHP-SEGMENT-MODEL-COMPILER-EVIDENCE` closes the loop back into the model gate. The model runner reads the include-side-effects, admin-style, and nested manifests, compares all four emitted `segment_plans` against the expected file-segment ledger, and records seven classified cases so bridge/context evidence and compiler-emitted segment metadata remain visibly distinct.
 
 ## Adapter IR
 

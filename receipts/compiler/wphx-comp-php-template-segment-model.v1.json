@@ -28,19 +28,23 @@
       "role": "deterministic model runner"
     }
   ],
-  "manifest_sha256": "sha256:b1ad6deb5ee6af434e3faeb5b573a3966c6503b710e1d2c900d7bb784c8cab53",
+  "manifest_sha256": "sha256:fc9ba3ce5d6f0bc7b6f358605568a67930f455609c4b44e5ef04feaa22384b92",
   "validation_result": {
     "status": "passed",
     "f6_prerequisites_passed": true,
     "include_side_effect_prerequisites_passed": true,
+    "compiler_segment_plan_evidence_count": 4,
+    "compiler_segment_plans_match_model": true,
+    "compiler_segment_plans_unsupported_empty": true,
     "segment_kinds_count": 10,
     "adoption_modes_count": 7,
-    "classified_cases_count": 4,
+    "classified_cases_count": 7,
     "unsupported_constructs_block_claims": true
   },
   "claims": [
     "WPHX PHP has a named file-segment/template/caller-scope model before broad mixed PHP/HTML ownership claims.",
     "The model is anchored to F6 admin-style/theme-style caller-scope evidence and the WPHX include-side-effect direct-script evidence.",
+    "The model now consumes compiler-emitted segment plans for the direct-script include adapter, admin-style segment shell, nested parent shell, and nested partial shell.",
     "Future WPHX PHP template work can classify files by segment kinds and adoption mode before deciding whether Adapter IR, direct script emission, HHX/HXX, or a broader backend is appropriate."
   ],
   "non_claims": [

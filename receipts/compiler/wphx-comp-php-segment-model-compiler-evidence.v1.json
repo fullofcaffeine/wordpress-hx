@@ -1,0 +1,79 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-segment-model-compiler-evidence",
+  "issue": {
+    "id": "wordpresshx-p5o",
+    "external_ref": "WPHX-COMP-PHP-SEGMENT-MODEL-COMPILER-EVIDENCE",
+    "title": "Link compiler segment plans into model"
+  },
+  "recorded_at": "2026-06-30T00:00:00.000Z",
+  "status": "passed",
+  "evidence_class": "compiler_segment_plan_model_link",
+  "artifact_scope": "file_segment_template_model_compiler_evidence",
+  "commands": [
+    "npm run wphx:php:template-segment-model",
+    "npm run wphx:php:template-segment-model:check",
+    "npm run wphx:php:include-side-effects:check",
+    "npm run wphx:php:template-segment-admin-style:check",
+    "npm run wphx:php:template-segment-nested:check",
+    "npm run wphx:php:public-shell-snapshots:check"
+  ],
+  "artifacts": [
+    {
+      "path": "manifests/wphx-php/template-segment-model.v1.json",
+      "role": "segment model manifest with compiler-emitted segment plans linked into cases"
+    },
+    {
+      "path": "tools/wphx-php/run-template-segment-model.mjs",
+      "role": "model runner comparing emitted segment_plans against the expected model ledger"
+    },
+    {
+      "path": "manifests/wphx-php/include-side-effects.v1.json",
+      "role": "direct-script include segment_plans evidence source"
+    },
+    {
+      "path": "manifests/wphx-php/template-segment-admin-style.v1.json",
+      "role": "admin-style segment-shell segment_plans evidence source"
+    },
+    {
+      "path": "manifests/wphx-php/template-segment-nested.v1.json",
+      "role": "nested parent and partial segment_plans evidence source"
+    },
+    {
+      "path": "docs/adr/ADR-005-php-file-segment-template-model.md",
+      "role": "ADR-005 checkpoint note for compiler segment-plan evidence"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations note for model-linked segment plans"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program progress checkpoint"
+    }
+  ],
+  "manifest_sha256": "sha256:fc9ba3ce5d6f0bc7b6f358605568a67930f455609c4b44e5ef04feaa22384b92",
+  "validation_result": {
+    "status": "passed",
+    "compiler_segment_plan_evidence_count": 4,
+    "compiler_segment_plans_match_model": true,
+    "compiler_segment_plans_unsupported_empty": true,
+    "classified_cases_count": 7,
+    "include_side_effect_prerequisites_passed": true,
+    "admin_style_prerequisites_passed": true,
+    "nested_prerequisites_passed": true,
+    "public_shell_snapshot_cases": 11
+  },
+  "claims": [
+    "The template-segment model consumes compiler-emitted segment_plans evidence for the include-side-effect direct script, admin-style segment shell, nested parent shell, and nested partial shell.",
+    "The model runner validates original path, adapter, adoption mode, segment order, caller-scope facts, include semantics, observable effects, and unsupported=[] for all four compiler-emitted plans.",
+    "The model distinguishes older bridge/context classifications from compiler-emitted segment metadata without broadening mixed-template or whole-file ownership claims."
+  ],
+  "non_claims": [
+    "This does not claim generated ownership of existing WordPress mixed PHP/HTML files.",
+    "This does not claim full theme, admin, feed, or block template ownership.",
+    "This does not claim HHX/HXX is parity evidence for existing WordPress templates.",
+    "This does not claim arbitrary Haxe expression lowering into PHP caller scope.",
+    "This does not claim whole-file ownership for any WordPress file."
+  ]
+}
