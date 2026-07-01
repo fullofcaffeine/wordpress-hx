@@ -7,6 +7,7 @@ import wphx.wp.http.HttpRequestBlockedRequest.shouldReturnBlockedRequestError;
 import wphx.wp.http.HttpRequestInvalidUrl.shouldRejectInvalidRequestUrl;
 import wphx.wp.http.HttpRequestHeadRedirectionDefault.shouldDisableHeadDefaultRedirection;
 import wphx.wp.http.HttpRequestMethodOptions.shouldUseBodyDataFormat;
+import wphx.wp.http.HttpRequestPreemptiveResponse.shouldReturnPreemptiveResponse;
 import wphx.wp.http.HttpRequestRedirectOptions.shouldDisableRedirects;
 import wphx.wp.http.HttpRequestResponseSizeOptions.shouldSetMaxBytes;
 import wphx.wp.http.HttpRequestSafetyOptions.shouldRegisterRedirectValidation;
@@ -29,6 +30,7 @@ class HttpRequestNonblockingCandidateEntry
 		shouldRejectInvalidRequestUrl("relative/path", null);
 		shouldDisableHeadDefaultRedirection(true, "HEAD");
 		shouldUseBodyDataFormat("POST");
+		shouldReturnPreemptiveResponse(true);
 		shouldDisableRedirects(0);
 		shouldSetMaxBytes(12);
 		headerKey("X-Test: yes");

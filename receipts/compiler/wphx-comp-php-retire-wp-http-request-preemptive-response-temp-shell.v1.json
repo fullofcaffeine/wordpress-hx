@@ -1,0 +1,82 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-retire-wp-http-request-preemptive-response-temp-shell",
+  "issue": {
+    "id": "wordpresshx-luvl",
+    "external_ref": "WPHX-COMP-PHP-RETIRE-WP-HTTP-REQUEST-PREEMPTIVE-RESPONSE-TEMP-SHELL",
+    "title": "Use generated request adapter for WP_Http::request preemptive response"
+  },
+  "recorded_at": "2026-07-01T03:24:12Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_original_path_public_shell",
+  "artifact_scope": "wp_http_request_preemptive_response_candidate_shell_retirement",
+  "commands": [
+    "npm run format:haxe -- fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestBlockedRequestCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestHeadRedirectionDefaultCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestInvalidUrlCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestMethodOptionsCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestNonblockingCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestPreemptiveResponseCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestRedirectOptionsCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestResponseSizeOptionsCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestSafetyOptionsCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestSslOptionsCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamBlockingCandidateEntry.hx fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamFilenameOptionsCandidateEntry.hx fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+    "npm run wp:core:wphx-312-wp-http-request-nonblocking-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-safety-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-stream-blocking-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-head-redirection-default-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-method-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-redirect-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-ssl-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-response-size-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-stream-filename-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-invalid-url-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-blocked-request-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-preemptive-response-candidate",
+    "npm run wphx:php:public-shell-snapshots",
+    "npm run wphx:php:adapter-raw-blocks",
+    "npm run wp:core:wphx-312-wp-http-request-preemptive-response-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run wphx:php:adapter-raw-blocks:check",
+    "npm run format:haxe:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wp-http-request-preemptive-response-candidate.mjs",
+      "role": "WPHX-312.76 runner installing compiler-emitted class-wp-http.php request shell"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+      "role": "typed public shell declaration with named preemptiveResponse helper metadata"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WordPress-profile adapter IR for request preemptive-response branch support"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-76-wp-http-request-preemptive-response-candidate.v1.json",
+      "role": "preemptive-response candidate manifest with generated-shell and IR feature evidence"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-76-wp-http-request-preemptive-response-candidate.v1.json",
+      "role": "ownership manifest marking the boundary as compiler_emitted_original_path_shell"
+    },
+    {
+      "path": "receipts/wp-core/wphx-312-76-wp-http-request-preemptive-response-candidate.v1.json",
+      "role": "behavior receipt for the preemptive-response candidate"
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "request_preemptive_response_candidate_cases": 1,
+    "public_shell_snapshot_cases": 17,
+    "php_raw_block_count": 0,
+    "template_reference_count": 0,
+    "template_lint_count": 0,
+    "ownership_state": "compiler_emitted_original_path_shell"
+  },
+  "claims": [
+    "WPHX-312.76 now consumes the compiler-emitted original-path WP_Http::request shell instead of a copied/runner-patched class-wp-http.php body.",
+    "The preemptive-response helper remains the bounded Haxe-owned branch claim, with helper modules compiled for the generated shell's runtime calls.",
+    "The shared generated request shell now calls the named preemptiveResponse helper for the PHP-owned pre_http_request filter result decision.",
+    "The deterministic preemptive-response oracle/candidate probe remains behavior-identical."
+  ],
+  "non_claims": [
+    "This does not claim full WP_Http::request ownership.",
+    "This does not claim pre_http_request filter semantics, returned response shape validation, WP_Error internals, live network behavior, upstream HTTP PHPUnit parity, or installed distribution behavior.",
+    "This does not claim whole-file WP_Http ownership."
+  ]
+}

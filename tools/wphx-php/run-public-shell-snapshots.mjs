@@ -290,6 +290,7 @@ const CASES = [
       "HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection",
       "HttpRequestInvalidUrl_Fields_::shouldRejectInvalidRequestUrl",
       "HttpRequestMethodOptions_Fields_::shouldUseBodyDataFormat",
+      "HttpRequestPreemptiveResponse_Fields_::shouldReturnPreemptiveResponse",
       "HttpRequestRedirectOptions_Fields_::shouldDisableRedirects",
       "HttpRequestResponseSizeOptions_Fields_::shouldSetMaxBytes",
       "HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation",

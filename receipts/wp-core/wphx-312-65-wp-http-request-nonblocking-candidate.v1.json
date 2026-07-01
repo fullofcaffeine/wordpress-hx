@@ -72,6 +72,7 @@
       "wp-http.request.head-redirection-default-helper",
       "wp-http.request.invalid-url-helper",
       "wp-http.request.method-options-helper",
+      "wp-http.request.preemptive-response-helper",
       "wp-http.request.redirect-options-helper",
       "wp-http.request.response-size-options-helper",
       "wp-http.request.safety-options-helper",

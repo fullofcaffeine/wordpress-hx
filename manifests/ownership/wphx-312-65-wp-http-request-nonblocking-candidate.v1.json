@@ -27,6 +27,7 @@
     "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
     "src/wphx/wp/http/HttpRequestInvalidUrl.hx",
     "src/wphx/wp/http/HttpRequestMethodOptions.hx",
+    "src/wphx/wp/http/HttpRequestPreemptiveResponse.hx",
     "src/wphx/wp/http/HttpRequestRedirectOptions.hx",
     "src/wphx/wp/http/HttpRequestResponseSizeOptions.hx",
     "src/wphx/wp/http/HttpProcessHeaders.hx",
@@ -62,6 +63,6 @@
     "receipt_refs": [
       "receipt:wphx-312-65-wp-http-request-nonblocking-candidate"
     ],
-    "manifest_digest": "sha256:38695b3545a6e5d14758726e929965b4fde94b0fe09855c1ef2b61227f4376ea"
+    "manifest_digest": "sha256:d73819b1453f8ad672d654371cc0b9ab14c1cf1eec8517b9dfd79984e857e8f5"
   }
 }

@@ -16,8 +16,11 @@ const RECORDED_AT = "2026-06-28T08:00:00.000Z";
 const UPSTREAM_ROOT = "../wordpress-develop";
 const RUNNER = "tools/wp-core/run-wp-http-request-preemptive-response-candidate.mjs";
 const HXML = "fixtures/wp-core/http-request-preemptive-response-candidate.hxml";
+const WPHX_PHP_HXML = "fixtures/wphx-php/wp-http-request-nonblocking.hxml";
 const OUT_ROOT = "build/wp-core/wphx-312-76";
 const HAXE_OUT = `${OUT_ROOT}/haxe`;
+const WPHX_PHP_ROOT = `${OUT_ROOT}/wphx-php`;
+const WPHX_PHP_MANIFEST = `${WPHX_PHP_ROOT}/wphx-php-emission.v1.json`;
 const ORACLE_ROOT = `${OUT_ROOT}/oracle`;
 const CANDIDATE_ROOT = `${OUT_ROOT}/candidate`;
 const PROBE = `${OUT_ROOT}/probe.php`;
@@ -45,7 +48,25 @@ const COVERED_SYMBOLS = [
 ];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_PHP_HXML,
+  "src/wphx/wp/http/HttpRequestNonblocking.hx",
+  "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+  "src/wphx/wp/http/HttpRequestBlockedRequest.hx",
+  "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
+  "src/wphx/wp/http/HttpRequestInvalidUrl.hx",
+  "src/wphx/wp/http/HttpRequestMethodOptions.hx",
   "src/wphx/wp/http/HttpRequestPreemptiveResponse.hx",
+  "src/wphx/wp/http/HttpRequestRedirectOptions.hx",
+  "src/wphx/wp/http/HttpRequestResponseSizeOptions.hx",
+  "src/wphx/wp/http/HttpProcessHeaders.hx",
+  "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
+  "src/wphx/wp/http/HttpRequestSslOptions.hx",
+  "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+  "src/wphx/wp/http/HttpRequestStreamFilenameOptions.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+  "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestPreemptiveResponseCandidateEntry.hx"
 ];
 const HAXE_MODULE = "\\wphx\\wp\\http\\_HttpRequestPreemptiveResponse\\HttpRequestPreemptiveResponse_Fields_";
@@ -99,52 +120,12 @@ function mirrorSources(root) {
   }
 }
 
-function haxeBootstrapBlock() {
-	return `if ( ! function_exists( 'wphx_312_76_bootstrap_haxe' ) ) {
-\tfunction wphx_312_76_bootstrap_haxe() {
-\t\tstatic $bootstrapped = false;
-\t\tif ( $bootstrapped ) {
-\t\t\treturn;
-\t\t}
-\t\t$bootstrapped = true;
-
-\t\t$wphx_312_76_lib = dirname( __DIR__, 2 ) . '/haxe/lib';
-\t\tset_include_path( get_include_path() . PATH_SEPARATOR . $wphx_312_76_lib );
-\t\tspl_autoload_register(
-\t\t\tfunction ( $class ) {
-\t\t\t\t$file = stream_resolve_include_path( str_replace( '\\\\', '/', $class ) . '.php' );
-\t\t\t\tif ( $file ) {
-\t\t\t\t\tinclude_once $file;
-\t\t\t\t}
-\t\t\t}
-\t\t);
-\t\t\\php\\Boot::__hx__init();
-\t}
-}
-wphx_312_76_bootstrap_haxe();
-`;
-}
-
-function installBootstrap(source) {
-  const marker = "<?php\n";
-  if (!source.startsWith(marker)) throw new Error("class-wp-http.php did not start with PHP open tag");
-  return `${marker}\n${haxeBootstrapBlock()}\n${source.slice(marker.length)}`;
-}
-
-function transformCandidateRequestPreemptiveResponse() {
-	const path = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
-	const original = `\t\tif ( false !== $pre ) {
-\t\t\treturn $pre;
-\t\t}
-`;
-	const replacement = `\t\tif ( ${HAXE_MODULE}::shouldReturnPreemptiveResponse( false !== $pre ) ) {
-\t\t\treturn $pre;
-\t\t}
-`;
-  const source = installBootstrap(readFileSync(path, "utf8"));
-  const transformed = source.replace(original, replacement);
-  if (transformed === source) throw new Error("Unable to replace WP_Http::request preemptive response decision branch");
-  writeFileSync(path, transformed);
+function installCompilerEmittedCandidateShell() {
+  const source = `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`;
+  const target = `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`;
+  if (!existsSync(source)) throw new Error(`Missing WPHX PHP emitted shell: ${source}`);
+  mkdirSync(dirname(target), { recursive: true });
+  copyFileSync(source, target);
 }
 
 function writeProbe() {
@@ -685,12 +666,12 @@ function ownershipManifest(manifestSha) {
       public_contract:
         "This candidate promotes only the WP_Http::request decision that a pre_http_request value other than boolean false short-circuits and returns that value. PHP still owns public WP_Http::request ABI, pre_http_request filter timing/payload, native returned array/WP_Error value, URL filtering/parsing, invalid/blocked request branches, Requests dispatch avoidance, and native arrays/objects."
     },
-    ownership_state: "haxe_candidate_with_public_php_shell",
+    ownership_state: "compiler_emitted_original_path_shell",
     bridge: {
-      exists: true,
-      kind: "copied-public-php-shell-calling-generated-haxe",
+      exists: false,
+      kind: "none",
       removal_gate:
-        "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+        "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
     },
     owned_paths: [RUNNER, OUT, OWNERSHIP, RECEIPT],
     generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
@@ -698,6 +679,8 @@ function ownershipManifest(manifestSha) {
       oracle_commands: [
         "npm run wp:core:wphx-312-wp-http-request-preemptive-response-candidate",
         "npm run wp:core:wphx-312-wp-http-request-preemptive-response-candidate:check",
+        "npm run wphx:php:public-shell-snapshots:check",
+        "npm run wphx:php:adapter-raw-blocks:check",
         "npm run receipts:validate",
         "npm run beads:validate"
       ],
@@ -710,9 +693,10 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  command("haxe", [WPHX_PHP_HXML, "-D", `wphx_php_output=${WPHX_PHP_ROOT}`, "-D", `wphx_php_manifest=${WPHX_PHP_MANIFEST}`]);
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
-  transformCandidateRequestPreemptiveResponse();
+  installCompilerEmittedCandidateShell();
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -734,29 +718,114 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhpManifest = JSON.parse(readFileSync(WPHX_PHP_MANIFEST, "utf8"));
+  const generatedShellPath = mirrorPath(CANDIDATE_ROOT, "src/wp-includes/class-wp-http.php");
+  const generatedShell = readFileSync(generatedShellPath, "utf8");
+  const requestAdapterTemplateAbsent = !(wphxPhpManifest.adapter_templates ?? []).some(
+    (template) => template.adapter === "wp-http-request-nonblocking"
+  );
+  const requiredRequestIrFeatures = [
+    "stmt.try-catch",
+    "stmt.if",
+    "stmt.if-else",
+    "expr.instanceof",
+    "expr.long-array",
+    "expr.method-call",
+    "expr.static-closure",
+    "expr.static-call",
+    "wp-http.request.nonblocking-response",
+    "wp-http.request.blocked-request-helper",
+    "wp-http.request.head-redirection-default-helper",
+    "wp-http.request.invalid-url-helper",
+    "wp-http.request.method-options-helper",
+    "wp-http.request.preemptive-response-helper",
+    "wp-http.request.redirect-options-helper",
+    "wp-http.request.response-size-options-helper",
+    "wp-http.request.safety-options-helper",
+    "wp-http.request.ssl-options-helper",
+    "wp-http.request.stream-blocking-helper",
+    "wp-http.request.stream-filename-options-helper"
+  ];
+  const coreIrFeatures = new Set(wphxPhpManifest.core_ir_features ?? []);
+  const missingRequestIrFeatures = requiredRequestIrFeatures.filter((feature) => !coreIrFeatures.has(feature));
+  const wphxPhpShape = {
+    manifest_declares_wp_http: wphxPhpManifest.files.some((file) =>
+      file.path === "wp-includes/class-wp-http.php" &&
+      file.declarations.some((declaration) => declaration.kind === "class" && declaration.name === "WP_Http")
+    ),
+    unsupported_empty: Array.isArray(wphxPhpManifest.unsupported) && wphxPhpManifest.unsupported.length === 0,
+    adapter_template_absent: requestAdapterTemplateAbsent,
+    request_signature: generatedShell.includes("public function request($url, $args = [])"),
+    process_headers_signature: generatedShell.includes("public static function processHeaders($headers, $url = '')"),
+    normalize_cookies_signature: generatedShell.includes("public static function normalize_cookies($cookies)"),
+    block_request_signature: generatedShell.includes("public function block_request($uri)"),
+    normalize_cookies_cookie_jar: generatedShell.includes("new WpOrg\\Requests\\Cookie\\Jar()"),
+    normalize_cookies_cookie_instance: generatedShell.includes("$value instanceof WP_Http_Cookie"),
+    process_headers_haxe_call: generatedShell.includes("HttpProcessHeaders_Fields_::headerKey"),
+    blocked_request_haxe_call: generatedShell.includes("HttpRequestBlockedRequest_Fields_::shouldReturnBlockedRequestError"),
+    invalid_url_haxe_call: generatedShell.includes("HttpRequestInvalidUrl_Fields_::shouldRejectInvalidRequestUrl"),
+    method_options_haxe_call: generatedShell.includes("HttpRequestMethodOptions_Fields_::shouldUseBodyDataFormat"),
+    preemptive_response_haxe_call: generatedShell.includes(`${HAXE_MODULE}::shouldReturnPreemptiveResponse`),
+    redirect_options_haxe_call: generatedShell.includes("HttpRequestRedirectOptions_Fields_::shouldDisableRedirects"),
+    response_size_options_haxe_call: generatedShell.includes("HttpRequestResponseSizeOptions_Fields_::shouldSetMaxBytes"),
+    head_redirection_haxe_call: generatedShell.includes("HttpRequestHeadRedirectionDefault_Fields_::shouldDisableHeadDefaultRedirection"),
+    safety_options_haxe_call: generatedShell.includes("HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation"),
+    ssl_options_haxe_call: generatedShell.includes("HttpRequestSslOptions_Fields_::shouldDisableSslVerification"),
+    stream_blocking_haxe_call: generatedShell.includes("HttpRequestStreamBlocking_Fields_::shouldForceBlockingForStream"),
+    stream_filename_options_haxe_call: generatedShell.includes("HttpRequestStreamFilenameOptions_Fields_::shouldSetStreamFilenameOption"),
+    nonblocking_haxe_call: generatedShell.includes("HttpRequestNonblocking_Fields_::nonblockingResponse"),
+    requests_dispatch: generatedShell.includes("WpOrg\\Requests\\Requests::request"),
+    request_ir_features_present: missingRequestIrFeatures.length === 0
+  };
+  if (!Object.values(wphxPhpShape).every(Boolean)) {
+    console.error(JSON.stringify({ status: "failed", reason: "WPHX PHP generated shell shape check failed", wphxPhpShape }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-wp-http-request-preemptive-response-candidate.v1",
     issue: ISSUE.external_ref,
     generated_at: RECORDED_AT,
     generator: RUNNER,
-    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture"],
+    evidence_classes: [
+      "haxe_source",
+      "generated_php_candidate",
+      "oracle_source_mirror",
+      "php_cli_observed_fixture",
+      "compiler_php_ir_feature_evidence"
+    ],
     artifact_scope: "haxe_parity_candidate",
     inputs: {
       surface_manifest: inputRecord(SURFACE),
       adapter_contract_manifest: inputRecord(CONTRACT),
       request_orchestration_fixture_manifest: inputRecord(REQUEST_ORCHESTRATION_FIXTURE),
       runner: inputRecord(RUNNER),
+      wphx_php_manifest: inputRecord(WPHX_PHP_MANIFEST),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_PHP_HXML,
       haxe_output: HAXE_OUT,
+      wphx_php_output: WPHX_PHP_ROOT,
+      public_shell: {
+        path: generatedShellPath,
+        source_path: `${WPHX_PHP_ROOT}/wp-includes/class-wp-http.php`,
+        sha256: sha256File(generatedShellPath),
+        compiler_emitted: true,
+        shape: wphxPhpShape
+      },
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
       haxe_module: HAXE_MODULE,
       promoted_symbols: PROMOTED_SYMBOLS,
       promoted_behavior:
-        "Only the WP_Http::request preemptive-response branch decision over the PHP-owned pre_http_request filter result is emitted by generated Haxe PHP. The surrounding public method body, filter call, returned value shape, URL handling, error branches, and Requests dispatch remain a copied candidate shell."
+        "Only the WP_Http::request preemptive-response branch decision over the PHP-owned pre_http_request filter result is claimed by this candidate. The surrounding public method body is now emitted by structured WPHX PHP Adapter IR as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership.",
+      adapter_ir: {
+        adapter: "wp-http-request-nonblocking",
+        template_absent: requestAdapterTemplateAbsent,
+        required_features: requiredRequestIrFeatures,
+        missing_features: missingRequestIrFeatures
+      }
     },
     fixture: {
       cases: CASES,
@@ -769,12 +838,13 @@ async function main() {
         live_installed_wordpress: false,
         php_cli: true,
         runtime_stubs:
-          "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed orchestration sources; outbound Requests::request records options or throws without network I/O."
+          "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. The oracle root executes copied upstream WP_Http while the candidate root executes a WPHX compiler-emitted original-path WP_Http shell; outbound Requests::request records options or throws without network I/O."
       },
       public_abi_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
         copied_oracle_public_php: true,
-        copied_candidate_public_php_shell: true,
+        copied_candidate_public_php_shell: false,
+        compiler_emitted_public_php: true,
         adapter_contract_foundation: CONTRACT,
         installed_wordpress_behavior_claimed: false
       },
@@ -813,9 +883,9 @@ async function main() {
           "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
       },
       {
-        id: "public-php-adapter-not-yet-generated",
+        id: "full-wp-http-request-not-yet-owned",
         owner: ISSUE.external_ref,
-        detail: "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+        detail: "The candidate now executes a compiler-emitted original-path WP_Http::request shell for this bounded branch, but full request orchestration, whole-file WP_Http ownership, selected upstream HTTP PHPUnit parity, and installed-distribution behavior remain later gates."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -826,7 +896,8 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
+      compiler_emitted_public_php: true,
       full_request_orchestration_claimed: false,
       pre_http_request_filter_semantics_claimed: false,
       returned_response_shape_validation_claimed: false,
@@ -847,11 +918,14 @@ async function main() {
       { path: OUT, role: "WP_Http request preemptive response Haxe candidate manifest" },
       { path: OWNERSHIP, role: "ownership manifest for WP_Http request preemptive response Haxe candidate" },
       { path: RUNNER, role: "deterministic PHP CLI oracle/candidate Haxe fixture generator" },
-      { path: HXML, role: "Haxe compile target for request preemptive response candidate" }
+      { path: HXML, role: "Haxe compile target for request preemptive response candidate" },
+      { path: WPHX_PHP_HXML, role: "WPHX PHP compile target for the compiler-emitted original-path request shell" }
     ],
     verification_commands: [
       "npm run wp:core:wphx-312-wp-http-request-preemptive-response-candidate",
       "npm run wp:core:wphx-312-wp-http-request-preemptive-response-candidate:check",
+      "npm run wphx:php:public-shell-snapshots:check",
+      "npm run wphx:php:adapter-raw-blocks:check",
       "npm run receipts:validate",
       "npm run beads:validate"
     ],

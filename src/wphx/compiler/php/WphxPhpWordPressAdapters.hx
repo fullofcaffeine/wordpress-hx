@@ -1209,6 +1209,7 @@ class WphxPhpWordPressAdapters
 		final headRedirectionDefaultHelper = namedHelper(helpers, "headRedirectionDefault");
 		final invalidUrlHelper = namedHelper(helpers, "invalidUrl");
 		final methodOptionsHelper = namedHelper(helpers, "methodOptions");
+		final preemptiveResponseHelper = namedHelper(helpers, "preemptiveResponse");
 		final redirectOptionsHelper = namedHelper(helpers, "redirectOptions");
 		final responseSizeOptionsHelper = namedHelper(helpers, "responseSizeOptions");
 		final safetyOptionsHelper = namedHelper(helpers, "safetyOptions");
@@ -1268,6 +1269,10 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.method-options-helper");
 		}
+		if (preemptiveResponseHelper != null)
+		{
+			features.push("wp-http.request.preemptive-response-helper");
+		}
 		if (redirectOptionsHelper != null)
 		{
 			features.push("wp-http.request.redirect-options-helper");
@@ -1312,6 +1317,8 @@ class WphxPhpWordPressAdapters
 		final blockedRequestCondition = blockedRequestHelper == null ? PhpMethodCall(PhpVar("this"), "block_request",
 			[url]) : PhpStaticCall(blockedRequestHelper, "shouldReturnBlockedRequestError",
 				[PhpCastBool(PhpMethodCall(PhpVar("this"), "block_request", [url]))]);
+		final preemptiveResponseCondition = preemptiveResponseHelper == null ? PhpBinop("!==", PhpBool(false),
+			PhpVar("pre")) : PhpStaticCall(preemptiveResponseHelper, "shouldReturnPreemptiveResponse", [PhpBinop("!==", PhpBool(false), PhpVar("pre"))]);
 		final methodBodyFormatCondition = methodOptionsHelper == null ? PhpBinop("&&", PhpBinop("!==", PhpString("HEAD"), type),
 			PhpBinop("!==", PhpString("GET"), type)) : PhpStaticCall(methodOptionsHelper, "shouldUseBodyDataFormat", [PhpCastString(type)]);
 		final redirectDisableCondition = redirectOptionsHelper == null ? PhpFunctionCall("empty",
@@ -1359,7 +1366,7 @@ class WphxPhpWordPressAdapters
 			PhpIf(PhpNot(PhpFunctionCall("isset", [read(parsedArgs, "_redirection")])),
 				[PhpAssign(read(parsedArgs, "_redirection"), read(parsedArgs, "redirection"))]),
 			PhpLocal("pre", PhpFunctionCall("apply_filters", [PhpString("pre_http_request"), PhpBool(false), parsedArgs, url])),
-			PhpIf(PhpBinop("!==", PhpBool(false), PhpVar("pre")), [PhpReturn(PhpVar("pre"))]),
+			PhpIf(preemptiveResponseCondition, [PhpReturn(PhpVar("pre"))]),
 			PhpIf(PhpFunctionCall("function_exists", [PhpString("wp_kses_bad_protocol")]), [
 				PhpIf(read(parsedArgs, "reject_unsafe_urls"), [PhpAssign(url, PhpFunctionCall("wp_http_validate_url", [url]))]),
 				PhpIf(url, [
