@@ -61,6 +61,7 @@ const HAXE_SOURCES = [
   "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
   "src/wphx/wp/http/HttpRequestSslOptions.hx",
   "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+  "src/wphx/wp/http/HttpRequestStreamFilenameOptions.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
   "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
@@ -734,7 +735,8 @@ async function main() {
     "wp-http.request.response-size-options-helper",
     "wp-http.request.safety-options-helper",
     "wp-http.request.ssl-options-helper",
-    "wp-http.request.stream-blocking-helper"
+    "wp-http.request.stream-blocking-helper",
+    "wp-http.request.stream-filename-options-helper"
   ];
   const coreIrFeatures = new Set(wphxPhpManifest.core_ir_features ?? []);
   const missingRequestIrFeatures = requiredRequestIrFeatures.filter((feature) => !coreIrFeatures.has(feature));
@@ -758,6 +760,7 @@ async function main() {
     stream_blocking_haxe_call: generatedShell.includes(`${HAXE_MODULE}::shouldForceBlockingForStream`),
     safety_options_haxe_call: generatedShell.includes("HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation"),
     ssl_options_haxe_call: generatedShell.includes("HttpRequestSslOptions_Fields_::shouldDisableSslVerification"),
+    stream_filename_options_haxe_call: generatedShell.includes("HttpRequestStreamFilenameOptions_Fields_::shouldSetStreamFilenameOption"),
     nonblocking_haxe_call: generatedShell.includes("HttpRequestNonblocking_Fields_::nonblockingResponse"),
     requests_dispatch: generatedShell.includes("WpOrg\\Requests\\Requests::request"),
     request_ir_features_present: missingRequestIrFeatures.length === 0

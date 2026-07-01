@@ -1212,6 +1212,7 @@ class WphxPhpWordPressAdapters
 		final safetyOptionsHelper = namedHelper(helpers, "safetyOptions");
 		final sslOptionsHelper = namedHelper(helpers, "sslOptions");
 		final streamBlockingHelper = namedHelper(helpers, "streamBlocking");
+		final streamFilenameOptionsHelper = namedHelper(helpers, "streamFilenameOptions");
 		final url = PhpVar("url");
 		final args = PhpVar("args");
 		final defaults = PhpVar("defaults");
@@ -1273,6 +1274,10 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.stream-blocking-helper");
 		}
+		if (streamFilenameOptionsHelper != null)
+		{
+			features.push("wp-http.request.stream-filename-options-helper");
+		}
 		final headRedirectionDefaultCondition = headRedirectionDefaultHelper == null ? PhpBinop("&&", PhpFunctionCall("isset", [read(args, "method")]),
 			PhpBinop("===", PhpString("HEAD"), read(args, "method"))) : PhpStaticCall(headRedirectionDefaultHelper, "shouldDisableHeadDefaultRedirection", [
 				PhpFunctionCall("isset", [read(args, "method")]),
@@ -1287,6 +1292,8 @@ class WphxPhpWordPressAdapters
 		final streamBlockingStatement = streamBlockingHelper == null ? PhpAssign(read(parsedArgs, "blocking"),
 			PhpBool(true)) : PhpIf(PhpStaticCall(streamBlockingHelper, "shouldForceBlockingForStream", [PhpCastBool(read(parsedArgs, "stream"))]),
 				[PhpAssign(read(parsedArgs, "blocking"), PhpBool(true))]);
+		final streamFilenameCondition = streamFilenameOptionsHelper == null ? read(parsedArgs,
+			"stream") : PhpStaticCall(streamFilenameOptionsHelper, "shouldSetStreamFilenameOption", [PhpCastBool(read(parsedArgs, "stream"))]);
 		final methodBodyFormatCondition = methodOptionsHelper == null ? PhpBinop("&&", PhpBinop("!==", PhpString("HEAD"), type),
 			PhpBinop("!==", PhpString("GET"), type)) : PhpStaticCall(methodOptionsHelper, "shouldUseBodyDataFormat", [PhpCastString(type)]);
 		final redirectDisableCondition = redirectOptionsHelper == null ? PhpFunctionCall("empty",
@@ -1419,7 +1426,7 @@ class WphxPhpWordPressAdapters
 							PhpLongArray([item(PhpClassConst("static", "class")), item(PhpString("validate_redirects"))])
 						]))
 				]),
-			PhpIf(read(parsedArgs, "stream"), [PhpAssign(read(options, "filename"), read(parsedArgs, "filename"))]),
+			PhpIf(streamFilenameCondition, [PhpAssign(read(options, "filename"), read(parsedArgs, "filename"))]),
 			PhpIfElse(redirectDisableCondition, [PhpAssign(read(options, "follow_redirects"), PhpBool(false))],
 				[PhpAssign(read(options, "redirects"), read(parsedArgs, "redirection"))]),
 			PhpIf(responseSizeCondition, [PhpAssign(read(options, "max_bytes"), read(parsedArgs, "limit_response_size"))]),

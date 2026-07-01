@@ -23,11 +23,17 @@
     {
       "path": "fixtures/wp-core/http-request-stream-filename-options-candidate.hxml",
       "role": "Haxe compile target for request stream filename options candidate"
+    },
+    {
+      "path": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+      "role": "WPHX PHP compiler target for the generated original-path request shell"
     }
   ],
   "verification_commands": [
     "npm run wp:core:wphx-312-wp-http-request-stream-filename-options-candidate",
     "npm run wp:core:wphx-312-wp-http-request-stream-filename-options-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
+    "npm run wphx:php:adapter-raw-blocks:check",
     "npm run receipts:validate",
     "npm run beads:validate"
   ],
@@ -43,7 +49,8 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
+    "compiler_emitted_public_php": true,
     "full_request_orchestration_claimed": false,
     "streaming_file_io_claimed": false,
     "installed_wordpress_behavior_claimed": false,

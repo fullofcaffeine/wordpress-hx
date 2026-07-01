@@ -293,6 +293,7 @@ const CASES = [
       "HttpRequestSafetyOptions_Fields_::shouldRegisterRedirectValidation",
       "HttpRequestSslOptions_Fields_::shouldDisableSslVerification",
       "HttpRequestStreamBlocking_Fields_::shouldForceBlockingForStream",
+      "HttpRequestStreamFilenameOptions_Fields_::shouldSetStreamFilenameOption",
       "return apply_filters( 'http_response'"
     ],
     ast_expect: {

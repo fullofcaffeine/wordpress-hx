@@ -67,7 +67,8 @@
       "wp-http.request.response-size-options-helper",
       "wp-http.request.safety-options-helper",
       "wp-http.request.ssl-options-helper",
-      "wp-http.request.stream-blocking-helper"
+      "wp-http.request.stream-blocking-helper",
+      "wp-http.request.stream-filename-options-helper"
     ],
     "public_php_replacement_claimed": true,
     "full_request_safety_claimed": false,

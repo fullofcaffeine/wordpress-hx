@@ -29,13 +29,13 @@
     },
     "runner": {
       "path": "tools/wp-core/run-wp-http-request-response-size-options-candidate.mjs",
-      "bytes": 38381,
-      "sha256": "sha256:d5b2f311f27f90478f63dd48f8ab3a22e21869bcd41758880e54d1d64512b124"
+      "bytes": 38632,
+      "sha256": "sha256:a82e9e8dcfee32f9cc555eb63b04adf33302c26334a95d61ce3e6c477e55b3d8"
     },
     "wphx_php_manifest": {
       "path": "build/wp-core/wphx-312-71/wphx-php/wphx-php-emission.v1.json",
-      "bytes": 1702,
-      "sha256": "sha256:0e97b185e73652aa1f52b750fa7a6ea3c4fe73737d97c94fcd8b4a5e1458bca7"
+      "bytes": 1756,
+      "sha256": "sha256:787568147a0add5a4e65005dbe213eac9717c92c08bebb437b65a9ad40bc73ba"
     },
     "haxe_sources": [
       {
@@ -99,6 +99,11 @@
         "sha256": "sha256:19761955fa5bf14201e4282f1f48943379138837163dde7efcd2e9b57d811477"
       },
       {
+        "path": "src/wphx/wp/http/HttpRequestStreamFilenameOptions.hx",
+        "bytes": 343,
+        "sha256": "sha256:9e1514c4c076abe7d9547768eab938ccf397196fe3909719f3bffef41d5f7f40"
+      },
+      {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
         "bytes": 337,
         "sha256": "sha256:dfef1a5a2a5966954d907490d9893f7e7c4b36261e0aaea59e2d4aa64299eafd"
@@ -115,13 +120,13 @@
       },
       {
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "bytes": 2586,
-        "sha256": "sha256:fa48f66a108d2e7cebe3a648aa406db072a5f2cab64e4045cc26c98990093cea"
+        "bytes": 2725,
+        "sha256": "sha256:1ea2279b274e2d39401646b45089a91487cd051fe6496b822e564dd070cf493c"
       },
       {
         "path": "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestResponseSizeOptionsCandidateEntry.hx",
-        "bytes": 1409,
-        "sha256": "sha256:8d124e258c724867333866d4119097ebf91ed3ca62f990c3d6a813ddcf33fd2d"
+        "bytes": 1532,
+        "sha256": "sha256:4e5df6d2146ddfb11f88eadc08782234c9cb93534c8c075ddd71a5540c51e8f4"
       }
     ],
     "upstream_sources": [
@@ -171,7 +176,7 @@
     "public_shell": {
       "path": "build/wp-core/wphx-312-71/candidate/wp-includes/class-wp-http.php",
       "source_path": "build/wp-core/wphx-312-71/wphx-php/wp-includes/class-wp-http.php",
-      "sha256": "sha256:dfc478cd73ef5f07e36f4582e6638f76732ad52049a8f0554765cf8016784c6b",
+      "sha256": "sha256:569d56933e280885cf7b9c8ff5e40cdc6a565c9034dafeb0cd76ec0b56c4a38d",
       "compiler_emitted": true,
       "shape": {
         "manifest_declares_wp_http": true,
@@ -191,6 +196,7 @@
         "safety_options_haxe_call": true,
         "ssl_options_haxe_call": true,
         "stream_blocking_haxe_call": true,
+        "stream_filename_options_haxe_call": true,
         "nonblocking_haxe_call": true,
         "requests_dispatch": true,
         "request_ir_features_present": true
@@ -224,7 +230,8 @@
       "build/wp-core/wphx-312-71/haxe/lib/wphx/wp/http/_HttpRequestResponseSizeOptions/HttpRequestResponseSizeOptions_Fields_.php",
       "build/wp-core/wphx-312-71/haxe/lib/wphx/wp/http/_HttpRequestSafetyOptions/HttpRequestSafetyOptions_Fields_.php",
       "build/wp-core/wphx-312-71/haxe/lib/wphx/wp/http/_HttpRequestSslOptions/HttpRequestSslOptions_Fields_.php",
-      "build/wp-core/wphx-312-71/haxe/lib/wphx/wp/http/_HttpRequestStreamBlocking/HttpRequestStreamBlocking_Fields_.php"
+      "build/wp-core/wphx-312-71/haxe/lib/wphx/wp/http/_HttpRequestStreamBlocking/HttpRequestStreamBlocking_Fields_.php",
+      "build/wp-core/wphx-312-71/haxe/lib/wphx/wp/http/_HttpRequestStreamFilenameOptions/HttpRequestStreamFilenameOptions_Fields_.php"
     ],
     "haxe_module": "\\wphx\\wp\\http\\_HttpRequestResponseSizeOptions\\HttpRequestResponseSizeOptions_Fields_",
     "promoted_symbols": [
@@ -250,7 +257,8 @@
         "wp-http.request.response-size-options-helper",
         "wp-http.request.safety-options-helper",
         "wp-http.request.ssl-options-helper",
-        "wp-http.request.stream-blocking-helper"
+        "wp-http.request.stream-blocking-helper",
+        "wp-http.request.stream-filename-options-helper"
       ],
       "missing_features": []
     }

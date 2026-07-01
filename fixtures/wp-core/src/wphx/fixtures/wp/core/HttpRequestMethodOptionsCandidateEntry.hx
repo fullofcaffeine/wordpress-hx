@@ -11,6 +11,7 @@ import wphx.wp.http.HttpRequestResponseSizeOptions.shouldSetMaxBytes;
 import wphx.wp.http.HttpRequestSafetyOptions.shouldRegisterRedirectValidation;
 import wphx.wp.http.HttpRequestSslOptions.shouldDisableSslVerification;
 import wphx.wp.http.HttpRequestStreamBlocking.shouldForceBlockingForStream;
+import wphx.wp.http.HttpRequestStreamFilenameOptions.shouldSetStreamFilenameOption;
 
 /**
 	Compile anchor for the WP_Http::request method options Haxe candidate.
@@ -30,5 +31,6 @@ class HttpRequestMethodOptionsCandidateEntry
 		shouldRegisterRedirectValidation(true, true);
 		shouldDisableSslVerification(false);
 		shouldForceBlockingForStream(true);
+		shouldSetStreamFilenameOption(true);
 	}
 }
