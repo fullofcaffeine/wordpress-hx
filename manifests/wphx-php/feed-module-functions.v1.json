@@ -37,23 +37,23 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-      "bytes": 6643,
-      "sha256": "sha256:942319a071d1056328fd6bf959ed11289f475eb9502c52d856d6e2bf9957f4a5"
+      "bytes": 7631,
+      "sha256": "sha256:d9a523b5699d1706f54f03252ebf675944dd0e3594b39117eee3d565e2f0d19c"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleEntry.hx",
-      "bytes": 1979,
-      "sha256": "sha256:135643b7cc7736e19b9c4adbe5f4c5ff0e0ec5b36069c99953334a9e94838c0b"
+      "bytes": 2244,
+      "sha256": "sha256:96205d5c3a60414eef89d6c3837c70d34629730c5f96e823e04a952b11ed41cf"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-      "bytes": 4736,
-      "sha256": "sha256:e237614b4280d5bad3a899a8a04b04c0e3afacea1d7859d507ec4cc76f0f2b9e"
+      "bytes": 5357,
+      "sha256": "sha256:56a7ec1e1b9e15854624ffe15694d1ee35f03f497d22c8c5ff6610bdef136aa1"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/HaxeFeedKernel.hx",
-      "bytes": 1265,
-      "sha256": "sha256:0715c9e77bfe403ac548db3fad15819d2658e29f561b7c93fd6130600dc27ec3"
+      "bytes": 1387,
+      "sha256": "sha256:640e9981e238e16d181237e6deaa6ccad2c01aa1f0ee76b94197cb2377260583"
     }
   ],
   "upstream_oracle": {
@@ -77,7 +77,10 @@
       "comment_text_rss",
       "get_the_content_feed",
       "the_content_feed",
-      "feed_content_type"
+      "feed_content_type",
+      "html_type_rss",
+      "atom_site_icon",
+      "rss2_site_icon"
     ],
     "selected_source_lines": [
       "27-41",
@@ -96,13 +99,16 @@
       "356-367",
       "190-209",
       "218-220",
-      "768-791"
+      "768-791",
+      "451-459",
+      "632-637",
+      "644-661"
     ]
   },
   "generated_shell": {
     "path": "build/wphx-php/feed-module-functions/generated/wp-includes/feed.php",
-    "bytes": 2566,
-    "sha256": "sha256:df776ed470326404375c548422a150d919d89651b84b083604a9f1bc420fcdee",
+    "bytes": 2831,
+    "sha256": "sha256:1c6cd40816c370166d46f46f23081bc873ac0b7727a649eca3a90c943d347ac3",
     "php_lint": "passed",
     "php_lint_output": "No syntax errors detected in build/wphx-php/feed-module-functions/generated/wp-includes/feed.php",
     "exact_patterns": [
@@ -143,21 +149,28 @@
       "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::theContentFeed( $feed_type );",
       "function feed_content_type($type = '')",
       "FeedKernel::defaultFeed()",
-      "FeedKernel::feedContentType($type)"
+      "FeedKernel::feedContentType($type)",
+      "function html_type_rss()",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::htmlTypeRss();",
+      "function atom_site_icon()",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::atomSiteIcon();",
+      "function rss2_site_icon()",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::rss2SiteIcon();"
     ]
   },
   "oracle_shell": {
     "path": "build/wphx-php/feed-module-functions/oracle/wp-includes/feed.php",
-    "bytes": 3250,
-    "sha256": "sha256:cfdb788651b436df1b593f36e7b964c9db4effaef7708fa58f499f25928ac107",
+    "bytes": 3960,
+    "sha256": "sha256:a1ad98f472a8a16dfbab6deebc3048a1a11552986056b3e137e5b46bc1342f22",
     "php_lint": "passed",
     "php_lint_output": "No syntax errors detected in build/wphx-php/feed-module-functions/oracle/wp-includes/feed.php"
   },
   "emission_manifest": {
     "path": "build/wphx-php/feed-module-functions/generated/wphx-php-emission.v1.json",
-    "bytes": 6068,
-    "sha256": "sha256:8f8d43db45fa35e660d84a231668c0f01a46b44fb705961fcae2ea39fa75cb0d",
+    "bytes": 6955,
+    "sha256": "sha256:35305ed03cc6e0e577c662e45471868ccefc8444a078ae94560d9f027fe87b1d",
     "declarations": [
+      "wp-includes/feed.php:global-function:atom_site_icon",
       "wp-includes/feed.php:global-function:bloginfo_rss",
       "wp-includes/feed.php:global-function:comment_author_rss",
       "wp-includes/feed.php:global-function:comment_guid",
@@ -172,6 +185,8 @@
       "wp-includes/feed.php:global-function:get_the_content_feed",
       "wp-includes/feed.php:global-function:get_the_title_rss",
       "wp-includes/feed.php:global-function:get_wp_title_rss",
+      "wp-includes/feed.php:global-function:html_type_rss",
+      "wp-includes/feed.php:global-function:rss2_site_icon",
       "wp-includes/feed.php:global-function:the_content_feed",
       "wp-includes/feed.php:global-function:the_excerpt_rss",
       "wp-includes/feed.php:global-function:the_permalink_rss",
@@ -949,6 +964,100 @@
             }
           ],
           "deprecated": []
+        },
+        {
+          "id": "html-type-rss:xhtml",
+          "value": null,
+          "output": "xhtml",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "html-type-rss:html",
+          "value": null,
+          "output": "html",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "atom-site-icon:display",
+          "value": null,
+          "output": "<icon>https://example.test/icon.png?a=1&amp;b=2</icon>\n",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "atom-site-icon:empty",
+          "value": null,
+          "output": "",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "rss2-site-icon:display",
+          "value": null,
+          "output": "\n\t<image>\n\t\t<url>https://example.test/icon.png?a=1&amp;b=2</url>\n\t\t<title>Fixture Document Title</title>\n\t\t<link>https://example.test/site?x=1&amp;y=2</link>\n\t\t<width>32</width>\n\t\t<height>32</height>\n\t</image> \n",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "https://example.test/site?x=1&amp;y=2",
+              "args": [
+                "url"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "rss2-site-icon:title-fallback",
+          "value": null,
+          "output": "\n\t<image>\n\t\t<url>https://example.test/icon.png?a=1&amp;b=2</url>\n\t\t<title>Fixture  &amp; Co</title>\n\t\t<link>https://example.test/site?x=1&amp;y=2</link>\n\t\t<width>32</width>\n\t\t<height>32</height>\n\t</image> \n",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            },
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "https://example.test/site?x=1&amp;y=2",
+              "args": [
+                "url"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "rss2-site-icon:empty",
+          "value": null,
+          "output": "",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
         }
       ],
       "reflection": {
@@ -1224,6 +1333,30 @@
               "isVariadic": false
             }
           ]
+        },
+        "html_type_rss": {
+          "name": "html_type_rss",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
+        },
+        "atom_site_icon": {
+          "name": "atom_site_icon",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
+        },
+        "rss2_site_icon": {
+          "name": "rss2_site_icon",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
         }
       }
     },
@@ -1990,6 +2123,100 @@
             }
           ],
           "deprecated": []
+        },
+        {
+          "id": "html-type-rss:xhtml",
+          "value": null,
+          "output": "xhtml",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "html-type-rss:html",
+          "value": null,
+          "output": "html",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "atom-site-icon:display",
+          "value": null,
+          "output": "<icon>https://example.test/icon.png?a=1&amp;b=2</icon>\n",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "atom-site-icon:empty",
+          "value": null,
+          "output": "",
+          "filters": [],
+          "deprecated": []
+        },
+        {
+          "id": "rss2-site-icon:display",
+          "value": null,
+          "output": "\n\t<image>\n\t\t<url>https://example.test/icon.png?a=1&amp;b=2</url>\n\t\t<title>Fixture Document Title</title>\n\t\t<link>https://example.test/site?x=1&amp;y=2</link>\n\t\t<width>32</width>\n\t\t<height>32</height>\n\t</image> \n",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "https://example.test/site?x=1&amp;y=2",
+              "args": [
+                "url"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "rss2-site-icon:title-fallback",
+          "value": null,
+          "output": "\n\t<image>\n\t\t<url>https://example.test/icon.png?a=1&amp;b=2</url>\n\t\t<title>Fixture  &amp; Co</title>\n\t\t<link>https://example.test/site?x=1&amp;y=2</link>\n\t\t<width>32</width>\n\t\t<height>32</height>\n\t</image> \n",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            },
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "https://example.test/site?x=1&amp;y=2",
+              "args": [
+                "url"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "rss2-site-icon:empty",
+          "value": null,
+          "output": "",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
         }
       ],
       "reflection": {
@@ -2265,6 +2492,30 @@
               "isVariadic": false
             }
           ]
+        },
+        "html_type_rss": {
+          "name": "html_type_rss",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
+        },
+        "atom_site_icon": {
+          "name": "atom_site_icon",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
+        },
+        "rss2_site_icon": {
+          "name": "rss2_site_icon",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
         }
       }
     },
@@ -2286,7 +2537,7 @@
     "The generated selected getter and display feed helpers preserve reflection-visible parameters/defaults for the selected fixture.",
     "The WPHX PHP core IR emits selected public display wrappers with idiomatic PHP echo statements via @:wp.echo metadata.",
     "The generated functions delegate selected behavior to a stock Haxe PHP implementation through the WPHX PHP bootstrap while preserving native apply_filters timing at the public PHP boundary.",
-    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion/display, default feed normalization, feed title deprecation/filtering/display, title RSS filtering/display, excerpt display filtering, permalink/comment display URL escaping, comment GUID string-or-false behavior, comment author/text filtering/display, feed content filtering/escaping/display, feed content-type mapping, PHP empty('0') behavior, output capture, and filter payloads."
+    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion/display, default feed normalization, feed title deprecation/filtering/display, title RSS filtering/display, excerpt display filtering, permalink/comment display URL escaping, comment GUID string-or-false behavior, comment author/text filtering/display, feed content filtering/escaping/display, feed content-type mapping, HTML type display, Atom/RSS2 site-icon output, PHP empty('0') behavior, output capture, and filter payloads."
   ],
   "non_claims": [
     "This fixture does not claim full wp-includes/feed.php ownership.",

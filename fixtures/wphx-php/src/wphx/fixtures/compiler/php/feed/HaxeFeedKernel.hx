@@ -45,4 +45,10 @@ extern class HaxeFeedKernel
 	static function theContentFeed(feedType:Null<String>):String;
 
 	static function feedContentType(type:Null<String>):String;
+
+	static function htmlTypeRss():String;
+
+	static function atomSiteIcon():String;
+
+	static function rss2SiteIcon():String;
 }

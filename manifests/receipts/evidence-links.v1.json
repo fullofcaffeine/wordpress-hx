@@ -3213,7 +3213,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-adoption-ci.v1.json",
-          "sha256": "7d24ec68505d7061f04f94acbd1efc2c812dab0d94d673f5855b22861232ddb0",
+          "sha256": "7226f5a2625cf01b34b000e5d70bef3004cc3b9f47167839384962d67f0c561a",
           "id": "receipt:wphx-comp-php-adoption-ci"
         }
       ]
@@ -3373,7 +3373,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-gap-inventory.v1.json",
-          "sha256": "42a3da29a85cae20b4ee93c102b406d23cd48aaf5d32286871725fd011f2e16a",
+          "sha256": "1a5627bb4e49cf4e5595a4dc0278ab845e3d9107b5da45a5962b36a7c6fe0e80",
           "id": "receipt:wphx-comp-php-gap-inventory"
         }
       ]
@@ -3403,7 +3403,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-module-function-adapters.v1.json",
-          "sha256": "98d131053c9f796ef1a052321e8852e92b5919490c2238048b22e7e9ab7f22d7",
+          "sha256": "2f0a56ed35d82c25452c21a83fbc982ee4bb92a4edba86ed2c5ed11236074c2c",
           "id": "receipt:wphx-comp-php-module-function-adapters"
         }
       ]
@@ -3793,7 +3793,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "6542937d77ca865eba57a12e31013d8d52b79ea08fdba71cba6499f86f2b6544",
+          "sha256": "a23244ee8abffcccef08ebfe109e817ba553be1e81beb0fb65c345553a17d00e",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]

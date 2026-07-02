@@ -102,8 +102,8 @@
       ],
       "hxml": "fixtures/wphx-php/feed-module-functions.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/feed-module-functions/generated/wp-includes/feed.php",
-      "bytes": 2566,
-      "sha256": "sha256:df776ed470326404375c548422a150d919d89651b84b083604a9f1bc420fcdee",
+      "bytes": 2831,
+      "sha256": "sha256:1c6cd40816c370166d46f46f23081bc873ac0b7727a649eca3a90c943d347ac3",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -115,6 +115,7 @@
       ],
       "ast_contract": {
         "functions": [
+          "atom_site_icon",
           "bloginfo_rss",
           "comment_author_rss",
           "comment_guid",
@@ -129,6 +130,8 @@
           "get_the_content_feed",
           "get_the_title_rss",
           "get_wp_title_rss",
+          "html_type_rss",
+          "rss2_site_icon",
           "the_content_feed",
           "the_excerpt_rss",
           "the_permalink_rss",
@@ -144,8 +147,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/feed-module-functions/generated/wphx-php-emission.v1.json",
-        "bytes": 6068,
-        "sha256": "sha256:8f8d43db45fa35e660d84a231668c0f01a46b44fb705961fcae2ea39fa75cb0d"
+        "bytes": 6955,
+        "sha256": "sha256:35305ed03cc6e0e577c662e45471868ccefc8444a078ae94560d9f027fe87b1d"
       }
     },
     {

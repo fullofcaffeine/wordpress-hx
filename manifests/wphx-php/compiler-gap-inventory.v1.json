@@ -212,18 +212,18 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleEntry.hx",
-      "bytes": 1979,
-      "sha256": "sha256:135643b7cc7736e19b9c4adbe5f4c5ff0e0ec5b36069c99953334a9e94838c0b"
+      "bytes": 2244,
+      "sha256": "sha256:96205d5c3a60414eef89d6c3837c70d34629730c5f96e823e04a952b11ed41cf"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-      "bytes": 4736,
-      "sha256": "sha256:e237614b4280d5bad3a899a8a04b04c0e3afacea1d7859d507ec4cc76f0f2b9e"
+      "bytes": 5357,
+      "sha256": "sha256:56a7ec1e1b9e15854624ffe15694d1ee35f03f497d22c8c5ff6610bdef136aa1"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/HaxeFeedKernel.hx",
-      "bytes": 1265,
-      "sha256": "sha256:0715c9e77bfe403ac548db3fad15819d2658e29f561b7c93fd6130600dc27ec3"
+      "bytes": 1387,
+      "sha256": "sha256:640e9981e238e16d181237e6deaa6ccad2c01aa1f0ee76b94197cb2377260583"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/include/IncludeSideEffectEntry.hx",
@@ -507,8 +507,8 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-      "bytes": 6643,
-      "sha256": "sha256:942319a071d1056328fd6bf959ed11289f475eb9502c52d856d6e2bf9957f4a5"
+      "bytes": 7631,
+      "sha256": "sha256:d9a523b5699d1706f54f03252ebf675944dd0e3594b39117eee3d565e2f0d19c"
     },
     {
       "path": "fixtures/wphx-php/template-segment-admin-style.hxml",
@@ -618,7 +618,7 @@
     "reflaxe_backed_wphx_hxml_count": 28,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 59,
-    "wp_haxe_bootstrap_metadata_count": 37,
+    "wp_haxe_bootstrap_metadata_count": 40,
     "wp_script_adapter_metadata_count": 5,
     "method_adapter_registry_count": 39,
     "script_adapter_registry_count": 5,
@@ -2710,6 +2710,24 @@
       },
       {
         "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 191,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 201,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 211,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpBuildCookieHeaderShell.hx",
         "line": 9,
         "bootstrap_constant": "WPHX_WP_HTTP_BUILD_COOKIE_HEADER_BOOTSTRAPPED"
@@ -2980,6 +2998,24 @@
         "kind": "wp.file",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
         "line": 181,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 190,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 200,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 210,
         "output_path": "wp-includes/feed.php"
       },
       {
@@ -3335,127 +3371,133 @@
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 153,
+        "line": 190,
         "native_name": "strip_tags"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 156,
+        "line": 193,
         "native_name": "get_bloginfo"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 159,
+        "line": 196,
         "native_name": "convert_chars"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 162,
+        "line": 199,
         "native_name": "_deprecated_argument"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 165,
+        "line": 202,
         "native_name": "__"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 168,
+        "line": 205,
         "native_name": "sprintf"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 171,
+        "line": 208,
         "native_name": "wp_get_document_title"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 174,
+        "line": 211,
         "native_name": "get_the_title"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 177,
+        "line": 214,
         "native_name": "get_the_content"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 180,
+        "line": 217,
         "native_name": "get_the_excerpt"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 183,
+        "line": 220,
         "native_name": "get_permalink"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 186,
+        "line": 223,
         "native_name": "get_comments_link"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 189,
-        "native_name": "get_comment"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 192,
-        "native_name": "get_the_guid"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 195,
-        "native_name": "get_comment_link"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 198,
-        "native_name": "get_comment_author"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 201,
-        "native_name": "get_comment_text"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 204,
-        "native_name": "esc_url"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 207,
-        "native_name": "str_replace"
-      },
-      {
-        "kind": "native",
-        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
         "line": 226,
-        "native_name": "apply_filters"
+        "native_name": "get_site_icon_url"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
         "line": 229,
+        "native_name": "get_comment"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 232,
+        "native_name": "get_the_guid"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 235,
+        "native_name": "get_comment_link"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 238,
+        "native_name": "get_comment_author"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 241,
+        "native_name": "get_comment_text"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 244,
+        "native_name": "esc_url"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 247,
+        "native_name": "str_replace"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 266,
+        "native_name": "apply_filters"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
+        "line": 269,
         "native_name": "apply_filters"
       }
     ]
@@ -3923,8 +3965,8 @@
       "core_ir_feature_count": null,
       "segment_plan_count": null,
       "adapter_template_count": null,
-      "bytes": 65787,
-      "sha256": "sha256:69ce866c7680db9a4e4881047a1b05d1d56a086f9cab737f5a74f085d970e8a4"
+      "bytes": 73608,
+      "sha256": "sha256:711fff9b313e02297d3d9969a082afdab2a5cf613c72f858de619aab0110d8d5"
     },
     {
       "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
@@ -3971,8 +4013,8 @@
       "core_ir_feature_count": null,
       "segment_plan_count": null,
       "adapter_template_count": null,
-      "bytes": 43388,
-      "sha256": "sha256:e24aef71fbd9ebafdbc69c1822a93724d020f093663f320522028cb971e11307"
+      "bytes": 43471,
+      "sha256": "sha256:1102d75ed7fc39dd3b74c08cfaaa5de5296d4abb80890de5a03927752e5f6855"
     },
     {
       "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",
@@ -4137,7 +4179,7 @@
       "copied_or_patch_lines": [
         {
           "kind": "copied_word",
-          "line": 697,
+          "line": 777,
           "source_sha256": "sha256:9eebb510a38faf3671bad168d3e2e73afcaf78eb73732803acae6c8a1389798e"
         }
       ]
@@ -4582,7 +4624,7 @@
       "classification": "std_php_runtime_to_borrow",
       "severity": "active_dependency",
       "follow_up_owner": "WPHX-COMP-PHP-RUNTIME-STDLIB-STRATEGY",
-      "count": 37,
+      "count": 40,
       "constants": [
         "WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED",
         "WPHX_BOOTSTRAP_DEBUG_BOOTSTRAPPED",
@@ -4747,7 +4789,7 @@
     "reflaxe_backed_wphx_hxml_count": 28,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 59,
-    "wp_haxe_bootstrap_metadata_count": 37,
+    "wp_haxe_bootstrap_metadata_count": 40,
     "wp_script_adapter_metadata_count": 5,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,

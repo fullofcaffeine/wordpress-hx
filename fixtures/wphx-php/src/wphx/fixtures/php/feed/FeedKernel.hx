@@ -2,6 +2,8 @@ package wphx.fixtures.php.feed;
 
 import wphx.wp.boundary.NativeValue.NativeValue;
 
+using StringTools;
+
 /**
 	Selected feed helper behavior owned by Haxe behind original-path PHP functions.
 **/
@@ -138,6 +140,41 @@ class FeedKernel
 		return WpHooks.applyFilters2("feed_content_type", contentType, normalizedType);
 	}
 
+	public static function htmlTypeRss():String
+	{
+		final type = WpFeedGlobals.getBloginfo("html_type");
+		return type.contains("xhtml") ? "xhtml" : "html";
+	}
+
+	public static function atomSiteIcon():String
+	{
+		final url = WpFeedGlobals.getSiteIconUrl(32);
+		return isPhpEmptyString(url) ? "" : "<icon>" + WpFeedGlobals.convertChars(url) + "</icon>\n";
+	}
+
+	public static function rss2SiteIcon():String
+	{
+		var rssTitle = getWpTitleRss("&#8211;");
+		if (isPhpEmptyString(rssTitle))
+		{
+			rssTitle = getBloginfoRss("name");
+		}
+
+		final url = WpFeedGlobals.getSiteIconUrl(32);
+		if (isPhpEmptyString(url))
+		{
+			return "";
+		}
+
+		return "\n\t<image>\n\t\t<url>"
+			+ WpFeedGlobals.convertChars(url)
+			+ "</url>\n\t\t<title>"
+			+ rssTitle
+			+ "</title>\n\t\t<link>"
+			+ getBloginfoRss("url")
+			+ "</link>\n\t\t<width>32</width>\n\t\t<height>32</height>\n\t</image> \n";
+	}
+
 	static function isPhpEmptyString(value:Null<String>):Bool
 	{
 		return value == null || value == "" || value == "0";
@@ -185,6 +222,9 @@ extern class WpFeedGlobals
 
 	@:native("get_comments_link")
 	public static function getCommentsLink():String;
+
+	@:native("get_site_icon_url")
+	public static function getSiteIconUrl(size:Int):String;
 
 	@:native("get_comment")
 	public static function getComment(commentId:NativeValue):Null<WpComment>;

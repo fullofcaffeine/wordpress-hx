@@ -18,7 +18,7 @@
     "npm run wphx:php:public-shell-snapshots",
     "npm run wphx:php:public-shell-snapshots:check"
   ],
-  "manifest_sha256": "sha256:e24aef71fbd9ebafdbc69c1822a93724d020f093663f320522028cb971e11307",
+  "manifest_sha256": "sha256:1102d75ed7fc39dd3b74c08cfaaa5de5296d4abb80890de5a03927752e5f6855",
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
