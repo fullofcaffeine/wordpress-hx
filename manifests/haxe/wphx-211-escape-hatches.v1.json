@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 287,
+  "scanned_file_count": 289,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -136,6 +136,8 @@
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/HaxeBootstrapKernel.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/byref/ByRefEntry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/byref/ByRefSurface.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringSurface.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Entry.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Shell.hx",
     "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F4Entry.hx",

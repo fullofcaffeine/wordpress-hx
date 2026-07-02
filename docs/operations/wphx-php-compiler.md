@@ -6,14 +6,14 @@ The compiler is a Haxe/Reflaxe module under `src/wphx/compiler/php`. It uses Ref
 
 `WphxPhpCompiler.hx` owns the generic Adapter IR collection, PHP-core statement/expression IR, file/segment planning, bootstrap printing, manifest writing, and PHP printer behavior. WordPress-specific method adapter bodies live behind the `WphxPhpWordPressAdapters.hx` profile registry. That registry maps bounded `@:wp.adapter(...)` names such as `wp-http-process-headers` or `wp-http-validate-redirects` to PHP-core IR plans plus required feature declarations. This keeps the current WordPress ABI pressure explicit while preventing the compiler core from becoming a pile of `WP_Http` method bodies.
 
-The current strategy, accepted after oracle review on 2026-06-29, formalized in [ADR-013](../adr/ADR-013-wphx-php-adapter-ir-and-scope.md), sharpened by [ADR-015](../adr/ADR-015-wphx-php-backend-strategy.md), and amended by [ADR-016](../adr/ADR-016-wphx-php-compiler-adoption-track.md), is a staged custom compiler strategy with an active adoption track:
+The current strategy, accepted after oracle review on 2026-06-29, formalized in [ADR-013](../adr/ADR-013-wphx-php-adapter-ir-and-scope.md), sharpened by [ADR-015](../adr/ADR-015-wphx-php-backend-strategy.md), amended by [ADR-016](../adr/ADR-016-wphx-php-compiler-adoption-track.md), and grounded for runtime/std ownership by [ADR-017](../adr/ADR-017-wphx-php-runtime-stdlib-strategy.md), is a staged custom compiler strategy with an active adoption track:
 
 - stock Haxe PHP emits private Haxe implementation classes and remains the reference for stdlib/runtime behavior;
 - WPHX PHP is the custom compiler lane and currently emits bounded WordPress original-path public adapter files;
 - WPHX PHP is now the near-term focus for new WordPress public PHP emission and compiler-shape gaps;
 - typed Haxe source, metadata, Adapter IR, and manifests are the durable asset, not generated PHP strings.
 
-Say this precisely in future notes: WPHX PHP uses Reflaxe infrastructure, and the project is now making it usable as the primary WordPress PHP compiler path. It is still not yet a mature arbitrary-Haxe `reflaxe.php` target. Backend promotion or stock-target abandonment remains a later decision that needs backend-scale evidence, generated PHP quality gates, and an ADR.
+Say this precisely in future notes: WPHX PHP uses Reflaxe infrastructure, and the project is now making it usable as the primary WordPress PHP compiler path. It is still not yet a mature arbitrary-Haxe `reflaxe.php` target. Backend promotion or stock-target abandonment remains a later decision that needs backend-scale evidence, generated PHP quality gates, runtime/std strategy evidence, and an ADR.
 
 When WPHX public adapters bootstrap stock Haxe PHP implementation classes, that bootstrap is governed by [ADR-014](../adr/ADR-014-haxe-php-bootstrap-lifecycle.md). It is request-state behavior, not invisible plumbing: include path mutation, SPL autoloaders, `php.Boot::__hx__init()`, mbstring encoding, error handling, source maps, and stack traces need explicit evidence before broad distribution claims.
 
@@ -28,9 +28,18 @@ npm run wphx:php:gap-inventory
 npm run wphx:php:gap-inventory:check
 ```
 
-It records `manifests/wphx-php/compiler-gap-inventory.v1.json` and `receipts/compiler/wphx-comp-php-gap-inventory.v1.json`. The current inventory finds 26 Reflaxe-backed WPHX PHP public-adapter hxmls, 9 stock Haxe PHP private-output hxmls, 46 `@:wp.haxeHelper` metadata sites, 18 `@:wp.haxeBootstrap` sites, 39 WordPress-profile method adapters, 4 script adapters, 18 unsupported typed-lowering report sites, 6 WPHX PHP runner copy/install surfaces, 12 passing WPHX PHP evidence manifests, and 7 available stock Haxe PHP reference files. It also confirms the WordPress profile still has zero `PhpRawBlock` occurrences and zero `renderTemplate` calls.
+It records `manifests/wphx-php/compiler-gap-inventory.v1.json` and `receipts/compiler/wphx-comp-php-gap-inventory.v1.json`. The current inventory finds 26 Reflaxe-backed WPHX PHP public-adapter hxmls, 9 stock Haxe PHP private-output hxmls, 46 `@:wp.haxeHelper` metadata sites, 18 `@:wp.haxeBootstrap` sites, 39 WordPress-profile method adapters, 4 script adapters, 18 unsupported typed-lowering report sites, 6 WPHX PHP runner copy/install surfaces, 13 passing WPHX PHP evidence manifests, and 7 available stock Haxe PHP reference files. It also confirms the WordPress profile still has zero `PhpRawBlock` occurrences and zero `renderTemplate` calls.
 
 Use that manifest when moving gaps: reusable expression, statement, array, object, call, loop, cast, and std/php behavior belongs in WPHX PHP core or runtime/std strategy; original-path ABI, pluggable timing, conditional declarations, and WordPress-specific shell compatibility stay in the WordPress profile. Helper/bootstrap bridges are temporary fallbacks until a targeted whole-file or core-lowering gate retires them. Runner copies used as oracle setup are not durable public ownership claims.
+
+The runtime/std strategy lane is the second usable-compiler gate:
+
+```bash
+npm run wphx:php:runtime-stdlib-strategy
+npm run wphx:php:runtime-stdlib-strategy:check
+```
+
+It records `manifests/wphx-php/runtime-stdlib-strategy.v1.json` and `receipts/compiler/wphx-comp-php-runtime-stdlib-strategy.v1.json`. ADR-017 keeps stock Haxe PHP as the runtime/std behavior oracle and borrowing source until a later backend-promotion ADR moves that ownership. The executable probe compiles release and debug stock-Haxe-PHP variants and observes boot/autoload shape, arrays/maps/iterators, captured closures, exception wrapping/catching, `StringTools`/JSON behavior, source maps, and inline source comments. This is stock-target oracle evidence for WPHX PHP to adapt; it does not claim WPHX PHP already owns runtime/std behavior or that stock public PHP is acceptable for WordPress distribution files.
 
 The first core-lowering pilot is:
 
@@ -68,6 +77,8 @@ npm run wphx:php:public-shell-snapshots
 npm run wphx:php:public-shell-snapshots:check
 npm run wphx:php:gap-inventory
 npm run wphx:php:gap-inventory:check
+npm run wphx:php:runtime-stdlib-strategy
+npm run wphx:php:runtime-stdlib-strategy:check
 npm run wphx:php:core-lowering-pilot
 npm run wphx:php:core-lowering-pilot:check
 npm run wphx:php:pluggable-timing

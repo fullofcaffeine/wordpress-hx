@@ -1,0 +1,59 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-runtime-stdlib-strategy",
+  "issue": {
+    "id": "wordpresshx-w91.24.2",
+    "external_ref": "WPHX-COMP-PHP-RUNTIME-STDLIB-STRATEGY",
+    "title": "Borrow or adapt Haxe PHP runtime/std behavior"
+  },
+  "recorded_at": "2026-07-02T19:00:00Z",
+  "status": "passed",
+  "evidence_class": "runtime_stdlib_strategy",
+  "artifact_scope": "stock_haxe_php_runtime_std_behavior_oracle",
+  "commands": [
+    "npm run wphx:php:runtime-stdlib-strategy",
+    "npm run wphx:php:runtime-stdlib-strategy:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wphx-php/run-runtime-stdlib-strategy.mjs",
+      "role": "deterministic stock Haxe PHP runtime/std strategy probe runner"
+    },
+    {
+      "path": "docs/adr/ADR-017-wphx-php-runtime-stdlib-strategy.md",
+      "role": "accepted WPHX PHP runtime/std strategy ADR"
+    },
+    {
+      "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",
+      "role": "runtime/std strategy manifest with stock-target executable probe observations"
+    },
+    {
+      "path": "docs/operations/wphx-php-compiler.md",
+      "role": "compiler operations documentation updated with runtime/std strategy lane"
+    }
+  ],
+  "manifest_sha256": "sha256:5b4848fce98b467b2768ef124af5a7bfa286bde2513ec56eebee11471dab1c4e",
+  "validation_result": {
+    "status": "passed",
+    "release_probe_passed": true,
+    "debug_probe_passed": true,
+    "stock_reference_files_available": true,
+    "boot_shape_observed": true,
+    "arrays_maps_iterators_observed": true,
+    "closures_observed": true,
+    "exceptions_observed": true,
+    "strings_json_observed": true,
+    "source_debug_observed": true
+  },
+  "claims": [
+    "Stock Haxe PHP remains the runtime/std behavior oracle and borrowing source for WPHX PHP until a later backend-promotion ADR moves that ownership.",
+    "The executable probe records stock boot shape, arrays/maps/iterators, closures, exceptions, StringTools/JSON behavior, and debug source-map/source-comment behavior.",
+    "WPHX PHP public files that do not need stock implementation/runtime behavior should avoid stock Haxe bootstrap; delegated implementation shells remain governed by ADR-014."
+  ],
+  "non_claims": [
+    "This records stock Haxe PHP runtime/std oracle behavior; it does not claim WPHX PHP owns that behavior.",
+    "This does not claim stock Haxe PHP public output is acceptable for WordPress distribution files.",
+    "This does not remove stock Haxe PHP private implementation fallbacks.",
+    "This does not prove full reflection, dynamic dispatch, Unicode/string, iterator, or exception coverage."
+  ]
+}

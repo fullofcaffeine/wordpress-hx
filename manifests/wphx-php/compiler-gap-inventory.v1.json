@@ -547,8 +547,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 64016,
-      "sha256": "sha256:43ac5d8a5fcbb0397a04919dc661e7f70b012aed91e88d67a6bdd96f1f5487cb"
+      "bytes": 64220,
+      "sha256": "sha256:a0bebe60ab7b02981a120aba305b0ec0f6c6b0cd738595cba3a7493801afc459"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
@@ -573,11 +573,11 @@
     "method_adapter_registry_count": 39,
     "script_adapter_registry_count": 4,
     "unsupported_report_site_count": 18,
-    "runner_surface_count": 21,
+    "runner_surface_count": 22,
     "runner_surface_with_copy_or_patch_count": 6,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,
-    "wphx_manifest_count": 12,
+    "wphx_manifest_count": 13,
     "stock_haxe_reference_missing_count": 0
   },
   "hxmls": [
@@ -3302,6 +3302,18 @@
       "sha256": "sha256:2da3155fa0931cba677b91df5db6b33e9d0e91bbe3c0d653c64f96b23c0e7ed5"
     },
     {
+      "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",
+      "schema": "wphx.wphx-php-runtime-stdlib-strategy.v1",
+      "issue": "WPHX-COMP-PHP-RUNTIME-STDLIB-STRATEGY",
+      "status": "passed",
+      "unsupported_empty": null,
+      "core_ir_feature_count": null,
+      "segment_plan_count": null,
+      "adapter_template_count": null,
+      "bytes": 18783,
+      "sha256": "sha256:9457cb595051db617acba00550bacf16f5219c06a8fc43353e65b77b24563e1e"
+    },
+    {
       "path": "manifests/wphx-php/template-segment-admin-style.v1.json",
       "schema": "wphx.wphx-php-template-segment-admin-style.v1",
       "issue": "WPHX-COMP-PHP-FIRST-SEGMENT-SHELL",
@@ -3538,6 +3550,16 @@
     {
       "script": "wphx:php:public-shell-snapshots",
       "path": "tools/wphx-php/run-public-shell-snapshots.mjs",
+      "uses_copy_file_sync": false,
+      "uses_upstream_oracle_copy": false,
+      "uses_generated_shell_install_copy": false,
+      "uses_source_replace_patch": false,
+      "copied_or_patch_line_count": 0,
+      "copied_or_patch_lines": []
+    },
+    {
+      "script": "wphx:php:runtime-stdlib-strategy",
+      "path": "tools/wphx-php/run-runtime-stdlib-strategy.mjs",
       "uses_copy_file_sync": false,
       "uses_upstream_oracle_copy": false,
       "uses_generated_shell_install_copy": false,
@@ -3990,7 +4012,7 @@
     "wp_script_adapter_metadata_count": 4,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,
-    "manifest_count": 12,
+    "manifest_count": 13,
     "manifest_statuses_passed": true,
     "stock_haxe_reference_count": 7,
     "stock_haxe_reference_missing_count": 0

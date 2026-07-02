@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 372,
+  "closed_task_count": 373,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "626938bc776f035f9cf6a6f67b92d9efebc29c141c4e75dced4787bd3f545636",
+          "sha256": "0f93bca71a40b3407269c926e58f487f8d1034273f22d8f02ba81a2096c81bf2",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -3253,7 +3253,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-gap-inventory.v1.json",
-          "sha256": "9ebbda646ee973cb649fc4ae1344198cbc44ccb1cca9106a9196734aa8b43698",
+          "sha256": "324296eef92209bc804fe7353c235510b0c849615c92b573feb4f723a7d15321",
           "id": "receipt:wphx-comp-php-gap-inventory"
         }
       ]
@@ -3595,6 +3595,16 @@
           "path": "receipts/compiler/wphx-comp-php-retire-wp-http-transport-selection-temp-shell.v1.json",
           "sha256": "c0aeb238817a36c836bd98edaf1740dec44cdf5926748a86e5cce6376f62e225",
           "id": "receipt:wphx-comp-php-retire-wp-http-transport-selection-temp-shell"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-RUNTIME-STDLIB-STRATEGY",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-runtime-stdlib-strategy.v1.json",
+          "sha256": "a607fc14dccf0048a70ddfc3e6f5bedc68c6a6849dc458992eeaa4e773400374",
+          "id": "receipt:wphx-comp-php-runtime-stdlib-strategy"
         }
       ]
     },

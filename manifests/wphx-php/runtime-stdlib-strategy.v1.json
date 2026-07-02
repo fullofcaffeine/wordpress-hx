@@ -1,0 +1,492 @@
+{
+  "schema": "wphx.wphx-php-runtime-stdlib-strategy.v1",
+  "issue": {
+    "id": "wordpresshx-w91.24.2",
+    "external_ref": "WPHX-COMP-PHP-RUNTIME-STDLIB-STRATEGY",
+    "title": "Borrow or adapt Haxe PHP runtime/std behavior"
+  },
+  "generated_at": "2026-07-02T19:00:00Z",
+  "generator": "tools/wphx-php/run-runtime-stdlib-strategy.mjs",
+  "evidence_class": "runtime_stdlib_strategy",
+  "artifact_scope": "stock_haxe_php_runtime_std_behavior_oracle",
+  "adr": "docs/adr/ADR-017-wphx-php-runtime-stdlib-strategy.md",
+  "temporary_haxe_source": {
+    "path": "build/wphx-php/runtime-stdlib-strategy/src/RuntimeStdlibProbe.hx",
+    "sha256": "sha256:10c626ecb4b4d83f8d18eb00fe1d94dc339ccee1c80b6450056c5e5ce987c1b7",
+    "line_count": 37
+  },
+  "stock_reference_files": [
+    {
+      "path": "../haxe.compilerdev.reference/haxe/src/generators/genphp7.ml",
+      "exists": true,
+      "bytes": 135244,
+      "sha256": "sha256:0a5589f93ec9db72f1c4c9e4d790639c8b6ba2a529ef093467b9c6b2ed108914"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/php/Boot.hx",
+      "exists": true,
+      "bytes": 28156,
+      "sha256": "sha256:a7bcffc20dc25c3da84d395ab2298d112c2d1791bf810fb59c7762f3859677a5"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/php/Closure.hx",
+      "exists": true,
+      "bytes": 1390,
+      "sha256": "sha256:dc213ea7eda14a699d9f7a76a7c933f0172fc69ce19616d6d61aac073db7924a"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/php/NativeArray.hx",
+      "exists": true,
+      "bytes": 2599,
+      "sha256": "sha256:9db11d186b1489ca873dbc120426d60c9e42ba95a5c5afb6d4c919143daa7938"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/php/NativeAssocArray.hx",
+      "exists": true,
+      "bytes": 2242,
+      "sha256": "sha256:f4a7f4a9bbc5b11302fd1993c484f3b4fac4bdf93c56dac3749613a792593fe4"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/php/Global.hx",
+      "exists": true,
+      "bytes": 62446,
+      "sha256": "sha256:4b667b6fc1d7ceef26f97436e31a22dd841fa400baa50fb5b868f9a3066f71c5"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/php/Lib.hx",
+      "exists": true,
+      "bytes": 5828,
+      "sha256": "sha256:79b5af30eae8e95b0254c168da525c837849b54742dd477df711ce0731336805"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/haxe/Exception.hx",
+      "exists": true,
+      "bytes": 3055,
+      "sha256": "sha256:6e60cc82d6df869ef51cb567cfe65ddcb5a7742f46eb874c4e4a6181e7d04439"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/haxe/ds/StringMap.hx",
+      "exists": true,
+      "bytes": 2524,
+      "sha256": "sha256:c659d23d3b15671b53d9b39f8cc7c70641ff59b5e7b98bc6c5c3dc03e661489b"
+    },
+    {
+      "path": "../haxe.compilerdev.reference/haxe/std/StringTools.hx",
+      "exists": true,
+      "bytes": 18026,
+      "sha256": "sha256:7f34ec7c088072b1c124abc8465721e5de64c69140c3d1c316d9dbd3a6216390"
+    }
+  ],
+  "stock_release_probe": {
+    "profile": "release",
+    "output_root": "build/wphx-php/runtime-stdlib-strategy/release/php",
+    "stdout": "{\"joined\":\"6|12\",\"mapSum\":18,\"keys\":\"first,second\",\"closure\":11,\"exception\":\"runtime-boom\",\"stringValue\":\"hello\",\"arrayLength\":4}",
+    "observed": {
+      "joined": "6|12",
+      "mapSum": 18,
+      "keys": "first,second",
+      "closure": 11,
+      "exception": "runtime-boom",
+      "stringValue": "hello",
+      "arrayLength": 4
+    },
+    "index": {
+      "path": "build/wphx-php/runtime-stdlib-strategy/release/php/index.php",
+      "bytes": 298,
+      "sha256": "sha256:204c21648d535890091b398d6703d16b1ee845180c149bd2d7c65b86ee777675"
+    },
+    "generated_probe": {
+      "path": "build/wphx-php/runtime-stdlib-strategy/release/php/lib/RuntimeStdlibProbe.php",
+      "bytes": 4981,
+      "sha256": "sha256:d1bcaaec2d854f94b5db0dbbc33243f7356fef8a404bdbd6c48f904d97a27949"
+    },
+    "required_files": [
+      "index.php",
+      "lib/Array_hx.php",
+      "lib/RuntimeStdlibProbe.php",
+      "lib/StringTools.php",
+      "lib/haxe/Exception.php",
+      "lib/haxe/Json.php",
+      "lib/haxe/ValueException.php",
+      "lib/haxe/ds/StringMap.php",
+      "lib/php/Boot.php",
+      "lib/php/_Boot/HxAnon.php"
+    ],
+    "generated_file_count": 26,
+    "index_patterns": [
+      {
+        "pattern": "set_include_path(get_include_path().PATH_SEPARATOR.__DIR__.'/lib');",
+        "present": true
+      },
+      {
+        "pattern": "spl_autoload_register(",
+        "present": true
+      },
+      {
+        "pattern": "\\php\\Boot::__hx__init();",
+        "present": true
+      },
+      {
+        "pattern": "\\RuntimeStdlibProbe::main();",
+        "present": true
+      }
+    ],
+    "runtime_std_patterns": [
+      {
+        "pattern": "\\Array_hx::wrap",
+        "present": true
+      },
+      {
+        "pattern": "array_values(array_map(\"strval\", array_keys($map_data)))",
+        "present": true
+      },
+      {
+        "pattern": "HaxeException::thrown(\"runtime-boom\")",
+        "present": true
+      },
+      {
+        "pattern": "HaxeException::caught($_g)->unwrap()",
+        "present": true
+      },
+      {
+        "pattern": "function ($value) use (&$offset)",
+        "present": true
+      },
+      {
+        "pattern": "mb_strtolower(trim(\"  HeLLo  \"))",
+        "present": true
+      },
+      {
+        "pattern": "Json::phpJsonEncode",
+        "present": true
+      }
+    ]
+  },
+  "stock_debug_probe": {
+    "profile": "debug",
+    "output_root": "build/wphx-php/runtime-stdlib-strategy/debug/php",
+    "stdout": "{\"joined\":\"6|12\",\"mapSum\":18,\"keys\":\"first,second\",\"closure\":11,\"exception\":\"runtime-boom\",\"stringValue\":\"hello\",\"arrayLength\":4}",
+    "observed": {
+      "joined": "6|12",
+      "mapSum": 18,
+      "keys": "first,second",
+      "closure": 11,
+      "exception": "runtime-boom",
+      "stringValue": "hello",
+      "arrayLength": 4
+    },
+    "index": {
+      "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/index.php",
+      "bytes": 298,
+      "sha256": "sha256:204c21648d535890091b398d6703d16b1ee845180c149bd2d7c65b86ee777675"
+    },
+    "generated_probe": {
+      "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/RuntimeStdlibProbe.php",
+      "bytes": 5067,
+      "sha256": "sha256:54fce29e8cf21aff15e5bc30d5f4b5d97ca92cc4cadf9f2433fe919a56307822"
+    },
+    "source_map_count": 24,
+    "source_maps": [
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/Array_hx.php.map",
+        "relative_path": "lib/Array_hx.php.map",
+        "bytes": 4271,
+        "sha256": "sha256:5e668b519b80d95a3788b5f216e1a280403747590967fc36db198ce28433d4c9",
+        "source_count": 2,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/Date.php.map",
+        "relative_path": "lib/Date.php.map",
+        "bytes": 396,
+        "sha256": "sha256:3cd15bfbbdac1f5334f8d3b28ea8120cd8d856daa3f6315dee6aa25ba71b3e4b",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/Reflect.php.map",
+        "relative_path": "lib/Reflect.php.map",
+        "bytes": 1258,
+        "sha256": "sha256:ef5b95d432558e3cb07951c2a939239e974d335d435df918c8b3f8727d14d3e1",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/RuntimeStdlibProbe.php.map",
+        "relative_path": "lib/RuntimeStdlibProbe.php.map",
+        "bytes": 1674,
+        "sha256": "sha256:cc88742221dc2aecc5ece41638900c105ee659eaf2d9ae5f7c29a440ac798809",
+        "source_count": 1,
+        "has_runtime_probe_source": true
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/Std.php.map",
+        "relative_path": "lib/Std.php.map",
+        "bytes": 273,
+        "sha256": "sha256:beb007ba0171dffaef996d7667e226fa9bb002711a035c55ada9183098d2fded",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/StringBuf.php.map",
+        "relative_path": "lib/StringBuf.php.map",
+        "bytes": 587,
+        "sha256": "sha256:921a993c4ad63f0cc09b8cb3dc8349cfe67b4f8bfb68631d9f80d8e065e46796",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/StringTools.php.map",
+        "relative_path": "lib/StringTools.php.map",
+        "bytes": 1219,
+        "sha256": "sha256:1ebbed17e931c7503088a797280aa5e086b9d3b43f67c83dc74e8c7cf4d020f5",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/Type.php.map",
+        "relative_path": "lib/Type.php.map",
+        "bytes": 1891,
+        "sha256": "sha256:edbf68d44c23ef5a8af5c574ff87f528861011884623df38ef361b047fd29696",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/ValueType.php.map",
+        "relative_path": "lib/ValueType.php.map",
+        "bytes": 281,
+        "sha256": "sha256:fee29894dfcc143d99fa8e128e3b0a163f2074f7fea3ef31d3794157f3f99465",
+        "source_count": 0,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/Exception.php.map",
+        "relative_path": "lib/haxe/Exception.php.map",
+        "bytes": 963,
+        "sha256": "sha256:6d94de8df6958e25740e5885c70cc61aeeb32050bb8f368307a23ee7641749fb",
+        "source_count": 2,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/IMap.php.map",
+        "relative_path": "lib/haxe/IMap.php.map",
+        "bytes": 164,
+        "sha256": "sha256:aed6f788f840c4743998b4384ad8d92c9d2fa1402a7304027fa3ecfd48bd3c31",
+        "source_count": 0,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/Json.php.map",
+        "relative_path": "lib/haxe/Json.php.map",
+        "bytes": 904,
+        "sha256": "sha256:80b02ded8159673dbc3910b0a014d5a8e4e9c117b43fb3f5201d1045cfc78f37",
+        "source_count": 2,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/ValueException.php.map",
+        "relative_path": "lib/haxe/ValueException.php.map",
+        "bytes": 457,
+        "sha256": "sha256:9374ea8fa07d0b5f633fffef15d595c8e2f2e26a90d25cbb4faf2ba48c1a56cc",
+        "source_count": 2,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/ds/StringMap.php.map",
+        "relative_path": "lib/haxe/ds/StringMap.php.map",
+        "bytes": 299,
+        "sha256": "sha256:3c3e26cf9f943392a7ef1b0f199bc0169ee21b79267c6a6ccae3f9d7562f2222",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/format/JsonPrinter.php.map",
+        "relative_path": "lib/haxe/format/JsonPrinter.php.map",
+        "bytes": 4268,
+        "sha256": "sha256:771b482c4ddd75488e306b8e80e43479f76daccda4dcb90eb2ba3b78a2e66f03",
+        "source_count": 2,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/iterators/ArrayIterator.php.map",
+        "relative_path": "lib/haxe/iterators/ArrayIterator.php.map",
+        "bytes": 430,
+        "sha256": "sha256:d978b4f66d42e5ac558ac16a6a984167443197626ba723927aae2ca75435f34b",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/haxe/iterators/ArrayKeyValueIterator.php.map",
+        "relative_path": "lib/haxe/iterators/ArrayKeyValueIterator.php.map",
+        "bytes": 312,
+        "sha256": "sha256:cb77eb8c99574a5d2cf82cbab8020bd0c6612876a59b706c0df782f3d2b5b945",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/Boot.php.map",
+        "relative_path": "lib/php/Boot.php.map",
+        "bytes": 9252,
+        "sha256": "sha256:c65bbbae5905cc1e0c3f94f4081f07a7640b8eb916e273bbb02460cda6fa1412",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/_Boot/HxAnon.php.map",
+        "relative_path": "lib/php/_Boot/HxAnon.php.map",
+        "bytes": 399,
+        "sha256": "sha256:623c40025f06f718419fb4ca1f62be7d8537eb63c3fd96b7e74144ba820e4027",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/_Boot/HxClass.php.map",
+        "relative_path": "lib/php/_Boot/HxClass.php.map",
+        "bytes": 893,
+        "sha256": "sha256:733341e5940195c290b203e858348e35cd36de4be36254168c91c93f311a1846",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/_Boot/HxClosure.php.map",
+        "relative_path": "lib/php/_Boot/HxClosure.php.map",
+        "bytes": 803,
+        "sha256": "sha256:c06a0705b97ba5af0031e4fe8727d51b3b55c65d61c02c07074d82754fb7d748",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/_Boot/HxDynamicStr.php.map",
+        "relative_path": "lib/php/_Boot/HxDynamicStr.php.map",
+        "bytes": 1095,
+        "sha256": "sha256:0255a9ca916ce59f82ada315550551f23e50edd23cbefcf32a8d5907702453bb",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/_Boot/HxEnum.php.map",
+        "relative_path": "lib/php/_Boot/HxEnum.php.map",
+        "bytes": 432,
+        "sha256": "sha256:568ad33a96c7d3c90275e1387d0465395e377bf881a4aff2f110dc3d407e5229",
+        "source_count": 1,
+        "has_runtime_probe_source": false
+      },
+      {
+        "path": "build/wphx-php/runtime-stdlib-strategy/debug/php/lib/php/_Boot/HxString.php.map",
+        "relative_path": "lib/php/_Boot/HxString.php.map",
+        "bytes": 3124,
+        "sha256": "sha256:9c71de9c3eb2b8a416914267ffc8babcc0a4240e323dbbcf0a05959dc4a05367",
+        "source_count": 2,
+        "has_runtime_probe_source": false
+      }
+    ],
+    "runtime_probe_source_comment_count": 32
+  },
+  "strategy_matrix": [
+    {
+      "area": "boot_autoload",
+      "near_term_route": "borrow_stock_shape_with_wordpress_profile_guard",
+      "oracle_files": [
+        "std/php/Boot.hx",
+        "src/generators/genphp7.ml"
+      ],
+      "current_evidence": [
+        "bootstrap-autoload",
+        "bootstrap-error-handler",
+        "runtime-stdlib-strategy"
+      ],
+      "fallback": "stock Haxe PHP implementation output behind ADR-014 bootstrap",
+      "stock_reference_available": true
+    },
+    {
+      "area": "arrays_maps_iterators",
+      "near_term_route": "adapt_stock_array_map_iterator_lowering_before_custom_runtime",
+      "oracle_files": [
+        "std/php/NativeArray.hx",
+        "std/haxe/ds/StringMap.hx"
+      ],
+      "current_evidence": [
+        "runtime-stdlib-strategy"
+      ],
+      "fallback": "stock Haxe PHP private output for implementation bodies needing broad std behavior",
+      "stock_reference_available": true
+    },
+    {
+      "area": "closures",
+      "near_term_route": "borrow stock closure and captured-variable semantics",
+      "oracle_files": [
+        "std/php/Closure.hx",
+        "std/php/_Boot helpers via generated output"
+      ],
+      "current_evidence": [
+        "runtime-stdlib-strategy"
+      ],
+      "fallback": "stock Haxe PHP private output until WPHX PHP has closure fixtures",
+      "stock_reference_available": false
+    },
+    {
+      "area": "exceptions",
+      "near_term_route": "borrow haxe.Exception and ValueException wrapping/catching behavior",
+      "oracle_files": [
+        "std/haxe/Exception.hx",
+        "std/php/Boot.hx"
+      ],
+      "current_evidence": [
+        "bootstrap-debug",
+        "runtime-stdlib-strategy"
+      ],
+      "fallback": "stock Haxe PHP exception runtime for delegated implementation code",
+      "stock_reference_available": true
+    },
+    {
+      "area": "strings_json",
+      "near_term_route": "adapt stock string helper and JSON lowering where public WPHX bodies need it",
+      "oracle_files": [
+        "std/StringTools.hx",
+        "std/php/Global.hx"
+      ],
+      "current_evidence": [
+        "runtime-stdlib-strategy"
+      ],
+      "fallback": "stock Haxe PHP private output for broad stdlib string/JSON behavior",
+      "stock_reference_available": true
+    },
+    {
+      "area": "source_debug",
+      "near_term_route": "preserve stock source comments/source maps for implementation output and design WPHX equivalents deliberately",
+      "oracle_files": [
+        "src/generators/genphp7.ml"
+      ],
+      "current_evidence": [
+        "bootstrap-debug",
+        "runtime-stdlib-strategy"
+      ],
+      "fallback": "stock Haxe PHP debug/parity output while WPHX PHP source mapping matures",
+      "stock_reference_available": true
+    }
+  ],
+  "fallback_policy": {
+    "stock_haxe_php_private_output_remains_admitted": true,
+    "current_stock_haxe_php_hxml_count_from_gap_inventory": 9,
+    "wphx_public_files_without_stock_runtime_should_not_bootstrap": true,
+    "broad_backend_promotion_requires_later_adr": true
+  },
+  "validation_result": {
+    "status": "passed",
+    "release_probe_passed": true,
+    "debug_probe_passed": true,
+    "stock_reference_files_available": true,
+    "boot_shape_observed": true,
+    "arrays_maps_iterators_observed": true,
+    "closures_observed": true,
+    "exceptions_observed": true,
+    "strings_json_observed": true,
+    "source_debug_observed": true
+  },
+  "non_claims": [
+    "This records stock Haxe PHP runtime/std oracle behavior; it does not claim WPHX PHP owns that behavior.",
+    "This does not claim stock Haxe PHP public output is acceptable for WordPress distribution files.",
+    "This does not remove stock Haxe PHP private implementation fallbacks.",
+    "This does not prove full reflection, dynamic dispatch, Unicode/string, iterator, or exception coverage."
+  ]
+}
