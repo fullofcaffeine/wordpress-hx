@@ -1,0 +1,2416 @@
+{
+  "schema": "wphx.wp-core-copied-surface-plan.v1",
+  "issue": {
+    "id": "wordpresshx-i378",
+    "external_ref": "WPHX-312.100",
+    "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+  },
+  "generated_at": "2026-07-02T23:45:00Z",
+  "generator": "tools/wp-core/run-wphx-312-copied-surface-plan.mjs",
+  "evidence_class": "copied_public_surface_followup_plan",
+  "artifact_scope": "wphx_312_http_cron_mail_feed_embed_copied_public_surfaces",
+  "inputs": {
+    "public_shell_gap_audit": {
+      "path": "manifests/wp-core/wphx-312-95-public-shell-gap-audit.v1.json",
+      "bytes": 117594,
+      "sha256": "sha256:0c1c23c61ce72e49b303cf7aa1ed26152db23f692b5d7a226c3d63f5758820ad"
+    }
+  },
+  "owner_issues": {
+    "generated_adapter": {
+      "issue_id": "wordpresshx-l76.18.45",
+      "external_ref": "WPHX-312.101",
+      "title": "Generate adapters for copied HTTP feed embed public surfaces"
+    },
+    "preserved_vendor": {
+      "issue_id": "wordpresshx-l76.26",
+      "external_ref": "WPHX-323",
+      "title": "PHP vendor manifest closure"
+    },
+    "installed_route": {
+      "issue_id": "wordpresshx-l76.18.41",
+      "external_ref": "WPHX-312.94",
+      "title": "Expand installed feed, embed, widget, and privacy routes"
+    },
+    "live_transport": {
+      "issue_id": "wordpresshx-l76.18.40",
+      "external_ref": "WPHX-312.92",
+      "title": "Add live or recorded HTTP transport parity gate"
+    },
+    "cron_mail_transport": {
+      "issue_id": "wordpresshx-l76.18.39",
+      "external_ref": "WPHX-312.93",
+      "title": "Add real cron and mail transport installed gate"
+    },
+    "upstream_phpunit": {
+      "issue_id": "wordpresshx-l76.18.42",
+      "external_ref": "WPHX-312.97",
+      "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+    }
+  },
+  "summary": {
+    "copied_surface_count": 46,
+    "gate_count": 6,
+    "primary_gate_counts": {
+      "generated_adapter": 7,
+      "preserved_vendor": 6,
+      "installed_route": 19,
+      "live_transport": 14,
+      "cron_mail_transport": 0,
+      "upstream_phpunit": 0
+    },
+    "generated_adapter_owner": {
+      "issue_id": "wordpresshx-l76.18.45",
+      "external_ref": "WPHX-312.101",
+      "title": "Generate adapters for copied HTTP feed embed public surfaces"
+    },
+    "remaining_domain_closure_blocker_after_plan": null
+  },
+  "groups": [
+    {
+      "id": "generated_adapter",
+      "gate_kind": "generated_adapter",
+      "owner_issue": {
+        "issue_id": "wordpresshx-l76.18.45",
+        "external_ref": "WPHX-312.101",
+        "title": "Generate adapters for copied HTTP feed embed public surfaces"
+      },
+      "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green.",
+      "non_claims": [
+        "Planning a generated adapter does not claim installed WordPress behavior.",
+        "Planning a generated adapter does not claim live network, cron, mail, feed, or oEmbed side effects.",
+        "Copied oracle fixtures remain behavior evidence until the generated adapter gate passes."
+      ],
+      "primary_boundary_refs": [
+        "WPHX-312.04",
+        "WPHX-312.38",
+        "WPHX-312.39",
+        "WPHX-312.40",
+        "WPHX-312.41",
+        "WPHX-312.42",
+        "WPHX-312.44"
+      ],
+      "secondary_boundary_refs": [
+        "WPHX-312.03",
+        "WPHX-312.05",
+        "WPHX-312.06",
+        "WPHX-312.07",
+        "WPHX-312.08",
+        "WPHX-312.11",
+        "WPHX-312.12",
+        "WPHX-312.13",
+        "WPHX-312.14",
+        "WPHX-312.15",
+        "WPHX-312.16",
+        "WPHX-312.17",
+        "WPHX-312.18",
+        "WPHX-312.19",
+        "WPHX-312.20",
+        "WPHX-312.21",
+        "WPHX-312.22",
+        "WPHX-312.23",
+        "WPHX-312.24",
+        "WPHX-312.25",
+        "WPHX-312.26",
+        "WPHX-312.27",
+        "WPHX-312.28",
+        "WPHX-312.29",
+        "WPHX-312.30",
+        "WPHX-312.31",
+        "WPHX-312.32",
+        "WPHX-312.33",
+        "WPHX-312.34",
+        "WPHX-312.35",
+        "WPHX-312.36",
+        "WPHX-312.37",
+        "WPHX-312.43",
+        "WPHX-312.45",
+        "WPHX-312.46",
+        "WPHX-312.47",
+        "WPHX-312.48",
+        "WPHX-312.49"
+      ]
+    },
+    {
+      "id": "preserved_vendor",
+      "gate_kind": "preserved_vendor",
+      "owner_issue": {
+        "issue_id": "wordpresshx-l76.26",
+        "external_ref": "WPHX-323",
+        "title": "PHP vendor manifest closure"
+      },
+      "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership.",
+      "non_claims": [
+        "Preserved-vendor routing does not claim Haxe ownership of third-party library internals.",
+        "WordPress wrapper behavior still needs separate generated-adapter or installed-route evidence where applicable."
+      ],
+      "primary_boundary_refs": [
+        "WPHX-312.05",
+        "WPHX-312.13",
+        "WPHX-312.22",
+        "WPHX-312.23",
+        "WPHX-312.24",
+        "WPHX-312.37"
+      ],
+      "secondary_boundary_refs": []
+    },
+    {
+      "id": "installed_route",
+      "gate_kind": "installed_route",
+      "owner_issue": {
+        "issue_id": "wordpresshx-l76.18.41",
+        "external_ref": "WPHX-312.94",
+        "title": "Expand installed feed, embed, widget, and privacy routes"
+      },
+      "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior.",
+      "non_claims": [
+        "Installed-route routing does not claim generated PHP replacement by itself.",
+        "Installed-route routing does not claim upstream PHPUnit pass/pass parity."
+      ],
+      "primary_boundary_refs": [
+        "WPHX-312.06",
+        "WPHX-312.07",
+        "WPHX-312.09",
+        "WPHX-312.11",
+        "WPHX-312.14",
+        "WPHX-312.15",
+        "WPHX-312.16",
+        "WPHX-312.17",
+        "WPHX-312.18",
+        "WPHX-312.19",
+        "WPHX-312.20",
+        "WPHX-312.21",
+        "WPHX-312.25",
+        "WPHX-312.26",
+        "WPHX-312.27",
+        "WPHX-312.28",
+        "WPHX-312.29",
+        "WPHX-312.30",
+        "WPHX-312.31"
+      ],
+      "secondary_boundary_refs": []
+    },
+    {
+      "id": "live_transport",
+      "gate_kind": "live_transport",
+      "owner_issue": {
+        "issue_id": "wordpresshx-l76.18.40",
+        "external_ref": "WPHX-312.92",
+        "title": "Add live or recorded HTTP transport parity gate"
+      },
+      "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior.",
+      "non_claims": [
+        "Live-transport routing does not claim whole-file WP_Http ownership.",
+        "Live-transport routing does not claim cron or mail delivery side effects."
+      ],
+      "primary_boundary_refs": [
+        "WPHX-312.03",
+        "WPHX-312.08",
+        "WPHX-312.12",
+        "WPHX-312.32",
+        "WPHX-312.33",
+        "WPHX-312.34",
+        "WPHX-312.35",
+        "WPHX-312.36",
+        "WPHX-312.43",
+        "WPHX-312.45",
+        "WPHX-312.46",
+        "WPHX-312.47",
+        "WPHX-312.48",
+        "WPHX-312.49"
+      ],
+      "secondary_boundary_refs": []
+    },
+    {
+      "id": "cron_mail_transport",
+      "gate_kind": "live_transport",
+      "owner_issue": {
+        "issue_id": "wordpresshx-l76.18.39",
+        "external_ref": "WPHX-312.93",
+        "title": "Add real cron and mail transport installed gate"
+      },
+      "removal_gate": "Add controlled installed-style cron loopback/dispatch and wp_mail/PHPMailer transport observations before claiming real cron or mail side effects.",
+      "non_claims": [
+        "Cron/mail transport routing does not claim general HTTP transport parity.",
+        "Cron/mail transport routing does not claim generated PHP replacement by itself."
+      ],
+      "primary_boundary_refs": [],
+      "secondary_boundary_refs": [
+        "WPHX-312.03",
+        "WPHX-312.07",
+        "WPHX-312.12",
+        "WPHX-312.13"
+      ]
+    },
+    {
+      "id": "upstream_phpunit",
+      "gate_kind": "upstream_phpunit",
+      "owner_issue": {
+        "issue_id": "wordpresshx-l76.18.42",
+        "external_ref": "WPHX-312.97",
+        "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+      },
+      "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups.",
+      "non_claims": [
+        "Upstream PHPUnit routing does not replace focused oracle fixtures.",
+        "Blocked PHPUnit input provisioning is not pass/pass parity."
+      ],
+      "primary_boundary_refs": [],
+      "secondary_boundary_refs": [
+        "WPHX-312.03",
+        "WPHX-312.04",
+        "WPHX-312.05",
+        "WPHX-312.06",
+        "WPHX-312.07",
+        "WPHX-312.08",
+        "WPHX-312.09",
+        "WPHX-312.11",
+        "WPHX-312.12",
+        "WPHX-312.13",
+        "WPHX-312.14",
+        "WPHX-312.15",
+        "WPHX-312.16",
+        "WPHX-312.17",
+        "WPHX-312.18",
+        "WPHX-312.19",
+        "WPHX-312.20",
+        "WPHX-312.21",
+        "WPHX-312.22",
+        "WPHX-312.23",
+        "WPHX-312.24",
+        "WPHX-312.25",
+        "WPHX-312.26",
+        "WPHX-312.27",
+        "WPHX-312.28",
+        "WPHX-312.29",
+        "WPHX-312.30",
+        "WPHX-312.31",
+        "WPHX-312.32",
+        "WPHX-312.33",
+        "WPHX-312.34",
+        "WPHX-312.35",
+        "WPHX-312.36",
+        "WPHX-312.37",
+        "WPHX-312.38",
+        "WPHX-312.39",
+        "WPHX-312.40",
+        "WPHX-312.41",
+        "WPHX-312.42",
+        "WPHX-312.43",
+        "WPHX-312.44",
+        "WPHX-312.45",
+        "WPHX-312.46",
+        "WPHX-312.47",
+        "WPHX-312.48",
+        "WPHX-312.49"
+      ]
+    }
+  ],
+  "boundary_plan": [
+    {
+      "external_ref": "WPHX-312.03",
+      "issue_id": "wordpresshx-l76.18.3",
+      "unit_name": "HTTP response helpers, cron scheduling helpers, and wp_mail pre-send filter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:e3893bdaf9f44311bb165b6f0e0b521210eb711b36b85c148ac7e4486975e729",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "cron_mail_transport",
+          "gate_kind": "live_transport",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.39",
+            "external_ref": "WPHX-312.93",
+            "title": "Add real cron and mail transport installed gate"
+          },
+          "removal_gate": "Add controlled installed-style cron loopback/dispatch and wp_mail/PHPMailer transport observations before claiming real cron or mail side effects."
+        },
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.04",
+      "issue_id": "wordpresshx-l76.18.4",
+      "unit_name": "feed helper, embed/oEmbed local routing, and HTTPS detection/migration behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:a01b9a82ed8c26eb0097b63880c3f3c7efd62abafef58b825bd86dc124f65baa",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.05",
+      "issue_id": "wordpresshx-l76.18.5",
+      "unit_name": "bundled PHP AI Client HTTP DTO, utility, transporter, and WordPress HTTP adapter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-05-ai-http-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:51ee4cc632c75b83d87afba43f2452ca1bd8b875a8bc787f4801424a8b132abf",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "primary_gate": {
+        "id": "preserved_vendor",
+        "gate_kind": "preserved_vendor",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.26",
+          "external_ref": "WPHX-323",
+          "title": "PHP vendor manifest closure"
+        },
+        "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.06",
+      "issue_id": "wordpresshx-l76.18.6",
+      "unit_name": "trackback endpoint sanitization, duplicate detection, comment insertion, hooks, and XML responses",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-06-trackback-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:8c63eb9493c79d903a123267562f97c2f87539f8fec1f584eb19c0fb1e99af1d",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.07",
+      "issue_id": "wordpresshx-l76.18.7",
+      "unit_name": "privacy request export, confirmation, and erasure notification mail behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:35c4d6aee09fc7b42d7990a5362afef39653a6c94e55af2e5f1ecfab59e8e6b6",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "cron_mail_transport",
+          "gate_kind": "live_transport",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.39",
+            "external_ref": "WPHX-312.93",
+            "title": "Add real cron and mail transport installed gate"
+          },
+          "removal_gate": "Add controlled installed-style cron loopback/dispatch and wp_mail/PHPMailer transport observations before claiming real cron or mail side effects."
+        },
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.08",
+      "issue_id": "wordpresshx-l76.18.8",
+      "unit_name": "remote feed fetch, SimplePie wrapper, and oEmbed HTTP discovery/fetch behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:75408df6eca2ae74652530e806918f28ca67d0514cdebed8bb18e99c14f5352e",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.09",
+      "issue_id": "wordpresshx-l76.18.9",
+      "unit_name": "HTTP, cron, mail, feed, oEmbed, trackback, and privacy request installed-style observations",
+      "unit_kind": "packaged-distribution-installed-http-gate",
+      "ownership_manifest": "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+      "ownership_manifest_sha256": "sha256:f4d1aec6781d26e0e64d9f9bdd3f3fe72ca9c74b34dac7f26d9d4c644c7a2b50",
+      "current_ownership_state": "installed_style_package_gate_with_copied_oracle_php",
+      "current_bridge_kind": "copied-oracle-public-php-with-router-observation-gate",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.11",
+      "issue_id": "wordpresshx-l76.18.11",
+      "unit_name": "privacy request admin-management state handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:98307383ee4ddb537e1759fcb9e2d57d78dbed6e47b9d62202bb78c1fbc5763a",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-admin-state-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.12",
+      "issue_id": "wordpresshx-l76.18.12",
+      "unit_name": "cron ready-job, spawn lock, loopback request, and daemon dispatch behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-12-cron-dispatch-lock-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:e4357ad5816634698ee7049b1d0e6a985d51e1fe442ecbf7cc130a7142785788",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-cron-dispatch-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "cron_mail_transport",
+          "gate_kind": "live_transport",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.39",
+            "external_ref": "WPHX-312.93",
+            "title": "Add real cron and mail transport installed gate"
+          },
+          "removal_gate": "Add controlled installed-style cron loopback/dispatch and wp_mail/PHPMailer transport observations before claiming real cron or mail side effects."
+        },
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.13",
+      "issue_id": "wordpresshx-l76.18.13",
+      "unit_name": "wp_mail PHPMailer setup, header, attachment, embed, init-hook, and failure behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:4c4be8b1114248dfafccc398e417db5a23aa411d9b8889ee53e472eb85467ca3",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-no-delivery-phpmailer-boundary",
+      "primary_gate": {
+        "id": "preserved_vendor",
+        "gate_kind": "preserved_vendor",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.26",
+          "external_ref": "WPHX-323",
+          "title": "PHP vendor manifest closure"
+        },
+        "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership."
+      },
+      "secondary_gates": [
+        {
+          "id": "cron_mail_transport",
+          "gate_kind": "live_transport",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.39",
+            "external_ref": "WPHX-312.93",
+            "title": "Add real cron and mail transport installed gate"
+          },
+          "removal_gate": "Add controlled installed-style cron loopback/dispatch and wp_mail/PHPMailer transport observations before claiming real cron or mail side effects."
+        },
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.14",
+      "issue_id": "wordpresshx-l76.18.14",
+      "unit_name": "wp-links-opml.php OPML link category and bookmark output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-14-opml-links-output-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:5bcc1a5d9a209cbc856c1971c5b6fbd4a558f2de17754b75c034b6763e78f324",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-link-data-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.15",
+      "issue_id": "wordpresshx-l76.18.15",
+      "unit_name": "RSS2 post feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-15-rss2-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:551bee89694f4fb2eec3281e73fcfea0da24ed2391233ccd03d50d6668c2699a",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.16",
+      "issue_id": "wordpresshx-l76.18.16",
+      "unit_name": "Atom post feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-16-atom-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:ac4f69f6defefec9f0065ca2967eadd06f2e430a7866c4d38c99c43b6f65ac33",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.17",
+      "issue_id": "wordpresshx-l76.18.17",
+      "unit_name": "RSS2 comments feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-17-rss2-comments-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:07ffd177e6a4e0d11bcef01a32fd60ddff1ebb14264c23e0c4bad1bd65cbe96f",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-comment-loop-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.18",
+      "issue_id": "wordpresshx-l76.18.18",
+      "unit_name": "Atom comments feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-18-atom-comments-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:1f67a2ae3c632cfd2a18abc3026b67c81e684e825509ca29f6a8b5512921d1c7",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-comment-loop-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.19",
+      "issue_id": "wordpresshx-l76.18.19",
+      "unit_name": "RDF feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:15dd31017b9d19c05b42cfbd143e8870a15712c3804a6cc164b67c293b97f5a7",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.20",
+      "issue_id": "wordpresshx-l76.18.20",
+      "unit_name": "RSS 0.92 feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-20-rss-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:690eb3f309f42a11b586287f07b895113fbdb405d65e5c5b8fb9f64382f1d3b5",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.21",
+      "issue_id": "wordpresshx-l76.18.21",
+      "unit_name": "Deprecated embed and RSS wrapper handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:9c0b412acdbef75897987a525d8c9e7f5792c51fb35ae53fe49a5a9d5c50fef5",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-required-file-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.22",
+      "issue_id": "wordpresshx-l76.18.22",
+      "unit_name": "MagpieRSS parser and pure helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-22-magpie-rss-parser-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:9f1696d991c7b6a7c0b2b89235b21ce4f82c773d4a06739f5d93d5893fff18f7",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "primary_gate": {
+        "id": "preserved_vendor",
+        "gate_kind": "preserved_vendor",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.26",
+          "external_ref": "WPHX-323",
+          "title": "PHP vendor manifest closure"
+        },
+        "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.23",
+      "issue_id": "wordpresshx-ri4",
+      "unit_name": "MagpieRSS fetch and transient cache behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:531d5afca90eb951ada2840f3aca3613f2804e63bcf34c0a824fde617c3eb141",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "primary_gate": {
+        "id": "preserved_vendor",
+        "gate_kind": "preserved_vendor",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.26",
+          "external_ref": "WPHX-323",
+          "title": "PHP vendor manifest closure"
+        },
+        "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.24",
+      "issue_id": "wordpresshx-d7p",
+      "unit_name": "MagpieRSS display helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-24-magpie-rss-display-helper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:5fbfed6798ee7cbd15f6fe73844743468d463aa1930f4f3212a6e4becc72d49f",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "primary_gate": {
+        "id": "preserved_vendor",
+        "gate_kind": "preserved_vendor",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.26",
+          "external_ref": "WPHX-323",
+          "title": "PHP vendor manifest closure"
+        },
+        "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.25",
+      "issue_id": "wordpresshx-psk",
+      "unit_name": "RSS widget helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:c9c0bed1f0df223dcdab0c50933aa8fdbe1acfb0debebd79d96ed6cb792ff7eb",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.26",
+      "issue_id": "wordpresshx-yyr",
+      "unit_name": "WP_Widget_RSS class wrapper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:172bcdfcc151922921ccbea606e922e8f0e5d0bc95faa23a082171ab71fbf63a",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.27",
+      "issue_id": "wordpresshx-hc3",
+      "unit_name": "core/rss block server renderer behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:12613a8b8eeed798c3109f2e8cb5c67d436719bee7d0e1fd2ff0e46fbb40e6bf",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.28",
+      "issue_id": "wordpresshx-1te",
+      "unit_name": "Deprecated oEmbed wrapper handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:ebc066ae220205ce4d831d69585a1e6df0e5f695b390c674221f91f4423278c7",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-required-file-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.29",
+      "issue_id": "wordpresshx-8sz",
+      "unit_name": "WP_oEmbed provider registry and compatibility behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:0f5526cc92a5af4168d1c768347aa810addb00af56b0818bc4097678c9940874",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-runtime-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.30",
+      "issue_id": "wordpresshx-1to",
+      "unit_name": "WP_Embed cache, shortcode, and autoembed behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:49f29f392229ff72be647ff6dfb88ddbb70bd96729e72e782a2667b06c5ae58e",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-runtime-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.31",
+      "issue_id": "wordpresshx-k2t",
+      "unit_name": "WP_oEmbed_Controller REST route and proxy behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-31-oembed-rest-controller-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:fe5e65ef8195277af7cd9cdf31e09209fbc21e645bbd26b5192aa8933e090960",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-rest-and-oembed-runtime-boundary",
+      "primary_gate": {
+        "id": "installed_route",
+        "gate_kind": "installed_route",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.41",
+          "external_ref": "WPHX-312.94",
+          "title": "Expand installed feed, embed, widget, and privacy routes"
+        },
+        "removal_gate": "Exercise representative installed feed, embed, RSS widget/block, trackback, and privacy/admin routes against vanilla and candidate packages, then record covered versus deferred public behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.32",
+      "issue_id": "wordpresshx-x2x",
+      "unit_name": "WP_HTTP_Proxy constants, bypass, and filter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:60c6b41eea3551c112fc5506d149b3eced9b32d21bbc3f296bff8d3a773462b3",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-http-proxy-runtime-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.33",
+      "issue_id": "wordpresshx-c86",
+      "unit_name": "WP_HTTP_Requests_Response and WP_HTTP_Requests_Hooks bridge behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:d2e4c34749f99fdbf6707bc2782eb17de211420a0df4567901cf1a811e55180f",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-real-requests-support-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.34",
+      "issue_id": "wordpresshx-5mq",
+      "unit_name": "WP_HTTP_IXR_Client XML-RPC HTTP handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:507bb5f90ad77b17852d4691d2f51a4e37ed40f43ef837add255bf76884200a2",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-http-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.35",
+      "issue_id": "wordpresshx-5tf",
+      "unit_name": "WP_Feed_Cache_Transient site-transient adapter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:cd66dcaa19fe711652fed0d23fb8f49faae3a59b20021b1316fa2a4c7c0b1e6c",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-site-transient-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.36",
+      "issue_id": "wordpresshx-l76.18.23",
+      "unit_name": "WP_SimplePie_File WordPress HTTP adapter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:4455ff92439d34576ba22452969bd4916937ddfc2c08fc0d225c2ddd2539a6b5",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-http-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.37",
+      "issue_id": "wordpresshx-l76.18.24",
+      "unit_name": "SimplePie feed wrapper load-order compatibility",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-37-simplepie-feed-wrapper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:696513a06c533326b9d171899af7649073776e6940a5f7374f0a263a17a5b44f",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-simplepie-vendor-boundary",
+      "primary_gate": {
+        "id": "preserved_vendor",
+        "gate_kind": "preserved_vendor",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.26",
+          "external_ref": "WPHX-323",
+          "title": "PHP vendor manifest closure"
+        },
+        "removal_gate": "Classify the surface under the PHP vendor manifest as preserved upstream/vendor code, approved exception, or separate generated WordPress wrapper before claiming durable ownership."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.38",
+      "issue_id": "wordpresshx-l76.18.25",
+      "unit_name": "WP_HTTP_Response object state behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-38-http-response-object-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:072a56e59823fd0c6d03573d5fdaef4c5293cf676018549086dcfb7b7a86447d",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-absint-boundary",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.39",
+      "issue_id": "wordpresshx-l76.18.26",
+      "unit_name": "WP_Http_Cookie object parsing and matching behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-39-http-cookie-object-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:16ee06ec6a2738020d12b32ec426253bdb95c1435db9b81b8abea197201300a2",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-filter-boundary",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.40",
+      "issue_id": "wordpresshx-l76.18.27",
+      "unit_name": "WP_Http_Encoding compression helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-40-http-encoding-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:949633354916894b648823e92943a8f4d30f870268f1e9cbba6b407722aa5ffe",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-filter-boundary",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.41",
+      "issue_id": "wordpresshx-l76.18.28",
+      "unit_name": "WP_Http static helper and redirect behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:a707880db379b5ed5f529643c7f97c9543fce43c2f83cb8c61542e8c9fd964b4",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.42",
+      "issue_id": "wordpresshx-l76.18.29",
+      "unit_name": "WP_Http parser, header, cookie-header, chunk decoding, and parse-url helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:99078887d00edf94b060d3b1796f83a25035c9c81d8a195d35c89d3124d94b77",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.43",
+      "issue_id": "wordpresshx-l76.18.30",
+      "unit_name": "HTTP API request wrapper, capability, origin, and safe URL helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:2962f0bb2edb47e27af0b3cf28ed75954d71a0e865259b5158dc24a3f81a6205",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-http-and-wordpress-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.44",
+      "issue_id": "wordpresshx-l76.18.31",
+      "unit_name": "HTTP parse-url helper and deprecated class-http shim behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:16e541021583cfc222eb8c814fbc6a789008212a8e8e1f7235220e5b67b12b72",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-deprecation-boundary",
+      "primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      },
+      "secondary_gates": [
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.45",
+      "issue_id": "wordpresshx-l76.18.32",
+      "unit_name": "HTTP streams/cURL transport test and private callback behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-45-http-transport-callback-test-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:c02c075327137025d0ac070ace72ae9f68a19363b9ee4587449dcd96cf6a9ea6",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-deterministic-hook-and-reflection-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.46",
+      "issue_id": "wordpresshx-l76.18.33",
+      "unit_name": "WP_Http request orchestration behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:cad0e1fedea9a081892b90670b6d852d6a8486fa84f1ab8c93577f1a769bc6bb",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.47",
+      "issue_id": "wordpresshx-l76.18.34",
+      "unit_name": "WP_Http external request blocking policy behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-47-wp-http-block-request-policy-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:85ed4b05288d82532b31b0684c7e3d05fb2e7205ea3c06501287db5548c5a61a",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-deterministic-option-and-filter-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.48",
+      "issue_id": "wordpresshx-l76.18.35",
+      "unit_name": "WP_Http deprecated transport selection and dispatch behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:e9cfd8309e584df2e18d7803ef04fc597eed6b551a90acbfe8a415fe434125a1",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-deterministic-fake-transport-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.49",
+      "issue_id": "wordpresshx-l76.18.36",
+      "unit_name": "WP_Http request proxy/safety option behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_manifest": "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:cbad2ef3b02b3105eb1a041bcf7acc631b3786e0b409012ae8ef90862abf867d",
+      "current_ownership_state": "oracle_mirror_behavior_fixture",
+      "current_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-boundary",
+      "primary_gate": {
+        "id": "live_transport",
+        "gate_kind": "live_transport",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.40",
+          "external_ref": "WPHX-312.92",
+          "title": "Add live or recorded HTTP transport parity gate"
+        },
+        "removal_gate": "Add live or recorded HTTP transport parity for representative requests, redirects, headers/cookies, proxy/TLS options, streaming, response-size, and Requests bridge paths before claiming transport behavior."
+      },
+      "secondary_gates": [
+        {
+          "id": "generated_adapter",
+          "gate_kind": "generated_adapter",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.45",
+            "external_ref": "WPHX-312.101",
+            "title": "Generate adapters for copied HTTP feed embed public surfaces"
+          },
+          "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+        },
+        {
+          "id": "upstream_phpunit",
+          "gate_kind": "upstream_phpunit",
+          "owner_issue": {
+            "issue_id": "wordpresshx-l76.18.42",
+            "external_ref": "WPHX-312.97",
+            "title": "Unblock HTTP/cron/mail/feed/embed upstream PHPUnit ratchet"
+          },
+          "removal_gate": "Provision non-blocked WPHX-312 upstream PHPUnit ratchet inputs and record pass/pass or known deltas for HTTP, feed/SimplePie, oEmbed/embed, HTTPS, and privacy request groups."
+        }
+      ],
+      "non_claims": [
+        "This copied oracle surface remains behavior evidence, not durable generated public PHP ownership.",
+        "Do not broaden to installed behavior, live transport, upstream PHPUnit pass/pass parity, or preserved-vendor ownership unless the named gate passes."
+      ]
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "failures": [],
+    "copied_surface_count": 46,
+    "primary_gate_counts": {
+      "generated_adapter": 7,
+      "preserved_vendor": 6,
+      "installed_route": 19,
+      "live_transport": 14,
+      "cron_mail_transport": 0,
+      "upstream_phpunit": 0
+    },
+    "all_copied_surfaces_have_primary_gate": true,
+    "all_groups_have_owner_issue": true
+  },
+  "decision": {
+    "status": "passed",
+    "close_wphx_312_100": true,
+    "copied_surface_debt_planned": true,
+    "notes": [
+      "The plan routes copied public surfaces to explicit owner gates instead of treating copied oracle fixtures as durable public PHP ownership.",
+      "WPHX-312.96 may use this plan as closure evidence while preserving non-claims and linking later generated-adapter, vendor, installed-route, live-transport, cron/mail, and upstream-PHPUnit work."
+    ]
+  },
+  "non_claims": [
+    "This plan does not itself replace copied public PHP with generated adapters.",
+    "This plan does not claim installed WordPress behavior, live HTTP transport, real cron/mail transport, upstream PHPUnit pass/pass parity, whole-file WP_Http ownership, or full feed/embed/widget/privacy routing.",
+    "This plan does not classify third-party vendor internals as Haxe-owned runtime logic."
+  ]
+}

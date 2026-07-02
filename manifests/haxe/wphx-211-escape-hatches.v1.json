@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 291,
+  "scanned_file_count": 292,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -89,6 +89,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/TaxonomyCommentAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/ThemeTemplateAdapterContractCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpErrorCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpHttpRequestCandidateAnchor.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbClassShellResourceStrategyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbDbConnectStrategyCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/WpdbDbDeltaCandidateEntry.hx",

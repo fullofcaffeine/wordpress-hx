@@ -1,0 +1,58 @@
+{
+  "schema": "wphx.wp-core-receipt.v1",
+  "id": "receipt:wphx-312-100-copied-surface-plan",
+  "issue": {
+    "id": "wordpresshx-i378",
+    "external_ref": "WPHX-312.100",
+    "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+  },
+  "recorded_at": "2026-07-02T23:45:00Z",
+  "status": "passed",
+  "evidence_class": "copied_public_surface_followup_plan",
+  "artifact_scope": "wphx_312_http_cron_mail_feed_embed_copied_public_surfaces",
+  "commands": [
+    "npm run wp:core:wphx-312-copied-surface-plan",
+    "npm run wp:core:wphx-312-copied-surface-plan:check",
+    "npm run wp:core:wphx-312-public-shell-gap-audit:check"
+  ],
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-100-copied-surface-plan.v1.json",
+      "role": "machine-readable copied public surface follow-up plan"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-100-copied-surface-plan.v1.json",
+      "role": "ownership manifest for the design plan"
+    },
+    {
+      "path": "tools/wp-core/run-wphx-312-copied-surface-plan.mjs",
+      "role": "deterministic copied public surface plan generator"
+    }
+  ],
+  "manifest_sha256": "sha256:657192271f24cbe7a287d4ef90f4be9d65a6a47037e8ee8ec1ddc011761f9fa0",
+  "validation_result": {
+    "status": "passed",
+    "failures": [],
+    "copied_surface_count": 46,
+    "primary_gate_counts": {
+      "generated_adapter": 7,
+      "preserved_vendor": 6,
+      "installed_route": 19,
+      "live_transport": 14,
+      "cron_mail_transport": 0,
+      "upstream_phpunit": 0
+    },
+    "all_copied_surfaces_have_primary_gate": true,
+    "all_groups_have_owner_issue": true
+  },
+  "claims": [
+    "All 46 WPHX-312 copied-oracle public surfaces have a primary follow-up gate.",
+    "Each copied-surface gate has an owner issue, removal gate, and non-claims.",
+    "The copied public surface plan distinguishes generated adapters from preserved-vendor, installed-route, live-transport, cron/mail, and upstream-PHPUnit gates."
+  ],
+  "non_claims": [
+    "This plan does not itself replace copied public PHP with generated adapters.",
+    "This plan does not claim installed WordPress behavior, live HTTP transport, real cron/mail transport, upstream PHPUnit pass/pass parity, whole-file WP_Http ownership, or full feed/embed/widget/privacy routing.",
+    "This plan does not classify third-party vendor internals as Haxe-owned runtime logic."
+  ]
+}

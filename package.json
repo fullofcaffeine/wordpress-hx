@@ -445,6 +445,8 @@
     "wp:core:wphx-312-installed-http:check": "node tools/wp-core/run-http-mail-feed-embed-installed-gate.mjs --check",
     "wp:core:wphx-312-public-shell-gap-audit": "node tools/wp-core/run-wphx-312-public-shell-gap-audit.mjs",
     "wp:core:wphx-312-public-shell-gap-audit:check": "node tools/wp-core/run-wphx-312-public-shell-gap-audit.mjs --check",
+    "wp:core:wphx-312-copied-surface-plan": "node tools/wp-core/run-wphx-312-copied-surface-plan.mjs",
+    "wp:core:wphx-312-copied-surface-plan:check": "node tools/wp-core/run-wphx-312-copied-surface-plan.mjs --check",
     "wp:core:wphx-313-media-filesystem-upload-surface": "node tools/wp-core/run-media-filesystem-upload-surface.mjs",
     "wp:core:wphx-313-media-filesystem-upload-surface:check": "node tools/wp-core/run-media-filesystem-upload-surface.mjs --check",
     "wp:core:wphx-313-media-upload-adapter-contract-candidate": "node tools/wp-core/run-media-upload-adapter-contract-candidate.mjs",

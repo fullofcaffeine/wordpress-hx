@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wphx-312-copied-surface-plan",
+  "issue": {
+    "id": "wordpresshx-i378",
+    "external_ref": "WPHX-312.100"
+  },
+  "unit": {
+    "kind": "design_receipt",
+    "name": "WPHX-312 copied public surface follow-up plan",
+    "area": "HTTP, cron, mail, feeds, embeds, RSS widgets, SimplePie/Magpie wrappers, oEmbed, and HTTP wrapper copied oracle public surfaces",
+    "public_contract": "This plan owns classification and follow-up routing only. Copied oracle fixtures remain evidence until the named generated-adapter, preserved-vendor, installed-route, live-transport, cron/mail, or upstream-PHPUnit gates pass."
+  },
+  "ownership_state": "design_plan",
+  "bridge": {
+    "exists": true,
+    "kind": "copied-public-surface-followup-plan",
+    "removal_gate": "Close or supersede the owner issue for each copied-surface group before claiming durable generated public PHP, preserved-vendor, installed-route, live-transport, cron/mail, or upstream-PHPUnit closure for that group."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wphx-312-copied-surface-plan.mjs",
+    "manifests/wp-core/wphx-312-100-copied-surface-plan.v1.json",
+    "manifests/ownership/wphx-312-100-copied-surface-plan.v1.json",
+    "receipts/wp-core/wphx-312-100-copied-surface-plan.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-100-copied-surface-plan.v1.json",
+    "manifests/ownership/wphx-312-100-copied-surface-plan.v1.json",
+    "receipts/wp-core/wphx-312-100-copied-surface-plan.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-copied-surface-plan",
+      "npm run wp:core:wphx-312-copied-surface-plan:check",
+      "npm run wp:core:wphx-312-public-shell-gap-audit:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-100-copied-surface-plan"
+    ],
+    "manifest_digest": "sha256:657192271f24cbe7a287d4ef90f4be9d65a6a47037e8ee8ec1ddc011761f9fa0"
+  }
+}

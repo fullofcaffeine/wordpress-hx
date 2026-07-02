@@ -78,6 +78,7 @@ function readJson(path) {
 function sortedWphx312OwnershipPaths() {
   return readdirSync(OWNERSHIP_DIR)
     .filter((name) => name.startsWith("wphx-312-") && name.endsWith(".json"))
+    .filter((name) => !name.includes("-copied-surface-plan."))
     .sort()
     .map((name) => join(OWNERSHIP_DIR, name));
 }
