@@ -34,6 +34,8 @@
     "wphx:php:adapter-raw-blocks:check": "node tools/wphx-php/check-adapter-raw-blocks.mjs --check",
     "wphx:php:gap-inventory": "node tools/wphx-php/run-compiler-gap-inventory.mjs",
     "wphx:php:gap-inventory:check": "node tools/wphx-php/run-compiler-gap-inventory.mjs --check",
+    "wphx:php:core-lowering-pilot": "node tools/wphx-php/run-core-lowering-pilot.mjs",
+    "wphx:php:core-lowering-pilot:check": "node tools/wphx-php/run-core-lowering-pilot.mjs --check",
     "wphx:php:pluggable-timing": "node tools/wphx-php/run-pluggable-timing.mjs",
     "wphx:php:pluggable-timing:check": "node tools/wphx-php/run-pluggable-timing.mjs --check",
     "wphx:php:bootstrap-autoload": "node tools/wphx-php/run-bootstrap-autoload.mjs",

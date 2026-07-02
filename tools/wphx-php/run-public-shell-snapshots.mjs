@@ -90,6 +90,30 @@ const CASES = [
     }
   },
   {
+    id: "typed-core-statement-lowering",
+    hxml: "fixtures/wphx-php/core-lowering-pilot.hxml",
+    selected: "wp-includes/wphx-core-lowering.php",
+    shell_shapes: ["global_function", "public_class", "conditional_declaration", "typed_statement_lowering"],
+    exact_patterns: [
+      "if (!function_exists('wphx_core_lowering_count_until'))",
+      "function wphx_core_lowering_count_until($limit)",
+      "while (($count < $limit)) {",
+      "class WPHX_Core_Lowering",
+      "public static function describe($value)",
+      "public function sumUntil($limit, $skip)",
+      "while (($index < $limit)) {",
+      "if (($index == $skip)) {",
+      "continue;",
+      "if (($index > 5)) {",
+      "break;"
+    ],
+    ast_expect: {
+      functions: ["wphx_core_lowering_count_until"],
+      classes: ["WPHX_Core_Lowering"],
+      methods: ["describe", "__construct", "sumUntil"]
+    }
+  },
+  {
     id: "protected-method-shell",
     hxml: "fixtures/wphx-php/wp-http-parser-helpers.hxml",
     selected: "wp-includes/class-wp-http.php",
@@ -656,6 +680,7 @@ function main() {
       ),
       template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell")),
       nested_template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell") && item.shell_shapes.includes("nested_include")),
+      typed_statement_lowering: results.some((item) => item.shell_shapes.includes("typed_statement_lowering")),
       segment_plan_metadata: results.some((item) => item.segment_plan_contract != null)
     },
     pending_shell_shape_gaps: [],
@@ -691,7 +716,7 @@ function main() {
     validation_result: manifest.validation_result,
     claims: [
       "WPHX PHP public-shell generated shapes are compiled twice from clean roots and checked for byte stability.",
-      "The snapshot lane covers current generated global function, public class/interface, protected method, by-reference parameter, conditional declaration, native array mutation, top-level bootstrap side-effect, and include-return/direct file-scope script shell shapes.",
+      "The snapshot lane covers current generated global function, public class/interface, protected method, by-reference parameter, conditional declaration, typed statement lowering, native array mutation, top-level bootstrap side-effect, and include-return/direct file-scope script shell shapes.",
       "Template segment shell cases assert compiler-emitted segment_plan metadata for original path, adapter, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs.",
       "Selected exact PHP excerpts and AST-normalized declarations are checked without treating generated shape as behavior parity."
     ],

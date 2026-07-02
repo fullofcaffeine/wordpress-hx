@@ -18,11 +18,11 @@
     "npm run wphx:php:public-shell-snapshots",
     "npm run wphx:php:public-shell-snapshots:check"
   ],
-  "manifest_sha256": "sha256:e9e00a782d2b9aa8b5c710b08ee23063d44183105c7b2783e651acc5b0498da0",
+  "manifest_sha256": "sha256:2da3155fa0931cba677b91df5db6b33e9d0e91bbe3c0d653c64f96b23c0e7ed5",
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 17,
+    "case_count": 18,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,
@@ -32,7 +32,7 @@
   },
   "claims": [
     "WPHX PHP public-shell generated shapes are compiled twice from clean roots and checked for byte stability.",
-    "The snapshot lane covers current generated global function, public class/interface, protected method, by-reference parameter, conditional declaration, native array mutation, top-level bootstrap side-effect, and include-return/direct file-scope script shell shapes.",
+    "The snapshot lane covers current generated global function, public class/interface, protected method, by-reference parameter, conditional declaration, typed statement lowering, native array mutation, top-level bootstrap side-effect, and include-return/direct file-scope script shell shapes.",
     "Template segment shell cases assert compiler-emitted segment_plan metadata for original path, adapter, adoption mode, ordered segment kinds, caller-scope facts, include semantics, observable effects, and unsupported constructs.",
     "Selected exact PHP excerpts and AST-normalized declarations are checked without treating generated shape as behavior parity."
   ],

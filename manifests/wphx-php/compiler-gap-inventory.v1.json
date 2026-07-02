@@ -81,6 +81,11 @@
       "sha256": "sha256:15da7132a7acbb6ef100d55af8ceb9172c2e1a11c002543b1667ba3845699963"
     },
     {
+      "path": "fixtures/wphx-php/core-lowering-pilot.hxml",
+      "bytes": 369,
+      "sha256": "sha256:ab06c362f71e343504cf34c2faeab35ee5d9059d5bef97d4c46fb1ac428b4a29"
+    },
+    {
       "path": "fixtures/wphx-php/f1-facade.hxml",
       "bytes": 355,
       "sha256": "sha256:e84e5ecedb4a6f63039e9023bf2cbdc150f34da3cb12b762127545c38815e5ce"
@@ -139,6 +144,16 @@
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/byref/ByRefSurface.hx",
       "bytes": 331,
       "sha256": "sha256:2463c16cba615b40060188bb4ecf9c945a9aba08d4b5d8c5a29f7420434e2a04"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringEntry.hx",
+      "bytes": 346,
+      "sha256": "sha256:429be413420b4e007bb49856d3981174432d482710ed9905c56e4298c5394c09"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringSurface.hx",
+      "bytes": 891,
+      "sha256": "sha256:39080fe15bd0fbc57f4e88566eaa145d8d30a34becd49d39ad42ca50104a0667"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Entry.hx",
@@ -532,13 +547,13 @@
     },
     {
       "path": "package.json",
-      "bytes": 63828,
-      "sha256": "sha256:cff998dda72e8f904b240feb32729270c97ed0e01ec89aa28752e18f6611fd21"
+      "bytes": 64016,
+      "sha256": "sha256:43ac5d8a5fcbb0397a04919dc661e7f70b012aed91e88d67a6bdd96f1f5487cb"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "bytes": 53316,
-      "sha256": "sha256:09daacad8155c20143830462dba83b694ebef4b15f5b76e380eeb6e60d1a437b"
+      "bytes": 54384,
+      "sha256": "sha256:1fd11e2b8094f6b928c3d32b9a49a55b2b73923010dd72408fe40cb40b71de9c"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
@@ -547,10 +562,10 @@
     }
   ],
   "summary": {
-    "hxml_count": 34,
-    "wphx_hxml_count": 25,
+    "hxml_count": 35,
+    "wphx_hxml_count": 26,
     "stock_haxe_php_hxml_count": 9,
-    "reflaxe_backed_wphx_hxml_count": 25,
+    "reflaxe_backed_wphx_hxml_count": 26,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 46,
     "wp_haxe_bootstrap_metadata_count": 18,
@@ -558,11 +573,11 @@
     "method_adapter_registry_count": 39,
     "script_adapter_registry_count": 4,
     "unsupported_report_site_count": 18,
-    "runner_surface_count": 20,
+    "runner_surface_count": 21,
     "runner_surface_with_copy_or_patch_count": 6,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,
-    "wphx_manifest_count": 11,
+    "wphx_manifest_count": 12,
     "stock_haxe_reference_missing_count": 0
   },
   "hxmls": [
@@ -920,6 +935,38 @@
         {
           "name": "wphx_php_output",
           "value": "build/wphx-php/byref-arg/generated"
+        },
+        {
+          "name": "wphx_php_profile",
+          "value": "wordpress"
+        }
+      ]
+    },
+    {
+      "path": "fixtures/wphx-php/core-lowering-pilot.hxml",
+      "main": "wphx.fixtures.compiler.php.core.CoreLoweringEntry",
+      "role": "wphx_php_public_adapter_output",
+      "active_line_count": 8,
+      "classpaths": [
+        "../haxe.compilerdev.reference/reflaxe/src",
+        "fixtures/wphx-php/src",
+        "src"
+      ],
+      "uses_reflaxe_classpath": true,
+      "compiler_macro": true,
+      "stock_php_output": null,
+      "wphx_php_output": "build/wphx-php/core-lowering-pilot/generated",
+      "wphx_php_manifest": "build/wphx-php/core-lowering-pilot/generated/wphx-php-emission.v1.json",
+      "wphx_php_profile": "wordpress",
+      "haxe_php_profile": null,
+      "defines": [
+        {
+          "name": "wphx_php_manifest",
+          "value": "build/wphx-php/core-lowering-pilot/generated/wphx-php-emission.v1.json"
+        },
+        {
+          "name": "wphx_php_output",
+          "value": "build/wphx-php/core-lowering-pilot/generated"
         },
         {
           "name": "wphx_php_profile",
@@ -2418,6 +2465,18 @@
       },
       {
         "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringSurface.hx",
+        "line": 6,
+        "output_path": "wp-includes/wphx-core-lowering.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringSurface.hx",
+        "line": 44,
+        "output_path": "wp-includes/wphx-core-lowering.php"
+      },
+      {
+        "kind": "wp.file",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/facade/F1Shell.hx",
         "line": 8,
         "output_path": "wp-includes/plugin.php"
@@ -2567,6 +2626,12 @@
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/bootstrap/HaxeBootstrapKernel.hx",
         "line": 6,
         "native_name": "\\\\wphx\\\\fixtures\\\\php\\\\bootstrap\\\\BootstrapKernel"
+      },
+      {
+        "kind": "native",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/core/CoreLoweringSurface.hx",
+        "line": 7,
+        "native_name": "WPHX_Core_Lowering"
       },
       {
         "kind": "native",
@@ -3065,63 +3130,63 @@
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1425,
+      "line": 1464,
       "source": "reportUnsupported(\"unsupported expression \" + expr.expr.getName() + \" at \" + sourceLabel(expr.pos));",
       "source_sha256": "sha256:23e9898f1ec24da8f2be85f96d2045bddf9fed1f40a044badf6b2e7db2530e24",
       "pressure": "typed_expression_lowering"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1458,
+      "line": 1497,
       "source": "reportUnsupported(\"unsupported binary operator \" + Std.string(op));",
       "source_sha256": "sha256:b45c24b22719afaafb91b20fed3e361bcc8f74560d0c036d5e537f2ed1f9a32b",
       "pressure": "typed_binary_operator_lowering"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1493,
+      "line": 1532,
       "source": "reportUnsupported(\"php array get lowering expects 3 arguments for \" + classType.module + \".\" + field.name);",
       "source_sha256": "sha256:73ff953495ce65a58c5cd0835db315aa62bc127edc0e8e51d15790400cb6a89b",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1532,
+      "line": 1571,
       "source": "reportUnsupported(\"unsupported field access at \" + sourceLabel(target.pos));",
       "source_sha256": "sha256:c90ec229bf6fdc0261126d880e50c7c5078145ef2d8a8bad7996da5b541b901a",
       "pressure": "typed_field_lowering"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1626,
+      "line": 1665,
       "source": "reportUnsupported(\"invalid @:wp.haxeHelper metadata; expected helper class string\");",
       "source_sha256": "sha256:38241c72fed7cb3131ac70777909648513fe31a4156694156936707f74ca0ed3",
       "pressure": "helper_bridge_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1642,
+      "line": 1681,
       "source": "reportUnsupported(\"invalid named @:wp.haxeHelper metadata; expected alias and helper class strings\");",
       "source_sha256": "sha256:8dee7a0b821fff3627cc52fad09e71519f65639a24403ca469eabd6faf78c533",
       "pressure": "helper_bridge_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1652,
+      "line": 1691,
       "source": "reportUnsupported(\"invalid @:wp.haxeHelper metadata arity; expected one helper string or alias/helper strings\");",
       "source_sha256": "sha256:c4ad01462ce01aaf21f1886ab432e98a469c620060853e4a79a706c68f74eb3a",
       "pressure": "helper_bridge_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1734,
+      "line": 1773,
       "source": "function reportUnsupported(message:String):Void",
       "source_sha256": "sha256:e6d48f0d91869ed61484d0114b815fff2c641383643c0bd9ada4fb3803a5d848",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1796,
+      "line": 1835,
       "source": "reportUnsupported(\"unsupported visibility \" + requested + \" for \" + field.name);",
       "source_sha256": "sha256:f8cbfa9d01f732dca0ac84fdaa4a2efc863bad6fe7b3daa76d4b85403ac69731",
       "pressure": "public_abi_metadata"
@@ -3177,6 +3242,18 @@
       "sha256": "sha256:2bb8af8bb95dbb02807f095ebdf575f2c8ff6559cf57ccb848ca247c6f7cf2b1"
     },
     {
+      "path": "manifests/wphx-php/core-lowering-pilot.v1.json",
+      "schema": "wphx.wphx-php-core-lowering-pilot.v1",
+      "issue": "WPHX-COMP-PHP-CORE-LOWERING-PILOT",
+      "status": "passed",
+      "unsupported_empty": true,
+      "core_ir_feature_count": null,
+      "segment_plan_count": null,
+      "adapter_template_count": null,
+      "bytes": 3649,
+      "sha256": "sha256:34d077fb703f23721fd1999937ebd4acac404fc06d4a47e378b49e23896e7489"
+    },
+    {
       "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
       "schema": "wphx.wphx-php-grouped-wp-http-helpers.v1",
       "issue": "WPHX-COMP-PHP-GROUP-WP-HTTP-HELPERS",
@@ -3221,8 +3298,8 @@
       "core_ir_feature_count": null,
       "segment_plan_count": null,
       "adapter_template_count": null,
-      "bytes": 37267,
-      "sha256": "sha256:e9e00a782d2b9aa8b5c710b08ee23063d44183105c7b2783e651acc5b0498da0"
+      "bytes": 39159,
+      "sha256": "sha256:2da3155fa0931cba677b91df5db6b33e9d0e91bbe3c0d653c64f96b23c0e7ed5"
     },
     {
       "path": "manifests/wphx-php/template-segment-admin-style.v1.json",
@@ -3305,6 +3382,16 @@
     {
       "script": "wphx:php:byref-arg",
       "path": "tools/wphx-php/run-byref-arg.mjs",
+      "uses_copy_file_sync": false,
+      "uses_upstream_oracle_copy": false,
+      "uses_generated_shell_install_copy": false,
+      "uses_source_replace_patch": false,
+      "copied_or_patch_line_count": 0,
+      "copied_or_patch_lines": []
+    },
+    {
+      "script": "wphx:php:core-lowering-pilot",
+      "path": "tools/wphx-php/run-core-lowering-pilot.mjs",
       "uses_copy_file_sync": false,
       "uses_upstream_oracle_copy": false,
       "uses_generated_shell_install_copy": false,
@@ -3665,7 +3752,7 @@
       "classification": "current_custom_compiler_lane",
       "severity": "active_lane",
       "follow_up_owner": "WPHX-COMP-PHP-ADOPTION-CI",
-      "count": 25,
+      "count": 26,
       "paths": [
         "fixtures/wphx-php/bootstrap-autoload.hxml",
         "fixtures/wphx-php/bootstrap-debug-shell-debug.hxml",
@@ -3674,6 +3761,7 @@
         "fixtures/wphx-php/bootstrap-error-handler-stock.hxml",
         "fixtures/wphx-php/bootstrap-error-handler.hxml",
         "fixtures/wphx-php/byref-arg.hxml",
+        "fixtures/wphx-php/core-lowering-pilot.hxml",
         "fixtures/wphx-php/f1-facade.hxml",
         "fixtures/wphx-php/f4-public-class.hxml",
         "fixtures/wphx-php/include-side-effects.hxml",
@@ -3893,16 +3981,16 @@
   "validation_result": {
     "status": "passed",
     "failures": [],
-    "wphx_hxml_count": 25,
+    "wphx_hxml_count": 26,
     "stock_haxe_php_hxml_count": 9,
-    "reflaxe_backed_wphx_hxml_count": 25,
+    "reflaxe_backed_wphx_hxml_count": 26,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 46,
     "wp_haxe_bootstrap_metadata_count": 18,
     "wp_script_adapter_metadata_count": 4,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,
-    "manifest_count": 11,
+    "manifest_count": 12,
     "manifest_statuses_passed": true,
     "stock_haxe_reference_count": 7,
     "stock_haxe_reference_missing_count": 0

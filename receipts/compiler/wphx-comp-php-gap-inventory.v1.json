@@ -32,20 +32,20 @@
       "role": "durable program rollup updated for the compiler inventory checkpoint"
     }
   ],
-  "manifest_sha256": "sha256:fb25a7454921b4916e2d13dfff2f8bb57517ed2ac8047cec24aa2dab5bfa9384",
+  "manifest_sha256": "sha256:e9f7afb54bbe03e4da880f74d04e4f612206d276545ce13d874fe404ebba7fd8",
   "validation_result": {
     "status": "passed",
     "failures": [],
-    "wphx_hxml_count": 25,
+    "wphx_hxml_count": 26,
     "stock_haxe_php_hxml_count": 9,
-    "reflaxe_backed_wphx_hxml_count": 25,
+    "reflaxe_backed_wphx_hxml_count": 26,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 46,
     "wp_haxe_bootstrap_metadata_count": 18,
     "wp_script_adapter_metadata_count": 4,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,
-    "manifest_count": 11,
+    "manifest_count": 12,
     "manifest_statuses_passed": true,
     "stock_haxe_reference_count": 7,
     "stock_haxe_reference_missing_count": 0

@@ -184,6 +184,58 @@
       }
     },
     {
+      "id": "typed-core-statement-lowering",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "global_function",
+        "public_class",
+        "conditional_declaration",
+        "typed_statement_lowering"
+      ],
+      "hxml": "fixtures/wphx-php/core-lowering-pilot.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/typed-core-statement-lowering/generated/wp-includes/wphx-core-lowering.php",
+      "bytes": 711,
+      "sha256": "sha256:01b6ccf37bc9232308c36f49bad45eb524a161f3747a71b939fc9da81e5885c4",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "if (!function_exists('wphx_core_lowering_count_until'))",
+        "function wphx_core_lowering_count_until($limit)",
+        "while (($count < $limit)) {",
+        "class WPHX_Core_Lowering",
+        "public static function describe($value)",
+        "public function sumUntil($limit, $skip)",
+        "while (($index < $limit)) {",
+        "if (($index == $skip)) {",
+        "continue;",
+        "if (($index > 5)) {",
+        "break;"
+      ],
+      "ast_contract": {
+        "functions": [
+          "wphx_core_lowering_count_until"
+        ],
+        "classes": [
+          "WPHX_Core_Lowering"
+        ],
+        "interfaces": [],
+        "methods": [
+          "__construct",
+          "describe",
+          "sumUntil"
+        ],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "segment_plan_contract": null,
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/typed-core-statement-lowering/generated/wphx-php-emission.v1.json",
+        "bytes": 1109,
+        "sha256": "sha256:a7ffe5b8247fcbe6b7d61f7f35ab1f237e96ec53238fe472d94fdb63dc9ee6f9"
+      }
+    },
+    {
       "id": "protected-method-shell",
       "evidence_class": "generated_shape",
       "artifact_scope": "minimized_fixture",
@@ -1031,13 +1083,14 @@
     "include_return_or_direct_file_scope_script": true,
     "template_segment_shell": true,
     "nested_template_segment_shell": true,
+    "typed_statement_lowering": true,
     "segment_plan_metadata": true
   },
   "pending_shell_shape_gaps": [],
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 17,
+    "case_count": 18,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,

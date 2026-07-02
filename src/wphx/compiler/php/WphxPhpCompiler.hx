@@ -1356,30 +1356,69 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		return value == null ? "" : " = " + emitExpr(value);
 	}
 
-	function emitBody(expr:TypedExpr):String
+	function emitBody(expr:TypedExpr, depth:Int = 0):String
 	{
 		return switch (expr.expr)
 		{
 			case TBlock(exprs):
-				exprs.map(emitStatement).join("\n");
+				exprs.map(expr -> emitStatement(expr, depth)).join("\n");
 			case _:
-				emitStatement(expr);
+				emitStatement(expr, depth);
 		}
 	}
 
-	function emitStatement(expr:TypedExpr):String
+	function emitStatement(expr:TypedExpr, depth:Int = 0):String
 	{
+		final prefix = tabs(depth);
 		return switch (expr.expr)
 		{
 			case TReturn(value):
-				value == null ? "return;" : "return " + emitExpr(value) + ";";
+				prefix + (value == null ? "return;" : "return " + emitExpr(value) + ";");
 			case TVar(v, value):
 				final rhs = value == null ? "" : " = " + emitExpr(value);
-				"$" + phpVarName(v) + rhs + ";";
+				prefix + "$" + phpVarName(v) + rhs + ";";
+			case TIf(condition, ifBody, elseBody):
+				recordCoreIrFeatures(["typed.stmt.if"]);
+				prefix
+				+ "if ("
+				+ emitExpr(condition)
+				+ ") {\n"
+				+ emitStatementBlock(ifBody, depth + 1)
+				+ "\n"
+				+ prefix
+				+ "}"
+				+ (elseBody == null ? "" : " else {\n" + emitStatementBlock(elseBody, depth + 1) + "\n" + prefix + "}");
+			case TWhile(condition, body, _):
+				recordCoreIrFeatures(["typed.stmt.while"]);
+				prefix
+				+ "while ("
+				+ emitExpr(condition)
+				+ ") {\n"
+				+ emitStatementBlock(body, depth + 1)
+				+ "\n"
+				+ prefix
+				+ "}";
+			case TBreak:
+				recordCoreIrFeatures(["typed.stmt.break"]);
+				prefix + "break;";
+			case TContinue:
+				recordCoreIrFeatures(["typed.stmt.continue"]);
+				prefix + "continue;";
 			case TBlock(_):
-				emitBody(expr);
+				emitBody(expr, depth);
 			case _:
-				emitExpr(expr) + ";";
+				prefix + emitExpr(expr) + ";";
+		}
+	}
+
+	function emitStatementBlock(expr:TypedExpr, depth:Int):String
+	{
+		return switch (expr.expr)
+		{
+			case TBlock(_):
+				emitBody(expr, depth);
+			case _:
+				emitStatement(expr, depth);
 		}
 	}
 
