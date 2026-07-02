@@ -13,7 +13,7 @@
     {
       "command": "npm run wphx:php:gap-inventory:check",
       "status": "passed",
-      "stdout_sha256": "sha256:ea6b6410bb2a1803acdc828f96574059dca49b0fc5153750ff0e96644271eac6",
+      "stdout_sha256": "sha256:740b4a069d51e541bc341d259046952c7bb6937a82cf512c12bda638e5846d40",
       "stderr_sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
@@ -68,8 +68,8 @@
   "evidence_manifests": [
     {
       "path": "manifests/wphx-php/compiler-gap-inventory.v1.json",
-      "bytes": 174747,
-      "sha256": "sha256:e4a69a8f4f7b070ea3426b0ad1ebea82fbb2c76cc27cf06e0973528dc4234cd3"
+      "bytes": 178264,
+      "sha256": "sha256:3865ad641f6a205828693405dacfdffac77eedaba54a308d5e6907977c9536aa"
     },
     {
       "path": "manifests/wphx-php/adapter-raw-block-policy.v1.json",
@@ -78,8 +78,8 @@
     },
     {
       "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
-      "bytes": 43007,
-      "sha256": "sha256:1db06c28c890836d99035f6c2e1bb81bab72a204475d15b31928759bd45e9abc"
+      "bytes": 43116,
+      "sha256": "sha256:ea71c5f98243ac223a443ecde3ad1f83aaf4ca5c308b7fa14d50e445581d05cf"
     },
     {
       "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",
@@ -89,12 +89,12 @@
     {
       "path": "manifests/wphx-php/core-lowering-pilot.v1.json",
       "bytes": 3649,
-      "sha256": "sha256:0b271f0340fe33d5f3108c92d8287f50330724d535c598c7e78cbbe153b5720d"
+      "sha256": "sha256:eb4d840ca0500b1a4fc97ef2afd25f5470afd3e1785ca3b9788df92f47c56aa2"
     },
     {
       "path": "manifests/wphx-php/whole-file-class-http.v1.json",
       "bytes": 6325,
-      "sha256": "sha256:3421ae18a39f556ac947053910a8fe30acc6eb6cb4560ea87e3f150b38aefb11"
+      "sha256": "sha256:799db9aac4e7e0ac3b0302b0244153c0982d2feb1cc7632985a214a1f7169823"
     },
     {
       "path": "manifests/wphx-php/bootstrap-autoload.v1.json",
@@ -119,7 +119,7 @@
     "public_shell_snapshot_case_count": 20,
     "wordpress_profile_method_adapter_count": 39,
     "script_adapter_count": 5,
-    "unsupported_report_site_count": 18
+    "unsupported_report_site_count": 23
   },
   "decision": {
     "status": "passed",

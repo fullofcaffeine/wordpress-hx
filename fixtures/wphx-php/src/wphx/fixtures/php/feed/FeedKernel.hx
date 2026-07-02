@@ -12,6 +12,11 @@ class FeedKernel
 		return WpHooks.applyFilters2("get_bloginfo_rss", WpFeedGlobals.convertChars(info), show);
 	}
 
+	public static function bloginfoRss(show:String):String
+	{
+		return WpHooks.applyFilters2("bloginfo_rss", getBloginfoRss(show), show);
+	}
+
 	public static function defaultFeed():String
 	{
 		final defaultFeed = WpHooks.applyFilters1("default_feed", "rss2");
@@ -28,10 +33,25 @@ class FeedKernel
 		return WpHooks.applyFilters2("get_wp_title_rss", WpFeedGlobals.wpGetDocumentTitle(), deprecated);
 	}
 
+	public static function wpTitleRss(deprecated:String):String
+	{
+		if (deprecated != "&#8211;")
+		{
+			WpFeedGlobals.deprecatedArgument("wp_title_rss", "4.4.0",
+				WpFeedGlobals.sprintf(WpFeedGlobals.translate("Use the %s filter instead."), "<code>document_title_separator</code>"));
+		}
+		return WpHooks.applyFilters2("wp_title_rss", getWpTitleRss("&#8211;"), deprecated);
+	}
+
 	public static function getTheTitleRss(post:Int):String
 	{
 		final title = WpFeedGlobals.getTheTitle(post);
 		return WpHooks.applyFilters1("the_title_rss", title);
+	}
+
+	public static function theTitleRss():String
+	{
+		return getTheTitleRss(0);
 	}
 
 	public static function getTheContentFeed(feedType:Null<String>):String
@@ -40,6 +60,11 @@ class FeedKernel
 		var content = WpHooks.applyFilters1("the_content", WpFeedGlobals.getTheContent());
 		content = WpFeedGlobals.strReplace("]]>", "]]&gt;", content);
 		return WpHooks.applyFilters2("the_content_feed", content, normalizedFeedType);
+	}
+
+	public static function theContentFeed(feedType:Null<String>):String
+	{
+		return getTheContentFeed(feedType);
 	}
 
 	public static function feedContentType(type:Null<String>):String

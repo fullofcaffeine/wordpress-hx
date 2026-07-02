@@ -3213,7 +3213,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-adoption-ci.v1.json",
-          "sha256": "0d7f13ff0d39420d3613007e06b2b6bb0b48c188c6696d69481c3703e79620e7",
+          "sha256": "6da12b0be2ff36af503bf82bb5d1f695d64d51126ebd329d8bdb7bd0af609439",
           "id": "receipt:wphx-comp-php-adoption-ci"
         }
       ]
@@ -3323,7 +3323,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-core-lowering-pilot.v1.json",
-          "sha256": "ec24b968be671da0cbf0e1a3780f3e200ed0e521a6719493d3ca9bd2dfea413f",
+          "sha256": "75b6fb5cd050611eb9c76c592de4acbf02e327bb4fe222e79bbb0e4a7e5a4291",
           "id": "receipt:wphx-comp-php-core-lowering-pilot"
         }
       ]
@@ -3373,7 +3373,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-gap-inventory.v1.json",
-          "sha256": "118018db1206e528e0ca86c885fe9382924506e2cf171edf5c95427b1934b647",
+          "sha256": "3a4c29de26feefc6bcc76e3f2af92230a0ad46d7fee19ea7b7db2408456a8839",
           "id": "receipt:wphx-comp-php-gap-inventory"
         }
       ]
@@ -3403,7 +3403,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-module-function-adapters.v1.json",
-          "sha256": "6ea7da1db8a87cd87b9bcf0f3561a2a32bd6e246a8982a20ff88f844876bb7f9",
+          "sha256": "406d9efc5f8a24f83ff2203d083de17477ec65bbac1ca727c7d149b29e383b07",
           "id": "receipt:wphx-comp-php-module-function-adapters"
         }
       ]
@@ -3793,7 +3793,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "38dc6856d94b1798a2146581c2465594a7a475ff5e9934db59475e9e537994e5",
+          "sha256": "98368f27910e4ba430acd6560661873195307df2a1c10620f0498976e4ba4383",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]
@@ -3843,7 +3843,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-whole-file-pilot.v1.json",
-          "sha256": "d540005ab1bbef95eb94f6e5a6ebed88d16cc081d315afa68b072f84873f775e",
+          "sha256": "bd0e2dc19a0b448fa79ad9943c68526535b21d5cb340f341b9dc462960602a87",
           "id": "receipt:wphx-comp-php-whole-file-pilot"
         }
       ]

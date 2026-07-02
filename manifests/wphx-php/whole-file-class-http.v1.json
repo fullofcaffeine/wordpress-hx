@@ -31,8 +31,8 @@
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "bytes": 55597,
-      "sha256": "sha256:4d4b438b30e3a5bfaafd059e22db6d6aca2f76449704d419e598a4ce1f8dee36"
+      "bytes": 57705,
+      "sha256": "sha256:3b59d66492a8593ad0ba34a6bd1814935852393b046f9bf80a5a3f48589a072a"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wholefile/ClassHttpEntry.hx",

@@ -100,6 +100,7 @@ enum PhpCoreStmt
 	PhpLocal(name:String, value:PhpCoreExpr);
 	PhpStaticLocal(name:String, value:PhpCoreExpr);
 	PhpExprStmt(expr:PhpCoreExpr);
+	PhpEcho(expr:PhpCoreExpr);
 	PhpRequireOnce(path:PhpCoreExpr);
 	PhpReturn(value:PhpCoreExpr);
 	PhpReturnVoid;
@@ -817,7 +818,7 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 	function emitFunction(pending:AdapterGlobalFunction):String
 	{
 		final fn = functionOf(pending.expr, "global function " + pending.phpName);
-		final body = emitBody(fn.expr);
+		final body = hasMetadata(pending.field.meta.get(), "wp.echo") ? emitEchoBody(fn.expr) : emitBody(fn.expr);
 		final header = "function " + pending.phpName + "(" + emitArgs(fn.args) + ")";
 		final decl = header + "\n{\n" + indent(body) + "\n}";
 		if (!pending.guarded)
@@ -1128,6 +1129,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				prefix + "static $" + phpIdent(name) + " = " + emitPhpCoreExpr(value, depth) + ";";
 			case PhpExprStmt(expr):
 				prefix + emitPhpCoreExpr(expr, depth) + ";";
+			case PhpEcho(expr):
+				prefix + "echo " + emitPhpCoreExpr(expr, depth) + ";";
 			case PhpRequireOnce(path):
 				prefix + "require_once " + emitPhpCoreExpr(path, depth) + ";";
 			case PhpReturn(value):
@@ -1395,6 +1398,72 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				exprs.map(expr -> emitStatement(expr, depth)).join("\n");
 			case _:
 				emitStatement(expr, depth);
+		}
+	}
+
+	function emitEchoBody(expr:TypedExpr):String
+	{
+		recordCoreIrFeatures(["stmt.echo"]);
+		return emitPhpCoreStatements([PhpEcho(phpCoreExprFromEchoBody(expr))]);
+	}
+
+	function phpCoreExprFromEchoBody(expr:TypedExpr):PhpCoreExpr
+	{
+		return switch (expr.expr)
+		{
+			case TBlock(exprs):
+				if (exprs.length != 1)
+				{
+					reportUnsupported("@:wp.echo global adapter expects a single expression or return statement at " + sourceLabel(expr.pos));
+					return PhpNull;
+				}
+				phpCoreExprFromEchoBody(exprs[0]);
+			case TReturn(value):
+				if (value == null)
+				{
+					reportUnsupported("@:wp.echo global adapter cannot echo a void return at " + sourceLabel(expr.pos));
+					return PhpNull;
+				}
+				phpCoreExprFromTypedExpr(value);
+			case _:
+				phpCoreExprFromTypedExpr(expr);
+		}
+	}
+
+	function phpCoreExprFromTypedExpr(expr:TypedExpr):PhpCoreExpr
+	{
+		return switch (expr.expr)
+		{
+			case TConst(constant):
+				switch (constant)
+				{
+					case TInt(value): PhpInt(value);
+					case TString(value): PhpString(value);
+					case TBool(value): PhpBool(value);
+					case TNull: PhpNull;
+					case _:
+						reportUnsupported("unsupported @:wp.echo constant " + constant.getName() + " at " + sourceLabel(expr.pos));
+						PhpNull;
+				}
+			case TLocal(v):
+				PhpVar(phpVarName(v));
+			case TCall(target, args):
+				phpCoreCallFromTypedCall(target, args, expr.pos);
+			case _:
+				reportUnsupported("unsupported @:wp.echo expression " + expr.expr.getName() + " at " + sourceLabel(expr.pos));
+				PhpNull;
+		}
+	}
+
+	function phpCoreCallFromTypedCall(target:TypedExpr, args:Array<TypedExpr>, pos:Position):PhpCoreExpr
+	{
+		return switch (target.expr)
+		{
+			case TField(_, FStatic(classRef, fieldRef)):
+				PhpStaticCall(phpClassName(classRef.get()), fieldRef.get().name, args.map(phpCoreExprFromTypedExpr));
+			case _:
+				reportUnsupported("unsupported @:wp.echo call target at " + sourceLabel(pos));
+				PhpNull;
 		}
 	}
 

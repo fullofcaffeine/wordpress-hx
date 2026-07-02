@@ -45,12 +45,13 @@
       "role": "feed module function adapter manifest"
     }
   ],
-  "manifest_sha256": "sha256:715e19c3d18ee3dd35b17a797af710cfc21c99dfaada5d296bf99045076144a0",
+  "manifest_sha256": "sha256:82eb0f8c47dc55a936cd2a9e1b666c8951c9e2bfb2555e84268bcb881ebf57c2",
   "claims": [
     "WPHX PHP emits selected unguarded module-level public functions at original path wp-includes/feed.php.",
-    "The generated get_bloginfo_rss, get_default_feed, get_wp_title_rss, get_the_title_rss, get_the_content_feed, and feed_content_type functions preserve reflection-visible parameters/defaults for the selected fixture.",
+    "The generated selected getter and display feed helpers preserve reflection-visible parameters/defaults for the selected fixture.",
+    "The WPHX PHP core IR emits selected public display wrappers with idiomatic PHP echo statements via @:wp.echo metadata.",
     "The generated functions delegate selected behavior to a stock Haxe PHP implementation through the WPHX PHP bootstrap while preserving native apply_filters timing at the public PHP boundary.",
-    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion, default feed normalization, feed title deprecation and filtering, title RSS filtering, feed content filtering/escaping, feed content-type mapping, PHP empty('0') behavior, and filter payloads."
+    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion/display, default feed normalization, feed title deprecation/filtering/display, title RSS filtering/display, feed content filtering/escaping/display, feed content-type mapping, PHP empty('0') behavior, output capture, and filter payloads."
   ],
   "non_claims": [
     "This fixture does not claim full wp-includes/feed.php ownership.",

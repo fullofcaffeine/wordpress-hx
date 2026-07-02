@@ -102,8 +102,8 @@
       ],
       "hxml": "fixtures/wphx-php/feed-module-functions.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/feed-module-functions/generated/wp-includes/feed.php",
-      "bytes": 1202,
-      "sha256": "sha256:38c8e732562e93e19dc0ba6ac603ebbfe87c124637cf8e74a9a88f5853d69246",
+      "bytes": 1635,
+      "sha256": "sha256:d90157d65754358c1c2ec5dd59dbbfa87ed9ab3f0a90470dc3671963a662ed3b",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -115,12 +115,16 @@
       ],
       "ast_contract": {
         "functions": [
+          "bloginfo_rss",
           "feed_content_type",
           "get_bloginfo_rss",
           "get_default_feed",
           "get_the_content_feed",
           "get_the_title_rss",
-          "get_wp_title_rss"
+          "get_wp_title_rss",
+          "the_content_feed",
+          "the_title_rss",
+          "wp_title_rss"
         ],
         "classes": [],
         "interfaces": [],
@@ -131,8 +135,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/feed-module-functions/generated/wphx-php-emission.v1.json",
-        "bytes": 2184,
-        "sha256": "sha256:095c3ea8ed7a37523fc86694fd9a801ff15d90087ef96843e96dcfed46d0f3bf"
+        "bytes": 3384,
+        "sha256": "sha256:474b9066be68c0e719f7d3983f540f024cab10bf11edf14be90f017e40df1001"
       }
     },
     {

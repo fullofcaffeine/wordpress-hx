@@ -212,18 +212,18 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleEntry.hx",
-      "bytes": 760,
-      "sha256": "sha256:44d04a9d34149a33288515420aa05405ca054e9b48eeefbc23e236568c945a3b"
+      "bytes": 1124,
+      "sha256": "sha256:6ff76334791916ce70877016c5a24f42916de552d6f4fa9ffcfa54caf8aef983"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-      "bytes": 1606,
-      "sha256": "sha256:64461f6183a953b84f6f66bcac858ca1d51ed444b8aba5905d55a7ef588a01e1"
+      "bytes": 2591,
+      "sha256": "sha256:a0ea964e52d9a228530140c1b5a67c1697b03e59f8f6197dd51e5e4c17d97b04"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/HaxeFeedKernel.hx",
-      "bytes": 548,
-      "sha256": "sha256:27a5629942df6ff5178d0c517d20e3c57225e54123412e1959ebc6e568703d7d"
+      "bytes": 759,
+      "sha256": "sha256:9b2341a66aefadd771c61271cfc2cd88189ded7bf1bdbe207fb372a602ca7af9"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/include/IncludeSideEffectEntry.hx",
@@ -507,8 +507,8 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-      "bytes": 3521,
-      "sha256": "sha256:976258f0f7da38708033f3888e7cf172d72272432e7551991edf0f37ff010aec"
+      "bytes": 4232,
+      "sha256": "sha256:9395f47fa6d4a87b857c820e96a0c62828b666b19fe07509fb977ab6475ffa6a"
     },
     {
       "path": "fixtures/wphx-php/template-segment-admin-style.hxml",
@@ -602,8 +602,8 @@
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "bytes": 55597,
-      "sha256": "sha256:4d4b438b30e3a5bfaafd059e22db6d6aca2f76449704d419e598a4ce1f8dee36"
+      "bytes": 57705,
+      "sha256": "sha256:3b59d66492a8593ad0ba34a6bd1814935852393b046f9bf80a5a3f48589a072a"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
@@ -618,11 +618,11 @@
     "reflaxe_backed_wphx_hxml_count": 28,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 59,
-    "wp_haxe_bootstrap_metadata_count": 24,
+    "wp_haxe_bootstrap_metadata_count": 28,
     "wp_script_adapter_metadata_count": 5,
     "method_adapter_registry_count": 39,
     "script_adapter_registry_count": 5,
-    "unsupported_report_site_count": 18,
+    "unsupported_report_site_count": 23,
     "runner_surface_count": 25,
     "runner_surface_with_copy_or_patch_count": 6,
     "php_raw_block_count": 0,
@@ -2608,25 +2608,49 @@
       {
         "kind": "wp.haxeBootstrap",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 25,
+        "line": 26,
         "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
       },
       {
         "kind": "wp.haxeBootstrap",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 34,
+        "line": 35,
         "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
       },
       {
         "kind": "wp.haxeBootstrap",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 43,
+        "line": 44,
         "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
       },
       {
         "kind": "wp.haxeBootstrap",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 52,
+        "line": 54,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 63,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 73,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 82,
+        "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
+      },
+      {
+        "kind": "wp.haxeBootstrap",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 92,
         "bootstrap_constant": "WPHX_FEED_MODULE_BOOTSTRAPPED"
       },
       {
@@ -2804,25 +2828,49 @@
       {
         "kind": "wp.file",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 24,
+        "line": 25,
         "output_path": "wp-includes/feed.php"
       },
       {
         "kind": "wp.file",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 33,
+        "line": 34,
         "output_path": "wp-includes/feed.php"
       },
       {
         "kind": "wp.file",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 42,
+        "line": 43,
         "output_path": "wp-includes/feed.php"
       },
       {
         "kind": "wp.file",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-        "line": 51,
+        "line": 53,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 62,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 72,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 81,
+        "output_path": "wp-includes/feed.php"
+      },
+      {
+        "kind": "wp.file",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
+        "line": 91,
         "output_path": "wp-includes/feed.php"
       },
       {
@@ -3178,73 +3226,73 @@
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 76,
+        "line": 101,
         "native_name": "strip_tags"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 79,
+        "line": 104,
         "native_name": "get_bloginfo"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 82,
+        "line": 107,
         "native_name": "convert_chars"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 85,
+        "line": 110,
         "native_name": "_deprecated_argument"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 88,
+        "line": 113,
         "native_name": "__"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 91,
+        "line": 116,
         "native_name": "sprintf"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 94,
+        "line": 119,
         "native_name": "wp_get_document_title"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 97,
+        "line": 122,
         "native_name": "get_the_title"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 100,
+        "line": 125,
         "native_name": "get_the_content"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 103,
+        "line": 128,
         "native_name": "str_replace"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 113,
+        "line": 138,
         "native_name": "apply_filters"
       },
       {
         "kind": "native",
         "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-        "line": 116,
+        "line": 141,
         "native_name": "apply_filters"
       }
     ]
@@ -3450,27 +3498,27 @@
     {
       "adapter": "deprecated-class-http",
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 512
+      "line": 513
     },
     {
       "adapter": "include-side-effects",
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 510
+      "line": 511
     },
     {
       "adapter": "template-segment-admin-style",
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 514
+      "line": 515
     },
     {
       "adapter": "template-segment-nested-parent",
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 516
+      "line": 517
     },
     {
       "adapter": "template-segment-nested-partial",
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 518
+      "line": 519
     }
   ],
   "raw_template_debt": {
@@ -3482,126 +3530,161 @@
   "typed_lowering_unsupported_report_sites": [
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 378,
+      "line": 379,
       "source": "reportUnsupported(\"missing @:wp.file for global function \" + field.name);",
       "source_sha256": "sha256:496cf1bc7f918147b854510cefa636f178e73b27bfb297d57d1b918f605d7639",
       "pressure": "public_file_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 384,
+      "line": 385,
       "source": "reportUnsupported(\"missing body for global function \" + field.name);",
       "source_sha256": "sha256:4680a743e1899c1f21bdeaf1d66c50436bb9c43f788b69501ecec81474dda9fa",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 443,
+      "line": 444,
       "source": "reportUnsupported(\"multiple Haxe bootstrap constants for \" + path);",
       "source_sha256": "sha256:92710225c6b70e3231e269649b99998662c2d90d847e4404f16859c469d7d05c",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 521,
+      "line": 522,
       "source": "reportUnsupported(\"unsupported WPHX PHP script adapter \" + pending.adapter);",
       "source_sha256": "sha256:651d47cbef4118fa0f631d2763d8ede930ef4a42e95f8c33f18e73ebe837ef8d",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 859,
+      "line": 860,
       "source": "reportUnsupported(\"unsupported wphx_php_bootstrap_error_handler policy: \" + value);",
       "source_sha256": "sha256:07bb0029f5f2e57cd25a8fc2dc153ae06d2643fb4c6cfae6346b7f5c0ff13fb8",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 896,
+      "line": 897,
       "source": "reportUnsupported(\"missing const value for \" + pending.phpName + \"::\" + field.name);",
       "source_sha256": "sha256:05f1ac20d90c330b6e1122dafce90bd21659e93a1cac9a2a8e6658fa386e6f8a",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1012,
+      "line": 1013,
       "source": "reportUnsupported(\"unsupported WPHX PHP method adapter \" + adapter + \" for \" + field.name);",
       "source_sha256": "sha256:3af628b466a65fa25d9083c389a05aa3e721f155bb25cebcc48cb75614a9a021",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1017,
+      "line": 1018,
       "source": "reportUnsupported(plan.error);",
       "source_sha256": "sha256:7efa5670b20b307dd81a698bbe9da3ecaddcfb9d558ab923f15f58692e4cd724",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1360,
+      "line": 1363,
       "source": "reportUnsupported(\"unsupported interface method type for \" + field.name);",
       "source_sha256": "sha256:bc6edb2781a39e268b7fa177075dbe7fb6efc175c63b5433110b77d5937fc7bc",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1495,
+      "line": 1417,
+      "source": "reportUnsupported(\"@:wp.echo global adapter expects a single expression or return statement at \" + sourceLabel(expr.pos));",
+      "source_sha256": "sha256:e58a79ddfc6270d679b91288e5ec38a21be35c7addf1e7f79cd21fe65a21ab2f",
+      "pressure": "compiler_validation"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "line": 1424,
+      "source": "reportUnsupported(\"@:wp.echo global adapter cannot echo a void return at \" + sourceLabel(expr.pos));",
+      "source_sha256": "sha256:d39f519248468a68c0b3709e11ce9fe3cfa8182f43fec5bcba9df397b8b392f0",
+      "pressure": "compiler_validation"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "line": 1445,
+      "source": "reportUnsupported(\"unsupported @:wp.echo constant \" + constant.getName() + \" at \" + sourceLabel(expr.pos));",
+      "source_sha256": "sha256:e75aff3cdf6dd5485c915a8016a8e9dbac132f44003312774f2abcea7a94674d",
+      "pressure": "compiler_validation"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "line": 1453,
+      "source": "reportUnsupported(\"unsupported @:wp.echo expression \" + expr.expr.getName() + \" at \" + sourceLabel(expr.pos));",
+      "source_sha256": "sha256:0e363aa6e74e6032a50893702ec73760626c81f2e4493dd2e4d19a558314a741",
+      "pressure": "compiler_validation"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "line": 1465,
+      "source": "reportUnsupported(\"unsupported @:wp.echo call target at \" + sourceLabel(pos));",
+      "source_sha256": "sha256:1ba709d699f917f652fb938d28c154e7f1b1e8a9f53b42d6984cd05dd3f1f459",
+      "pressure": "compiler_validation"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "line": 1564,
       "source": "reportUnsupported(\"unsupported expression \" + expr.expr.getName() + \" at \" + sourceLabel(expr.pos));",
       "source_sha256": "sha256:23e9898f1ec24da8f2be85f96d2045bddf9fed1f40a044badf6b2e7db2530e24",
       "pressure": "typed_expression_lowering"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1528,
+      "line": 1597,
       "source": "reportUnsupported(\"unsupported binary operator \" + Std.string(op));",
       "source_sha256": "sha256:b45c24b22719afaafb91b20fed3e361bcc8f74560d0c036d5e537f2ed1f9a32b",
       "pressure": "typed_binary_operator_lowering"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1563,
+      "line": 1632,
       "source": "reportUnsupported(\"php array get lowering expects 3 arguments for \" + classType.module + \".\" + field.name);",
       "source_sha256": "sha256:73ff953495ce65a58c5cd0835db315aa62bc127edc0e8e51d15790400cb6a89b",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1602,
+      "line": 1671,
       "source": "reportUnsupported(\"unsupported field access at \" + sourceLabel(target.pos));",
       "source_sha256": "sha256:c90ec229bf6fdc0261126d880e50c7c5078145ef2d8a8bad7996da5b541b901a",
       "pressure": "typed_field_lowering"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1696,
+      "line": 1765,
       "source": "reportUnsupported(\"invalid @:wp.haxeHelper metadata; expected helper class string\");",
       "source_sha256": "sha256:38241c72fed7cb3131ac70777909648513fe31a4156694156936707f74ca0ed3",
       "pressure": "helper_bridge_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1712,
+      "line": 1781,
       "source": "reportUnsupported(\"invalid named @:wp.haxeHelper metadata; expected alias and helper class strings\");",
       "source_sha256": "sha256:8dee7a0b821fff3627cc52fad09e71519f65639a24403ca469eabd6faf78c533",
       "pressure": "helper_bridge_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1722,
+      "line": 1791,
       "source": "reportUnsupported(\"invalid @:wp.haxeHelper metadata arity; expected one helper string or alias/helper strings\");",
       "source_sha256": "sha256:c4ad01462ce01aaf21f1886ab432e98a469c620060853e4a79a706c68f74eb3a",
       "pressure": "helper_bridge_metadata"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1804,
+      "line": 1873,
       "source": "function reportUnsupported(message:String):Void",
       "source_sha256": "sha256:e6d48f0d91869ed61484d0114b815fff2c641383643c0bd9ada4fb3803a5d848",
       "pressure": "compiler_validation"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "line": 1866,
+      "line": 1935,
       "source": "reportUnsupported(\"unsupported visibility \" + requested + \" for \" + field.name);",
       "source_sha256": "sha256:f8cbfa9d01f732dca0ac84fdaa4a2efc863bad6fe7b3daa76d4b85403ac69731",
       "pressure": "public_abi_metadata"
@@ -3666,7 +3749,7 @@
       "segment_plan_count": null,
       "adapter_template_count": null,
       "bytes": 3649,
-      "sha256": "sha256:0b271f0340fe33d5f3108c92d8287f50330724d535c598c7e78cbbe153b5720d"
+      "sha256": "sha256:eb4d840ca0500b1a4fc97ef2afd25f5470afd3e1785ca3b9788df92f47c56aa2"
     },
     {
       "path": "manifests/wphx-php/feed-module-functions.v1.json",
@@ -3677,8 +3760,8 @@
       "core_ir_feature_count": null,
       "segment_plan_count": null,
       "adapter_template_count": null,
-      "bytes": 30370,
-      "sha256": "sha256:715e19c3d18ee3dd35b17a797af710cfc21c99dfaada5d296bf99045076144a0"
+      "bytes": 45633,
+      "sha256": "sha256:82eb0f8c47dc55a936cd2a9e1b666c8951c9e2bfb2555e84268bcb881ebf57c2"
     },
     {
       "path": "manifests/wphx-php/grouped-wp-http-helpers.v1.json",
@@ -3725,8 +3808,8 @@
       "core_ir_feature_count": null,
       "segment_plan_count": null,
       "adapter_template_count": null,
-      "bytes": 43007,
-      "sha256": "sha256:1db06c28c890836d99035f6c2e1bb81bab72a204475d15b31928759bd45e9abc"
+      "bytes": 43116,
+      "sha256": "sha256:ea71c5f98243ac223a443ecde3ad1f83aaf4ca5c308b7fa14d50e445581d05cf"
     },
     {
       "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",
@@ -3786,7 +3869,7 @@
       "segment_plan_count": null,
       "adapter_template_count": null,
       "bytes": 6325,
-      "sha256": "sha256:3421ae18a39f556ac947053910a8fe30acc6eb6cb4560ea87e3f150b38aefb11"
+      "sha256": "sha256:799db9aac4e7e0ac3b0302b0244153c0982d2feb1cc7632985a214a1f7169823"
     }
   ],
   "wphx_php_runner_surfaces": [
@@ -3891,7 +3974,7 @@
       "copied_or_patch_lines": [
         {
           "kind": "copied_word",
-          "line": 452,
+          "line": 520,
           "source_sha256": "sha256:9eebb510a38faf3671bad168d3e2e73afcaf78eb73732803acae6c8a1389798e"
         }
       ]
@@ -4336,7 +4419,7 @@
       "classification": "std_php_runtime_to_borrow",
       "severity": "active_dependency",
       "follow_up_owner": "WPHX-COMP-PHP-RUNTIME-STDLIB-STRATEGY",
-      "count": 24,
+      "count": 28,
       "constants": [
         "WPHX_BOOTSTRAP_AUTOLOAD_BOOTSTRAPPED",
         "WPHX_BOOTSTRAP_DEBUG_BOOTSTRAPPED",
@@ -4426,11 +4509,11 @@
       "classification": "reusable_php_core_ir",
       "severity": "backend_pressure",
       "follow_up_owner": "WPHX-COMP-PHP-CORE-LOWERING-PILOT",
-      "count": 18,
+      "count": 23,
       "pressures": [
         {
           "value": "compiler_validation",
-          "count": 10
+          "count": 15
         },
         {
           "value": "helper_bridge_metadata",
@@ -4501,7 +4584,7 @@
     "reflaxe_backed_wphx_hxml_count": 28,
     "wp_adapter_metadata_count": 46,
     "wp_haxe_helper_metadata_count": 59,
-    "wp_haxe_bootstrap_metadata_count": 24,
+    "wp_haxe_bootstrap_metadata_count": 28,
     "wp_script_adapter_metadata_count": 5,
     "php_raw_block_count": 0,
     "render_template_call_count": 0,

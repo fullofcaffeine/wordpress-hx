@@ -36,7 +36,7 @@
       "role": "WPHX PHP compiler script adapter and generic require_once/magic-constant printer"
     }
   ],
-  "manifest_sha256": "sha256:3421ae18a39f556ac947053910a8fe30acc6eb6cb4560ea87e3f150b38aefb11",
+  "manifest_sha256": "sha256:799db9aac4e7e0ac3b0302b0244153c0982d2feb1cc7632985a214a1f7169823",
   "validation_result": {
     "status": "passed",
     "php_lint_passed": true,

@@ -36,7 +36,7 @@
       "role": "core lowering pilot manifest"
     }
   ],
-  "manifest_sha256": "sha256:0b271f0340fe33d5f3108c92d8287f50330724d535c598c7e78cbbe153b5720d",
+  "manifest_sha256": "sha256:eb4d840ca0500b1a4fc97ef2afd25f5470afd3e1785ca3b9788df92f47c56aa2",
   "validation_result": {
     "status": "passed",
     "php_lint_passed": true,

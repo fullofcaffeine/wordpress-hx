@@ -27,8 +27,8 @@
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
-      "bytes": 55597,
-      "sha256": "sha256:4d4b438b30e3a5bfaafd059e22db6d6aca2f76449704d419e598a4ce1f8dee36"
+      "bytes": 57705,
+      "sha256": "sha256:3b59d66492a8593ad0ba34a6bd1814935852393b046f9bf80a5a3f48589a072a"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedImplEntry.hx",
@@ -37,60 +37,76 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-      "bytes": 3521,
-      "sha256": "sha256:976258f0f7da38708033f3888e7cf172d72272432e7551991edf0f37ff010aec"
+      "bytes": 4232,
+      "sha256": "sha256:9395f47fa6d4a87b857c820e96a0c62828b666b19fe07509fb977ab6475ffa6a"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleEntry.hx",
-      "bytes": 760,
-      "sha256": "sha256:44d04a9d34149a33288515420aa05405ca054e9b48eeefbc23e236568c945a3b"
+      "bytes": 1124,
+      "sha256": "sha256:6ff76334791916ce70877016c5a24f42916de552d6f4fa9ffcfa54caf8aef983"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-      "bytes": 1606,
-      "sha256": "sha256:64461f6183a953b84f6f66bcac858ca1d51ed444b8aba5905d55a7ef588a01e1"
+      "bytes": 2591,
+      "sha256": "sha256:a0ea964e52d9a228530140c1b5a67c1697b03e59f8f6197dd51e5e4c17d97b04"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/HaxeFeedKernel.hx",
-      "bytes": 548,
-      "sha256": "sha256:27a5629942df6ff5178d0c517d20e3c57225e54123412e1959ebc6e568703d7d"
+      "bytes": 759,
+      "sha256": "sha256:9b2341a66aefadd771c61271cfc2cd88189ded7bf1bdbe207fb372a602ca7af9"
     }
   ],
   "upstream_oracle": {
     "repo_path": "../wordpress-develop/src/wp-includes/feed.php",
     "selected_symbols": [
       "get_bloginfo_rss",
+      "bloginfo_rss",
       "get_default_feed",
       "get_wp_title_rss",
+      "wp_title_rss",
       "get_the_title_rss",
+      "the_title_rss",
       "get_the_content_feed",
+      "the_content_feed",
       "feed_content_type"
     ],
     "selected_source_lines": [
       "27-41",
+      "56-68",
       "80-91",
       "103-119",
+      "129-147",
       "158-169",
+      "176-178",
       "190-209",
+      "218-220",
       "768-791"
     ]
   },
   "generated_shell": {
     "path": "build/wphx-php/feed-module-functions/generated/wp-includes/feed.php",
-    "bytes": 1202,
-    "sha256": "sha256:38c8e732562e93e19dc0ba6ac603ebbfe87c124637cf8e74a9a88f5853d69246",
+    "bytes": 1635,
+    "sha256": "sha256:d90157d65754358c1c2ec5dd59dbbfa87ed9ab3f0a90470dc3671963a662ed3b",
     "php_lint": "passed",
     "php_lint_output": "No syntax errors detected in build/wphx-php/feed-module-functions/generated/wp-includes/feed.php",
     "exact_patterns": [
       "function get_bloginfo_rss($show = '')",
       "FeedKernel::getBloginfoRss($show)",
+      "function bloginfo_rss($show = '')",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::bloginfoRss( $show );",
       "function get_default_feed()",
       "function get_wp_title_rss($deprecated = '&#8211;')",
       "FeedKernel::getWpTitleRss($deprecated)",
+      "function wp_title_rss($deprecated = '&#8211;')",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::wpTitleRss( $deprecated );",
       "function get_the_title_rss($post = 0)",
       "FeedKernel::getTheTitleRss($post)",
+      "function the_title_rss()",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::theTitleRss();",
       "function get_the_content_feed($feed_type = null)",
       "FeedKernel::getTheContentFeed($feed_type)",
+      "function the_content_feed($feed_type = null)",
+      "echo \\wphx\\fixtures\\php\\feed\\FeedKernel::theContentFeed( $feed_type );",
       "function feed_content_type($type = '')",
       "FeedKernel::defaultFeed()",
       "FeedKernel::feedContentType($type)"
@@ -98,25 +114,31 @@
   },
   "oracle_shell": {
     "path": "build/wphx-php/feed-module-functions/oracle/wp-includes/feed.php",
-    "bytes": 1555,
-    "sha256": "sha256:8b3244b5eb36b2a19fc58bd39b9c21df03d8a327a1f1423d3eef35d2f60e808c",
+    "bytes": 2123,
+    "sha256": "sha256:74656f64de3021e6b3962d046d81579dd7f2bb1e8e41e878ca8f440fd9186dce",
     "php_lint": "passed",
     "php_lint_output": "No syntax errors detected in build/wphx-php/feed-module-functions/oracle/wp-includes/feed.php"
   },
   "emission_manifest": {
     "path": "build/wphx-php/feed-module-functions/generated/wphx-php-emission.v1.json",
-    "bytes": 2184,
-    "sha256": "sha256:095c3ea8ed7a37523fc86694fd9a801ff15d90087ef96843e96dcfed46d0f3bf",
+    "bytes": 3384,
+    "sha256": "sha256:474b9066be68c0e719f7d3983f540f024cab10bf11edf14be90f017e40df1001",
     "declarations": [
+      "wp-includes/feed.php:global-function:bloginfo_rss",
       "wp-includes/feed.php:global-function:feed_content_type",
       "wp-includes/feed.php:global-function:get_bloginfo_rss",
       "wp-includes/feed.php:global-function:get_default_feed",
       "wp-includes/feed.php:global-function:get_the_content_feed",
       "wp-includes/feed.php:global-function:get_the_title_rss",
-      "wp-includes/feed.php:global-function:get_wp_title_rss"
+      "wp-includes/feed.php:global-function:get_wp_title_rss",
+      "wp-includes/feed.php:global-function:the_content_feed",
+      "wp-includes/feed.php:global-function:the_title_rss",
+      "wp-includes/feed.php:global-function:wp_title_rss"
     ],
     "unsupported": [],
-    "core_ir_features": [],
+    "core_ir_features": [
+      "stmt.echo"
+    ],
     "segment_plans": [],
     "adapter_templates": []
   },
@@ -127,6 +149,7 @@
         {
           "id": "bloginfo-rss:name",
           "value": "Fixture  &amp; Co",
+          "output": "",
           "filters": [
             {
               "hook": "get_bloginfo_rss",
@@ -141,6 +164,7 @@
         {
           "id": "bloginfo-rss:description",
           "value": "Fixture Description &amp; More",
+          "output": "",
           "filters": [
             {
               "hook": "get_bloginfo_rss",
@@ -155,6 +179,7 @@
         {
           "id": "bloginfo-rss:filtered",
           "value": "Filtered Blog",
+          "output": "",
           "filters": [
             {
               "hook": "get_bloginfo_rss",
@@ -167,8 +192,53 @@
           "deprecated": []
         },
         {
+          "id": "bloginfo-rss:display",
+          "value": null,
+          "output": "Fixture  &amp; Co",
+          "filters": [
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            },
+            {
+              "hook": "bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "bloginfo-rss:display-filtered",
+          "value": null,
+          "output": "Display Blog",
+          "filters": [
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            },
+            {
+              "hook": "bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
           "id": "default-feed:default",
           "value": "rss2",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -181,6 +251,7 @@
         {
           "id": "default-feed:rss-normalized",
           "value": "rss2",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -193,6 +264,7 @@
         {
           "id": "default-feed:atom-filter",
           "value": "atom",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -205,6 +277,7 @@
         {
           "id": "wp-title-rss:default",
           "value": "Fixture Document Title",
+          "output": "",
           "filters": [
             {
               "hook": "get_wp_title_rss",
@@ -219,6 +292,7 @@
         {
           "id": "wp-title-rss:deprecated-argument",
           "value": "Fixture Document Title",
+          "output": "",
           "filters": [
             {
               "hook": "get_wp_title_rss",
@@ -239,6 +313,7 @@
         {
           "id": "wp-title-rss:filtered",
           "value": "Filtered Document Title",
+          "output": "",
           "filters": [
             {
               "hook": "get_wp_title_rss",
@@ -251,8 +326,81 @@
           "deprecated": []
         },
         {
+          "id": "wp-title-rss:display",
+          "value": null,
+          "output": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "wp-title-rss:display-deprecated-argument",
+          "value": null,
+          "output": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "-"
+              ]
+            }
+          ],
+          "deprecated": [
+            {
+              "function": "wp_title_rss",
+              "version": "4.4.0",
+              "message": "Use the <code>document_title_separator</code> filter instead."
+            }
+          ]
+        },
+        {
+          "id": "wp-title-rss:display-filtered",
+          "value": null,
+          "output": "Displayed Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
           "id": "feed-content-type:empty-uses-default",
           "value": "application/atom+xml",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -272,6 +420,7 @@
         {
           "id": "feed-content-type:zero-uses-default",
           "value": "text/xml",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -291,6 +440,7 @@
         {
           "id": "feed-content-type:rss-http",
           "value": "text/xml",
+          "output": "",
           "filters": [
             {
               "hook": "feed_content_type",
@@ -305,6 +455,7 @@
         {
           "id": "feed-content-type:unknown",
           "value": "application/octet-stream",
+          "output": "",
           "filters": [
             {
               "hook": "feed_content_type",
@@ -319,6 +470,7 @@
         {
           "id": "feed-content-type:filtered",
           "value": "custom/atom",
+          "output": "",
           "filters": [
             {
               "hook": "feed_content_type",
@@ -333,6 +485,7 @@
         {
           "id": "title-rss:default",
           "value": "Title #0 <Raw>",
+          "output": "",
           "filters": [
             {
               "hook": "the_title_rss",
@@ -345,6 +498,7 @@
         {
           "id": "title-rss:post",
           "value": "Title #7 <Raw>",
+          "output": "",
           "filters": [
             {
               "hook": "the_title_rss",
@@ -357,6 +511,7 @@
         {
           "id": "title-rss:filtered",
           "value": "Filtered Title",
+          "output": "",
           "filters": [
             {
               "hook": "the_title_rss",
@@ -367,8 +522,35 @@
           "deprecated": []
         },
         {
+          "id": "title-rss:display",
+          "value": null,
+          "output": "Title #0 <Raw>",
+          "filters": [
+            {
+              "hook": "the_title_rss",
+              "value": "Title #0 <Raw>",
+              "args": []
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "title-rss:display-filtered",
+          "value": null,
+          "output": "Displayed Title",
+          "filters": [
+            {
+              "hook": "the_title_rss",
+              "value": "Title #0 <Raw>",
+              "args": []
+            }
+          ],
+          "deprecated": []
+        },
+        {
           "id": "content-feed:default-feed",
           "value": "Before ]]&gt; After",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -393,6 +575,7 @@
         {
           "id": "content-feed:zero-uses-default",
           "value": "Before ]]&gt; After",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -417,6 +600,7 @@
         {
           "id": "content-feed:explicit-type",
           "value": "Before ]]&gt; After",
+          "output": "",
           "filters": [
             {
               "hook": "the_content",
@@ -436,6 +620,7 @@
         {
           "id": "content-feed:content-filtered",
           "value": "Filtered ]]&gt; Content",
+          "output": "",
           "filters": [
             {
               "hook": "the_content",
@@ -455,6 +640,47 @@
         {
           "id": "content-feed:feed-filtered",
           "value": "Filtered Feed Content",
+          "output": "",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "atom"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:display",
+          "value": null,
+          "output": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "rdf"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:display-filtered",
+          "value": null,
+          "output": "Displayed Feed Content",
           "filters": [
             {
               "hook": "the_content",
@@ -475,6 +701,25 @@
       "reflection": {
         "get_bloginfo_rss": {
           "name": "get_bloginfo_rss",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "show",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": "",
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
+        "bloginfo_rss": {
+          "name": "bloginfo_rss",
           "numberOfParameters": 1,
           "numberOfRequiredParameters": 0,
           "returnsReference": false,
@@ -519,6 +764,25 @@
             }
           ]
         },
+        "wp_title_rss": {
+          "name": "wp_title_rss",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "deprecated",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": "&#8211;",
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
         "get_the_title_rss": {
           "name": "get_the_title_rss",
           "numberOfParameters": 1,
@@ -538,8 +802,35 @@
             }
           ]
         },
+        "the_title_rss": {
+          "name": "the_title_rss",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
+        },
         "get_the_content_feed": {
           "name": "get_the_content_feed",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "feed_type",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": null,
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
+        "the_content_feed": {
+          "name": "the_content_feed",
           "numberOfParameters": 1,
           "numberOfRequiredParameters": 0,
           "returnsReference": false,
@@ -584,6 +875,7 @@
         {
           "id": "bloginfo-rss:name",
           "value": "Fixture  &amp; Co",
+          "output": "",
           "filters": [
             {
               "hook": "get_bloginfo_rss",
@@ -598,6 +890,7 @@
         {
           "id": "bloginfo-rss:description",
           "value": "Fixture Description &amp; More",
+          "output": "",
           "filters": [
             {
               "hook": "get_bloginfo_rss",
@@ -612,6 +905,7 @@
         {
           "id": "bloginfo-rss:filtered",
           "value": "Filtered Blog",
+          "output": "",
           "filters": [
             {
               "hook": "get_bloginfo_rss",
@@ -624,8 +918,53 @@
           "deprecated": []
         },
         {
+          "id": "bloginfo-rss:display",
+          "value": null,
+          "output": "Fixture  &amp; Co",
+          "filters": [
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            },
+            {
+              "hook": "bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "bloginfo-rss:display-filtered",
+          "value": null,
+          "output": "Display Blog",
+          "filters": [
+            {
+              "hook": "get_bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            },
+            {
+              "hook": "bloginfo_rss",
+              "value": "Fixture  &amp; Co",
+              "args": [
+                "name"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
           "id": "default-feed:default",
           "value": "rss2",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -638,6 +977,7 @@
         {
           "id": "default-feed:rss-normalized",
           "value": "rss2",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -650,6 +990,7 @@
         {
           "id": "default-feed:atom-filter",
           "value": "atom",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -662,6 +1003,7 @@
         {
           "id": "wp-title-rss:default",
           "value": "Fixture Document Title",
+          "output": "",
           "filters": [
             {
               "hook": "get_wp_title_rss",
@@ -676,6 +1018,7 @@
         {
           "id": "wp-title-rss:deprecated-argument",
           "value": "Fixture Document Title",
+          "output": "",
           "filters": [
             {
               "hook": "get_wp_title_rss",
@@ -696,6 +1039,7 @@
         {
           "id": "wp-title-rss:filtered",
           "value": "Filtered Document Title",
+          "output": "",
           "filters": [
             {
               "hook": "get_wp_title_rss",
@@ -708,8 +1052,81 @@
           "deprecated": []
         },
         {
+          "id": "wp-title-rss:display",
+          "value": null,
+          "output": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "wp-title-rss:display-deprecated-argument",
+          "value": null,
+          "output": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "-"
+              ]
+            }
+          ],
+          "deprecated": [
+            {
+              "function": "wp_title_rss",
+              "version": "4.4.0",
+              "message": "Use the <code>document_title_separator</code> filter instead."
+            }
+          ]
+        },
+        {
+          "id": "wp-title-rss:display-filtered",
+          "value": null,
+          "output": "Displayed Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            },
+            {
+              "hook": "wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
           "id": "feed-content-type:empty-uses-default",
           "value": "application/atom+xml",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -729,6 +1146,7 @@
         {
           "id": "feed-content-type:zero-uses-default",
           "value": "text/xml",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -748,6 +1166,7 @@
         {
           "id": "feed-content-type:rss-http",
           "value": "text/xml",
+          "output": "",
           "filters": [
             {
               "hook": "feed_content_type",
@@ -762,6 +1181,7 @@
         {
           "id": "feed-content-type:unknown",
           "value": "application/octet-stream",
+          "output": "",
           "filters": [
             {
               "hook": "feed_content_type",
@@ -776,6 +1196,7 @@
         {
           "id": "feed-content-type:filtered",
           "value": "custom/atom",
+          "output": "",
           "filters": [
             {
               "hook": "feed_content_type",
@@ -790,6 +1211,7 @@
         {
           "id": "title-rss:default",
           "value": "Title #0 <Raw>",
+          "output": "",
           "filters": [
             {
               "hook": "the_title_rss",
@@ -802,6 +1224,7 @@
         {
           "id": "title-rss:post",
           "value": "Title #7 <Raw>",
+          "output": "",
           "filters": [
             {
               "hook": "the_title_rss",
@@ -814,6 +1237,7 @@
         {
           "id": "title-rss:filtered",
           "value": "Filtered Title",
+          "output": "",
           "filters": [
             {
               "hook": "the_title_rss",
@@ -824,8 +1248,35 @@
           "deprecated": []
         },
         {
+          "id": "title-rss:display",
+          "value": null,
+          "output": "Title #0 <Raw>",
+          "filters": [
+            {
+              "hook": "the_title_rss",
+              "value": "Title #0 <Raw>",
+              "args": []
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "title-rss:display-filtered",
+          "value": null,
+          "output": "Displayed Title",
+          "filters": [
+            {
+              "hook": "the_title_rss",
+              "value": "Title #0 <Raw>",
+              "args": []
+            }
+          ],
+          "deprecated": []
+        },
+        {
           "id": "content-feed:default-feed",
           "value": "Before ]]&gt; After",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -850,6 +1301,7 @@
         {
           "id": "content-feed:zero-uses-default",
           "value": "Before ]]&gt; After",
+          "output": "",
           "filters": [
             {
               "hook": "default_feed",
@@ -874,6 +1326,7 @@
         {
           "id": "content-feed:explicit-type",
           "value": "Before ]]&gt; After",
+          "output": "",
           "filters": [
             {
               "hook": "the_content",
@@ -893,6 +1346,7 @@
         {
           "id": "content-feed:content-filtered",
           "value": "Filtered ]]&gt; Content",
+          "output": "",
           "filters": [
             {
               "hook": "the_content",
@@ -912,6 +1366,47 @@
         {
           "id": "content-feed:feed-filtered",
           "value": "Filtered Feed Content",
+          "output": "",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "atom"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:display",
+          "value": null,
+          "output": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "rdf"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:display-filtered",
+          "value": null,
+          "output": "Displayed Feed Content",
           "filters": [
             {
               "hook": "the_content",
@@ -932,6 +1427,25 @@
       "reflection": {
         "get_bloginfo_rss": {
           "name": "get_bloginfo_rss",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "show",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": "",
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
+        "bloginfo_rss": {
+          "name": "bloginfo_rss",
           "numberOfParameters": 1,
           "numberOfRequiredParameters": 0,
           "returnsReference": false,
@@ -976,6 +1490,25 @@
             }
           ]
         },
+        "wp_title_rss": {
+          "name": "wp_title_rss",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "deprecated",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": "&#8211;",
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
         "get_the_title_rss": {
           "name": "get_the_title_rss",
           "numberOfParameters": 1,
@@ -995,8 +1528,35 @@
             }
           ]
         },
+        "the_title_rss": {
+          "name": "the_title_rss",
+          "numberOfParameters": 0,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": []
+        },
         "get_the_content_feed": {
           "name": "get_the_content_feed",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "feed_type",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": null,
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
+        "the_content_feed": {
+          "name": "the_content_feed",
           "numberOfParameters": 1,
           "numberOfRequiredParameters": 0,
           "returnsReference": false,
@@ -1050,9 +1610,10 @@
   },
   "claims": [
     "WPHX PHP emits selected unguarded module-level public functions at original path wp-includes/feed.php.",
-    "The generated get_bloginfo_rss, get_default_feed, get_wp_title_rss, get_the_title_rss, get_the_content_feed, and feed_content_type functions preserve reflection-visible parameters/defaults for the selected fixture.",
+    "The generated selected getter and display feed helpers preserve reflection-visible parameters/defaults for the selected fixture.",
+    "The WPHX PHP core IR emits selected public display wrappers with idiomatic PHP echo statements via @:wp.echo metadata.",
     "The generated functions delegate selected behavior to a stock Haxe PHP implementation through the WPHX PHP bootstrap while preserving native apply_filters timing at the public PHP boundary.",
-    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion, default feed normalization, feed title deprecation and filtering, title RSS filtering, feed content filtering/escaping, feed content-type mapping, PHP empty('0') behavior, and filter payloads."
+    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion/display, default feed normalization, feed title deprecation/filtering/display, title RSS filtering/display, feed content filtering/escaping/display, feed content-type mapping, PHP empty('0') behavior, output capture, and filter payloads."
   ],
   "non_claims": [
     "This fixture does not claim full wp-includes/feed.php ownership.",
