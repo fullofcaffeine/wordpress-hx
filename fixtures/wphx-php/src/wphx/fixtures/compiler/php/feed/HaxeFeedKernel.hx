@@ -10,7 +10,11 @@ extern class HaxeFeedKernel
 
 	static function defaultFeed():String;
 
+	static function getWpTitleRss(deprecated:String):String;
+
 	static function getTheTitleRss(post:Int):String;
+
+	static function getTheContentFeed(feedType:Null<String>):String;
 
 	static function feedContentType(type:Null<String>):String;
 }

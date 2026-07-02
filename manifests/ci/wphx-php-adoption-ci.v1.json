@@ -68,8 +68,8 @@
   "evidence_manifests": [
     {
       "path": "manifests/wphx-php/compiler-gap-inventory.v1.json",
-      "bytes": 172799,
-      "sha256": "sha256:bab07e77c02f63640f7f2322b8b687cffa76dc096189170f0f155457e8348fb8"
+      "bytes": 174747,
+      "sha256": "sha256:e4a69a8f4f7b070ea3426b0ad1ebea82fbb2c76cc27cf06e0973528dc4234cd3"
     },
     {
       "path": "manifests/wphx-php/adapter-raw-block-policy.v1.json",
@@ -78,8 +78,8 @@
     },
     {
       "path": "manifests/wphx-php/public-shell-snapshots.v1.json",
-      "bytes": 42942,
-      "sha256": "sha256:c0bfba26a9e9e8486a6c085e0d6b6abf2dac19cf571e7d9220a75fc60dc932dc"
+      "bytes": 43007,
+      "sha256": "sha256:1db06c28c890836d99035f6c2e1bb81bab72a204475d15b31928759bd45e9abc"
     },
     {
       "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",

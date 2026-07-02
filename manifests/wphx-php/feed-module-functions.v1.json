@@ -37,23 +37,23 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/php/feed/FeedKernel.hx",
-      "bytes": 2145,
-      "sha256": "sha256:c21a2198b9bdc80c9848be4ba1bb0f4b62f9d4af014c6c0f6605c20aad5e6c21"
+      "bytes": 3521,
+      "sha256": "sha256:976258f0f7da38708033f3888e7cf172d72272432e7551991edf0f37ff010aec"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleEntry.hx",
-      "bytes": 564,
-      "sha256": "sha256:651f1d03a7bd94eed49b8604ed3ddd49fe3f145c5e4f8a621d57c45da8ca40bc"
+      "bytes": 760,
+      "sha256": "sha256:44d04a9d34149a33288515420aa05405ca054e9b48eeefbc23e236568c945a3b"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/FeedModuleSurface.hx",
-      "bytes": 1068,
-      "sha256": "sha256:1288a5c121c56517f2baa1a302ec27609760b79e2c8179309e9882df6a460a84"
+      "bytes": 1606,
+      "sha256": "sha256:64461f6183a953b84f6f66bcac858ca1d51ed444b8aba5905d55a7ef588a01e1"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/feed/HaxeFeedKernel.hx",
-      "bytes": 422,
-      "sha256": "sha256:a2e05d67c7251e46e420085d6b516d5153d9dd493e9cbb705cc45eed26c763d1"
+      "bytes": 548,
+      "sha256": "sha256:27a5629942df6ff5178d0c517d20e3c57225e54123412e1959ebc6e568703d7d"
     }
   ],
   "upstream_oracle": {
@@ -61,28 +61,36 @@
     "selected_symbols": [
       "get_bloginfo_rss",
       "get_default_feed",
+      "get_wp_title_rss",
       "get_the_title_rss",
+      "get_the_content_feed",
       "feed_content_type"
     ],
     "selected_source_lines": [
       "27-41",
       "80-91",
+      "103-119",
       "158-169",
+      "190-209",
       "768-791"
     ]
   },
   "generated_shell": {
     "path": "build/wphx-php/feed-module-functions/generated/wp-includes/feed.php",
-    "bytes": 945,
-    "sha256": "sha256:8c02b26079804e42cd549688952f743d6ac23007c620ef4f782780559c16a1e9",
+    "bytes": 1202,
+    "sha256": "sha256:38c8e732562e93e19dc0ba6ac603ebbfe87c124637cf8e74a9a88f5853d69246",
     "php_lint": "passed",
     "php_lint_output": "No syntax errors detected in build/wphx-php/feed-module-functions/generated/wp-includes/feed.php",
     "exact_patterns": [
       "function get_bloginfo_rss($show = '')",
       "FeedKernel::getBloginfoRss($show)",
       "function get_default_feed()",
+      "function get_wp_title_rss($deprecated = '&#8211;')",
+      "FeedKernel::getWpTitleRss($deprecated)",
       "function get_the_title_rss($post = 0)",
       "FeedKernel::getTheTitleRss($post)",
+      "function get_the_content_feed($feed_type = null)",
+      "FeedKernel::getTheContentFeed($feed_type)",
       "function feed_content_type($type = '')",
       "FeedKernel::defaultFeed()",
       "FeedKernel::feedContentType($type)"
@@ -90,20 +98,22 @@
   },
   "oracle_shell": {
     "path": "build/wphx-php/feed-module-functions/oracle/wp-includes/feed.php",
-    "bytes": 934,
-    "sha256": "sha256:c0f5cf7c8c050e393f29c15a354f46b72538bbcce7151f48ad111eb5a201c074",
+    "bytes": 1555,
+    "sha256": "sha256:8b3244b5eb36b2a19fc58bd39b9c21df03d8a327a1f1423d3eef35d2f60e808c",
     "php_lint": "passed",
     "php_lint_output": "No syntax errors detected in build/wphx-php/feed-module-functions/oracle/wp-includes/feed.php"
   },
   "emission_manifest": {
     "path": "build/wphx-php/feed-module-functions/generated/wphx-php-emission.v1.json",
-    "bytes": 1583,
-    "sha256": "sha256:d4f6a4bdec1194175a3a2aaf5b95b77dcf50b10b237a1b2eab357ffa0ddfd496",
+    "bytes": 2184,
+    "sha256": "sha256:095c3ea8ed7a37523fc86694fd9a801ff15d90087ef96843e96dcfed46d0f3bf",
     "declarations": [
       "wp-includes/feed.php:global-function:feed_content_type",
       "wp-includes/feed.php:global-function:get_bloginfo_rss",
       "wp-includes/feed.php:global-function:get_default_feed",
-      "wp-includes/feed.php:global-function:get_the_title_rss"
+      "wp-includes/feed.php:global-function:get_the_content_feed",
+      "wp-includes/feed.php:global-function:get_the_title_rss",
+      "wp-includes/feed.php:global-function:get_wp_title_rss"
     ],
     "unsupported": [],
     "core_ir_features": [],
@@ -125,7 +135,8 @@
                 "name"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "bloginfo-rss:description",
@@ -138,7 +149,8 @@
                 "description"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "bloginfo-rss:filtered",
@@ -151,7 +163,8 @@
                 "name"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "default-feed:default",
@@ -162,7 +175,8 @@
               "value": "rss2",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "default-feed:rss-normalized",
@@ -173,7 +187,8 @@
               "value": "rss2",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "default-feed:atom-filter",
@@ -184,7 +199,56 @@
               "value": "rss2",
               "args": []
             }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "wp-title-rss:default",
+          "value": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "wp-title-rss:deprecated-argument",
+          "value": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "-"
+              ]
+            }
+          ],
+          "deprecated": [
+            {
+              "function": "get_wp_title_rss",
+              "version": "4.4.0",
+              "message": "Use the <code>document_title_separator</code> filter instead."
+            }
           ]
+        },
+        {
+          "id": "wp-title-rss:filtered",
+          "value": "Filtered Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:empty-uses-default",
@@ -202,7 +266,8 @@
                 "atom"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:zero-uses-default",
@@ -220,7 +285,8 @@
                 "rss-http"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:rss-http",
@@ -233,7 +299,8 @@
                 "rss-http"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:unknown",
@@ -246,7 +313,8 @@
                 "custom"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:filtered",
@@ -259,7 +327,8 @@
                 "atom"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "title-rss:default",
@@ -270,7 +339,8 @@
               "value": "Title #0 <Raw>",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "title-rss:post",
@@ -281,7 +351,8 @@
               "value": "Title #7 <Raw>",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "title-rss:filtered",
@@ -292,7 +363,113 @@
               "value": "Title #7 <Raw>",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:default-feed",
+          "value": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "default_feed",
+              "value": "rss2",
+              "args": []
+            },
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "atom"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:zero-uses-default",
+          "value": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "default_feed",
+              "value": "rss2",
+              "args": []
+            },
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "rss-http"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:explicit-type",
+          "value": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "rdf"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:content-filtered",
+          "value": "Filtered ]]&gt; Content",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Filtered ]]&gt; Content",
+              "args": [
+                "rss2"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:feed-filtered",
+          "value": "Filtered Feed Content",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "atom"
+              ]
+            }
+          ],
+          "deprecated": []
         }
       ],
       "reflection": {
@@ -323,6 +500,25 @@
           "hasReturnType": false,
           "parameters": []
         },
+        "get_wp_title_rss": {
+          "name": "get_wp_title_rss",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "deprecated",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": "&#8211;",
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
         "get_the_title_rss": {
           "name": "get_the_title_rss",
           "numberOfParameters": 1,
@@ -336,6 +532,25 @@
               "isOptional": true,
               "hasDefault": true,
               "default": 0,
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
+        "get_the_content_feed": {
+          "name": "get_the_content_feed",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "feed_type",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": null,
               "hasType": false,
               "isPassedByReference": false,
               "isVariadic": false
@@ -377,7 +592,8 @@
                 "name"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "bloginfo-rss:description",
@@ -390,7 +606,8 @@
                 "description"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "bloginfo-rss:filtered",
@@ -403,7 +620,8 @@
                 "name"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "default-feed:default",
@@ -414,7 +632,8 @@
               "value": "rss2",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "default-feed:rss-normalized",
@@ -425,7 +644,8 @@
               "value": "rss2",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "default-feed:atom-filter",
@@ -436,7 +656,56 @@
               "value": "rss2",
               "args": []
             }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "wp-title-rss:default",
+          "value": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "wp-title-rss:deprecated-argument",
+          "value": "Fixture Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "-"
+              ]
+            }
+          ],
+          "deprecated": [
+            {
+              "function": "get_wp_title_rss",
+              "version": "4.4.0",
+              "message": "Use the <code>document_title_separator</code> filter instead."
+            }
           ]
+        },
+        {
+          "id": "wp-title-rss:filtered",
+          "value": "Filtered Document Title",
+          "filters": [
+            {
+              "hook": "get_wp_title_rss",
+              "value": "Fixture Document Title",
+              "args": [
+                "&#8211;"
+              ]
+            }
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:empty-uses-default",
@@ -454,7 +723,8 @@
                 "atom"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:zero-uses-default",
@@ -472,7 +742,8 @@
                 "rss-http"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:rss-http",
@@ -485,7 +756,8 @@
                 "rss-http"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:unknown",
@@ -498,7 +770,8 @@
                 "custom"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "feed-content-type:filtered",
@@ -511,7 +784,8 @@
                 "atom"
               ]
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "title-rss:default",
@@ -522,7 +796,8 @@
               "value": "Title #0 <Raw>",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "title-rss:post",
@@ -533,7 +808,8 @@
               "value": "Title #7 <Raw>",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
         },
         {
           "id": "title-rss:filtered",
@@ -544,7 +820,113 @@
               "value": "Title #7 <Raw>",
               "args": []
             }
-          ]
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:default-feed",
+          "value": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "default_feed",
+              "value": "rss2",
+              "args": []
+            },
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "atom"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:zero-uses-default",
+          "value": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "default_feed",
+              "value": "rss2",
+              "args": []
+            },
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "rss-http"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:explicit-type",
+          "value": "Before ]]&gt; After",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "rdf"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:content-filtered",
+          "value": "Filtered ]]&gt; Content",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Filtered ]]&gt; Content",
+              "args": [
+                "rss2"
+              ]
+            }
+          ],
+          "deprecated": []
+        },
+        {
+          "id": "content-feed:feed-filtered",
+          "value": "Filtered Feed Content",
+          "filters": [
+            {
+              "hook": "the_content",
+              "value": "Before ]]> After",
+              "args": []
+            },
+            {
+              "hook": "the_content_feed",
+              "value": "Before ]]&gt; After",
+              "args": [
+                "atom"
+              ]
+            }
+          ],
+          "deprecated": []
         }
       ],
       "reflection": {
@@ -575,6 +957,25 @@
           "hasReturnType": false,
           "parameters": []
         },
+        "get_wp_title_rss": {
+          "name": "get_wp_title_rss",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "deprecated",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": "&#8211;",
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
         "get_the_title_rss": {
           "name": "get_the_title_rss",
           "numberOfParameters": 1,
@@ -588,6 +989,25 @@
               "isOptional": true,
               "hasDefault": true,
               "default": 0,
+              "hasType": false,
+              "isPassedByReference": false,
+              "isVariadic": false
+            }
+          ]
+        },
+        "get_the_content_feed": {
+          "name": "get_the_content_feed",
+          "numberOfParameters": 1,
+          "numberOfRequiredParameters": 0,
+          "returnsReference": false,
+          "hasReturnType": false,
+          "parameters": [
+            {
+              "name": "feed_type",
+              "position": 0,
+              "isOptional": true,
+              "hasDefault": true,
+              "default": null,
               "hasType": false,
               "isPassedByReference": false,
               "isVariadic": false
@@ -630,9 +1050,9 @@
   },
   "claims": [
     "WPHX PHP emits selected unguarded module-level public functions at original path wp-includes/feed.php.",
-    "The generated get_bloginfo_rss, get_default_feed, get_the_title_rss, and feed_content_type functions preserve reflection-visible parameters/defaults for the selected fixture.",
+    "The generated get_bloginfo_rss, get_default_feed, get_wp_title_rss, get_the_title_rss, get_the_content_feed, and feed_content_type functions preserve reflection-visible parameters/defaults for the selected fixture.",
     "The generated functions delegate selected behavior to a stock Haxe PHP implementation through the WPHX PHP bootstrap while preserving native apply_filters timing at the public PHP boundary.",
-    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion, default feed normalization, title RSS filtering, feed content-type mapping, PHP empty('0') behavior, and filter payloads."
+    "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion, default feed normalization, feed title deprecation and filtering, title RSS filtering, feed content filtering/escaping, feed content-type mapping, PHP empty('0') behavior, and filter payloads."
   ],
   "non_claims": [
     "This fixture does not claim full wp-includes/feed.php ownership.",

@@ -23,11 +23,29 @@ function getDefaultFeed():String
 
 @:wp.file("wp-includes/feed.php")
 @:wp.haxeBootstrap("WPHX_FEED_MODULE_BOOTSTRAPPED")
+@:wp.global("get_wp_title_rss")
+@:keep
+function getWpTitleRss(@:wp.name("deprecated") deprecated:String = "&#8211;"):String
+{
+	return HaxeFeedKernel.getWpTitleRss(deprecated);
+}
+
+@:wp.file("wp-includes/feed.php")
+@:wp.haxeBootstrap("WPHX_FEED_MODULE_BOOTSTRAPPED")
 @:wp.global("get_the_title_rss")
 @:keep
 function getTheTitleRss(@:wp.name("post") post:Int = 0):String
 {
 	return HaxeFeedKernel.getTheTitleRss(post);
+}
+
+@:wp.file("wp-includes/feed.php")
+@:wp.haxeBootstrap("WPHX_FEED_MODULE_BOOTSTRAPPED")
+@:wp.global("get_the_content_feed")
+@:keep
+function getTheContentFeed(@:wp.name("feed_type") feedType:Null<String> = null):String
+{
+	return HaxeFeedKernel.getTheContentFeed(feedType);
 }
 
 @:wp.file("wp-includes/feed.php")

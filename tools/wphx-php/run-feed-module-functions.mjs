@@ -40,8 +40,12 @@ const EXACT_PATTERNS = [
   "function get_bloginfo_rss($show = '')",
   "FeedKernel::getBloginfoRss($show)",
   "function get_default_feed()",
+  "function get_wp_title_rss($deprecated = '&#8211;')",
+  "FeedKernel::getWpTitleRss($deprecated)",
   "function get_the_title_rss($post = 0)",
   "FeedKernel::getTheTitleRss($post)",
+  "function get_the_content_feed($feed_type = null)",
+  "FeedKernel::getTheContentFeed($feed_type)",
   "function feed_content_type($type = '')",
   "FeedKernel::defaultFeed()",
   "FeedKernel::feedContentType($type)"
@@ -99,10 +103,29 @@ function get_default_feed() {
 \treturn ( 'rss' === $default_feed ) ? 'rss2' : $default_feed;
 }
 
+function get_wp_title_rss( $deprecated = '&#8211;' ) {
+\tif ( '&#8211;' !== $deprecated ) {
+\t\t_deprecated_argument( __FUNCTION__, '4.4.0', sprintf( __( 'Use the %s filter instead.' ), '<code>document_title_separator</code>' ) );
+\t}
+
+\treturn apply_filters( 'get_wp_title_rss', wp_get_document_title(), $deprecated );
+}
+
 function get_the_title_rss( $post = 0 ) {
 \t$title = get_the_title( $post );
 
 \treturn apply_filters( 'the_title_rss', $title );
+}
+
+function get_the_content_feed( $feed_type = null ) {
+\tif ( ! $feed_type ) {
+\t\t$feed_type = get_default_feed();
+\t}
+
+\t$content = apply_filters( 'the_content', get_the_content() );
+\t$content = str_replace( ']]>', ']]&gt;', $content );
+
+\treturn apply_filters( 'the_content_feed', $content, $feed_type );
 }
 
 function feed_content_type( $type = '' ) {
@@ -131,6 +154,7 @@ $mode = $argv[1];
 $shell = $argv[2];
 $GLOBALS['wphx_filter_log'] = array();
 $GLOBALS['wphx_filter_overrides'] = array();
+$GLOBALS['wphx_deprecated_log'] = array();
 
 function apply_filters( $hook_name, $value, ...$args ) {
 \t$GLOBALS['wphx_filter_log'][] = array(
@@ -160,8 +184,28 @@ function convert_chars( $value ) {
 \treturn str_replace( '&', '&amp;', (string) $value );
 }
 
+function __( $message ) {
+\treturn $message;
+}
+
+function _deprecated_argument( $function_name, $version, $message = null ) {
+\t$GLOBALS['wphx_deprecated_log'][] = array(
+\t\t'function' => $function_name,
+\t\t'version' => $version,
+\t\t'message' => $message,
+\t);
+}
+
+function wp_get_document_title() {
+\treturn 'Fixture Document Title';
+}
+
 function get_the_title( $post = 0 ) {
 \treturn 'Title #' . (string) $post . ' <Raw>';
+}
+
+function get_the_content() {
+\treturn 'Before ]]> After';
 }
 
 require $shell;
@@ -169,10 +213,12 @@ require $shell;
 function wphx_case( $id, $overrides, $callback ) {
 \t$GLOBALS['wphx_filter_log'] = array();
 \t$GLOBALS['wphx_filter_overrides'] = $overrides;
+\t$GLOBALS['wphx_deprecated_log'] = array();
 \treturn array(
 \t\t'id' => $id,
 \t\t'value' => $callback(),
 \t\t'filters' => $GLOBALS['wphx_filter_log'],
+\t\t'deprecated' => $GLOBALS['wphx_deprecated_log'],
 \t);
 }
 
@@ -194,6 +240,15 @@ $cases[] = wphx_case( 'default-feed:rss-normalized', array( 'default_feed' => 'r
 } );
 $cases[] = wphx_case( 'default-feed:atom-filter', array( 'default_feed' => 'atom' ), function () {
 \treturn get_default_feed();
+} );
+$cases[] = wphx_case( 'wp-title-rss:default', array(), function () {
+\treturn get_wp_title_rss();
+} );
+$cases[] = wphx_case( 'wp-title-rss:deprecated-argument', array(), function () {
+\treturn get_wp_title_rss( '-' );
+} );
+$cases[] = wphx_case( 'wp-title-rss:filtered', array( 'get_wp_title_rss' => 'Filtered Document Title' ), function () {
+\treturn get_wp_title_rss();
 } );
 $cases[] = wphx_case( 'feed-content-type:empty-uses-default', array( 'default_feed' => 'atom' ), function () {
 \treturn feed_content_type( '' );
@@ -219,9 +274,24 @@ $cases[] = wphx_case( 'title-rss:post', array(), function () {
 $cases[] = wphx_case( 'title-rss:filtered', array( 'the_title_rss' => 'Filtered Title' ), function () {
 \treturn get_the_title_rss( 7 );
 } );
+$cases[] = wphx_case( 'content-feed:default-feed', array( 'default_feed' => 'atom' ), function () {
+\treturn get_the_content_feed();
+} );
+$cases[] = wphx_case( 'content-feed:zero-uses-default', array( 'default_feed' => 'rss-http' ), function () {
+\treturn get_the_content_feed( '0' );
+} );
+$cases[] = wphx_case( 'content-feed:explicit-type', array(), function () {
+\treturn get_the_content_feed( 'rdf' );
+} );
+$cases[] = wphx_case( 'content-feed:content-filtered', array( 'the_content' => 'Filtered ]]> Content' ), function () {
+\treturn get_the_content_feed( 'rss2' );
+} );
+$cases[] = wphx_case( 'content-feed:feed-filtered', array( 'the_content_feed' => 'Filtered Feed Content' ), function () {
+\treturn get_the_content_feed( 'atom' );
+} );
 
 $reflection = array();
-foreach ( array( 'get_bloginfo_rss', 'get_default_feed', 'get_the_title_rss', 'feed_content_type' ) as $function_name ) {
+foreach ( array( 'get_bloginfo_rss', 'get_default_feed', 'get_wp_title_rss', 'get_the_title_rss', 'get_the_content_feed', 'feed_content_type' ) as $function_name ) {
 \t$function = new ReflectionFunction( $function_name );
 \t$params = array();
 \tforeach ( $function->getParameters() as $parameter ) {
@@ -296,7 +366,9 @@ function main() {
     "wp-includes/feed.php:global-function:feed_content_type",
     "wp-includes/feed.php:global-function:get_bloginfo_rss",
     "wp-includes/feed.php:global-function:get_default_feed",
-    "wp-includes/feed.php:global-function:get_the_title_rss"
+    "wp-includes/feed.php:global-function:get_the_content_feed",
+    "wp-includes/feed.php:global-function:get_the_title_rss",
+    "wp-includes/feed.php:global-function:get_wp_title_rss"
   ];
   assertJsonEqual(declarations, expectedDeclarations, "feed module declarations");
   if ((emissionManifest.unsupported ?? []).length !== 0) {
@@ -318,8 +390,15 @@ function main() {
     inputs: [IMPL_HXML, SHELL_HXML, ...SOURCE_FILES].map(inputRecord),
     upstream_oracle: {
       repo_path: "../wordpress-develop/src/wp-includes/feed.php",
-      selected_symbols: ["get_bloginfo_rss", "get_default_feed", "get_the_title_rss", "feed_content_type"],
-      selected_source_lines: ["27-41", "80-91", "158-169", "768-791"]
+      selected_symbols: [
+        "get_bloginfo_rss",
+        "get_default_feed",
+        "get_wp_title_rss",
+        "get_the_title_rss",
+        "get_the_content_feed",
+        "feed_content_type"
+      ],
+      selected_source_lines: ["27-41", "80-91", "103-119", "158-169", "190-209", "768-791"]
     },
     generated_shell: {
       path: GENERATED_SHELL,
@@ -364,9 +443,9 @@ function main() {
     },
     claims: [
       "WPHX PHP emits selected unguarded module-level public functions at original path wp-includes/feed.php.",
-      "The generated get_bloginfo_rss, get_default_feed, get_the_title_rss, and feed_content_type functions preserve reflection-visible parameters/defaults for the selected fixture.",
+      "The generated get_bloginfo_rss, get_default_feed, get_wp_title_rss, get_the_title_rss, get_the_content_feed, and feed_content_type functions preserve reflection-visible parameters/defaults for the selected fixture.",
       "The generated functions delegate selected behavior to a stock Haxe PHP implementation through the WPHX PHP bootstrap while preserving native apply_filters timing at the public PHP boundary.",
-      "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion, default feed normalization, title RSS filtering, feed content-type mapping, PHP empty('0') behavior, and filter payloads."
+      "The minimized oracle/candidate probe matches WordPress 7.0 behavior for bloginfo RSS sanitization/conversion, default feed normalization, feed title deprecation and filtering, title RSS filtering, feed content filtering/escaping, feed content-type mapping, PHP empty('0') behavior, and filter payloads."
     ],
     non_claims: [
       "This fixture does not claim full wp-includes/feed.php ownership.",

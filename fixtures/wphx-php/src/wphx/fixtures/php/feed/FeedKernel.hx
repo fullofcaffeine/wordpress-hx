@@ -18,10 +18,28 @@ class FeedKernel
 		return defaultFeed == "rss" ? "rss2" : defaultFeed;
 	}
 
+	public static function getWpTitleRss(deprecated:String):String
+	{
+		if (deprecated != "&#8211;")
+		{
+			WpFeedGlobals.deprecatedArgument("get_wp_title_rss", "4.4.0",
+				WpFeedGlobals.sprintf(WpFeedGlobals.translate("Use the %s filter instead."), "<code>document_title_separator</code>"));
+		}
+		return WpHooks.applyFilters2("get_wp_title_rss", WpFeedGlobals.wpGetDocumentTitle(), deprecated);
+	}
+
 	public static function getTheTitleRss(post:Int):String
 	{
 		final title = WpFeedGlobals.getTheTitle(post);
 		return WpHooks.applyFilters1("the_title_rss", title);
+	}
+
+	public static function getTheContentFeed(feedType:Null<String>):String
+	{
+		final normalizedFeedType = isPhpEmptyString(feedType) ? defaultFeed() : feedType;
+		var content = WpHooks.applyFilters1("the_content", WpFeedGlobals.getTheContent());
+		content = WpFeedGlobals.strReplace("]]>", "]]&gt;", content);
+		return WpHooks.applyFilters2("the_content_feed", content, normalizedFeedType);
 	}
 
 	public static function feedContentType(type:Null<String>):String
@@ -64,8 +82,26 @@ extern class WpFeedGlobals
 	@:native("convert_chars")
 	public static function convertChars(value:String):String;
 
+	@:native("_deprecated_argument")
+	public static function deprecatedArgument(functionName:String, version:String, message:String):Void;
+
+	@:native("__")
+	public static function translate(message:String):String;
+
+	@:native("sprintf")
+	public static function sprintf(format:String, arg:String):String;
+
+	@:native("wp_get_document_title")
+	public static function wpGetDocumentTitle():String;
+
 	@:native("get_the_title")
 	public static function getTheTitle(post:Int):String;
+
+	@:native("get_the_content")
+	public static function getTheContent():String;
+
+	@:native("str_replace")
+	public static function strReplace(search:String, replace:String, subject:String):String;
 }
 
 /**
