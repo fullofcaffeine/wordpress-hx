@@ -1,0 +1,2077 @@
+{
+  "schema": "wphx.wp-core-public-shell-gap-audit.v1",
+  "issue": {
+    "id": "wordpresshx-l76.18.43",
+    "external_ref": "WPHX-312.95",
+    "title": "Audit and retire remaining HTTP/feed/embed public PHP shell gaps"
+  },
+  "generated_at": "2026-07-02T22:00:00Z",
+  "generator": "tools/wp-core/run-wphx-312-public-shell-gap-audit.mjs",
+  "evidence_class": "public_php_shell_gap_audit",
+  "artifact_scope": "wphx_312_http_cron_mail_feed_embed_public_php_boundaries",
+  "ownership_inputs": [
+    {
+      "path": "manifests/ownership/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "bytes": 2072,
+      "sha256": "sha256:7cecdb58036f0c664293b22e780e2a56d0b0c297f2f6f662150c6acb9464cdad"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "bytes": 3298,
+      "sha256": "sha256:005582f6b31a2cb8c823ab477a7735f28f90781d0f0357ad30959a5aea6e14cc"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "bytes": 2462,
+      "sha256": "sha256:e3893bdaf9f44311bb165b6f0e0b521210eb711b36b85c148ac7e4486975e729"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+      "bytes": 2411,
+      "sha256": "sha256:a01b9a82ed8c26eb0097b63880c3f3c7efd62abafef58b825bd86dc124f65baa"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-05-ai-http-oracle-fixture.v1.json",
+      "bytes": 2906,
+      "sha256": "sha256:51ee4cc632c75b83d87afba43f2452ca1bd8b875a8bc787f4801424a8b132abf"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-06-trackback-oracle-fixture.v1.json",
+      "bytes": 2184,
+      "sha256": "sha256:8c63eb9493c79d903a123267562f97c2f87539f8fec1f584eb19c0fb1e99af1d"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+      "bytes": 2357,
+      "sha256": "sha256:35c4d6aee09fc7b42d7990a5362afef39653a6c94e55af2e5f1ecfab59e8e6b6"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "bytes": 2416,
+      "sha256": "sha256:75408df6eca2ae74652530e806918f28ca67d0514cdebed8bb18e99c14f5352e"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+      "bytes": 2661,
+      "sha256": "sha256:f4d1aec6781d26e0e64d9f9bdd3f3fe72ca9c74b34dac7f26d9d4c644c7a2b50"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+      "bytes": 2506,
+      "sha256": "sha256:98307383ee4ddb537e1759fcb9e2d57d78dbed6e47b9d62202bb78c1fbc5763a"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-12-cron-dispatch-lock-oracle-fixture.v1.json",
+      "bytes": 2326,
+      "sha256": "sha256:e4357ad5816634698ee7049b1d0e6a985d51e1fe442ecbf7cc130a7142785788"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+      "bytes": 2337,
+      "sha256": "sha256:4c4be8b1114248dfafccc398e417db5a23aa411d9b8889ee53e472eb85467ca3"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-14-opml-links-output-oracle-fixture.v1.json",
+      "bytes": 2227,
+      "sha256": "sha256:5bcc1a5d9a209cbc856c1971c5b6fbd4a558f2de17754b75c034b6763e78f324"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-15-rss2-feed-template-oracle-fixture.v1.json",
+      "bytes": 2189,
+      "sha256": "sha256:551bee89694f4fb2eec3281e73fcfea0da24ed2391233ccd03d50d6668c2699a"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-16-atom-feed-template-oracle-fixture.v1.json",
+      "bytes": 2189,
+      "sha256": "sha256:ac4f69f6defefec9f0065ca2967eadd06f2e430a7866c4d38c99c43b6f65ac33"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-17-rss2-comments-feed-template-oracle-fixture.v1.json",
+      "bytes": 2315,
+      "sha256": "sha256:07ffd177e6a4e0d11bcef01a32fd60ddff1ebb14264c23e0c4bad1bd65cbe96f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-18-atom-comments-feed-template-oracle-fixture.v1.json",
+      "bytes": 2315,
+      "sha256": "sha256:1f67a2ae3c632cfd2a18abc3026b67c81e684e825509ca29f6a8b5512921d1c7"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+      "bytes": 2160,
+      "sha256": "sha256:15dd31017b9d19c05b42cfbd143e8870a15712c3804a6cc164b67c293b97f5a7"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-20-rss-feed-template-oracle-fixture.v1.json",
+      "bytes": 2161,
+      "sha256": "sha256:690eb3f309f42a11b586287f07b895113fbdb405d65e5c5b8fb9f64382f1d3b5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+      "bytes": 2398,
+      "sha256": "sha256:9c0b412acdbef75897987a525d8c9e7f5792c51fb35ae53fe49a5a9d5c50fef5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-22-magpie-rss-parser-oracle-fixture.v1.json",
+      "bytes": 2232,
+      "sha256": "sha256:9f1696d991c7b6a7c0b2b89235b21ce4f82c773d4a06739f5d93d5893fff18f7"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+      "bytes": 2244,
+      "sha256": "sha256:531d5afca90eb951ada2840f3aca3613f2804e63bcf34c0a824fde617c3eb141"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-24-magpie-rss-display-helper-oracle-fixture.v1.json",
+      "bytes": 2257,
+      "sha256": "sha256:5fbfed6798ee7cbd15f6fe73844743468d463aa1930f4f3212a6e4becc72d49f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+      "bytes": 2291,
+      "sha256": "sha256:c9c0bed1f0df223dcdab0c50933aa8fdbe1acfb0debebd79d96ed6cb792ff7eb"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+      "bytes": 2443,
+      "sha256": "sha256:172bcdfcc151922921ccbea606e922e8f0e5d0bc95faa23a082171ab71fbf63a"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+      "bytes": 2320,
+      "sha256": "sha256:12613a8b8eeed798c3109f2e8cb5c67d436719bee7d0e1fd2ff0e46fbb40e6bf"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+      "bytes": 2385,
+      "sha256": "sha256:ebc066ae220205ce4d831d69585a1e6df0e5f695b390c674221f91f4423278c7"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+      "bytes": 2522,
+      "sha256": "sha256:0f5526cc92a5af4168d1c768347aa810addb00af56b0818bc4097678c9940874"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+      "bytes": 2642,
+      "sha256": "sha256:49f29f392229ff72be647ff6dfb88ddbb70bd96729e72e782a2667b06c5ae58e"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-31-oembed-rest-controller-oracle-fixture.v1.json",
+      "bytes": 2693,
+      "sha256": "sha256:fe5e65ef8195277af7cd9cdf31e09209fbc21e645bbd26b5192aa8933e090960"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+      "bytes": 2466,
+      "sha256": "sha256:60c6b41eea3551c112fc5506d149b3eced9b32d21bbc3f296bff8d3a773462b3"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+      "bytes": 2713,
+      "sha256": "sha256:d2e4c34749f99fdbf6707bc2782eb17de211420a0df4567901cf1a811e55180f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+      "bytes": 2578,
+      "sha256": "sha256:507bb5f90ad77b17852d4691d2f51a4e37ed40f43ef837add255bf76884200a2"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+      "bytes": 2625,
+      "sha256": "sha256:cd66dcaa19fe711652fed0d23fb8f49faae3a59b20021b1316fa2a4c7c0b1e6c"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+      "bytes": 2672,
+      "sha256": "sha256:4455ff92439d34576ba22452969bd4916937ddfc2c08fc0d225c2ddd2539a6b5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-37-simplepie-feed-wrapper-oracle-fixture.v1.json",
+      "bytes": 2843,
+      "sha256": "sha256:696513a06c533326b9d171899af7649073776e6940a5f7374f0a263a17a5b44f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-38-http-response-object-oracle-fixture.v1.json",
+      "bytes": 2504,
+      "sha256": "sha256:072a56e59823fd0c6d03573d5fdaef4c5293cf676018549086dcfb7b7a86447d"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-39-http-cookie-object-oracle-fixture.v1.json",
+      "bytes": 2547,
+      "sha256": "sha256:16ee06ec6a2738020d12b32ec426253bdb95c1435db9b81b8abea197201300a2"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-40-http-encoding-oracle-fixture.v1.json",
+      "bytes": 2613,
+      "sha256": "sha256:949633354916894b648823e92943a8f4d30f870268f1e9cbba6b407722aa5ffe"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "bytes": 2516,
+      "sha256": "sha256:a707880db379b5ed5f529643c7f97c9543fce43c2f83cb8c61542e8c9fd964b4"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+      "bytes": 2542,
+      "sha256": "sha256:99078887d00edf94b060d3b1796f83a25035c9c81d8a195d35c89d3124d94b77"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+      "bytes": 2692,
+      "sha256": "sha256:2962f0bb2edb47e27af0b3cf28ed75954d71a0e865259b5158dc24a3f81a6205"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+      "bytes": 2497,
+      "sha256": "sha256:16e541021583cfc222eb8c814fbc6a789008212a8e8e1f7235220e5b67b12b72"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-45-http-transport-callback-test-oracle-fixture.v1.json",
+      "bytes": 2586,
+      "sha256": "sha256:c02c075327137025d0ac070ace72ae9f68a19363b9ee4587449dcd96cf6a9ea6"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "bytes": 2706,
+      "sha256": "sha256:cad0e1fedea9a081892b90670b6d852d6a8486fa84f1ab8c93577f1a769bc6bb"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-47-wp-http-block-request-policy-oracle-fixture.v1.json",
+      "bytes": 2474,
+      "sha256": "sha256:85ed4b05288d82532b31b0684c7e3d05fb2e7205ea3c06501287db5548c5a61a"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+      "bytes": 2607,
+      "sha256": "sha256:e9cfd8309e584df2e18d7803ef04fc597eed6b551a90acbfe8a415fe434125a1"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+      "bytes": 2659,
+      "sha256": "sha256:cbad2ef3b02b3105eb1a041bcf7acc631b3786e0b409012ae8ef90862abf867d"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-50-http-encoding-candidate.v1.json",
+      "bytes": 2733,
+      "sha256": "sha256:d34ab7a351e6e0b25d5abae45cb1fabbc9dabbabecf12282b6db2bee824d81c5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-51-http-proxy-candidate.v1.json",
+      "bytes": 2634,
+      "sha256": "sha256:f8f9e888aeed9348d8eaa564ccf187e89ef98657fdcb0b61aa8cb6458e15c164"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-52-http-response-candidate.v1.json",
+      "bytes": 2602,
+      "sha256": "sha256:24945076a6172c7e6e0f3790e5bb991af4bfcafac91c9f9e7a4dc946e372685a"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-53-http-cookie-candidate.v1.json",
+      "bytes": 2712,
+      "sha256": "sha256:6e4096ca5501aecf1583c961b7c7153d0837667201d641ab03c6cb48dc4b23ec"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-54-wp-http-block-request-candidate.v1.json",
+      "bytes": 2604,
+      "sha256": "sha256:3592505c6e0910625267192112b64276913ac1593668c3cac7ba946e03790a5f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+      "bytes": 2466,
+      "sha256": "sha256:dc787f25a6ca0cff1a8c88d5d51ca5c242b2e7755ff5b5ab3c3fa6a8dab2bab5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+      "bytes": 2646,
+      "sha256": "sha256:0242383ae5204b8c84140966fef84fb321649432d865a7c0f9efc46ca31df0df"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+      "bytes": 2631,
+      "sha256": "sha256:a23d6133bd83813a85ea6112397ecb340d6ded112f4d7c6dc6c098fef9db7215"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+      "bytes": 2400,
+      "sha256": "sha256:3c26ae57bcc817c0cba2d4eac009901a6032d8b713132f6ca0ae5857e6f0e772"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-59-wp-http-redirect-orchestration-candidate.v1.json",
+      "bytes": 2670,
+      "sha256": "sha256:0b2bbba63d6120e19e1cbefa177fb7cb4b60494513ec319312a4570b345be488"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-60-wp-http-process-response-candidate.v1.json",
+      "bytes": 2722,
+      "sha256": "sha256:bb173d716e7e7bafe04edb8aa823384f774e547068f3ef471da0a915f2ca5839"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-61-wp-http-chunk-transfer-decode-candidate.v1.json",
+      "bytes": 2594,
+      "sha256": "sha256:728df952acea1bcd287b1ca05f32c0812b96ee757512b36a1e515bf2300eb4d7"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+      "bytes": 2552,
+      "sha256": "sha256:8bfb824b1712c1736d8a4289f5319b3277e9a16e893ac5a037642975c605beb6"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+      "bytes": 2694,
+      "sha256": "sha256:645929a4fa4f108b741fa2e33eb8286da7e8d8f15ddedc92c9b59d9bdf0559f5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+      "bytes": 2653,
+      "sha256": "sha256:bd32bc7aa994f6926c5a4690a2917d0437670c4f2fc1de4fa62b18793cdce6e2"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-65-wp-http-request-nonblocking-candidate.v1.json",
+      "bytes": 4021,
+      "sha256": "sha256:03e1572492f7669d8a77fa06d6ee0a9cfa4f5483c4a155d7fa52f16f58a1a5b8"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-66-wp-http-transport-selection-candidate.v1.json",
+      "bytes": 3066,
+      "sha256": "sha256:efffc3ef0ab637a0540bd36c69f8eb5e1b7dba40d77f046375bf33a73282315d"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
+      "bytes": 4018,
+      "sha256": "sha256:68d15e5ed320a3a42829f460f1fe4576a22bca903dc44a28576342da4d9373bd"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-68-wp-http-request-method-options-candidate.v1.json",
+      "bytes": 2523,
+      "sha256": "sha256:bab4a1bfb976028b6ed81b6b3ab8afd41f10ad8491a1bc2d6cc2c46c183a5c9e"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-69-wp-http-request-redirect-options-candidate.v1.json",
+      "bytes": 2599,
+      "sha256": "sha256:ba8bf05ca1a6be8103cb31f39712f5af2de092350f909dde3bc6fc06e488bb0d"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-70-wp-http-request-ssl-options-candidate.v1.json",
+      "bytes": 2581,
+      "sha256": "sha256:62d6b3ebcce80c66645ae35186caf1f38659d6c0a598db5bc2df20cd5030f6e1"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-71-wp-http-request-response-size-options-candidate.v1.json",
+      "bytes": 2607,
+      "sha256": "sha256:49345de56882b780232f68949263fa49dbdb3f1f03590710c14d8cf85b243908"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
+      "bytes": 3976,
+      "sha256": "sha256:e6f55b6fd68c1ee6dc8521889bb5bf3532ae3e05a63aac2a54b934a5f05deda2"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+      "bytes": 2675,
+      "sha256": "sha256:722a24a5fa973a507fc6c7f69076d921d42823c37e321c798c2ca62fbd02bce1"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-74-wp-http-request-invalid-url-candidate.v1.json",
+      "bytes": 2516,
+      "sha256": "sha256:3bd3ec3b2a1f62ae2a64c1a18d74807074f139f6b410c38b84719a4a2329142f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-75-wp-http-request-blocked-request-candidate.v1.json",
+      "bytes": 2559,
+      "sha256": "sha256:31b6946b455f584bae1cfbab76657428d0b4f3e23bd83a9a3832365311f64770"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-76-wp-http-request-preemptive-response-candidate.v1.json",
+      "bytes": 2579,
+      "sha256": "sha256:671727788f485f36ee05bb565eb408f8b80a52d38c048bdeec0437fe41c3c4c1"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
+      "bytes": 2546,
+      "sha256": "sha256:4457d521beac92316c250e1232bcf2c96a32be2d13da139861a25fdd28e41320"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-78-wp-http-request-proxy-options-candidate.v1.json",
+      "bytes": 2475,
+      "sha256": "sha256:ca8f8b10ce77233d03440ac817ac917b0c7bb4d9bb8fe657c51ebd2753d89264"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+      "bytes": 2609,
+      "sha256": "sha256:837c5ad09f493e8740c6a0db719fc65a489e2045afd058e48e6e378be08c6e46"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-80-wp-http-request-error-response-candidate.v1.json",
+      "bytes": 2525,
+      "sha256": "sha256:383ccd3016fb2117719a7e17cef52fa7d0002f9953bc261424d9b702b4d20575"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-81-wp-http-request-cookie-options-candidate.v1.json",
+      "bytes": 2539,
+      "sha256": "sha256:9ca5898205e68359cb15d8ce04dc778c76f59896f7f39da356340962e18f6ec2"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+      "bytes": 2726,
+      "sha256": "sha256:59100660db2b9533f6703a2b6db5e4956fba29700e08774ac6d127b443be99d5"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-83-wp-http-request-head-redirection-default-candidate.v1.json",
+      "bytes": 4113,
+      "sha256": "sha256:626e27a9174c33de38f184df1c1f1667a6a2c8fbf28ae0b67cc2ff70fe392cdb"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-84-wp-http-request-unsafe-url-validation-candidate.v1.json",
+      "bytes": 2693,
+      "sha256": "sha256:3aa91324e5b24926323d23248bcba9c063a68cf3df5030032513707226be52db"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-85-wp-http-request-bad-protocol-stripping-candidate.v1.json",
+      "bytes": 2726,
+      "sha256": "sha256:16f7d7b8a5c13e1c0399ce8ddfe1566f4c1e955f6699200d377f707da0d92c4f"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-86-wp-http-request-redirection-copy-candidate.v1.json",
+      "bytes": 2498,
+      "sha256": "sha256:95283c5c965805a21f692fbbef9df1247b916809c9dd1ed21b02ef9eaf768483"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-87-wp-http-request-null-header-normalization-candidate.v1.json",
+      "bytes": 2665,
+      "sha256": "sha256:4e2d55a2a3312b1743ba3d1a01ff0ea0398c4ee3fc6b810da6e5bbd61cf36085"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-88-wp-http-request-stream-default-filename-candidate.v1.json",
+      "bytes": 2693,
+      "sha256": "sha256:3999a304f44197c8bcf7f7c73fc212d7b7e33486473e5b7ba401f5296791ec52"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-89-wp-http-request-http-response-attachment-candidate.v1.json",
+      "bytes": 2653,
+      "sha256": "sha256:216185befdb10022ad3ba993559f2ce44aa2f3d86a6388e57314a51395603316"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-90-wp-http-request-mbstring-reset-candidate.v1.json",
+      "bytes": 2485,
+      "sha256": "sha256:dca7598f337c0585fe87c18c238173f1fbca0f53933a68e0433a52af1f08fff0"
+    }
+  ],
+  "followup_owners": {
+    "wphx_backed_state_reconciliation": {
+      "issue_id": "wordpresshx-hh12",
+      "external_ref": "WPHX-312.98",
+      "title": "Reconcile WPHX-backed HTTP ownership states"
+    },
+    "remaining_request_branch_shells": {
+      "issue_id": "wordpresshx-gvzp",
+      "external_ref": "WPHX-312.99",
+      "title": "Retire remaining WP_Http::request branch public shells"
+    },
+    "copied_oracle_public_surfaces": {
+      "issue_id": "wordpresshx-i378",
+      "external_ref": "WPHX-312.100",
+      "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+    }
+  },
+  "summary": {
+    "boundary_count": 89,
+    "classification_counts": {
+      "adapter_contract_only": 1,
+      "copied_oracle_public_surface": 46,
+      "durable_generated_public_shell": 12,
+      "inventory_only": 1,
+      "remaining_request_branch_shell": 13,
+      "wphx_backed_state_reconciliation": 16
+    },
+    "durable_generated_public_shell_count": 12,
+    "wphx_backed_state_reconciliation_count": 16,
+    "remaining_request_branch_shell_count": 13,
+    "copied_oracle_public_surface_count": 46
+  },
+  "boundaries": [
+    {
+      "external_ref": "WPHX-312.01",
+      "issue_id": "wordpresshx-l76.18.1",
+      "unit_name": "HTTP, Requests integration, cron, mail, feeds, embeds, oEmbed, XML feed output",
+      "unit_kind": "source_surface_inventory",
+      "ownership_state": "inventory_only",
+      "shell_gap_classification": "inventory_only",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": null,
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-01-http-cron-mail-feed-embed-surface.v1.json",
+      "ownership_manifest_sha256": "sha256:7cecdb58036f0c664293b22e780e2a56d0b0c297f2f6f662150c6acb9464cdad",
+      "removal_gate": null
+    },
+    {
+      "external_ref": "WPHX-312.02",
+      "issue_id": "wordpresshx-l76.18.2",
+      "unit_name": "HTTP transport, cron, mail, feed, embed, HTTPS, privacy request, AI-client HTTP, and trackback intent",
+      "unit_kind": "haxe_adapter_contract",
+      "ownership_state": "haxe_parity_candidate",
+      "shell_gap_classification": "adapter_contract_only",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "adapter-contract-candidate-without-public-php-installation",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:005582f6b31a2cb8c823ab477a7735f28f90781d0f0357ad30959a5aea6e14cc",
+      "removal_gate": "Install these decisions through typed Adapter IR/original-path generation and pass PHP-authored HTTP, cron, mail, feed, embed/oEmbed, installed side-effect, and upstream PHPUnit oracle fixtures before claiming public PHP ABI ownership."
+    },
+    {
+      "external_ref": "WPHX-312.03",
+      "issue_id": "wordpresshx-l76.18.3",
+      "unit_name": "HTTP response helpers, cron scheduling helpers, and wp_mail pre-send filter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-03-http-cron-mail-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:e3893bdaf9f44311bb165b6f0e0b521210eb711b36b85c148ac7e4486975e729",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live-network-off HTTP, cron spawn, mail transport, feed/embed/oEmbed, installed distribution, and selected upstream PHPUnit gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.04",
+      "issue_id": "wordpresshx-l76.18.4",
+      "unit_name": "feed helper, embed/oEmbed local routing, and HTTPS detection/migration behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:a01b9a82ed8c26eb0097b63880c3f3c7efd62abafef58b825bd86dc124f65baa",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass feed template/rendering, remote fetch/oEmbed discovery, HTTPS probing, installed distribution, and selected upstream PHPUnit gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.05",
+      "issue_id": "wordpresshx-l76.18.5",
+      "unit_name": "bundled PHP AI Client HTTP DTO, utility, transporter, and WordPress HTTP adapter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-05-ai-http-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:51ee4cc632c75b83d87afba43f2452ca1bd8b875a8bc787f4801424a8b132abf",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real WordPress HTTP transport, provider discovery, model operation, installed distribution, and selected upstream PHPUnit gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.06",
+      "issue_id": "wordpresshx-l76.18.6",
+      "unit_name": "trackback endpoint sanitization, duplicate detection, comment insertion, hooks, and XML responses",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-06-trackback-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:8c63eb9493c79d903a123267562f97c2f87539f8fec1f584eb19c0fb1e99af1d",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed trackback routing, database-backed duplicate/comment behavior, selected upstream tests, and ecosystem ping fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.07",
+      "issue_id": "wordpresshx-l76.18.7",
+      "unit_name": "privacy request export, confirmation, and erasure notification mail behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-07-privacy-request-mail-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:35c4d6aee09fc7b42d7990a5362afef39653a6c94e55af2e5f1ecfab59e8e6b6",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed privacy request confirmation, admin management, mail delivery, selected upstream tests, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.08",
+      "issue_id": "wordpresshx-l76.18.8",
+      "unit_name": "remote feed fetch, SimplePie wrapper, and oEmbed HTTP discovery/fetch behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-08-remote-fetch-oembed-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:75408df6eca2ae74652530e806918f28ca67d0514cdebed8bb18e99c14f5352e",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed/oEmbed rendering, live-network or recorded-network parity, selected upstream tests, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.09",
+      "issue_id": "wordpresshx-l76.18.9",
+      "unit_name": "HTTP, cron, mail, feed, oEmbed, trackback, and privacy request installed-style observations",
+      "unit_kind": "packaged-distribution-installed-http-gate",
+      "ownership_state": "installed_style_package_gate_with_copied_oracle_php",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-router-observation-gate",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-09-http-mail-feed-embed-installed-gate.v1.json",
+      "ownership_manifest_sha256": "sha256:f4d1aec6781d26e0e64d9f9bdd3f3fe72ca9c74b34dac7f26d9d4c644c7a2b50",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded network parity, real cron spawn/dispatch, mail transport, installed feed/embed rendering, selected upstream tests, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.11",
+      "issue_id": "wordpresshx-l76.18.11",
+      "unit_name": "privacy request admin-management state handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-admin-state-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-11-privacy-request-admin-state-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:98307383ee4ddb537e1759fcb9e2d57d78dbed6e47b9d62202bb78c1fbc5763a",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed privacy request management, broad WPHX-315 admin list-table, selected upstream tests, real mail/DB side-effect, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.12",
+      "issue_id": "wordpresshx-l76.18.12",
+      "unit_name": "cron ready-job, spawn lock, loopback request, and daemon dispatch behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-cron-dispatch-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-12-cron-dispatch-lock-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:e4357ad5816634698ee7049b1d0e6a985d51e1fe442ecbf7cc130a7142785788",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real loopback HTTP, persistent cron option/transient, timing-race, selected upstream PHPUnit, installed distribution, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.13",
+      "issue_id": "wordpresshx-l76.18.13",
+      "unit_name": "wp_mail PHPMailer setup, header, attachment, embed, init-hook, and failure behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-no-delivery-phpmailer-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-13-phpmailer-setup-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:4c4be8b1114248dfafccc398e417db5a23aa411d9b8889ee53e472eb85467ca3",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass PHPMailer/SMTP/PHP-mail transport, selected upstream PHPUnit, installed distribution, privacy mail, recovery mail, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.14",
+      "issue_id": "wordpresshx-l76.18.14",
+      "unit_name": "wp-links-opml.php OPML link category and bookmark output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-link-data-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-14-opml-links-output-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:5bcc1a5d9a209cbc856c1971c5b6fbd4a558f2de17754b75c034b6763e78f324",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed template rendering, database-backed bookmark/link manager, OPML endpoint, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.15",
+      "issue_id": "wordpresshx-l76.18.15",
+      "unit_name": "RSS2 post feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-15-rss2-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:551bee89694f4fb2eec3281e73fcfea0da24ed2391233ccd03d50d6668c2699a",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed WP_Query/post/comment/enclosure behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.16",
+      "issue_id": "wordpresshx-l76.18.16",
+      "unit_name": "Atom post feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-16-atom-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:ac4f69f6defefec9f0065ca2967eadd06f2e430a7866c4d38c99c43b6f65ac33",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed WP_Query/post/comment/enclosure behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.17",
+      "issue_id": "wordpresshx-l76.18.17",
+      "unit_name": "RSS2 comments feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-comment-loop-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-17-rss2-comments-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:07ffd177e6a4e0d11bcef01a32fd60ddff1ebb14264c23e0c4bad1bd65cbe96f",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed comment/post/password behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.18",
+      "issue_id": "wordpresshx-l76.18.18",
+      "unit_name": "Atom comments feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-comment-loop-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-18-atom-comments-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:1f67a2ae3c632cfd2a18abc3026b67c81e684e825509ca29f6a8b5512921d1c7",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed comment/post/password behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.19",
+      "issue_id": "wordpresshx-l76.18.19",
+      "unit_name": "RDF feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-19-rdf-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:15dd31017b9d19c05b42cfbd143e8870a15712c3804a6cc164b67c293b97f5a7",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed WP_Query/post/category behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.20",
+      "issue_id": "wordpresshx-l76.18.20",
+      "unit_name": "RSS 0.92 feed template output behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-feed-loop-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-20-rss-feed-template-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:690eb3f309f42a11b586287f07b895113fbdb405d65e5c5b8fb9f64382f1d3b5",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed feed routing, database-backed WP_Query/post behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.21",
+      "issue_id": "wordpresshx-l76.18.21",
+      "unit_name": "Deprecated embed and RSS wrapper handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-required-file-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-21-deprecated-embed-rss-wrapper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:9c0b412acdbef75897987a525d8c9e7f5792c51fb35ae53fe49a5a9d5c50fef5",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real theme-compat/embed.php, rss.php/MagpieRSS, installed embed/feed routing, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.22",
+      "issue_id": "wordpresshx-l76.18.22",
+      "unit_name": "MagpieRSS parser and pure helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-22-magpie-rss-parser-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:9f1696d991c7b6a7c0b2b89235b21ce4f82c773d4a06739f5d93d5893fff18f7",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass remote fetch/cache/display behavior, installed feed widgets/routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.23",
+      "issue_id": "wordpresshx-ri4",
+      "unit_name": "MagpieRSS fetch and transient cache behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-23-magpie-rss-fetch-cache-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:531d5afca90eb951ada2840f3aca3613f2804e63bcf34c0a824fde617c3eb141",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP, transient cache, feed display/widget/routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.24",
+      "issue_id": "wordpresshx-d7p",
+      "unit_name": "MagpieRSS display helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-24-magpie-rss-display-helper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:5fbfed6798ee7cbd15f6fe73844743468d463aa1930f4f3212a6e4becc72d49f",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass display helper, widget, installed route, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.25",
+      "issue_id": "wordpresshx-psk",
+      "unit_name": "RSS widget helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-25-rss-widget-helper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:c9c0bed1f0df223dcdab0c50933aa8fdbe1acfb0debebd79d96ed6cb792ff7eb",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass WP_Widget_RSS class runtime, installed widget registration/rendering, live/recorded feed, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.26",
+      "issue_id": "wordpresshx-yyr",
+      "unit_name": "WP_Widget_RSS class wrapper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-26-wp-widget-rss-class-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:172bcdfcc151922921ccbea606e922e8f0e5d0bc95faa23a082171ab71fbf63a",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed widget registration/sidebar rendering, real WP_Widget base/runtime, live/recorded feed, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.27",
+      "issue_id": "wordpresshx-hc3",
+      "unit_name": "core/rss block server renderer behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-27-rss-block-renderer-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:12613a8b8eeed798c3109f2e8cb5c67d436719bee7d0e1fd2ff0e46fbb40e6bf",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass installed block registry/rendering, editor/client behavior, live/recorded feed, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.28",
+      "issue_id": "wordpresshx-1te",
+      "unit_name": "Deprecated oEmbed wrapper handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-required-file-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-28-deprecated-oembed-wrapper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:ebc066ae220205ce4d831d69585a1e6df0e5f695b390c674221f91f4423278c7",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real WP_oEmbed provider internals, REST oEmbed controller behavior, installed oEmbed routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.29",
+      "issue_id": "wordpresshx-8sz",
+      "unit_name": "WP_oEmbed provider registry and compatibility behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-runtime-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-29-oembed-provider-registry-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:0f5526cc92a5af4168d1c768347aa810addb00af56b0818bc4097678c9940874",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded remote oEmbed fetch, REST oEmbed controller behavior, installed post embed routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.30",
+      "issue_id": "wordpresshx-1to",
+      "unit_name": "WP_Embed cache, shortcode, and autoembed behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-runtime-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-30-wp-embed-cache-autoembed-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:49f29f392229ff72be647ff6dfb88ddbb70bd96729e72e782a2667b06c5ae58e",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded oEmbed fetch, database-backed post/meta cache storage, installed editor/admin Ajax, REST oEmbed controller behavior, browser rendering, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.31",
+      "issue_id": "wordpresshx-k2t",
+      "unit_name": "WP_oEmbed_Controller REST route and proxy behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-rest-and-oembed-runtime-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-31-oembed-rest-controller-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:fe5e65ef8195277af7cd9cdf31e09209fbc21e645bbd26b5192aa8933e090960",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass full REST server dispatch, live/recorded oEmbed provider behavior, installed browser rendering, editor/admin flows, database-backed transient/cache behavior, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.32",
+      "issue_id": "wordpresshx-x2x",
+      "unit_name": "WP_HTTP_Proxy constants, bypass, and filter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-http-proxy-runtime-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-32-http-proxy-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:60c6b41eea3551c112fc5506d149b3eced9b32d21bbc3f296bff8d3a773462b3",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass Requests/cURL/fsockopen proxy integration, recorded/live HTTP transport behavior, TLS/proxy negotiation, installed distribution routes, selected upstream PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.33",
+      "issue_id": "wordpresshx-c86",
+      "unit_name": "WP_HTTP_Requests_Response and WP_HTTP_Requests_Hooks bridge behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-real-requests-support-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-33-http-requests-bridge-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:d2e4c34749f99fdbf6707bc2782eb17de211420a0df4567901cf1a811e55180f",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass WP_Http request routing, Requests redirect validation, proxy/TLS negotiation, recorded/live HTTP transport behavior, selected upstream PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.34",
+      "issue_id": "wordpresshx-5mq",
+      "unit_name": "WP_HTTP_IXR_Client XML-RPC HTTP handoff behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-wordpress-http-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-34-http-ixr-client-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:507bb5f90ad77b17852d4691d2f51a4e37ed40f43ef837add255bf76884200a2",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded XML-RPC HTTP client transport, pingback/comment integration, WP_Http transport routing, selected upstream XML-RPC PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.35",
+      "issue_id": "wordpresshx-5tf",
+      "unit_name": "WP_Feed_Cache_Transient site-transient adapter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-site-transient-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-35-feed-cache-transient-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:cd66dcaa19fe711652fed0d23fb8f49faae3a59b20021b1316fa2a4c7c0b1e6c",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded feed fetching, SimplePie parser/cache registration, persistent object-cache/multisite behavior, selected upstream feed PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.36",
+      "issue_id": "wordpresshx-l76.18.23",
+      "unit_name": "WP_SimplePie_File WordPress HTTP adapter behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-http-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-36-simplepie-file-http-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:4455ff92439d34576ba22452969bd4916937ddfc2c08fc0d225c2ddd2539a6b5",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded feed fetching, SimplePie parser integration, Requests transport/TLS/proxy behavior, selected upstream feed PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.37",
+      "issue_id": "wordpresshx-l76.18.24",
+      "unit_name": "SimplePie feed wrapper load-order compatibility",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-simplepie-vendor-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-37-simplepie-feed-wrapper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:696513a06c533326b9d171899af7649073776e6940a5f7374f0a263a17a5b44f",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass real SimplePie autoloader/parser/cache/sanitizer integration, live/recorded feed fetching, selected upstream feed PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.38",
+      "issue_id": "wordpresshx-l76.18.25",
+      "unit_name": "WP_HTTP_Response object state behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-absint-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-38-http-response-object-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:072a56e59823fd0c6d03573d5fdaef4c5293cf676018549086dcfb7b7a86447d",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass REST dispatch, Requests bridge, installed HTTP routes, selected upstream HTTP/REST PHPUnit, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.39",
+      "issue_id": "wordpresshx-l76.18.26",
+      "unit_name": "WP_Http_Cookie object parsing and matching behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-filter-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-39-http-cookie-object-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:16ee06ec6a2738020d12b32ec426253bdb95c1435db9b81b8abea197201300a2",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, Requests cookie jar conversion, redirect/cookie propagation, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.40",
+      "issue_id": "wordpresshx-l76.18.27",
+      "unit_name": "WP_Http_Encoding compression helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-filter-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-40-http-encoding-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:949633354916894b648823e92943a8f4d30f870268f1e9cbba6b407722aa5ffe",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, streaming download behavior, content negotiation, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.41",
+      "issue_id": "wordpresshx-l76.18.28",
+      "unit_name": "WP_Http static helper and redirect behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:a707880db379b5ed5f529643c7f97c9543fce43c2f83cb8c61542e8c9fd964b4",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, Requests redirect/cookie integration, proxy/TLS behavior, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.42",
+      "issue_id": "wordpresshx-l76.18.29",
+      "unit_name": "WP_Http parser, header, cookie-header, chunk decoding, and parse-url helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:99078887d00edf94b060d3b1796f83a25035c9c81d8a195d35c89d3124d94b77",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, raw HTTP response parsing, Requests integration, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.43",
+      "issue_id": "wordpresshx-l76.18.30",
+      "unit_name": "HTTP API request wrapper, capability, origin, and safe URL helper behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-http-and-wordpress-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-43-http-api-wrapper-safety-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:2962f0bb2edb47e27af0b3cf28ed75954d71a0e865259b5158dc24a3f81a6205",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass live/recorded HTTP transport, SSRF validation with controlled DNS, CORS/header behavior, multisite installed behavior, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.44",
+      "issue_id": "wordpresshx-l76.18.31",
+      "unit_name": "HTTP parse-url helper and deprecated class-http shim behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-deprecation-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:16e541021583cfc222eb8c814fbc6a789008212a8e8e1f7235220e5b67b12b72",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass URL parsing, compatibility shim, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.45",
+      "issue_id": "wordpresshx-l76.18.32",
+      "unit_name": "HTTP streams/cURL transport test and private callback behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-deterministic-hook-and-reflection-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-45-http-transport-callback-test-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:c02c075327137025d0ac070ace72ae9f68a19363b9ee4587449dcd96cf6a9ea6",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass transport capability, callback, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.46",
+      "issue_id": "wordpresshx-l76.18.33",
+      "unit_name": "WP_Http request orchestration behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-requests-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-46-wp-http-request-orchestration-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:cad0e1fedea9a081892b90670b6d852d6a8486fa84f1ab8c93577f1a769bc6bb",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.47",
+      "issue_id": "wordpresshx-l76.18.34",
+      "unit_name": "WP_Http external request blocking policy behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-deterministic-option-and-filter-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-47-wp-http-block-request-policy-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:85ed4b05288d82532b31b0684c7e3d05fb2e7205ea3c06501287db5548c5a61a",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass external request blocking, selected upstream HTTP PHPUnit, installed distribution, and ecosystem HTTP policy gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.48",
+      "issue_id": "wordpresshx-l76.18.35",
+      "unit_name": "WP_Http deprecated transport selection and dispatch behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-deterministic-fake-transport-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-48-wp-http-transport-dispatch-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:e9cfd8309e584df2e18d7803ef04fc597eed6b551a90acbfe8a415fe434125a1",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass deprecated transport dispatch, selected upstream HTTP PHPUnit, installed distribution, and live/recorded transport gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.49",
+      "issue_id": "wordpresshx-l76.18.36",
+      "unit_name": "WP_Http request proxy/safety option behavior",
+      "unit_kind": "oracle_source_mirror_fixture",
+      "ownership_state": "oracle_mirror_behavior_fixture",
+      "shell_gap_classification": "copied_oracle_public_surface",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-oracle-public-php-with-stubbed-requests-boundary",
+      "followup_owner": {
+        "issue_id": "wordpresshx-i378",
+        "external_ref": "WPHX-312.100",
+        "title": "Plan generated public adapters for copied HTTP feed embed fixtures"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-49-wp-http-request-proxy-safety-oracle-fixture.v1.json",
+      "ownership_manifest_sha256": "sha256:cbad2ef3b02b3105eb1a041bcf7acc631b3786e0b409012ae8ef90862abf867d",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy/safety, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.50",
+      "issue_id": "wordpresshx-l76.18.37",
+      "unit_name": "WP_Http_Encoding Haxe parity candidate",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_parity_candidate",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-50-http-encoding-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:d34ab7a351e6e0b25d5abae45cb1fabbc9dabbabecf12282b6db2bee824d81c5",
+      "removal_gate": "Promote beyond this bounded public class adapter only after selected upstream HTTP PHPUnit, installed distribution behavior, include timing, and live/recorded transfer-encoding parity gates pass."
+    },
+    {
+      "external_ref": "WPHX-312.51",
+      "issue_id": "wordpresshx-l76.18.38",
+      "unit_name": "WP_HTTP_Proxy bypass routing Haxe parity candidate",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_parity_candidate",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-51-http-proxy-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:f8f9e888aeed9348d8eaa564ccf187e89ef98657fdcb0b61aa8cb6458e15c164",
+      "removal_gate": "Promote beyond this bounded public class adapter only after include timing, selected upstream HTTP PHPUnit, installed distribution behavior, and live/recorded proxy transport parity gates pass."
+    },
+    {
+      "external_ref": "WPHX-312.52",
+      "issue_id": "wordpresshx-ldp",
+      "unit_name": "WP_HTTP_Response object state behavior",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-52-http-response-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:24945076a6172c7e6e0f3790e5bb991af4bfcafac91c9f9e7a4dc946e372685a",
+      "removal_gate": "Promote beyond this bounded public class adapter only after REST dispatch, Requests bridge, installed HTTP routes, selected upstream HTTP/REST PHPUnit, and ecosystem fixtures pass."
+    },
+    {
+      "external_ref": "WPHX-312.53",
+      "issue_id": "wordpresshx-5d9",
+      "unit_name": "WP_Http_Cookie matching and header behavior",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-53-http-cookie-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:6e4096ca5501aecf1583c961b7c7153d0837667201d641ab03c6cb48dc4b23ec",
+      "removal_gate": "Pass constructor-parsing ownership, live/recorded HTTP transport, Requests cookie jar conversion, redirect/cookie propagation, selected upstream HTTP PHPUnit, installed distribution routes, and ecosystem fixtures before claiming broader WP_Http_Cookie or whole-file HTTP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.54",
+      "issue_id": "wordpresshx-ubd",
+      "unit_name": "WP_Http external request blocking policy",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-54-wp-http-block-request-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:3592505c6e0910625267192112b64276913ac1593668c3cac7ba946e03790a5f",
+      "removal_gate": "Pass external request blocking, selected upstream HTTP PHPUnit, installed distribution, ecosystem HTTP policy, live/recorded transport, and whole-file WP_Http gates before claiming durable public PHP or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.55",
+      "issue_id": "wordpresshx-0qj",
+      "unit_name": "WP_Http IP address helper",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:dc787f25a6ca0cff1a8c88d5d51ca5c242b2e7755ff5b5ab3c3fa6a8dab2bab5",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader WP_Http helper, upstream HTTP PHPUnit, installed distribution, ecosystem HTTP helper, and generated-shell gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.56",
+      "issue_id": "wordpresshx-ayz",
+      "unit_name": "WP_Http browser redirect compatibility helper",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:0242383ae5204b8c84140966fef84fb321649432d865a7c0f9efc46ca31df0df",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.57",
+      "issue_id": "wordpresshx-9ny",
+      "unit_name": "WP_Http redirect validation failure decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:a23d6133bd83813a85ea6112397ecb340d6ded112f4d7c6dc6c098fef9db7215",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and generated-shell gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.58",
+      "issue_id": "wordpresshx-a7v",
+      "unit_name": "WP_Http absolute URL helper",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:3c26ae57bcc817c0cba2d4eac009901a6032d8b713132f6ca0ae5857e6f0e772",
+      "removal_gate": "Pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, ecosystem redirect, and whole-file WP_Http gates before claiming durable public PHP or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.59",
+      "issue_id": "wordpresshx-o58",
+      "unit_name": "WP_Http redirect orchestration decisions",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-59-wp-http-redirect-orchestration-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:0b2bbba63d6120e19e1cbefa177fb7cb4b60494513ec319312a4570b345be488",
+      "removal_gate": "Pass broader redirect helper, upstream HTTP PHPUnit, installed distribution, live/recorded network, ecosystem redirect, and whole-file WP_Http gates before claiming durable public PHP or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.60",
+      "issue_id": "wordpresshx-7zu",
+      "unit_name": "WP_Http grouped parser helper decisions",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-60-wp-http-process-response-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:bb173d716e7e7bafe04edb8aa823384f774e547068f3ef471da0a915f2ca5839",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, and transfer/header/cookie gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.61",
+      "issue_id": "wordpresshx-4iw",
+      "unit_name": "WP_Http chunk transfer decode parser",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-61-wp-http-chunk-transfer-decode-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:728df952acea1bcd287b1ca05f32c0812b96ee757512b36a1e515bf2300eb4d7",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, and transfer-encoding gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.62",
+      "issue_id": "wordpresshx-0aw",
+      "unit_name": "WP_Http processHeaders line decisions",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:8bfb824b1712c1736d8a4289f5319b3277e9a16e893ac5a037642975c605beb6",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, cookie/header, and generated-shell gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.63",
+      "issue_id": "wordpresshx-qx7",
+      "unit_name": "WP_Http buildCookieHeader assembly",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:645929a4fa4f108b741fa2e33eb8286da7e8d8f15ddedc92c9b59d9bdf0559f5",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, cookie/header, and generated-shell gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.64",
+      "issue_id": "wordpresshx-29t",
+      "unit_name": "WP_Http deprecated parse_url wrapper",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_owned_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-grouped-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:bd32bc7aa994f6926c5a4690a2917d0437670c4f2fc1de4fa62b18793cdce6e2",
+      "removal_gate": "Expand generated original-path public PHP adapters and pass broader parser/header, upstream HTTP PHPUnit, installed distribution, and generated-shell gates before claiming durable whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.65",
+      "issue_id": "wordpresshx-5p6",
+      "unit_name": "WP_Http request nonblocking response shape",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-65-wp-http-request-nonblocking-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:03e1572492f7669d8a77fa06d6ee0a9cfa4f5483c4a155d7fa52f16f58a1a5b8",
+      "removal_gate": "Promote additional WP_Http::request branches only through WPHX PHP emitted adapters, typed Haxe helpers, request orchestration gates, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.66",
+      "issue_id": "wordpresshx-3d1",
+      "unit_name": "WP_Http deprecated transport selection naming",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "wphx_backed_state_reconciliation",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": {
+        "issue_id": "wordpresshx-hh12",
+        "external_ref": "WPHX-312.98",
+        "title": "Reconcile WPHX-backed HTTP ownership states"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-66-wp-http-transport-selection-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:efffc3ef0ab637a0540bd36c69f8eb5e1b7dba40d77f046375bf33a73282315d",
+      "removal_gate": "Pass selected upstream HTTP PHPUnit, installed distribution, and live/recorded transport gates before claiming broader deprecated transport dispatch or whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.67",
+      "issue_id": "wordpresshx-e5g",
+      "unit_name": "WP_Http request redirect-validation hook decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-67-wp-http-request-safety-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:68d15e5ed320a3a42829f460f1fe4576a22bca903dc44a28576342da4d9373bd",
+      "removal_gate": "Promote additional WP_Http::request branches only through WPHX PHP emitted adapters, typed Haxe helpers, request proxy/safety gates, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming full request or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.68",
+      "issue_id": "wordpresshx-4qt",
+      "unit_name": "WP_Http request method-derived body data-format decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-68-wp-http-request-method-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:bab4a1bfb976028b6ed81b6b3ab8afd41f10ad8491a1bc2d6cc2c46c183a5c9e",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.69",
+      "issue_id": "wordpresshx-7w1",
+      "unit_name": "WP_Http request method-derived redirect option decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-69-wp-http-request-redirect-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:ba8bf05ca1a6be8103cb31f39712f5af2de092350f909dde3bc6fc06e488bb0d",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.70",
+      "issue_id": "wordpresshx-6v3",
+      "unit_name": "WP_Http request SSL verification option decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-70-wp-http-request-ssl-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:62d6b3ebcce80c66645ae35186caf1f38659d6c0a598db5bc2df20cd5030f6e1",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.71",
+      "issue_id": "wordpresshx-4xb",
+      "unit_name": "WP_Http request response-size option decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-71-wp-http-request-response-size-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:49345de56882b780232f68949263fa49dbdb3f1f03590710c14d8cf85b243908",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.72",
+      "issue_id": "wordpresshx-zaz",
+      "unit_name": "WP_Http request stream blocking decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-72-wp-http-request-stream-blocking-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:e6f55b6fd68c1ee6dc8521889bb5bf3532ae3e05a63aac2a54b934a5f05deda2",
+      "removal_gate": "Promote additional WP_Http::request branches only through WPHX PHP emitted adapters, typed Haxe helpers, request orchestration gates, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.73",
+      "issue_id": "wordpresshx-24b",
+      "unit_name": "WP_Http request stream filename options decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-73-wp-http-request-stream-filename-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:722a24a5fa973a507fc6c7f69076d921d42823c37e321c798c2ca62fbd02bce1",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.74",
+      "issue_id": "wordpresshx-46s",
+      "unit_name": "WP_Http request invalid URL decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-74-wp-http-request-invalid-url-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:3bd3ec3b2a1f62ae2a64c1a18d74807074f139f6b410c38b84719a4a2329142f",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.75",
+      "issue_id": "wordpresshx-819",
+      "unit_name": "WP_Http request blocked request decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-75-wp-http-request-blocked-request-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:31b6946b455f584bae1cfbab76657428d0b4f3e23bd83a9a3832365311f64770",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.76",
+      "issue_id": "wordpresshx-iem",
+      "unit_name": "WP_Http request preemptive response decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "none",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-76-wp-http-request-preemptive-response-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:671727788f485f36ee05bb565eb408f8b80a52d38c048bdeec0437fe41c3c4c1",
+      "removal_gate": "Temporary copied public PHP shell retired for this bounded branch; full WP_Http::request ownership still requires request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates."
+    },
+    {
+      "external_ref": "WPHX-312.77",
+      "issue_id": "wordpresshx-zrf",
+      "unit_name": "WP_Http request header parsing decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:4457d521beac92316c250e1232bcf2c96a32be2d13da139861a25fdd28e41320",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.78",
+      "issue_id": "wordpresshx-kzx",
+      "unit_name": "WP_Http request proxy option decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-78-wp-http-request-proxy-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:ca8f8b10ce77233d03440ac817ac917b0c7bb4d9bb8fe657c51ebd2753d89264",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy option, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.79",
+      "issue_id": "wordpresshx-pv8",
+      "unit_name": "WP_Http request proxy authentication decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:837c5ad09f493e8740c6a0db719fc65a489e2045afd058e48e6e378be08c6e46",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy authentication, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.80",
+      "issue_id": "wordpresshx-3ct",
+      "unit_name": "WP_Http request error response decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-80-wp-http-request-error-response-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:383ccd3016fb2117719a7e17cef52fa7d0002f9953bc261424d9b702b4d20575",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.81",
+      "issue_id": "wordpresshx-7v7",
+      "unit_name": "WP_Http request cookie option decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-81-wp-http-request-cookie-options-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:9ca5898205e68359cb15d8ce04dc778c76f59896f7f39da356340962e18f6ec2",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.82",
+      "issue_id": "wordpresshx-loq",
+      "unit_name": "WP_Http request stream destination error decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:59100660db2b9533f6703a2b6db5e4956fba29700e08774ac6d127b443be99d5",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.83",
+      "issue_id": "wordpresshx-eie",
+      "unit_name": "WP_Http request HEAD redirection default decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-83-wp-http-request-head-redirection-default-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:626e27a9174c33de38f184df1c1f1667a6a2c8fbf28ae0b67cc2ff70fe392cdb",
+      "removal_gate": "Promote additional WP_Http::request branches only through WPHX PHP emitted adapters, typed Haxe helpers, request orchestration gates, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request or whole-file ownership."
+    },
+    {
+      "external_ref": "WPHX-312.84",
+      "issue_id": "wordpresshx-zea",
+      "unit_name": "WP_Http request unsafe URL validation decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-84-wp-http-request-unsafe-url-validation-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:3aa91324e5b24926323d23248bcba9c063a68cf3df5030032513707226be52db",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy/safety, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.85",
+      "issue_id": "wordpresshx-ffd",
+      "unit_name": "WP_Http request bad-protocol stripping decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-85-wp-http-request-bad-protocol-stripping-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:16f7d7b8a5c13e1c0399ce8ddfe1566f4c1e955f6699200d377f707da0d92c4f",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request proxy/safety, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.86",
+      "issue_id": "wordpresshx-o00",
+      "unit_name": "WP_Http request redirection-copy decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-86-wp-http-request-redirection-copy-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:95283c5c965805a21f692fbbef9df1247b916809c9dd1ed21b02ef9eaf768483",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.87",
+      "issue_id": "wordpresshx-rva",
+      "unit_name": "WP_Http request null-header normalization decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-87-wp-http-request-null-header-normalization-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:4e2d55a2a3312b1743ba3d1a01ff0ea0398c4ee3fc6b810da6e5bbd61cf36085",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.88",
+      "issue_id": "wordpresshx-liz",
+      "unit_name": "WP_Http request stream default-filename decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-88-wp-http-request-stream-default-filename-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:3999a304f44197c8bcf7f7c73fc212d7b7e33486473e5b7ba401f5296791ec52",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.89",
+      "issue_id": "wordpresshx-3kf",
+      "unit_name": "WP_Http request http_response attachment decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-89-wp-http-request-http-response-attachment-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:216185befdb10022ad3ba993559f2ce44aa2f3d86a6388e57314a51395603316",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    },
+    {
+      "external_ref": "WPHX-312.90",
+      "issue_id": "wordpresshx-b9j",
+      "unit_name": "WP_Http request mbstring reset decision",
+      "unit_kind": "haxe_parity_candidate",
+      "ownership_state": "haxe_candidate_with_public_php_shell",
+      "shell_gap_classification": "remaining_request_branch_shell",
+      "has_wphx_php_fixture": false,
+      "bridge_kind": "copied-public-php-shell-calling-generated-haxe",
+      "followup_owner": {
+        "issue_id": "wordpresshx-gvzp",
+        "external_ref": "WPHX-312.99",
+        "title": "Retire remaining WP_Http::request branch public shells"
+      },
+      "ownership_manifest": "manifests/ownership/wphx-312-90-wp-http-request-mbstring-reset-candidate.v1.json",
+      "ownership_manifest_sha256": "sha256:dca7598f337c0585fe87c18c238173f1fbca0f53933a68e0433a52af1f08fff0",
+      "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    }
+  ],
+  "decision": {
+    "status": "passed",
+    "public_shell_debt_audited": true,
+    "bounded_retirements_already_evidenced": [
+      "Existing WPHX PHP fixtures and receipts cover the first HTTP object/helper class adapters, grouped WP_Http helpers, transport selection, and selected WP_Http::request branches.",
+      "Those boundaries remain bounded generated shell claims, not whole-file WP_Http, live transport, installed distribution, or broad feed/embed ownership claims."
+    ],
+    "required_next_actions": [
+      "WPHX-312.98 reconciles stale ownership-state wording for WPHX-backed HTTP candidates.",
+      "WPHX-312.99 retires remaining WP_Http::request branch public shells or files minimized compiler-pressure blockers.",
+      "WPHX-312.100 groups copied oracle feed/embed/cron/mail public surfaces into generated-adapter, preserved-vendor, installed-route, live-transport, or upstream-PHPUnit gates."
+    ]
+  },
+  "validation_result": {
+    "status": "passed",
+    "failures": [],
+    "boundary_count": 89,
+    "classification_counts": {
+      "adapter_contract_only": 1,
+      "copied_oracle_public_surface": 46,
+      "durable_generated_public_shell": 12,
+      "inventory_only": 1,
+      "remaining_request_branch_shell": 13,
+      "wphx_backed_state_reconciliation": 16
+    },
+    "unclassified_count": 0,
+    "shell_debt_without_followup_count": 0,
+    "all_non_durable_public_shell_debt_linked_to_followup": true,
+    "durable_generated_public_shell_count": 12,
+    "wphx_backed_state_reconciliation_count": 16,
+    "remaining_request_branch_shell_count": 13,
+    "copied_oracle_public_surface_count": 46
+  },
+  "non_claims": [
+    "This audit does not itself promote copied oracle fixtures to durable public PHP ownership.",
+    "This audit does not claim full WP_Http::request, whole-file WP_Http, live HTTP transport, real cron/mail transport, installed feed/embed/widget/privacy routing, or upstream PHPUnit parity.",
+    "This audit does not claim mature arbitrary-Haxe PHP backend scope beyond the existing WPHX PHP adoption gate."
+  ]
+}

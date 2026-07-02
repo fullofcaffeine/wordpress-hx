@@ -1,0 +1,62 @@
+{
+  "schema": "wphx.wp-core-receipt.v1",
+  "id": "receipt:wphx-312-95-public-shell-gap-audit",
+  "issue": {
+    "id": "wordpresshx-l76.18.43",
+    "external_ref": "WPHX-312.95",
+    "title": "Audit and retire remaining HTTP/feed/embed public PHP shell gaps"
+  },
+  "recorded_at": "2026-07-02T22:00:00Z",
+  "status": "passed",
+  "evidence_class": "public_php_shell_gap_audit",
+  "artifact_scope": "wphx_312_http_cron_mail_feed_embed_public_php_boundaries",
+  "commands": [
+    "npm run wp:core:wphx-312-public-shell-gap-audit",
+    "npm run wp:core:wphx-312-public-shell-gap-audit:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wp-core/run-wphx-312-public-shell-gap-audit.mjs",
+      "role": "deterministic WPHX-312 public PHP shell gap audit runner"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-95-public-shell-gap-audit.v1.json",
+      "role": "machine-readable WPHX-312 public PHP shell gap audit"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program matrix updated with WPHX-312 public shell debt split"
+    }
+  ],
+  "manifest_sha256": "sha256:b8f59ccdc740b3a860f60398774fa6a2380bc6bca8e86fd1fb3c4d82f01e194a",
+  "validation_result": {
+    "status": "passed",
+    "failures": [],
+    "boundary_count": 89,
+    "classification_counts": {
+      "adapter_contract_only": 1,
+      "copied_oracle_public_surface": 46,
+      "durable_generated_public_shell": 12,
+      "inventory_only": 1,
+      "remaining_request_branch_shell": 13,
+      "wphx_backed_state_reconciliation": 16
+    },
+    "unclassified_count": 0,
+    "shell_debt_without_followup_count": 0,
+    "all_non_durable_public_shell_debt_linked_to_followup": true,
+    "durable_generated_public_shell_count": 12,
+    "wphx_backed_state_reconciliation_count": 16,
+    "remaining_request_branch_shell_count": 13,
+    "copied_oracle_public_surface_count": 46
+  },
+  "claims": [
+    "Every WPHX-312 ownership manifest is classified for public PHP shell ownership state.",
+    "Non-durable public shell debt is linked to explicit follow-up owners.",
+    "Existing WPHX PHP-backed HTTP candidates are distinguished from remaining copied shell gaps."
+  ],
+  "non_claims": [
+    "This audit does not itself promote copied oracle fixtures to durable public PHP ownership.",
+    "This audit does not claim full WP_Http::request, whole-file WP_Http, live HTTP transport, real cron/mail transport, installed feed/embed/widget/privacy routing, or upstream PHPUnit parity.",
+    "This audit does not claim mature arbitrary-Haxe PHP backend scope beyond the existing WPHX PHP adoption gate."
+  ]
+}

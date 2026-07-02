@@ -68,6 +68,15 @@ npm run wphx:php:adoption-ci:check
 
 It records `manifests/ci/wphx-php-adoption-ci.v1.json` and `receipts/compiler/wphx-comp-php-adoption-ci.v1.json`. The executable gate runs the gap inventory, raw-block/template policy, public-shell snapshots, runtime/std strategy, core-lowering pilot, whole-file pilot, bootstrap autoload, bootstrap error-handler, and bootstrap debug checks. It then verifies generated PHP quality, `unsupported=[]` for claimed boundaries, zero inline public raw PHP bodies, zero active adapter templates, public-shell snapshot coverage, runtime/std/bootstrap/debug probes, and bounded stock Haxe PHP fallback surfaces. A passing adoption CI unblocks bounded parallel WordPress Core work under these rules; it does not claim mature arbitrary-Haxe `reflaxe.php` backend scope, WPHX runtime/std ownership, installed WordPress parity, complete `WP_Http` ownership, live HTTP behavior, Gutenberg/browser ownership, or abandonment of stock Haxe PHP as the private implementation/stdphp oracle.
 
+The first post-adoption Core audit is:
+
+```bash
+npm run wp:core:wphx-312-public-shell-gap-audit
+npm run wp:core:wphx-312-public-shell-gap-audit:check
+```
+
+It records `manifests/wp-core/wphx-312-95-public-shell-gap-audit.v1.json` and `receipts/wp-core/wphx-312-95-public-shell-gap-audit.v1.json`. The audit scans WPHX-312 ownership manifests and separates durable generated public shells, WPHX PHP-backed boundaries whose ownership wording still needs reconciliation, remaining `WP_Http::request` branch shell debt, and copied oracle feed/embed/cron/mail public surfaces. This is the right post-pivot posture: use WPHX PHP evidence where it exists, link stale or missing shell retirement to named follow-up work, and keep copied-oracle behavior fixtures distinct from durable public PHP ownership claims.
+
 Use the native Haxe PHP generator and `std/php` sources in `../haxe.compilerdev.reference/haxe` as an implementation oracle for generic, borrowable lowering/runtime behavior when useful. That reference can guide what to reuse or adapt; WordPress public ABI, original path topology, declaration timing, and ecosystem-visible behavior still require WordPress oracle fixtures and WPHX public-shell evidence.
 
 Copied, transformed, hand-authored, or JS-patched public PHP shells are bridge mechanisms only. The shell-retirement states in [ownership-state-model.md](ownership-state-model.md) define which claims are allowed for `bridge_shell`, `generated_helper_with_temporary_shell`, `compiler_emitted_original_path_shell`, `durable_public_adapter`, and `whole_file_owned`. Durable public PHP claims must cite compiler-emitted original-path shell evidence, durable adapter evidence, whole-file evidence, or an accepted backend/custom-target improvement.
