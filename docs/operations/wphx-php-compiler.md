@@ -6,15 +6,17 @@ The compiler is a Haxe/Reflaxe module under `src/wphx/compiler/php`. It uses Ref
 
 `WphxPhpCompiler.hx` owns the generic Adapter IR collection, PHP-core statement/expression IR, file/segment planning, bootstrap printing, manifest writing, and PHP printer behavior. WordPress-specific method adapter bodies live behind the `WphxPhpWordPressAdapters.hx` profile registry. That registry maps bounded `@:wp.adapter(...)` names such as `wp-http-process-headers` or `wp-http-validate-redirects` to PHP-core IR plans plus required feature declarations. This keeps the current WordPress ABI pressure explicit while preventing the compiler core from becoming a pile of `WP_Http` method bodies.
 
-The current strategy, accepted after oracle review on 2026-06-29 and formalized in [ADR-013](../adr/ADR-013-wphx-php-adapter-ir-and-scope.md), is a staged custom compiler strategy:
+The current strategy, accepted after oracle review on 2026-06-29, formalized in [ADR-013](../adr/ADR-013-wphx-php-adapter-ir-and-scope.md), and sharpened by [ADR-015](../adr/ADR-015-wphx-php-backend-strategy.md), is a staged custom compiler strategy:
 
 - stock Haxe PHP emits private Haxe implementation classes and remains the reference for stdlib/runtime behavior;
 - WPHX PHP is the custom compiler lane and currently emits bounded WordPress original-path public adapter files;
 - typed Haxe source, metadata, Adapter IR, and manifests are the durable asset, not generated PHP strings.
 
+Say this precisely in future notes: WPHX PHP uses Reflaxe infrastructure, but it is not yet a mature arbitrary-Haxe `reflaxe.php` target. Backend promotion is a later decision that needs backend-scale evidence, generated PHP quality gates, and an ADR.
+
 When WPHX public adapters bootstrap stock Haxe PHP implementation classes, that bootstrap is governed by [ADR-014](../adr/ADR-014-haxe-php-bootstrap-lifecycle.md). It is request-state behavior, not invisible plumbing: include path mutation, SPL autoloaders, `php.Boot::__hx__init()`, mbstring encoding, error handling, source maps, and stack traces need explicit evidence before broad distribution claims.
 
-Do not assume stock Haxe PHP can directly generate public WordPress Core files with the ABI, file topology, reference behavior, warning behavior, stack traces, and include timing modern WordPress requires. Public WordPress files must pass WPHX public-shell gates. Conversely, do not flip WPHX PHP into a full arbitrary-Haxe backend until minimized evidence shows the staged Adapter IR path has accumulated backend-scale pressure and a later ADR accepts that promotion.
+Do not assume stock Haxe PHP can directly generate public WordPress Core files with the ABI, file topology, reference behavior, warning behavior, stack traces, and include timing modern WordPress requires. Public WordPress files must pass WPHX public-shell gates. Conversely, do not flip WPHX PHP into a full arbitrary-Haxe backend until minimized evidence shows the staged Adapter IR path has accumulated backend-scale pressure and a later ADR accepts that promotion. ADR-015 defines the current generated PHP quality bar and promotion criteria.
 
 Use the native Haxe PHP generator and `std/php` sources in `../haxe.compilerdev.reference/haxe` as an implementation oracle for generic, borrowable lowering/runtime behavior when useful. That reference can guide what to reuse or adapt; WordPress public ABI, original path topology, declaration timing, and ecosystem-visible behavior still require WordPress oracle fixtures and WPHX public-shell evidence.
 

@@ -31,7 +31,12 @@ Some high-impact architecture decisions are prepared for a second-pass GPT 5.5 P
 Prompt bundles:
 
 - [Original-path PHP emission strategy](oracle-original-path-php-emission-review.md)
+- [WPHX PHP backend strategy](oracle-wphx-php-backend-strategy-review.md)
 
 Accepted response:
 
 - The 2026-06-29 original-path PHP emission response keeps the hybrid execution strategy: stock Haxe PHP is the private implementation emitter; WPHX PHP is the staged custom compiler lane for bounded WordPress original-path public adapters. The response does not recommend a stock PHP generator fork or immediate arbitrary-Haxe `reflaxe.php` backend flip yet.
+
+Pending review:
+
+- ADR-015 keeps WPHX PHP on the staged Adapter IR path while acknowledging that the in-repo compiler uses Reflaxe infrastructure. Before WPHX PHP is promoted to a full backend or extracted `reflaxe.php` target, send the backend strategy prompt bundle to the oracle or record a deliberate deferral.
