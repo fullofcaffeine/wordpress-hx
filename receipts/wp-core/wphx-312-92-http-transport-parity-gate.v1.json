@@ -1,0 +1,90 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-312-92-http-transport-parity-gate",
+  "issue": {
+    "id": "wordpresshx-l76.18.40",
+    "external_ref": "WPHX-312.92",
+    "title": "WPHX-312.92 - Add live or recorded HTTP transport parity gate"
+  },
+  "recorded_at": "2026-07-02T23:00:00Z",
+  "artifacts": [
+    {
+      "path": "manifests/wp-core/wphx-312-92-http-transport-parity-gate.v1.json",
+      "role": "WP_Http recorded transport parity gate manifest"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-92-http-transport-parity-gate.v1.json",
+      "role": "ownership manifest for WPHX PHP recorded transport parity boundary"
+    },
+    {
+      "path": "tools/wp-core/run-wphx-312-http-transport-parity-gate.mjs",
+      "role": "deterministic PHP CLI oracle/generated-candidate parity fixture generator"
+    },
+    {
+      "path": "fixtures/wp-core/http-request-transport-parity-gate.hxml",
+      "role": "Haxe compile target for request helper support used by generated public shell"
+    }
+  ],
+  "verification_commands": [
+    "npm run wp:core:wphx-312-http-transport-parity-gate",
+    "npm run wp:core:wphx-312-http-transport-parity-gate:check",
+    "npm run wp:core:wphx-312-public-shell-gap-audit:check",
+    "npm run receipts:validate",
+    "npm run beads:validate"
+  ],
+  "related_receipts": [
+    "receipt:wphx-312-01-http-cron-mail-feed-embed-surface",
+    "receipt:wphx-312-02-http-cron-mail-feed-embed-adapter-contract-candidate",
+    "receipt:wphx-312-41-wp-http-helper-oracle-fixture",
+    "receipt:wphx-312-42-wp-http-parser-header-oracle-fixture",
+    "receipt:wphx-312-43-http-api-wrapper-safety-oracle-fixture",
+    "receipt:wphx-312-45-http-transport-callback-test-oracle-fixture",
+    "receipt:wphx-312-46-wp-http-request-orchestration-oracle-fixture",
+    "receipt:wphx-312-49-wp-http-request-proxy-safety-oracle-fixture"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "fixture_cases": 7,
+    "covered_symbols": 28,
+    "observations_match": true,
+    "observations_assert": true,
+    "public_php_replacement_claimed": true,
+    "wphx_php_manifest_unsupported_empty": true,
+    "request_ir_features": [
+      "stmt.try-catch",
+      "stmt.if",
+      "stmt.if-else",
+      "expr.long-array",
+      "expr.method-call",
+      "expr.static-call",
+      "wp-http.request.bad-protocol-stripping-helper",
+      "wp-http.request.blocked-request-helper",
+      "wp-http.request.cookie-options-helper",
+      "wp-http.request.error-response-helper",
+      "wp-http.request.head-redirection-default-helper",
+      "wp-http.request.header-parsing-helper",
+      "wp-http.request.http-response-attachment-helper",
+      "wp-http.request.invalid-url-helper",
+      "wp-http.request.mbstring-reset-helper",
+      "wp-http.request.method-options-helper",
+      "wp-http.request.nonblocking-response",
+      "wp-http.request.null-header-normalization-helper",
+      "wp-http.request.preemptive-response-helper",
+      "wp-http.request.proxy-authentication-helper",
+      "wp-http.request.proxy-options-helper",
+      "wp-http.request.redirect-options-helper",
+      "wp-http.request.redirection-copy-helper",
+      "wp-http.request.response-size-options-helper",
+      "wp-http.request.safety-options-helper",
+      "wp-http.request.ssl-options-helper",
+      "wp-http.request.stream-blocking-helper",
+      "wp-http.request.stream-default-filename-helper",
+      "wp-http.request.stream-destination-error-helper",
+      "wp-http.request.stream-filename-options-helper",
+      "wp-http.request.unsafe-url-validation-helper"
+    ],
+    "installed_wordpress_behavior_claimed": false,
+    "live_requests_network_io_claimed": false,
+    "transport_execution_claimed": false
+  }
+}

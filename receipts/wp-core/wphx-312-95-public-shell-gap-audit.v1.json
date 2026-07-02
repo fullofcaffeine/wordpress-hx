@@ -28,21 +28,21 @@
       "role": "program matrix updated with WPHX-312 public shell debt split"
     }
   ],
-  "manifest_sha256": "sha256:0c1c23c61ce72e49b303cf7aa1ed26152db23f692b5d7a226c3d63f5758820ad",
+  "manifest_sha256": "sha256:a0b48a3fd70434e80ef249212cf9e19cc2fb871ddc2129603c1f26a09dab0f51",
   "validation_result": {
     "status": "passed",
     "failures": [],
-    "boundary_count": 89,
+    "boundary_count": 90,
     "classification_counts": {
       "adapter_contract_only": 1,
       "copied_oracle_public_surface": 46,
-      "durable_generated_public_shell": 41,
+      "durable_generated_public_shell": 42,
       "inventory_only": 1
     },
     "unclassified_count": 0,
     "shell_debt_without_followup_count": 0,
     "all_non_durable_public_shell_debt_linked_to_followup": true,
-    "durable_generated_public_shell_count": 41,
+    "durable_generated_public_shell_count": 42,
     "wphx_backed_state_reconciliation_count": 0,
     "remaining_request_branch_shell_count": 0,
     "copied_oracle_public_surface_count": 46

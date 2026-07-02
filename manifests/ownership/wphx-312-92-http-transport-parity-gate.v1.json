@@ -1,0 +1,81 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/http-transport-parity-gate",
+  "issue": {
+    "id": "wordpresshx-l76.18.40",
+    "external_ref": "WPHX-312.92"
+  },
+  "unit": {
+    "kind": "recorded_transport_parity_gate",
+    "name": "WP_Http recorded transport handoff parity",
+    "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Proxy, WP_HTTP_Response, and WP_Http_Cookie support",
+    "public_contract": "This gate compares copied WordPress 7.0 WP_Http request behavior against the WPHX PHP compiler-emitted original-path WP_Http request shell in isolated PHP CLI probes. It observes recorded Requests handoff and response/error handling for success, redirects, errors, headers/cookies, proxy/TLS options, and streaming/response-size behavior without claiming live Requests network I/O, real DNS/proxy/TLS negotiation, curl/streams transport execution, installed distribution behavior, whole-file WP_Http ownership, or full request ownership."
+  },
+  "ownership_state": "compiler_emitted_original_path_shell",
+  "bridge": {
+    "exists": true,
+    "kind": "compiler-emitted-original-path-public-php-shell-with-recorded-requests-boundary",
+    "removal_gate": "Promote beyond this recorded transport parity gate only after selected upstream HTTP PHPUnit, installed distribution, live or recorded transport expansion, and whole-file WP_Http gates pass without copied public PHP fallback."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wphx-312-http-transport-parity-gate.mjs",
+    "fixtures/wp-core/http-request-transport-parity-gate.hxml",
+    "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+    "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+    "src/wphx/wp/http/HttpProcessHeaders.hx",
+    "src/wphx/wp/http/HttpRequestBadProtocolStripping.hx",
+    "src/wphx/wp/http/HttpRequestBlockedRequest.hx",
+    "src/wphx/wp/http/HttpRequestCookieOptions.hx",
+    "src/wphx/wp/http/HttpRequestErrorResponse.hx",
+    "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
+    "src/wphx/wp/http/HttpRequestHeaderParsing.hx",
+    "src/wphx/wp/http/HttpRequestHttpResponseAttachment.hx",
+    "src/wphx/wp/http/HttpRequestInvalidUrl.hx",
+    "src/wphx/wp/http/HttpRequestMbstringReset.hx",
+    "src/wphx/wp/http/HttpRequestMethodOptions.hx",
+    "src/wphx/wp/http/HttpRequestNonblocking.hx",
+    "src/wphx/wp/http/HttpRequestNullHeaderNormalization.hx",
+    "src/wphx/wp/http/HttpRequestPreemptiveResponse.hx",
+    "src/wphx/wp/http/HttpRequestProxyAuthentication.hx",
+    "src/wphx/wp/http/HttpRequestProxyOptions.hx",
+    "src/wphx/wp/http/HttpRequestRedirectOptions.hx",
+    "src/wphx/wp/http/HttpRequestRedirectionCopy.hx",
+    "src/wphx/wp/http/HttpRequestResponseSizeOptions.hx",
+    "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
+    "src/wphx/wp/http/HttpRequestSslOptions.hx",
+    "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+    "src/wphx/wp/http/HttpRequestStreamDefaultFilename.hx",
+    "src/wphx/wp/http/HttpRequestStreamDestinationError.hx",
+    "src/wphx/wp/http/HttpRequestStreamFilenameOptions.hx",
+    "src/wphx/wp/http/HttpRequestUnsafeUrlValidation.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpHttpRequestCandidateAnchor.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestTransportParityGateEntry.hx",
+    "manifests/wp-core/wphx-312-92-http-transport-parity-gate.v1.json",
+    "manifests/ownership/wphx-312-92-http-transport-parity-gate.v1.json",
+    "receipts/wp-core/wphx-312-92-http-transport-parity-gate.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-92-http-transport-parity-gate.v1.json",
+    "manifests/ownership/wphx-312-92-http-transport-parity-gate.v1.json",
+    "receipts/wp-core/wphx-312-92-http-transport-parity-gate.v1.json",
+    "build/wp-core/wphx-312-92",
+    "build/wp-core/wphx-312-92/wphx-php/wphx-php-emission.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-http-transport-parity-gate",
+      "npm run wp:core:wphx-312-http-transport-parity-gate:check",
+      "npm run wp:core:wphx-312-public-shell-gap-audit:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-92-http-transport-parity-gate"
+    ],
+    "manifest_digest": "sha256:ce865d0b1e28df529b7e048e6055d07619f187098eee5af47bb48e644eb61157"
+  }
+}

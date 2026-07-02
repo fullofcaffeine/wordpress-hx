@@ -454,6 +454,11 @@
       "path": "manifests/ownership/wphx-312-90-wp-http-request-mbstring-reset-candidate.v1.json",
       "bytes": 4860,
       "sha256": "sha256:a7b5bca3c4c7ef4a065c7a3ac24800746c60a89fd8504e99867b59e7962fc24a"
+    },
+    {
+      "path": "manifests/ownership/wphx-312-92-http-transport-parity-gate.v1.json",
+      "bytes": 4762,
+      "sha256": "sha256:395a52001e10b9ea1a4e07609a7cc3065d678057171fc6130b6acab7930f0f77"
     }
   ],
   "followup_owners": {
@@ -474,14 +479,14 @@
     }
   },
   "summary": {
-    "boundary_count": 89,
+    "boundary_count": 90,
     "classification_counts": {
       "adapter_contract_only": 1,
       "copied_oracle_public_surface": 46,
-      "durable_generated_public_shell": 41,
+      "durable_generated_public_shell": 42,
       "inventory_only": 1
     },
-    "durable_generated_public_shell_count": 41,
+    "durable_generated_public_shell_count": 42,
     "wphx_backed_state_reconciliation_count": 0,
     "remaining_request_branch_shell_count": 0,
     "copied_oracle_public_surface_count": 46
@@ -1916,6 +1921,20 @@
       "ownership_manifest": "manifests/ownership/wphx-312-90-wp-http-request-mbstring-reset-candidate.v1.json",
       "ownership_manifest_sha256": "sha256:a7b5bca3c4c7ef4a065c7a3ac24800746c60a89fd8504e99867b59e7962fc24a",
       "removal_gate": "Promote beyond this bounded compiler-emitted WP_Http::request branch adapter only after request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request, installed distribution, or whole-file WP_Http ownership."
+    },
+    {
+      "external_ref": "WPHX-312.92",
+      "issue_id": "wordpresshx-l76.18.40",
+      "unit_name": "WP_Http recorded transport handoff parity",
+      "unit_kind": "recorded_transport_parity_gate",
+      "ownership_state": "compiler_emitted_original_path_shell",
+      "shell_gap_classification": "durable_generated_public_shell",
+      "has_wphx_php_fixture": true,
+      "bridge_kind": "compiler-emitted-original-path-public-php-shell-with-recorded-requests-boundary",
+      "followup_owner": null,
+      "ownership_manifest": "manifests/ownership/wphx-312-92-http-transport-parity-gate.v1.json",
+      "ownership_manifest_sha256": "sha256:395a52001e10b9ea1a4e07609a7cc3065d678057171fc6130b6acab7930f0f77",
+      "removal_gate": "Promote beyond this recorded transport parity gate only after selected upstream HTTP PHPUnit, installed distribution, live or recorded transport expansion, and whole-file WP_Http gates pass without copied public PHP fallback."
     }
   ],
   "decision": {
@@ -1934,17 +1953,17 @@
   "validation_result": {
     "status": "passed",
     "failures": [],
-    "boundary_count": 89,
+    "boundary_count": 90,
     "classification_counts": {
       "adapter_contract_only": 1,
       "copied_oracle_public_surface": 46,
-      "durable_generated_public_shell": 41,
+      "durable_generated_public_shell": 42,
       "inventory_only": 1
     },
     "unclassified_count": 0,
     "shell_debt_without_followup_count": 0,
     "all_non_durable_public_shell_debt_linked_to_followup": true,
-    "durable_generated_public_shell_count": 41,
+    "durable_generated_public_shell_count": 42,
     "wphx_backed_state_reconciliation_count": 0,
     "remaining_request_branch_shell_count": 0,
     "copied_oracle_public_surface_count": 46

@@ -3,7 +3,7 @@
   "issue": "WPHX-211",
   "generated_at": "2026-06-20T19:05:00.000Z",
   "generator": "tools/haxe/check-escape-hatches.mjs",
-  "scanned_file_count": 292,
+  "scanned_file_count": 293,
   "scanned_files": [
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassEntry.hx",
     "fixtures/php-facade/src/wphx/fixtures/php/facade/ClassKernel.hx",
@@ -67,6 +67,7 @@
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamDefaultFilenameCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamDestinationErrorCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestStreamFilenameOptionsCandidateEntry.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestTransportParityGateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestUnsafeUrlValidationCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpResponseCandidateEntry.hx",
     "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpTransportSelectionCandidateEntry.hx",
