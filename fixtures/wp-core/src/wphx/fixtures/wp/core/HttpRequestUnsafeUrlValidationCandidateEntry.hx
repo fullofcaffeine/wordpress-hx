@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpRequestUnsafeUrlValidation.shouldValidateUnsafeUrl;
 
 /**
@@ -9,6 +10,7 @@ class HttpRequestUnsafeUrlValidationCandidateEntry
 {
 	static function main():Void
 	{
+		compileAllRequestHelpers();
 		shouldValidateUnsafeUrl(true, true);
 	}
 }

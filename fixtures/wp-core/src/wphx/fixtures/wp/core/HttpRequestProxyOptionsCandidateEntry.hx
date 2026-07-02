@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpRequestProxyOptions.shouldUseProxy;
 
 /**
@@ -9,6 +10,7 @@ final class HttpRequestProxyOptionsCandidateEntry
 {
 	public static function main():Void
 	{
+		compileAllRequestHelpers();
 		shouldUseProxy(true, true);
 	}
 }

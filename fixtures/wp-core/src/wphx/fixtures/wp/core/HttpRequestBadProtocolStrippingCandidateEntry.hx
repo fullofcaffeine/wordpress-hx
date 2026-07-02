@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpRequestBadProtocolStripping.shouldStripBadProtocol;
 
 /**
@@ -9,6 +10,7 @@ class HttpRequestBadProtocolStrippingCandidateEntry
 {
 	static function main():Void
 	{
+		compileAllRequestHelpers();
 		shouldStripBadProtocol(true);
 	}
 }

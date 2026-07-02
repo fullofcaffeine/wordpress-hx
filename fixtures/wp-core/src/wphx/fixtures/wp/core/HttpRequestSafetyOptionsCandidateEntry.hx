@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpBlockRequestPolicy.isLocalRequest;
 import wphx.wp.http.HttpBlockRequestPolicy.shouldBlockExternalHost;
 import wphx.wp.http.HttpRequestBlockedRequest.shouldReturnBlockedRequestError;
@@ -23,6 +24,7 @@ class HttpRequestSafetyOptionsCandidateEntry
 {
 	static function main():Void
 	{
+		compileAllRequestHelpers();
 		nonblockingResponse();
 		isLocalRequest("localhost", "example.test");
 		shouldBlockExternalHost("blocked.example", "example.test");

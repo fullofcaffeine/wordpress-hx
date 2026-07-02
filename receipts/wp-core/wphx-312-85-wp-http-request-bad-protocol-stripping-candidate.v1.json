@@ -28,6 +28,7 @@
   "verification_commands": [
     "npm run wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate",
     "npm run wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate:check",
+    "npm run wphx:php:public-shell-snapshots:check",
     "npm run receipts:validate",
     "npm run beads:validate"
   ],
@@ -47,7 +48,7 @@
     "promoted_symbols": 1,
     "observations_match": true,
     "observations_assert": true,
-    "public_php_replacement_claimed": false,
+    "public_php_replacement_claimed": true,
     "full_request_bad_protocol_stripping_claimed": false,
     "installed_wordpress_behavior_claimed": false,
     "live_requests_network_io_claimed": false,

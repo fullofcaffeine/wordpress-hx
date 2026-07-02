@@ -32,7 +32,7 @@
       "role": "program rollup updated with WPHX-COMP-PHP-USABLE closure"
     }
   ],
-  "manifest_sha256": "sha256:732bbf4e1e7e7580f1afad31190bbf952809a6b77883a4058a8d999c2c6ab12e",
+  "manifest_sha256": "sha256:37929c0fea4c1a8c409b3bff90c3cf561338e4fda3369ec30224765d15fe3e2a",
   "validation_result": {
     "status": "passed",
     "failures": [],

@@ -452,8 +452,8 @@
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-      "bytes": 3079,
-      "sha256": "sha256:ac287bcd04aed08b97421f4f1ba34cd3286410fbf229fcdc72ad679c774c89c1"
+      "bytes": 4742,
+      "sha256": "sha256:a6b14f661f3cfa16fb8ca28f1ab5a3e38bc50b8c6df47551c46d3a6df0fa123a"
     },
     {
       "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpResponseShell.hx",
@@ -562,8 +562,8 @@
     },
     {
       "path": "package.json",
-      "bytes": 64572,
-      "sha256": "sha256:75b666101de8d8916d6c8b9eac10778cf62e4bd2ef16add23ae127195a403d9f"
+      "bytes": 64804,
+      "sha256": "sha256:ceab05d7727147eab707f23838ffddb6866e34a0097fe70f92e5114dd2684291"
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
@@ -572,8 +572,8 @@
     },
     {
       "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
-      "bytes": 59797,
-      "sha256": "sha256:fe883303433632b4c6f38a21b5c25d0cff0ef1ecea9b4b28370f5b3e3ee01817"
+      "bytes": 65428,
+      "sha256": "sha256:4699affc42c6f682d266945082d45a3d14f1f3f94d0365b8c839b7abb5cff9fa"
     }
   ],
   "summary": {
@@ -582,7 +582,7 @@
     "stock_haxe_php_hxml_count": 9,
     "reflaxe_backed_wphx_hxml_count": 27,
     "wp_adapter_metadata_count": 46,
-    "wp_haxe_helper_metadata_count": 46,
+    "wp_haxe_helper_metadata_count": 59,
     "wp_haxe_bootstrap_metadata_count": 18,
     "wp_script_adapter_metadata_count": 5,
     "method_adapter_registry_count": 39,
@@ -1851,19 +1851,19 @@
       {
         "kind": "wp.adapter",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 36,
+        "line": 49,
         "adapter": "wp-http-process-headers"
       },
       {
         "kind": "wp.adapter",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 49,
+        "line": 62,
         "adapter": "wp-http-normalize-cookies"
       },
       {
         "kind": "wp.adapter",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 55,
+        "line": 68,
         "adapter": "wp-http-block-request"
       },
       {
@@ -2154,6 +2154,33 @@
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
         "line": 21,
+        "raw_argument": "\"badProtocolStripping\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestBadProtocolStripping\\\\HttpRequestBadProtocolStripping_Fields_\"",
+        "alias": "badProtocolStripping",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestBadProtocolStripping\\\\HttpRequestBadProtocolStripping_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 22,
+        "raw_argument": "\"cookieOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestCookieOptions\\\\HttpRequestCookieOptions_Fields_\"",
+        "alias": "cookieOptions",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestCookieOptions\\\\HttpRequestCookieOptions_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 23,
+        "raw_argument": "\"errorResponse\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestErrorResponse\\\\HttpRequestErrorResponse_Fields_\"",
+        "alias": "errorResponse",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestErrorResponse\\\\HttpRequestErrorResponse_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 24,
         "raw_argument": "\"headRedirectionDefault\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHeadRedirectionDefault\\\\HttpRequestHeadRedirectionDefault_Fields_\"",
         "alias": "headRedirectionDefault",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHeadRedirectionDefault\\\\HttpRequestHeadRedirectionDefault_Fields_",
@@ -2162,7 +2189,25 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 22,
+        "line": 25,
+        "raw_argument": "\"headerParsing\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHeaderParsing\\\\HttpRequestHeaderParsing_Fields_\"",
+        "alias": "headerParsing",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHeaderParsing\\\\HttpRequestHeaderParsing_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 26,
+        "raw_argument": "\"httpResponseAttachment\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHttpResponseAttachment\\\\HttpRequestHttpResponseAttachment_Fields_\"",
+        "alias": "httpResponseAttachment",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHttpResponseAttachment\\\\HttpRequestHttpResponseAttachment_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 27,
         "raw_argument": "\"invalidUrl\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestInvalidUrl\\\\HttpRequestInvalidUrl_Fields_\"",
         "alias": "invalidUrl",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestInvalidUrl\\\\HttpRequestInvalidUrl_Fields_",
@@ -2171,7 +2216,7 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 23,
+        "line": 28,
         "raw_argument": "\"methodOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestMethodOptions\\\\HttpRequestMethodOptions_Fields_\"",
         "alias": "methodOptions",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestMethodOptions\\\\HttpRequestMethodOptions_Fields_",
@@ -2180,7 +2225,25 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 24,
+        "line": 29,
+        "raw_argument": "\"mbstringReset\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestMbstringReset\\\\HttpRequestMbstringReset_Fields_\"",
+        "alias": "mbstringReset",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestMbstringReset\\\\HttpRequestMbstringReset_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 30,
+        "raw_argument": "\"nullHeaderNormalization\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestNullHeaderNormalization\\\\HttpRequestNullHeaderNormalization_Fields_\"",
+        "alias": "nullHeaderNormalization",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestNullHeaderNormalization\\\\HttpRequestNullHeaderNormalization_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 31,
         "raw_argument": "\"preemptiveResponse\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestPreemptiveResponse\\\\HttpRequestPreemptiveResponse_Fields_\"",
         "alias": "preemptiveResponse",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestPreemptiveResponse\\\\HttpRequestPreemptiveResponse_Fields_",
@@ -2189,7 +2252,25 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 25,
+        "line": 32,
+        "raw_argument": "\"proxyAuthentication\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestProxyAuthentication\\\\HttpRequestProxyAuthentication_Fields_\"",
+        "alias": "proxyAuthentication",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestProxyAuthentication\\\\HttpRequestProxyAuthentication_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 33,
+        "raw_argument": "\"proxyOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestProxyOptions\\\\HttpRequestProxyOptions_Fields_\"",
+        "alias": "proxyOptions",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestProxyOptions\\\\HttpRequestProxyOptions_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 34,
         "raw_argument": "\"redirectOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestRedirectOptions\\\\HttpRequestRedirectOptions_Fields_\"",
         "alias": "redirectOptions",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestRedirectOptions\\\\HttpRequestRedirectOptions_Fields_",
@@ -2198,7 +2279,16 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 26,
+        "line": 35,
+        "raw_argument": "\"redirectionCopy\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestRedirectionCopy\\\\HttpRequestRedirectionCopy_Fields_\"",
+        "alias": "redirectionCopy",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestRedirectionCopy\\\\HttpRequestRedirectionCopy_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 36,
         "raw_argument": "\"responseSizeOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestResponseSizeOptions\\\\HttpRequestResponseSizeOptions_Fields_\"",
         "alias": "responseSizeOptions",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestResponseSizeOptions\\\\HttpRequestResponseSizeOptions_Fields_",
@@ -2207,7 +2297,7 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 27,
+        "line": 37,
         "raw_argument": "\"safetyOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestSafetyOptions\\\\HttpRequestSafetyOptions_Fields_\"",
         "alias": "safetyOptions",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestSafetyOptions\\\\HttpRequestSafetyOptions_Fields_",
@@ -2216,7 +2306,7 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 28,
+        "line": 38,
         "raw_argument": "\"sslOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestSslOptions\\\\HttpRequestSslOptions_Fields_\"",
         "alias": "sslOptions",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestSslOptions\\\\HttpRequestSslOptions_Fields_",
@@ -2225,7 +2315,7 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 29,
+        "line": 39,
         "raw_argument": "\"streamBlocking\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamBlocking\\\\HttpRequestStreamBlocking_Fields_\"",
         "alias": "streamBlocking",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamBlocking\\\\HttpRequestStreamBlocking_Fields_",
@@ -2234,7 +2324,25 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 30,
+        "line": 40,
+        "raw_argument": "\"streamDefaultFilename\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamDefaultFilename\\\\HttpRequestStreamDefaultFilename_Fields_\"",
+        "alias": "streamDefaultFilename",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamDefaultFilename\\\\HttpRequestStreamDefaultFilename_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 41,
+        "raw_argument": "\"streamDestinationError\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamDestinationError\\\\HttpRequestStreamDestinationError_Fields_\"",
+        "alias": "streamDestinationError",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamDestinationError\\\\HttpRequestStreamDestinationError_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 42,
         "raw_argument": "\"streamFilenameOptions\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamFilenameOptions\\\\HttpRequestStreamFilenameOptions_Fields_\"",
         "alias": "streamFilenameOptions",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamFilenameOptions\\\\HttpRequestStreamFilenameOptions_Fields_",
@@ -2243,7 +2351,16 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 37,
+        "line": 43,
+        "raw_argument": "\"unsafeUrlValidation\", \"\\\\wphx\\\\wp\\\\http\\\\_HttpRequestUnsafeUrlValidation\\\\HttpRequestUnsafeUrlValidation_Fields_\"",
+        "alias": "unsafeUrlValidation",
+        "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestUnsafeUrlValidation\\\\HttpRequestUnsafeUrlValidation_Fields_",
+        "argument_count": 2
+      },
+      {
+        "kind": "wp.haxeHelper",
+        "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+        "line": 50,
         "raw_argument": "\"\\\\wphx\\\\wp\\\\http\\\\_HttpProcessHeaders\\\\HttpProcessHeaders_Fields_\"",
         "alias": "primary",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpProcessHeaders\\\\HttpProcessHeaders_Fields_",
@@ -2252,7 +2369,7 @@
       {
         "kind": "wp.haxeHelper",
         "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
-        "line": 56,
+        "line": 69,
         "raw_argument": "\"\\\\wphx\\\\wp\\\\http\\\\_HttpBlockRequestPolicy\\\\HttpBlockRequestPolicy_Fields_\"",
         "alias": "primary",
         "helper_class": "\\\\wphx\\\\wp\\\\http\\\\_HttpBlockRequestPolicy\\\\HttpBlockRequestPolicy_Fields_",
@@ -3267,7 +3384,7 @@
       "segment_plan_count": null,
       "adapter_template_count": null,
       "bytes": 1542,
-      "sha256": "sha256:03d6dddf623f6b00ddd135c73c0d8d3ad05b24cd223d63006ced40db1d36ac77"
+      "sha256": "sha256:4290357ba44cf9722b8edbcb78760d3d32e9e8222179d1bf083b789dd81bd4a7"
     },
     {
       "path": "manifests/wphx-php/bootstrap-autoload.v1.json",
@@ -3363,7 +3480,7 @@
       "segment_plan_count": null,
       "adapter_template_count": null,
       "bytes": 41357,
-      "sha256": "sha256:5d88b631a007f277371ed9c0c7ea6bd58c5de2accbaa2e8cdf4c3d26d326a154"
+      "sha256": "sha256:5eb7ccce52a5d08263ce6ebfa6a97f4b8c65fb051697aaafa8498a88149ac701"
     },
     {
       "path": "manifests/wphx-php/runtime-stdlib-strategy.v1.json",
@@ -3907,7 +4024,7 @@
       "classification": "temporary_fallback",
       "severity": "active_dependency",
       "follow_up_owner": "WPHX-COMP-PHP-CORE-LOWERING-PILOT",
-      "count": 46,
+      "count": 59,
       "helper_classes": [
         "\\\\wphx\\\\wp\\\\http\\\\HttpEncodingStrategy",
         "\\\\wphx\\\\wp\\\\http\\\\HttpProxyStrategy",
@@ -3921,18 +4038,31 @@
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRedirectCompatibility\\\\HttpRedirectCompatibility_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRedirectOrchestration\\\\HttpRedirectOrchestration_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRedirectValidation\\\\HttpRedirectValidation_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestBadProtocolStripping\\\\HttpRequestBadProtocolStripping_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestBlockedRequest\\\\HttpRequestBlockedRequest_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestCookieOptions\\\\HttpRequestCookieOptions_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestErrorResponse\\\\HttpRequestErrorResponse_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHeadRedirectionDefault\\\\HttpRequestHeadRedirectionDefault_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHeaderParsing\\\\HttpRequestHeaderParsing_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestHttpResponseAttachment\\\\HttpRequestHttpResponseAttachment_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestInvalidUrl\\\\HttpRequestInvalidUrl_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestMbstringReset\\\\HttpRequestMbstringReset_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestMethodOptions\\\\HttpRequestMethodOptions_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestNonblocking\\\\HttpRequestNonblocking_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestNullHeaderNormalization\\\\HttpRequestNullHeaderNormalization_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestPreemptiveResponse\\\\HttpRequestPreemptiveResponse_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestProxyAuthentication\\\\HttpRequestProxyAuthentication_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestProxyOptions\\\\HttpRequestProxyOptions_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestRedirectOptions\\\\HttpRequestRedirectOptions_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestRedirectionCopy\\\\HttpRequestRedirectionCopy_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestResponseSizeOptions\\\\HttpRequestResponseSizeOptions_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestSafetyOptions\\\\HttpRequestSafetyOptions_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestSslOptions\\\\HttpRequestSslOptions_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamBlocking\\\\HttpRequestStreamBlocking_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamDefaultFilename\\\\HttpRequestStreamDefaultFilename_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamDestinationError\\\\HttpRequestStreamDestinationError_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestStreamFilenameOptions\\\\HttpRequestStreamFilenameOptions_Fields_",
+        "\\\\wphx\\\\wp\\\\http\\\\_HttpRequestUnsafeUrlValidation\\\\HttpRequestUnsafeUrlValidation_Fields_",
         "\\\\wphx\\\\wp\\\\http\\\\_HttpTransportSelection\\\\HttpTransportSelection_Fields_"
       ],
       "note": "Helper metadata marks public-shell calls into stock-Haxe-emitted implementation classes; whole-file pilots should retire selected helper bridges."
@@ -4105,7 +4235,7 @@
     "stock_haxe_php_hxml_count": 9,
     "reflaxe_backed_wphx_hxml_count": 27,
     "wp_adapter_metadata_count": 46,
-    "wp_haxe_helper_metadata_count": 46,
+    "wp_haxe_helper_metadata_count": 59,
     "wp_haxe_bootstrap_metadata_count": 18,
     "wp_script_adapter_metadata_count": 5,
     "php_raw_block_count": 0,

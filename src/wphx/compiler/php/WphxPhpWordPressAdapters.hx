@@ -1205,17 +1205,30 @@ class WphxPhpWordPressAdapters
 			return missingHelper("missing @:wp.haxeHelper for WP_Http::request nonblocking adapter " + fieldName);
 		}
 
+		final badProtocolStrippingHelper = namedHelper(helpers, "badProtocolStripping");
 		final blockedRequestHelper = namedHelper(helpers, "blockedRequest");
+		final cookieOptionsHelper = namedHelper(helpers, "cookieOptions");
+		final errorResponseHelper = namedHelper(helpers, "errorResponse");
+		final headerParsingHelper = namedHelper(helpers, "headerParsing");
 		final headRedirectionDefaultHelper = namedHelper(helpers, "headRedirectionDefault");
+		final httpResponseAttachmentHelper = namedHelper(helpers, "httpResponseAttachment");
 		final invalidUrlHelper = namedHelper(helpers, "invalidUrl");
 		final methodOptionsHelper = namedHelper(helpers, "methodOptions");
+		final mbstringResetHelper = namedHelper(helpers, "mbstringReset");
+		final nullHeaderNormalizationHelper = namedHelper(helpers, "nullHeaderNormalization");
 		final preemptiveResponseHelper = namedHelper(helpers, "preemptiveResponse");
+		final proxyAuthenticationHelper = namedHelper(helpers, "proxyAuthentication");
+		final proxyOptionsHelper = namedHelper(helpers, "proxyOptions");
 		final redirectOptionsHelper = namedHelper(helpers, "redirectOptions");
+		final redirectionCopyHelper = namedHelper(helpers, "redirectionCopy");
 		final responseSizeOptionsHelper = namedHelper(helpers, "responseSizeOptions");
 		final safetyOptionsHelper = namedHelper(helpers, "safetyOptions");
 		final sslOptionsHelper = namedHelper(helpers, "sslOptions");
 		final streamBlockingHelper = namedHelper(helpers, "streamBlocking");
+		final streamDefaultFilenameHelper = namedHelper(helpers, "streamDefaultFilename");
+		final streamDestinationErrorHelper = namedHelper(helpers, "streamDestinationError");
 		final streamFilenameOptionsHelper = namedHelper(helpers, "streamFilenameOptions");
+		final unsafeUrlValidationHelper = namedHelper(helpers, "unsafeUrlValidation");
 		final url = PhpVar("url");
 		final args = PhpVar("args");
 		final defaults = PhpVar("defaults");
@@ -1253,13 +1266,33 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.safety-options-helper");
 		}
+		if (badProtocolStrippingHelper != null)
+		{
+			features.push("wp-http.request.bad-protocol-stripping-helper");
+		}
 		if (blockedRequestHelper != null)
 		{
 			features.push("wp-http.request.blocked-request-helper");
 		}
+		if (cookieOptionsHelper != null)
+		{
+			features.push("wp-http.request.cookie-options-helper");
+		}
+		if (errorResponseHelper != null)
+		{
+			features.push("wp-http.request.error-response-helper");
+		}
+		if (headerParsingHelper != null)
+		{
+			features.push("wp-http.request.header-parsing-helper");
+		}
 		if (headRedirectionDefaultHelper != null)
 		{
 			features.push("wp-http.request.head-redirection-default-helper");
+		}
+		if (httpResponseAttachmentHelper != null)
+		{
+			features.push("wp-http.request.http-response-attachment-helper");
 		}
 		if (invalidUrlHelper != null)
 		{
@@ -1269,13 +1302,33 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.method-options-helper");
 		}
+		if (mbstringResetHelper != null)
+		{
+			features.push("wp-http.request.mbstring-reset-helper");
+		}
+		if (nullHeaderNormalizationHelper != null)
+		{
+			features.push("wp-http.request.null-header-normalization-helper");
+		}
 		if (preemptiveResponseHelper != null)
 		{
 			features.push("wp-http.request.preemptive-response-helper");
 		}
+		if (proxyAuthenticationHelper != null)
+		{
+			features.push("wp-http.request.proxy-authentication-helper");
+		}
+		if (proxyOptionsHelper != null)
+		{
+			features.push("wp-http.request.proxy-options-helper");
+		}
 		if (redirectOptionsHelper != null)
 		{
 			features.push("wp-http.request.redirect-options-helper");
+		}
+		if (redirectionCopyHelper != null)
+		{
+			features.push("wp-http.request.redirection-copy-helper");
 		}
 		if (responseSizeOptionsHelper != null)
 		{
@@ -1289,9 +1342,21 @@ class WphxPhpWordPressAdapters
 		{
 			features.push("wp-http.request.stream-blocking-helper");
 		}
+		if (streamDefaultFilenameHelper != null)
+		{
+			features.push("wp-http.request.stream-default-filename-helper");
+		}
+		if (streamDestinationErrorHelper != null)
+		{
+			features.push("wp-http.request.stream-destination-error-helper");
+		}
 		if (streamFilenameOptionsHelper != null)
 		{
 			features.push("wp-http.request.stream-filename-options-helper");
+		}
+		if (unsafeUrlValidationHelper != null)
+		{
+			features.push("wp-http.request.unsafe-url-validation-helper");
 		}
 		final headRedirectionDefaultCondition = headRedirectionDefaultHelper == null ? PhpBinop("&&", PhpFunctionCall("isset", [read(args, "method")]),
 			PhpBinop("===", PhpString("HEAD"), read(args, "method"))) : PhpStaticCall(headRedirectionDefaultHelper, "shouldDisableHeadDefaultRedirection", [
@@ -1309,6 +1374,14 @@ class WphxPhpWordPressAdapters
 				[PhpAssign(read(parsedArgs, "blocking"), PhpBool(true))]);
 		final streamFilenameCondition = streamFilenameOptionsHelper == null ? read(parsedArgs,
 			"stream") : PhpStaticCall(streamFilenameOptionsHelper, "shouldSetStreamFilenameOption", [PhpCastBool(read(parsedArgs, "stream"))]);
+		final streamDefaultFilenameCondition = streamDefaultFilenameHelper == null ? PhpFunctionCall("empty",
+			[read(parsedArgs, "filename")]) : PhpStaticCall(streamDefaultFilenameHelper, "shouldUseDefaultStreamFilename", [
+				PhpCastBool(read(parsedArgs, "stream")),
+				PhpNot(PhpFunctionCall("empty", [read(parsedArgs, "filename")]))
+			]);
+		final streamDestinationWritable = PhpFunctionCall("wp_is_writable", [PhpFunctionCall("dirname", [read(parsedArgs, "filename")])]);
+		final streamDestinationErrorCondition = streamDestinationErrorHelper == null ? PhpNot(streamDestinationWritable) : PhpStaticCall(streamDestinationErrorHelper,
+			"shouldReturnStreamDestinationError", [streamDestinationWritable]);
 		final invalidUrlCondition = invalidUrlHelper == null ? PhpBinop("||", PhpFunctionCall("empty", [url]),
 			PhpFunctionCall("empty",
 				[read(parsedUrl,
@@ -1319,6 +1392,22 @@ class WphxPhpWordPressAdapters
 				[PhpCastBool(PhpMethodCall(PhpVar("this"), "block_request", [url]))]);
 		final preemptiveResponseCondition = preemptiveResponseHelper == null ? PhpBinop("!==", PhpBool(false),
 			PhpVar("pre")) : PhpStaticCall(preemptiveResponseHelper, "shouldReturnPreemptiveResponse", [PhpBinop("!==", PhpBool(false), PhpVar("pre"))]);
+		final unsafeUrlValidationCondition = unsafeUrlValidationHelper == null ? read(parsedArgs,
+			"reject_unsafe_urls") : PhpStaticCall(unsafeUrlValidationHelper, "shouldValidateUnsafeUrl", [
+				PhpFunctionCall("function_exists", [PhpString("wp_kses_bad_protocol")]),
+				PhpCastBool(read(parsedArgs, "reject_unsafe_urls"))
+			]);
+		final badProtocolStrippingCondition = badProtocolStrippingHelper == null ? url : PhpStaticCall(badProtocolStrippingHelper, "shouldStripBadProtocol",
+			[PhpCastBool(url)]);
+		final redirectionCopyCondition = redirectionCopyHelper == null ? PhpNot(PhpFunctionCall("isset",
+			[read(parsedArgs,
+				"_redirection")])) : PhpStaticCall(redirectionCopyHelper, "shouldCopyRedirection", [PhpFunctionCall("isset", [read(parsedArgs, "_redirection")])]);
+		final nullHeaderNormalizationCondition = nullHeaderNormalizationHelper == null ? PhpFunctionCall("is_null",
+			[read(parsedArgs,
+				"headers")]) : PhpStaticCall(nullHeaderNormalizationHelper, "shouldNormalizeHeaders", [PhpFunctionCall("is_null", [read(parsedArgs, "headers")])]);
+		final headerParsingCondition = headerParsingHelper == null ? PhpNot(PhpFunctionCall("is_array",
+			[read(parsedArgs,
+				"headers")])) : PhpStaticCall(headerParsingHelper, "shouldParseHeaders", [PhpFunctionCall("is_array", [read(parsedArgs, "headers")])]);
 		final methodBodyFormatCondition = methodOptionsHelper == null ? PhpBinop("&&", PhpBinop("!==", PhpString("HEAD"), type),
 			PhpBinop("!==", PhpString("GET"), type)) : PhpStaticCall(methodOptionsHelper, "shouldUseBodyDataFormat", [PhpCastString(type)]);
 		final redirectDisableCondition = redirectOptionsHelper == null ? PhpFunctionCall("empty",
@@ -1328,6 +1417,22 @@ class WphxPhpWordPressAdapters
 				"limit_response_size")]) : PhpStaticCall(responseSizeOptionsHelper, "shouldSetMaxBytes", [read(parsedArgs, "limit_response_size")]);
 		final sslDisableCondition = sslOptionsHelper == null ? PhpNot(read(parsedArgs,
 			"sslverify")) : PhpStaticCall(sslOptionsHelper, "shouldDisableSslVerification", [PhpCastBool(read(parsedArgs, "sslverify"))]);
+		final cookieOptionsCondition = cookieOptionsHelper == null ? PhpNot(PhpFunctionCall("empty",
+			[read(parsedArgs,
+				"cookies")])) : PhpStaticCall(cookieOptionsHelper, "shouldNormalizeRequestCookies",
+				[PhpNot(PhpFunctionCall("empty", [read(parsedArgs, "cookies")]))]);
+		final proxyOptionsCondition = proxyOptionsHelper == null ? PhpBinop("&&", PhpMethodCall(proxy, "is_enabled", []),
+			PhpMethodCall(proxy, "send_through_proxy",
+				[url])) : PhpBinop("&&", PhpMethodCall(proxy, "is_enabled", []),
+				PhpStaticCall(proxyOptionsHelper, "shouldUseProxy", [PhpBool(true), PhpCastBool(PhpMethodCall(proxy, "send_through_proxy", [url]))]));
+		final proxyAuthenticationCondition = proxyAuthenticationHelper == null ? PhpMethodCall(proxy, "use_authentication",
+			[]) : PhpStaticCall(proxyAuthenticationHelper, "shouldUseProxyAuthentication", [PhpCastBool(PhpMethodCall(proxy, "use_authentication", []))]);
+		final httpResponseAttachmentCondition = httpResponseAttachmentHelper == null ? PhpBool(true) : PhpStaticCall(httpResponseAttachmentHelper,
+			"shouldAttachHttpResponseObject", []);
+		final mbstringResetCondition = mbstringResetHelper == null ? PhpBool(true) : PhpStaticCall(mbstringResetHelper,
+			"shouldResetMbstringEncodingAfterDispatch", []);
+		final errorResponseCondition = errorResponseHelper == null ? PhpFunctionCall("is_wp_error",
+			[response]) : PhpStaticCall(errorResponseHelper, "shouldReturnErrorResponse", [PhpFunctionCall("is_wp_error", [response])]);
 
 		return plan(features, [
 			PhpLocal("defaults",
@@ -1363,13 +1468,12 @@ class WphxPhpWordPressAdapters
 			PhpIf(headRedirectionDefaultCondition, [PhpAssign(read(defaults, "redirection"), PhpInt(0))]),
 			PhpLocal("parsed_args", PhpFunctionCall("wp_parse_args", [args, defaults])),
 			PhpAssign(parsedArgs, PhpFunctionCall("apply_filters", [PhpString("http_request_args"), parsedArgs, url])),
-			PhpIf(PhpNot(PhpFunctionCall("isset", [read(parsedArgs, "_redirection")])),
-				[PhpAssign(read(parsedArgs, "_redirection"), read(parsedArgs, "redirection"))]),
+			PhpIf(redirectionCopyCondition, [PhpAssign(read(parsedArgs, "_redirection"), read(parsedArgs, "redirection"))]),
 			PhpLocal("pre", PhpFunctionCall("apply_filters", [PhpString("pre_http_request"), PhpBool(false), parsedArgs, url])),
 			PhpIf(preemptiveResponseCondition, [PhpReturn(PhpVar("pre"))]),
 			PhpIf(PhpFunctionCall("function_exists", [PhpString("wp_kses_bad_protocol")]), [
-				PhpIf(read(parsedArgs, "reject_unsafe_urls"), [PhpAssign(url, PhpFunctionCall("wp_http_validate_url", [url]))]),
-				PhpIf(url, [
+				PhpIf(unsafeUrlValidationCondition, [PhpAssign(url, PhpFunctionCall("wp_http_validate_url", [url]))]),
+				PhpIf(badProtocolStrippingCondition, [
 					PhpAssign(url, PhpFunctionCall("wp_kses_bad_protocol", [
 						url,
 						PhpLongArray([item(PhpString("http")), item(PhpString("https")), item(PhpString("ssl"))])
@@ -1396,29 +1500,27 @@ class WphxPhpWordPressAdapters
 				httpApiDebug(response, parsedArgs, url),
 				PhpReturn(response)
 			]),
-			PhpIf(read(parsedArgs, "stream"),
-				[
-					PhpIf(PhpFunctionCall("empty", [read(parsedArgs, "filename")]), [
-						PhpAssign(read(parsedArgs, "filename"), PhpBinop(".", PhpFunctionCall("get_temp_dir", []), PhpFunctionCall("basename", [url])))
-					]),
-					streamBlockingStatement,
-					PhpIf(PhpNot(PhpFunctionCall("wp_is_writable", [PhpFunctionCall("dirname", [read(parsedArgs, "filename")])])),
-						[
-							PhpAssign(response,
-								PhpNew("WP_Error",
-									[
-										PhpString("http_request_failed"),
-										PhpFunctionCall("__",
-											[
-												PhpString("Destination directory for file streaming does not exist or is not writable.")
-											])
-									])),
-							httpApiDebug(response, parsedArgs, url),
-							PhpReturn(response)
-						])
+			PhpIf(read(parsedArgs, "stream"), [
+				PhpIf(streamDefaultFilenameCondition, [
+					PhpAssign(read(parsedArgs, "filename"), PhpBinop(".", PhpFunctionCall("get_temp_dir", []), PhpFunctionCall("basename", [url])))
 				]),
-			PhpIf(PhpFunctionCall("is_null", [read(parsedArgs, "headers")]), [PhpAssign(read(parsedArgs, "headers"), PhpLongArray([]))]),
-			PhpIf(PhpNot(PhpFunctionCall("is_array", [read(parsedArgs, "headers")])),
+				streamBlockingStatement,
+				PhpIf(streamDestinationErrorCondition, [
+					PhpAssign(response,
+						PhpNew("WP_Error",
+							[
+								PhpString("http_request_failed"),
+								PhpFunctionCall("__",
+									[
+										PhpString("Destination directory for file streaming does not exist or is not writable.")
+									])
+							])),
+					httpApiDebug(response, parsedArgs, url),
+					PhpReturn(response)
+				])
+			]),
+			PhpIf(nullHeaderNormalizationCondition, [PhpAssign(read(parsedArgs, "headers"), PhpLongArray([]))]),
+			PhpIf(headerParsingCondition,
 				[
 					PhpLocal("processed_headers", PhpStaticCall("self", "processHeaders", [read(parsedArgs, "headers")])),
 					PhpAssign(read(parsedArgs, "headers"), read(PhpVar("processed_headers"), "headers"))
@@ -1451,7 +1553,7 @@ class WphxPhpWordPressAdapters
 			PhpIfElse(redirectDisableCondition, [PhpAssign(read(options, "follow_redirects"), PhpBool(false))],
 				[PhpAssign(read(options, "redirects"), read(parsedArgs, "redirection"))]),
 			PhpIf(responseSizeCondition, [PhpAssign(read(options, "max_bytes"), read(parsedArgs, "limit_response_size"))]),
-			PhpIf(PhpNot(PhpFunctionCall("empty", [read(parsedArgs, "cookies")])), [
+			PhpIf(cookieOptionsCondition, [
 				PhpAssign(read(options, "cookies"), PhpStaticCall("self", "normalize_cookies", [read(parsedArgs, "cookies")]))
 			]),
 			PhpIfElse(sslDisableCondition, [
@@ -1462,11 +1564,11 @@ class WphxPhpWordPressAdapters
 			PhpIf(methodBodyFormatCondition, [PhpAssign(read(options, "data_format"), PhpString("body"))]),
 			PhpAssign(read(options, "verify"), PhpFunctionCall("apply_filters", [PhpString("https_ssl_verify"), read(options, "verify"), url])),
 			PhpLocal("proxy", PhpNew("WP_HTTP_Proxy", [])),
-			PhpIf(PhpBinop("&&", PhpMethodCall(proxy, "is_enabled", []), PhpMethodCall(proxy, "send_through_proxy", [url])), [
+			PhpIf(proxyOptionsCondition, [
 				PhpAssign(read(options, "proxy"), PhpNew("WpOrg\\Requests\\Proxy\\Http", [
 					PhpBinop(".", PhpBinop(".", PhpMethodCall(proxy, "host", []), PhpString(":")), PhpMethodCall(proxy, "port", []))
 				])),
-				PhpIf(PhpMethodCall(proxy, "use_authentication", []), [
+				PhpIf(proxyAuthenticationCondition, [
 					PhpAssign(PhpObjectProperty(read(options, "proxy"), "use_authentication"), PhpBool(true)),
 					PhpAssign(PhpObjectProperty(read(options, "proxy"), "user"), PhpMethodCall(proxy, "username", [])),
 					PhpAssign(PhpObjectProperty(read(options, "proxy"), "pass"), PhpMethodCall(proxy, "password", []))
@@ -1477,14 +1579,14 @@ class WphxPhpWordPressAdapters
 				PhpLocal("requests_response", PhpStaticCall(requestsClass, "request", [url, headers, data, type, options])),
 				PhpLocal("http_response", PhpNew("WP_HTTP_Requests_Response", [requestsResponse, read(parsedArgs, "filename")])),
 				PhpAssign(response, PhpMethodCall(httpResponse, "to_array", [])),
-				PhpAssign(read(response, "http_response"), httpResponse)
+				PhpIf(httpResponseAttachmentCondition, [PhpAssign(read(response, "http_response"), httpResponse)])
 			], "WpOrg\\Requests\\Exception", "e",
 				[
 					PhpAssign(response, PhpNew("WP_Error", [PhpString("http_request_failed"), PhpMethodCall(exception, "getMessage", [])]))
 				]),
-			PhpExprStmt(PhpFunctionCall("reset_mbstring_encoding", [])),
+			PhpIf(mbstringResetCondition, [PhpExprStmt(PhpFunctionCall("reset_mbstring_encoding", []))]),
 			httpApiDebug(response, parsedArgs, url),
-			PhpIf(PhpFunctionCall("is_wp_error", [response]), [PhpReturn(response)]),
+			PhpIf(errorResponseCondition, [PhpReturn(response)]),
 			PhpIf(PhpNot(read(parsedArgs, "blocking")), [PhpReturn(PhpStaticCall(helper, "nonblockingResponse", []))]),
 			PhpReturn(PhpFunctionCall("apply_filters", [PhpString("http_response"), response, parsedArgs, url]))
 		]);

@@ -11,14 +11,50 @@
     "area": "src/wp-includes/class-wp-http.php with WP_HTTP_Requests_Hooks, WP_HTTP_Requests_Response, WP_HTTP_Proxy, WP_HTTP_Response, and WP_Http_Cookie support",
     "public_contract": "This candidate promotes only the WP_Http::request decision that headers which are not already a PHP array should route through self::processHeaders before Requests dispatch. PHP still owns public WP_Http::request ABI, null-to-empty-array normalization, native PHP header arrays, processHeaders semantics and Set-Cookie handling, request defaults/filters, hook registration, cookie/SSL/redirect/body/max_bytes handoff, Requests dispatch, response filtering, and native arrays/objects."
   },
-  "ownership_state": "haxe_candidate_with_public_php_shell",
+  "ownership_state": "compiler_emitted_original_path_shell",
   "bridge": {
     "exists": true,
-    "kind": "copied-public-php-shell-calling-generated-haxe",
-    "removal_gate": "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+    "kind": "compiler-emitted-original-path-public-php-shell",
+    "removal_gate": "Promote beyond this bounded compiler-emitted WP_Http::request branch adapter only after request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request, installed distribution, or whole-file WP_Http ownership."
   },
   "owned_paths": [
     "tools/wp-core/run-wp-http-request-header-parsing-candidate.mjs",
+    "fixtures/wp-core/http-request-header-parsing-candidate.hxml",
+    "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
+    "src/wphx/wp/http/HttpBlockRequestPolicy.hx",
+    "src/wphx/wp/http/HttpProcessHeaders.hx",
+    "src/wphx/wp/http/HttpRequestBadProtocolStripping.hx",
+    "src/wphx/wp/http/HttpRequestBlockedRequest.hx",
+    "src/wphx/wp/http/HttpRequestCookieOptions.hx",
+    "src/wphx/wp/http/HttpRequestErrorResponse.hx",
+    "src/wphx/wp/http/HttpRequestHeadRedirectionDefault.hx",
+    "src/wphx/wp/http/HttpRequestHeaderParsing.hx",
+    "src/wphx/wp/http/HttpRequestHttpResponseAttachment.hx",
+    "src/wphx/wp/http/HttpRequestInvalidUrl.hx",
+    "src/wphx/wp/http/HttpRequestMbstringReset.hx",
+    "src/wphx/wp/http/HttpRequestMethodOptions.hx",
+    "src/wphx/wp/http/HttpRequestNonblocking.hx",
+    "src/wphx/wp/http/HttpRequestNullHeaderNormalization.hx",
+    "src/wphx/wp/http/HttpRequestPreemptiveResponse.hx",
+    "src/wphx/wp/http/HttpRequestProxyAuthentication.hx",
+    "src/wphx/wp/http/HttpRequestProxyOptions.hx",
+    "src/wphx/wp/http/HttpRequestRedirectOptions.hx",
+    "src/wphx/wp/http/HttpRequestRedirectionCopy.hx",
+    "src/wphx/wp/http/HttpRequestResponseSizeOptions.hx",
+    "src/wphx/wp/http/HttpRequestSafetyOptions.hx",
+    "src/wphx/wp/http/HttpRequestSslOptions.hx",
+    "src/wphx/wp/http/HttpRequestStreamBlocking.hx",
+    "src/wphx/wp/http/HttpRequestStreamDefaultFilename.hx",
+    "src/wphx/wp/http/HttpRequestStreamDestinationError.hx",
+    "src/wphx/wp/http/HttpRequestStreamFilenameOptions.hx",
+    "src/wphx/wp/http/HttpRequestUnsafeUrlValidation.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpBlockRequestPolicy.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HaxeHttpRequestNonblocking.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/HttpRequestNonblockingEntry.hx",
+    "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/WpHttpRequestCandidateAnchor.hx",
+    "src/wphx/wp/http/HttpRequestHeaderParsing.hx",
+    "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestHeaderParsingCandidateEntry.hx",
     "manifests/wp-core/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
     "manifests/ownership/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
     "receipts/wp-core/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json"
@@ -27,18 +63,20 @@
     "manifests/wp-core/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
     "manifests/ownership/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
     "receipts/wp-core/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
-    "build/wp-core/wphx-312-77"
+    "build/wp-core/wphx-312-77",
+    "build/wp-core/wphx-312-77/wphx-php/wphx-php-emission.v1.json"
   ],
   "verification": {
     "oracle_commands": [
       "npm run wp:core:wphx-312-wp-http-request-header-parsing-candidate",
       "npm run wp:core:wphx-312-wp-http-request-header-parsing-candidate:check",
+      "npm run wphx:php:public-shell-snapshots:check",
       "npm run receipts:validate",
       "npm run beads:validate"
     ],
     "receipt_refs": [
       "receipt:wphx-312-77-wp-http-request-header-parsing-candidate"
     ],
-    "manifest_digest": "sha256:476d0296112bf88d04885f00a819b508db5f1ccad502bd41c7c7f0d8aac2d80d"
+    "manifest_digest": "sha256:f9b7182e1bc29c0ca74076a106a9c0ce30b74bb3413a7cfdcc2b71b9f7b05441"
   }
 }

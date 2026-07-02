@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
+import { compileWphxRequestShell, installWphxRequestShell, requestShellShape, REQUEST_SHELL_HAXE_SOURCES, REQUIRED_REQUEST_SHELL_FEATURES, WPHX_REQUEST_SHELL_HXML, wphxRequestShellPaths } from "./wphx-request-shell-support.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -44,6 +45,8 @@ const COVERED_SYMBOLS = [
 ];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_REQUEST_SHELL_HXML,
+  ...REQUEST_SHELL_HAXE_SOURCES,
   "src/wphx/wp/http/HttpRequestNullHeaderNormalization.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestNullHeaderNormalizationCandidateEntry.hx"
 ];
@@ -629,19 +632,20 @@ function ownershipManifest(manifestSha) {
       public_contract:
         "This candidate promotes only the WP_Http::request branch decision that parsed request headers equal to null normalize to an empty native PHP array before hook construction and Requests dispatch. PHP still owns public WP_Http::request ABI, parsed args, native array mutation, header values, processHeaders semantics, request defaults/filters, hook registration, cookie/SSL/redirect/body/max_bytes handoff, Requests dispatch, response filtering, and native arrays/objects."
     },
-    ownership_state: "haxe_candidate_with_public_php_shell",
+    ownership_state: "compiler_emitted_original_path_shell",
     bridge: {
       exists: true,
-      kind: "copied-public-php-shell-calling-generated-haxe",
+      kind: "compiler-emitted-original-path-public-php-shell",
       removal_gate:
-        "Replace copied public PHP with generated original-path adapters and pass request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming public PHP ownership."
+        "Promote beyond this bounded compiler-emitted WP_Http::request branch adapter only after request orchestration, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network parity gates before claiming full request, installed distribution, or whole-file WP_Http ownership."
     },
-    owned_paths: [RUNNER, OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    owned_paths: [RUNNER, ...HAXE_SOURCES, OUT, OWNERSHIP, RECEIPT],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT, wphxRequestShellPaths(OUT_ROOT).manifest],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-wp-http-request-null-header-normalization-candidate",
         "npm run wp:core:wphx-312-wp-http-request-null-header-normalization-candidate:check",
+        "npm run wphx:php:public-shell-snapshots:check",
         "npm run receipts:validate",
         "npm run beads:validate"
       ],
@@ -654,9 +658,10 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  compileWphxRequestShell(command, OUT_ROOT);
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
-  transformCandidateRequestNullHeaderNormalization();
+  installWphxRequestShell(CANDIDATE_ROOT, OUT_ROOT);
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -678,29 +683,45 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhp = wphxRequestShellPaths(OUT_ROOT);
+  const wphxPhpShape = requestShellShape(CANDIDATE_ROOT, OUT_ROOT);
+  if (!Object.values(wphxPhpShape).every(Boolean)) {
+    console.error(JSON.stringify({ status: "failed", reason: "WPHX PHP generated shell shape check failed", wphxPhpShape }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-wp-http-request-null-header-normalization-candidate.v1",
     issue: ISSUE.external_ref,
     generated_at: RECORDED_AT,
     generator: RUNNER,
-    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture"],
+    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture", "compiler_php_ir_feature_evidence"],
     artifact_scope: "haxe_parity_candidate",
     inputs: {
       surface_manifest: inputRecord(SURFACE),
       adapter_contract_manifest: inputRecord(CONTRACT),
       request_orchestration_fixture_manifest: inputRecord(REQUEST_ORCHESTRATION_FIXTURE),
       runner: inputRecord(RUNNER),
+      wphx_php_manifest: inputRecord(wphxPhp.manifest),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_REQUEST_SHELL_HXML,
       haxe_output: HAXE_OUT,
+      wphx_php_output: wphxPhp.root,
+      public_shell: {
+        path: `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`,
+        source_path: wphxPhp.shell,
+        sha256: sha256File(`${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`),
+        compiler_emitted: true,
+        shape: wphxPhpShape
+      },
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
       haxe_module: HAXE_MODULE,
       promoted_symbols: PROMOTED_SYMBOLS,
       promoted_behavior:
-        "Only the WP_Http::request null-header normalization branch decision is emitted by generated Haxe PHP. The surrounding public method body, native parsed-args array mutation, header values, processHeaders implementation, option assembly, Requests dispatch, and response filtering remain a copied candidate shell."
+        "Only the WP_Http::request null-header normalization branch decision is emitted by generated Haxe PHP. The surrounding public method body is now emitted by structured WPHX PHP Adapter IR as a bounded original-path adapter and remains PHP-owned request orchestration, not full request behavior ownership."
     },
     fixture: {
       cases: CASES,
@@ -716,9 +737,10 @@ async function main() {
           "Requests classes, selected WordPress globals, hook dispatch, URL validation, temp-dir writability, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed orchestration sources; outbound Requests::request records options or throws without network I/O."
       },
       public_abi_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
         copied_oracle_public_php: true,
-        copied_candidate_public_php_shell: true,
+        copied_candidate_public_php_shell: false,
+        compiler_emitted_public_php: true,
         adapter_contract_foundation: CONTRACT,
         installed_wordpress_behavior_claimed: false
       },
@@ -757,9 +779,9 @@ async function main() {
           "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
       },
       {
-        id: "public-php-adapter-not-yet-generated",
+        id: "full-wp-http-request-not-yet-owned",
         owner: ISSUE.external_ref,
-        detail: "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+        detail: "The candidate consumes a compiler-emitted original-path class-wp-http.php shell for a bounded WP_Http::request branch gate. Broader request semantics, whole-file WP_Http ownership, and installed distribution behavior remain later compiler-driven gates."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -770,7 +792,9 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
+      wphx_php_manifest_unsupported_empty: wphxPhpShape.unsupported_empty,
+      request_ir_features: REQUIRED_REQUEST_SHELL_FEATURES,
       full_request_orchestration_claimed: false,
       null_headers_normalization_claimed: true,
       process_headers_semantics_claimed: false,
@@ -797,6 +821,7 @@ async function main() {
     verification_commands: [
       "npm run wp:core:wphx-312-wp-http-request-null-header-normalization-candidate",
       "npm run wp:core:wphx-312-wp-http-request-null-header-normalization-candidate:check",
+        "npm run wphx:php:public-shell-snapshots:check",
       "npm run receipts:validate",
       "npm run beads:validate"
     ],

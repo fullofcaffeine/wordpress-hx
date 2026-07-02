@@ -723,8 +723,8 @@
       ],
       "hxml": "fixtures/wphx-php/wp-http-request-nonblocking.hxml",
       "selected_file": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wp-includes/class-wp-http.php",
-      "bytes": 11300,
-      "sha256": "sha256:a3b6b7bcd8ecc70b4039acc83aab0cba1e34c4a196423915272eae2655caddc4",
+      "bytes": 12898,
+      "sha256": "sha256:bddfc4fbe7a9957c96282c01d8f57c32b9bd1937c4c8f41474bda10625d43d4f",
       "byte_stable_across_clean_compiles": true,
       "php_lint": "passed",
       "exact_patterns": [
@@ -773,8 +773,8 @@
       "segment_plan_contract": null,
       "manifest": {
         "path": "build/wphx-php/public-shell-snapshots/first/wp-http-request-nonblocking-shell/generated/wphx-php-emission.v1.json",
-        "bytes": 1894,
-        "sha256": "sha256:cb8d1231c09f9c9502a6916ca8078ebca4cd2e4c951378f55e5255a54e85fa6c"
+        "bytes": 2541,
+        "sha256": "sha256:d005cb5c866c7fe159a942efe01138a175f939e30fd2e0a9c0f82c0f5a422263"
       }
     },
     {

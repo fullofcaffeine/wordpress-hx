@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 377,
+  "closed_task_count": 378,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -2428,7 +2428,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-77-wp-http-request-header-parsing-candidate.v1.json",
-          "sha256": "1b6fac457984fb0b64753e7d75cf2acc295ddf0d838418a907f5c22ff625fe32",
+          "sha256": "fbdb2306044904163884eb6a6e133f0fcaff92beca4290bb06483fa7fdcdd4ba",
           "id": "receipt:wphx-312-77-wp-http-request-header-parsing-candidate"
         }
       ]
@@ -2438,7 +2438,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-78-wp-http-request-proxy-options-candidate.v1.json",
-          "sha256": "c737bae025b5182e379940b11c0dbecaeb504946ee609f3b93cf89854e21ce16",
+          "sha256": "10f4ed5d3e1598186240accb4643e6cc19d65da3d465d0b4efe6ba09ceddd15d",
           "id": "receipt:wphx-312-78-wp-http-request-proxy-options-candidate"
         }
       ]
@@ -2448,7 +2448,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-79-wp-http-request-proxy-authentication-candidate.v1.json",
-          "sha256": "1f4db7e7d9b55c25149ad165977a3d07f77fddd103f13a0d571c83b0819f9676",
+          "sha256": "31e18d70004636e8867e14b247e1abadec049a30449dd03d5439eb20ae912db1",
           "id": "receipt:wphx-312-79-wp-http-request-proxy-authentication-candidate"
         }
       ]
@@ -2458,7 +2458,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-80-wp-http-request-error-response-candidate.v1.json",
-          "sha256": "fe2f547677199ebd7f4f6e67b8ab7e0136c51b3c845b553ba5285bb3215f472e",
+          "sha256": "c3965943b7490e5d73f1a317535365380e0d9c405bc445bbc5bc28d72eafb86f",
           "id": "receipt:wphx-312-80-wp-http-request-error-response-candidate"
         }
       ]
@@ -2468,7 +2468,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-81-wp-http-request-cookie-options-candidate.v1.json",
-          "sha256": "bd43916a8bd2b704b951a5c867ff72b815523b91ea7a8c679e672dc1cc23ded5",
+          "sha256": "72c80cfb538e56d3fc36a8b68096b65e78505a065bc8ea46a81c950e9c3ca890",
           "id": "receipt:wphx-312-81-wp-http-request-cookie-options-candidate"
         }
       ]
@@ -2478,7 +2478,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-82-wp-http-request-stream-destination-error-candidate.v1.json",
-          "sha256": "ae045e2682bcdee6f1c34e3d47e3e5772db7ac50da871a1c430b587e9154b068",
+          "sha256": "b08df681fad5ea01e07620aceebacbf7e8ff4e89370ec704ea1199fba018d0e7",
           "id": "receipt:wphx-312-82-wp-http-request-stream-destination-error-candidate"
         }
       ]
@@ -2498,7 +2498,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-84-wp-http-request-unsafe-url-validation-candidate.v1.json",
-          "sha256": "1b6f8a53cfeaca32f9f055daa52a5b338ddb6fd19edf6fae856814ff3a3108aa",
+          "sha256": "fbdb3e7c00ebf95f45a1d1a971269a01b4c9431e77bf52aadfbdb729b811ec06",
           "id": "receipt:wphx-312-84-wp-http-request-unsafe-url-validation-candidate"
         }
       ]
@@ -2508,7 +2508,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-85-wp-http-request-bad-protocol-stripping-candidate.v1.json",
-          "sha256": "df7de7d18d5709d05b9ab8375dc66773fdfcde7cc5f616547123720df12f6eca",
+          "sha256": "4311e712890efd1b5f816f3ec1296e0f8e834c870549f64e0f49cf932082907e",
           "id": "receipt:wphx-312-85-wp-http-request-bad-protocol-stripping-candidate"
         }
       ]
@@ -2518,7 +2518,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-86-wp-http-request-redirection-copy-candidate.v1.json",
-          "sha256": "73567a130b73dbf19b1514f1489d8cc2cb26b4a6ce179b60ebca25251dc1e952",
+          "sha256": "d2b52136547e242e25fdaa01e674adde88ee1a8ab958b44775ffde25c2ef001f",
           "id": "receipt:wphx-312-86-wp-http-request-redirection-copy-candidate"
         }
       ]
@@ -2528,7 +2528,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-87-wp-http-request-null-header-normalization-candidate.v1.json",
-          "sha256": "c87b47c56b18ef6e5fa27b7b7bed2ac1e99767f621aae3baf68e47f698fe3bdd",
+          "sha256": "539d8b094b122817904026bcbb5b3721d87f71da7fc0403018fa5cf1cf35d242",
           "id": "receipt:wphx-312-87-wp-http-request-null-header-normalization-candidate"
         }
       ]
@@ -2538,7 +2538,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-88-wp-http-request-stream-default-filename-candidate.v1.json",
-          "sha256": "92e396efcbbdd7920e0a8a6846da7703653b5ac7a736324636a23f67e42f37e8",
+          "sha256": "fb36975dfd4600c47f15e433a210a02b33e0ebcb0571994b6aaa4cec09c53486",
           "id": "receipt:wphx-312-88-wp-http-request-stream-default-filename-candidate"
         }
       ]
@@ -2548,7 +2548,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-89-wp-http-request-http-response-attachment-candidate.v1.json",
-          "sha256": "20543e0f92ed14d3880e6338365e09caa46f5d4889e6e131b53a2f64495808ed",
+          "sha256": "329dd68e8d168c414cfb400a4d4779c454a96d32a3df8a0feaee737338b34fb7",
           "id": "receipt:wphx-312-89-wp-http-request-http-response-attachment-candidate"
         }
       ]
@@ -2558,7 +2558,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-90-wp-http-request-mbstring-reset-candidate.v1.json",
-          "sha256": "b0eb2ddebe1a791d588ed046a7828998c658edb7c5d694466dc933af31aaa174",
+          "sha256": "6c034b40c1543084bcab563f9b6d371f756d8476a7b7546dc6e72ee55a435db3",
           "id": "receipt:wphx-312-90-wp-http-request-mbstring-reset-candidate"
         }
       ]
@@ -2578,7 +2578,7 @@
       "receipts": [
         {
           "path": "receipts/wp-core/wphx-312-95-public-shell-gap-audit.v1.json",
-          "sha256": "dd655aea1de89f8318b9737ae6f28ec412bea147c7b050b39fbbe990e8eca774",
+          "sha256": "e5c34cf981211a7fb1860843d426fee4174dacd8bbcc1b0a2e7c72762224a780",
           "id": "receipt:wphx-312-95-public-shell-gap-audit"
         }
       ]
@@ -2590,6 +2590,16 @@
           "path": "receipts/wp-core/wphx-312-98-ownership-state-reconciliation.v1.json",
           "sha256": "01aace7200043c4b44417b9967a8dbcd9aafd3b479104d00b6788261eca5c58d",
           "id": "receipt:wphx-312-98-ownership-state-reconciliation"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-312.99",
+      "receipts": [
+        {
+          "path": "receipts/wp-core/wphx-312-99-request-branch-shell-retirement.v1.json",
+          "sha256": "ef6512461dddfe3ec4373dee6a4eeb0be8715f7a5e622bc66583b44acaa94a24",
+          "id": "receipt:wphx-312-99-request-branch-shell-retirement"
         }
       ]
     },
@@ -3123,7 +3133,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-adoption-ci.v1.json",
-          "sha256": "be79a466150cb6a93fa84821a09cc965708787937d9cea15fadf284883829edb",
+          "sha256": "6651be2e2ca201a19e07d5d2a2947189040b0e82227ba9de5410543a51c2f2c9",
           "id": "receipt:wphx-comp-php-adoption-ci"
         }
       ]
@@ -3283,7 +3293,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-gap-inventory.v1.json",
-          "sha256": "4653e5efb4e2fb9ad703972861b17739c5d227ef103254cac1b893f6da3ef0a8",
+          "sha256": "02403b8a3f06451b8e123c2dcb6d51d6e99a32199da5554ec585115f84dad79a",
           "id": "receipt:wphx-comp-php-gap-inventory"
         }
       ]
@@ -3693,7 +3703,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "888b7ae7e53208e2dd85cddf48cd1593e1040f6525cc3a458d29bd959b3ad3c5",
+          "sha256": "984a102aa96de09780c5d78f60f5c196aaeb7f63055b8a54162ccfe03e37f95a",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]

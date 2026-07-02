@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpRequestNullHeaderNormalization.shouldNormalizeHeaders;
 
 /**
@@ -9,6 +10,7 @@ class HttpRequestNullHeaderNormalizationCandidateEntry
 {
 	public static function main():Void
 	{
+		compileAllRequestHelpers();
 		shouldNormalizeHeaders(true);
 	}
 }

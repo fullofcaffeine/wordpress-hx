@@ -1,0 +1,86 @@
+{
+  "schema": "wphx.wp-core-receipt.v1",
+  "id": "receipt:wphx-312-99-request-branch-shell-retirement",
+  "issue": {
+    "id": "wordpresshx-gvzp",
+    "external_ref": "WPHX-312.99",
+    "title": "Retire remaining WP_Http::request branch public shells"
+  },
+  "recorded_at": "2026-07-02T23:15:00Z",
+  "status": "passed",
+  "evidence_class": "compiler_emitted_request_branch_shell_retirement",
+  "artifact_scope": "wphx_312_wp_http_request_branch_public_shell_boundaries",
+  "commands": [
+    "npm run wp:core:wphx-312-wp-http-request-header-parsing-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-proxy-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-error-response-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-cookie-options-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-stream-destination-error-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-unsafe-url-validation-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-bad-protocol-stripping-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-redirection-copy-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-null-header-normalization-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-stream-default-filename-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-http-response-attachment-candidate",
+    "npm run wp:core:wphx-312-wp-http-request-mbstring-reset-candidate",
+    "npm run wphx:php:public-shell-snapshots",
+    "npm run wp:core:wphx-312-public-shell-gap-audit",
+    "npm run wp:core:wphx-312-public-shell-gap-audit:check"
+  ],
+  "artifacts": [
+    {
+      "path": "src/wphx/compiler/php/WphxPhpWordPressAdapters.hx",
+      "role": "WPHX PHP WordPress-profile request adapter with named helper roles for retired branch shells"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wp/WpHttpRequestNonblockingShell.hx",
+      "role": "compiler input declaring the shared original-path WP_Http::request public shell helper metadata"
+    },
+    {
+      "path": "tools/wp-core/wphx-request-shell-support.mjs",
+      "role": "shared runner support for compiling, installing, and validating the WPHX request shell"
+    },
+    {
+      "path": "manifests/wp-core/wphx-312-95-public-shell-gap-audit.v1.json",
+      "role": "refreshed audit showing zero remaining request branch shell gaps"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "program matrix updated with WPHX-312.99 shell retirement status and bounded non-claims"
+    }
+  ],
+  "retired_external_refs": [
+    "WPHX-312.77",
+    "WPHX-312.78",
+    "WPHX-312.79",
+    "WPHX-312.80",
+    "WPHX-312.81",
+    "WPHX-312.82",
+    "WPHX-312.84",
+    "WPHX-312.85",
+    "WPHX-312.86",
+    "WPHX-312.87",
+    "WPHX-312.88",
+    "WPHX-312.89",
+    "WPHX-312.90"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "boundary_count": 89,
+    "durable_generated_public_shell_count": 41,
+    "wphx_backed_state_reconciliation_count": 0,
+    "remaining_request_branch_shell_count": 0,
+    "copied_oracle_public_surface_count": 46
+  },
+  "claims": [
+    "Thirteen bounded WP_Http::request branch candidates now install the shared WPHX PHP compiler-emitted original-path class-wp-http.php shell.",
+    "The shared request shell records named helper roles for header parsing, proxy options/authentication, error response, cookie options, stream destination/default-filename handling, unsafe URL validation, bad-protocol stripping, redirection-copy, null-header normalization, http_response attachment, and mbstring reset.",
+    "The public-shell gap audit now requires zero remaining WP_Http::request branch shell gaps."
+  ],
+  "non_claims": [
+    "This retirement does not claim full WP_Http::request ownership.",
+    "This retirement does not claim whole-file WP_Http ownership, live HTTP transport behavior, installed distribution behavior, or upstream HTTP PHPUnit parity.",
+    "This retirement does not promote copied feed, embed, cron, or mail oracle public surfaces to durable generated public PHP ownership."
+  ]
+}

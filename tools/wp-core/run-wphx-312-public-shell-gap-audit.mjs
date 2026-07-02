@@ -179,12 +179,12 @@ function main() {
   if (boundaries.length < 89) failures.push(`expected at least 89 WPHX-312 ownership manifests, found ${boundaries.length}`);
   if (unclassified.length > 0) failures.push(`unclassified boundaries: ${unclassified.map((boundary) => boundary.external_ref).join(", ")}`);
   if (unownedDebt.length > 0) failures.push(`shell debt without follow-up owner: ${unownedDebt.map((boundary) => boundary.external_ref).join(", ")}`);
-  if ((byClassification.durable_generated_public_shell ?? 0) < 28) failures.push("expected at least 28 durable generated public shell boundaries");
+  if ((byClassification.durable_generated_public_shell ?? 0) < 41) failures.push("expected at least 41 durable generated public shell boundaries");
   if ((byClassification.wphx_backed_state_reconciliation ?? 0) !== 0) {
     failures.push("expected zero WPHX-backed boundaries needing ownership-state reconciliation");
   }
-  if ((byClassification.remaining_request_branch_shell ?? 0) !== REQUEST_BRANCH_EXTERNAL_REFS.size) {
-    failures.push(`expected ${REQUEST_BRANCH_EXTERNAL_REFS.size} remaining request branch shell gaps`);
+  if ((byClassification.remaining_request_branch_shell ?? 0) !== 0) {
+    failures.push("expected zero remaining request branch shell gaps");
   }
   if ((byClassification.copied_oracle_public_surface ?? 0) < 46) {
     failures.push("expected at least 46 copied-oracle public surface gaps");
@@ -232,10 +232,10 @@ function main() {
       bounded_retirements_already_evidenced: [
         "Existing WPHX PHP fixtures and receipts cover the first HTTP object/helper class adapters, grouped WP_Http helpers, transport selection, and selected WP_Http::request branches.",
         "WPHX-312.98 reconciled the WPHX-backed HTTP candidate ownership states to compiler_emitted_original_path_shell.",
+        "WPHX-312.99 retired the remaining copied WP_Http::request branch shells onto the shared compiler-emitted original-path request shell.",
         "Those boundaries remain bounded generated shell claims, not whole-file WP_Http, live transport, installed distribution, or broad feed/embed ownership claims."
       ],
       required_next_actions: [
-        "WPHX-312.99 retires remaining WP_Http::request branch public shells or files minimized compiler-pressure blockers.",
         "WPHX-312.100 groups copied oracle feed/embed/cron/mail public surfaces into generated-adapter, preserved-vendor, installed-route, live-transport, or upstream-PHPUnit gates."
       ]
     },
@@ -279,7 +279,7 @@ function main() {
     claims: [
       "Every WPHX-312 ownership manifest is classified for public PHP shell ownership state.",
       "Non-durable public shell debt is linked to explicit follow-up owners.",
-      "Existing WPHX PHP-backed HTTP candidates now use compiler_emitted_original_path_shell ownership state and are distinguished from remaining copied shell gaps."
+      "Existing WPHX PHP-backed HTTP candidates and bounded WP_Http::request branch candidates now use compiler_emitted_original_path_shell ownership state and are distinguished from remaining copied shell gaps."
     ],
     non_claims: manifest.non_claims
   };

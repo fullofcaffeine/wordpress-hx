@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpRequestHttpResponseAttachment.shouldAttachHttpResponseObject;
 
 /**
@@ -9,6 +10,7 @@ class HttpRequestHttpResponseAttachmentCandidateEntry
 {
 	public static function main():Void
 	{
+		compileAllRequestHelpers();
 		shouldAttachHttpResponseObject();
 	}
 }

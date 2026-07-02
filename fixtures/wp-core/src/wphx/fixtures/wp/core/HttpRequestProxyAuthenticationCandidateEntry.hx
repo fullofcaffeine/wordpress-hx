@@ -1,5 +1,6 @@
 package wphx.fixtures.wp.core;
 
+import wphx.fixtures.wp.core.WpHttpRequestCandidateAnchor.compileAllRequestHelpers;
 import wphx.wp.http.HttpRequestProxyAuthentication.shouldUseProxyAuthentication;
 
 /**
@@ -9,6 +10,7 @@ final class HttpRequestProxyAuthenticationCandidateEntry
 {
 	public static function main():Void
 	{
+		compileAllRequestHelpers();
 		shouldUseProxyAuthentication(true);
 	}
 }

@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
+import { compileWphxRequestShell, installWphxRequestShell, requestShellShape, REQUEST_SHELL_HAXE_SOURCES, REQUIRED_REQUEST_SHELL_FEATURES, WPHX_REQUEST_SHELL_HXML, wphxRequestShellPaths } from "./wphx-request-shell-support.mjs";
 
 const args = new Set(process.argv.slice(2));
 const checkOnly = args.has("--check");
@@ -54,6 +55,8 @@ const COVERED_SYMBOLS = [
 ];
 const HAXE_SOURCES = [
   HXML,
+  WPHX_REQUEST_SHELL_HXML,
+  ...REQUEST_SHELL_HAXE_SOURCES,
   "src/wphx/wp/http/HttpRequestProxyAuthentication.hx",
   "fixtures/wp-core/src/wphx/fixtures/wp/core/HttpRequestProxyAuthenticationCandidateEntry.hx"
 ];
@@ -635,19 +638,20 @@ function ownershipManifest(manifestSha) {
       public_contract:
         "This candidate promotes only the WP_Http::request decision that WP_HTTP_Proxy::use_authentication true enables authentication properties and credential handoff on the already-created Requests proxy object. PHP still owns public request ABI, proxy enable/send-through policy, proxy constants, host/bypass matching, username/password values, native WpOrg Requests Proxy Http object construction, Requests dispatch, debug/error handling, and native arrays/objects."
     },
-    ownership_state: "haxe_candidate_with_public_php_shell",
+    ownership_state: "compiler_emitted_original_path_shell",
     bridge: {
       exists: true,
-      kind: "copied-public-php-shell-calling-generated-haxe",
+      kind: "compiler-emitted-original-path-public-php-shell",
       removal_gate:
-        "Replace copied public PHP with generated original-path adapters and pass request proxy authentication, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming public PHP ownership."
+        "Promote beyond this bounded compiler-emitted WP_Http::request branch adapter only after request proxy authentication, selected upstream HTTP PHPUnit, installed distribution, and live/recorded network/proxy parity gates before claiming full request, installed distribution, or whole-file WP_Http ownership."
     },
-    owned_paths: [RUNNER, OUT, OWNERSHIP, RECEIPT],
-    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT],
+    owned_paths: [RUNNER, ...HAXE_SOURCES, OUT, OWNERSHIP, RECEIPT],
+    generated_paths: [OUT, OWNERSHIP, RECEIPT, OUT_ROOT, wphxRequestShellPaths(OUT_ROOT).manifest],
     verification: {
       oracle_commands: [
         "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate",
         "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate:check",
+        "npm run wphx:php:public-shell-snapshots:check",
         "npm run receipts:validate",
         "npm run beads:validate"
       ],
@@ -660,9 +664,10 @@ function ownershipManifest(manifestSha) {
 async function main() {
   rmSync(OUT_ROOT, { recursive: true, force: true });
   command("haxe", [HXML]);
+  compileWphxRequestShell(command, OUT_ROOT);
   mirrorSources(ORACLE_ROOT);
   mirrorSources(CANDIDATE_ROOT);
-  transformCandidateRequestProxyAuthentication();
+  installWphxRequestShell(CANDIDATE_ROOT, OUT_ROOT);
   writeProbe();
 
   const oracle = runProbe(ORACLE_ROOT);
@@ -684,12 +689,18 @@ async function main() {
     candidate_lint: command("php", ["-l", mirrorPath(CANDIDATE_ROOT, path)])
   }));
   const compiledPhp = command("find", [HAXE_OUT, "-type", "f", "-name", "*.php"]);
+  const wphxPhp = wphxRequestShellPaths(OUT_ROOT);
+  const wphxPhpShape = requestShellShape(CANDIDATE_ROOT, OUT_ROOT);
+  if (!Object.values(wphxPhpShape).every(Boolean)) {
+    console.error(JSON.stringify({ status: "failed", reason: "WPHX PHP generated shell shape check failed", wphxPhpShape }, null, 2));
+    process.exit(1);
+  }
   const manifest = {
     schema: "wphx.wp-core-wp-http-request-proxy-authentication-candidate.v1",
     issue: ISSUE.external_ref,
     generated_at: RECORDED_AT,
     generator: RUNNER,
-    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture"],
+    evidence_classes: ["haxe_source", "generated_php_candidate", "oracle_source_mirror", "php_cli_observed_fixture", "compiler_php_ir_feature_evidence"],
     artifact_scope: "haxe_parity_candidate",
     inputs: {
       surface_manifest: inputRecord(SURFACE),
@@ -698,12 +709,22 @@ async function main() {
       http_request_orchestration_fixture_manifest: inputRecord(HTTP_REQUEST_FIXTURE),
       request_proxy_safety_fixture_manifest: inputRecord(REQUEST_PROXY_SAFETY_FIXTURE),
       runner: inputRecord(RUNNER),
+      wphx_php_manifest: inputRecord(wphxPhp.manifest),
       haxe_sources: HAXE_SOURCES.map(inputRecord),
       upstream_sources: SOURCE_FILES.map(sourceRecord)
     },
     candidate: {
       hxml: HXML,
+      wphx_php_hxml: WPHX_REQUEST_SHELL_HXML,
       haxe_output: HAXE_OUT,
+      wphx_php_output: wphxPhp.root,
+      public_shell: {
+        path: `${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`,
+        source_path: wphxPhp.shell,
+        sha256: sha256File(`${CANDIDATE_ROOT}/wp-includes/class-wp-http.php`),
+        compiler_emitted: true,
+        shape: wphxPhpShape
+      },
       compiled_php_files: compiledPhp.split("\n").filter(Boolean).sort(),
       haxe_module: HAXE_MODULE,
       promoted_symbols: PROMOTED_SYMBOLS,
@@ -724,9 +745,10 @@ async function main() {
           "Requests classes, selected WordPress globals, hook dispatch, site URL, proxy constants, mbstring encoding guards, and option/bloginfo helpers are deterministic stubs. Copied WP_Http and HTTP support classes remain the executed request proxy authentication sources; outbound Requests::request records options without network I/O."
       },
       public_abi_policy: {
-        public_php_replacement_claimed: false,
+        public_php_replacement_claimed: true,
         copied_oracle_public_php: true,
-        copied_candidate_public_php_shell: true,
+        copied_candidate_public_php_shell: false,
+        compiler_emitted_public_php: true,
         adapter_contract_foundation: CONTRACT,
         installed_wordpress_behavior_claimed: false
       }
@@ -760,9 +782,9 @@ async function main() {
           "The fixture uses PHP CLI with deterministic support stubs rather than an installed WordPress distribution or ecosystem HTTP callers."
       },
       {
-        id: "public-php-adapter-not-yet-generated",
+        id: "full-wp-http-request-not-yet-owned",
         owner: ISSUE.external_ref,
-        detail: "The fixture compares copied oracle PHP in both roots; generated original-path PHP replacement remains a later cross-domain gate."
+        detail: "The candidate consumes a compiler-emitted original-path class-wp-http.php shell for a bounded WP_Http::request branch gate. Broader request semantics, whole-file WP_Http ownership, and installed distribution behavior remain later compiler-driven gates."
       }
     ],
     ownership_manifest: OWNERSHIP,
@@ -773,7 +795,7 @@ async function main() {
       promoted_symbols: PROMOTED_SYMBOLS.length,
       observations_match: observationsMatch,
       observations_assert: observationsAssert,
-      public_php_replacement_claimed: false,
+      public_php_replacement_claimed: true,
       full_request_proxy_authentication_claimed: false,
       wp_http_proxy_policy_claimed: false,
       proxy_authentication_value_handoff_claimed: false,
@@ -800,6 +822,7 @@ async function main() {
     verification_commands: [
       "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate",
       "npm run wp:core:wphx-312-wp-http-request-proxy-authentication-candidate:check",
+        "npm run wphx:php:public-shell-snapshots:check",
       "npm run receipts:validate",
       "npm run beads:validate"
     ],
