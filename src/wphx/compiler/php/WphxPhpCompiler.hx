@@ -100,6 +100,7 @@ enum PhpCoreStmt
 	PhpLocal(name:String, value:PhpCoreExpr);
 	PhpStaticLocal(name:String, value:PhpCoreExpr);
 	PhpExprStmt(expr:PhpCoreExpr);
+	PhpRequireOnce(path:PhpCoreExpr);
 	PhpReturn(value:PhpCoreExpr);
 	PhpReturnVoid;
 	PhpThrow(value:PhpCoreExpr);
@@ -116,6 +117,7 @@ enum PhpCoreExpr
 	PhpInt(value:Int);
 	PhpString(value:String);
 	PhpConst(name:String);
+	PhpMagicConst(name:String);
 	PhpArrayRead(base:PhpCoreExpr, key:PhpCoreExpr);
 	PhpArrayAppend(base:PhpCoreExpr);
 	PhpLongArray(entries:Array<PhpCoreArrayEntry>);
@@ -507,6 +509,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 		{
 			case "include-side-effects":
 				emitIncludeSideEffectsScript(path, pending.adapter);
+			case "deprecated-class-http":
+				emitDeprecatedClassHttpScript(path, pending.adapter);
 			case "template-segment-admin-style":
 				emitTemplateSegmentAdminStyleScript(path, pending.adapter);
 			case "template-segment-nested-parent":
@@ -552,6 +556,29 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			+ "\t'local_marker' => isset($wphx_local_marker) ? $wphx_local_marker : null,\n"
 			+ "\t'run_count'    => count($GLOBALS['wphx_include_side_effects']),\n"
 			+ ");";
+	}
+
+	function emitDeprecatedClassHttpScript(path:String, adapter:String):String
+	{
+		recordCoreIrFeatures([
+			"script.deprecated-file-call",
+			"script.magic-file",
+			"script.require-once",
+			"script.constant-concat"
+		]);
+		recordSegmentPlan(path, adapter, "whole_file_owned", ["script", "require_once"], [
+			segmentFact("constants", ["ABSPATH", "WPINC"]),
+			segmentFact("functions", ["_deprecated_file", "basename"])
+		],
+			["require_once_original_path", "include_once_idempotence"], ["deprecated_file_call", "required_class_wp_http"]);
+		return emitPhpCoreStatements([
+			PhpExprStmt(PhpFunctionCall("_deprecated_file", [
+				PhpFunctionCall("basename", [PhpMagicConst("__FILE__")]),
+				PhpString("5.9.0"),
+				PhpBinop(".", PhpConst("WPINC"), PhpString("/class-wp-http.php"))
+			])),
+			PhpRequireOnce(PhpBinop(".", PhpBinop(".", PhpConst("ABSPATH"), PhpConst("WPINC")), PhpString("/class-wp-http.php")))
+		]);
 	}
 
 	function emitSegmentPlan(features:Array<String>, segments:Array<PhpFileSegment>):String
@@ -1101,6 +1128,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 				prefix + "static $" + phpIdent(name) + " = " + emitPhpCoreExpr(value, depth) + ";";
 			case PhpExprStmt(expr):
 				prefix + emitPhpCoreExpr(expr, depth) + ";";
+			case PhpRequireOnce(path):
+				prefix + "require_once " + emitPhpCoreExpr(path, depth) + ";";
 			case PhpReturn(value):
 				prefix + "return " + emitPhpCoreExpr(value, depth) + ";";
 			case PhpReturnVoid:
@@ -1131,6 +1160,8 @@ class WphxPhpCompiler extends GenericCompiler<String, String, String, String, St
 			case PhpString(value):
 				quote(value);
 			case PhpConst(name):
+				name;
+			case PhpMagicConst(name):
 				name;
 			case PhpArrayRead(base, key):
 				emitPhpCoreExpr(base, depth) + "[" + emitPhpCoreArrayKey(key, depth) + "]";

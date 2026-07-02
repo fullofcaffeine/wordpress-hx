@@ -1,0 +1,61 @@
+{
+  "schema": "wphx.compiler-core-driver-receipt.v1",
+  "id": "receipt:wphx-comp-php-whole-file-pilot",
+  "issue": {
+    "id": "wordpresshx-w91.24.4",
+    "external_ref": "WPHX-COMP-PHP-WHOLE-FILE-PILOT",
+    "title": "Emit a small WordPress file without stock public shape fallback"
+  },
+  "recorded_at": "2026-07-02T20:00:00Z",
+  "status": "passed",
+  "evidence_class": "whole_file_pilot",
+  "artifact_scope": "wordpress_original_path_whole_file_owned_minimized",
+  "commands": [
+    "npm run wphx:php:whole-file-class-http",
+    "npm run wphx:php:whole-file-class-http:check"
+  ],
+  "artifacts": [
+    {
+      "path": "tools/wphx-php/run-whole-file-class-http.mjs",
+      "role": "deterministic whole-file class-http oracle/candidate runner"
+    },
+    {
+      "path": "fixtures/wphx-php/whole-file-class-http.hxml",
+      "role": "Reflaxe-backed WPHX PHP hxml for the whole-file pilot"
+    },
+    {
+      "path": "manifests/wphx-php/whole-file-class-http.v1.json",
+      "role": "whole-file pilot manifest"
+    },
+    {
+      "path": "../wordpress-develop/src/wp-includes/class-http.php",
+      "role": "WordPress 7.0 oracle source file"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "role": "WPHX PHP compiler script adapter and generic require_once/magic-constant printer"
+    }
+  ],
+  "manifest_sha256": "sha256:3421ae18a39f556ac947053910a8fe30acc6eb6cb4560ea87e3f150b38aefb11",
+  "validation_result": {
+    "status": "passed",
+    "php_lint_passed": true,
+    "exact_contracts_passed": true,
+    "oracle_candidate_behavior_matched": true,
+    "unsupported_empty": true,
+    "no_haxe_bootstrap_bridge": true,
+    "no_haxe_helper_bridge": true,
+    "whole_file_owned_segment_plan": true,
+    "require_once_timing_observed": true
+  },
+  "claims": [
+    "WPHX PHP emits the complete original-path WordPress wp-includes/class-http.php file without stock Haxe PHP public shape fallback, helper bridge, or Haxe bootstrap.",
+    "The generated file lints with php -l, records unsupported=[], records a whole_file_owned segment plan, and matches the WordPress 7.0 oracle for deprecated-file payload and require_once timing in the minimized probe.",
+    "The compiler core now has bounded generic PHP-core support for require_once statements and magic constants used by this file-scope pilot."
+  ],
+  "non_claims": [
+    "This does not claim whole-file ownership of wp-includes/class-wp-http.php or WP_Http.",
+    "This does not claim live HTTP transport behavior, Requests integration, installed WordPress behavior, or broad deprecated-file ownership.",
+    "This does not remove stock Haxe PHP private implementation fallbacks."
+  ]
+}

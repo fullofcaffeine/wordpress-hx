@@ -38,6 +38,8 @@
     "wphx:php:runtime-stdlib-strategy:check": "node tools/wphx-php/run-runtime-stdlib-strategy.mjs --check",
     "wphx:php:core-lowering-pilot": "node tools/wphx-php/run-core-lowering-pilot.mjs",
     "wphx:php:core-lowering-pilot:check": "node tools/wphx-php/run-core-lowering-pilot.mjs --check",
+    "wphx:php:whole-file-class-http": "node tools/wphx-php/run-whole-file-class-http.mjs",
+    "wphx:php:whole-file-class-http:check": "node tools/wphx-php/run-whole-file-class-http.mjs --check",
     "wphx:php:pluggable-timing": "node tools/wphx-php/run-pluggable-timing.mjs",
     "wphx:php:pluggable-timing:check": "node tools/wphx-php/run-pluggable-timing.mjs --check",
     "wphx:php:bootstrap-autoload": "node tools/wphx-php/run-bootstrap-autoload.mjs",

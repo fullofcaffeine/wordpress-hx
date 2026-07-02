@@ -28,7 +28,7 @@ npm run wphx:php:gap-inventory
 npm run wphx:php:gap-inventory:check
 ```
 
-It records `manifests/wphx-php/compiler-gap-inventory.v1.json` and `receipts/compiler/wphx-comp-php-gap-inventory.v1.json`. The current inventory finds 26 Reflaxe-backed WPHX PHP public-adapter hxmls, 9 stock Haxe PHP private-output hxmls, 46 `@:wp.haxeHelper` metadata sites, 18 `@:wp.haxeBootstrap` sites, 39 WordPress-profile method adapters, 4 script adapters, 18 unsupported typed-lowering report sites, 6 WPHX PHP runner copy/install surfaces, 13 passing WPHX PHP evidence manifests, and 7 available stock Haxe PHP reference files. It also confirms the WordPress profile still has zero `PhpRawBlock` occurrences and zero `renderTemplate` calls.
+It records `manifests/wphx-php/compiler-gap-inventory.v1.json` and `receipts/compiler/wphx-comp-php-gap-inventory.v1.json`. The current inventory finds 27 Reflaxe-backed WPHX PHP public-adapter hxmls, 9 stock Haxe PHP private-output hxmls, 46 `@:wp.haxeHelper` metadata sites, 18 `@:wp.haxeBootstrap` sites, 39 WordPress-profile method adapters, 5 script adapters, 18 unsupported typed-lowering report sites, 6 WPHX PHP runner copy/install surfaces, 14 passing WPHX PHP evidence manifests, and 7 available stock Haxe PHP reference files. It also confirms the WordPress profile still has zero `PhpRawBlock` occurrences and zero `renderTemplate` calls.
 
 Use that manifest when moving gaps: reusable expression, statement, array, object, call, loop, cast, and std/php behavior belongs in WPHX PHP core or runtime/std strategy; original-path ABI, pluggable timing, conditional declarations, and WordPress-specific shell compatibility stay in the WordPress profile. Helper/bootstrap bridges are temporary fallbacks until a targeted whole-file or core-lowering gate retires them. Runner copies used as oracle setup are not durable public ownership claims.
 
@@ -49,6 +49,15 @@ npm run wphx:php:core-lowering-pilot:check
 ```
 
 It records `manifests/wphx-php/core-lowering-pilot.v1.json` and `receipts/compiler/wphx-comp-php-core-lowering-pilot.v1.json`. The fixture emits `wp-includes/wphx-core-lowering.php` from ordinary typed Haxe bodies with no `@:wp.adapter`, `@:wp.haxeHelper`, or `@:wp.haxeBootstrap` bridge. It proves generic `if`, `while`, `break`, and `continue` statement lowering, PHP lint, exact generated-shape patterns, runtime behavior, `unsupported=[]`, and `core_ir_features=["typed.stmt.break","typed.stmt.continue","typed.stmt.if","typed.stmt.while"]`.
+
+The first whole-file WordPress pilot is:
+
+```bash
+npm run wphx:php:whole-file-class-http
+npm run wphx:php:whole-file-class-http:check
+```
+
+It records `manifests/wphx-php/whole-file-class-http.v1.json` and `receipts/compiler/wphx-comp-php-whole-file-pilot.v1.json`. The fixture emits the complete original-path WordPress file `wp-includes/class-http.php` with no stock Haxe PHP public shape fallback, no Haxe bootstrap, and no helper bridge. It compares the generated file against the WordPress 7.0 oracle file for `_deprecated_file( basename( __FILE__ ), '5.9.0', WPINC . '/class-wp-http.php' )` payload and `require_once ABSPATH . WPINC . '/class-wp-http.php'` timing in an isolated probe. The emission manifest records `adoption_mode="whole_file_owned"` and reusable core features for `require_once`, `__FILE__`, and constant/path concatenation. This is a deliberately minimized whole-file ownership claim; it does not claim `wp-includes/class-wp-http.php`, `WP_Http`, live HTTP transport behavior, installed distribution behavior, or broad deprecated-file ownership.
 
 Use the native Haxe PHP generator and `std/php` sources in `../haxe.compilerdev.reference/haxe` as an implementation oracle for generic, borrowable lowering/runtime behavior when useful. That reference can guide what to reuse or adapt; WordPress public ABI, original path topology, declaration timing, and ecosystem-visible behavior still require WordPress oracle fixtures and WPHX public-shell evidence.
 
@@ -81,6 +90,8 @@ npm run wphx:php:runtime-stdlib-strategy
 npm run wphx:php:runtime-stdlib-strategy:check
 npm run wphx:php:core-lowering-pilot
 npm run wphx:php:core-lowering-pilot:check
+npm run wphx:php:whole-file-class-http
+npm run wphx:php:whole-file-class-http:check
 npm run wphx:php:pluggable-timing
 npm run wphx:php:pluggable-timing:check
 npm run wphx:php:bootstrap-autoload
@@ -202,7 +213,7 @@ npm run wphx:php:public-shell-snapshots
 npm run wphx:php:public-shell-snapshots:check
 ```
 
-It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, empty unsupported manifests, and compiler-emitted `segment_plans` contracts for the direct-script and template-segment cases. It covers global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, top-level bootstrap side effects, a bounded include-return/direct file-scope script fixture, the first compiler-emitted template segment shell, and the first nested template segment shell. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner.
+It records `manifests/wphx-php/public-shell-snapshots.v1.json` and `receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json` with `evidence_class=generated_shape`. The lane checks byte stability, `php -l`, exact selected shell excerpts, AST-normalized declarations, empty unsupported manifests, and compiler-emitted `segment_plans` contracts for the direct-script, whole-file, and template-segment cases. It covers global functions, public class/interface shells, protected methods, by-reference parameters, conditional declarations, native-array mutation shells, top-level bootstrap side effects, a bounded include-return/direct file-scope script fixture, the first `whole_file_owned` real WordPress file, the first compiler-emitted template segment shell, and the first nested template segment shell. This is source-shape evidence only; behavior parity still comes from each focused oracle/candidate runner.
 
 The pluggable timing fixture compiles a minimized original-path guarded global-function file:
 

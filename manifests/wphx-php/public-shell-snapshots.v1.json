@@ -236,6 +236,74 @@
       }
     },
     {
+      "id": "whole-file-class-http",
+      "evidence_class": "generated_shape",
+      "artifact_scope": "minimized_fixture",
+      "shell_shapes": [
+        "whole_file_owned",
+        "direct_file_scope_script",
+        "deprecated_file_call",
+        "require_once"
+      ],
+      "hxml": "fixtures/wphx-php/whole-file-class-http.hxml",
+      "selected_file": "build/wphx-php/public-shell-snapshots/first/whole-file-class-http/generated/wp-includes/class-http.php",
+      "bytes": 140,
+      "sha256": "sha256:61dac1cf6ea16d82554aedf85ff926c763c67d91ab8ffc193fced5a738223b1e",
+      "byte_stable_across_clean_compiles": true,
+      "php_lint": "passed",
+      "exact_patterns": [
+        "_deprecated_file( basename( __FILE__ ), '5.9.0', WPINC . '/class-wp-http.php' );",
+        "require_once ABSPATH . WPINC . '/class-wp-http.php';"
+      ],
+      "ast_contract": {
+        "functions": [],
+        "classes": [],
+        "interfaces": [],
+        "methods": [],
+        "protected_methods": [],
+        "by_reference_parameters": []
+      },
+      "segment_plan_contract": {
+        "path": "wp-includes/class-http.php",
+        "adapter": "deprecated-class-http",
+        "adoption_mode": "whole_file_owned",
+        "segments": [
+          "script",
+          "require_once"
+        ],
+        "caller_scope": [
+          {
+            "kind": "constants",
+            "names": [
+              "ABSPATH",
+              "WPINC"
+            ]
+          },
+          {
+            "kind": "functions",
+            "names": [
+              "_deprecated_file",
+              "basename"
+            ]
+          }
+        ],
+        "include_semantics": [
+          "require_once_original_path",
+          "include_once_idempotence"
+        ],
+        "observable_effects": [
+          "deprecated_file_call",
+          "required_class_wp_http"
+        ],
+        "unsupported": []
+      },
+      "manifest": {
+        "path": "build/wphx-php/public-shell-snapshots/first/whole-file-class-http/generated/wphx-php-emission.v1.json",
+        "bytes": 1567,
+        "sha256": "sha256:d0a71d39b38fd464352a0857eb0ddbf58f540364cab7c9d44356e44d3632d898"
+      }
+    },
+    {
       "id": "protected-method-shell",
       "evidence_class": "generated_shape",
       "artifact_scope": "minimized_fixture",
@@ -1084,13 +1152,14 @@
     "template_segment_shell": true,
     "nested_template_segment_shell": true,
     "typed_statement_lowering": true,
+    "whole_file_owned": true,
     "segment_plan_metadata": true
   },
   "pending_shell_shape_gaps": [],
   "validation_result": {
     "status": "passed",
     "clean_compile_passes": 2,
-    "case_count": 18,
+    "case_count": 19,
     "all_selected_outputs_byte_stable": true,
     "php_lint_passed": true,
     "exact_contracts_passed": true,

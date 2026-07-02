@@ -1,0 +1,195 @@
+{
+  "schema": "wphx.wphx-php-whole-file-class-http.v1",
+  "issue": {
+    "id": "wordpresshx-w91.24.4",
+    "external_ref": "WPHX-COMP-PHP-WHOLE-FILE-PILOT",
+    "title": "Emit a small WordPress file without stock public shape fallback"
+  },
+  "generated_at": "2026-07-02T20:00:00Z",
+  "generator": "tools/wphx-php/run-whole-file-class-http.mjs",
+  "evidence_class": "whole_file_pilot",
+  "artifact_scope": "wordpress_original_path_whole_file_owned_minimized",
+  "selected_wordpress_file": {
+    "path": "wp-includes/class-http.php",
+    "oracle": {
+      "path": "../wordpress-develop/src/wp-includes/class-http.php",
+      "bytes": 367,
+      "sha256": "sha256:0882fa684a028543f18568149920e7ed12e1a47fd646e5bf8f08c97ebed5d239"
+    },
+    "rationale": "Small deprecated compatibility include with file-scope _deprecated_file call and require_once timing."
+  },
+  "inputs": [
+    {
+      "path": "fixtures/wphx-php/whole-file-class-http.hxml",
+      "bytes": 375,
+      "sha256": "sha256:2ad7306550503c0d792a12b7a989a6f065ebdcb2d9014b5c14534b3e74bbc577"
+    },
+    {
+      "path": "tools/wphx-php/run-whole-file-class-http.mjs",
+      "bytes": 11683,
+      "sha256": "sha256:5ba591578e9d76d0641719173b46840de54c530b8f8ccf860d436c66fc356644"
+    },
+    {
+      "path": "src/wphx/compiler/php/WphxPhpCompiler.hx",
+      "bytes": 55597,
+      "sha256": "sha256:4d4b438b30e3a5bfaafd059e22db6d6aca2f76449704d419e598a4ce1f8dee36"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wholefile/ClassHttpEntry.hx",
+      "bytes": 224,
+      "sha256": "sha256:89c6889cfd287674b751238d5027ecf533041011fbfcd59e7e623e339fc84428"
+    },
+    {
+      "path": "fixtures/wphx-php/src/wphx/fixtures/compiler/php/wholefile/ClassHttpScript.hx",
+      "bytes": 257,
+      "sha256": "sha256:ab2c059026fe472f8d6e250b3fb28cd8621423e454a97a949eaf9fc1bcba1621"
+    }
+  ],
+  "generated_file": {
+    "path": "build/wphx-php/whole-file-class-http/generated/wp-includes/class-http.php",
+    "bytes": 140,
+    "sha256": "sha256:61dac1cf6ea16d82554aedf85ff926c763c67d91ab8ffc193fced5a738223b1e",
+    "php_lint": "passed",
+    "php_lint_output": "No syntax errors detected in build/wphx-php/whole-file-class-http/generated/wp-includes/class-http.php",
+    "exact_patterns": [
+      "_deprecated_file( basename( __FILE__ ), '5.9.0', WPINC . '/class-wp-http.php' );",
+      "require_once ABSPATH . WPINC . '/class-wp-http.php';"
+    ]
+  },
+  "emission_manifest": {
+    "path": "build/wphx-php/whole-file-class-http/generated/wphx-php-emission.v1.json",
+    "bytes": 1567,
+    "sha256": "sha256:d0a71d39b38fd464352a0857eb0ddbf58f540364cab7c9d44356e44d3632d898",
+    "declarations": [
+      "script:deprecated-class-http"
+    ],
+    "core_ir_features": [
+      "script.constant-concat",
+      "script.deprecated-file-call",
+      "script.magic-file",
+      "script.require-once"
+    ],
+    "required_core_ir_features": [
+      "script.constant-concat",
+      "script.deprecated-file-call",
+      "script.magic-file",
+      "script.require-once"
+    ],
+    "segment_plan": {
+      "unsupported": [],
+      "adapter": "deprecated-class-http",
+      "include_semantics": [
+        "require_once_original_path",
+        "include_once_idempotence"
+      ],
+      "path": "wp-includes/class-http.php",
+      "adoption_mode": "whole_file_owned",
+      "caller_scope": [
+        {
+          "names": [
+            "ABSPATH",
+            "WPINC"
+          ],
+          "kind": "constants"
+        },
+        {
+          "names": [
+            "_deprecated_file",
+            "basename"
+          ],
+          "kind": "functions"
+        }
+      ],
+      "observable_effects": [
+        "deprecated_file_call",
+        "required_class_wp_http"
+      ],
+      "segments": [
+        "script",
+        "require_once"
+      ]
+    },
+    "unsupported": [],
+    "adapter_templates": []
+  },
+  "behavior_probe": {
+    "oracle_root": "build/wphx-php/whole-file-class-http/oracle-root",
+    "candidate_root": "build/wphx-php/whole-file-class-http/candidate-root",
+    "probe_file": "probe.php",
+    "oracle_observed": {
+      "first_include_return": 1,
+      "second_include_return": 1,
+      "deprecated_calls": [
+        {
+          "file": "class-http.php",
+          "version": "5.9.0",
+          "replacement": "wp-includes/class-wp-http.php",
+          "message": ""
+        },
+        {
+          "file": "class-http.php",
+          "version": "5.9.0",
+          "replacement": "wp-includes/class-wp-http.php",
+          "message": ""
+        }
+      ],
+      "required_wp_http": [
+        "class-wp-http.php"
+      ],
+      "wp_http_class_loaded": true
+    },
+    "candidate_observed": {
+      "first_include_return": 1,
+      "second_include_return": 1,
+      "deprecated_calls": [
+        {
+          "file": "class-http.php",
+          "version": "5.9.0",
+          "replacement": "wp-includes/class-wp-http.php",
+          "message": ""
+        },
+        {
+          "file": "class-http.php",
+          "version": "5.9.0",
+          "replacement": "wp-includes/class-wp-http.php",
+          "message": ""
+        }
+      ],
+      "required_wp_http": [
+        "class-wp-http.php"
+      ],
+      "wp_http_class_loaded": true
+    },
+    "status": "passed"
+  },
+  "ownership": {
+    "state": "whole_file_owned",
+    "haxe_owned_semantics": [
+      "deprecated compatibility include contract",
+      "replacement path selection"
+    ],
+    "php_public_boundary_behavior": [
+      "basename(__FILE__)",
+      "_deprecated_file call payload",
+      "ABSPATH/WPINC require_once path",
+      "require_once idempotence"
+    ],
+    "fallbacks": [],
+    "non_claims": [
+      "This does not claim whole-file ownership of wp-includes/class-wp-http.php or WP_Http.",
+      "This does not claim live HTTP transport behavior, Requests integration, installed WordPress behavior, or broad deprecated-file ownership.",
+      "This does not remove stock Haxe PHP private implementation fallbacks."
+    ]
+  },
+  "validation_result": {
+    "status": "passed",
+    "php_lint_passed": true,
+    "exact_contracts_passed": true,
+    "oracle_candidate_behavior_matched": true,
+    "unsupported_empty": true,
+    "no_haxe_bootstrap_bridge": true,
+    "no_haxe_helper_bridge": true,
+    "whole_file_owned_segment_plan": true,
+    "require_once_timing_observed": true
+  }
+}

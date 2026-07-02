@@ -114,6 +114,30 @@ const CASES = [
     }
   },
   {
+    id: "whole-file-class-http",
+    hxml: "fixtures/wphx-php/whole-file-class-http.hxml",
+    selected: "wp-includes/class-http.php",
+    shell_shapes: ["whole_file_owned", "direct_file_scope_script", "deprecated_file_call", "require_once"],
+    exact_patterns: [
+      "_deprecated_file( basename( __FILE__ ), '5.9.0', WPINC . '/class-wp-http.php' );",
+      "require_once ABSPATH . WPINC . '/class-wp-http.php';"
+    ],
+    ast_expect: {},
+    expected_segment_plan: {
+      path: "wp-includes/class-http.php",
+      adapter: "deprecated-class-http",
+      adoption_mode: "whole_file_owned",
+      segments: ["script", "require_once"],
+      caller_scope: [
+        { kind: "constants", names: ["ABSPATH", "WPINC"] },
+        { kind: "functions", names: ["_deprecated_file", "basename"] }
+      ],
+      include_semantics: ["require_once_original_path", "include_once_idempotence"],
+      observable_effects: ["deprecated_file_call", "required_class_wp_http"],
+      unsupported: []
+    }
+  },
+  {
     id: "protected-method-shell",
     hxml: "fixtures/wphx-php/wp-http-parser-helpers.hxml",
     selected: "wp-includes/class-wp-http.php",
@@ -681,6 +705,7 @@ function main() {
       template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell")),
       nested_template_segment_shell: results.some((item) => item.shell_shapes.includes("template_segment_shell") && item.shell_shapes.includes("nested_include")),
       typed_statement_lowering: results.some((item) => item.shell_shapes.includes("typed_statement_lowering")),
+      whole_file_owned: results.some((item) => item.shell_shapes.includes("whole_file_owned")),
       segment_plan_metadata: results.some((item) => item.segment_plan_contract != null)
     },
     pending_shell_shape_gaps: [],

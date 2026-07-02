@@ -1,7 +1,7 @@
 {
   "schema": "wphx.evidence-links.v1",
   "generated_at": "2026-06-20T03:22:00Z",
-  "closed_task_count": 373,
+  "closed_task_count": 374,
   "entries": [
     {
       "external_ref": "WPHX-000.01",
@@ -433,7 +433,7 @@
       "receipts": [
         {
           "path": "receipts/haxe/wphx-211-escape-hatches.v1.json",
-          "sha256": "0f93bca71a40b3407269c926e58f487f8d1034273f22d8f02ba81a2096c81bf2",
+          "sha256": "d3fc9cb511fb75c9ad2983803901a010244a3b84cfa3da1094a54516d5b06fa4",
           "id": "receipt:wphx-211-escape-hatches"
         }
       ]
@@ -3253,7 +3253,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-gap-inventory.v1.json",
-          "sha256": "324296eef92209bc804fe7353c235510b0c849615c92b573feb4f723a7d15321",
+          "sha256": "e55cbc253a7d9b2c9d28d6f7af8501ff2b5adc995ff4faa34e780ae58d572c91",
           "id": "receipt:wphx-comp-php-gap-inventory"
         }
       ]
@@ -3663,7 +3663,7 @@
       "receipts": [
         {
           "path": "receipts/compiler/wphx-comp-php-public-shell-snapshots.v1.json",
-          "sha256": "d8fdf38c3781142b77edae054668bc2c82e38bffbb578f48fd40465a2553f004",
+          "sha256": "888b7ae7e53208e2dd85cddf48cd1593e1040f6525cc3a458d29bd959b3ad3c5",
           "id": "receipt:wphx-comp-php-public-shell-snapshots"
         }
       ]
@@ -3705,6 +3705,16 @@
           "path": "receipts/compiler/wphx-comp-php-transport-template-provenance.v1.json",
           "sha256": "998cba1da2d674178c48b676fbfe1be489a02269cffebeae768587359628d5bb",
           "id": "receipt:wphx-comp-php-transport-template-provenance"
+        }
+      ]
+    },
+    {
+      "external_ref": "WPHX-COMP-PHP-WHOLE-FILE-PILOT",
+      "receipts": [
+        {
+          "path": "receipts/compiler/wphx-comp-php-whole-file-pilot.v1.json",
+          "sha256": "d540005ab1bbef95eb94f6e5a6ebed88d16cc081d315afa68b072f84873f775e",
+          "id": "receipt:wphx-comp-php-whole-file-pilot"
         }
       ]
     },
