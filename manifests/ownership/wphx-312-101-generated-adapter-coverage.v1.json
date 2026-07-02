@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.ownership-manifest.v1",
+  "manifest_id": "ownership:wp-core/wphx-312-generated-adapter-coverage",
+  "issue": {
+    "id": "wordpresshx-l76.18.45",
+    "external_ref": "WPHX-312.101"
+  },
+  "unit": {
+    "kind": "evidence_gate",
+    "name": "WPHX-312 generated-adapter copied public surface coverage",
+    "area": "HTTP response/cookie/encoding helpers, WP_Http helpers/parser/shim, and feed/embed/HTTPS copied public surfaces",
+    "public_contract": "This gate accounts for copied public surfaces routed to generated adapters. It maps existing generated successor candidates and records explicit compiler-pressure blockers; copied oracle fixtures remain behavior evidence until replacement gates pass."
+  },
+  "ownership_state": "design_plan",
+  "bridge": {
+    "exists": true,
+    "kind": "generated-adapter-coverage-gate",
+    "removal_gate": "Retire this coverage-only gate after all generated-adapter copied surfaces either have durable compiler-emitted original-path replacement evidence or are superseded by a broader WPHX PHP backend/public-shell ownership gate."
+  },
+  "owned_paths": [
+    "tools/wp-core/run-wphx-312-generated-adapter-coverage.mjs",
+    "manifests/wp-core/wphx-312-101-generated-adapter-coverage.v1.json",
+    "manifests/ownership/wphx-312-101-generated-adapter-coverage.v1.json",
+    "receipts/wp-core/wphx-312-101-generated-adapter-coverage.v1.json"
+  ],
+  "generated_paths": [
+    "manifests/wp-core/wphx-312-101-generated-adapter-coverage.v1.json",
+    "manifests/ownership/wphx-312-101-generated-adapter-coverage.v1.json",
+    "receipts/wp-core/wphx-312-101-generated-adapter-coverage.v1.json"
+  ],
+  "verification": {
+    "oracle_commands": [
+      "npm run wp:core:wphx-312-generated-adapter-coverage",
+      "npm run wp:core:wphx-312-generated-adapter-coverage:check",
+      "npm run wp:core:wphx-312-copied-surface-plan:check",
+      "npm run receipts:validate",
+      "npm run beads:validate"
+    ],
+    "receipt_refs": [
+      "receipt:wphx-312-101-generated-adapter-coverage"
+    ],
+    "manifest_digest": "sha256:0614a61b233f4565be9fc05286e66b70cd68ec63941aad970d9cef2a954284db"
+  }
+}

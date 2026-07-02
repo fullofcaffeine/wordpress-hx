@@ -1,0 +1,397 @@
+{
+  "schema": "wphx.wp-core-generated-adapter-coverage.v1",
+  "issue": {
+    "id": "wordpresshx-l76.18.45",
+    "external_ref": "WPHX-312.101",
+    "title": "Generate adapters for copied HTTP feed embed public surfaces"
+  },
+  "generated_at": "2026-07-02T23:55:00Z",
+  "generator": "tools/wp-core/run-wphx-312-generated-adapter-coverage.mjs",
+  "evidence_class": "generated_adapter_coverage_gate",
+  "artifact_scope": "wphx_312_generated_adapter_copied_public_surfaces",
+  "inputs": {
+    "copied_surface_plan": {
+      "path": "manifests/wp-core/wphx-312-100-copied-surface-plan.v1.json",
+      "bytes": 131672,
+      "sha256": "sha256:f8624597efc5a4738a8f571d3c0843525945b9d8544e887bc5873025d4aa9e2a"
+    },
+    "successor_manifests": [
+      {
+        "path": "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json",
+        "bytes": 17426,
+        "sha256": "sha256:319992cecb046b58fc5650fb98ebee0b8e24c92babd3d6dfb85b5db7aef79f89"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-53-http-cookie-candidate.v1.json",
+        "bytes": 20558,
+        "sha256": "sha256:b723d4ba6787b9f841fd737f055f2046bcf981d3b3a2acf5c081b1584d9236cd"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-50-http-encoding-candidate.v1.json",
+        "bytes": 20062,
+        "sha256": "sha256:7ed2477978454556160746b8cc79ed063dc1c433a650f5b5ff4e17427e4a38cc"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+        "bytes": 11650,
+        "sha256": "sha256:79bb94e7ec45f46b315fdc804bd7915132d9bf43b58ce145a312f9c0e68d5602"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+        "bytes": 12007,
+        "sha256": "sha256:2d0c8a28753774a6aace0b5fc02ab7e70d06471ea74b60a3eceb137376f21e0d"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+        "bytes": 12246,
+        "sha256": "sha256:8c9e011b3c696aa55603c51293b3b0740a6c3170c23930d2ad3c86d021e80fab"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json",
+        "bytes": 13444,
+        "sha256": "sha256:7e16259b6ad8bca3d19a354fa1cb29c4881957888e6fe23ec116b22fe9d84edf"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json",
+        "bytes": 14483,
+        "sha256": "sha256:f45e6b7fbb74d5588e0140629edddec85ab63f07eca32a60eee6027c6b53f9d8"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-61-wp-http-chunk-transfer-decode-candidate.v1.json",
+        "bytes": 9990,
+        "sha256": "sha256:170828c28bc905b0087ad20a233966bc1a73f3039be31498e7d1f03978cb4fd1"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+        "bytes": 14874,
+        "sha256": "sha256:9dd9bc4ffba161f950dcac19167e49adf1a761971e630d4c1dda149658fcc02a"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+        "bytes": 14859,
+        "sha256": "sha256:b4891ab4ff1f2ade32d60424f93e0c5454dfdbac4012326bf3878f3fdceb8784"
+      },
+      {
+        "path": "manifests/wp-core/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+        "bytes": 10719,
+        "sha256": "sha256:1a570b0433caecfeb36d0f00deb6fb70cecb4b547a5973400bd7101eac0411a9"
+      },
+      {
+        "path": "manifests/wphx-php/whole-file-class-http.v1.json",
+        "bytes": 6325,
+        "sha256": "sha256:3421ae18a39f556ac947053910a8fe30acc6eb6cb4560ea87e3f150b38aefb11"
+      }
+    ]
+  },
+  "summary": {
+    "generated_adapter_surface_count": 7,
+    "covered_by_generated_successor_count": 6,
+    "compiler_pressure_blocked_count": 1,
+    "blocker_refs": [
+      {
+        "issue_id": "wordpresshx-a89x",
+        "external_ref": "WPHX-COMP-PHP-MODULE-FUNCTION-ADAPTERS",
+        "title": "Add module-function original-path adapters for feed embed HTTPS helpers"
+      }
+    ],
+    "close_wphx_312_101": true
+  },
+  "boundaries": [
+    {
+      "source_ref": "WPHX-312.04",
+      "status": "compiler_pressure_blocked",
+      "blocker": {
+        "issue_id": "wordpresshx-a89x",
+        "external_ref": "WPHX-COMP-PHP-MODULE-FUNCTION-ADAPTERS",
+        "title": "Add module-function original-path adapters for feed embed HTTPS helpers"
+      },
+      "pressure_kind": "module_function_and_mixed_class_original_path_adapters",
+      "covered_symbols": [
+        "get_bloginfo_rss",
+        "bloginfo_rss",
+        "get_default_feed",
+        "get_wp_title_rss",
+        "get_the_title_rss",
+        "get_the_content_feed",
+        "prep_atom_text_construct",
+        "get_self_link",
+        "feed_content_type",
+        "wp_embed_defaults",
+        "wp_embed_register_handler",
+        "WP_Embed::get_embed_handler_html",
+        "WP_Embed::shortcode",
+        "wp_oembed_add_provider",
+        "WP_oEmbed::get_provider",
+        "WP_oEmbed::data2html",
+        "WP_oEmbed::_strip_newlines",
+        "get_oembed_endpoint_url",
+        "wp_oembed_ensure_format",
+        "_oembed_create_xml",
+        "wp_is_using_https",
+        "wp_is_home_url_using_https",
+        "wp_is_site_url_using_https",
+        "wp_should_replace_insecure_home_url",
+        "wp_replace_insecure_home_url",
+        "wp_update_urls_to_https",
+        "wp_update_https_migration_required",
+        "wp_get_https_detection_errors",
+        "wp_is_https_supported",
+        "wp_is_local_html_output"
+      ],
+      "blocker_reason": "The surface mixes module-level public functions, WP_Embed/WP_oEmbed methods, globals, hooks, output helpers, option mutation, and HTTPS detection boundaries across six original WordPress paths. It needs WPHX PHP module-function/class original-path adapter support instead of copied-oracle PHP.",
+      "source_issue_id": "wordpresshx-l76.18.4",
+      "source_unit_name": "feed helper, embed/oEmbed local routing, and HTTPS detection/migration behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-04-feed-embed-https-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:a01b9a82ed8c26eb0097b63880c3f3c7efd62abafef58b825bd86dc124f65baa",
+      "source_bridge_kind": "copied-oracle-public-php-with-haxe-adapter-contract-foundation",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    },
+    {
+      "source_ref": "WPHX-312.38",
+      "status": "covered_by_generated_successor",
+      "successor_refs": [
+        "WPHX-312.52"
+      ],
+      "successor_manifests": [
+        "manifests/wp-core/wphx-312-52-http-response-candidate.v1.json"
+      ],
+      "promoted_symbols": [
+        "WP_HTTP_Response::__construct",
+        "WP_HTTP_Response::get_data",
+        "WP_HTTP_Response::set_data",
+        "WP_HTTP_Response::get_headers",
+        "WP_HTTP_Response::set_headers",
+        "WP_HTTP_Response::header",
+        "WP_HTTP_Response::get_status",
+        "WP_HTTP_Response::set_status",
+        "WP_HTTP_Response::jsonSerialize"
+      ],
+      "source_issue_id": "wordpresshx-l76.18.25",
+      "source_unit_name": "WP_HTTP_Response object state behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-38-http-response-object-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:072a56e59823fd0c6d03573d5fdaef4c5293cf676018549086dcfb7b7a86447d",
+      "source_bridge_kind": "copied-oracle-public-php-with-stubbed-absint-boundary",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    },
+    {
+      "source_ref": "WPHX-312.39",
+      "status": "covered_by_generated_successor",
+      "successor_refs": [
+        "WPHX-312.53"
+      ],
+      "successor_manifests": [
+        "manifests/wp-core/wphx-312-53-http-cookie-candidate.v1.json"
+      ],
+      "promoted_symbols": [
+        "WP_Http_Cookie::test",
+        "WP_Http_Cookie::getHeaderValue",
+        "WP_Http_Cookie::getFullHeader",
+        "WP_Http_Cookie::get_attributes"
+      ],
+      "source_issue_id": "wordpresshx-l76.18.26",
+      "source_unit_name": "WP_Http_Cookie object parsing and matching behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-39-http-cookie-object-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:16ee06ec6a2738020d12b32ec426253bdb95c1435db9b81b8abea197201300a2",
+      "source_bridge_kind": "copied-oracle-public-php-with-stubbed-filter-boundary",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    },
+    {
+      "source_ref": "WPHX-312.40",
+      "status": "covered_by_generated_successor",
+      "successor_refs": [
+        "WPHX-312.50"
+      ],
+      "successor_manifests": [
+        "manifests/wp-core/wphx-312-50-http-encoding-candidate.v1.json"
+      ],
+      "promoted_symbols": [
+        "WP_Http_Encoding::compress",
+        "WP_Http_Encoding::decompress",
+        "WP_Http_Encoding::compatible_gzinflate",
+        "WP_Http_Encoding::content_encoding",
+        "WP_Http_Encoding::should_decode",
+        "WP_Http_Encoding::is_available"
+      ],
+      "source_issue_id": "wordpresshx-l76.18.27",
+      "source_unit_name": "WP_Http_Encoding compression helper behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-40-http-encoding-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:949633354916894b648823e92943a8f4d30f870268f1e9cbba6b407722aa5ffe",
+      "source_bridge_kind": "copied-oracle-public-php-with-stubbed-filter-boundary",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    },
+    {
+      "source_ref": "WPHX-312.41",
+      "status": "covered_by_generated_successor",
+      "successor_refs": [
+        "WPHX-312.55",
+        "WPHX-312.56",
+        "WPHX-312.57",
+        "WPHX-312.58"
+      ],
+      "successor_manifests": [
+        "manifests/wp-core/wphx-312-55-wp-http-ip-address-candidate.v1.json",
+        "manifests/wp-core/wphx-312-56-wp-http-redirect-compatibility-candidate.v1.json",
+        "manifests/wp-core/wphx-312-57-wp-http-redirect-validation-candidate.v1.json",
+        "manifests/wp-core/wphx-312-58-wp-http-absolute-url-candidate.v1.json"
+      ],
+      "promoted_symbols": [
+        "WP_Http::is_ip_address",
+        "WP_Http::browser_redirect_compatibility",
+        "WP_Http::validate_redirects",
+        "WP_Http::make_absolute_url"
+      ],
+      "source_issue_id": "wordpresshx-l76.18.28",
+      "source_unit_name": "WP_Http static helper and redirect behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-41-wp-http-helper-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:a707880db379b5ed5f529643c7f97c9543fce43c2f83cb8c61542e8c9fd964b4",
+      "source_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    },
+    {
+      "source_ref": "WPHX-312.42",
+      "status": "covered_by_generated_successor",
+      "successor_refs": [
+        "WPHX-312.60",
+        "WPHX-312.61",
+        "WPHX-312.62",
+        "WPHX-312.63",
+        "WPHX-312.64"
+      ],
+      "successor_manifests": [
+        "manifests/wp-core/wphx-312-60-wp-http-process-response-candidate.v1.json",
+        "manifests/wp-core/wphx-312-61-wp-http-chunk-transfer-decode-candidate.v1.json",
+        "manifests/wp-core/wphx-312-62-wp-http-process-headers-candidate.v1.json",
+        "manifests/wp-core/wphx-312-63-wp-http-cookie-header-assembly-candidate.v1.json",
+        "manifests/wp-core/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json"
+      ],
+      "promoted_symbols": [
+        "WP_Http::processResponse",
+        "WP_Http::chunkTransferDecode",
+        "WP_Http::processHeaders",
+        "WP_Http::buildCookieHeader",
+        "WP_Http::parse_url"
+      ],
+      "source_issue_id": "wordpresshx-l76.18.29",
+      "source_unit_name": "WP_Http parser, header, cookie-header, chunk decoding, and parse-url helper behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-42-wp-http-parser-header-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:99078887d00edf94b060d3b1796f83a25035c9c81d8a195d35c89d3124d94b77",
+      "source_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-wordpress-boundary",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    },
+    {
+      "source_ref": "WPHX-312.44",
+      "status": "covered_by_generated_successor",
+      "successor_refs": [
+        "WPHX-312.64",
+        "WPHX-COMP-PHP-WHOLE-FILE-PILOT"
+      ],
+      "successor_manifests": [
+        "manifests/wp-core/wphx-312-64-wp-http-deprecated-parse-url-candidate.v1.json",
+        "manifests/wphx-php/whole-file-class-http.v1.json"
+      ],
+      "promoted_symbols": [
+        "WP_Http::parse_url",
+        "wp-includes/class-http.php deprecated shim whole-file emission"
+      ],
+      "source_issue_id": "wordpresshx-l76.18.31",
+      "source_unit_name": "HTTP parse-url helper and deprecated class-http shim behavior",
+      "source_unit_kind": "oracle_source_mirror_fixture",
+      "source_ownership_manifest": "manifests/ownership/wphx-312-44-http-parse-url-shim-oracle-fixture.v1.json",
+      "source_ownership_manifest_sha256": "sha256:16e541021583cfc222eb8c814fbc6a789008212a8e8e1f7235220e5b67b12b72",
+      "source_bridge_kind": "copied-oracle-public-php-with-stubbed-requests-and-deprecation-boundary",
+      "source_primary_gate": {
+        "id": "generated_adapter",
+        "gate_kind": "generated_adapter",
+        "owner_issue": {
+          "issue_id": "wordpresshx-l76.18.45",
+          "external_ref": "WPHX-312.101",
+          "title": "Generate adapters for copied HTTP feed embed public surfaces"
+        },
+        "removal_gate": "Replace the copied public PHP surface with a WPHX PHP compiler-emitted original-path adapter or file a minimized compiler-pressure blocker; keep the existing oracle fixture green and keep public-shell snapshots/adoption CI green."
+      }
+    }
+  ],
+  "validation_result": {
+    "status": "passed",
+    "failures": [],
+    "generated_adapter_surface_count": 7,
+    "covered_by_generated_successor_count": 6,
+    "compiler_pressure_blocked_count": 1,
+    "all_generated_adapter_surfaces_accounted_for": true,
+    "copied_oracle_fixtures_retained_as_behavior_evidence": true
+  },
+  "decision": {
+    "status": "passed",
+    "close_wphx_312_101": true,
+    "notes": [
+      "Six copied-oracle WPHX-312 generated-adapter surfaces already have WPHX PHP compiler-emitted original-path successor candidates.",
+      "WPHX-312.04 remains copied-oracle behavior evidence and is routed to an explicit WPHX PHP compiler-pressure blocker for module-level feed/embed/HTTPS original-path adapter support.",
+      "No copied public PHP fixture is promoted to durable ownership by this coverage gate."
+    ]
+  },
+  "non_claims": [
+    "This coverage gate does not retire WPHX-312.04 copied public PHP.",
+    "This coverage gate does not claim full feed/embed/oEmbed/HTTPS public PHP replacement, installed WordPress behavior, live network/provider behavior, upstream PHPUnit pass/pass beyond existing ratchets, or complete WP_Http whole-file ownership.",
+    "Generated successors remain bounded to their recorded promoted symbols and receipts."
+  ]
+}

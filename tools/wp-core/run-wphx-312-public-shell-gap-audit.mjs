@@ -79,6 +79,7 @@ function sortedWphx312OwnershipPaths() {
   return readdirSync(OWNERSHIP_DIR)
     .filter((name) => name.startsWith("wphx-312-") && name.endsWith(".json"))
     .filter((name) => !name.includes("-copied-surface-plan."))
+    .filter((name) => !name.includes("-generated-adapter-coverage."))
     .sort()
     .map((name) => join(OWNERSHIP_DIR, name));
 }

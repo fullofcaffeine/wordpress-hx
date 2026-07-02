@@ -453,6 +453,8 @@
     "wp:core:wphx-312-public-shell-gap-audit:check": "node tools/wp-core/run-wphx-312-public-shell-gap-audit.mjs --check",
     "wp:core:wphx-312-copied-surface-plan": "node tools/wp-core/run-wphx-312-copied-surface-plan.mjs",
     "wp:core:wphx-312-copied-surface-plan:check": "node tools/wp-core/run-wphx-312-copied-surface-plan.mjs --check",
+    "wp:core:wphx-312-generated-adapter-coverage": "node tools/wp-core/run-wphx-312-generated-adapter-coverage.mjs",
+    "wp:core:wphx-312-generated-adapter-coverage:check": "node tools/wp-core/run-wphx-312-generated-adapter-coverage.mjs --check",
     "wp:core:wphx-313-media-filesystem-upload-surface": "node tools/wp-core/run-media-filesystem-upload-surface.mjs",
     "wp:core:wphx-313-media-filesystem-upload-surface:check": "node tools/wp-core/run-media-filesystem-upload-surface.mjs --check",
     "wp:core:wphx-313-media-upload-adapter-contract-candidate": "node tools/wp-core/run-media-upload-adapter-contract-candidate.mjs",
