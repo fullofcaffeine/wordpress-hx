@@ -1,0 +1,44 @@
+{
+  "schema": "wphx.verification-receipt.v1",
+  "id": "receipt:wphx-313-parent-closure",
+  "issue": {
+    "id": "wordpresshx-l76.19",
+    "external_ref": "WPHX-313",
+    "title": "WPHX-313 — Media, images, filesystem, uploads"
+  },
+  "recorded_at": "2026-07-02T00:20:00Z",
+  "command": "parent Beads closure reconciliation after WPHX-313.09 domain closure",
+  "evidence_class": "parent_closure",
+  "artifact_scope": "beads_status_reconciliation",
+  "behavior_parity_claimed": false,
+  "artifacts": [
+    {
+      "path": "receipts/wp-core/wphx-313-domain-closure.v1.json",
+      "role": "bounded WPHX-313 source-domain closure receipt"
+    },
+    {
+      "path": "docs/operations/progress-matrix.md",
+      "role": "progress matrix already records WPHX-313 as bounded closed and preserves non-claims"
+    },
+    {
+      "path": ".beads/issues.jsonl",
+      "role": "tracked Beads export with WPHX-313 parent closure"
+    }
+  ],
+  "verification_commands": [
+    "npm run beads:validate",
+    "npm run receipts:build",
+    "npm run receipts:validate"
+  ],
+  "validation_result": {
+    "status": "passed",
+    "parent_closure_reason": "WPHX-313.09 already closed the bounded media/filesystem/upload evidence slice with receipts and progress-matrix detail; this receipt reconciles the WPHX-313 parent Beads status with that accepted closure.",
+    "remaining_gaps": [
+      "Generated public PHP replacement for media/filesystem/upload original paths is not claimed.",
+      "Complete upstream media PHPUnit pass/pass parity is not claimed.",
+      "Real native GD, Imagick, AVIF, HEIC, PDF preview, EXIF/IPTC, and image write behavior remains later work.",
+      "Remote FTP/SSH filesystem transports and updater/admin orchestration remain later work.",
+      "Database-backed installed media persistence and full REST/AJAX/admin media behavior remain later distribution work."
+    ]
+  }
+}
